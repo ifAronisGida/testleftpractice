@@ -2,12 +2,12 @@
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using Trumpf.PageObjects.Waiting;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.ControlObjects;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Dialogs;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Shell;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Common;
+using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.PageObjects.Dialogs;
+using TestLeft.TestLeftBase.PageObjects.Shell;
+using TestLeft.TestLeftBase.PageObjects.Common;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Part
+namespace TestLeft.TestLeftBase.PageObjects.Part
 {
     /// <summary>
     /// PageObject for the parts category.

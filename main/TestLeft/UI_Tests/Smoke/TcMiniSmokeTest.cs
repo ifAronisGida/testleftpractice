@@ -1,15 +1,15 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Customer;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.CutJob;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Machine;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Material;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Part;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.PartOrder;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.Settings;
-using Trumpf.TruTops.Control.TestLeft.UI_Tests.Base;
+using TestLeft.TestLeftBase.PageObjects.Customer;
+using TestLeft.TestLeftBase.PageObjects.CutJob;
+using TestLeft.TestLeftBase.PageObjects.Machine;
+using TestLeft.TestLeftBase.PageObjects.Material;
+using TestLeft.TestLeftBase.PageObjects.Part;
+using TestLeft.TestLeftBase.PageObjects.PartOrder;
+using TestLeft.TestLeftBase.Settings;
+using TestLeft.UI_Tests.Base;
 
-namespace Trumpf.TruTops.Control.TestLeft.UI_Tests.Smoke
+namespace TestLeft.UI_Tests.Smoke
 {
     /// <summary>
     /// This test class contains smoke tests and supporting test methods.

@@ -1,9 +1,9 @@
 ﻿using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.ControlObjects;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Shell;
+using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.PageObjects.Shell;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Common
+namespace TestLeft.TestLeftBase.PageObjects.Common
 {
     /// <summary>
     /// The result column containing the search area with search text, clear and search buttons and the result list.

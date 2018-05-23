@@ -4,10 +4,10 @@ using System.IO;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.Settings;
+using TestLeft.TestLeftBase;
+using TestLeft.TestLeftBase.Settings;
 
-namespace Trumpf.TruTops.Control.TestLeft.UI_Tests.Base
+namespace TestLeft.UI_Tests.Base
 {
     /// <summary>
     /// Base class for all test classes.

@@ -1,9 +1,9 @@
 ﻿using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.ControlObjects;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Dialogs;
+using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.PageObjects.Dialogs;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Part
+namespace TestLeft.TestLeftBase.PageObjects.Part
 {
     /// <summary>
     /// The design detail area of the part category.

@@ -1,6 +1,6 @@
 ﻿using Trumpf.PageObjects;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase
+namespace TestLeft.TestLeftBase
 {
     /// <summary>
     /// The HomeZone ProcessObject.

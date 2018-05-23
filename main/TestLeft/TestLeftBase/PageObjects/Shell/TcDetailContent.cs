@@ -1,7 +1,7 @@
 ﻿using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Shell
+namespace TestLeft.TestLeftBase.PageObjects.Shell
 {
     /// <summary>
     /// Base PageObject for the detail pane.

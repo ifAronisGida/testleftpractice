@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Part;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Shell;
-using Trumpf.TruTops.Control.TestLeft.UI_Tests.Base;
+using TestLeft.TestLeftBase.PageObjects.Part;
+using TestLeft.TestLeftBase.PageObjects.Shell;
+using TestLeft.UI_Tests.Base;
 
-namespace Trumpf.TruTops.Control.TestLeft.UI_Tests.Shell
+namespace TestLeft.UI_Tests.Shell
 {
     /// <summary>
     /// Test class for common shell tests.

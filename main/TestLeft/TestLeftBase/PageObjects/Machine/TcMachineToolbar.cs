@@ -3,10 +3,10 @@ using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.Core;
 using Trumpf.PageObjects.WPF;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.ControlObjects;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Shell;
+using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.PageObjects.Shell;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Machine
+namespace TestLeft.TestLeftBase.PageObjects.Machine
 {
     /// <summary>
     /// The machine toolbar.

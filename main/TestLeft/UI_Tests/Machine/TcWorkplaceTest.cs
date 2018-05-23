@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Machine;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.Settings;
-using Trumpf.TruTops.Control.TestLeft.UI_Tests.Base;
+using TestLeft.TestLeftBase.PageObjects.Machine;
+using TestLeft.TestLeftBase.Settings;
+using TestLeft.UI_Tests.Base;
 
-namespace Trumpf.TruTops.Control.TestLeft.UI_Tests.Machine
+namespace TestLeft.UI_Tests.Machine
 {
     /// <summary>
     /// This test class contains workplace specific tests.

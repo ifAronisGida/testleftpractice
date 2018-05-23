@@ -2,9 +2,9 @@
 using SmartBear.TestLeft.TestObjects.WPF.DevExpress;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.ControlObjects;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Customer
+namespace TestLeft.TestLeftBase.PageObjects.Customer
 {
     /// <summary>
     /// TcCustomersView provides access to the controls of the customer view.

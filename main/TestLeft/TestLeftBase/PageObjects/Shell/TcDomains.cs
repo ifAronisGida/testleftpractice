@@ -1,8 +1,8 @@
 ﻿using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.ControlObjects;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Shell
+namespace TestLeft.TestLeftBase.PageObjects.Shell
 {
     /// <summary>
     /// The domains / categories PageObject.

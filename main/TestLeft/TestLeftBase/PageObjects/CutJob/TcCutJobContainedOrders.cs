@@ -1,12 +1,12 @@
 ﻿using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.ControlObjects;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Dialogs;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Shell;
-using TcTruIconButton = Trumpf.TruTops.Control.TestLeft.TestLeftBase.ControlObjects.TcTruIconButton;
+using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.PageObjects.Dialogs;
+using TestLeft.TestLeftBase.PageObjects.Shell;
+using TcTruIconButton = TestLeft.TestLeftBase.ControlObjects.TcTruIconButton;
 
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.CutJob
+namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
     public class TcCutJobContainedOrders : PageObject, IChildOf<TcDetailContent>
     {

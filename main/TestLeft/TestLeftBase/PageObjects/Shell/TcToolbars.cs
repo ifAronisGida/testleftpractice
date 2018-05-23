@@ -1,7 +1,7 @@
 ﻿using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Shell
+namespace TestLeft.TestLeftBase.PageObjects.Shell
 {
     /// <summary>
     /// The parent of all category toolbars.

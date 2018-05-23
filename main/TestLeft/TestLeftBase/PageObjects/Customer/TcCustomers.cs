@@ -1,8 +1,8 @@
 ﻿using Trumpf.PageObjects;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Dialogs;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Part;
+using TestLeft.TestLeftBase.PageObjects.Dialogs;
+using TestLeft.TestLeftBase.PageObjects.Part;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Customer
+namespace TestLeft.TestLeftBase.PageObjects.Customer
 {
     /// <summary>
     /// Customers can be administrated here.

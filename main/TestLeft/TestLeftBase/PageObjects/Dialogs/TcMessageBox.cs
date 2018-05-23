@@ -3,7 +3,7 @@ using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Dialogs
+namespace TestLeft.TestLeftBase.PageObjects.Dialogs
 {
     /// <summary>
     /// TcMessageBox is used to handle message boxes.

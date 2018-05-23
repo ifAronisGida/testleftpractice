@@ -1,9 +1,9 @@
 ﻿using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.ControlObjects;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Shell;
+using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.PageObjects.Shell;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.CutJob
+namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
     public class TcCutJobToolbar : PageObject, IChildOf<TcToolbars>
     {

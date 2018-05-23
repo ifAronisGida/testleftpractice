@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.Settings
+namespace TestLeft.TestLeftBase.Settings
 {
     /// <summary>
     /// This class contains the settings used by the UI tests.

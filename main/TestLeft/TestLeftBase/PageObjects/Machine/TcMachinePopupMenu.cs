@@ -2,7 +2,7 @@
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Machine
+namespace TestLeft.TestLeftBase.PageObjects.Machine
 {
     public class TcMachinePopupMenu : PageObject, IChildOf<TcHomeZoneApp>
     {

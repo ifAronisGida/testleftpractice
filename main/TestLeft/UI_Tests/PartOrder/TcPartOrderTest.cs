@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.PartOrder;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.Settings;
-using Trumpf.TruTops.Control.TestLeft.UI_Tests.Base;
+using TestLeft.TestLeftBase.PageObjects.PartOrder;
+using TestLeft.TestLeftBase.Settings;
+using TestLeft.UI_Tests.Base;
 
-namespace Trumpf.TruTops.Control.TestLeft.UI_Tests.PartOrder
+namespace TestLeft.UI_Tests.PartOrder
 {
     [TestClass]
     public class TcPartOrderTest : TcBaseTestClass

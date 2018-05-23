@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Material;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.Settings;
-using Trumpf.TruTops.Control.TestLeft.UI_Tests.Base;
+using TestLeft.TestLeftBase.PageObjects.Material;
+using TestLeft.TestLeftBase.Settings;
+using TestLeft.UI_Tests.Base;
 
-namespace Trumpf.TruTops.Control.TestLeft.UI_Tests.Material
+namespace TestLeft.UI_Tests.Material
 {
     /// <summary>
     /// This test class contains material specific tests.

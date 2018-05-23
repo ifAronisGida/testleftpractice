@@ -2,12 +2,12 @@
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.Waiting;
 using Trumpf.PageObjects.WPF;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.ControlObjects;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Shell;
-using TcTruIconButton = Trumpf.TruTops.Control.TestLeft.TestLeftBase.ControlObjects.TcTruIconButton;
+using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.PageObjects.Shell;
+using TcTruIconButton = TestLeft.TestLeftBase.ControlObjects.TcTruIconButton;
 
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Part
+namespace TestLeft.TestLeftBase.PageObjects.Part
 {
     /// <summary>
     /// The upper detail area of the part category.

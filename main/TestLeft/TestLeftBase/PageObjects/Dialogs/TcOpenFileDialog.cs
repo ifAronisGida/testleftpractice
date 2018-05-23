@@ -1,8 +1,8 @@
 ﻿using SmartBear.TestLeft.TestObjects;
 using Trumpf.PageObjects;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.Settings;
+using TestLeft.TestLeftBase.Settings;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Dialogs
+namespace TestLeft.TestLeftBase.PageObjects.Dialogs
 {
     /// <summary>
     /// TcOpenFileDialog handles open file dialogs.

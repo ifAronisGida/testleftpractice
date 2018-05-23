@@ -8,8 +8,8 @@
     <ProjectGuid>{7C8D9CED-B73C-49A8-B168-5BBFE0FFED15}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Trumpf.TruTops.Control.TestLeft.TestLeftBase</RootNamespace>
-    <AssemblyName>Trumpf.TruTops.Control.TestLeft.TestLeftBase</AssemblyName>
+    <RootNamespace>TestLeft.TestLeftBase</RootNamespace>
+    <AssemblyName>HomeZone.TestLeft.TestLeftBase</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\_common\bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -28,7 +28,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\_common\bin\Release\</OutputPath>
+    <OutputPath>..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -39,28 +39,27 @@
   <ItemGroup>
     <Reference Include="DevExpress.Xpf.Core.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\_external\3rdParty\DevExpress\DevExpress.Xpf.Core.v16.1.dll</HintPath>
+      <HintPath>..\_external\3rdParty\DevExpress\DevExpress.Xpf.Core.v16.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Xpf.Grid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\_external\3rdParty\DevExpress\DevExpress.Xpf.Grid.v16.1.dll</HintPath>
+      <HintPath>..\_external\3rdParty\DevExpress\DevExpress.Xpf.Grid.v16.1.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\..\..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\RestSharp.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="SmartBear.TestLeft, Version=12.31.1833.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
-      <HintPath>..\..\..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\SmartBear.TestLeft.dll</HintPath>
+      <HintPath>..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\SmartBear.TestLeft.dll</HintPath>
     </Reference>
     <Reference Include="SmartBear.TestLeft.WebApiWrapper, Version=12.31.1833.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
-      <HintPath>..\..\..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\SmartBear.TestLeft.WebApiWrapper.dll</HintPath>
+      <HintPath>..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\SmartBear.TestLeft.WebApiWrapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Trumpf.PageObjects, Version=3.1.2.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
-      <HintPath>..\..\..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\Trumpf.PageObjects.dll</HintPath>
+      <HintPath>..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\Trumpf.PageObjects.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>

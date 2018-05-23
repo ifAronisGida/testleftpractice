@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.CutJob;
-using Trumpf.TruTops.Control.TestLeft.TestLeftBase.Settings;
-using Trumpf.TruTops.Control.TestLeft.UI_Tests.Base;
+using TestLeft.TestLeftBase.PageObjects.CutJob;
+using TestLeft.TestLeftBase.Settings;
+using TestLeft.UI_Tests.Base;
 
-namespace Trumpf.TruTops.Control.TestLeft.UI_Tests.CutJob
+namespace TestLeft.UI_Tests.CutJob
 {
     [TestClass]
     public class TcCutJobTest : TcBaseTestClass

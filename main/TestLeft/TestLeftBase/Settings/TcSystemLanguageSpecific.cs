@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.Settings
+namespace TestLeft.TestLeftBase.Settings
 {
     /// <summary>
     /// This class contains strings dependant of the current system language.

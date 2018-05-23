@@ -8,8 +8,8 @@
     <ProjectGuid>{8BF76EB4-CC36-49EA-931C-C6C3F1689EBB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Trumpf.TruTops.Control.TestLeft.UI_Tests</RootNamespace>
-    <AssemblyName>Trumpf.TruTops.Control.TestLeft.UI_Tests</AssemblyName>
+    <RootNamespace>TestLeft.UI_Tests</RootNamespace>
+    <AssemblyName>HomeZone.TestLeft.UI_Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\_common\bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -28,34 +28,30 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\..\..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\RestSharp.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="SmartBear.TestLeft, Version=12.31.1833.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
-      <HintPath>..\..\..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\SmartBear.TestLeft.dll</HintPath>
+      <HintPath>..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\SmartBear.TestLeft.dll</HintPath>
     </Reference>
     <Reference Include="SmartBear.TestLeft.WebApiWrapper, Version=12.31.1833.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
-      <HintPath>..\..\..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\SmartBear.TestLeft.WebApiWrapper.dll</HintPath>
+      <HintPath>..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\SmartBear.TestLeft.WebApiWrapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
     <Reference Include="Trumpf.PageObjects, Version=3.1.2.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
-      <HintPath>..\..\..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\Trumpf.PageObjects.dll</HintPath>
-    </Reference>
-    <Reference Include="Trumpf.TruTops.Control.TestLeft.TestLeftBase">
-      <HintPath>..\..\..\_common\bin\$(Configuration)\Trumpf.TruTops.Control.TestLeft.TestLeftBase.dll</HintPath>
+      <HintPath>..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\Trumpf.PageObjects.dll</HintPath>
     </Reference>
     <Reference Include="Trumpf.TruTops.UnitTestAttribute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a29b70238a00b455, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Base\source\_tools\build\Trumpf.TruTops.UnitTestAttribute.dll</HintPath>
+      <HintPath>..\_external\Trumpf\Trumpf.TruTops.UnitTestAttribute.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +72,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestLeftBase\TestLeftBase.csproj">
+      <Project>{7c8d9ced-b73c-49a8-b168-5bbfe0ffed15}</Project>
+      <Name>TestLeftBase</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

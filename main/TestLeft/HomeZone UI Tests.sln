@@ -3,12 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLeftBase", "TestLeft\TestLeftBase\TestLeftBase.csproj", "{7C8D9CED-B73C-49A8-B168-5BBFE0FFED15}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLeftBase", "TestLeftBase\TestLeftBase.csproj", "{7C8D9CED-B73C-49A8-B168-5BBFE0FFED15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI_Tests", "TestLeft\UI_Tests\UI_Tests.csproj", "{8BF76EB4-CC36-49EA-931C-C6C3F1689EBB}"
-	ProjectSection(ProjectDependencies) = postProject
-		{7C8D9CED-B73C-49A8-B168-5BBFE0FFED15} = {7C8D9CED-B73C-49A8-B168-5BBFE0FFED15}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI_Tests", "UI_Tests\UI_Tests.csproj", "{8BF76EB4-CC36-49EA-931C-C6C3F1689EBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

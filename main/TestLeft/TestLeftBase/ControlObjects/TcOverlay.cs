@@ -1,6 +1,6 @@
 ﻿using Trumpf.PageObjects.WPF;
 
-namespace Trumpf.TruTops.Control.TestLeft.TestLeftBase.ControlObjects
+namespace TestLeft.TestLeftBase.ControlObjects
 {
     /// <summary>
     /// The ControlObject for overlays.
