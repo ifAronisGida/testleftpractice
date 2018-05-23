@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.PageObjects.CutJob;
@@ -9,16 +9,14 @@ using TestLeft.TestLeftBase.PageObjects.PartOrder;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 
-namespace TestLeft.UI_Tests.Smoke
+namespace TestLeft.UI_Tests.Utilities
 {
     /// <summary>
-    /// This test class contains smoke tests and supporting test methods.
-    /// These test methods are mainly used for module and PageObject tests.
-    /// The smoke tests should clean up at the end.
+    /// This test class contains supporting test methods for the smoke tests.
     /// </summary>
     /// <seealso cref="TcBaseTestClass" />
     [TestClass]
-    public class TcMiniSmokeTest : TcBaseTestClass
+    public class TcSmokeHelpers : TcBaseTestClass
     {
         #region Class initializers
         [ClassInitialize]
@@ -33,48 +31,6 @@ namespace TestLeft.UI_Tests.Smoke
             FinalizeClass();
         }
         #endregion
-
-        /// <summary>
-        /// Mini smoke test: creating test items, adding bend and cut solutions to parts and boosting them, deleting the test items.
-        /// </summary>
-        [TestMethod]
-        public void _1_MiniSmokeTest()
-        {
-            CreateTestItems();
-
-            //TODO
-            //testing...
-
-            DeleteTestItems();
-        }
-
-        /// <summary>
-        /// Creates the test items.
-        /// </summary>
-        [TestMethod]
-        public void CreateTestItems()
-        {
-            CreateTestMaterials();
-            CreateTestMachines();
-            CreateTestCustomers();
-            CreateTestParts();
-            CreateTestPartOrders();
-            CreateTestCutJobs();
-        }
-
-        /// <summary>
-        /// Deletes the test items.
-        /// </summary>
-        [TestMethod]
-        public void DeleteTestItems()
-        {
-            DeleteTestCutJobs();
-            DeleteTestPartOrders();
-            DeleteTestParts();
-            DeleteTestCustomers();
-            DeleteTestMachines();
-            DeleteTestMaterials();
-        }
 
         /// <summary>
         /// Creates some test materials by duplicating existing materials:
@@ -372,6 +328,7 @@ namespace TestLeft.UI_Tests.Smoke
         {
             //TODO
         }
+
         private void CreateTestCutJobsFromParts()
         {
             //CreateTestParts(); //tut nicht ganz
@@ -400,9 +357,9 @@ namespace TestLeft.UI_Tests.Smoke
 
             // Details
             var rawMaterial = cutJobs.SingleDetail.GetRawMaterial();
-            if (rawMaterial == "(Kein Rohmaterial)")
+            if( rawMaterial == "(Kein Rohmaterial)" )
             {
-                cutJobs.SingleDetail.SelectRawMaterial(1);
+                cutJobs.SingleDetail.SelectRawMaterial( 1 );
             }
 
             // Auftragsliste
@@ -414,16 +371,15 @@ namespace TestLeft.UI_Tests.Smoke
 
             //Tafelprogramm
             cutJobs.CutJobSolution.Note = "Kommentar";
-            cutJobs.CutJobSolution.SelectMachine(1);
-            cutJobs.CutJobSolution.SelectRawSheet(1);
+            cutJobs.CutJobSolution.SelectMachine( 1 );
+            cutJobs.CutJobSolution.SelectRawSheet( 1 );
             cutJobs.CutJobSolution.Delete();
             cutJobs.CutJobSolution.Boost();
-            
+
             //TODO
             //cutJobs.DeleteCutJobs();
             //partsOrder.DeletePartOder();
             //parts.DeletePart();
         }
-        
     }
 }
