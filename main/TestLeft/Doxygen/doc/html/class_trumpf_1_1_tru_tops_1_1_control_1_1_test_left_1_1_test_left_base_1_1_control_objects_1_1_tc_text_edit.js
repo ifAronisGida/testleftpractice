@@ -1,0 +1,5 @@
+var class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_text_edit =
+[
+    [ "SearchPattern", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_text_edit.html#a850ec7e5a51613063eb21e58e1f48a2a", null ],
+    [ "Text", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_text_edit.html#a1f156a47bca709f6cfae23339903d389", null ]
+];

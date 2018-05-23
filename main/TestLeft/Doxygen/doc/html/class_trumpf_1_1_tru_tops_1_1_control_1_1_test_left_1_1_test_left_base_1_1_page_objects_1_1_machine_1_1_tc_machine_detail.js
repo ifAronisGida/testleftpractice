@@ -1,0 +1,13 @@
+var class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_machine_1_1_tc_machine_detail =
+[
+    [ "SearchPattern", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_machine_1_1_tc_machine_detail.html#a7d8c3af08fc81e030869baacfc34c114", null ],
+    [ "BendMachineType", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_machine_1_1_tc_machine_detail.html#accf26f7fae152d523715820ff682d08a", null ],
+    [ "CreateSubDirectory", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_machine_1_1_tc_machine_detail.html#a66dffcc840e18042ea240fbb224b93f4", null ],
+    [ "CutMachineType", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_machine_1_1_tc_machine_detail.html#a72fc72fca66a21f504b98b64af423d4a", null ],
+    [ "LaserPower", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_machine_1_1_tc_machine_detail.html#aeec71e24e3d457cf99b2c8ebc3371a65", null ],
+    [ "LaserPowerIndex", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_machine_1_1_tc_machine_detail.html#a48730ad9466d42136d6f346f214cfe62", null ],
+    [ "LaserPowerValue", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_machine_1_1_tc_machine_detail.html#ad8d759525d47dc2875b11093d1b9b621", null ],
+    [ "MachineNumber", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_machine_1_1_tc_machine_detail.html#ace81cfd6067089b3345e67b9adddc94c", null ],
+    [ "Name", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_machine_1_1_tc_machine_detail.html#ab0cdbbf50f25476ed9fac43800fb0c0c", null ],
+    [ "TransferDirectory", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_machine_1_1_tc_machine_detail.html#aac3af745552a53ac5a56480166f87be2", null ]
+];

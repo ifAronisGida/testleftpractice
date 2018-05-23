@@ -1,0 +1,12 @@
+var class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_material_1_1_tc_material_detail =
+[
+    [ "SearchPattern", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_material_1_1_tc_material_detail.html#a6540a9192297921aea8dd6607ff40f60", null ],
+    [ "Abbreviation", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_material_1_1_tc_material_detail.html#a67906a97f9ab462c813ecca9ea7dc6c9", null ],
+    [ "EModulus", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_material_1_1_tc_material_detail.html#ab497dabe6ac339a8b9212280ccbe9f4d", null ],
+    [ "Id", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_material_1_1_tc_material_detail.html#ad6864a149f80194a7230c4a7678ed112", null ],
+    [ "Name", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_material_1_1_tc_material_detail.html#a38e8e0bc0483839767dbb5ef2ccb1164", null ],
+    [ "SpecificWeight", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_material_1_1_tc_material_detail.html#ae8de35d7aa456c4dce5cf3370e172785", null ],
+    [ "TensileStrength", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_material_1_1_tc_material_detail.html#a0a5e4073e1303ba73746ed43e4e91d5d", null ],
+    [ "TensileStrengthMax", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_material_1_1_tc_material_detail.html#a3386aaea326d3de8c4f0ce2e2403fe2f", null ],
+    [ "TensileStrengthMin", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_material_1_1_tc_material_detail.html#abb5e788a6985c5cd92ef1b819be97e8f", null ]
+];

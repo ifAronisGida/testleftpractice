@@ -1,0 +1,4 @@
+<map id="Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Customer.TcCustomers.Goto" name="Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Customer.TcCustomers.Goto">
+<area shape="rect" id="node2" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part_1_1_tc_parts.html#a267b0ddd8eafb1dd33ba9a5b09f4f756" title="Goto the page object, i.e. perform necessary action to make the page object visible on screen..." alt="" coords="320,5,555,61"/>
+<area shape="rect" id="node3" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part_1_1_tc_parts.html#acebd3c6502e67d74a52b0c09c6ad7212" title="Creates a new part. " alt="" coords="320,85,555,141"/>
+</map>

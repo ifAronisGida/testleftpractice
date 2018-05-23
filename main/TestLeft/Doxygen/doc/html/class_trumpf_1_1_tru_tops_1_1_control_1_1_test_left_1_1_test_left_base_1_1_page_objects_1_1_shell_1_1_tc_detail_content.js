@@ -1,0 +1,4 @@
+var class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_shell_1_1_tc_detail_content =
+[
+    [ "SearchPattern", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_shell_1_1_tc_detail_content.html#acd1ad4ac49682e92764d19a308aa7b17", null ]
+];

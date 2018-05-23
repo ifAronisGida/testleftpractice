@@ -1,0 +1,7 @@
+<map id="Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Machine.TcMachines.Goto" name="Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Machine.TcMachines.Goto">
+<area shape="rect" id="node2" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_machine_1_1_tc_workplace_test.html#aceeab3c054a5d3d577ac44361038bfcc" title="Creates a new cut machine. " alt="" coords="312,5,543,61"/>
+<area shape="rect" id="node3" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_machine_1_1_tc_workplace_test.html#a3e6ed1451c2e49263d5201715f18388b" title="Creates a new bend machine. " alt="" coords="312,85,543,141"/>
+<area shape="rect" id="node4" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_machine_1_1_tc_workplace_test.html#a72f8a9a8831aaad28a7bbf646331b4a3" title="Creates and then deletes a bend machine. " alt="" coords="312,165,543,221"/>
+<area shape="rect" id="node5" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_smoke_1_1_tc_mini_smoke_test.html#aab4604c719ae73da6b6623fb903ef98c" title="Creates some bend and cut test machines. " alt="" coords="314,245,541,301"/>
+<area shape="rect" id="node6" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_smoke_1_1_tc_mini_smoke_test.html#a1d87dc74a80d62ce61c6b628f8e57252" title="Deletes the test machines. " alt="" coords="314,325,541,381"/>
+</map>

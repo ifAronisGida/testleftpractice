@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_combo_box.html" title="The ComboBox ControlObject. " alt="" coords="155,5,372,61"/>
+<area shape="rect" id="node3" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_domain_selector.html" title="The ControlObject to select a domain (category). " alt="" coords="155,85,372,141"/>
+<area shape="rect" id="node4" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_group_panel.html" title="The ControlObject for group panels. " alt="" coords="155,165,372,221"/>
+<area shape="rect" id="node5" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_list_view.html" title="The ControlObject for list views. " alt="" coords="155,245,372,301"/>
+<area shape="rect" id="node6" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_overlay.html" title="The ControlObject for overlays. " alt="" coords="155,325,372,381"/>
+<area shape="rect" id="node7" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_tru_icon_button.html" title="The ControlObject for buttons. " alt="" coords="155,405,372,461"/>
+</map>

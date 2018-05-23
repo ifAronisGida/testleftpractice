@@ -1,0 +1,4 @@
+<map id="Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Customer.TcCustomers.NewCustomer" name="Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Customer.TcCustomers.NewCustomer">
+<area shape="rect" id="node2" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_customer_1_1_tc_customer_test.html#a3df4e1e6e0f16332c4608501f983b2cb" title="Creates 2 new customers: TcSettings.NamePrefix + &quot;Kunde 1&quot; TcSettings.NamePrefix + &quot;Kunde 2&quot; ..." alt="" coords="320,5,552,61"/>
+<area shape="rect" id="node3" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_smoke_1_1_tc_mini_smoke_test.html#adb883b1a76800375423821df978ee0e1" title="Creates some test customers. " alt="" coords="323,85,549,141"/>
+</map>

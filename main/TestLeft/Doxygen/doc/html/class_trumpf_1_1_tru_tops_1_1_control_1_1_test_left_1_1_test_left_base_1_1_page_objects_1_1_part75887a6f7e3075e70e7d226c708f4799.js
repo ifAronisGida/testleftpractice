@@ -1,0 +1,14 @@
+var class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part75887a6f7e3075e70e7d226c708f4799 =
+[
+    [ "BoostButton", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part75887a6f7e3075e70e7d226c708f4799.html#a077e931f0e7fd090da98e7f8ac8c5117", null ],
+    [ "CreateCutJobButton", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part75887a6f7e3075e70e7d226c708f4799.html#a944843c0664e44609cb0e0871185dd7c", null ],
+    [ "DeleteButton", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part75887a6f7e3075e70e7d226c708f4799.html#a90e195038523c1c74fc3e1fcd7ab4a00", null ],
+    [ "DuplicateButton", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part75887a6f7e3075e70e7d226c708f4799.html#a0a0c27aa902861b8b08b93b700563786", null ],
+    [ "ImportButton", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part75887a6f7e3075e70e7d226c708f4799.html#af9f305213105c0816943734930d2fc8a", null ],
+    [ "MoveToArchiveButton", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part75887a6f7e3075e70e7d226c708f4799.html#a78b0dc5273c4aaf2137c0fc836068271", null ],
+    [ "NewPartOrderButton", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part75887a6f7e3075e70e7d226c708f4799.html#a9e53c048191a93f2d6c9676041cca3fa", null ],
+    [ "RemoveFromArchiveButton", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part75887a6f7e3075e70e7d226c708f4799.html#a588996136018978daa830b08f2cb5800", null ],
+    [ "RevertButton", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part75887a6f7e3075e70e7d226c708f4799.html#ad22cc9d660fe4ecb8fec0f9f3a91dc5e", null ],
+    [ "SaveButton", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part75887a6f7e3075e70e7d226c708f4799.html#a777f5b91765d0cd497edb96e2367381c", null ],
+    [ "SearchPattern", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part75887a6f7e3075e70e7d226c708f4799.html#a82319bd65caeed3b02ac8fba1878afc5", null ]
+];

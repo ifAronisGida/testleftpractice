@@ -1,0 +1,4 @@
+<map id="Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Customer.TcCustomers.Goto" name="Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Customer.TcCustomers.Goto">
+<area shape="rect" id="node2" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_customer_1_1_tc_customer_test.html#a7db56ad4a2d8e12df90d9af836b8ecee" title="Deletes a specific customer (TcSettings.NamePrefix + &quot;Kunde 2&quot;). " alt="" coords="320,5,552,61"/>
+<area shape="rect" id="node3" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_smoke_1_1_tc_mini_smoke_test.html#a778de4a7c26ee595cbb6f95a39286a4b" title="Deletes the test customers. " alt="" coords="323,85,549,141"/>
+</map>

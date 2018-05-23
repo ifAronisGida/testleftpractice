@@ -1,0 +1,4 @@
+var namespace_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_customer =
+[
+    [ "TcCustomers", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_customer_1_1_tc_customers.html", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_customer_1_1_tc_customers" ]
+];
