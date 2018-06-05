@@ -83,6 +83,8 @@
     <Compile Include="PageObjects\CutJob\TcCutJobSolution.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobToolbar.cs" />
     <Compile Include="PageObjects\Dialogs\TcMessageBox.cs" />
+    <Compile Include="PageObjects\Flux\TcFlux.cs" />
+    <Compile Include="PageObjects\Flux\TcFluxApp.cs" />
     <Compile Include="PageObjects\Machine\TcMachineDetail.cs" />
     <Compile Include="PageObjects\Machine\TcMachinePopupMenu.cs" />
     <Compile Include="PageObjects\Machine\TcMachines.cs" />

@@ -29,7 +29,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The detail overlay.
         /// </value>
-        public TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
+        public TcOverlay DetailOverlay => Find<TcOverlay>(Search.ByUid("DetailContent.Overlay"));
 
         /// <summary>
         /// Gets the toolbar.
@@ -41,7 +41,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         {
             get
             {
-                if( mToolbar == null )
+                if (mToolbar == null)
                 {
                     mToolbar = On<TcPartToolbar>();
                 }
@@ -60,7 +60,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         {
             get
             {
-                if( mResultColumn == null )
+                if (mResultColumn == null)
                 {
                     mResultColumn = On<TcResultColumn>();
                 }
@@ -79,7 +79,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         {
             get
             {
-                if( mSingleDetail == null )
+                if (mSingleDetail == null)
                 {
                     mSingleDetail = On<TcPartSingleDetail>();
                 }
@@ -98,7 +98,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         {
             get
             {
-                if( mSingleDetailDesign == null )
+                if (mSingleDetailDesign == null)
                 {
                     mSingleDetailDesign = On<TcPartSingleDetailDesign>();
                 }
@@ -117,7 +117,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         {
             get
             {
-                if( mSingleDetailBendSolutions == null )
+                if (mSingleDetailBendSolutions == null)
                 {
                     mSingleDetailBendSolutions = On<TcPartSingleDetailBendSolutions>();
                 }
@@ -136,7 +136,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         {
             get
             {
-                if( mSingleDetailCutSolutions == null )
+                if (mSingleDetailCutSolutions == null)
                 {
                     mSingleDetailCutSolutions = On<TcPartSingleDetailCutSolutions>();
                 }
@@ -160,9 +160,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </summary>
         /// <param name="timeout">The timeout.</param>
         /// <returns></returns>
-        public bool WaitForDetailOverlayAppear( TimeSpan timeout )
+        public bool WaitForDetailOverlayAppear(TimeSpan timeout)
         {
-            return TryWait.For( () => DetailOverlay.VisibleOnScreen, timeout );
+            return TryWait.For(() => DetailOverlay.VisibleOnScreen, timeout);
         }
 
         /// <summary>
@@ -170,9 +170,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </summary>
         /// <param name="timeout">The timeout.</param>
         /// <returns></returns>
-        public bool WaitForDetailOverlayDisappear( TimeSpan timeout )
+        public bool WaitForDetailOverlayDisappear(TimeSpan timeout)
         {
-            return TryWait.For( () => !DetailOverlay.VisibleOnScreen, timeout );
+            return TryWait.For(() => !DetailOverlay.VisibleOnScreen, timeout);
         }
 
         /// <summary>
@@ -188,12 +188,12 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </summary>
         /// <param name="filename">The filename.</param>
         /// <returns>true if successful; otherwise false</returns>
-        public bool Import( string filename )
+        public bool Import(string filename)
         {
             Toolbar.ImportButton.Click();
 
             var openDlg = On<TcOpenFileDialog>();
-            return openDlg.SetFilename( filename );
+            return openDlg.SetFilename(filename);
         }
 
         /// <summary>
@@ -202,6 +202,12 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         public void BoostPart()
         {
             Toolbar.BoostButton.Click();
+
+            var dialog = On<TcMessageBox>();
+            if (dialog.MessageBoxExists())
+            {
+                dialog.Yes();
+            }
         }
 
         /// <summary>
@@ -220,7 +226,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
             Toolbar.DeleteButton.Click();
 
             var dialog = On<TcMessageBox>();
-            if( dialog.MessageBoxExists() )
+            if (dialog.MessageBoxExists())
             {
                 dialog.Yes();
             }
@@ -230,9 +236,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// Selects the part via identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        public void SelectPart( string id )
+        public void SelectPart(string id)
         {
-            ResultColumn.SelectItem( id );
+            ResultColumn.SelectItem(id);
         }
 
         /// <summary>
@@ -240,9 +246,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </summary>
         /// <param name="searchText">The search text.</param>
         /// <returns>The amount of selected parts.</returns>
-        public int SelectParts( string searchText )
+        public int SelectParts(string searchText)
         {
-            return ResultColumn.SelectItems( searchText );
+            return ResultColumn.SelectItems(searchText);
         }
 
         /// <summary>

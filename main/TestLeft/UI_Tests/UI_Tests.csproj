@@ -58,6 +58,7 @@
     <Compile Include="Base\TcBaseTestClass.cs" />
     <Compile Include="Customer\TcCustomerTest.cs" />
     <Compile Include="CutJob\TcCutJobTest.cs" />
+    <Compile Include="Flux\TcFluxTest.cs" />
     <Compile Include="Machine\TcWorkplaceTest.cs" />
     <Compile Include="Material\TcMaterialTest.cs" />
     <Compile Include="PartOrder\TcPartOrderTest.cs" />

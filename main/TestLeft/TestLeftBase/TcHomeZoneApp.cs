@@ -5,6 +5,7 @@ namespace TestLeft.TestLeftBase
     /// <summary>
     /// The HomeZone ProcessObject.
     /// </summary>
+    /// <seealso cref="Trumpf.PageObjects.ProcessObject" />
     public class TcHomeZoneApp : ProcessObject
     {
         /// <summary>

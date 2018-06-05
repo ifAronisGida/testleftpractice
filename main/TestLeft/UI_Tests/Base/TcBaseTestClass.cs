@@ -95,7 +95,7 @@ namespace TestLeft.UI_Tests.Base
             Driver.Log.OpenFolder( mTestContext.FullyQualifiedTestClassName + "." + mTestContext.TestName );
 
             // check if HomeZone is already running
-            var runningHomeZone = Process.GetProcessesByName( TcSettings.ProcessName );
+            var runningHomeZone = Process.GetProcessesByName( TcSettings.HomeZoneProcessName );
 
             if( runningHomeZone.Length == 0 )               // not running => start HomeZone
             {
@@ -104,7 +104,7 @@ namespace TestLeft.UI_Tests.Base
                     throw new Exception( "Path not found to start process!" );
                 }
 
-                var filename = Path.Combine( TcSettings.ProgramPath, TcSettings.ProcessName + ".exe" );
+                var filename = Path.Combine( TcSettings.ProgramPath, TcSettings.HomeZoneProcessName + ".exe" );
                 var startInfo = new ProcessStartInfo
                 {
                     FileName = filename,
@@ -116,7 +116,7 @@ namespace TestLeft.UI_Tests.Base
             }
 
             // connect to HomeZone process and wait until visible
-            HomeZoneApp = new TcHomeZoneApp( TcSettings.ProcessName );
+            HomeZoneApp = new TcHomeZoneApp( TcSettings.HomeZoneProcessName );
        }
 
         /// <summary>

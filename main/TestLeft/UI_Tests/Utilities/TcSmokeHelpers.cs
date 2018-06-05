@@ -1,13 +1,17 @@
 using System;
+using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.PageObjects.CutJob;
+using TestLeft.TestLeftBase.PageObjects.Flux;
 using TestLeft.TestLeftBase.PageObjects.Machine;
 using TestLeft.TestLeftBase.PageObjects.Material;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.PageObjects.PartOrder;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
+using Trumpf.PageObjects.Waiting;
+
 
 namespace TestLeft.UI_Tests.Utilities
 {
@@ -20,9 +24,9 @@ namespace TestLeft.UI_Tests.Utilities
     {
         #region Class initializers
         [ClassInitialize]
-        public static void ClassInitialize( TestContext context )
+        public static void ClassInitialize(TestContext context)
         {
-            InitializeClass( context );
+            InitializeClass(context);
         }
 
         [ClassCleanup]
@@ -43,7 +47,7 @@ namespace TestLeft.UI_Tests.Utilities
 
             materials.Goto();
 
-            materials.SelectMaterial( "1.0038" );
+            materials.SelectMaterial("1.0038");
 
             materials.DuplicateMaterial();
 
@@ -52,22 +56,10 @@ namespace TestLeft.UI_Tests.Utilities
             materials.Detail.Name = name;
 
             materials.SaveMaterial();
-            materials.WaitForDetailOverlayAppear( TcSettings.MaterialSaveOverlayAppearTimeout );
-            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialSaveOverlayDisappearTimeout );
+            materials.WaitForDetailOverlayAppear(TcSettings.MaterialSaveOverlayAppearTimeout);
+            materials.WaitForDetailOverlayDisappear(TcSettings.MaterialSaveOverlayDisappearTimeout);
 
-            materials.SelectMaterial( "Cu" );
-
-            materials.DuplicateMaterial();
-
-            name = TcSettings.NamePrefix + materials.Detail.Id;
-            materials.Detail.Id = name;
-            materials.Detail.Name = name;
-
-            materials.SaveMaterial();
-            materials.WaitForDetailOverlayAppear( TcSettings.MaterialSaveOverlayAppearTimeout );
-            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialSaveOverlayDisappearTimeout );
-
-            materials.SelectMaterial( "Ti" );
+            materials.SelectMaterial("Cu");
 
             materials.DuplicateMaterial();
 
@@ -76,8 +68,20 @@ namespace TestLeft.UI_Tests.Utilities
             materials.Detail.Name = name;
 
             materials.SaveMaterial();
-            materials.WaitForDetailOverlayAppear( TcSettings.MaterialSaveOverlayAppearTimeout );
-            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialSaveOverlayDisappearTimeout );
+            materials.WaitForDetailOverlayAppear(TcSettings.MaterialSaveOverlayAppearTimeout);
+            materials.WaitForDetailOverlayDisappear(TcSettings.MaterialSaveOverlayDisappearTimeout);
+
+            materials.SelectMaterial("Ti");
+
+            materials.DuplicateMaterial();
+
+            name = TcSettings.NamePrefix + materials.Detail.Id;
+            materials.Detail.Id = name;
+            materials.Detail.Name = name;
+
+            materials.SaveMaterial();
+            materials.WaitForDetailOverlayAppear(TcSettings.MaterialSaveOverlayAppearTimeout);
+            materials.WaitForDetailOverlayDisappear(TcSettings.MaterialSaveOverlayDisappearTimeout);
         }
 
         /// <summary>
@@ -90,13 +94,13 @@ namespace TestLeft.UI_Tests.Utilities
 
             materials.Goto();
 
-            if( materials.SelectMaterials( TcSettings.NamePrefix ) > 0 )
+            if (materials.SelectMaterials(TcSettings.NamePrefix) > 0)
             {
                 materials.DeleteMaterial();
             }
 
-            materials.WaitForDetailOverlayAppear( TcSettings.MaterialSaveOverlayAppearTimeout );
-            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialSaveOverlayDisappearTimeout );
+            materials.WaitForDetailOverlayAppear(TcSettings.MaterialSaveOverlayAppearTimeout);
+            materials.WaitForDetailOverlayDisappear(TcSettings.MaterialSaveOverlayDisappearTimeout);
 
             materials.ResultColumn.ClearSearch();
         }
@@ -111,27 +115,27 @@ namespace TestLeft.UI_Tests.Utilities
 
             machines.Goto();
 
-            machines.NewBendMachine( "TruBend 5320 (6-axes) B23", TcSettings.NamePrefix + Guid.NewGuid() );
+            machines.NewBendMachine("TruBend 5320 (6-axes) B23", TcSettings.NamePrefix + Guid.NewGuid());
             machines.SaveMachine();
 
-            machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
+            machines.WaitForDetailOverlayDisappear(TcSettings.SavingTimeout);
 
-            machines.NewBendMachine( "TruBend 1066 (4-axes,Trumpf_80mm) B22", TcSettings.NamePrefix + Guid.NewGuid() );
+            machines.NewBendMachine("TruBend 1066 (4-axes,Trumpf_80mm) B22", TcSettings.NamePrefix + Guid.NewGuid());
             machines.SaveMachine();
 
-            machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
+            machines.WaitForDetailOverlayDisappear(TcSettings.SavingTimeout);
 
-            machines.NewCutMachine( "TruLaser 3030 (L20)", TcSettings.NamePrefix + Guid.NewGuid(), 3 );
+            machines.NewCutMachine("TruLaser 3030 (L20)", TcSettings.NamePrefix + Guid.NewGuid(), 3);
             machines.SaveMachine();
 
-            machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
+            machines.WaitForDetailOverlayDisappear(TcSettings.SavingTimeout);
 
-            machines.NewCutMachine( "TruLaser Center 7030 (L26)", TcSettings.NamePrefix + Guid.NewGuid(), 0 );
+            machines.NewCutMachine("TruLaser Center 7030 (L26)", TcSettings.NamePrefix + Guid.NewGuid(), 0);
             machines.SaveMachine();
 
-            machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
+            machines.WaitForDetailOverlayDisappear(TcSettings.SavingTimeout);
 
-            machines.NewCutMachine( "TruLaser 3060 fiber (L66)", TcSettings.NamePrefix + Guid.NewGuid(), "8000" );
+            machines.NewCutMachine("TruLaser 3060 fiber (L66)", TcSettings.NamePrefix + Guid.NewGuid(), "8000");
             machines.SaveMachine();
         }
 
@@ -145,7 +149,7 @@ namespace TestLeft.UI_Tests.Utilities
 
             machines.Goto();
 
-            if( machines.SelectMachines( TcSettings.NamePrefix ) > 0 )
+            if (machines.SelectMachines(TcSettings.NamePrefix) > 0)
             {
                 machines.DeleteMachine();
             }
@@ -168,7 +172,7 @@ namespace TestLeft.UI_Tests.Utilities
                                   "71254",
                                   "Ditzingen",
                                   "Deutschland",
-                                  "kein Kommentar" );
+                                  "kein Kommentar");
 
             customers.NewCustomer(
                                   TcSettings.NamePrefix + "Kunde 2",
@@ -177,7 +181,7 @@ namespace TestLeft.UI_Tests.Utilities
                                   "71254",
                                   "Ditzingen",
                                   "Deutschland",
-                                  "hier auch nicht" );
+                                  "hier auch nicht");
 
             customers.NewCustomer(
                                   TcSettings.NamePrefix + "Kunde 3",
@@ -186,7 +190,7 @@ namespace TestLeft.UI_Tests.Utilities
                                   "71254",
                                   "Ditzingen",
                                   "Deutschland",
-                                  "blablabla" );
+                                  "blablabla");
 
             customers.ApplyClick();
             customers.CancelClick();
@@ -201,7 +205,7 @@ namespace TestLeft.UI_Tests.Utilities
             var customers = HomeZoneApp.On<TcCustomers>();
             customers.Goto();
 
-            customers.DeleteCustomersWithNameContaining( TcSettings.NamePrefix );
+            customers.DeleteCustomersWithNameContaining(TcSettings.NamePrefix);
 
             customers.ApplyClick();
             customers.CancelClick();
@@ -217,10 +221,10 @@ namespace TestLeft.UI_Tests.Utilities
 
             parts.Goto();
 
-            parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
-            parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
+            parts.Import(@"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc");
+            parts.WaitForDetailOverlayAppear(TcSettings.PartImportOverlayAppearTimeout);
+            parts.WaitForDetailOverlayDisappear(TcSettings.PartImportOverlayDisappearTimeout);
+            parts.SingleDetail.WaitForNameEnabled(TimeSpan.FromSeconds(10));
             parts.SingleDetail.Name = TcSettings.NamePrefix + parts.SingleDetail.Name;
             parts.SingleDetail.Customer = TcSettings.NamePrefix + "Kunde 1";
             parts.SingleDetail.DrawingNumber = TcSettings.NamePrefix + "DrawNr";
@@ -229,13 +233,14 @@ namespace TestLeft.UI_Tests.Utilities
             parts.SingleDetail.Note = TcSettings.NamePrefix + "Note";
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailCutSolutions.New();
+            OpenFluxBendSolutionAndCloseFlux(parts);
             parts.SavePart();
-            parts.BoostPart();
+            parts.BoostPart();          
 
-            parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
-            parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
+            parts.Import(@"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo");
+            parts.WaitForDetailOverlayAppear(TcSettings.PartImportOverlayAppearTimeout);
+            parts.WaitForDetailOverlayDisappear(TcSettings.PartImportOverlayDisappearTimeout);
+            parts.SingleDetail.WaitForNameEnabled(TimeSpan.FromSeconds(10));
             parts.SingleDetail.Name = TcSettings.NamePrefix + parts.SingleDetail.Name;
             parts.SingleDetail.Customer = TcSettings.NamePrefix + "Kunde 2";
             parts.SingleDetail.DrawingNumber = TcSettings.NamePrefix + "DrawNr";
@@ -244,13 +249,14 @@ namespace TestLeft.UI_Tests.Utilities
             parts.SingleDetail.Note = TcSettings.NamePrefix + "Note";
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailCutSolutions.New();
+            OpenFluxBendSolutionAndCloseFlux(parts);
             parts.SavePart();
             parts.BoostPart();
 
-            parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Zugwinkel.scdoc" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
-            parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
+            parts.Import(@"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Zugwinkel.scdoc");
+            parts.WaitForDetailOverlayAppear(TcSettings.PartImportOverlayAppearTimeout);
+            parts.WaitForDetailOverlayDisappear(TcSettings.PartImportOverlayDisappearTimeout);
+            parts.SingleDetail.WaitForNameEnabled(TimeSpan.FromSeconds(10));
             parts.SingleDetail.Name = TcSettings.NamePrefix + parts.SingleDetail.Name;
             parts.SingleDetail.Customer = TcSettings.NamePrefix + "Kunde 3";
             parts.SingleDetail.DrawingNumber = TcSettings.NamePrefix + "DrawNr";
@@ -259,8 +265,31 @@ namespace TestLeft.UI_Tests.Utilities
             parts.SingleDetail.Note = TcSettings.NamePrefix + "Note";
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailCutSolutions.New();
+            OpenFluxBendSolutionAndCloseFlux(parts);
             parts.SavePart();
             parts.BoostPart();
+        }
+
+        private bool OpenFluxBendSolutionAndCloseFlux(TcParts parts)
+        {
+            parts.SingleDetailBendSolutions.OpenBendSolution("Bend1");
+            parts.WaitForDetailOverlayAppear(TcSettings.PartImportOverlayAppearTimeout);
+
+            var flux = new TcFlux();
+
+            if (flux.FluxWindowVisible(TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds(500)))
+            {
+                flux.CloseApp();
+
+                parts.WaitForDetailOverlayDisappear(TcSettings.PartImportOverlayDisappearTimeout);
+            }
+            else
+            {
+                Driver.Log.Error(@"Flux main window is not visible.");
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -273,7 +302,7 @@ namespace TestLeft.UI_Tests.Utilities
 
             parts.Goto();
 
-            if( parts.SelectParts( TcSettings.NamePrefix ) > 0 )
+            if (parts.SelectParts(TcSettings.NamePrefix) > 0)
             {
                 parts.DeletePart();
             }
@@ -336,11 +365,11 @@ namespace TestLeft.UI_Tests.Utilities
 
             parts.Goto();
 
-            parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Training\Laser\GEO\BL_01.geo" );
-            parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Training\Laser\GEO\BL_02.geo" );
-            parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Training\Laser\GEO\BL_03.geo" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+            parts.Import(@"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Training\Laser\GEO\BL_01.geo");
+            parts.Import(@"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Training\Laser\GEO\BL_02.geo");
+            parts.Import(@"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Training\Laser\GEO\BL_03.geo");
+            parts.WaitForDetailOverlayAppear(TcSettings.PartImportOverlayAppearTimeout);
+            parts.WaitForDetailOverlayDisappear(TcSettings.PartImportOverlayDisappearTimeout);
 
             parts.SelectAll();
             parts.CreateCutJob();
@@ -357,22 +386,22 @@ namespace TestLeft.UI_Tests.Utilities
 
             // Details
             var rawMaterial = cutJobs.SingleDetail.GetRawMaterial();
-            if( rawMaterial == "(Kein Rohmaterial)" )
+            if (rawMaterial == "(Kein Rohmaterial)")
             {
-                cutJobs.SingleDetail.SelectRawMaterial( 1 );
+                cutJobs.SingleDetail.SelectRawMaterial(1);
             }
 
             // Auftragsliste
             var partOrdersCount = cutJobs.CutJobContainedOrders.PartOrdersCount;
             cutJobs.CutJobContainedOrders.UnSelectAllPartOrders();
-            cutJobs.CutJobContainedOrders.SelectPartOrder( 1 );
+            cutJobs.CutJobContainedOrders.SelectPartOrder(1);
             cutJobs.CutJobContainedOrders.RemovePartOrder();
             //cutJobs.CutJobContainedOrders.AddPartOrder();
 
             //Tafelprogramm
             cutJobs.CutJobSolution.Note = "Kommentar";
-            cutJobs.CutJobSolution.SelectMachine( 1 );
-            cutJobs.CutJobSolution.SelectRawSheet( 1 );
+            cutJobs.CutJobSolution.SelectMachine(1);
+            cutJobs.CutJobSolution.SelectRawSheet(1);
             cutJobs.CutJobSolution.Delete();
             cutJobs.CutJobSolution.Boost();
 

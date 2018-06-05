@@ -21,7 +21,15 @@ namespace TestLeft.TestLeftBase.Settings
         /// <value>
         /// The name of the process.
         /// </value>
-        public static string ProcessName => @"Trumpf.TruTops.Control.Shell";
+        public static string HomeZoneProcessName => @"Trumpf.TruTops.Control.Shell";
+
+        /// <summary>
+        /// Gets the name of the Flux process.
+        /// </summary>
+        /// <value>
+        /// The name of the process.
+        /// </value>
+        public static string FluxProcessName => @"Flux";
 
         /// <summary>
         /// Gets the HomeZone program path.
@@ -94,5 +102,13 @@ namespace TestLeft.TestLeftBase.Settings
         /// The saving timeout.
         /// </value>
         public static TimeSpan SavingTimeout => TimeSpan.FromSeconds( 20 );
+
+        /// <summary>
+        /// Gets timeout for starting Flux.
+        /// </summary>
+        /// <value>
+        /// The Flux starting timeout.
+        /// </value>
+        public static TimeSpan FluxStartTimeout => TimeSpan.FromSeconds( 40 );
     }
 }
