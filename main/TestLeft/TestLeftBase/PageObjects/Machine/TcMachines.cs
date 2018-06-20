@@ -6,6 +6,7 @@ using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Common;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
+using SmartBear.TestLeft.TestObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.Machine
 {
@@ -140,9 +141,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </summary>
         public void NewCutMachine()
         {
-            Toolbar.NewMachineButton.Click();
-            Popup.NewCutMachineButton.Click();
-            //Toolbar.NewCutMachineButton.Click();
+            Toolbar.NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click("|[0]");
         }
 
         /// <summary>
@@ -178,9 +177,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </summary>
         public void NewBendMachine()
         {
-            Toolbar.NewMachineButton.Click();
-            Popup.NewBendMachineButton.Click();
-            //Toolbar.NewBendMachineButton.Click();
+            Toolbar.NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click("|[1]");
         }
 
         /// <summary>
