@@ -116,8 +116,11 @@ namespace TestLeft.UI_Tests.Base
             }
 
             // connect to HomeZone process and wait until visible
-            HomeZoneApp = new TcHomeZoneApp( TcSettings.HomeZoneProcessName );
-       }
+            HomeZoneApp = new TcHomeZoneApp( TcSettings.HomeZoneProcessName )
+            {
+                Driver = Driver
+            };
+        }
 
         /// <summary>
         /// Cleaning up after the test run.
