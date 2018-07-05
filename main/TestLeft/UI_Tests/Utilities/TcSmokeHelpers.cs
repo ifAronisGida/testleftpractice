@@ -43,9 +43,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestMaterials()
         {
-            var materials = HomeZoneApp.On<TcMaterials>();
-
-            materials.Goto();
+            var materials = HomeZoneApp.Goto<TcMaterials>();
 
             materials.SelectMaterial("1.0038");
 
@@ -385,17 +383,17 @@ namespace TestLeft.UI_Tests.Utilities
             //cutJobs.SelectCutJob("N1");
 
             // Details
-            var rawMaterial = cutJobs.SingleDetail.GetRawMaterial();
+            var rawMaterial = cutJobs.SingleDetail.RawMaterial;
             if (rawMaterial == "(Kein Rohmaterial)")
             {
                 cutJobs.SingleDetail.SelectRawMaterial(1);
             }
 
             // Auftragsliste
-            var partOrdersCount = cutJobs.CutJobContainedOrders.PartOrdersCount;
-            cutJobs.CutJobContainedOrders.UnSelectAllPartOrders();
-            cutJobs.CutJobContainedOrders.SelectPartOrder(1);
-            cutJobs.CutJobContainedOrders.RemovePartOrder();
+            var partOrdersCount = cutJobs.ContainedOrders.PartOrdersCount;
+            cutJobs.ContainedOrders.UnSelectAllPartOrders();
+            cutJobs.ContainedOrders.SelectPartOrder(1);
+            cutJobs.ContainedOrders.RemovePartOrder();
             //cutJobs.CutJobContainedOrders.AddPartOrder();
 
             //Tafelprogramm

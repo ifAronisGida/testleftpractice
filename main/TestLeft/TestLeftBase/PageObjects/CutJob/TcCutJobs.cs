@@ -1,7 +1,4 @@
 ﻿using Trumpf.PageObjects;
-using Trumpf.PageObjects.WPF;
-using Trumpf.PageObjects.Waiting;
-using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Common;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
@@ -14,8 +11,6 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         private TcResultColumn mResultColumn;
 
         private TcCutJobDetail mSingleDetail;
-        //private TcCutJobDetailDesign mDetailOrders;
-        //private TcCutJobDetailBendSolutions mDetailJob;
         private TcCutJobContainedOrders mContainedOrders;
 
         private TcCutJobSolution mCutJobSolution;
@@ -33,6 +28,58 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             }
         }
 
+        public TcResultColumn ResultColumn
+        {
+            get
+            {
+                if (mResultColumn == null)
+                {
+                    mResultColumn = On<TcResultColumn>();
+                }
+
+                return mResultColumn;
+            }
+        }
+
+        public TcCutJobDetail SingleDetail
+        {
+            get
+            {
+                if (mSingleDetail == null)
+                {
+                    mSingleDetail = On<TcCutJobDetail>();
+                }
+
+                return mSingleDetail;
+            }
+        }
+
+        public TcCutJobContainedOrders ContainedOrders
+        {
+            get
+            {
+                if (mContainedOrders == null)
+                {
+                    mContainedOrders = On<TcCutJobContainedOrders>();
+                }
+
+                return mContainedOrders;
+            }
+        }
+
+        public TcCutJobSolution CutJobSolution
+        {
+            get
+            {
+                if (mCutJobSolution == null)
+                {
+                    mCutJobSolution = On<TcCutJobSolution>();
+                }
+
+                return mCutJobSolution;
+            }
+        }
+
         public override void Goto()
         {
             base.Goto();
@@ -45,6 +92,11 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             Toolbar.NewCutJobButton.Click();
         }
 
+        public void SaveCutJob()
+        {
+            Toolbar.SaveButton.Click();
+        }
+
         public void DeleteCutJob()
         {
             Toolbar.DeleteButton.Click();
@@ -53,18 +105,6 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             if( dialog.MessageBoxExists() )
             {
                 dialog.Yes();
-            }
-        }
-        public TcResultColumn ResultColumn
-        {
-            get
-            {
-                if( mResultColumn == null )
-                {
-                    mResultColumn = On<TcResultColumn>();
-                }
-
-                return mResultColumn;
             }
         }
 
@@ -82,46 +122,5 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             return ResultColumn.SelectAll();
         }
-
-        public TcCutJobDetail SingleDetail
-        {
-            get
-            {
-                if( mSingleDetail == null )
-                {
-                    mSingleDetail = On<TcCutJobDetail>();
-                }
-
-                return mSingleDetail;
-            }
-        }
-
-        public TcCutJobContainedOrders CutJobContainedOrders
-        {
-            get
-            {
-                if( mContainedOrders == null )
-                {
-                    mContainedOrders = On<TcCutJobContainedOrders>();
-                }
-
-                return mContainedOrders;
-            }
-        }
-
-        public TcCutJobSolution CutJobSolution
-        {
-            get
-            {
-                if( mCutJobSolution == null )
-                {
-                    mCutJobSolution = On<TcCutJobSolution>();
-                }
-
-                return mCutJobSolution;
-            }
-        }
-        
-
     }
 }

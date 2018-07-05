@@ -64,6 +64,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlObjects\Grid\TcBandedViewContentSelector.cs" />
+    <Compile Include="ControlObjects\Grid\TcGridCellContentPresenter.cs" />
+    <Compile Include="ControlObjects\Grid\TcHierarchyPanel.cs" />
+    <Compile Include="ControlObjects\Grid\TcTableRow.cs" />
+    <Compile Include="ControlObjects\Grid\TcTableView.cs" />
+    <Compile Include="ControlObjects\Grid\TiTableRowFactory.cs" />
     <Compile Include="ControlObjects\TcCheckBox.cs" />
     <Compile Include="ControlObjects\TcComboBox.cs" />
     <Compile Include="ControlObjects\TcGridControl.cs" />
@@ -72,6 +78,7 @@
     <Compile Include="ControlObjects\TcOverlay.cs" />
     <Compile Include="ControlObjects\TcDomainSelector.cs" />
     <Compile Include="ControlObjects\TcLookUpEdit.cs" />
+    <Compile Include="ControlObjects\TcReadOnlyText.cs" />
     <Compile Include="ControlObjects\TcTruIconButton.cs" />
     <Compile Include="ControlObjects\TcTextEdit.cs" />
     <Compile Include="PageObjects\Common\TcResultColumn.cs" />
@@ -79,6 +86,7 @@
     <Compile Include="PageObjects\Customer\TcCustomersView.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobContainedOrders.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobDetail.cs" />
+    <Compile Include="PageObjects\CutJob\TcCutJobOrderRow.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobs.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobSolution.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobToolbar.cs" />

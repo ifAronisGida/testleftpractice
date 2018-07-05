@@ -3,14 +3,15 @@ using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
-using TcTruIconButton = TestLeft.TestLeftBase.ControlObjects.TcTruIconButton;
-
+using TestLeft.TestLeftBase.ControlObjects.Grid;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
-    public class TcCutJobContainedOrders : PageObject, IChildOf<TcDetailContent>
+    public class TcCutJobContainedOrders : PageObject, IChildOf<TcDetailContent>, TiTableRowFactory<TcCutJobOrderRow>
     {
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.ContainedOrders" );
+
+        public TcTableView<TcCutJobOrderRow> TableView => PartOrdersGrid.GetTableView(this);
 
         internal TcTruIconButton SelectButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.ContainedOrders.Select" ) );
 
@@ -54,6 +55,10 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
                 }
             }
         }
-        
+
+        TcCutJobOrderRow TiTableRowFactory<TcCutJobOrderRow>.WrapRow(TcTableRow underlyingRow)
+        {
+            return new TcCutJobOrderRow(underlyingRow);
+        }
     }
 }

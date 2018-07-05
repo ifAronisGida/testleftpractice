@@ -1,5 +1,6 @@
 ﻿using DevExpress.Xpf.Grid;
-using SmartBear.TestLeft.TestObjects.WPF;
+using SmartBear.TestLeft.TestObjects;
+using TestLeft.TestLeftBase.ControlObjects.Grid;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects
@@ -12,25 +13,15 @@ namespace TestLeft.TestLeftBase.ControlObjects
     {
         protected override Search SearchPattern => Search.Any;
 
-        public string Text
-        {
-            get
-            {
-                return Node.Cast<IWPFTextEdit>().GetText();
-            }
-            set
-            {
-                Node.Cast<IWPFTextEdit>().SetText( value );
-            }
-        }
+        public int RowCount => Node.Cast<IGridView>().wRowCount;
 
-        public int RowCount
+        public TcTableView<TRow> GetTableView<TRow>(TiTableRowFactory<TRow> rowFactory)
         {
-            get
-            {
-                return Node.GetProperty<int>( "VisibleRowCount" );
-            }
-            
+            var tableView = Find<TcTableView<TRow>>(depth: 1);
+
+            tableView.RowFactory = rowFactory;
+
+            return tableView;
         }
 
         public void UnselectAll()
@@ -38,13 +29,12 @@ namespace TestLeft.TestLeftBase.ControlObjects
             Node.CallMethod( "UnselectAll" );
         }
 
-        public void SelectItem( int index)
+        public void SelectItem( int index )
         {
             if (RowCount > index)
             {
                 Node.CallMethod( "SelectItem", index );
             }
         }
-        
     }
 }

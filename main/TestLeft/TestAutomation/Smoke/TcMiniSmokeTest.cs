@@ -46,6 +46,7 @@ namespace TestLeft.TestAutomation.Smoke
         /// </summary>
         public void CreateTestItems()
         {
+            Driver.Log.Message("Creating test items");
             var smokeHelpers = new TcSmokeHelpers();
 
             smokeHelpers.CreateTestMaterials();
