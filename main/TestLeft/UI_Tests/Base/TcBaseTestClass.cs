@@ -5,6 +5,7 @@ using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft;
 using TestLeft.TestLeftBase;
+using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.Settings;
 
 namespace TestLeft.UI_Tests.Base
@@ -111,8 +112,6 @@ namespace TestLeft.UI_Tests.Base
                     WorkingDirectory = TcSettings.ProgramPath
                 };
                 var process = Process.Start( startInfo );
-
-                Thread.Sleep( TimeSpan.FromSeconds( 30 ) );     // wait for startup, SpaceClaim, FluxAdapter...
             }
 
             // connect to HomeZone process and wait until visible
@@ -120,6 +119,9 @@ namespace TestLeft.UI_Tests.Base
             {
                 Driver = Driver
             };
+
+            var mainWindow = HomeZoneApp.On<TcMainWindow>();
+            mainWindow.Exists.WaitFor(TimeSpan.FromSeconds(60));
         }
 
         /// <summary>
