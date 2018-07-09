@@ -64,16 +64,16 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlObjects\Grid\TcBandedViewContentSelector.cs" />
-    <Compile Include="ControlObjects\Grid\TcGridCellContentPresenter.cs" />
-    <Compile Include="ControlObjects\Grid\TcHierarchyPanel.cs" />
+    <Compile Include="ControlObjects\Grid\TcPrivateIntermediates.cs" />
     <Compile Include="ControlObjects\Grid\TcTableRow.cs" />
     <Compile Include="ControlObjects\Grid\TcTableView.cs" />
     <Compile Include="ControlObjects\Grid\TiTableRowFactory.cs" />
+    <Compile Include="ControlObjects\TcButton.cs" />
     <Compile Include="ControlObjects\TcCheckBox.cs" />
     <Compile Include="ControlObjects\TcComboBox.cs" />
     <Compile Include="ControlObjects\TcGridControl.cs" />
     <Compile Include="ControlObjects\TcGroupPanel.cs" />
+    <Compile Include="ControlObjects\TcLinkButton.cs" />
     <Compile Include="ControlObjects\TcListView.cs" />
     <Compile Include="ControlObjects\TcOverlay.cs" />
     <Compile Include="ControlObjects\TcDomainSelector.cs" />

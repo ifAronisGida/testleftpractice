@@ -1,29 +1,28 @@
-﻿using DevExpress.Xpf.Editors;
-using SmartBear.TestLeft.TestObjects;
+﻿using System.Windows.Controls;
+using DevExpress.Xpf.Editors;
 using Trumpf.PageObjects.WPF;
-
 
 namespace TestLeft.TestLeftBase.ControlObjects
 {
     /// <summary>
-    /// The CheckBox ControlObject.
+    /// The CheckBox ControlObject for the built-in CheckBox and DevExpress' CheckEdit.
     /// </summary>
-    /// <seealso cref="Trumpf.PageObjects.WPF.ViewControlObject{DevExpress.Xpf.Editors.CheckEdit}" />
-    public class TcCheckBox : ViewControlObject<CheckEdit>
+    public class TcCheckBox : ControlObject
     {
-        protected override Search SearchPattern => Search.Any;
+        protected override Search SearchPattern =>
+            Search.By<CheckBox>().OrBy<CheckEdit>();
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="TcCheckBox"/> is checked.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if checked; otherwise, <c>false</c>.
+        ///   <c>true</c> if checked; otherwise <c>false</c>.
         /// </value>
         public bool Checked
         {
             get
             {
-                return Node.Cast<ICheckBox>().wState == CheckState.Checked;
+                return Node.GetProperty<bool>("IsChecked");
             }
             set
             {

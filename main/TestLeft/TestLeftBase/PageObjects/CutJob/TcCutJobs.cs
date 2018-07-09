@@ -1,4 +1,5 @@
-﻿using Trumpf.PageObjects;
+﻿using System;
+using Trumpf.PageObjects;
 using TestLeft.TestLeftBase.PageObjects.Common;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
@@ -7,65 +8,29 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
     public class TcCutJobs : RepeaterObject, IChildOf<TcMainTabControl>
     {
-        private TcCutJobToolbar mToolbar;
-        private TcResultColumn mResultColumn;
+        private readonly Lazy<TcCutJobToolbar> mToolbar;
+        private readonly Lazy<TcResultColumn> mResultColumn;
 
-        private TcCutJobDetail mSingleDetail;
-        private TcCutJobContainedOrders mContainedOrders;
+        private readonly Lazy<TcCutJobDetail> mSingleDetail;
+        private readonly Lazy<TcCutJobContainedOrders> mContainedOrders;
 
         private TcCutJobSolution mCutJobSolution;
 
-        public TcCutJobToolbar Toolbar
+        public TcCutJobs()
         {
-            get
-            {
-                if( mToolbar == null )
-                {
-                    mToolbar = On<TcCutJobToolbar>();
-                }
-
-                return mToolbar;
-            }
+            mToolbar = new Lazy<TcCutJobToolbar>(() => On<TcCutJobToolbar>());
+            mResultColumn = new Lazy<TcResultColumn>(() => On<TcResultColumn>());
+            mSingleDetail = new Lazy<TcCutJobDetail>(() => On<TcCutJobDetail>());
+            mContainedOrders = new Lazy<TcCutJobContainedOrders>(() => On<TcCutJobContainedOrders>());
         }
 
-        public TcResultColumn ResultColumn
-        {
-            get
-            {
-                if (mResultColumn == null)
-                {
-                    mResultColumn = On<TcResultColumn>();
-                }
+        public TcCutJobToolbar Toolbar => mToolbar.Value;
 
-                return mResultColumn;
-            }
-        }
+        public TcResultColumn ResultColumn => mResultColumn.Value;
 
-        public TcCutJobDetail SingleDetail
-        {
-            get
-            {
-                if (mSingleDetail == null)
-                {
-                    mSingleDetail = On<TcCutJobDetail>();
-                }
+        public TcCutJobDetail SingleDetail => mSingleDetail.Value;
 
-                return mSingleDetail;
-            }
-        }
-
-        public TcCutJobContainedOrders ContainedOrders
-        {
-            get
-            {
-                if (mContainedOrders == null)
-                {
-                    mContainedOrders = On<TcCutJobContainedOrders>();
-                }
-
-                return mContainedOrders;
-            }
-        }
+        public TcCutJobContainedOrders ContainedOrders => mContainedOrders.Value;
 
         public TcCutJobSolution CutJobSolution
         {

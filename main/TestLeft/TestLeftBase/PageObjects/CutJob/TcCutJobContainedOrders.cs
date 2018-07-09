@@ -4,28 +4,28 @@ using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
+using System;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
     public class TcCutJobContainedOrders : PageObject, IChildOf<TcDetailContent>, TiTableRowFactory<TcCutJobOrderRow>
     {
+        private readonly Lazy<TcTableView<TcCutJobOrderRow>> mTableView;
+
+        public TcCutJobContainedOrders()
+        {
+            mTableView = new Lazy<TcTableView<TcCutJobOrderRow>>(() => PartOrdersGrid.GetTableView(this));
+        }
+
+        public int PartOrdersCount => PartOrdersGrid.RowCount;
+
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.ContainedOrders" );
 
-        public TcTableView<TcCutJobOrderRow> TableView => PartOrdersGrid.GetTableView(this);
+        internal TcTruIconButton SelectButton => Find<TcTruIconButton>(Search.ByUid("CutJob.Detail.ContainedOrders.Select"));
 
-        internal TcTruIconButton SelectButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.ContainedOrders.Select" ) );
+        internal TcTruIconButton RemoveButton => Find<TcTruIconButton>(Search.ByUid("CutJob.Detail.ContainedOrders.Remove"));
 
-        internal TcTruIconButton RemoveButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.ContainedOrders.Remove" ) );
-
-        internal TcGridControl PartOrdersGrid => Find<TcGridControl>( Search.ByUid( "CutJob.Detail.ContainedOrders.PartOrders" ) );
-
-        public int PartOrdersCount
-        {
-            get
-            {
-                return PartOrdersGrid.RowCount;
-            }
-        }
+        private TcGridControl PartOrdersGrid => Find<TcGridControl>(Search.ByUid("CutJob.Detail.ContainedOrders.PartOrders"));
 
         public void UnSelectAllPartOrders()
         {
@@ -54,6 +54,11 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
                     dialog.Yes();
                 }
             }
+        }
+
+        public TcCutJobOrderRow GetRow(int index)
+        {
+            return mTableView.Value.GetRow(index);
         }
 
         TcCutJobOrderRow TiTableRowFactory<TcCutJobOrderRow>.WrapRow(TcTableRow underlyingRow)
