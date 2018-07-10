@@ -36,8 +36,8 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             get
             {
                 var runElement = mRow.GetColumn(4)
-                    .Find<TcReadOnlyText>(GetTextBlockPattern(), depth: 2)
-                    .Find<TcReadOnlyText>(GetRunPattern(1), depth: 1);
+                    .Find<TcReadOnlyText>(depth: 2)
+                    .Find<TcReadOnlyText>(Search.ByIndex(1), depth: 1);
 
                 return int.Parse(runElement.Text);
             }
@@ -48,8 +48,8 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             get
             {
                 var runElement = mRow.GetColumn(4)
-                    .Find<TcReadOnlyText>(GetTextBlockPattern(), depth: 2)
-                    .Find<TcReadOnlyText>(GetRunPattern(5), depth: 1);
+                    .Find<TcReadOnlyText>(depth: 2)
+                    .Find<TcReadOnlyText>(Search.ByIndex(5), depth: 1);
 
                 return int.Parse(runElement.Text);
             }
@@ -68,7 +68,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             get
             {
                 return mRow.GetColumn(10)
-                    .Find<TcReadOnlyText>(GetTextBlockPattern(), depth: 1)
+                    .Find<TcReadOnlyText>(depth: 1)
                     .Text;
             }
         }
@@ -78,7 +78,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             get
             {
                 var textBlock = mRow.GetColumn(11)
-                    .Find<TcReadOnlyText>(GetTextBlockPattern(), depth: 1);
+                    .Find<TcReadOnlyText>(depth: 1);
 
                 if (string.IsNullOrEmpty(textBlock.Text))
                 {
@@ -126,19 +126,8 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                return mRow.GetColumn(18).Find<TcReadOnlyText>(GetTextBlockPattern(), depth: 2).Text;
+                return mRow.GetColumn(18).Find<TcReadOnlyText>(depth: 2).Text;
             }
         }
-
-        private WPFPattern GetTextBlockPattern() => new WPFPattern()
-        {
-            ClrFullClassName = "System.Windows.Controls.TextBlock"
-        };
-
-        private WPFPattern GetRunPattern(int ordinalNo) => new WPFPattern()
-        {
-            ClrFullClassName = "System.Windows.Documents.Run",
-            WPFControlOrdinalNo = ordinalNo
-        };
     }
 }
