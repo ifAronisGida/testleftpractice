@@ -1,4 +1,5 @@
-﻿using DevExpress.Xpf.Grid;
+﻿using System;
+using DevExpress.Xpf.Grid;
 using SmartBear.TestLeft.TestObjects;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
 using Trumpf.PageObjects.WPF;
@@ -15,7 +16,7 @@ namespace TestLeft.TestLeftBase.ControlObjects
 
         public int RowCount => Node.Cast<IGridView>().wRowCount;
 
-        public TcTableView<TRow> GetTableView<TRow>(TiTableRowFactory<TRow> rowFactory)
+        public TcTableView<TRow> GetTableView<TRow>(Func<TcTableRow, TRow> rowFactory)
         {
             var tableView = Find<TcTableView<TRow>>(depth: 1);
 

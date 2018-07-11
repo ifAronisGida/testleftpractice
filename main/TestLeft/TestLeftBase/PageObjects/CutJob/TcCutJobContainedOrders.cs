@@ -8,13 +8,13 @@ using System;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
-    public class TcCutJobContainedOrders : PageObject, IChildOf<TcDetailContent>, TiTableRowFactory<TcCutJobOrderRow>
+    public class TcCutJobContainedOrders : PageObject, IChildOf<TcDetailContent>
     {
         private readonly Lazy<TcTableView<TcCutJobOrderRow>> mTableView;
 
         public TcCutJobContainedOrders()
         {
-            mTableView = new Lazy<TcTableView<TcCutJobOrderRow>>(() => PartOrdersGrid.GetTableView(this));
+            mTableView = new Lazy<TcTableView<TcCutJobOrderRow>>(() => PartOrdersGrid.GetTableView(underlyingRow => new TcCutJobOrderRow(underlyingRow)));
         }
 
         public int PartOrdersCount => PartOrdersGrid.RowCount;
@@ -59,11 +59,6 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         public TcCutJobOrderRow GetRow(int index)
         {
             return mTableView.Value.GetRow(index);
-        }
-
-        TcCutJobOrderRow TiTableRowFactory<TcCutJobOrderRow>.WrapRow(TcTableRow underlyingRow)
-        {
-            return new TcCutJobOrderRow(underlyingRow);
         }
     }
 }

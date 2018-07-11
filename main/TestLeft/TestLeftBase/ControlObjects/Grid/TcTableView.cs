@@ -13,12 +13,12 @@ namespace TestLeft.TestLeftBase.ControlObjects.Grid
             mHierarchyPanel = new Lazy<TcHierarchyPanel>(() => Find<TcHierarchyPanel>(depth: 1));
         }
 
-        public TiTableRowFactory<TRow> RowFactory { get; set; }
+        public Func<TcTableRow, TRow> RowFactory { get; set; }
 
         public TRow GetRow(int index)
         {
             var row = mHierarchyPanel.Value.Find<TcTableRow>(Search.ByIndex(index), depth: 1);
-            return RowFactory.WrapRow(row);
+            return RowFactory(row);
         }
     }
 }
