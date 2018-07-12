@@ -2,50 +2,36 @@
 using TestLeft.TestLeftBase.PageObjects.PartOrder;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
+using Trumpf.AutoTest.Facts;
+
 
 namespace TestLeft.UI_Tests.PartOrder
 {
     [TestClass]
     public class TcPartOrderTest : TcBaseTestClass
     {
-        #region Class initializers
-        [ClassInitialize]
-        public static void ClassInitialize( TestContext context )
+        [TestMethod, UniqueName( "223E645A-9210-42A7-8C71-DCE3DFDC2AE7" )]
+        public void NewPartOrderAndDeleteTest()
         {
-            InitializeClass( context );
-        }
+            Act( () =>
+            {
+                var partOrders = HomeZoneApp.On<TcPartOrders>();
 
-        [ClassCleanup]
-        public static void ClassCleanUp()
-        {
-            FinalizeClass();
-        }
-        #endregion
+                partOrders.Goto();
 
-        [TestMethod]
-        public void NewPartOrderTest()
-        {
-            var partOrders = HomeZoneApp.On<TcPartOrders>();
+                partOrders.NewPartOrder();
 
-            partOrders.Goto();
+                //TODO complete test
+                //partOrders.SingleDetail.Name = TcSettings.NamePrefix + "NewPartTest";
 
-            partOrders.NewPartOrder();
+                //Assert.IsTrue( partOrders.Toolbar.SaveButton.Enabled );
+                //partOrders.SavePart();
+                Assert.IsFalse( partOrders.Toolbar.SaveButton.Enabled );
 
-            //partOrders.SingleDetail.Name = TcSettings.NamePrefix + "NewPartTest";
-
-            //partOrders.SavePart();
-        }
-
-        [TestMethod]
-        public void DeletePartOrderTest()
-        {
-            var partOrders = HomeZoneApp.On<TcPartOrders>();
-
-            partOrders.Goto();
-
-            partOrders.NewPartOrder();
-
-            partOrders.DeletePartOrder();
+                Assert.IsTrue( partOrders.Toolbar.DeleteButton.Enabled );
+                partOrders.DeletePartOrder();
+                Assert.IsFalse( partOrders.Toolbar.DeleteButton.Enabled );
+            } );
         }
     }
 }

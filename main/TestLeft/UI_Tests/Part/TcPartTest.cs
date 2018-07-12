@@ -1,155 +1,168 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
+using Trumpf.AutoTest.Facts;
+using Trumpf.AutoTest.Utilities;
 
 namespace TestLeft.UI_Tests.Part
 {
     /// <summary>
     /// This test class contains part specific tests.
-    /// These test methods are mainly used for module and PageObject tests.
-    /// It is not secured that the methods are cleaning up at the end.
     /// </summary>
     /// <seealso cref="TcBaseTestClass" />
     [TestClass]
     public class TcPartTest : TcBaseTestClass
     {
-        #region Class initializers
-        [ClassInitialize]
-        public static void ClassInitialize( TestContext context )
-        {
-            InitializeClass( context );
-        }
-
-        [ClassCleanup]
-        public static void ClassCleanUp()
-        {
-            FinalizeClass();
-        }
-        #endregion
+        private string mTestCustomerName;
 
         /// <summary>
-        /// Creates a new part and saves it.
+        /// Gets the extended test environment.
+        /// Creates / deletes the test customer used by the test methods
         /// </summary>
-        [TestMethod]
-        public void NewPartTest()
+        public override DoCleanupSequence TestEnvironment => base.TestEnvironment
+            .Do( CreateTestCustomer, DeleteTestCustomer, "TestCustomer" );
+
+        /// <summary>
+        /// Creates a new part, saves and then deletes it.
+        /// </summary>
+        [TestMethod, UniqueName( "FD4D71C7-26F6-4A4F-B16D-4A82C575FA33" )]
+        public void NewPartAndDeleteTest()
         {
-            var parts = HomeZoneApp.On<TcParts>();
+            Act( () =>
+                {
+                    var partName = TcSettings.NamePrefix + "NewPartTest";
 
-            parts.Goto();
+                    var parts = HomeZoneApp.Goto<TcParts>();
 
-            parts.NewPart();
+                    parts.NewPart();
+                    parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
-            parts.SingleDetail.Name = TcSettings.NamePrefix + "NewPartTest";
+                    parts.SingleDetail.Name = partName;
 
-            parts.SavePart();
+                    parts.SingleDetail.Customer = mTestCustomerName;
+
+                    parts.SingleDetail.DrawingNumber = "NewPartTest_DrawNr";
+                    parts.SingleDetail.DrawingVersion = "V08.15-007";
+                    parts.SingleDetail.ExternalName = "NewPartTest_ExtName";
+                    parts.SingleDetail.Archivable = false;
+                    parts.SingleDetail.Note = "ImportPartTest_Note";
+
+                    Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
+                    parts.SavePart();
+                    Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
+
+                    Assert.IsTrue( parts.Toolbar.DeleteButton.Enabled );
+                    parts.DeletePart();
+                    Assert.IsFalse( parts.Toolbar.DeleteButton.Enabled );
+                } );
         }
 
         /// <summary>
-        /// Imports a part, waits until the overlay disappears, fills some controls and saves the part.
+        /// Imports a part, waits until the overlay disappears, fills some controls, saves the part and then deletes it.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "D74CE52A-BEF2-4959-83B8-3FD7088583A4" )]
         public void ImportPartTest()
         {
-            var parts = HomeZoneApp.On<TcParts>();
+            Act( () =>
+                {
+                    var parts = HomeZoneApp.Goto<TcParts>();
 
-            parts.Goto();
+                    parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
 
-            parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
+                    parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
+                    parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+                    parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
-            parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
-            parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
+                    parts.SingleDetail.Name = TcSettings.NamePrefix + "ImportPartTest";
 
-            parts.SingleDetail.Name = TcSettings.NamePrefix + "ImportPartTest";
+                    parts.SingleDetail.Customer = mTestCustomerName;
 
-            parts.SingleDetail.Customer = TcSettings.NamePrefix + "Kunde 2";        // der Kunde muss bereits angelegt sein
+                    parts.SingleDetail.DrawingNumber = "ImportPartTest_DrawNr";
+                    parts.SingleDetail.DrawingVersion = "V08.15-007";
+                    parts.SingleDetail.ExternalName = "ImportPartTest_ExtName";
+                    parts.SingleDetail.Archivable = false;
+                    parts.SingleDetail.Note = "ImportPartTest_Note";
 
-            parts.SingleDetail.DrawingNumber = "ImportPartTest_DrawNr";
-            parts.SingleDetail.DrawingVersion = "V08.15-007";
-            parts.SingleDetail.ExternalName = "ImportPartTest_ExtName";
-            parts.SingleDetail.Archivable = false;
-            parts.SingleDetail.Note = "ImportPartTest_Note";
+                    Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
+                    parts.SavePart();
+                    Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
 
-            parts.SavePart();
+                    Assert.IsTrue( parts.Toolbar.DeleteButton.Enabled );
+                    parts.DeletePart();
+                    Assert.IsFalse( parts.Toolbar.DeleteButton.Enabled );
+                } );
         }
 
         /// <summary>
-        /// Imports a part via Import Design button, waits until the overlay disappears, fills some controls and saves the part.
+        /// Imports a part via Import Design button, waits until the overlay disappears, fills some controls, saves the part and then deletes it.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "6A3D54A6-59A6-4CC5-A8F4-5AB3A34BD462" )]
         public void ImportDesignTest()
         {
-            var parts = HomeZoneApp.On<TcParts>();
+            Act( () =>
+            {
+                var parts = HomeZoneApp.Goto<TcParts>();
 
-            parts.Goto();
+                parts.NewPart();
 
-            parts.NewPart();
+                parts.SingleDetailDesign.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
 
-            parts.SingleDetailDesign.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
+                parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+                parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
-            parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
-            parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
+                parts.SingleDetail.Name = TcSettings.NamePrefix + "ImportDesignTest";
 
-            parts.SingleDetail.Name = TcSettings.NamePrefix + "ImportDesignTest";
+                parts.SingleDetail.Customer = mTestCustomerName;
 
-            parts.SingleDetail.Customer = TcSettings.NamePrefix + "Kunde 2";        // der Kunde muss bereits angelegt sein
+                parts.SingleDetail.DrawingNumber = "ImportDesignTestt_DrawNr";
+                parts.SingleDetail.DrawingVersion = "V08.15-007";
+                parts.SingleDetail.Id = "UIT_" + parts.SingleDetail.Id;
+                parts.SingleDetail.ExternalName = "ImportDesignTest_ExtName";
+                parts.SingleDetail.Archivable = false;
+                parts.SingleDetail.Note = "ImportDesignTest_Note";
 
-            parts.SingleDetail.DrawingNumber = "ImportDesignTestt_DrawNr";
-            parts.SingleDetail.DrawingVersion = "V08.15-007";
-            parts.SingleDetail.Id = "UIT_" + parts.SingleDetail.Id;
-            parts.SingleDetail.ExternalName = "ImportDesignTest_ExtName";
-            parts.SingleDetail.Archivable = false;
-            parts.SingleDetail.Note = "ImportDesignTest_Note";
+                Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
+                parts.SavePart();
+                Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
 
-            parts.SavePart();
+                Assert.IsTrue( parts.Toolbar.DeleteButton.Enabled );
+                parts.DeletePart();
+                Assert.IsFalse( parts.Toolbar.DeleteButton.Enabled );
+            } );
         }
 
-        /// Imports a part, waits until the overlay disappears, fills some controls, saves the part and then deletes it.
-        [TestMethod]
-        public void DeletePartTest()
+        private void CreateTestCustomer()
         {
-            var parts = HomeZoneApp.On<TcParts>();
+            mTestCustomerName = TcSettings.NamePrefix + Guid.NewGuid();
 
-            parts.Goto();
+            var customers = HomeZoneApp.On<TcCustomers>();
 
-            parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
+            customers.NewCustomer(
+                                  mTestCustomerName,
+                                  "C" + Guid.NewGuid(),
+                                  "TRUMPF Allee 1",
+                                  "71254",
+                                  "Ditzingen",
+                                  "Deutschland",
+                                  "no comment" );
 
-            parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
-            parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
-
-            parts.SingleDetail.Name = TcSettings.NamePrefix + "DeletePartTest";
-
-            //parts.SingleDetail.Customer = TcSettings.NamePrefix + "Kunde 2";        // der Kunde muss bereits angelegt sein
-
-            parts.SingleDetail.DrawingNumber = "DeletePartTest_DrawNr";
-            parts.SingleDetail.DrawingVersion = "V08.15-007";
-            parts.SingleDetail.ExternalName = "DeletePartTest_ExtName";
-            parts.SingleDetail.Archivable = false;
-            parts.SingleDetail.Note = "DeletePartTest_Note";
-
-            parts.SavePart();
-
-            parts.DeletePart();
+            customers.ApplyClick();
+            customers.CancelClick();
         }
 
-        /// <summary>
-        /// Tests the MessageBox handling via deleting a part.
-        /// </summary>
-        [TestMethod]
-        public void MessageBoxTest()
+        private void DeleteTestCustomer()
         {
-            var parts = HomeZoneApp.On<TcParts>();
+            var customers = HomeZoneApp.On<TcCustomers>();
+            customers.Goto();
 
-            parts.Goto();
+            customers.DeleteCustomersWithNameContaining( mTestCustomerName );
 
-            parts.NewPart();
-
-            parts.SingleDetail.Name = TcSettings.NamePrefix + "ImportPartTest";
-            parts.DeletePart();
+            customers.ApplyClick();
+            customers.CancelClick();
         }
     }
 }

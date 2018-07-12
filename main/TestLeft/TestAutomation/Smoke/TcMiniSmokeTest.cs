@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.UI_Tests.Base;
 using TestLeft.UI_Tests.Utilities;
+using Trumpf.AutoTest.Facts;
 
 namespace TestLeft.TestAutomation.Smoke
 {
@@ -13,32 +14,21 @@ namespace TestLeft.TestAutomation.Smoke
     [TestClass]
     public class TcMiniSmokeTest : TcBaseTestClass
     {
-        #region Class initializers
-        [ClassInitialize]
-        public static void ClassInitialize( TestContext context )
-        {
-            InitializeClass( context );
-        }
-
-        [ClassCleanup]
-        public static void ClassCleanUp()
-        {
-            FinalizeClass();
-        }
-        #endregion
-
         /// <summary>
         /// Mini smoke test: creating test items, adding bend and cut solutions to parts and boosting them, deleting the test items.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "524A05EA-D25E-423E-8974-EF4CC6B7F8F0" )]
         public void _1_MiniSmokeTest()
         {
-            CreateTestItems();
+            Act( () =>
+            {
+                CreateTestItems();
 
-            //TODO
-            //testing...
+                //TODO
+                //testing...
 
-            DeleteTestItems();
+                DeleteTestItems();
+            } );
         }
 
         /// <summary>
@@ -46,7 +36,6 @@ namespace TestLeft.TestAutomation.Smoke
         /// </summary>
         public void CreateTestItems()
         {
-            Driver.Log.Message("Creating test items");
             var smokeHelpers = new TcSmokeHelpers();
 
             smokeHelpers.CreateTestMaterials();

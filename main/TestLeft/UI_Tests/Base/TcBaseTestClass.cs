@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Threading;
+using System.Linq;
+using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft;
 using TestLeft.TestLeftBase;
-using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.Settings;
+using Trumpf.AutoTest.Facts;
 
 namespace TestLeft.UI_Tests.Base
 {
@@ -17,10 +16,8 @@ namespace TestLeft.UI_Tests.Base
     /// basic class and test initialization and clean up.
     /// </summary>
     [TestClass]
-    public class TcBaseTestClass
+    public class TcBaseTestClass : AutoTestWithFactsBase
     {
-        private static TestContext mTestContext;
-
         /// <summary>
         /// Initializes the <see cref="TcBaseTestClass"/> class and
         /// creates the driver object.
@@ -45,18 +42,7 @@ namespace TestLeft.UI_Tests.Base
         /// <summary>
         /// The test context.
         /// </summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return mTestContext;
-            }
-
-            set
-            {
-                mTestContext = value;
-            }
-        }
+        public TestContext TestContext { get; set; }
 
         /// <summary>
         /// Gets the HomeZone ProcessObject.
@@ -64,80 +50,74 @@ namespace TestLeft.UI_Tests.Base
         /// <value>
         /// The HomeZone ProcessObject.
         /// </value>
-        public static TcHomeZoneApp HomeZoneApp { get; private set; }
-
-        /// <summary>
-        /// Initializes the class, stores the test context.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        [ClassInitialize]
-        public static void InitializeClass( TestContext context )
+        public static TcHomeZoneApp HomeZoneApp { get; } = new TcHomeZoneApp( TcSettings.HomeZoneProcessName )
         {
-            mTestContext = context;
-        }
+            Driver = Driver
+        };
 
-        /// <summary>
-        /// Finalizes the class, saves the test result.
-        /// </summary>
-        [ClassCleanup]
-        public static void FinalizeClass()
-        {
-            Driver.Log.Save( mTestContext.ResultsDirectory + @"\UI_Tests TestResults", Log.Format.Html );
-        }
+        ///// <summary>
+        ///// Initializes the test.
+        ///// The folder for the test result is created and the HomeZone will be started if it is not already running.
+        ///// </summary>
+        ///// <exception cref="Exception">Path not found to start process!</exception>
+        //[ TestInitialize()]
+        //public void Initialize()
+        //{
+        //    Driver.Log.OpenFolder( TestContext.FullyQualifiedTestClassName + "." + TestContext.TestName );
 
-        /// <summary>
-        /// Initializes the test.
-        /// The folder for the test result is created and the HomeZone will be started if it is not already running.
-        /// </summary>
-        /// <exception cref="Exception">Path not found to start process!</exception>
-        [TestInitialize()]
-        public void Initialize()
-        {
-            Driver.Log.OpenFolder( mTestContext.FullyQualifiedTestClassName + "." + mTestContext.TestName );
+        //    // check if HomeZone is already running
+        //    var runningHomeZone = System.Diagnostics.Process.GetProcessesByName( TcSettings.HomeZoneProcessName );
 
-            // check if HomeZone is already running
-            var runningHomeZone = Process.GetProcessesByName( TcSettings.HomeZoneProcessName );
+        //    if( runningHomeZone.Length == 0 )               // not running => start HomeZone
+        //    {
+        //        if( !Directory.Exists( TcSettings.ProgramPath ) )
+        //        {
+        //            throw new Exception( "Path not found to start process!" );
+        //        }
 
-            if( runningHomeZone.Length == 0 )               // not running => start HomeZone
-            {
-                if( !Directory.Exists( TcSettings.ProgramPath ) )
-                {
-                    throw new Exception( "Path not found to start process!" );
-                }
+        //        var filename = Path.Combine( TcSettings.ProgramPath, TcSettings.HomeZoneProcessName + ".exe" );
+        //        var startInfo = new System.Diagnostics.ProcessStartInfo
+        //        {
+        //            FileName = filename,
+        //            WorkingDirectory = TcSettings.ProgramPath
+        //        };
+        //        var process = System.Diagnostics.Process.Start( startInfo );
+        //    }
 
-                var filename = Path.Combine( TcSettings.ProgramPath, TcSettings.HomeZoneProcessName + ".exe" );
-                var startInfo = new ProcessStartInfo
-                {
-                    FileName = filename,
-                    WorkingDirectory = TcSettings.ProgramPath
-                };
-                var process = Process.Start( startInfo );
-            }
+        //    var mainWindow = HomeZoneApp.On<TcMainWindow>();
+        //    mainWindow.Exists.WaitFor(TimeSpan.FromSeconds(60));
+        // }
 
-            // connect to HomeZone process and wait until visible
-            HomeZoneApp = new TcHomeZoneApp( TcSettings.HomeZoneProcessName )
-            {
-                Driver = Driver
-            };
+        ///// <summary>
+        ///// Cleaning up after the test run.
+        ///// If the test did not pass, the result file is written.
+        ///// </summary>
+        //[TestCleanup]
+        //public void TestCleanup()
+        //{
+        //    if( TestContext.CurrentTestOutcome != UnitTestOutcome.Passed )
+        //    {
+        //        Driver.Log.Error( "The test failed. See information on errors in the MSTest log." );
+        //        TestContext.AddResultFile( TestContext.ResultsDirectory + @"\UI_Tests TestResults\index.htm" );
+        //    }
 
-            var mainWindow = HomeZoneApp.On<TcMainWindow>();
-            mainWindow.Exists.WaitFor(TimeSpan.FromSeconds(60));
-        }
+        //    Driver.Log.CloseFolder();
+        //}
 
-        /// <summary>
-        /// Cleaning up after the test run.
-        /// If the test did not pass, the result file is written.
-        /// </summary>
-        [TestCleanup]
-        public void TestCleanup()
-        {
-            if( mTestContext.CurrentTestOutcome != UnitTestOutcome.Passed )
-            {
-                Driver.Log.Error( "The test failed. See information on errors in the MSTest log." );
-                mTestContext.AddResultFile( mTestContext.ResultsDirectory + @"\UI_Tests TestResults\index.htm" );
-            }
+        protected override MethodInfo TestMethod => GetType().Assembly.GetTypes().FirstOrDefault( f => f.FullName == TestContext.FullyQualifiedTestClassName )?.GetMethod( TestContext.TestName );
+        protected override Uri FactsHubServiceUri => new Uri( "http://LAP013742:5000" );    //TODO use settings
+        public override string Product => @"HomeZone";
+        public override string Version => "8.0.0";  //TODO
+        public override string Context => "LAP013742";  //TODO
+        public override string Process => "Developer test";  //TODO
 
-            Driver.Log.CloseFolder();
-        }
+#if DEBUG
+        protected override bool EnableSoftResetter => false;
+        protected override bool EnableSystemLocker => false;
+
+        //protected override bool SendResultsIntoTheCloud => false;     // uncomment later
+#endif
+
+
     }
 }

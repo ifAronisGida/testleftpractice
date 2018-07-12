@@ -68,6 +68,34 @@ namespace TestLeft.TestLeftBase.Settings
         }
 
         /// <summary>
+        /// Gets the timeout for the machine save overlay appearance.
+        /// </summary>
+        /// <value>
+        /// The machine save overlay appear timeout.
+        /// </value>
+        public static TimeSpan MachineSaveOverlayAppearTimeout
+        {
+            get
+            {
+                return TimeSpan.FromSeconds( 10 );
+            }
+        }
+
+        /// <summary>
+        /// Gets the timeout for the machine save overlay disappearance.
+        /// </summary>
+        /// <value>
+        /// The machine save overlay disappear timeout.
+        /// </value>
+        public static TimeSpan MachineSaveOverlayDisappearTimeout
+        {
+            get
+            {
+                return TimeSpan.FromSeconds( 30 );
+            }
+        }
+
+        /// <summary>
         /// Gets the timeout for the part save overlay appearance.
         /// </summary>
         /// <value>

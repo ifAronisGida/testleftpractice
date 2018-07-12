@@ -18,10 +18,10 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 
         public TcCutJobs()
         {
-            mToolbar = new Lazy<TcCutJobToolbar>(() => On<TcCutJobToolbar>());
-            mResultColumn = new Lazy<TcResultColumn>(() => On<TcResultColumn>());
-            mSingleDetail = new Lazy<TcCutJobDetail>(() => On<TcCutJobDetail>());
-            mContainedOrders = new Lazy<TcCutJobContainedOrders>(() => On<TcCutJobContainedOrders>());
+            mToolbar = new Lazy<TcCutJobToolbar>( () => On<TcCutJobToolbar>() );
+            mResultColumn = new Lazy<TcResultColumn>( () => On<TcResultColumn>() );
+            mSingleDetail = new Lazy<TcCutJobDetail>( () => On<TcCutJobDetail>() );
+            mContainedOrders = new Lazy<TcCutJobContainedOrders>( () => On<TcCutJobContainedOrders>() );
         }
 
         public TcCutJobToolbar Toolbar => mToolbar.Value;
@@ -36,7 +36,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                if (mCutJobSolution == null)
+                if( mCutJobSolution == null )
                 {
                     mCutJobSolution = On<TcCutJobSolution>();
                 }
@@ -60,6 +60,11 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         public void SaveCutJob()
         {
             Toolbar.SaveButton.Click();
+        }
+
+        public void RevertCutJob()
+        {
+            Toolbar.RevertButton.Click();
         }
 
         public void DeleteCutJob()

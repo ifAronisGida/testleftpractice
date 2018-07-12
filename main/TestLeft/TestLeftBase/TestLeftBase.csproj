@@ -48,18 +48,18 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\RestSharp.dll</HintPath>
+      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.0\lib\net451\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="SmartBear.TestLeft, Version=12.31.1833.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
-      <HintPath>..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\SmartBear.TestLeft.dll</HintPath>
+      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.0\lib\net451\SmartBear.TestLeft.dll</HintPath>
     </Reference>
     <Reference Include="SmartBear.TestLeft.WebApiWrapper, Version=12.31.1833.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
-      <HintPath>..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\SmartBear.TestLeft.WebApiWrapper.dll</HintPath>
+      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.0\lib\net451\SmartBear.TestLeft.WebApiWrapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="Trumpf.PageObjects, Version=3.1.2.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
-      <HintPath>..\_external\packages\Trumpf.PageObjects.3.3.0\lib\net451\Trumpf.PageObjects.dll</HintPath>
+    <Reference Include="Trumpf.PageObjects, Version=3.4.0.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.0\lib\net451\Trumpf.PageObjects.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>

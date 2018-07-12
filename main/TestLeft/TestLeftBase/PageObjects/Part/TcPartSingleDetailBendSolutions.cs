@@ -36,27 +36,5 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
                 openButton.Click();
             }
         }
-        /*
-                IDriver driver = new LocalDriver();
-
-                IControl tcTruIconButton = driver.Find<IProcess>(new ProcessPattern()
-                {
-                    ProcessName = "Trumpf.TruTops.Control.Shell"
-                }).Find<IControl>(new WPFPattern()
-                {
-                    ClrFullClassName = "Trumpf.TruTops.Control.Shell.Views.TcShellView"
-                }, 2).Find<IControl>(new WPFPattern()
-                {
-                    WPFControlName = "MainTabControl"
-                }, 12).Find<IListBox>(new WPFPattern()
-                {
-                    WPFControlName = "BendSolutionListe"
-                }, 15).Find<IControl>(new WPFPattern()
-                {
-                    Uid = "Part.Detail.BendSolutions.List.Bend1.Detail.OpenSolution"
-                }, 5);
-
-                object uidValue = tcTruIconButton.GetProperty<object>("Uid");
-                */
     }
 }

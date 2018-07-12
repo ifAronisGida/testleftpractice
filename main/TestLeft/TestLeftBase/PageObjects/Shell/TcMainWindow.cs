@@ -10,6 +10,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
     public class TcMainWindow : PageObject, IChildOf<TcHomeZoneApp>
     {
-        protected override Search SearchPattern => Search.ByControlName( "WindowRoot" );
+        protected override Search SearchPattern => Search.ByControlName("WindowRoot");
     }
 }

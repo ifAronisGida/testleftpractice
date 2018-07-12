@@ -4,6 +4,7 @@ using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.PageObjects;
+using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.Flux
 {
@@ -12,11 +13,18 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
     /// </summary>
     /// <seealso cref="RepeaterObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcFluxApp}" />
-    public class TcFlux
+    public class TcFlux : PageObject
     {
+        protected override Search SearchPattern => Search.Any;
+
         private TcFluxApp mFluxApp;
         private IControl mMainWindow;
-        private IControl mCloseButton;
+        private IDriver mDriver;
+
+        public TcFlux( IDriver driver )
+        {
+            mDriver = driver;
+        }
 
         /// <summary>
         /// Gets a value indicating whether the Flux window is visible.
@@ -27,38 +35,36 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
         /// <value>
         ///   <c>true</c> if Flux window is visible; otherwise, <c>false</c>.
         /// </value>
-        public bool FluxWindowVisible(TimeSpan timeout, TimeSpan retryWaitTime)
+        public bool FluxWindowVisible( TimeSpan timeout, TimeSpan retryWaitTime )
         {
             mFluxApp = null;
             mMainWindow = null;
-            bool fluxProcessFound;
             var startTime = DateTime.Now;
 
-            var driver = new LocalDriver();
-
-            while (DateTime.Now - startTime < timeout)
+            while( DateTime.Now - startTime < timeout )
             {
-                int index = 1;          // first index is 1
+                bool fluxProcessFound;
+                var index = 1;          // first index is 1
 
                 do
                 {
                     IProcess flux;
 
                     // search Flux process
-                    fluxProcessFound = driver.TryFind<IProcess>(new ProcessPattern()
+                    fluxProcessFound = mDriver.TryFind<IProcess>( new ProcessPattern()
                     {
                         ProcessName = "Flux",
                         Index = index
-                    }, 1, out flux);
+                    }, 1, out flux );
 
-                    if (fluxProcessFound)       // search MainWindow
+                    if( fluxProcessFound )       // search MainWindow
                     {
-                        mFluxApp = new TcFluxApp(flux);
+                        mFluxApp = new TcFluxApp( flux ) { Driver = mDriver };
 
                         IControl window = null;
-                        if (mFluxApp.Node.TryFind<IControl>(new WPFPattern { ClrFullClassName = "Flux.App.MainWindow" }, out window, 2))
+                        if( mFluxApp.Node.TryFind<IControl>( new WPFPattern { ClrFullClassName = "Flux.App.MainWindow" }, out window, 2 ) )
                         {
-                            if (window.VisibleOnScreen)         // -> found, store MainWindow and return
+                            if( window.VisibleOnScreen )         // -> found, store MainWindow and return
                             {
                                 mMainWindow = window;
                                 return true;
@@ -68,9 +74,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
 
                     index++;    // -> not found, search next Flux process
 
-                } while (fluxProcessFound);
+                } while( fluxProcessFound );
 
-                Thread.Sleep(retryWaitTime);        // nothing found, wait and retry until timeout
+                Thread.Sleep( retryWaitTime );        // nothing found, wait and retry until timeout
             }
 
             mFluxApp = null;
@@ -84,7 +90,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
         /// </summary>
         public void CloseApp()
         {
-            mMainWindow?.CallMethod("Close");
+            mMainWindow?.CallMethod( "Close" );
         }
     }
 }
