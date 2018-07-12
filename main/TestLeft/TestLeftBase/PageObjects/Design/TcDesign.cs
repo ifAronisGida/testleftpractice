@@ -2,20 +2,20 @@ using System;
 using System.Threading;
 using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
-using SmartBear.TestLeft.TestObjects.WPF;
+using SmartBear.TestLeft.TestObjects.WinForms;
 
-namespace TestLeft.TestLeftBase.PageObjects.Flux
+namespace TestLeft.TestLeftBase.PageObjects.Design
 {
     /// <summary>
-    /// PageObject for the Flux app.
+    /// PageObject for the Design app.
     /// </summary>
-    public class TcFlux
+    public class TcDesign
     {
-        private TcFluxApp mApp;
-        private IControl mMainWindow;
+        private TcDesignApp mApp;
+        private ITopLevelWindow mMainWindow;
         private readonly IDriver mDriver;
 
-        public TcFlux( IDriver driver )
+        public TcDesign( IDriver driver )
         {
             mDriver = driver;
         }
@@ -45,15 +45,15 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
                     // search process
                     processFound = mDriver.TryFind<IProcess>( new ProcessPattern()
                     {
-                        ProcessName = "Flux",
+                        ProcessName = "SpaceClaim",
                         Index = index
-                    }, 1, out var flux );
+                    }, 1, out var proc );
 
                     if( processFound )       // search MainWindow
                     {
-                        mApp = new TcFluxApp( flux ) { Driver = mDriver };
+                        mApp = new TcDesignApp( proc ) { Driver = mDriver };
 
-                        if( mApp.Node.TryFind<IControl>( new WPFPattern { ClrFullClassName = "Flux.App.MainWindow" }, out var window, 2 ) )
+                        if( mApp.Node.TryFind<ITopLevelWindow>( new WinFormsPattern { WinFormsControlName = "MainForm" }, out var window, 1 ) )
                         {
                             if( window.VisibleOnScreen )         // -> found, store MainWindow and return
                             {
@@ -77,7 +77,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
         }
 
         /// <summary>
-        /// Closes the application.
+        /// Closes the Flux application.
         /// </summary>
         public void CloseApp()
         {

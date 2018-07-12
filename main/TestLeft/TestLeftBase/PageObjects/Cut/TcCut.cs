@@ -2,20 +2,21 @@ using System;
 using System.Threading;
 using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
-using SmartBear.TestLeft.TestObjects.WPF;
+using SmartBear.TestLeft.TestObjects.Qt;
+using TestLeft.TestLeftBase.PageObjects.Design;
 
-namespace TestLeft.TestLeftBase.PageObjects.Flux
+namespace TestLeft.TestLeftBase.PageObjects.Cut
 {
     /// <summary>
-    /// PageObject for the Flux app.
+    /// PageObject for the Cut app.
     /// </summary>
-    public class TcFlux
+    public class TcCut 
     {
-        private TcFluxApp mApp;
-        private IControl mMainWindow;
+        private TcDesignApp mApp;
+        private ITopLevelWindow mMainWindow;
         private readonly IDriver mDriver;
 
-        public TcFlux( IDriver driver )
+        public TcCut( IDriver driver )
         {
             mDriver = driver;
         }
@@ -45,15 +46,15 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
                     // search process
                     processFound = mDriver.TryFind<IProcess>( new ProcessPattern()
                     {
-                        ProcessName = "Flux",
+                        ProcessName = "cut",
                         Index = index
-                    }, 1, out var flux );
+                    }, 1, out var proc );
 
                     if( processFound )       // search MainWindow
                     {
-                        mApp = new TcFluxApp( flux ) { Driver = mDriver };
+                        mApp = new TcDesignApp( proc ) { Driver = mDriver };
 
-                        if( mApp.Node.TryFind<IControl>( new WPFPattern { ClrFullClassName = "Flux.App.MainWindow" }, out var window, 2 ) )
+                        if( mApp.Node.TryFind<ITopLevelWindow>( new QtPattern { objectName = "qt_ribbonMainWindow" }, out var window, 1 ) )
                         {
                             if( window.VisibleOnScreen )         // -> found, store MainWindow and return
                             {

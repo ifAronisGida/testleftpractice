@@ -259,7 +259,7 @@ namespace TestLeft.UI_Tests.Utilities
 
             var flux = new TcFlux( Driver );
 
-            if( flux.FluxWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) ) )
+            if( flux.MainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) ) )
             {
                 flux.CloseApp();
 

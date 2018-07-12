@@ -45,13 +45,7 @@ namespace TestLeft.TestLeftBase.Settings
         /// <value>
         /// The material save overlay appear timeout.
         /// </value>
-        public static TimeSpan MaterialSaveOverlayAppearTimeout
-        {
-            get
-            {
-                return TimeSpan.FromSeconds( 10 );
-            }
-        }
+        public static TimeSpan MaterialSaveOverlayAppearTimeout => TimeSpan.FromSeconds( 10 );
 
         /// <summary>
         /// Gets the timeout for the material save overlay disappearance.
@@ -59,13 +53,7 @@ namespace TestLeft.TestLeftBase.Settings
         /// <value>
         /// The material save overlay disappear timeout.
         /// </value>
-        public static TimeSpan MaterialSaveOverlayDisappearTimeout
-        {
-            get
-            {
-                return TimeSpan.FromSeconds( 30 );
-            }
-        }
+        public static TimeSpan MaterialSaveOverlayDisappearTimeout => TimeSpan.FromSeconds( 30 );
 
         /// <summary>
         /// Gets the timeout for the machine save overlay appearance.
@@ -73,13 +61,7 @@ namespace TestLeft.TestLeftBase.Settings
         /// <value>
         /// The machine save overlay appear timeout.
         /// </value>
-        public static TimeSpan MachineSaveOverlayAppearTimeout
-        {
-            get
-            {
-                return TimeSpan.FromSeconds( 10 );
-            }
-        }
+        public static TimeSpan MachineSaveOverlayAppearTimeout => TimeSpan.FromSeconds( 10 );
 
         /// <summary>
         /// Gets the timeout for the machine save overlay disappearance.
@@ -87,13 +69,7 @@ namespace TestLeft.TestLeftBase.Settings
         /// <value>
         /// The machine save overlay disappear timeout.
         /// </value>
-        public static TimeSpan MachineSaveOverlayDisappearTimeout
-        {
-            get
-            {
-                return TimeSpan.FromSeconds( 30 );
-            }
-        }
+        public static TimeSpan MachineSaveOverlayDisappearTimeout => TimeSpan.FromSeconds( 30 );
 
         /// <summary>
         /// Gets the timeout for the part save overlay appearance.
@@ -101,13 +77,7 @@ namespace TestLeft.TestLeftBase.Settings
         /// <value>
         /// The part import overlay appear timeout.
         /// </value>
-        public static TimeSpan PartImportOverlayAppearTimeout
-        {
-            get
-            {
-                return TimeSpan.FromSeconds( 5 );
-            }
-        }
+        public static TimeSpan PartImportOverlayAppearTimeout => TimeSpan.FromSeconds( 5 );
 
         /// <summary>
         /// Gets the timeout for the part save overlay disappearance.
@@ -115,13 +85,7 @@ namespace TestLeft.TestLeftBase.Settings
         /// <value>
         /// The part import overlay disappear timeout.
         /// </value>
-        public static TimeSpan PartImportOverlayDisappearTimeout
-        {
-            get
-            {
-                return TimeSpan.FromSeconds( 90 );
-            }
-        }
+        public static TimeSpan PartImportOverlayDisappearTimeout => TimeSpan.FromSeconds( 90 );
 
         /// <summary>
         /// Gets timeout for saving items.
@@ -138,5 +102,21 @@ namespace TestLeft.TestLeftBase.Settings
         /// The Flux starting timeout.
         /// </value>
         public static TimeSpan FluxStartTimeout => TimeSpan.FromSeconds( 40 );
+
+        /// <summary>
+        /// Gets timeout for starting Design.
+        /// </summary>
+        /// <value>
+        /// The Design starting timeout.
+        /// </value>
+        public static TimeSpan DesignStartTimeout => TimeSpan.FromSeconds( 40 );
+
+        /// <summary>
+        /// Gets timeout for starting Cut.
+        /// </summary>
+        /// <value>
+        /// The Cut starting timeout.
+        /// </value>
+        public static TimeSpan CutStartTimeout => TimeSpan.FromSeconds( 40 );
     }
 }

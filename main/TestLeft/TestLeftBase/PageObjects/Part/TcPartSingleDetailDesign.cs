@@ -15,6 +15,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         protected override Search SearchPattern => Search.ByUid( "Part.Detail.Design" );
 
         internal TcTruIconButton ImportButton => Find<TcTruIconButton>( Search.ByUid( "Part.Detail.Design.Import" ) );
+        internal TcTruIconButton OpenButton => Find<TcTruIconButton>( Search.ByUid( "Part.Detail.Design.Open" ) );
 
         /// <summary>
         /// Imports the specified design from the given filename.
@@ -27,6 +28,14 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
 
             var openDlg = On<TcOpenFileDialog>();
             return openDlg.SetFilename( filename );
+        }
+
+        /// <summary>
+        /// Opens the design.
+        /// </summary>
+        public void Open()
+        {
+            OpenButton.Click();
         }
     }
 }

@@ -1,45 +1,45 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestLeft.TestLeftBase.PageObjects.Flux;
+using TestLeft.TestLeftBase.PageObjects.Cut;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
 
-namespace TestLeft.UI_Tests.Flux
+namespace TestLeft.UI_Tests.Cut
 {
     /// <summary>
-    /// This test class contains Flux specific tests.
+    /// This test class contains Cut specific tests.
     /// </summary>
     /// <seealso cref="TcBaseTestClass" />
     [TestClass]
-    public class TcFluxTest : TcBaseTestClass
+    public class TcCutTest : TcBaseTestClass
     {
         /// <summary>
-        /// Creates a new part with bend solution, opens it and closes Flux.
+        /// Creates a new part with cut solution, opens it and closes Cut.
         /// </summary>
-        [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319A" )]
-        public void FluxOpenCloseTest()
+        [TestMethod, UniqueName( "5F3AF1BB-5308-440E-8E46-9268518E0FF1" )]
+        public void CutOpenCloseTest()
         {
             Act( () =>
             {
-                Driver.Log.Message( @"Starting Flux open / close test." );
+                Driver.Log.Message( @"Starting Cut open / close test." );
                 var parts = HomeZoneApp.Goto<TcParts>();
 
                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
 
-                parts.SingleDetailBendSolutions.New();
-                parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
+                parts.SingleDetailCutSolutions.New();
+                parts.SingleDetailCutSolutions.OpenCutSolution( "Cut1" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
 
-                var flux = new TcFlux( Driver );
+                var cut = new TcCut( Driver );
 
-                var visible = flux.MainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                var visible = cut.MainWindowVisible( TcSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                 if( visible )
                 {
-                    flux.CloseApp();
+                    cut.CloseApp();
 
                     parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
                 }

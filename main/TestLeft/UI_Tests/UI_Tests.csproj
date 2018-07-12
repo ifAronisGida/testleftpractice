@@ -79,6 +79,8 @@
     <Compile Include="Base\TcBaseTestClass.cs" />
     <Compile Include="Customer\TcCustomerTest.cs" />
     <Compile Include="CutJob\TcCutJobTest.cs" />
+    <Compile Include="Cut\TcCutTest.cs" />
+    <Compile Include="Design\TcDesignTest.cs" />
     <Compile Include="Flux\TcFluxTest.cs" />
     <Compile Include="Machine\TcWorkplaceTest.cs" />
     <Compile Include="Material\TcMaterialTest.cs" />

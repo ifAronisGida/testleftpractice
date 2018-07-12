@@ -1,4 +1,5 @@
-﻿using Trumpf.PageObjects;
+﻿using SmartBear.TestLeft.TestObjects;
+using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
@@ -14,6 +15,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     {
         protected override Search SearchPattern => Search.ByUid( "Part.Detail.CutSolutions" );
 
+        private IListBox CutSolutionList => Node.Find<IListBox>( Search.ByUid( "Part.Detail.CutSolutions.List" ) );
         private TcTruIconButton NewButton => Find<TcTruIconButton>( Search.ByUid( "Part.Detail.CutSolutions.AddSolution" ) );
 
         /// <summary>
@@ -22,6 +24,17 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         public void New()
         {
             NewButton.Click();
+        }
+
+        public int Count => CutSolutionList.wItemCount;
+
+        public void OpenCutSolution( string name )
+        {
+            var openButton = CutSolutionList.Find<IButton>( Search.ByUid( "Part.Detail.CutSolutions.List." + name + ".OpenSolution" ), 5 );
+            if( openButton.VisibleOnScreen )
+            {
+                openButton.Click();
+            }
         }
     }
 }
