@@ -77,6 +77,40 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
         }
 
         /// <summary>
+        /// DEMO
+        /// </summary>
+        /// <returns>true</returns>
+        public bool MenuFile()
+        {
+            var rc = mMainWindow.Find<IWPFMenu>( new WPFPattern()
+            {
+                WPFControlName = "mMainMenu"
+            }, 3 ).Find<IControl>( new WPFPattern()
+            {
+                WPFControlName = "menuFile"
+            } );
+
+            // MainWindow holen:
+            // IDriver driver = new LocalDriver();
+            // IControl menuItem = driver.Find<IProcess>(new ProcessPattern(){ 
+            //	                                                ProcessName = "Flux" 
+            //                                                  }).Find<IControl>(new WPFPattern(){ 
+            //	                                                                    ClrFullClassName = "Flux.App.MainWindow" 
+            //                                                                      }, 2)       
+
+            // dann den Menüeintrag finden:
+            // .Find<IWPFMenu>(new WPFPattern()
+            //    { 
+            //      WPFControlName = "mMainMenu" 
+            //    }, 3).Find<IControl>(new WPFPattern()
+            //    { 
+            //	    WPFControlName = "menuFile" 
+            //    });
+            
+            return true;
+        }
+
+        /// <summary>
         /// Closes the application.
         /// </summary>
         public void CloseApp()
