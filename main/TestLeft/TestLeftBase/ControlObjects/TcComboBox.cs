@@ -45,5 +45,13 @@ namespace TestLeft.TestLeftBase.ControlObjects
         {
             return Node.GetProperty<string>( "Text" );
         }
+
+        /// <summary>
+        /// Clears the combo box.
+        /// </summary>
+        public void Clear()
+        {
+            Node.SetProperty( "SelectedItem", null );
+        }
     }
 }

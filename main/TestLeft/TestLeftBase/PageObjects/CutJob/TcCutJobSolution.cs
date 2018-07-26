@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using SmartBear.TestLeft.TestObjects;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.Waiting;
 using Trumpf.PageObjects.WPF;
@@ -6,8 +9,7 @@ using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.Settings;
-using TcTruIconButton = TestLeft.TestLeftBase.ControlObjects.TcTruIconButton;
-
+using TestLeft.TestLeftBase.Utilities;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
@@ -15,74 +17,54 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
     {
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.JobSolution" );
 
-        internal TcTruIconButton ReleaseButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.Release" ) );
+        #region Private controls
+        private TcTruIconButton ReleaseButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.Release" ) );
 
-        internal TcTruIconButton OpenButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.Open" ) );
+        private TcTruIconButton OpenButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.Open" ) );
 
-        internal TcTruIconButton DeleteButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.Delete" ) );
+        private TcTruIconButton DeleteButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.Delete" ) );
 
-        internal TcComboBox MachineCombo => Find<TcComboBox>( Search.ByUid( "CutJob.Detail.JobSolution.Machine" ) );//ComboBoxEdit
+        private TcComboBox MachineCombo => Find<TcComboBox>( Search.ByUid( "CutJob.Detail.JobSolution.Machine" ) );
 
-        internal TcLookUpEdit TechnoProfile => Find<TcLookUpEdit>( Search.ByUid( "CutJob.Detail.JobSolution.TechnologyProfile" ) );
+        private TcLookUpEdit TechnoProfile => Find<TcLookUpEdit>( Search.ByUid( "CutJob.Detail.JobSolution.TechnologyProfile" ) );
 
-        //internal ToggleButton technoProfileFavotite => Find<ToggleButton>( Search.ByUid( "CutJob.Detail.JobSolution.TechnologyProfileFavorite" ) );
-        //internal SpinEdit MaxQuantity => Find<SpinEdit>( Search.ByUid( "CutJob.Detail.JobSolution.MaxQuantity" ) );
+        private TcTruIconButton RemovePresetRawSheetButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.RemovePresetRawSheet" ) );
 
-        internal TcTruIconButton RemovePresetRawSheetButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.RemovePresetRawSheet" ) );
+        private TcTruIconButton AddPresetRawSheetButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.AddPresetRawSheet" ) );
 
-        internal TcTruIconButton AddPresetRawSheetButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.AddPresetRawSheet" ) );
+        private TcLookUpEdit NestingModeEdit => Find<TcLookUpEdit>( Search.ByUid( "CutJob.Detail.JobSolution.NestingMode" ) );
 
-        internal TcLookUpEdit NestingModeEdit => Find<TcLookUpEdit>( Search.ByUid( "CutJob.Detail.JobSolution.NestingMode" ) );
+        private TcLookUpEdit LaserTechnologyTableEdit => Find<TcLookUpEdit>( Search.ByUid( "CutJob.Detail.JobSolution.LaserTechnologyTable" ) );
 
-        internal TcLookUpEdit LaserTechnologyTableEdit => Find<TcLookUpEdit>( Search.ByUid( "CutJob.Detail.JobSolution.LaserTechnologyTable" ) );
+        private TcLookUpEdit LaserProcessRule => Find<TcLookUpEdit>( Search.ByUid( "CutJob.Detail.JobSolution.LaserProcessRule" ) );
 
-        internal TcLookUpEdit LaserProcessRule => Find<TcLookUpEdit>( Search.ByUid( "CutJob.Detail.JobSolution.LaserProcessRule" ) );
+        private TcTextEdit NoteTextEdit => Find<TcTextEdit>( Search.ByUid( "CutJob.Detail.JobSolution.Comment" ) );
 
-        //internal ToggleButton laserTechnologyRuleSetCombinationFavorite => Find<ToggleButton>( Search.ByUid( "CutJob.Detail.JobSolution.SetLaserTechnologyRuleSetCombinationFavorite" ) );
+        private TcTruIconButton OpenSetupPlanButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.OpenSetupPlan" ) );
 
-        internal TcTextEdit NoteTextEdit => Find<TcTextEdit>( Search.ByUid( "CutJob.Detail.JobSolution.Comment" ) );
+        private TcTruIconButton OpenReleaseFolderButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.OpenReleaseFolder" ) );
 
-        //internal TcTextBlock dateOfLastChange => Find<TcTextBlock>( Search.ByUid( "CutJob.Detail.JobSolution.DateOfLastChange" ) );
+        private TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
 
-        //internal TcTextBlock totalWasteInPercent => Find<TcTextBlock>( Search.ByUid( "CutJob.Detail.JobSolution.TotalWasteInPercent" ) );
+        private TcTruIconButton BoostButton => Find<TcTruIconButton>( Search.ByUid( "Part.Detail.JobSolution.ButtonBar.Calculate" ) );
 
-        //internal TcTextBlock targetProcessingTime => Find<TcTextBlock>( Search.ByUid( "CutJob.Detail.JobSolution.TargetProcessingTime" ) );
-
-        internal TcTruIconButton OpenSetupPlanButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.OpenSetupPlan" ) );
-
-        internal TcTruIconButton OpenReleaseFolderButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.OpenReleaseFolder" ) );
-
-        internal TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
-
-        internal TcTruIconButton BoostButton => Find<TcTruIconButton>( Search.ByUid( "Part.Detail.JobSolution.ButtonBar.Calculate" ) );
-
-        internal TcComboBox RawSheetComboBox => Find<TcComboBox>( Search.ByControlName( "rawsheetComboBox" ) );
-
+        private TcComboBox RawSheetComboBox => Find<TcComboBox>( Search.ByControlName( "rawsheetComboBox" ) );
+        #endregion
 
         public string Note
         {
-            set { NoteTextEdit.Text = value; }
             get { return NoteTextEdit.Text; }
-        }
-
-        public void SelectMachine(int index)
-        {
-            MachineCombo.ClickItem(index);
-        }
-
-        public void SelectRawSheet( int index )
-        {
-            RawSheetComboBox.ClickItem( index );
+            set { NoteTextEdit.Text = value; }
         }
 
         public void Delete()
         {
-            if (DeleteButton.Enabled)
+            if( DeleteButton.Enabled )
             {
                 DeleteButton.Click();
 
                 var dialog = On<TcMessageBox>();
-                if (dialog.MessageBoxExists())
+                if( dialog.MessageBoxExists() )
                 {
                     dialog.Yes();
                 }
@@ -91,13 +73,57 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 
         public void Boost()
         {
-            if ( BoostButton.Enabled)
+            if( BoostButton.Enabled )
             {
                 BoostButton.Click();
 
-                WaitForDetailOverlayAppear(TcSettings.SavingTimeout);
-                WaitForDetailOverlayDisappear(TcSettings.SavingTimeout);
+                WaitForDetailOverlayAppear( TcSettings.SavingTimeout );
+                WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
             }
+        }
+
+        public IReadOnlyCollection<string> GetAvailableMachines()
+        {
+            var displayMember = MachineCombo.Node.GetProperty<string>( "DisplayMember" );
+            var items = MachineCombo.Node.GetProperty<IObject>( "ItemsSource" );
+
+            return ( from item in items.AsEnumerable<IObject>()
+                     select item.GetProperty<string>( displayMember ) )
+                   .ToList();
+        }
+
+        public void SelectMachine( int index )
+        {
+            MachineCombo.ClickItem( index );
+        }
+
+        public void SelectMachine( string displayName )
+        {
+            MachineCombo.ClickItem( displayName );
+        }
+
+        public void ClearMachine()
+        {
+            MachineCombo.Clear();
+        }
+
+        public IReadOnlyCollection<string> GetAvailableTechnologyProfiles()
+        {
+            var displayMember = TechnoProfile.GetDisplayMember();
+
+            return ( from item in TechnoProfile.GetItemsSource()
+                     select item.GetProperty<string>( displayMember ) )
+                    .ToList();
+        }
+
+        public void SelectTechnologyProfile( string name )
+        {
+            TechnoProfile.Text = name;
+        }
+
+        public void ClearTechnologyProfile()
+        {
+            TechnoProfile.Clear();
         }
 
         public bool WaitForDetailOverlayAppear( TimeSpan timeout )
@@ -109,6 +135,5 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             return TryWait.For( () => !DetailOverlay.VisibleOnScreen, timeout );
         }
-
     }
 }

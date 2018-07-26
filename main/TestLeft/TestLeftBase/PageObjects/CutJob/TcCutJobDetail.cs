@@ -1,12 +1,8 @@
 ﻿using System;
-using SmartBear.TestLeft.TestObjects;
-using SmartBear.TestLeft.TestObjects.Win;
 using Trumpf.PageObjects;
-using Trumpf.PageObjects.Waiting;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
-
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
@@ -23,7 +19,6 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         internal TcComboBox RawMaterialComboBox => Find<TcComboBox>( Search.ByUid( "CutJob.Detail.Base.RawMaterial.ComboBoxEdit" ) );
 
         internal TcTruIconButton OpenRawMaterialSelectionDlg => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.Base.RawMaterial.OpenSelectionDialog" ) );
-
 
         public DateTime? FinishDate
         {
@@ -42,8 +37,8 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 
         public string Id
         {
-            get { return IdTextEdit.Text; }
-            set { IdTextEdit.Text = value; }
+            get => IdTextEdit.Text;
+            set => IdTextEdit.Text = value;
         }
 
         public void SelectRawMaterial( int index )
@@ -51,9 +46,14 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             RawMaterialComboBox.ClickItem( index );
         }
 
-        public void SelectRawMaterial(string name)
+        public void SelectRawMaterial( string name )
         {
             RawMaterialComboBox.ClickItem(name);
+        }
+
+        public void ClearRawMaterial()
+        {
+            RawMaterialComboBox.Clear();
         }
     }
 }
