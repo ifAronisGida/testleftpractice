@@ -17,10 +17,22 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
     public class TcMachines : RepeaterObject, IChildOf<TcMainTabControl>
     {
-        private TcMachineToolbar mToolbar;
-        private TcMachinePopupMenu mPopup;
-        private TcResultColumn mResultColumn;
-        private TcMachineDetail mDetail;
+        private readonly Lazy<TcMachineToolbar> mToolbar;
+        //private TcMachineToolbar mToolbar;
+        private readonly Lazy<TcMachinePopupMenu> mPopup;
+        private readonly Lazy<TcResultColumn> mResultColumn;
+        private readonly Lazy<TcMachineDetail> mDetail;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TcMachines"/> class.
+        /// </summary>
+        public TcMachines()
+        {
+            mToolbar = new Lazy<TcMachineToolbar>( () => On<TcMachineToolbar>() );
+            mPopup = new Lazy<TcMachinePopupMenu>( () => On<TcMachinePopupMenu>() );
+            mResultColumn = new Lazy<TcResultColumn>( () => On<TcResultColumn>() );
+            mDetail = new Lazy<TcMachineDetail>( () => On<TcMachineDetail>() );
+        }
 
         /// <summary>
         /// Gets the detail overlay.
@@ -36,18 +48,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <value>
         /// The toolbar.
         /// </value>
-        public TcMachineToolbar Toolbar
-        {
-            get
-            {
-                if( mToolbar == null )
-                {
-                    mToolbar = On<TcMachineToolbar>();
-                }
-
-                return mToolbar;
-            }
-        }
+        public TcMachineToolbar Toolbar => mToolbar.Value;
+        //public TcMachineToolbar Toolbar => mToolbar?? (mToolbar = On<TcMachineToolbar>());
 
         /// <summary>
         /// Gets the PopupMenu.
@@ -55,18 +57,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <value>
         /// The toolbar.
         /// </value>
-        public TcMachinePopupMenu Popup
-        {
-            get
-            {
-                if( mPopup == null )
-                {
-                    mPopup = On<TcMachinePopupMenu>();
-                }
-
-                return mPopup;
-            }
-        }
+        public TcMachinePopupMenu Popup => mPopup.Value;
 
         /// <summary>
         /// Gets the result column.
@@ -74,18 +65,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <value>
         /// The result column.
         /// </value>
-        public TcResultColumn ResultColumn
-        {
-            get
-            {
-                if( mResultColumn == null )
-                {
-                    mResultColumn = On<TcResultColumn>();
-                }
-
-                return mResultColumn;
-            }
-        }
+        public TcResultColumn ResultColumn => mResultColumn.Value;
 
         /// <summary>
         /// Gets the detail area.
@@ -93,18 +73,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <value>
         /// The detail.
         /// </value>
-        public TcMachineDetail Detail
-        {
-            get
-            {
-                if( mDetail == null )
-                {
-                    mDetail = On<TcMachineDetail>();
-                }
-
-                return mDetail;
-            }
-        }
+        public TcMachineDetail Detail => mDetail.Value;
 
         /// <summary>
         /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
@@ -141,7 +110,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </summary>
         public void NewCutMachine()
         {
-            Toolbar.NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click("|[0]");
+            Toolbar.NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click( "|[0]" );
         }
 
         /// <summary>
@@ -177,7 +146,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </summary>
         public void NewBendMachine()
         {
-            Toolbar.NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click("|[1]");
+            Toolbar.NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click( "|[1]" );
+            //Toolbar.NewMachineButton.Click();
+            //Popup.NewBendMachineButton.Click();
         }
 
         /// <summary>
@@ -188,6 +159,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         public void NewBendMachine( string machineType, string name )
         {
             NewBendMachine();
+            Detail.VisibleOnScreen.WaitFor();
             Detail.BendMachineType = machineType;
             Detail.Name = name;
         }

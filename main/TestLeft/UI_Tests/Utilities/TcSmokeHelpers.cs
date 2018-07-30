@@ -72,9 +72,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void DeleteTestMaterials()
         {
-            var materials = HomeZoneApp.On<TcMaterials>();
-
-            materials.Goto();
+            var materials = HomeZoneApp.Goto<TcMaterials>();
 
             if( materials.SelectMaterials( TcSettings.NamePrefix ) > 0 )
             {
@@ -93,9 +91,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestMachines()
         {
-            var machines = HomeZoneApp.On<TcMachines>();
-
-            machines.Goto();
+            var machines = HomeZoneApp.Goto<TcMachines>();
 
             machines.NewBendMachine( "TruBend 5320 (6-axes) B23", TcSettings.NamePrefix + Guid.NewGuid() );
             machines.SaveMachine();
@@ -117,8 +113,10 @@ namespace TestLeft.UI_Tests.Utilities
 
             machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
 
-            machines.NewCutMachine( "TruLaser 3060 fiber (L66)", TcSettings.NamePrefix + Guid.NewGuid(), "8000" );
+            machines.NewCutMachine( "TruLaser 3060 (L66)", TcSettings.NamePrefix + Guid.NewGuid(), "8000" );
             machines.SaveMachine();
+
+            machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
         }
 
         /// <summary>
@@ -127,9 +125,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void DeleteTestMachines()
         {
-            var machines = HomeZoneApp.On<TcMachines>();
-
-            machines.Goto();
+            var machines = HomeZoneApp.Goto<TcMachines>();
 
             if( machines.SelectMachines( TcSettings.NamePrefix ) > 0 )
             {
@@ -184,8 +180,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void DeleteTestCustomers()
         {
-            var customers = HomeZoneApp.On<TcCustomers>();
-            customers.Goto();
+            var customers = HomeZoneApp.Goto<TcCustomers>();
 
             customers.DeleteCustomersWithNameContaining( TcSettings.NamePrefix );
 
@@ -199,13 +194,11 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestParts()
         {
-            var parts = HomeZoneApp.On<TcParts>();
-
-            parts.Goto();
+            var parts = HomeZoneApp.Goto<TcParts>();
 
             parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
             parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
             parts.SingleDetail.Name = TcSettings.NamePrefix + parts.SingleDetail.Name;
             parts.SingleDetail.Customer = TcSettings.NamePrefix + "Kunde 1";
@@ -220,8 +213,8 @@ namespace TestLeft.UI_Tests.Utilities
             parts.BoostPart();
 
             parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
             parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
             parts.SingleDetail.Name = TcSettings.NamePrefix + parts.SingleDetail.Name;
             parts.SingleDetail.Customer = TcSettings.NamePrefix + "Kunde 2";
@@ -236,8 +229,8 @@ namespace TestLeft.UI_Tests.Utilities
             parts.BoostPart();
 
             parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Zugwinkel.scdoc" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
             parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
             parts.SingleDetail.Name = TcSettings.NamePrefix + parts.SingleDetail.Name;
             parts.SingleDetail.Customer = TcSettings.NamePrefix + "Kunde 3";
@@ -255,7 +248,7 @@ namespace TestLeft.UI_Tests.Utilities
         private bool OpenFluxBendSolutionAndCloseFlux( TcParts parts )
         {
             parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
 
             var flux = new TcFlux( Driver );
 
@@ -263,7 +256,7 @@ namespace TestLeft.UI_Tests.Utilities
             {
                 flux.CloseApp();
 
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
             }
             else
             {
@@ -280,9 +273,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void DeleteTestParts()
         {
-            var parts = HomeZoneApp.On<TcParts>();
-
-            parts.Goto();
+            var parts = HomeZoneApp.Goto<TcParts>();
 
             if( parts.SelectParts( TcSettings.NamePrefix ) > 0 )
             {
@@ -298,9 +289,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestPartOrders()
         {
-            var partOrders = HomeZoneApp.On<TcPartOrders>();
-
-            partOrders.Goto();
+            var partOrders = HomeZoneApp.Goto<TcPartOrders>();
 
             partOrders.NewPartOrder();
             //TODO
@@ -322,9 +311,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestCutJobs()
         {
-            var cutJobs = HomeZoneApp.On<TcCutJobs>();
-
-            cutJobs.Goto();
+            var cutJobs = HomeZoneApp.Goto<TcCutJobs>();
 
             cutJobs.NewCutJob();
             //TODO
@@ -343,15 +330,13 @@ namespace TestLeft.UI_Tests.Utilities
         private void CreateTestCutJobsFromParts()
         {
             //CreateTestParts(); //tut nicht ganz
-            var parts = HomeZoneApp.On<TcParts>();
-
-            parts.Goto();
+            var parts = HomeZoneApp.Goto<TcParts>();
 
             parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Training\Laser\GEO\BL_01.geo" );
             parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Training\Laser\GEO\BL_02.geo" );
             parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Training\Laser\GEO\BL_03.geo" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
             parts.SelectAll();
             parts.CreateCutJob();
@@ -362,8 +347,7 @@ namespace TestLeft.UI_Tests.Utilities
         {
             //CreateTestCutJobsFromParts();
 
-            var cutJobs = HomeZoneApp.On<TcCutJobs>();
-            cutJobs.Goto();
+            var cutJobs = HomeZoneApp.Goto<TcCutJobs>();
             //cutJobs.SelectCutJob("N1");
 
             // Details
@@ -383,7 +367,7 @@ namespace TestLeft.UI_Tests.Utilities
             //Tafelprogramm
             cutJobs.CutJobSolution.Note = "Kommentar";
             cutJobs.CutJobSolution.SelectMachine( 1 );
-            cutJobs.CutJobSolution.SelectRawSheet( 1 );
+            //cutJobs.CutJobSolution.SelectRawSheet( 1 );
             cutJobs.CutJobSolution.Delete();
             cutJobs.CutJobSolution.Boost();
 

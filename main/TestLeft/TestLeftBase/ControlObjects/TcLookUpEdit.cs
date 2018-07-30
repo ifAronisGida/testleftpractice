@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using DevExpress.Xpf.Grid.LookUp;
 using SmartBear.TestLeft.TestObjects;
-using SmartBear.TestLeft.TestObjects.WPF;
 using TestLeft.TestLeftBase.Utilities;
 using Trumpf.PageObjects.WPF;
 
@@ -10,22 +8,17 @@ namespace TestLeft.TestLeftBase.ControlObjects
     /// <summary>
     /// The LookUpEdit ControlObject.
     /// </summary>
-    /// <seealso cref="Trumpf.PageObjects.WPF.ViewControlObject{DevExpress.Xpf.Grid.LookUp.LookUpEdit}" />
-    public class TcLookUpEdit : ViewControlObject<LookUpEdit>
+    public class TcLookUpEdit : ControlObject
     {
+        protected override Search SearchPattern => Search.Any;
+
         /// <summary>
         /// Gets or sets the text of the LookUpEdit.
         /// </summary>
         public string Text
         {
-            get
-            {
-                return Node.Cast<IWPFTextEdit>().wText;
-            }
-            set
-            {
-                Node.Cast<IWPFTextEdit>().SetText( value );
-            }
+            get => Node.GetProperty<string>( "Text" );
+            set => Node.SetProperty( "Text", value );
         }
 
         public void Clear()

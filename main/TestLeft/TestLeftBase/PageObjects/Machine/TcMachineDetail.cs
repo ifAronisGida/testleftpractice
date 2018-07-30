@@ -16,6 +16,23 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
 
         private TcLookUpEdit CutMachineTypeLookUpEdit => Find<TcLookUpEdit>( Search.ByUid( "Machine.Detail.Base.TemplateSelection" ) );
         private TcLookUpEdit BendMachineTypeLookUpEdit => Find<TcLookUpEdit>( Search.ByUid( "Machine.Detail.Base.BendTemplateSelection" ) );
+        /*
+        IDriver driver = new LocalDriver();
+
+        ITextEdit tcLookUpEdit = driver.Find<IProcess>(new ProcessPattern()
+        {
+            ProcessName = "Trumpf.TruTops.Control.Shell"
+        }).Find<IControl>(new WPFPattern()
+        {
+            ClrFullClassName = "Trumpf.TruTops.Control.Shell.Views.TcShellView"
+        }, 2).Find<IControl>(new WPFPattern()
+        {
+            WPFControlName = "MainTabControl"
+        }, 12).Find<ITextEdit>(new WPFPattern()
+        {
+            WPFControlName = "BendMachineTemplateTableLookupEdit"
+        }, 21);
+        */
         private TcTextEdit NameTextEdit => Find<TcTextEdit>( Search.ByUid( "Machine.Detail.Base.Name" ) );
         private TcTextEdit MachineNumberTextEdit => Find<TcTextEdit>( Search.ByUid( "Machine.Detail.Base.MachineEquipmentNr" ) );
         private TcComboBox LaserPowerComboBox => Find<TcComboBox>( Search.ByUid( "Machine.Detail.Base.LaserPowers" ) );

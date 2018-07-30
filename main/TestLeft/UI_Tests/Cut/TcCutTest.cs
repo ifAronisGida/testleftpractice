@@ -27,12 +27,12 @@ namespace TestLeft.UI_Tests.Cut
                 var parts = HomeZoneApp.Goto<TcParts>();
 
                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
                 parts.SingleDetailCutSolutions.New();
                 parts.SingleDetailCutSolutions.OpenCutSolution( "Cut1" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
+                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
 
                 var cut = new TcCut( Driver );
 
@@ -41,7 +41,7 @@ namespace TestLeft.UI_Tests.Cut
                 {
                     cut.CloseApp();
 
-                    parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
                 }
 
                 parts.DeletePart();

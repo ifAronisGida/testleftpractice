@@ -27,12 +27,12 @@ namespace TestLeft.UI_Tests.Flux
                 var parts = HomeZoneApp.Goto<TcParts>();
 
                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
                 parts.SingleDetailBendSolutions.New();
                 parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
+                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
 
                 var flux = new TcFlux( Driver );
 
@@ -41,7 +41,7 @@ namespace TestLeft.UI_Tests.Flux
                 {
                     flux.CloseApp();
 
-                    parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
                 }
 
                 parts.DeletePart();

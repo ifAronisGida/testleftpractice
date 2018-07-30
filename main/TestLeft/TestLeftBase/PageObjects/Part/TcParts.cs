@@ -16,12 +16,26 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
     public class TcParts : RepeaterObject, IChildOf<TcMainTabControl>
     {
-        private TcPartToolbar mToolbar;
-        private TcResultColumn mResultColumn;
-        private TcPartSingleDetail mSingleDetail;
-        private TcPartSingleDetailDesign mSingleDetailDesign;
-        private TcPartSingleDetailBendSolutions mSingleDetailBendSolutions;
-        private TcPartSingleDetailCutSolutions mSingleDetailCutSolutions;
+        private readonly Lazy<TcPartToolbar> mToolbar;
+        private readonly Lazy<TcResultColumn> mResultColumn;
+
+        private readonly Lazy<TcPartSingleDetail> mSingleDetail;
+        private readonly Lazy<TcPartSingleDetailDesign> mSingleDetailDesign;
+        private readonly Lazy<TcPartSingleDetailBendSolutions> mSingleDetailBendSolutions;
+        private readonly Lazy<TcPartSingleDetailCutSolutions> mSingleDetailCutSolutions;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TcParts"/> class.
+        /// </summary>
+        public TcParts()
+        {
+            mToolbar = new Lazy<TcPartToolbar>( () => On<TcPartToolbar>() );
+            mResultColumn = new Lazy<TcResultColumn>( () => On<TcResultColumn>() );
+            mSingleDetail = new Lazy<TcPartSingleDetail>( () => On<TcPartSingleDetail>() );
+            mSingleDetailDesign = new Lazy<TcPartSingleDetailDesign>( () => On<TcPartSingleDetailDesign>() );
+            mSingleDetailBendSolutions = new Lazy<TcPartSingleDetailBendSolutions>( () => On<TcPartSingleDetailBendSolutions>() );
+            mSingleDetailCutSolutions = new Lazy<TcPartSingleDetailCutSolutions>( () => On<TcPartSingleDetailCutSolutions>() );
+        }
 
         /// <summary>
         /// Gets the detail overlay.
@@ -29,7 +43,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The detail overlay.
         /// </value>
-        public TcOverlay DetailOverlay => Find<TcOverlay>(Search.ByUid("DetailContent.Overlay"));
+        public TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
 
         /// <summary>
         /// Gets the toolbar.
@@ -37,18 +51,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The toolbar.
         /// </value>
-        public TcPartToolbar Toolbar
-        {
-            get
-            {
-                if (mToolbar == null)
-                {
-                    mToolbar = On<TcPartToolbar>();
-                }
-
-                return mToolbar;
-            }
-        }
+        public TcPartToolbar Toolbar => mToolbar.Value;
 
         /// <summary>
         /// Gets the result column.
@@ -56,18 +59,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The result column.
         /// </value>
-        public TcResultColumn ResultColumn
-        {
-            get
-            {
-                if (mResultColumn == null)
-                {
-                    mResultColumn = On<TcResultColumn>();
-                }
-
-                return mResultColumn;
-            }
-        }
+        public TcResultColumn ResultColumn => mResultColumn.Value;
 
         /// <summary>
         /// Gets the single detail.
@@ -75,18 +67,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The single detail.
         /// </value>
-        public TcPartSingleDetail SingleDetail
-        {
-            get
-            {
-                if (mSingleDetail == null)
-                {
-                    mSingleDetail = On<TcPartSingleDetail>();
-                }
-
-                return mSingleDetail;
-            }
-        }
+        public TcPartSingleDetail SingleDetail => mSingleDetail.Value;
 
         /// <summary>
         /// Gets the single detail design.
@@ -94,18 +75,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The single detail design.
         /// </value>
-        public TcPartSingleDetailDesign SingleDetailDesign
-        {
-            get
-            {
-                if (mSingleDetailDesign == null)
-                {
-                    mSingleDetailDesign = On<TcPartSingleDetailDesign>();
-                }
-
-                return mSingleDetailDesign;
-            }
-        }
+        public TcPartSingleDetailDesign SingleDetailDesign => mSingleDetailDesign.Value;
 
         /// <summary>
         /// Gets the single detail bend solutions.
@@ -113,18 +83,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The single detail bend solutions.
         /// </value>
-        public TcPartSingleDetailBendSolutions SingleDetailBendSolutions
-        {
-            get
-            {
-                if (mSingleDetailBendSolutions == null)
-                {
-                    mSingleDetailBendSolutions = On<TcPartSingleDetailBendSolutions>();
-                }
-
-                return mSingleDetailBendSolutions;
-            }
-        }
+        public TcPartSingleDetailBendSolutions SingleDetailBendSolutions => mSingleDetailBendSolutions.Value;
 
         /// <summary>
         /// Gets the single detail cut solutions.
@@ -132,18 +91,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The single detail cut solutions.
         /// </value>
-        public TcPartSingleDetailCutSolutions SingleDetailCutSolutions
-        {
-            get
-            {
-                if (mSingleDetailCutSolutions == null)
-                {
-                    mSingleDetailCutSolutions = On<TcPartSingleDetailCutSolutions>();
-                }
-
-                return mSingleDetailCutSolutions;
-            }
-        }
+        public TcPartSingleDetailCutSolutions SingleDetailCutSolutions => mSingleDetailCutSolutions.Value;
 
         /// <summary>
         /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
@@ -160,9 +108,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </summary>
         /// <param name="timeout">The timeout.</param>
         /// <returns></returns>
-        public bool WaitForDetailOverlayAppear(TimeSpan timeout)
+        public bool WaitForDetailOverlayAppear( TimeSpan timeout )
         {
-            return TryWait.For(() => DetailOverlay.VisibleOnScreen, timeout);
+            return TryWait.For( () => DetailOverlay.VisibleOnScreen, timeout );
         }
 
         /// <summary>
@@ -170,9 +118,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </summary>
         /// <param name="timeout">The timeout.</param>
         /// <returns></returns>
-        public bool WaitForDetailOverlayDisappear(TimeSpan timeout)
+        public bool WaitForDetailOverlayDisappear( TimeSpan timeout )
         {
-            return TryWait.For(() => !DetailOverlay.VisibleOnScreen, timeout);
+            return TryWait.For( () => !DetailOverlay.VisibleOnScreen, timeout );
         }
 
         /// <summary>
@@ -188,12 +136,12 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </summary>
         /// <param name="filename">The filename.</param>
         /// <returns>true if successful; otherwise false</returns>
-        public bool Import(string filename)
+        public bool Import( string filename )
         {
             Toolbar.ImportButton.Click();
 
             var openDlg = On<TcOpenFileDialog>();
-            return openDlg.SetFilename(filename);
+            return openDlg.SetFilename( filename );
         }
 
         /// <summary>
@@ -203,10 +151,10 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         {
             Toolbar.BoostButton.Click();
 
-            var dialog = On<TcMessageBox>();
-            if (dialog.MessageBoxExists())
+            var dialog = On<TcPartComputeAllConfirmation>();
+            if( dialog.DialogBoxExists() )
             {
-                dialog.Yes();
+                dialog.Ok();
             }
         }
 
@@ -226,7 +174,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
             Toolbar.DeleteButton.Click();
 
             var dialog = On<TcMessageBox>();
-            if (dialog.MessageBoxExists())
+            if( dialog.MessageBoxExists() )
             {
                 dialog.Yes();
             }
@@ -236,9 +184,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// Selects the part via identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        public void SelectPart(string id)
+        public void SelectPart( string id )
         {
-            ResultColumn.SelectItem(id);
+            ResultColumn.SelectItem( id );
         }
 
         /// <summary>
@@ -246,9 +194,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </summary>
         /// <param name="searchText">The search text.</param>
         /// <returns>The amount of selected parts.</returns>
-        public int SelectParts(string searchText)
+        public int SelectParts( string searchText )
         {
-            return ResultColumn.SelectItems(searchText);
+            return ResultColumn.SelectItems( searchText );
         }
 
         /// <summary>

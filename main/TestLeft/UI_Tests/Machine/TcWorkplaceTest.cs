@@ -49,10 +49,10 @@ namespace TestLeft.UI_Tests.Machine
         {
             Act( () =>
                 {
-                    var machines = HomeZoneApp.On<TcMachines>();
+                    var machines = HomeZoneApp.Goto<TcMachines>();
 
-                    machines.Goto();
-
+                    machines.VisibleOnScreen.WaitFor();
+                    
                     machines.NewBendMachine( "TruBend 5320 (6-axes) B23", TcSettings.NamePrefix + Guid.NewGuid() );
                     machines.Detail.TransferDirectory = @"\\LAPxxxxxx\mmc\Arbeitsplatz 1";
                     machines.Detail.CreateSubDirectory = true;

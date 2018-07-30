@@ -27,8 +27,8 @@ namespace TestLeft.UI_Tests.Design
                 var parts = HomeZoneApp.Goto<TcParts>();
 
                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
                 parts.SingleDetailDesign.Open();
 
@@ -39,7 +39,7 @@ namespace TestLeft.UI_Tests.Design
                 {
                     design.CloseApp();
 
-                    parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
                 }
 
                 parts.DeletePart();

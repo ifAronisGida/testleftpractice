@@ -20,10 +20,7 @@ namespace TestLeft.TestLeftBase.ControlObjects
         /// </value>
         public bool Checked
         {
-            get
-            {
-                return Node.GetProperty<bool>("IsChecked");
-            }
+            get => Node.GetProperty<bool>("IsChecked");
             set
             {
                 if( value != Checked )

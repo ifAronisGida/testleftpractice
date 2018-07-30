@@ -1,5 +1,4 @@
 ﻿using SmartBear.TestLeft.TestObjects;
-using TestLeft.TestLeftBase.ControlObjects;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 
@@ -15,19 +14,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
         protected override Search SearchPattern => Search.ByUid( "MainTabControl" );
 
         internal IControlObject AddControlObject => Find<IControlObject>( Search.ByUid( "MainTabControl.Add" ), null, 20 );
-        /*
-         *IDriver driver = new LocalDriver();
-           
-           IControl DXTabItem = driver.Find<IProcess>(new ProcessPattern(){ 
-           ProcessName = "Trumpf.TruTops.Control.Shell" 
-           }).Find<IControl>(new WPFPattern(){ 
-           ClrFullClassName = "Trumpf.TruTops.Control.Shell.Views.TcShellView" 
-           }, 2).Find<IControl>(new WPFPattern(){ 
-           WPFControlName = "MainTabControl" 
-           }, 12).Find<IControl>(new WPFPattern(){ 
-           WPFControlName = "AddNewMainTab" 
-           }, 2);
-         */
+
         /// <summary>
         /// Gets or sets the index of the selected tab.
         /// </summary>

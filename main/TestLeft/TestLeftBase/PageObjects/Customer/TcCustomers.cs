@@ -22,13 +22,11 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public override void Goto()
         {
-            mParts = On<TcParts>();
-            mParts.Goto();
+            mParts = Goto<TcParts>();
             mParts.NewPart();
             mParts.SingleDetail.CustomerOpenAdministrationButton.Click();
             mCustomersView = On<TcCustomersView>();
             mCustomersView.VisibleOnScreen.WaitFor();
-            //mCustomersView.NameTextEdit.VisibleOnScreen.WaitFor();
         }
 
         /// <summary>
@@ -39,14 +37,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string Name
         {
-            get
-            {
-                return mCustomersView.NameTextEdit.Text;
-            }
-            set
-            {
-                mCustomersView.NameTextEdit.Text = value;
-            }
+            get => mCustomersView.NameTextEdit.Text;
+            set => mCustomersView.NameTextEdit.Text = value;
         }
 
         /// <summary>
@@ -57,14 +49,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string ID
         {
-            get
-            {
-                return mCustomersView.IdTextEdit.Text;
-            }
-            set
-            {
-                mCustomersView.IdTextEdit.Text = value;
-            }
+            get => mCustomersView.IdTextEdit.Text;
+            set => mCustomersView.IdTextEdit.Text = value;
         }
 
         /// <summary>
@@ -75,14 +61,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string Address
         {
-            get
-            {
-                return mCustomersView.StreetTextEdit.Text;
-            }
-            set
-            {
-                mCustomersView.StreetTextEdit.Text = value;
-            }
+            get => mCustomersView.StreetTextEdit.Text;
+            set => mCustomersView.StreetTextEdit.Text = value;
         }
 
         /// <summary>
@@ -93,14 +73,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string PostalCode
         {
-            get
-            {
-                return mCustomersView.PostalCodeTextEdit.Text;
-            }
-            set
-            {
-                mCustomersView.PostalCodeTextEdit.Text = value;
-            }
+            get => mCustomersView.PostalCodeTextEdit.Text;
+            set => mCustomersView.PostalCodeTextEdit.Text = value;
         }
 
         /// <summary>
@@ -111,14 +85,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string City
         {
-            get
-            {
-                return mCustomersView.CityTextEdit.Text;
-            }
-            set
-            {
-                mCustomersView.CityTextEdit.Text = value;
-            }
+            get => mCustomersView.CityTextEdit.Text;
+            set => mCustomersView.CityTextEdit.Text = value;
         }
 
         /// <summary>
@@ -129,14 +97,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string Country
         {
-            get
-            {
-                return mCustomersView.CountryTextEdit.Text;
-            }
-            set
-            {
-                mCustomersView.CountryTextEdit.Text = value;
-            }
+            get => mCustomersView.CountryTextEdit.Text;
+            set => mCustomersView.CountryTextEdit.Text = value;
         }
 
         /// <summary>
@@ -147,14 +109,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string Comment
         {
-            get
-            {
-                return mCustomersView.CommentTextEdit.Text;
-            }
-            set
-            {
-                mCustomersView.CommentTextEdit.Text = value;
-            }
+            get => mCustomersView.CommentTextEdit.Text;
+            set => mCustomersView.CommentTextEdit.Text = value;
         }
 
         /// <summary>

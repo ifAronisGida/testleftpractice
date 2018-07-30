@@ -22,7 +22,7 @@ namespace TestLeft.UI_Tests.Part
         /// Gets the extended test environment.
         /// Creates / deletes the test customer used by the test methods
         /// </summary>
-        public override DoCleanupSequence TestEnvironment => base.TestEnvironment
+        public override IDoSequence TestEnvironment => base.TestEnvironment
             .Do( CreateTestCustomer, DeleteTestCustomer, "TestCustomer" );
 
         /// <summary>
@@ -72,8 +72,8 @@ namespace TestLeft.UI_Tests.Part
 
                     parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
 
-                    parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-                    parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+                    parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
                     parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
                     parts.SingleDetail.Name = TcSettings.NamePrefix + "ImportPartTest";
@@ -85,10 +85,23 @@ namespace TestLeft.UI_Tests.Part
                     parts.SingleDetail.ExternalName = "ImportPartTest_ExtName";
                     parts.SingleDetail.Archivable = false;
                     parts.SingleDetail.Note = "ImportPartTest_Note";
+                    parts.SingleDetailBendSolutions.New();
+                    parts.SingleDetailCutSolutions.New();
 
                     Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
                     parts.SavePart();
                     Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
+
+                    Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
+                    parts.BoostPart();
+                    parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+
+                    // boost again to check dialog box handling
+                    Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
+                    parts.BoostPart();
+                    parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
                     Assert.IsTrue( parts.Toolbar.DeleteButton.Enabled );
                     parts.DeletePart();
@@ -110,8 +123,8 @@ namespace TestLeft.UI_Tests.Part
 
                 parts.SingleDetailDesign.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
 
-                parts.WaitForDetailOverlayAppear( TcSettings.PartImportOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartImportOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
                 parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
                 parts.SingleDetail.Name = TcSettings.NamePrefix + "ImportDesignTest";
@@ -124,10 +137,17 @@ namespace TestLeft.UI_Tests.Part
                 parts.SingleDetail.ExternalName = "ImportDesignTest_ExtName";
                 parts.SingleDetail.Archivable = false;
                 parts.SingleDetail.Note = "ImportDesignTest_Note";
+                parts.SingleDetailBendSolutions.New();
+                parts.SingleDetailCutSolutions.New();
 
                 Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
                 parts.SavePart();
                 Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
+
+                Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
+                parts.BoostPart();
+                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
                 Assert.IsTrue( parts.Toolbar.DeleteButton.Enabled );
                 parts.DeletePart();

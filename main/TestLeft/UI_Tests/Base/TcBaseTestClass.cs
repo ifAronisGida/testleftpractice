@@ -110,11 +110,13 @@ namespace TestLeft.UI_Tests.Base
         public override string Version => "8.0.0";  //TODO
         public override string Context => "LAP013742";  //TODO
         public override string Process => "Developer test";  //TODO
+        public override string Remarks => "no remarks";  //TODO
 
 #if DEBUG
-        protected override bool EnableSoftResetter => false;
-        protected override bool EnableSystemLocker => false;
+        public override bool EnableSoftResetter => false;
+        public override bool EnableSystemLocker => false;
 
+        //override TestSkipper
         //protected override bool SendResultsIntoTheCloud => false;     // uncomment later
 #endif
 
