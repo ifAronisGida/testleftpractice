@@ -1,4 +1,6 @@
+using System.Windows.Controls;
 using SmartBear.TestLeft.TestObjects.WPF;
+using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects
 {
@@ -8,12 +10,7 @@ namespace TestLeft.TestLeftBase.ControlObjects
         {
             get
             {
-                var textBlock = Find<TcReadOnlyText>(new WPFPattern()
-                {
-                    ClrFullClassName = "System.Windows.Controls.TextBlock"
-                }, depth: 1);
-
-                return textBlock.Text;
+                return Find<TcReadOnlyText>( Search.By<TextBlock>(), depth: 1 ).Text;
             }
         }
     }

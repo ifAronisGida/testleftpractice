@@ -3,6 +3,8 @@ using TestLeft.TestLeftBase.ControlObjects.Grid;
 using SmartBear.TestLeft.TestObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using Trumpf.PageObjects.WPF;
+using System.Windows.Documents;
+using DevExpress.Xpf.Editors;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
@@ -10,7 +12,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
     {
         private readonly TcTableRow mRow;
 
-        public TcCutJobOrderRow(TcTableRow row)
+        public TcCutJobOrderRow( TcTableRow row )
         {
             mRow = row;
         }
@@ -19,7 +21,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                return mRow.GetColumn(1).Find<TcButton>(depth: 2);
+                return mRow.Find<TcButton>( Search.ByUid( "ImageLinkButton" ) );
             }
         }
 
@@ -27,7 +29,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                return mRow.GetColumn(2).Find<TcLinkButton>(depth: 2);
+                return mRow.Find<TcLinkButton>( Search.ByUid( "PartLinkButton" ) );
             }
         }
 
@@ -35,11 +37,10 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                var runElement = mRow.GetColumn(4)
-                    .Find<TcReadOnlyText>(depth: 2)
-                    .Find<TcReadOnlyText>(Search.ByIndex(1), depth: 1);
+                var runElement = mRow.Find<TcReadOnlyText>( Search.ByUid( "Pending" ) )
+                    .Find<TcReadOnlyText>( Search.By<Run>().AndByIndex( 0 ), depth: 1 );
 
-                return int.Parse(runElement.Text);
+                return int.Parse( runElement.Text );
             }
         }
 
@@ -47,11 +48,10 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                var runElement = mRow.GetColumn(4)
-                    .Find<TcReadOnlyText>(depth: 2)
-                    .Find<TcReadOnlyText>(Search.ByIndex(5), depth: 1);
+                var runElement = mRow.Find<TcReadOnlyText>( Search.ByUid( "Pending" ) )
+                    .Find<TcReadOnlyText>( Search.By<Run>().AndByIndex( 4 ), depth: 1 );
 
-                return int.Parse(runElement.Text);
+                return int.Parse( runElement.Text );
             }
         }
 
@@ -59,7 +59,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                return mRow.GetColumn(9).Find<TcLinkButton>(depth: 2);
+                return mRow.Find<TcLinkButton>( Search.ByUid("PartOrderLinkButton") );
             }
         }
 
@@ -67,9 +67,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                return mRow.GetColumn(10)
-                    .Find<TcReadOnlyText>(depth: 1)
-                    .Text;
+                return mRow.Find<TcReadOnlyText>( Search.ByUid( "CustomerName" ) ).Text;
             }
         }
 
@@ -77,23 +75,24 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                var textBlock = mRow.GetColumn(11)
-                    .Find<TcReadOnlyText>(depth: 1);
+                var textBlock = mRow.Find<TcReadOnlyText>( Search.ByUid( "FinishDate" ) );
 
-                if (string.IsNullOrEmpty(textBlock.Text))
+                if( string.IsNullOrEmpty( textBlock.Text ) )
                 {
                     return null;
                 }
 
-                return DateTime.Parse(textBlock.Text);
+                return DateTime.Parse( textBlock.Text );
             }
         }
 
-        public TcTextEdit CuttingProgram
+        public string CuttingProgram
         {
             get
             {
-                return mRow.GetColumn(12).Find<TcTextEdit>(depth: 1);
+                return mRow.GetColumn( 12 )
+                    .Find<TcReadOnlyText>(Search.By<TextEdit>(), depth: 1 )
+                    .Text;
             }
         }
 
@@ -101,8 +100,8 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                // should maybe do something about the degree symbol
-                return mRow.GetColumn(13).Find<TcReadOnlyText>(depth: 1).Text;
+                // maybe do something about the degree symbol?
+                return mRow.Find<TcReadOnlyText>(Search.ByUid( "PermittedNestingOrientations" ) ).Text;
             }
         }
 
@@ -110,7 +109,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                return mRow.GetColumn(14).Find<TcReadOnlyText>(depth: 1).Text;
+                return mRow.Find<TcReadOnlyText>(Search.ByUid( "PartDistanceMode" )).Text;
             }
         }
 
@@ -118,7 +117,29 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                return mRow.GetColumn(15).Find<TcCheckBox>(depth: 1);
+                return mRow.GetColumn(15).Find<TcCheckBox>( depth: 1 );
+            }
+        }
+
+        // TODO: do something about the editability of these cells
+        public int NestingPriority
+        {
+            get
+            {
+                var fakeTextEdit = mRow.GetColumn( 16 ).Find<TcReadOnlyText>( Search.By<TextEdit>(), depth: 1 );
+
+                return int.Parse(fakeTextEdit.Text);
+            }
+        }
+
+        public int SamplePartsCount
+        {
+            get
+            {
+                var fakeTextEdit = mRow.GetColumn( 17 ).Find<TcReadOnlyText>( Search.By<TextEdit>(), depth: 1 );
+
+                return int.Parse( fakeTextEdit.Text );
+
             }
         }
 
@@ -126,7 +147,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                return mRow.GetColumn(18).Find<TcReadOnlyText>(depth: 2).Text;
+                return mRow.Find<TcReadOnlyText>( Search.ByUid("Comment") ).Text;
             }
         }
     }

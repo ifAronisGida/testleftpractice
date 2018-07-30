@@ -14,7 +14,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 
         public TcCutJobContainedOrders()
         {
-            mTableView = new Lazy<TcTableView<TcCutJobOrderRow>>(() => PartOrdersGrid.GetTableView(underlyingRow => new TcCutJobOrderRow(underlyingRow)));
+            mTableView = new Lazy<TcTableView<TcCutJobOrderRow>>( () => PartOrdersGrid.GetTableView( underlyingRow => new TcCutJobOrderRow( underlyingRow ) ) );
         }
 
         public int PartOrdersCount => PartOrdersGrid.RowCount;

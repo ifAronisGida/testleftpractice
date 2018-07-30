@@ -20,17 +20,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Dialogs
         {
             var dlg = Parent.Node.Find<IWindow>( new WindowPattern { WndClass = "#32770" }, 1 );
 
-            var edit = dlg.Find<ITextEdit>( new WindowPattern { WndClass = "Edit" }, 3 );
-
-            edit.SetText( filename );
-
-            var openButton = dlg.Find<IButton>( new WindowPattern
-            {
-                WndClass = "Button",
-                WndCaption = TcSystemLanguageSpecific.Open
-            }, 1 );
-
-            openButton.ClickButton();
+            dlg.Cast<IOpenFileDialog>().OpenFile( filename );
 
             return true;
         }
