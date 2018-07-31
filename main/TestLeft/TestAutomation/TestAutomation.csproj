@@ -48,8 +48,14 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Trumpf.AutoTest.Facts, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null" />
-    <Reference Include="Trumpf.AutoTest.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="Trumpf.AutoTest.Facts, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Trumpf.AutoTest.Facts.3.2.0\lib\net451\Trumpf.AutoTest.Facts.dll</HintPath>
+    </Reference>
+    <Reference Include="Trumpf.AutoTest.Utilities, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Trumpf.AutoTest.Facts.3.2.0\lib\net451\Trumpf.AutoTest.Utilities.dll</HintPath>
+    </Reference>
     <Reference Include="Trumpf.PageObjects, Version=3.4.0.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Trumpf.PageObjects.3.4.0\lib\net451\Trumpf.PageObjects.dll</HintPath>
     </Reference>
