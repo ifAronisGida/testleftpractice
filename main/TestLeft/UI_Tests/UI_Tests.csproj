@@ -99,7 +99,9 @@
     <Compile Include="Part\TcPartTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\TcSettingsTest.cs" />
+    <Compile Include="Shell\TcMainMenuTest.cs" />
     <Compile Include="Shell\TcShellTest.cs" />
+    <Compile Include="Shell\TcWelcomeScreenTest.cs" />
     <Compile Include="Utilities\TcSmokeHelpers.cs" />
   </ItemGroup>
   <ItemGroup>

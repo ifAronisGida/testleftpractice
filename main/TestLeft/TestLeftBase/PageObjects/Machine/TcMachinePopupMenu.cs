@@ -7,6 +7,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     public class TcMachinePopupMenu : PageObject, IChildOf<TcHomeZoneApp>
     {
         protected override Search SearchPattern => Search.Any;
+
         /// <summary>
         /// Gets the new cut machine button.
         /// </summary>
@@ -34,6 +35,5 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         {
             Uid = "Machine.Toolbar.NewBendMachine"
         }, 3 );
-
     }
 }

@@ -1,6 +1,5 @@
 ﻿using SmartBear.TestLeft.TestObjects;
 using Trumpf.PageObjects;
-using TestLeft.TestLeftBase.Settings;
 
 namespace TestLeft.TestLeftBase.PageObjects.Dialogs
 {

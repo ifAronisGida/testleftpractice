@@ -37,15 +37,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </value>
         public string Name
         {
-            set
-            {
-                NameTextEdit.Text = value;
-            }
+            set => NameTextEdit.Text = value;
 
-            get
-            {
-                return NameTextEdit.Text;
-            }
+            get => NameTextEdit.Text;
         }
 
         /// <summary>
@@ -66,15 +60,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </value>
         public string Customer
         {
-            set
-            {
-                CustomerLookUpEdit.Text = value;
-            }
+            set => CustomerLookUpEdit.Text = value;
 
-            get
-            {
-                return CustomerLookUpEdit.Text;
-            }
+            get => CustomerLookUpEdit.Text;
         }
 
         /// <summary>
@@ -85,15 +73,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </value>
         public string DrawingNumber
         {
-            set
-            {
-                DrawingNumberTextEdit.Text = value;
-            }
+            set => DrawingNumberTextEdit.Text = value;
 
-            get
-            {
-                return DrawingNumberTextEdit.Text;
-            }
+            get => DrawingNumberTextEdit.Text;
         }
 
         /// <summary>
@@ -104,15 +86,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </value>
         public string DrawingVersion
         {
-            set
-            {
-                DrawingVersionTextEdit.Text = value;
-            }
+            set => DrawingVersionTextEdit.Text = value;
 
-            get
-            {
-                return DrawingVersionTextEdit.Text;
-            }
+            get => DrawingVersionTextEdit.Text;
         }
 
         /// <summary>
@@ -123,9 +99,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </value>
         public bool IsMoreExpanded
         {
-            set { DetailGroupPanel.IsMoreExpanded = value; }
+            set => DetailGroupPanel.IsMoreExpanded = value;
 
-            get { return DetailGroupPanel.IsMoreExpanded; }
+            get => DetailGroupPanel.IsMoreExpanded;
         }
 
         /// <summary>

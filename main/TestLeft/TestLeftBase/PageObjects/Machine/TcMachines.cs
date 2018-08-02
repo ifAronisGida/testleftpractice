@@ -18,7 +18,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     public class TcMachines : RepeaterObject, IChildOf<TcMainTabControl>
     {
         private readonly Lazy<TcMachineToolbar> mToolbar;
-        //private TcMachineToolbar mToolbar;
         private readonly Lazy<TcMachinePopupMenu> mPopup;
         private readonly Lazy<TcResultColumn> mResultColumn;
         private readonly Lazy<TcMachineDetail> mDetail;
@@ -28,10 +27,10 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </summary>
         public TcMachines()
         {
-            mToolbar = new Lazy<TcMachineToolbar>( () => On<TcMachineToolbar>() );
-            mPopup = new Lazy<TcMachinePopupMenu>( () => On<TcMachinePopupMenu>() );
-            mResultColumn = new Lazy<TcResultColumn>( () => On<TcResultColumn>() );
-            mDetail = new Lazy<TcMachineDetail>( () => On<TcMachineDetail>() );
+            mToolbar = new Lazy<TcMachineToolbar>( On<TcMachineToolbar> );
+            mPopup = new Lazy<TcMachinePopupMenu>( On<TcMachinePopupMenu> );
+            mResultColumn = new Lazy<TcResultColumn>( On<TcResultColumn> );
+            mDetail = new Lazy<TcMachineDetail>( On<TcMachineDetail> );
         }
 
         /// <summary>
@@ -49,7 +48,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// The toolbar.
         /// </value>
         public TcMachineToolbar Toolbar => mToolbar.Value;
-        //public TcMachineToolbar Toolbar => mToolbar?? (mToolbar = On<TcMachineToolbar>());
 
         /// <summary>
         /// Gets the PopupMenu.
@@ -147,8 +145,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         public void NewBendMachine()
         {
             Toolbar.NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click( "|[1]" );
-            //Toolbar.NewMachineButton.Click();
-            //Popup.NewBendMachineButton.Click();
         }
 
         /// <summary>

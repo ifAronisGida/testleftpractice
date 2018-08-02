@@ -1,38 +1,69 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SmartBear.TestLeft.TestObjects;
+using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.PageObjects.Shell;
 using Trumpf.PageObjects;
-
+using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.Settings
 {
     /// <summary>
     /// The settings dialog.
     /// </summary>
-    /// <seealso cref="Trumpf.PageObjects.RepeaterObject" />
+    /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    public class TcSettings : RepeaterObject, IChildOf<TcHomeZoneApp>
+    public class TcSettings : PageObject, IChildOf<TcHomeZoneApp>
     {
+        protected override Search SearchPattern => Search.ByUid( "SettingsDialog" );
+
+        private readonly Lazy<TcBendSettings> mBendSettings;
+
+        internal IControl BendTab => Node.Find<IControl>( Search.ByUid( "SettingsPage.Bend" ), 3 );
+        internal IControl CutTab => Node.Find<IControl>( Search.ByUid( "SettingsPage.Cut" ), 3 );
+
+        private TcTruIconButton CancelButton => Find<TcTruIconButton>( Search.ByUid( "CancelButton" ) );
+        private TcTruIconButton SaveButton => Find<TcTruIconButton>( Search.ByUid( "SaveButton" ) );
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TcSettings"/> class.
+        /// </summary>
+        public TcSettings()
+        {
+            mBendSettings = new Lazy<TcBendSettings>( On<TcBendSettings> );
+        }
+
+        /// <summary>
+        /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
+        /// </summary>
         public override void Goto()
         {
-            //IDriver driver = new LocalDriver();
+            base.Goto();
+            Goto<TcMainMenu>().OpenSettingsDialog();
+            VisibleOnScreen.WaitFor();
+        }
 
-            //IControl menuItem = driver.Find<IProcess>( new ProcessPattern()
-            //{
-            //    ProcessName = "Trumpf.TruTops.Control.Shell"
-            //} ).Find<IControl>( new WPFPattern()
-            //{
-            //    ClrFullClassName = "Trumpf.TruTops.Control.Shell.Views.TcShellView"
-            //}, 2 ).Find<IWPFMenu>( new WPFPattern()
-            //{
-            //    ClrFullClassName = "System.Windows.Controls.Menu"
-            //}, 13 ).Find<IControl>( new WPFPattern()
-            //{
-            //    ClrFullClassName = "System.Windows.Controls.MenuItem",
-            //    WPFControlText = "xxx"
-            //} );
+        /// <summary>
+        /// Gets the bend settings PageObject.
+        /// </summary>
+        /// <value>
+        /// The bend settings PageObject.
+        /// </value>
+        public TcBendSettings BendSettings => mBendSettings.Value;
+
+        /// <summary>
+        /// Saves the setings.
+        /// </summary>
+        public void Save()
+        {
+            SaveButton.Click();
+        }
+
+        /// <summary>
+        /// Cancels the settings dialog.
+        /// </summary>
+        public void Cancel()
+        {
+            CancelButton.Click();
         }
     }
 }

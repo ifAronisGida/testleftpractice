@@ -12,7 +12,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
     public class TcCustomers : RepeaterObject, IChildOf<TcHomeZoneApp>
     {
         private TcParts mParts;
-        private TcCustomersView mCustomersView;
+        private TcCustomersView mView;
 
         /// <summary>
         /// The customer administration dialog is not direct accessible, only via button click in several detail views.
@@ -25,8 +25,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
             mParts = Goto<TcParts>();
             mParts.NewPart();
             mParts.SingleDetail.CustomerOpenAdministrationButton.Click();
-            mCustomersView = On<TcCustomersView>();
-            mCustomersView.VisibleOnScreen.WaitFor();
+            mView = On<TcCustomersView>();
+            mView.VisibleOnScreen.WaitFor();
         }
 
         /// <summary>
@@ -37,8 +37,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string Name
         {
-            get => mCustomersView.NameTextEdit.Text;
-            set => mCustomersView.NameTextEdit.Text = value;
+            get => mView.NameTextEdit.Text;
+            set => mView.NameTextEdit.Text = value;
         }
 
         /// <summary>
@@ -49,8 +49,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string ID
         {
-            get => mCustomersView.IdTextEdit.Text;
-            set => mCustomersView.IdTextEdit.Text = value;
+            get => mView.IdTextEdit.Text;
+            set => mView.IdTextEdit.Text = value;
         }
 
         /// <summary>
@@ -61,8 +61,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string Address
         {
-            get => mCustomersView.StreetTextEdit.Text;
-            set => mCustomersView.StreetTextEdit.Text = value;
+            get => mView.StreetTextEdit.Text;
+            set => mView.StreetTextEdit.Text = value;
         }
 
         /// <summary>
@@ -73,8 +73,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string PostalCode
         {
-            get => mCustomersView.PostalCodeTextEdit.Text;
-            set => mCustomersView.PostalCodeTextEdit.Text = value;
+            get => mView.PostalCodeTextEdit.Text;
+            set => mView.PostalCodeTextEdit.Text = value;
         }
 
         /// <summary>
@@ -85,8 +85,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string City
         {
-            get => mCustomersView.CityTextEdit.Text;
-            set => mCustomersView.CityTextEdit.Text = value;
+            get => mView.CityTextEdit.Text;
+            set => mView.CityTextEdit.Text = value;
         }
 
         /// <summary>
@@ -97,8 +97,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string Country
         {
-            get => mCustomersView.CountryTextEdit.Text;
-            set => mCustomersView.CountryTextEdit.Text = value;
+            get => mView.CountryTextEdit.Text;
+            set => mView.CountryTextEdit.Text = value;
         }
 
         /// <summary>
@@ -109,8 +109,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string Comment
         {
-            get => mCustomersView.CommentTextEdit.Text;
-            set => mCustomersView.CommentTextEdit.Text = value;
+            get => mView.CommentTextEdit.Text;
+            set => mView.CommentTextEdit.Text = value;
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// <param name="comment">The comment.</param>
         public void NewCustomer( string name, string id, string address, string postalCode, string city, string country, string comment )
         {
-            if( mCustomersView == null )
+            if( mView == null )
             {
                 Goto();
             }
@@ -152,7 +152,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public void NewCustomerClick()
         {
-            mCustomersView.NewCustomerButton.Click();
+            mView.NewCustomerButton.Click();
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public void DeleteCustomerClick()
         {
-            mCustomersView.DeleteCustomerButton.Click();
+            mView.DeleteCustomerButton.Click();
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public void ApplyClick()
         {
-            mCustomersView.ApplyButton.Click();
+            mView.ApplyButton.Click();
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public void CancelClick()
         {
-            mCustomersView.CancelButton.Click();
+            mView.CancelButton.Click();
             CleanUp();
         }
 
@@ -185,7 +185,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public void SelectClick()
         {
-            mCustomersView.OkButton.Click();
+            mView.OkButton.Click();
             CleanUp();
         }
 
@@ -195,7 +195,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// <returns>The amount of customers.</returns>
         public int Count()
         {
-            return mCustomersView.HierarchyPanel.Children.Count;
+            return mView.HierarchyPanel.Children.Count;
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// <returns>The amount of currently selected customers.</returns>
         public int SelectedCustomersCount()
         {
-            return mCustomersView.CustomerGrid.Node.GetProperty<int>( "SelectedItems.Count" );
+            return mView.CustomerGrid.Node.GetProperty<int>( "SelectedItems.Count" );
         }
 
         /// <summary>
@@ -215,15 +215,15 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         {
             int count = Count();
 
-            mCustomersView.CustomerGrid.Node.CallMethod( "UnselectAll" );
+            mView.CustomerGrid.Node.CallMethod( "UnselectAll" );
 
             for( int row = 0; row < count; row++ )
             {
-                var rowControl = mCustomersView.HierarchyPanel.Children[ row ];
+                var rowControl = mView.HierarchyPanel.Children[ row ];
                 var text = rowControl.Children[ 0 ].Children[ 5 ].Children[ 0 ].GetProperty<string>( "DisplayText" );
                 if( text == name )
                 {
-                    mCustomersView.CustomerGrid.Node.CallMethod( "SelectItem", rowControl.GetProperty<int>( "WPFControlIndex" ) - 1 );
+                    mView.CustomerGrid.Node.CallMethod( "SelectItem", rowControl.GetProperty<int>( "WPFControlIndex" ) - 1 );
 
                     break;
                 }
@@ -238,15 +238,15 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         {
             int count = Count();
 
-            mCustomersView.CustomerGrid.Node.CallMethod( "UnselectAll" );
+            mView.CustomerGrid.Node.CallMethod( "UnselectAll" );
 
             for( int row = 0; row < count; row++ )
             {
-                var rowControl = mCustomersView.HierarchyPanel.Children[ row ];
+                var rowControl = mView.HierarchyPanel.Children[ row ];
                 var text = rowControl.Children[ 0 ].Children[ 5 ].Children[ 0 ].GetProperty<string>( "DisplayText" );
                 if( text.Contains( substring ) )
                 {
-                    mCustomersView.CustomerGrid.Node.CallMethod( "SelectItem", rowControl.GetProperty<int>( "WPFControlIndex" ) - 1 );
+                    mView.CustomerGrid.Node.CallMethod( "SelectItem", rowControl.GetProperty<int>( "WPFControlIndex" ) - 1 );
                 }
             }
         }

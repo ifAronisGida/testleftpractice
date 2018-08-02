@@ -1,8 +1,10 @@
-﻿using SmartBear.TestLeft.TestObjects.WPF;
+﻿using System;
+using SmartBear.TestLeft.TestObjects.WPF;
 using SmartBear.TestLeft.TestObjects.WPF.DevExpress;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.ControlObjects.Grid;
 
 namespace TestLeft.TestLeftBase.PageObjects.Customer
 {
@@ -15,6 +17,13 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
     internal class TcCustomersView : PageObject, IChildOf<TcHomeZoneApp>
     {
         protected override Search SearchPattern => Search.ByUid( "Customer" );
+
+        internal readonly Lazy<TcTableView<TcCustomerRow>> mTableView;
+
+        public TcCustomersView()
+        {
+            mTableView = new Lazy<TcTableView<TcCustomerRow>>( () => CustomerGrid.GetTableView( underlyingRow => new TcCustomerRow( underlyingRow ) ) );
+        }
 
         internal IDevExpressWPFGridControl HierarchyPanel => Node.Find<IDevExpressWPFGridControl>( new WPFPattern()
         {

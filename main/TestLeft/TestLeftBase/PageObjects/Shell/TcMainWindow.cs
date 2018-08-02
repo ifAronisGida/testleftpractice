@@ -12,8 +12,5 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
     public class TcMainWindow : PageObject, IChildOf<TcHomeZoneApp>
     {
         protected override Search SearchPattern => Search.ByControlName("WindowRoot");
-
-        public TcMainMenu MainMenu => Find<TcMainMenu>(Search.ByUid( "ShellView.Menu" ) );
-
     }
 }

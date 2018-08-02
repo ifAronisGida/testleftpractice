@@ -30,8 +30,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// </value>
         public string Id
         {
-            get { return IdTextEdit.Text; }
-            set { IdTextEdit.Text = value; }
+            get => IdTextEdit.Text;
+            set => IdTextEdit.Text = value;
         }
 
         /// <summary>
@@ -42,8 +42,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// </value>
         public string Name
         {
-            get { return NameTextEdit.Text; }
-            set { NameTextEdit.Text = value; }
+            get => NameTextEdit.Text;
+            set => NameTextEdit.Text = value;
         }
 
         /// <summary>
@@ -54,8 +54,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// </value>
         public string Abbreviation
         {
-            get { return AbbreviationTextEdit.Text; }
-            set { AbbreviationTextEdit.Text = value; }
+            get => AbbreviationTextEdit.Text;
+            set => AbbreviationTextEdit.Text = value;
         }
 
         /// <summary>
@@ -66,8 +66,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// </value>
         public string EModulus
         {
-            get { return EModulusTextEdit.Text; }
-            set { EModulusTextEdit.Text = value; }
+            get => EModulusTextEdit.Text;
+            set => EModulusTextEdit.Text = value;
         }
 
         /// <summary>
@@ -78,8 +78,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// </value>
         public string SpecificWeight
         {
-            get { return SpecificWeightTextEdit.Text; }
-            set { SpecificWeightTextEdit.Text = value; }
+            get => SpecificWeightTextEdit.Text;
+            set => SpecificWeightTextEdit.Text = value;
         }
 
         /// <summary>
@@ -90,8 +90,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// </value>
         public string TensileStrengthMin
         {
-            get { return TensileStrengthMinTextEdit.Text; }
-            set { TensileStrengthMinTextEdit.Text = value; }
+            get => TensileStrengthMinTextEdit.Text;
+            set => TensileStrengthMinTextEdit.Text = value;
         }
 
         /// <summary>
@@ -102,8 +102,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// </value>
         public string TensileStrength
         {
-            get { return TensileStrengthTextEdit.Text; }
-            set { TensileStrengthTextEdit.Text = value; }
+            get => TensileStrengthTextEdit.Text;
+            set => TensileStrengthTextEdit.Text = value;
         }
 
         /// <summary>
@@ -114,8 +114,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// </value>
         public string TensileStrengthMax
         {
-            get { return TensileStrengthMaxTextEdit.Text; }
-            set { TensileStrengthMaxTextEdit.Text = value; }
+            get => TensileStrengthMaxTextEdit.Text;
+            set => TensileStrengthMaxTextEdit.Text = value;
         }
     }
 }

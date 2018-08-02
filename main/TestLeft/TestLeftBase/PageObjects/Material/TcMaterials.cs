@@ -16,9 +16,19 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
     public class TcMaterials : RepeaterObject, IChildOf<TcMainTabControl>
     {
-        private TcMaterialToolbar mToolbar;
-        private TcResultColumn mResultColumn;
-        private TcMaterialDetail mDetail;
+        private readonly Lazy<TcMaterialToolbar> mToolbar;
+        private readonly Lazy<TcResultColumn> mResultColumn;
+        private readonly Lazy<TcMaterialDetail> mDetail;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TcMaterials"/> class.
+        /// </summary>
+        public TcMaterials()
+        {
+            mToolbar = new Lazy<TcMaterialToolbar>( On<TcMaterialToolbar> );
+            mResultColumn = new Lazy<TcResultColumn>( On<TcResultColumn> );
+            mDetail = new Lazy<TcMaterialDetail>( On<TcMaterialDetail> );
+        }
 
         /// <summary>
         /// Gets the detail overlay.
@@ -34,18 +44,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The toolbar.
         /// </value>
-        public TcMaterialToolbar Toolbar
-        {
-            get
-            {
-                if( mToolbar == null )
-                {
-                    mToolbar = On<TcMaterialToolbar>();
-                }
-
-                return mToolbar;
-            }
-        }
+        public TcMaterialToolbar Toolbar => mToolbar.Value;
 
         /// <summary>
         /// Gets the result column.
@@ -53,18 +52,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The result column.
         /// </value>
-        public TcResultColumn ResultColumn
-        {
-            get
-            {
-                if( mResultColumn == null )
-                {
-                    mResultColumn = On<TcResultColumn>();
-                }
-
-                return mResultColumn;
-            }
-        }
+        public TcResultColumn ResultColumn => mResultColumn.Value;
 
         /// <summary>
         /// Gets the detail area.
@@ -72,18 +60,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The detail.
         /// </value>
-        public TcMaterialDetail Detail
-        {
-            get
-            {
-                if( mDetail == null )
-                {
-                    mDetail = On<TcMaterialDetail>();
-                }
-
-                return mDetail;
-            }
-        }
+        public TcMaterialDetail Detail => mDetail.Value;
 
         /// <summary>
         /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.

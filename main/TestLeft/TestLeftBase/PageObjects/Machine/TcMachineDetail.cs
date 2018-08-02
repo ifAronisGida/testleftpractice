@@ -16,23 +16,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
 
         private TcLookUpEdit CutMachineTypeLookUpEdit => Find<TcLookUpEdit>( Search.ByUid( "Machine.Detail.Base.TemplateSelection" ) );
         private TcLookUpEdit BendMachineTypeLookUpEdit => Find<TcLookUpEdit>( Search.ByUid( "Machine.Detail.Base.BendTemplateSelection" ) );
-        /*
-        IDriver driver = new LocalDriver();
-
-        ITextEdit tcLookUpEdit = driver.Find<IProcess>(new ProcessPattern()
-        {
-            ProcessName = "Trumpf.TruTops.Control.Shell"
-        }).Find<IControl>(new WPFPattern()
-        {
-            ClrFullClassName = "Trumpf.TruTops.Control.Shell.Views.TcShellView"
-        }, 2).Find<IControl>(new WPFPattern()
-        {
-            WPFControlName = "MainTabControl"
-        }, 12).Find<ITextEdit>(new WPFPattern()
-        {
-            WPFControlName = "BendMachineTemplateTableLookupEdit"
-        }, 21);
-        */
         private TcTextEdit NameTextEdit => Find<TcTextEdit>( Search.ByUid( "Machine.Detail.Base.Name" ) );
         private TcTextEdit MachineNumberTextEdit => Find<TcTextEdit>( Search.ByUid( "Machine.Detail.Base.MachineEquipmentNr" ) );
         private TcComboBox LaserPowerComboBox => Find<TcComboBox>( Search.ByUid( "Machine.Detail.Base.LaserPowers" ) );
@@ -47,15 +30,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </value>
         public string CutMachineType
         {
-            set
-            {
-                CutMachineTypeLookUpEdit.Text = value;
-            }
+            set => CutMachineTypeLookUpEdit.Text = value;
 
-            get
-            {
-                return CutMachineTypeLookUpEdit.Text;
-            }
+            get => CutMachineTypeLookUpEdit.Text;
         }
 
         /// <summary>
@@ -66,15 +43,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </value>
         public string BendMachineType
         {
-            set
-            {
-                BendMachineTypeLookUpEdit.Text = value;
-            }
+            set => BendMachineTypeLookUpEdit.Text = value;
 
-            get
-            {
-                return BendMachineTypeLookUpEdit.Text;
-            }
+            get => BendMachineTypeLookUpEdit.Text;
         }
 
         /// <summary>
@@ -85,15 +56,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </value>
         public string Name
         {
-            set
-            {
-                NameTextEdit.Text = value;
-            }
+            set => NameTextEdit.Text = value;
 
-            get
-            {
-                return NameTextEdit.Text;
-            }
+            get => NameTextEdit.Text;
         }
 
         /// <summary>
@@ -104,15 +69,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </value>
         public string MachineNumber
         {
-            set
-            {
-                MachineNumberTextEdit.Text = value;
-            }
+            set => MachineNumberTextEdit.Text = value;
 
-            get
-            {
-                return MachineNumberTextEdit.Text;
-            }
+            get => MachineNumberTextEdit.Text;
         }
 
         /// <summary>
@@ -123,10 +82,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </value>
         public int LaserPowerIndex
         {
-            set
-            {
-                LaserPowerComboBox.ClickItem( value );
-            }
+            set => LaserPowerComboBox.ClickItem( value );
         }
 
         /// <summary>
@@ -137,10 +93,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </value>
         public string LaserPowerValue
         {
-            set
-            {
-                LaserPowerComboBox.ClickItem( value );
-            }
+            set => LaserPowerComboBox.ClickItem( value );
         }
 
         /// <summary>
@@ -149,13 +102,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <value>
         /// The laser power.
         /// </value>
-        public string LaserPower
-        {
-            get
-            {
-                return LaserPowerComboBox.GetText();
-            }
-        }
+        public string LaserPower => LaserPowerComboBox.GetText();
 
         /// <summary>
         /// Gets or sets the transfer directory.
@@ -165,15 +112,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </value>
         public string TransferDirectory
         {
-            set
-            {
-                TransferDirectoryTextEdit.Text = value;
-            }
+            set => TransferDirectoryTextEdit.Text = value;
 
-            get
-            {
-                return TransferDirectoryTextEdit.Text;
-            }
+            get => TransferDirectoryTextEdit.Text;
         }
 
         /// <summary>
@@ -184,15 +125,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </value>
         public bool CreateSubDirectory
         {
-            set
-            {
-                CreateSubDirectoryCheckBox.Checked = value;
-            }
+            set => CreateSubDirectoryCheckBox.Checked = value;
 
-            get
-            {
-                return CreateSubDirectoryCheckBox.Checked;
-            }
+            get => CreateSubDirectoryCheckBox.Checked;
         }
     }
 }

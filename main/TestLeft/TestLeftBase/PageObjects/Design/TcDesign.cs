@@ -77,7 +77,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Design
         }
 
         /// <summary>
-        /// Closes the Flux application.
+        /// Closes the Design application.
         /// </summary>
         public void CloseApp()
         {

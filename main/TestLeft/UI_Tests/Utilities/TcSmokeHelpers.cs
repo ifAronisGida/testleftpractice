@@ -10,7 +10,6 @@ using TestLeft.TestLeftBase.PageObjects.PartOrder;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 
-
 namespace TestLeft.UI_Tests.Utilities
 {
     /// <summary>

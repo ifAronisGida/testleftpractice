@@ -29,12 +29,12 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </summary>
         public TcParts()
         {
-            mToolbar = new Lazy<TcPartToolbar>( () => On<TcPartToolbar>() );
-            mResultColumn = new Lazy<TcResultColumn>( () => On<TcResultColumn>() );
-            mSingleDetail = new Lazy<TcPartSingleDetail>( () => On<TcPartSingleDetail>() );
-            mSingleDetailDesign = new Lazy<TcPartSingleDetailDesign>( () => On<TcPartSingleDetailDesign>() );
-            mSingleDetailBendSolutions = new Lazy<TcPartSingleDetailBendSolutions>( () => On<TcPartSingleDetailBendSolutions>() );
-            mSingleDetailCutSolutions = new Lazy<TcPartSingleDetailCutSolutions>( () => On<TcPartSingleDetailCutSolutions>() );
+            mToolbar = new Lazy<TcPartToolbar>( On<TcPartToolbar> );
+            mResultColumn = new Lazy<TcResultColumn>( On<TcResultColumn> );
+            mSingleDetail = new Lazy<TcPartSingleDetail>( On<TcPartSingleDetail> );
+            mSingleDetailDesign = new Lazy<TcPartSingleDetailDesign>( On<TcPartSingleDetailDesign> );
+            mSingleDetailBendSolutions = new Lazy<TcPartSingleDetailBendSolutions>( On<TcPartSingleDetailBendSolutions> );
+            mSingleDetailCutSolutions = new Lazy<TcPartSingleDetailCutSolutions>( On<TcPartSingleDetailCutSolutions> );
         }
 
         /// <summary>
