@@ -1,18 +1,54 @@
-﻿using Trumpf.PageObjects;
+﻿using System;
+using SmartBear.TestLeft.TestObjects.WPF;
+using SmartBear.TestLeft.TestObjects.WPF.DevExpress;
+using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.ControlObjects.Grid;
+using Trumpf.PageObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Part;
+using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.Customer
 {
     /// <summary>
     /// Customers can be administrated here.
     /// </summary>
-    /// <seealso cref="RepeaterObject" />
+    /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    public class TcCustomers : RepeaterObject, IChildOf<TcHomeZoneApp>
+    public class TcCustomers : PageObject, IChildOf<TcHomeZoneApp>
     {
+        protected override Search SearchPattern => Search.ByUid( "Customer" );
+
+        internal readonly Lazy<TcTableView<TcCustomerRow>> mTableView;
+
         private TcParts mParts;
-        private TcCustomersView mView;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TcCustomers"/> class.
+        /// </summary>
+        public TcCustomers()
+        {
+            mTableView = new Lazy<TcTableView<TcCustomerRow>>( () => CustomerGrid.GetTableView( underlyingRow => new TcCustomerRow( underlyingRow ) ) );
+        }
+
+        private IDevExpressWPFGridControl HierarchyPanel => Node.Find<IDevExpressWPFGridControl>( new WPFPattern()
+        {
+            ClrFullClassName = "DevExpress.Xpf.Grid.Hierarchy.HierarchyPanel"
+        } );
+
+        private TcTruIconButton NewCustomerButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Add" ) );
+        private TcTruIconButton DeleteCustomerButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Delete" ) );
+        private TcGridControl CustomerGrid => Find<TcGridControl>( Search.ByUid( "Customer.List" ) );
+        private TcTruIconButton ApplyButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Dialog.Apply" ) );
+        private TcTruIconButton CancelButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Dialog.Cancel" ) );
+        private TcTruIconButton OkButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Dialog.Ok" ) );
+        private TcTextEdit CityTextEdit => Find<TcTextEdit>( Search.ByUid( "Customer.Detail.City" ) );
+        private TcTextEdit CommentTextEdit => Find<TcTextEdit>( Search.ByUid( "Customer.Detail.Comment" ) );
+        private TcTextEdit CountryTextEdit => Find<TcTextEdit>( Search.ByUid( "Customer.Detail.Country" ) );
+        private TcTextEdit IdTextEdit => Find<TcTextEdit>( Search.ByUid( "Customer.Detail.No" ) );
+        private TcTextEdit NameTextEdit => Find<TcTextEdit>( Search.ByUid( "Customer.Detail.Name" ) );
+        private TcTextEdit PostalCodeTextEdit => Find<TcTextEdit>( Search.ByUid( "Customer.Detail.PostalCode" ) );
+        private TcTextEdit StreetTextEdit => Find<TcTextEdit>( Search.ByUid( "Customer.Detail.Street" ) );
 
         /// <summary>
         /// The customer administration dialog is not direct accessible, only via button click in several detail views.
@@ -22,11 +58,14 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public override void Goto()
         {
+            if( VisibleOnScreen )
+            {
+                return;
+            }
+
             mParts = Goto<TcParts>();
             mParts.NewPart();
             mParts.SingleDetail.CustomerOpenAdministrationButton.Click();
-            mView = On<TcCustomersView>();
-            mView.VisibleOnScreen.WaitFor();
         }
 
         /// <summary>
@@ -37,8 +76,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string Name
         {
-            get => mView.NameTextEdit.Text;
-            set => mView.NameTextEdit.Text = value;
+            get => NameTextEdit.Text;
+            set => NameTextEdit.Text = value;
         }
 
         /// <summary>
@@ -49,8 +88,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string ID
         {
-            get => mView.IdTextEdit.Text;
-            set => mView.IdTextEdit.Text = value;
+            get => IdTextEdit.Text;
+            set => IdTextEdit.Text = value;
         }
 
         /// <summary>
@@ -61,8 +100,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string Address
         {
-            get => mView.StreetTextEdit.Text;
-            set => mView.StreetTextEdit.Text = value;
+            get => StreetTextEdit.Text;
+            set => StreetTextEdit.Text = value;
         }
 
         /// <summary>
@@ -73,8 +112,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string PostalCode
         {
-            get => mView.PostalCodeTextEdit.Text;
-            set => mView.PostalCodeTextEdit.Text = value;
+            get => PostalCodeTextEdit.Text;
+            set => PostalCodeTextEdit.Text = value;
         }
 
         /// <summary>
@@ -85,8 +124,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string City
         {
-            get => mView.CityTextEdit.Text;
-            set => mView.CityTextEdit.Text = value;
+            get => CityTextEdit.Text;
+            set => CityTextEdit.Text = value;
         }
 
         /// <summary>
@@ -97,8 +136,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string Country
         {
-            get => mView.CountryTextEdit.Text;
-            set => mView.CountryTextEdit.Text = value;
+            get => CountryTextEdit.Text;
+            set => CountryTextEdit.Text = value;
         }
 
         /// <summary>
@@ -109,8 +148,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </value>
         public string Comment
         {
-            get => mView.CommentTextEdit.Text;
-            set => mView.CommentTextEdit.Text = value;
+            get => CommentTextEdit.Text;
+            set => CommentTextEdit.Text = value;
         }
 
         /// <summary>
@@ -125,10 +164,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// <param name="comment">The comment.</param>
         public void NewCustomer( string name, string id, string address, string postalCode, string city, string country, string comment )
         {
-            if( mView == null )
-            {
-                Goto();
-            }
+            Goto();
 
             if( !string.IsNullOrEmpty( Name ) )
             {
@@ -152,7 +188,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public void NewCustomerClick()
         {
-            mView.NewCustomerButton.Click();
+            NewCustomerButton.Click();
         }
 
         /// <summary>
@@ -160,7 +196,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public void DeleteCustomerClick()
         {
-            mView.DeleteCustomerButton.Click();
+            DeleteCustomerButton.Click();
         }
 
         /// <summary>
@@ -168,7 +204,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public void ApplyClick()
         {
-            mView.ApplyButton.Click();
+            ApplyButton.Click();
         }
 
         /// <summary>
@@ -176,7 +212,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public void CancelClick()
         {
-            mView.CancelButton.Click();
+            CancelButton.Click();
             CleanUp();
         }
 
@@ -185,7 +221,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public void SelectClick()
         {
-            mView.OkButton.Click();
+            OkButton.Click();
             CleanUp();
         }
 
@@ -195,7 +231,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// <returns>The amount of customers.</returns>
         public int Count()
         {
-            return mView.HierarchyPanel.Children.Count;
+            return HierarchyPanel.Children.Count;
         }
 
         /// <summary>
@@ -204,7 +240,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// <returns>The amount of currently selected customers.</returns>
         public int SelectedCustomersCount()
         {
-            return mView.CustomerGrid.Node.GetProperty<int>( "SelectedItems.Count" );
+            return CustomerGrid.Node.GetProperty<int>( "SelectedItems.Count" );
         }
 
         /// <summary>
@@ -215,15 +251,15 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         {
             int count = Count();
 
-            mView.CustomerGrid.Node.CallMethod( "UnselectAll" );
+            CustomerGrid.Node.CallMethod( "UnselectAll" );
 
             for( int row = 0; row < count; row++ )
             {
-                var rowControl = mView.HierarchyPanel.Children[ row ];
+                var rowControl = HierarchyPanel.Children[ row ];
                 var text = rowControl.Children[ 0 ].Children[ 5 ].Children[ 0 ].GetProperty<string>( "DisplayText" );
                 if( text == name )
                 {
-                    mView.CustomerGrid.Node.CallMethod( "SelectItem", rowControl.GetProperty<int>( "WPFControlIndex" ) - 1 );
+                    CustomerGrid.Node.CallMethod( "SelectItem", rowControl.GetProperty<int>( "WPFControlIndex" ) - 1 );
 
                     break;
                 }
@@ -238,15 +274,15 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         {
             int count = Count();
 
-            mView.CustomerGrid.Node.CallMethod( "UnselectAll" );
+            CustomerGrid.Node.CallMethod( "UnselectAll" );
 
             for( int row = 0; row < count; row++ )
             {
-                var rowControl = mView.HierarchyPanel.Children[ row ];
+                var rowControl = HierarchyPanel.Children[ row ];
                 var text = rowControl.Children[ 0 ].Children[ 5 ].Children[ 0 ].GetProperty<string>( "DisplayText" );
                 if( text.Contains( substring ) )
                 {
-                    mView.CustomerGrid.Node.CallMethod( "SelectItem", rowControl.GetProperty<int>( "WPFControlIndex" ) - 1 );
+                    CustomerGrid.Node.CallMethod( "SelectItem", rowControl.GetProperty<int>( "WPFControlIndex" ) - 1 );
                 }
             }
         }

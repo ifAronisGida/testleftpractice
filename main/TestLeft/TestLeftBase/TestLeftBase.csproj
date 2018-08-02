@@ -83,7 +83,6 @@
     <Compile Include="PageObjects\Common\TcResultColumn.cs" />
     <Compile Include="PageObjects\Customer\TcCustomerRow.cs" />
     <Compile Include="PageObjects\Customer\TcCustomers.cs" />
-    <Compile Include="PageObjects\Customer\TcCustomersView.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobContainedOrders.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobDetail.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobOrderRow.cs" />
