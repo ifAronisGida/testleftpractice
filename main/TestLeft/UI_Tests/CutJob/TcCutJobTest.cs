@@ -91,5 +91,35 @@ namespace TestLeft.UI_Tests.CutJob
                 Assert.IsTrue( HomeZoneApp.On<TcParts>().Visible );
             } );
         }
+
+        [TestMethod, UniqueName( "6E535F11-9B88-4F75-8240-B70C97EC8471" )]
+        public void RawSheetsTest()
+        {
+            var HZ = HomeZoneApp;
+
+            Act( () =>
+            {
+                HZ.Goto<TcCutJobs>()
+                    .NewCutJob();
+
+                HZ.On<TcCutJobDetail>().SelectRawMaterial( "AL0M0050---" );
+
+                Thread.Sleep( 2000 );
+
+                var solution = HZ.On<TcCutJobSolution>();
+                Assert.AreEqual( 1, solution.RawSheets.Count );
+                Assert.IsNotNull( solution.RawSheets.FindRawSheet( row => row.RawSheet.Text == "AL0M0050----2000x1000" ) );
+                Assert.IsNull( solution.RawSheets.FindRawSheet( row => false ) );
+
+                var newRawSheet = solution.AddRawSheet();
+                newRawSheet.Quantity.Value = 3;
+
+                Thread.Sleep( 2000 );
+
+                newRawSheet.Delete();
+
+                HZ.On<TcCutJobs>().SaveCutJob();
+            } );
+        }
     }
 }

@@ -19,37 +19,22 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 
         #region Private controls
         private TcTruIconButton ReleaseButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.Release" ) );
-
         private TcTruIconButton OpenButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.Open" ) );
-
         private TcTruIconButton DeleteButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.Delete" ) );
-
         private TcComboBox MachineCombo => Find<TcComboBox>( Search.ByUid( "CutJob.Detail.JobSolution.Machine" ) );
-
         private TcLookUpEdit TechnoProfile => Find<TcLookUpEdit>( Search.ByUid( "CutJob.Detail.JobSolution.TechnologyProfile" ) );
-
-        private TcTruIconButton RemovePresetRawSheetButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.RemovePresetRawSheet" ) );
-
         private TcTruIconButton AddPresetRawSheetButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.AddPresetRawSheet" ) );
-
         private TcLookUpEdit NestingModeEdit => Find<TcLookUpEdit>( Search.ByUid( "CutJob.Detail.JobSolution.NestingMode" ) );
-
         private TcLookUpEdit LaserTechnologyTableEdit => Find<TcLookUpEdit>( Search.ByUid( "CutJob.Detail.JobSolution.LaserTechnologyTable" ) );
-
         private TcLookUpEdit LaserProcessRule => Find<TcLookUpEdit>( Search.ByUid( "CutJob.Detail.JobSolution.LaserProcessRule" ) );
-
         private TcTextEdit NoteTextEdit => Find<TcTextEdit>( Search.ByUid( "CutJob.Detail.JobSolution.Comment" ) );
-
         private TcTruIconButton OpenSetupPlanButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.OpenSetupPlan" ) );
-
         private TcTruIconButton OpenReleaseFolderButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.OpenReleaseFolder" ) );
-
         private TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
-
         private TcTruIconButton BoostButton => Find<TcTruIconButton>( Search.ByUid( "Part.Detail.JobSolution.ButtonBar.Calculate" ) );
-
-        private TcComboBox RawSheetComboBox => Find<TcComboBox>( Search.ByControlName( "rawsheetComboBox" ) );
         #endregion
+
+        public TcRawSheetList RawSheets => Find<TcRawSheetList>();
 
         public string Note
         {
@@ -57,7 +42,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             set { NoteTextEdit.Text = value; }
         }
 
-        public void Delete()
+        public void DeleteProgram()
         {
             if( DeleteButton.Enabled )
             {
@@ -124,6 +109,13 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         public void ClearTechnologyProfile()
         {
             TechnoProfile.Clear();
+        }
+
+        public TcRawSheet AddRawSheet()
+        {
+            AddPresetRawSheetButton.Click();
+
+            return RawSheets.GetRawSheet( RawSheets.Count - 1 );
         }
 
         public bool WaitForDetailOverlayAppear( TimeSpan timeout )

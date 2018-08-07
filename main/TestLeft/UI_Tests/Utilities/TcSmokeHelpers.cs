@@ -367,7 +367,7 @@ namespace TestLeft.UI_Tests.Utilities
             cutJobs.CutJobSolution.Note = "Kommentar";
             cutJobs.CutJobSolution.SelectMachine( 1 );
             //cutJobs.CutJobSolution.SelectRawSheet( 1 );
-            cutJobs.CutJobSolution.Delete();
+            cutJobs.CutJobSolution.DeleteProgram();
             cutJobs.CutJobSolution.Boost();
 
             //TODO

@@ -78,6 +78,7 @@
     <Compile Include="ControlObjects\TcDomainSelector.cs" />
     <Compile Include="ControlObjects\TcLookUpEdit.cs" />
     <Compile Include="ControlObjects\TcReadOnlyText.cs" />
+    <Compile Include="ControlObjects\TcSpinEdit.cs" />
     <Compile Include="ControlObjects\TcTruIconButton.cs" />
     <Compile Include="ControlObjects\TcTextEdit.cs" />
     <Compile Include="PageObjects\Common\TcResultColumn.cs" />
@@ -89,6 +90,8 @@
     <Compile Include="PageObjects\CutJob\TcCutJobs.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobSolution.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobToolbar.cs" />
+    <Compile Include="PageObjects\CutJob\TcRawSheet.cs" />
+    <Compile Include="PageObjects\CutJob\TcRawSheetList.cs" />
     <Compile Include="PageObjects\Cut\TcCut.cs" />
     <Compile Include="PageObjects\Cut\TcCutApp.cs" />
     <Compile Include="PageObjects\Design\TcDesign.cs" />
