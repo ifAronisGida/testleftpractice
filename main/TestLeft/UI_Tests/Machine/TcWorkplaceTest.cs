@@ -22,22 +22,31 @@ namespace TestLeft.UI_Tests.Machine
         {
             Act( () =>
                 {
-                    var machines = HomeZoneApp.On<TcMachines>();
+                    var testMachineName = TcSettings.NamePrefix + Guid.NewGuid();
+                    var machines = HomeZoneApp.Goto<TcMachines>();
 
-                    machines.Goto();
+                    var machineCount = machines.ResultColumn.Count;
 
-                    machines.NewCutMachine( "TruLaser 3030 (L20)", TcSettings.NamePrefix + Guid.NewGuid(), "6000" );
+                    machines.NewCutMachine( "TruLaser 3030 (L20)", testMachineName, "6000" );
 
                     Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
                     machines.SaveMachine();
                     Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
+                    Assert.AreEqual( machineCount + 1, machines.ResultColumn.Count );
 
-                    machines.WaitForDetailOverlayAppear( TcSettings.MachineSaveOverlayAppearTimeout );
-                    machines.WaitForDetailOverlayDisappear( TcSettings.MachineSaveOverlayDisappearTimeout );
+                    machines.WaitForDetailOverlayAppear( TcSettings.MachineOverlayAppearTimeout );
+                    machines.WaitForDetailOverlayDisappear( TcSettings.MachineOverlayDisappearTimeout );
+
+                    machines.ResultColumn.SelectItem( testMachineName );
 
                     Assert.IsTrue( machines.Toolbar.DeleteButton.Enabled );
                     machines.DeleteMachine();
+
+                    machines.WaitForDetailOverlayAppear( TcSettings.MachineOverlayAppearTimeout );
+                    machines.WaitForDetailOverlayDisappear( TcSettings.MachineOverlayDisappearTimeout );
+
                     Assert.IsFalse( machines.Toolbar.DeleteButton.Enabled );
+                    Assert.AreEqual( machineCount, machines.ResultColumn.Count );
                 } );
         }
 
@@ -49,24 +58,30 @@ namespace TestLeft.UI_Tests.Machine
         {
             Act( () =>
                 {
+                    var testMachineName = TcSettings.NamePrefix + Guid.NewGuid();
                     var machines = HomeZoneApp.Goto<TcMachines>();
 
                     machines.VisibleOnScreen.WaitFor();
-                    
-                    machines.NewBendMachine( "TruBend 5320 (6-axes) B23", TcSettings.NamePrefix + Guid.NewGuid() );
+                    var machineCount = machines.ResultColumn.Count;
+
+                    machines.NewBendMachine( "TruBend 5320 (6-axes) B23", testMachineName );
                     machines.Detail.TransferDirectory = @"\\LAPxxxxxx\mmc\Arbeitsplatz 1";
                     machines.Detail.CreateSubDirectory = true;
 
                     Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
                     machines.SaveMachine();
                     Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
+                    Assert.AreEqual( machineCount + 1, machines.ResultColumn.Count );
 
-                    machines.WaitForDetailOverlayAppear( TcSettings.MachineSaveOverlayAppearTimeout );
-                    machines.WaitForDetailOverlayDisappear( TcSettings.MachineSaveOverlayDisappearTimeout );
+                    machines.WaitForDetailOverlayAppear( TcSettings.MachineOverlayAppearTimeout );
+                    machines.WaitForDetailOverlayDisappear( TcSettings.MachineOverlayDisappearTimeout );
+
+                    machines.ResultColumn.SelectItem( testMachineName );
 
                     Assert.IsTrue( machines.Toolbar.DeleteButton.Enabled );
                     machines.DeleteMachine();
                     Assert.IsFalse( machines.Toolbar.DeleteButton.Enabled );
+                    Assert.AreEqual( machineCount, machines.ResultColumn.Count );
                 } );
         }
     }

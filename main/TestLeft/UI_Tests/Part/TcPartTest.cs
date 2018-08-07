@@ -176,8 +176,7 @@ namespace TestLeft.UI_Tests.Part
 
         private void DeleteTestCustomer()
         {
-            var customers = HomeZoneApp.On<TcCustomers>();
-            customers.Goto();
+            var customers = HomeZoneApp.Goto<TcCustomers>();
 
             customers.DeleteCustomersWithNameContaining( mTestCustomerName );
 

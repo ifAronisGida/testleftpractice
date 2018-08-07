@@ -1,6 +1,5 @@
 ﻿using System;
 using DevExpress.Xpf.Grid;
-using SmartBear.TestLeft.TestObjects;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
 using Trumpf.PageObjects.WPF;
 
@@ -14,7 +13,7 @@ namespace TestLeft.TestLeftBase.ControlObjects
     {
         protected override Search SearchPattern => Search.Any;
 
-        public int RowCount => Node.Cast<IGridView>().wRowCount;
+        public int RowCount => Node.GetProperty<int>( "ItemsSource.Count" );
 
         public TcTableView<TRow> GetTableView<TRow>(Func<TcTableRow, TRow> rowFactory)
         {

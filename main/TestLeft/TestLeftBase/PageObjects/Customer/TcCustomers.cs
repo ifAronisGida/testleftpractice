@@ -1,8 +1,7 @@
-﻿using System;
+﻿using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using SmartBear.TestLeft.TestObjects.WPF.DevExpress;
 using TestLeft.TestLeftBase.ControlObjects;
-using TestLeft.TestLeftBase.ControlObjects.Grid;
 using Trumpf.PageObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Part;
@@ -19,17 +18,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
     {
         protected override Search SearchPattern => Search.ByUid( "Customer" );
 
-        internal readonly Lazy<TcTableView<TcCustomerRow>> mTableView;
-
         private TcParts mParts;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TcCustomers"/> class.
-        /// </summary>
-        public TcCustomers()
-        {
-            mTableView = new Lazy<TcTableView<TcCustomerRow>>( () => CustomerGrid.GetTableView( underlyingRow => new TcCustomerRow( underlyingRow ) ) );
-        }
 
         private IDevExpressWPFGridControl HierarchyPanel => Node.Find<IDevExpressWPFGridControl>( new WPFPattern()
         {
@@ -231,7 +220,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// <returns>The amount of customers.</returns>
         public int Count()
         {
-            return HierarchyPanel.Children.Count;
+            return CustomerGrid.RowCount;
         }
 
         /// <summary>
@@ -272,14 +261,27 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// <param name="substring">The substring to search for.</param>
         public void SelectOnlyCustomersWithNameContaining( string substring )
         {
-            int count = Count();
+            var count = Count();
 
             CustomerGrid.Node.CallMethod( "UnselectAll" );
 
-            for( int row = 0; row < count; row++ )
+            for( int row = 1; row <= count; row++ )
             {
-                var rowControl = HierarchyPanel.Children[ row ];
-                var text = rowControl.Children[ 0 ].Children[ 5 ].Children[ 0 ].GetProperty<string>( "DisplayText" );
+                var rowControl = HierarchyPanel.Find<IControl>( new WPFPattern()
+                {
+                    ClrFullClassName = "DevExpress.Xpf.Grid.RowControl",
+                    WPFControlOrdinalNo = row
+                } );
+
+                var text = rowControl.Find<IControl>( new WPFPattern()
+                {
+                    ClrFullClassName = "DevExpress.Xpf.Grid.LightweightCellEditor",
+                    WPFControlOrdinalNo = 1
+                }, 2 ).Find<IControl>( new WPFPattern()
+                {
+                    ClrFullClassName = "DevExpress.Xpf.Editors.InplaceBaseEdit"
+                } ).GetProperty<string>( "DisplayText" );
+
                 if( text.Contains( substring ) )
                 {
                     CustomerGrid.Node.CallMethod( "SelectItem", rowControl.GetProperty<int>( "WPFControlIndex" ) - 1 );

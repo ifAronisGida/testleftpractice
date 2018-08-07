@@ -1,10 +1,12 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.TestLeftBase.PageObjects.Flux;
+using TestLeft.TestLeftBase.PageObjects.Machine;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
+using Trumpf.AutoTest.Utilities;
 
 namespace TestLeft.UI_Tests.Flux
 {
@@ -15,6 +17,15 @@ namespace TestLeft.UI_Tests.Flux
     [TestClass]
     public class TcFluxTest : TcBaseTestClass
     {
+        private string mTestMachineName;
+
+        /// <summary>
+        /// Gets the extended test environment.
+        /// Creates / deletes the test machine used by the test methods
+        /// </summary>
+        public override IDoSequence TestEnvironment => base.TestEnvironment
+            .Do( CreateTestMachine, DeleteTestMachine, "TestMachine" );
+
         /// <summary>
         /// Creates a new part with bend solution, opens it and closes Flux.
         /// </summary>
@@ -48,6 +59,36 @@ namespace TestLeft.UI_Tests.Flux
 
                 Assert.IsTrue( visible );
             } );
+        }
+
+        private void CreateTestMachine()
+        {
+            mTestMachineName = TcSettings.NamePrefix + Guid.NewGuid();
+
+            var machines = HomeZoneApp.Goto<TcMachines>();
+
+            machines.VisibleOnScreen.WaitFor();
+
+            machines.NewBendMachine( "TruBend 5320 (6-axes) B23", mTestMachineName );
+
+            Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
+            machines.SaveMachine();
+            Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
+
+            machines.WaitForDetailOverlayAppear( TcSettings.MachineOverlayAppearTimeout );
+            machines.WaitForDetailOverlayDisappear( TcSettings.MachineOverlayDisappearTimeout );
+        }
+
+        private void DeleteTestMachine()
+        {
+            var machines = HomeZoneApp.Goto<TcMachines>();
+
+            machines.VisibleOnScreen.WaitFor();
+            machines.ResultColumn.SelectItem( mTestMachineName );
+
+            Assert.IsTrue( machines.Toolbar.DeleteButton.Enabled );
+            machines.DeleteMachine();
+            Assert.IsFalse( machines.Toolbar.DeleteButton.Enabled );
         }
     }
 }

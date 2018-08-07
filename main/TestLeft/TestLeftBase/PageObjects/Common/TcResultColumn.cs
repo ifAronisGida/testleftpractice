@@ -33,6 +33,14 @@ namespace TestLeft.TestLeftBase.PageObjects.Common
         }
 
         /// <summary>
+        /// Gets the amount of items in the result list.
+        /// </summary>
+        /// <value>
+        /// The amount of items in the result list.
+        /// </value>
+        public int Count => ResultListView.Node.GetProperty<int>( "Items.Count" );
+
+        /// <summary>
         /// Clears the search text.
         /// </summary>
         public void ClearSearch()
@@ -62,6 +70,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Common
             {
                 SearchText = @"id:" + id;
             }
+
             DoSearch();
             ResultListView.SelectedIndex = 0;
             ClearSearch();

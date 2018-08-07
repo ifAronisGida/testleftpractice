@@ -46,9 +46,12 @@ namespace TestLeft.UI_Tests.Customer
                 customers.CancelClick();
 
                 customers.Goto();
+                Assert.AreEqual(2, customers.Count());
 
                 customers.DeleteCustomersWithNameContaining( TcSettings.NamePrefix );
                 customers.ApplyClick();
+                Assert.AreEqual(0, customers.Count());
+
                 customers.CancelClick();
             } );
         }
