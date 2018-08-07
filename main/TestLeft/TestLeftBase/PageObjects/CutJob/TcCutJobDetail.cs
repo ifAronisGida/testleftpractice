@@ -10,26 +10,21 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
     {
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail" );
 
-        internal TcGroupPanel DetailGroupPanel => Find<TcGroupPanel>( Search.ByUid( "CutJob.Detail.Base" ) );
-
-        internal TcReadOnlyText DateText => Find<TcReadOnlyText>( Search.ByUid( "CutJob.Detail.Base.FinishDate" ) );
-        
-        internal TcTextEdit IdTextEdit => Find<TcTextEdit>( Search.ByUid( "CutJob.Detail.Base.Name" ) );
-
-        internal TcComboBox RawMaterialComboBox => Find<TcComboBox>( Search.ByUid( "CutJob.Detail.Base.RawMaterial.ComboBoxEdit" ) );
-
-        internal TcTruIconButton OpenRawMaterialSelectionDlg => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.Base.RawMaterial.OpenSelectionDialog" ) );
+        private TcReadOnlyText DateText => Find<TcReadOnlyText>( Search.ByUid( "CutJob.Detail.Base.FinishDate" ) );
+        private TcTextEdit IdTextEdit => Find<TcTextEdit>( Search.ByUid( "CutJob.Detail.Base.Name" ) );
+        private TcComboBox RawMaterialComboBox => Find<TcComboBox>( Search.ByUid( "CutJob.Detail.Base.RawMaterial.ComboBoxEdit" ) );
+        private TcTruIconButton OpenRawMaterialSelectionDlg => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.Base.RawMaterial.OpenSelectionDialog" ) );
 
         public DateTime? FinishDate
         {
             get
             {
-                if (string.IsNullOrEmpty(DateText.Text))
+                if( string.IsNullOrEmpty( DateText.Text ) )
                 {
                     return null;
                 }
 
-                return DateTime.Parse(DateText.Text);
+                return DateTime.Parse( DateText.Text );
             }
         }
 
@@ -48,7 +43,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 
         public void SelectRawMaterial( string name )
         {
-            RawMaterialComboBox.ClickItem(name);
+            RawMaterialComboBox.ClickItem( name );
         }
 
         public void ClearRawMaterial()

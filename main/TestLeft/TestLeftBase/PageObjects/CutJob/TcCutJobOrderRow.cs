@@ -17,27 +17,16 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             mRow = row;
         }
 
-        public TcButton DrawingButton
-        {
-            get
-            {
-                return mRow.Find<TcButton>( Search.ByUid( "ImageLinkButton" ) );
-            }
-        }
+        public TcButton DrawingButton => mRow.Find<TcButton>( Search.ByUid( "ImageLinkButton" ) );
 
-        public TcLinkButton PartLink
-        {
-            get
-            {
-                return mRow.Find<TcLinkButton>( Search.ByUid( "PartLinkButton" ) );
-            }
-        }
+        public TcLinkButton PartLink => mRow.Find<TcLinkButton>( Search.ByUid( "PartLinkButton" ) );
 
         public int Pending
         {
             get
             {
-                var runElement = mRow.Find<TcReadOnlyText>( Search.ByUid( "Pending" ) )
+                var runElement = mRow
+                    .Find<TcReadOnlyText>( Search.ByUid( "Pending" ) )
                     .Find<TcReadOnlyText>( Search.By<Run>().AndByIndex( 0 ), depth: 1 );
 
                 return int.Parse( runElement.Text );
@@ -48,28 +37,19 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                var runElement = mRow.Find<TcReadOnlyText>( Search.ByUid( "Pending" ) )
+                var runElement = mRow
+                    .Find<TcReadOnlyText>( Search.ByUid( "Pending" ) )
                     .Find<TcReadOnlyText>( Search.By<Run>().AndByIndex( 4 ), depth: 1 );
 
                 return int.Parse( runElement.Text );
             }
         }
 
-        public TcLinkButton OrderLink
-        {
-            get
-            {
-                return mRow.Find<TcLinkButton>( Search.ByUid("PartOrderLinkButton") );
-            }
-        }
+        public TcLinkButton OrderLink => mRow.Find<TcLinkButton>( Search.ByUid( "PartOrderLinkButton" ) );
 
-        public string Customer
-        {
-            get
-            {
-                return mRow.Find<TcReadOnlyText>( Search.ByUid( "CustomerName" ) ).Text;
-            }
-        }
+        public string Customer => mRow
+            .Find<TcReadOnlyText>( Search.ByUid( "CustomerName" ) )
+            .Text;
 
         public DateTime? TargetDate
         {
@@ -86,40 +66,21 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             }
         }
 
-        public string CuttingProgram
-        {
-            get
-            {
-                return mRow.GetColumn( 12 )
-                    .Find<TcReadOnlyText>(Search.By<TextEdit>(), depth: 1 )
+        public string CuttingProgram => mRow.GetColumn( 12 )
+                    .Find<TcReadOnlyText>( Search.By<TextEdit>(), depth: 1 )
                     .Text;
-            }
-        }
 
-        public string AngularPositions
-        {
-            get
-            {
-                // maybe do something about the degree symbol?
-                return mRow.Find<TcReadOnlyText>(Search.ByUid( "PermittedNestingOrientations" ) ).Text;
-            }
-        }
+        // maybe do something about the degree symbol?
+        public string AngularPositions => mRow
+            .Find<TcReadOnlyText>( Search.ByUid( "PermittedNestingOrientations" ) )
+            .Text;
 
-        public string DistanceMode
-        {
-            get
-            {
-                return mRow.Find<TcReadOnlyText>(Search.ByUid( "PartDistanceMode" )).Text;
-            }
-        }
+        public string DistanceMode => mRow
+            .Find<TcReadOnlyText>( Search.ByUid( "PartDistanceMode" ) )
+            .Text;
 
-        public TcCheckBox IgnoreProcessings
-        {
-            get
-            {
-                return mRow.GetColumn(15).Find<TcCheckBox>( depth: 1 );
-            }
-        }
+        public TcCheckBox IgnoreProcessings => mRow.GetColumn( 15 )
+            .Find<TcCheckBox>( depth: 1 );
 
         // TODO: do something about the editability of these cells
         public int NestingPriority
@@ -143,12 +104,8 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             }
         }
 
-        public string Note
-        {
-            get
-            {
-                return mRow.Find<TcReadOnlyText>( Search.ByUid("Comment") ).Text;
-            }
-        }
+        public string Note => mRow
+            .Find<TcReadOnlyText>( Search.ByUid( "Comment" ) )
+            .Text;
     }
 }

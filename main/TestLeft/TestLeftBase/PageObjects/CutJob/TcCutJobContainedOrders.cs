@@ -21,11 +21,11 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.ContainedOrders" );
 
-        internal TcTruIconButton SelectButton => Find<TcTruIconButton>(Search.ByUid("CutJob.Detail.ContainedOrders.Select"));
+        internal TcTruIconButton SelectButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.ContainedOrders.Select" ) );
 
-        internal TcTruIconButton RemoveButton => Find<TcTruIconButton>(Search.ByUid("CutJob.Detail.ContainedOrders.Remove"));
+        internal TcTruIconButton RemoveButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.ContainedOrders.Remove" ) );
 
-        private TcGridControl PartOrdersGrid => Find<TcGridControl>(Search.ByUid("CutJob.Detail.ContainedOrders.PartOrders"));
+        private TcGridControl PartOrdersGrid => Find<TcGridControl>( Search.ByUid( "CutJob.Detail.ContainedOrders.PartOrders" ) );
 
         public void UnSelectAllPartOrders()
         {
@@ -56,9 +56,9 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             }
         }
 
-        public TcCutJobOrderRow GetRow(int index)
+        public TcCutJobOrderRow GetRow( int index )
         {
-            return mTableView.Value.GetRow(index);
+            return mTableView.Value.GetRow( index );
         }
     }
 }
