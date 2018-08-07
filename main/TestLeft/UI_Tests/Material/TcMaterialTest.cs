@@ -22,9 +22,7 @@ namespace TestLeft.UI_Tests.Material
         {
             Act( () =>
                 {
-                    var materials = HomeZoneApp.On<TcMaterials>();
-
-                    materials.Goto();
+                    var materials = HomeZoneApp.Goto<TcMaterials>();
 
                     materials.NewMaterial();
 
@@ -41,8 +39,8 @@ namespace TestLeft.UI_Tests.Material
                     Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
                     materials.SaveMaterial();
 
-                    materials.WaitForDetailOverlayAppear( TcSettings.MaterialSaveOverlayAppearTimeout );
-                    materials.WaitForDetailOverlayDisappear( TcSettings.MaterialSaveOverlayDisappearTimeout );
+                    materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
+                    materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
 
                     Assert.IsFalse( materials.Toolbar.SaveButton.Enabled );
 
@@ -75,8 +73,8 @@ namespace TestLeft.UI_Tests.Material
                 Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
                 materials.SaveMaterial();
 
-                materials.WaitForDetailOverlayAppear( TcSettings.MaterialSaveOverlayAppearTimeout );
-                materials.WaitForDetailOverlayDisappear( TcSettings.MaterialSaveOverlayDisappearTimeout );
+                materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
+                materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
 
                 Assert.IsFalse( materials.Toolbar.SaveButton.Enabled );
 

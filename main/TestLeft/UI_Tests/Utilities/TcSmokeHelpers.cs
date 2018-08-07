@@ -27,6 +27,7 @@ namespace TestLeft.UI_Tests.Utilities
         public void CreateTestMaterials()
         {
             var materials = HomeZoneApp.Goto<TcMaterials>();
+            var materialCount = materials.ResultColumn.Count;
 
             materials.SelectMaterial( "1.0038" );
 
@@ -36,9 +37,11 @@ namespace TestLeft.UI_Tests.Utilities
             materials.Detail.Id = name;
             materials.Detail.Name = name;
 
+            Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
             materials.SaveMaterial();
-            materials.WaitForDetailOverlayAppear( TcSettings.MaterialSaveOverlayAppearTimeout );
-            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialSaveOverlayDisappearTimeout );
+            materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
+            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
+            Assert.IsFalse( materials.Toolbar.SaveButton.Enabled );
 
             materials.SelectMaterial( "Cu" );
 
@@ -48,9 +51,11 @@ namespace TestLeft.UI_Tests.Utilities
             materials.Detail.Id = name;
             materials.Detail.Name = name;
 
+            Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
             materials.SaveMaterial();
-            materials.WaitForDetailOverlayAppear( TcSettings.MaterialSaveOverlayAppearTimeout );
-            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialSaveOverlayDisappearTimeout );
+            materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
+            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
+            Assert.IsFalse( materials.Toolbar.SaveButton.Enabled );
 
             materials.SelectMaterial( "Ti" );
 
@@ -60,9 +65,13 @@ namespace TestLeft.UI_Tests.Utilities
             materials.Detail.Id = name;
             materials.Detail.Name = name;
 
+            Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
             materials.SaveMaterial();
-            materials.WaitForDetailOverlayAppear( TcSettings.MaterialSaveOverlayAppearTimeout );
-            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialSaveOverlayDisappearTimeout );
+            materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
+            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
+            Assert.IsFalse( materials.Toolbar.SaveButton.Enabled );
+
+            Assert.AreEqual( materialCount + 3, materials.ResultColumn.Count );
         }
 
         /// <summary>
@@ -72,16 +81,20 @@ namespace TestLeft.UI_Tests.Utilities
         public void DeleteTestMaterials()
         {
             var materials = HomeZoneApp.Goto<TcMaterials>();
+            var materialCount = materials.ResultColumn.Count;
 
-            if( materials.SelectMaterials( TcSettings.NamePrefix ) > 0 )
+            var testMaterialsCount = materials.SelectMaterials( TcSettings.NamePrefix );
+            if( testMaterialsCount > 0 )
             {
                 materials.DeleteMaterial();
             }
 
-            materials.WaitForDetailOverlayAppear( TcSettings.MaterialSaveOverlayAppearTimeout );
-            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialSaveOverlayDisappearTimeout );
+            materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
+            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
 
             materials.ResultColumn.ClearSearch();
+
+            Assert.AreEqual( materialCount - testMaterialsCount, materials.ResultColumn.Count );
         }
 
         /// <summary>
@@ -91,31 +104,44 @@ namespace TestLeft.UI_Tests.Utilities
         public void CreateTestMachines()
         {
             var machines = HomeZoneApp.Goto<TcMachines>();
+            var machineCount = machines.ResultColumn.Count;
 
             machines.NewBendMachine( "TruBend 5320 (6-axes) B23", TcSettings.NamePrefix + Guid.NewGuid() );
+            Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
             machines.SaveMachine();
+            Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
 
             machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
 
             machines.NewBendMachine( "TruBend 1066 (4-axes,Trumpf_80mm) B22", TcSettings.NamePrefix + Guid.NewGuid() );
+            Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
             machines.SaveMachine();
+            Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
 
             machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
 
             machines.NewCutMachine( "TruLaser 3030 (L20)", TcSettings.NamePrefix + Guid.NewGuid(), 3 );
+            Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
             machines.SaveMachine();
+            Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
 
             machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
 
             machines.NewCutMachine( "TruLaser Center 7030 (L26)", TcSettings.NamePrefix + Guid.NewGuid(), 0 );
+            Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
             machines.SaveMachine();
+            Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
 
             machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
 
             machines.NewCutMachine( "TruLaser 3060 (L66)", TcSettings.NamePrefix + Guid.NewGuid(), "8000" );
+            Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
             machines.SaveMachine();
+            Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
 
             machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
+
+            Assert.AreEqual( machineCount + 5, machines.ResultColumn.Count );
         }
 
         /// <summary>
@@ -125,13 +151,17 @@ namespace TestLeft.UI_Tests.Utilities
         public void DeleteTestMachines()
         {
             var machines = HomeZoneApp.Goto<TcMachines>();
+            var machineCount = machines.ResultColumn.Count;
 
-            if( machines.SelectMachines( TcSettings.NamePrefix ) > 0 )
+            var testMachinesCount = machines.SelectMachines( TcSettings.NamePrefix );
+            if( testMachinesCount > 0 )
             {
                 machines.DeleteMachine();
             }
 
             machines.ResultColumn.ClearSearch();
+
+            Assert.AreEqual( machineCount - testMachinesCount, machines.ResultColumn.Count );
         }
 
         /// <summary>
@@ -189,11 +219,13 @@ namespace TestLeft.UI_Tests.Utilities
 
         /// <summary>
         /// Creates some test parts: adding a bend and a cut solution and boosting.
+        /// Needs test machines and customers to be present.
         /// </summary>
         [TestMethod]
         public void CreateTestParts()
         {
             var parts = HomeZoneApp.Goto<TcParts>();
+            var partCount = parts.ResultColumn.Count;
 
             parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
             parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
@@ -208,8 +240,13 @@ namespace TestLeft.UI_Tests.Utilities
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailCutSolutions.New();
             OpenFluxBendSolutionAndCloseFlux( parts );
+            Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
             parts.SavePart();
+            Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
+            Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
             parts.BoostPart();
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
             parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
             parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
@@ -224,8 +261,13 @@ namespace TestLeft.UI_Tests.Utilities
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailCutSolutions.New();
             OpenFluxBendSolutionAndCloseFlux( parts );
+            Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
             parts.SavePart();
+            Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
+            Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
             parts.BoostPart();
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
             parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Zugwinkel.scdoc" );
             parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
@@ -240,8 +282,15 @@ namespace TestLeft.UI_Tests.Utilities
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailCutSolutions.New();
             OpenFluxBendSolutionAndCloseFlux( parts );
+            Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
             parts.SavePart();
+            Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
+            Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
             parts.BoostPart();
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+
+            Assert.AreEqual( partCount + 3, parts.ResultColumn.Count );
         }
 
         private bool OpenFluxBendSolutionAndCloseFlux( TcParts parts )
@@ -273,13 +322,17 @@ namespace TestLeft.UI_Tests.Utilities
         public void DeleteTestParts()
         {
             var parts = HomeZoneApp.Goto<TcParts>();
+            var partCount = parts.ResultColumn.Count;
 
-            if( parts.SelectParts( TcSettings.NamePrefix ) > 0 )
+            var testPartsCount = parts.SelectParts( TcSettings.NamePrefix );
+            if( testPartsCount > 0 )
             {
                 parts.DeletePart();
             }
 
             parts.ResultColumn.ClearSearch();
+
+            Assert.AreEqual( partCount - testPartsCount, parts.ResultColumn.Count );
         }
 
         /// <summary>
@@ -326,7 +379,7 @@ namespace TestLeft.UI_Tests.Utilities
             //TODO
         }
 
-        private void CreateTestCutJobsFromParts()
+        private static void CreateTestCutJobsFromParts()
         {
             //CreateTestParts(); //tut nicht ganz
             var parts = HomeZoneApp.Goto<TcParts>();

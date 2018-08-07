@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.UI_Tests.Base;
 using TestLeft.UI_Tests.Utilities;
 using Trumpf.AutoTest.Facts;
+using Trumpf.AutoTest.Utilities;
 
 namespace TestLeft.TestAutomation.Smoke
 {
@@ -14,6 +15,20 @@ namespace TestLeft.TestAutomation.Smoke
     [TestClass]
     public class TcMiniSmokeTest : TcBaseTestClass
     {
+        private readonly TcSmokeHelpers mSmokeHelpers= new TcSmokeHelpers();
+
+        /// <summary>
+        /// Gets the extended test environment.
+        /// Creates / deletes the test items used by the test methods
+        /// </summary>
+        public override IDoSequence TestEnvironment => base.TestEnvironment
+            .Do( mSmokeHelpers.CreateTestMaterials, mSmokeHelpers.DeleteTestMaterials, "TestMaterials" )
+            .Do( mSmokeHelpers.CreateTestMachines, mSmokeHelpers.DeleteTestMachines, "TestMachines" )
+            .Do( mSmokeHelpers.CreateTestCustomers, mSmokeHelpers.DeleteTestCustomers, "TestCustomers" )
+            .Do( mSmokeHelpers.CreateTestParts, mSmokeHelpers.DeleteTestParts, "TestParts" )
+            .Do( mSmokeHelpers.CreateTestPartOrders, mSmokeHelpers.DeleteTestPartOrders, "TestPartOrders" )
+            .Do( mSmokeHelpers.CreateTestCutJobs, mSmokeHelpers.DeleteTestCutJobs, "TestCutJobs" );
+
         /// <summary>
         /// Mini smoke test: creating test items, adding bend and cut solutions to parts and boosting them, deleting the test items.
         /// </summary>
@@ -22,43 +37,43 @@ namespace TestLeft.TestAutomation.Smoke
         {
             Act( () =>
             {
-                CreateTestItems();
+                //CreateTestItems();
 
                 //TODO
                 //testing...
 
-                DeleteTestItems();
+                //DeleteTestItems();
             } );
         }
 
-        /// <summary>
-        /// Creates the test items.
-        /// </summary>
-        public void CreateTestItems()
-        {
-            var smokeHelpers = new TcSmokeHelpers();
+        ///// <summary>
+        ///// Creates the test items.
+        ///// </summary>
+        //public void CreateTestItems()
+        //{
+        //    var smokeHelpers = new TcSmokeHelpers();
 
-            smokeHelpers.CreateTestMaterials();
-            smokeHelpers.CreateTestMachines();
-            smokeHelpers.CreateTestCustomers();
-            smokeHelpers.CreateTestParts();
-            smokeHelpers.CreateTestPartOrders();
-            smokeHelpers.CreateTestCutJobs();
-        }
+        //    smokeHelpers.CreateTestMaterials();
+        //    smokeHelpers.CreateTestMachines();
+        //    smokeHelpers.CreateTestCustomers();
+        //    smokeHelpers.CreateTestParts();
+        //    smokeHelpers.CreateTestPartOrders();
+        //    smokeHelpers.CreateTestCutJobs();
+        //}
 
-        /// <summary>
-        /// Deletes the test items.
-        /// </summary>
-        public void DeleteTestItems()
-        {
-            var smokeHelpers = new TcSmokeHelpers();
+        ///// <summary>
+        ///// Deletes the test items.
+        ///// </summary>
+        //public void DeleteTestItems()
+        //{
+        //    var smokeHelpers = new TcSmokeHelpers();
 
-            smokeHelpers.DeleteTestCutJobs();
-            smokeHelpers.DeleteTestPartOrders();
-            smokeHelpers.DeleteTestParts();
-            smokeHelpers.DeleteTestCustomers();
-            smokeHelpers.DeleteTestMachines();
-            smokeHelpers.DeleteTestMaterials();
-        }
+        //    smokeHelpers.DeleteTestCutJobs();
+        //    smokeHelpers.DeleteTestPartOrders();
+        //    smokeHelpers.DeleteTestParts();
+        //    smokeHelpers.DeleteTestCustomers();
+        //    smokeHelpers.DeleteTestMachines();
+        //    smokeHelpers.DeleteTestMaterials();
+        //}
     }
 }

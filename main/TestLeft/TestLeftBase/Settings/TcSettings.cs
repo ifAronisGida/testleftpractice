@@ -40,20 +40,20 @@ namespace TestLeft.TestLeftBase.Settings
         public static string ProgramPath => @"C:\Program Files\TRUMPF\TruTops\Client\Control";
 
         /// <summary>
-        /// Gets the timeout for the material save overlay appearance.
+        /// Gets the timeout for the material overlay appearance.
         /// </summary>
         /// <value>
-        /// The material save overlay appear timeout.
+        /// The material overlay appear timeout.
         /// </value>
-        public static TimeSpan MaterialSaveOverlayAppearTimeout => TimeSpan.FromSeconds( 10 );
+        public static TimeSpan MaterialOverlayAppearTimeout => TimeSpan.FromSeconds( 10 );
 
         /// <summary>
-        /// Gets the timeout for the material save overlay disappearance.
+        /// Gets the timeout for the material overlay disappearance.
         /// </summary>
         /// <value>
-        /// The material save overlay disappear timeout.
+        /// The material overlay disappear timeout.
         /// </value>
-        public static TimeSpan MaterialSaveOverlayDisappearTimeout => TimeSpan.FromSeconds( 30 );
+        public static TimeSpan MaterialOverlayDisappearTimeout => TimeSpan.FromSeconds( 30 );
 
         /// <summary>
         /// Gets the timeout for the machine overlay appearance.
