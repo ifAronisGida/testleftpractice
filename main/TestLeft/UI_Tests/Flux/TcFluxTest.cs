@@ -34,12 +34,15 @@ namespace TestLeft.UI_Tests.Flux
         {
             Act( () =>
             {
-                Driver.Log.Message( @"Starting Flux open / close test." );
+                var namePrefix = TcSettings.NamePrefix + Guid.NewGuid();
                 var parts = HomeZoneApp.Goto<TcParts>();
 
+                // first part
                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+
+                parts.SingleDetail.Name = namePrefix + "1";
 
                 parts.SingleDetailBendSolutions.New();
                 parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
@@ -55,9 +58,34 @@ namespace TestLeft.UI_Tests.Flux
                     parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
                 }
 
-                parts.DeletePart();
+                Assert.IsTrue( visible );
+
+                //second part
+                parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+
+                parts.SingleDetail.Name = namePrefix + "2";
+
+                parts.SingleDetailBendSolutions.New();
+                parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
+                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+
+                flux = new TcFlux( Driver );
+
+                visible = flux.MainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                if( visible )
+                {
+                    flux.CloseApp();
+
+                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                }
 
                 Assert.IsTrue( visible );
+
+                // delete the 2 parts
+                parts.ResultColumn.SelectItems( namePrefix );
+                parts.DeletePart();
             } );
         }
 

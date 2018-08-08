@@ -53,13 +53,20 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
                     {
                         mApp = new TcFluxApp( flux ) { Driver = mDriver };
 
-                        if( mApp.Node.TryFind<IControl>( new WPFPattern { ClrFullClassName = "Flux.App.MainWindow" }, out var window, 2 ) )
+                        try
                         {
-                            if( window.VisibleOnScreen )         // -> found, store MainWindow and return
+                            if( mApp.Node.TryFind<IControl>( new WPFPattern { ClrFullClassName = "Flux.App.MainWindow" }, out var window, 2 ) )
                             {
-                                mMainWindow = window;
-                                return true;
+                                if( window.VisibleOnScreen )         // -> found, store MainWindow and return
+                                {
+                                    mMainWindow = window;
+                                    return true;
+                                }
                             }
+                        }
+                        catch( Exception )
+                        {
+                            // empty
                         }
                     }
 

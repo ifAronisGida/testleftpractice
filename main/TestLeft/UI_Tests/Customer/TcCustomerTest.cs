@@ -22,10 +22,15 @@ namespace TestLeft.UI_Tests.Customer
         {
             Act( () =>
             {
-                var customers = HomeZoneApp.On<TcCustomers>();
+                var name1 = TcSettings.NamePrefix + Guid.NewGuid();
+                var name2 = TcSettings.NamePrefix + Guid.NewGuid();
+
+                var customers = HomeZoneApp.Goto<TcCustomers>();
+
+                var customersCount = customers.Count();
 
                 customers.NewCustomer(
-                                      TcSettings.NamePrefix + "Kunde 1",
+                                      name1,
                                       "C" + Guid.NewGuid(),
                                       "TRUMPF Allee 1",
                                       "71254",
@@ -34,7 +39,7 @@ namespace TestLeft.UI_Tests.Customer
                                       "kein Kommentar" );
 
                 customers.NewCustomer(
-                                      TcSettings.NamePrefix + "Kunde 2",
+                                      name2,
                                       null,
                                       "TRUMPF Allee 2",
                                       "71254",
@@ -46,11 +51,12 @@ namespace TestLeft.UI_Tests.Customer
                 customers.CancelClick();
 
                 customers.Goto();
-                Assert.AreEqual(2, customers.Count());
+                Assert.AreEqual( customersCount + 2, customers.Count() );
 
-                customers.DeleteCustomersWithNameContaining( TcSettings.NamePrefix );
+                customers.DeleteCustomersWithNameContaining( name1 );
+                customers.DeleteCustomersWithNameContaining( name2 );
                 customers.ApplyClick();
-                Assert.AreEqual(0, customers.Count());
+                Assert.AreEqual( customersCount, customers.Count() );
 
                 customers.CancelClick();
             } );

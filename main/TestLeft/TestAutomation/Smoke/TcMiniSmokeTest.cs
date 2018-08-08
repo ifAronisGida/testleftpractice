@@ -22,9 +22,9 @@ namespace TestLeft.TestAutomation.Smoke
         /// Creates / deletes the test items used by the test methods
         /// </summary>
         public override IDoSequence TestEnvironment => base.TestEnvironment
-            .Do( mSmokeHelpers.CreateTestMaterials, mSmokeHelpers.DeleteTestMaterials, "TestMaterials" )
-            .Do( mSmokeHelpers.CreateTestMachines, mSmokeHelpers.DeleteTestMachines, "TestMachines" )
-            .Do( mSmokeHelpers.CreateTestCustomers, mSmokeHelpers.DeleteTestCustomers, "TestCustomers" )
+            .Do( mSmokeHelpers.CreateTestMaterials, null, null, mSmokeHelpers.DeleteTestMaterials, "TestMaterials" )
+            .Do( mSmokeHelpers.CreateTestMachines, null, null, mSmokeHelpers.DeleteTestMachines, "TestMachines" )
+            .Do( mSmokeHelpers.CreateTestCustomers, null, null, mSmokeHelpers.DeleteTestCustomers, "TestCustomers" )
             .Do( mSmokeHelpers.CreateTestParts, mSmokeHelpers.DeleteTestParts, "TestParts" )
             .Do( mSmokeHelpers.CreateTestPartOrders, mSmokeHelpers.DeleteTestPartOrders, "TestPartOrders" )
             .Do( mSmokeHelpers.CreateTestCutJobs, mSmokeHelpers.DeleteTestCutJobs, "TestCutJobs" );

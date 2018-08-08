@@ -101,7 +101,7 @@ namespace TestLeft.TestLeftBase.Settings
         /// <value>
         /// The Flux starting timeout.
         /// </value>
-        public static TimeSpan FluxStartTimeout => TimeSpan.FromSeconds( 40 );
+        public static TimeSpan FluxStartTimeout => TimeSpan.FromSeconds( 60 );
 
         /// <summary>
         /// Gets timeout for starting Design.
