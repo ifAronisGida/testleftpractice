@@ -20,11 +20,11 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSsettings = HomeZoneApp.Goto<TcBendSettings>();
+                var bendSettings = HomeZoneApp.Goto<TcBendSettings>();
 
-                Assert.IsTrue( bendSsettings.VisibleOnScreen.TryWaitFor() );
+                Assert.IsTrue( bendSettings.VisibleOnScreen.TryWaitFor() );
 
-                bendSsettings.OpenToolsConfiguration();
+                bendSettings.OpenToolsConfiguration();
 
 
                 //TODO implement test
@@ -44,11 +44,11 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSsettings = HomeZoneApp.Goto<TcBendSettings>();
+                var bendSettings = HomeZoneApp.Goto<TcBendSettings>();
 
-                Assert.IsTrue( bendSsettings.VisibleOnScreen.TryWaitFor() );
+                Assert.IsTrue( bendSettings.VisibleOnScreen.TryWaitFor() );
 
-                bendSsettings.OpenToolListsConfiguration();
+                bendSettings.OpenToolListsConfiguration();
 
 
                 //TODO implement test
@@ -68,11 +68,11 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSsettings = HomeZoneApp.Goto<TcBendSettings>();
+                var bendSettings = HomeZoneApp.Goto<TcBendSettings>();
 
-                Assert.IsTrue( bendSsettings.VisibleOnScreen.TryWaitFor() );
+                Assert.IsTrue( bendSettings.VisibleOnScreen.TryWaitFor() );
 
-                bendSsettings.OpenBendDeductionConfiguration();
+                bendSettings.OpenBendDeductionConfiguration();
 
 
                 //TODO implement test
@@ -92,11 +92,11 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSsettings = HomeZoneApp.Goto<TcBendSettings>();
+                var bendSettings = HomeZoneApp.Goto<TcBendSettings>();
 
-                Assert.IsTrue( bendSsettings.VisibleOnScreen.TryWaitFor() );
+                Assert.IsTrue( bendSettings.VisibleOnScreen.TryWaitFor() );
 
-                bendSsettings.OpenAppSettingsConfiguration();
+                bendSettings.OpenAppSettingsConfiguration();
 
 
                 //TODO implement test
@@ -116,11 +116,11 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSsettings = HomeZoneApp.Goto<TcBendSettings>();
+                var bendSettings = HomeZoneApp.Goto<TcBendSettings>();
 
-                Assert.IsTrue( bendSsettings.VisibleOnScreen.TryWaitFor() );
+                Assert.IsTrue( bendSettings.VisibleOnScreen.TryWaitFor() );
 
-                bendSsettings.OpenDataManagerBend();
+                bendSettings.OpenDataManagerBend();
 
                 HomeZoneApp.On<TcSettingsDialog>().Cancel();
             } );
