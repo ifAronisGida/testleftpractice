@@ -12,7 +12,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    public class TcSettings : PageObject, IChildOf<TcHomeZoneApp>
+    public class TcSettingsDialog : PageObject, IChildOf<TcHomeZoneApp>
     {
         protected override Search SearchPattern => Search.ByUid( "SettingsDialog" );
 
@@ -25,9 +25,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
         private TcTruIconButton SaveButton => Find<TcTruIconButton>( Search.ByUid( "SaveButton" ) );
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TcSettings"/> class.
+        /// Initializes a new instance of the <see cref="TcSettingsDialog"/> class.
         /// </summary>
-        public TcSettings()
+        public TcSettingsDialog()
         {
             mBendSettings = new Lazy<TcBendSettings>( On<TcBendSettings> );
         }

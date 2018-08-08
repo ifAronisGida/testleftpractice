@@ -37,7 +37,7 @@ namespace TestLeft.UI_Tests.Shell
             Act( () =>
             {
                 var menu = HomeZoneApp.Goto<TcMainMenu>().OpenSettingsDialog();
-                var settings = HomeZoneApp.On<TcSettings>();
+                var settings = HomeZoneApp.On<TcSettingsDialog>();
 
                 Assert.IsTrue( settings.VisibleOnScreen.TryWaitFor() );
 
