@@ -14,7 +14,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
         /// Initializes a new instance of the <see cref="T:TestLeft.TestLeftBase.PageObjects.Cut.TcCutApp" /> class.
         /// </summary>
         /// <param name="process">The Cut process.</param>
-        public TcCutApp( IProcess process ) : base( process )
+        public TcCutApp( string process ) : base( process )
         {
         }
     }
