@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Trumpf.AutoTest.Facts</name>
+    </assembly>
+    <members>
+        <member name="T:Trumpf.AutoTest.Facts.AutoTestWithFactsBase">
+            <summary>
+            AutoTest base class that sends facts to a FactsHub service.
+            The <code>UniqueNameAttribute</code> is used to extract unique names.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Facts.AutoTestWithFactsBase.ExtractUniqueName(Trumpf.AutoTest.Facts.UniqueNameAttribute)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1">
+            <summary>
+            AutoTest base class that sends facts to a FactsHub service.
+            </summary>
+            <typeparam name="TUniqueNameAttribute">The attribute type used to attach unique names to test methods.</typeparam>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.RunningFact">
+            <summary>
+            Gets the fact of the current test.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.ExceptionActionMap">
+            <inheritdoc />
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.SendResultsIntoTheCloud">
+            <summary>
+            Gets a value indicating whether to send FactsHub reports.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.CheckForUniqueName">
+            <summary>
+            Gets a value indicating whether to check whether test methods are marked with a unique name.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.ThrowOnFactsHubErrors">
+            <summary>
+            Gets a value indicating whether to throw exceptions when facts cannot be sent to the FactHub service etc.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.FactsHubServiceUri">
+            <summary>
+            Gets the FactsHub service URI.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.Last">
+            <summary>
+            Gets the last fact executed on the current system.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.Configuration">
+            <summary>
+            Gets the FactsHub accessor.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.UniqueName">
+            <summary>
+            Gets the id of the currently running test method.
+            Takes the guid from the description attribute.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.Product">
+            <summary>
+            Gets the component name.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.Version">
+            <summary>
+            Gets the component version.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.Description">
+            <summary>
+            Gets the description of the current test.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.Context">
+            <summary>
+            Gets the context.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.Process">
+            <summary>
+            Gets the process.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.Remarks">
+            <summary>
+            Gets the remarks.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.ExtractUniqueName(`0)">
+            <summary>
+            Extract the unique name GUID from an attribute.
+            </summary>
+            <param name="attribute">The attribute of the current test method.</param>
+            <returns>The unique name.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.StartFact">
+            <summary>
+            Start the fact.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.StopFactPassed">
+            <summary>
+            Stop the fact.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.CleanFact">
+            <summary>
+            Reset the fact.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.Act(Trumpf.AutoTest.Utilities.InjectionPoint,System.Exception)">
+            <inheritdoc />
+        </member>
+        <member name="M:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.AddAsset(System.String)">
+            <summary>
+            Adds a file to the current test context.
+            </summary>
+            <param name="filePath">The path of the file to be added.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Facts.AutoTestWithFactsBase`1.PrintSettings">
+            <inheritdoc />
+        </member>
+        <member name="T:Trumpf.AutoTest.Facts.AutoTestWithFactsHelper">
+            <summary>
+            Test class to use as a member.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsHelper.TestEnvironment">
+            <inheritdoc />
+        </member>
+        <member name="M:Trumpf.AutoTest.Facts.AutoTestWithFactsHelper.#ctor(FactsHub.Model.IClaim,System.Uri,System.Func{System.Reflection.MethodInfo},System.Func{System.String},System.Func{Trumpf.AutoTest.Utilities.IDoSequence,Trumpf.AutoTest.Utilities.IDoSequence},System.Func{Trumpf.AutoTest.Utilities.IExceptionActionMap,FactsHub.Connector.IRunningFact,Trumpf.AutoTest.Utilities.IExceptionActionMap},System.Action{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Facts.AutoTestWithFactsHelper"/> class.
+            </summary>
+            <param name="claim">The claim.</param>
+            <param name="factsHubServiceUri">The FactsHub URI.</param>
+            <param name="testMethod">The test method info.</param>
+            <param name="remarks">The optional remarks.</param>
+            <param name="testEnvironmentConfiguration">The optional test environment configuration.</param>
+            <param name="exceptionActionMapConfiguration">The optional exception action map configurator.</param>
+            <param name="logger">The logger (default: Trace.Writeline).</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsHelper.ExceptionActionMap">
+            <inheritdoc />
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsHelper.Product">
+            <inheritdoc />
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsHelper.Version">
+            <inheritdoc />
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsHelper.Context">
+            <inheritdoc />
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsHelper.Process">
+            <inheritdoc />
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsHelper.Remarks">
+            <inheritdoc />
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsHelper.FactsHubServiceUri">
+            <inheritdoc />
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.AutoTestWithFactsHelper.TestMethod">
+            <inheritdoc />
+        </member>
+        <member name="T:Trumpf.AutoTest.Facts.UniqueNameAttribute">
+            <summary>
+            Attribute used to mark test method with a unique name.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Facts.UniqueNameAttribute.#ctor(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Facts.UniqueNameAttribute"/> class.
+            </summary>
+            <param name="guid">The guid that uniquely identifies the test.</param>
+            <param name="memberName">The calling method.</param>
+            <param name="filePath">The calling file.</param>
+            <param name="lineNumber">The caller line.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.UniqueNameAttribute.Id">
+            <summary>
+            Gets the test ID.
+            </summary>
+        </member>
+    </members>
+</doc>
