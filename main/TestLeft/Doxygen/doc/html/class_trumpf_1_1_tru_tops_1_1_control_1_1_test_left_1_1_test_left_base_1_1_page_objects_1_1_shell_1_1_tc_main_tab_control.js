@@ -1,8 +1,0 @@
-var class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_shell_1_1_tc_main_tab_control =
-[
-    [ "AddNewTab", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_shell_1_1_tc_main_tab_control.html#a061f9e697551d5340aa547c62be98f9b", null ],
-    [ "CloseCurrentTab", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_shell_1_1_tc_main_tab_control.html#aca32c7bf6c6f5250bcef63a20d2bc677", null ],
-    [ "Count", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_shell_1_1_tc_main_tab_control.html#a1f3f881fc09e19fe8127cb8b1ba3f555", null ],
-    [ "SearchPattern", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_shell_1_1_tc_main_tab_control.html#a1b2f866cea3565d18f40725e6ddbb193", null ],
-    [ "SelectedIndex", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_shell_1_1_tc_main_tab_control.html#af5f5cd9b68b09060b4e5dca1fe7738f4", null ]
-];

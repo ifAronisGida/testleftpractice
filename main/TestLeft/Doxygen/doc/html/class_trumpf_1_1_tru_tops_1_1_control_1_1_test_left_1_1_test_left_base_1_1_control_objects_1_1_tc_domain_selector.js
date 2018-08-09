@@ -1,4 +1,0 @@
-var class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_domain_selector =
-[
-    [ "SearchPattern", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_domain_selector.html#aaa7a7e2e74642348f09dee8356125b00", null ]
-];

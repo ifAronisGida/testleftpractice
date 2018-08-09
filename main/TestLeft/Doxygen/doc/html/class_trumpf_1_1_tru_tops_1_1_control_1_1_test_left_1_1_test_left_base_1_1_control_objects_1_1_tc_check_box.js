@@ -1,5 +1,0 @@
-var class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_check_box =
-[
-    [ "SearchPattern", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_check_box.html#a4b68d53ebb1954eb251e2b0b100a61f7", null ],
-    [ "Checked", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_check_box.html#aaa797412a1f2b24814530d6c82b7c244", null ]
-];

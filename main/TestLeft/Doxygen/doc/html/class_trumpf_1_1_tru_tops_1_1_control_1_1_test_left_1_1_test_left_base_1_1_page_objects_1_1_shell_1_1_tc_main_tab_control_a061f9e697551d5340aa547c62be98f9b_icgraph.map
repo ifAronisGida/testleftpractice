@@ -1,4 +1,0 @@
-<map id="Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Shell.TcMainTabControl.AddNewTab" name="Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Shell.TcMainTabControl.AddNewTab">
-<area shape="rect" id="node2" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_shell_1_1_tc_shell_test.html#a901f8b4a8676b821e9089c4a9515fde1" title="Adds a single tab. Nothing else. " alt="" coords="292,5,499,61"/>
-<area shape="rect" id="node3" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_shell_1_1_tc_shell_test.html#ad66ed753260457bffb8ba20a9de3d8e0" title="Adds 10 tabs in a loop. " alt="" coords="292,85,499,141"/>
-</map>

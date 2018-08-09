@@ -1,5 +1,0 @@
-var class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_part_order_1_1_tc_part_order_test =
-[
-    [ "DeletePartOrderTest", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_part_order_1_1_tc_part_order_test.html#a4a1d38322a2bf6eefadf88a5f7f7365c", null ],
-    [ "NewPartOrderTest", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_part_order_1_1_tc_part_order_test.html#a3ec79ffa6389b4c8d30a67e408cde0c0", null ]
-];

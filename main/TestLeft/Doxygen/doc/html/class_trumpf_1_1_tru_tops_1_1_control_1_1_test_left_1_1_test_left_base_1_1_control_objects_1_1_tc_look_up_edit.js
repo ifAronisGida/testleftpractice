@@ -1,5 +1,0 @@
-var class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_look_up_edit =
-[
-    [ "SearchPattern", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_look_up_edit.html#a05041cf0cc2f0f1bf7760c3eacbfab8f", null ],
-    [ "Text", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_control_objects_1_1_tc_look_up_edit.html#a28a29defaa184e8c00ccbdfc7e770999", null ]
-];

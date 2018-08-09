@@ -1,7 +1,0 @@
-var class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part_order_1_1_tc_part_orders =
-[
-    [ "DeletePartOrder", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part_order_1_1_tc_part_orders.html#a1d0d1cf1a372784cfb9bd1ded2fc9d8c", null ],
-    [ "Goto", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part_order_1_1_tc_part_orders.html#ada7b4cbc2afcaebed1e1a9603419e4ba", null ],
-    [ "NewPartOrder", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part_order_1_1_tc_part_orders.html#a07b46fce3221834d6be9c2aa2b8a922a", null ],
-    [ "Toolbar", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_part_order_1_1_tc_part_orders.html#ae6f01219fcbfc62fedd33f1379e08fe3", null ]
-];

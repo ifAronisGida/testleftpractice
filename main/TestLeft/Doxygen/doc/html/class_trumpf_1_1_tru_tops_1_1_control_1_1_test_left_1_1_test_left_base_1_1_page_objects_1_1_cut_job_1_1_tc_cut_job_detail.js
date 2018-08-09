@@ -1,8 +1,0 @@
-var class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_cut_job_1_1_tc_cut_job_detail =
-[
-    [ "GetRawMaterial", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_cut_job_1_1_tc_cut_job_detail.html#af39520781440280ffbbb7f472b0b3f88", null ],
-    [ "SelectRawMaterial", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_cut_job_1_1_tc_cut_job_detail.html#a7b17df0165856e4b45f7b62e4f06e3d3", null ],
-    [ "SearchPattern", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_cut_job_1_1_tc_cut_job_detail.html#ac4be6cb2cc83dd9f22899a09a7e5c1e7", null ],
-    [ "FinishDate", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_cut_job_1_1_tc_cut_job_detail.html#aa4ce3cfd08b3a9418481c32dc43a62c2", null ],
-    [ "Id", "class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_cut_job_1_1_tc_cut_job_detail.html#a14c51099d3770efb5c50830b01bab2f5", null ]
-];

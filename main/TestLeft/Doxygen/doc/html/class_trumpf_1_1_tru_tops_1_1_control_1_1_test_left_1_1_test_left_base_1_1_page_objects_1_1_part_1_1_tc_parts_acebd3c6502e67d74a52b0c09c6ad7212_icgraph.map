@@ -1,5 +1,0 @@
-<map id="Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Part.TcParts.NewPart" name="Trumpf.TruTops.Control.TestLeft.TestLeftBase.PageObjects.Part.TcParts.NewPart">
-<area shape="rect" id="node2" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_test_left_base_1_1_page_objects_1_1_customer_1_1_tc_customers.html#a868a7b9778d286f7e6df05d61addffc0" title="The customer administration dialog is not direct accessible, only via button click in several detail ..." alt="" coords="288,45,555,101"/>
-<area shape="rect" id="node3" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_customer_1_1_tc_customer_test.html#a7db56ad4a2d8e12df90d9af836b8ecee" title="Deletes a specific customer (TcSettings.NamePrefix + &quot;Kunde 2&quot;). " alt="" coords="603,5,835,61"/>
-<area shape="rect" id="node4" href="$class_trumpf_1_1_tru_tops_1_1_control_1_1_test_left_1_1_u_i___tests_1_1_smoke_1_1_tc_mini_smoke_test.html#a778de4a7c26ee595cbb6f95a39286a4b" title="Deletes the test customers. " alt="" coords="605,85,832,141"/>
-</map>
