@@ -239,10 +239,10 @@ namespace TestLeft.UI_Tests.Utilities
             parts.SingleDetail.Note = TcSettings.NamePrefix + "Note";
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailCutSolutions.New();
-            OpenFluxBendSolutionAndCloseFlux( parts );
             Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
             parts.SavePart();
             Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
+            OpenFluxBendSolutionAndCloseFlux( parts );
             Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
             parts.BoostPart();
             parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
@@ -260,10 +260,10 @@ namespace TestLeft.UI_Tests.Utilities
             parts.SingleDetail.Note = TcSettings.NamePrefix + "Note";
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailCutSolutions.New();
-            OpenFluxBendSolutionAndCloseFlux( parts );
             Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
             parts.SavePart();
             Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
+            OpenFluxBendSolutionAndCloseFlux( parts );
             Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
             parts.BoostPart();
             parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
@@ -281,10 +281,10 @@ namespace TestLeft.UI_Tests.Utilities
             parts.SingleDetail.Note = TcSettings.NamePrefix + "Note";
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailCutSolutions.New();
-            OpenFluxBendSolutionAndCloseFlux( parts );
             Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
             parts.SavePart();
             Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
+            OpenFluxBendSolutionAndCloseFlux( parts );
             Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
             parts.BoostPart();
             parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
@@ -299,18 +299,16 @@ namespace TestLeft.UI_Tests.Utilities
             parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
 
             var flux = new TcFlux( Driver );
+            var visible = flux.MainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
 
-            if( flux.MainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) ) )
+            if( visible )
             {
                 flux.CloseApp();
 
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
             }
-            else
-            {
-                Driver.Log.Error( @"Flux main window is not visible." );
-                return false;
-            }
+
+            Assert.IsTrue( visible );
 
             return true;
         }

@@ -34,17 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FactsHub.Connector, Version=4.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\FactsHub.Connector.4.4.0\lib\net451\FactsHub.Connector.dll</HintPath>
+    <Reference Include="factshub.connector, Version=4.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\factshub.connector.4.5.2\lib\net451\factshub.connector.dll</HintPath>
     </Reference>
     <Reference Include="FactsHub.Framework.Connector, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FactsHub.Framework.Model.3.0.0-beta4\lib\net451\FactsHub.Framework.Connector.dll</HintPath>
     </Reference>
     <Reference Include="FactsHub.Framework.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FactsHub.Framework.Model.3.0.0-beta4\lib\net451\FactsHub.Framework.Model.dll</HintPath>
-    </Reference>
-    <Reference Include="FactsHub.Model, Version=4.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\FactsHub.Connector.4.4.0\lib\net451\FactsHub.Model.dll</HintPath>
     </Reference>
     <Reference Include="MimeTypeMap, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MediaTypeMap.2.1.0.0\lib\net40\MimeTypeMap.dll</HintPath>
@@ -72,15 +70,9 @@
     <Reference Include="Trumpf.AutoTest.Artifacts, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Trumpf.AutoTest.Artifacts.1.2.2\lib\net451\Trumpf.AutoTest.Artifacts.dll</HintPath>
     </Reference>
-    <Reference Include="Trumpf.AutoTest.Facts, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.AutoTest.Facts.3.2.0\lib\net451\Trumpf.AutoTest.Facts.dll</HintPath>
-    </Reference>
-    <Reference Include="Trumpf.AutoTest.Utilities, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.AutoTest.Facts.3.2.0\lib\net451\Trumpf.AutoTest.Utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="Trumpf.PageObjects, Version=3.4.0.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.0\lib\net451\Trumpf.PageObjects.dll</HintPath>
-    </Reference>
+    <Reference Include="Trumpf.AutoTest.Facts, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Trumpf.AutoTest.Utilities, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Trumpf.PageObjects, Version=3.4.1.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL" />
     <Reference Include="Trumpf.TruTops.UnitTestAttribute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a29b70238a00b455, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\_external\Trumpf\Trumpf.TruTops.UnitTestAttribute.dll</HintPath>
@@ -98,7 +90,8 @@
     <Compile Include="PartOrder\TcPartOrderTest.cs" />
     <Compile Include="Part\TcPartTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\TcSettingsTest.cs" />
+    <Compile Include="Settings\TcBendSettingsTest.cs" />
+    <Compile Include="Settings\TcSettingsDialogTest.cs" />
     <Compile Include="Shell\TcMainMenuTest.cs" />
     <Compile Include="Shell\TcShellTest.cs" />
     <Compile Include="Shell\TcWelcomeScreenTest.cs" />

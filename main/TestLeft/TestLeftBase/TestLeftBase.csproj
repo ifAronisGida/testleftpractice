@@ -58,8 +58,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="Trumpf.PageObjects, Version=3.4.0.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.0\lib\net451\Trumpf.PageObjects.dll</HintPath>
+    <Reference Include="Trumpf.PageObjects, Version=3.4.1.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.1-beta1\lib\net451\Trumpf.PageObjects.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -82,7 +83,6 @@
     <Compile Include="ControlObjects\TcTruIconButton.cs" />
     <Compile Include="ControlObjects\TcTextEdit.cs" />
     <Compile Include="PageObjects\Common\TcResultColumn.cs" />
-    <Compile Include="PageObjects\Customer\TcCustomerRow.cs" />
     <Compile Include="PageObjects\Customer\TcCustomers.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobContainedOrders.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobDetail.cs" />
@@ -117,7 +117,7 @@
     <Compile Include="PageObjects\Part\TcPartSingleDetailDesign.cs" />
     <Compile Include="PageObjects\Part\TcPartSingleDetail.cs" />
     <Compile Include="PageObjects\Settings\TcBendSettings.cs" />
-    <Compile Include="PageObjects\Settings\TcSettings.cs" />
+    <Compile Include="PageObjects\Settings\TcSettingsDialog.cs" />
     <Compile Include="PageObjects\Shell\TcDetailContent.cs" />
     <Compile Include="PageObjects\Shell\TcDomains.cs" />
     <Compile Include="PageObjects\Shell\TcDomainsAndFilters.cs" />

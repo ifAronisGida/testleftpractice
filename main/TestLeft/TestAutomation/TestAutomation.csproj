@@ -56,8 +56,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Trumpf.AutoTest.Facts.3.2.0\lib\net451\Trumpf.AutoTest.Utilities.dll</HintPath>
     </Reference>
-    <Reference Include="Trumpf.PageObjects, Version=3.4.0.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.0\lib\net451\Trumpf.PageObjects.dll</HintPath>
+    <Reference Include="Trumpf.PageObjects, Version=3.4.1.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.1-beta1\lib\net451\Trumpf.PageObjects.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
