@@ -70,8 +70,14 @@
     <Reference Include="Trumpf.AutoTest.Artifacts, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Trumpf.AutoTest.Artifacts.1.2.2\lib\net451\Trumpf.AutoTest.Artifacts.dll</HintPath>
     </Reference>
-    <Reference Include="Trumpf.AutoTest.Facts, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="Trumpf.AutoTest.Utilities, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Trumpf.AutoTest.Facts, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Trumpf.AutoTest.Facts.3.3.0\lib\net451\Trumpf.AutoTest.Facts.dll</HintPath>
+    </Reference>
+    <Reference Include="Trumpf.AutoTest.Utilities, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Trumpf.AutoTest.Facts.3.3.0\lib\net451\Trumpf.AutoTest.Utilities.dll</HintPath>
+    </Reference>
     <Reference Include="Trumpf.PageObjects, Version=3.4.1.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL" />
     <Reference Include="Trumpf.TruTops.UnitTestAttribute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a29b70238a00b455, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

@@ -68,6 +68,8 @@
     <Compile Include="ControlObjects\Grid\TcPrivateIntermediates.cs" />
     <Compile Include="ControlObjects\Grid\TcTableRow.cs" />
     <Compile Include="ControlObjects\Grid\TcTableView.cs" />
+    <Compile Include="ControlObjects\OptimizedGrid\TcOptimizedTableRow.cs" />
+    <Compile Include="ControlObjects\OptimizedGrid\TcOptimizedTableView.cs" />
     <Compile Include="ControlObjects\TcButton.cs" />
     <Compile Include="ControlObjects\TcCheckBox.cs" />
     <Compile Include="ControlObjects\TcComboBox.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="ControlObjects\TcTruIconButton.cs" />
     <Compile Include="ControlObjects\TcTextEdit.cs" />
     <Compile Include="PageObjects\Common\TcResultColumn.cs" />
+    <Compile Include="PageObjects\Customer\TcCustomerRow.cs" />
     <Compile Include="PageObjects\Customer\TcCustomers.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobContainedOrders.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobDetail.cs" />
@@ -136,13 +139,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\EnumerableProxy.cs" />
     <Compile Include="Utilities\ObjectExtensions.cs" />
+    <Compile Include="Utilities\UIObjectExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

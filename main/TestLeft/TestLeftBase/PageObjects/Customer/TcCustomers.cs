@@ -1,7 +1,7 @@
-﻿using SmartBear.TestLeft.TestObjects;
-using SmartBear.TestLeft.TestObjects.WPF;
-using SmartBear.TestLeft.TestObjects.WPF.DevExpress;
+﻿using System;
 using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.ControlObjects.Grid;
+using TestLeft.TestLeftBase.ControlObjects.OptimizedGrid;
 using Trumpf.PageObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Part;
@@ -18,12 +18,17 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
     {
         protected override Search SearchPattern => Search.ByUid( "Customer" );
 
+        internal readonly Lazy<TcOptimizedTableView<TcCustomerRow>> mTableView;
+
         private TcParts mParts;
 
-        private IDevExpressWPFGridControl HierarchyPanel => Node.Find<IDevExpressWPFGridControl>( new WPFPattern()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TcCustomers"/> class.
+        /// </summary>
+        public TcCustomers()
         {
-            ClrFullClassName = "DevExpress.Xpf.Grid.Hierarchy.HierarchyPanel"
-        } );
+            mTableView = new Lazy<TcOptimizedTableView<TcCustomerRow>>( () => CustomerGrid.GetOptimizedTableView( underlyingRow => new TcCustomerRow( underlyingRow ) ) );
+        }
 
         private TcTruIconButton NewCustomerButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Add" ) );
         private TcTruIconButton DeleteCustomerButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Delete" ) );
@@ -229,7 +234,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// <returns>The amount of currently selected customers.</returns>
         public int SelectedCustomersCount()
         {
-            return CustomerGrid.Node.GetProperty<int>( "SelectedItems.Count" );
+            return CustomerGrid.SelectedCount;
         }
 
         /// <summary>
@@ -238,17 +243,16 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// <param name="name">The name of the customer to select.</param>
         public void SelectCustomer( string name )
         {
-            int count = Count();
+            var count = Count();
 
-            CustomerGrid.Node.CallMethod( "UnselectAll" );
+            CustomerGrid.UnselectAll();
 
-            for( int row = 0; row < count; row++ )
+            for( var rowIndex = 0; rowIndex < count; rowIndex++ )
             {
-                var rowControl = HierarchyPanel.Children[ row ];
-                var text = rowControl.Children[ 0 ].Children[ 5 ].Children[ 0 ].GetProperty<string>( "DisplayText" );
-                if( text == name )
+                var tableRow = mTableView.Value.GetRow( rowIndex );
+                if( tableRow.Name == name )
                 {
-                    CustomerGrid.Node.CallMethod( "SelectItem", rowControl.GetProperty<int>( "WPFControlIndex" ) - 1 );
+                    CustomerGrid.SelectItem( rowIndex );
 
                     break;
                 }
@@ -263,28 +267,14 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         {
             var count = Count();
 
-            CustomerGrid.Node.CallMethod( "UnselectAll" );
+            CustomerGrid.UnselectAll();
 
-            for( int row = 1; row <= count; row++ )
+            for( var rowIndex = 0; rowIndex < count; rowIndex++ )
             {
-                var rowControl = HierarchyPanel.Find<IControl>( new WPFPattern()
+                var tableRow = mTableView.Value.GetRow( rowIndex );
+                if( tableRow.Name.Contains( substring ) )
                 {
-                    ClrFullClassName = "DevExpress.Xpf.Grid.RowControl",
-                    WPFControlOrdinalNo = row
-                } );
-
-                var text = rowControl.Find<IControl>( new WPFPattern()
-                {
-                    ClrFullClassName = "DevExpress.Xpf.Grid.LightweightCellEditor",
-                    WPFControlOrdinalNo = 1
-                }, 2 ).Find<IControl>( new WPFPattern()
-                {
-                    ClrFullClassName = "DevExpress.Xpf.Editors.InplaceBaseEdit"
-                } ).GetProperty<string>( "DisplayText" );
-
-                if( text.Contains( substring ) )
-                {
-                    CustomerGrid.Node.CallMethod( "SelectItem", rowControl.GetProperty<int>( "WPFControlIndex" ) - 1 );
+                    CustomerGrid.SelectItem( rowIndex );
                 }
             }
         }

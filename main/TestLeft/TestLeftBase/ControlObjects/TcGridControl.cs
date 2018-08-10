@@ -1,6 +1,7 @@
 ﻿using System;
 using DevExpress.Xpf.Grid;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
+using TestLeft.TestLeftBase.ControlObjects.OptimizedGrid;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects
@@ -14,10 +15,20 @@ namespace TestLeft.TestLeftBase.ControlObjects
         protected override Search SearchPattern => Search.Any;
 
         public int RowCount => Node.GetProperty<int>( "ItemsSource.Count" );
+        public int SelectedCount => Node.GetProperty<int>( "SelectedItems.Count" );
 
-        public TcTableView<TRow> GetTableView<TRow>(Func<TcTableRow, TRow> rowFactory)
+        public TcTableView<TRow> GetTableView<TRow>( Func<TcTableRow, TRow> rowFactory )
         {
-            var tableView = Find<TcTableView<TRow>>(depth: 1);
+            var tableView = Find<TcTableView<TRow>>( depth: 1 );
+
+            tableView.RowFactory = rowFactory;
+
+            return tableView;
+        }
+
+        public TcOptimizedTableView<TRow> GetOptimizedTableView<TRow>( Func<TcOptimizedTableRow, TRow> rowFactory )
+        {
+            var tableView = Find<TcOptimizedTableView<TRow>>( depth: 1 );
 
             tableView.RowFactory = rowFactory;
 
@@ -31,7 +42,7 @@ namespace TestLeft.TestLeftBase.ControlObjects
 
         public void SelectItem( int index )
         {
-            if (RowCount > index)
+            if( RowCount > index )
             {
                 Node.CallMethod( "SelectItem", index );
             }
