@@ -10,12 +10,12 @@ namespace TestLeft.TestLeftBase.ControlObjects.Grid
 
         public TcTableRow()
         {
-            mViewContentSelector = new Lazy<TcBandedViewContentSelector>(() => Find<TcBandedViewContentSelector>(depth: 1));
+            mViewContentSelector = new Lazy<TcBandedViewContentSelector>( () => Find<TcBandedViewContentSelector>( depth: 1 ) );
         }
 
-        public IControlObject GetColumn(int index)
+        public IControlObject GetCell( int columnIndex )
         {
-            return mViewContentSelector.Value.Find<TcGridCellContentPresenter>(Search.ByIndex(index), depth: 1);
+            return mViewContentSelector.Value.Find<TcGridCellContentPresenter>( Search.ByIndex( columnIndex ), depth: 1 );
         }
     }
 }

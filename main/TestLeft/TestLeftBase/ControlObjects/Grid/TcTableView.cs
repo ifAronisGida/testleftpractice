@@ -1,24 +1,17 @@
 using System;
-using DevExpress.Xpf.Grid;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects.Grid
 {
-    public class TcTableView<TRow> : ViewControlObject<TableView>
+    public class TcTableView<TRow> : TcTableViewBase<TRow, TcTableRow>
     {
-        private Lazy<TcHierarchyPanel> mHierarchyPanel;
-
-        public TcTableView()
+        public TcTableView( IControlObject tableView, Func<TcTableRow, TRow> rowWrapper ) : base( tableView, rowWrapper )
         {
-            mHierarchyPanel = new Lazy<TcHierarchyPanel>(() => Find<TcHierarchyPanel>(depth: 1));
         }
 
-        public Func<TcTableRow, TRow> RowFactory { get; set; }
-
-        public TRow GetRow(int index)
+        protected override TcTableRow GetInternalRow( int index, IControlObject rowsParent )
         {
-            var row = mHierarchyPanel.Value.Find<TcTableRow>(Search.ByIndex(index), depth: 1);
-            return RowFactory(row);
+            return rowsParent.Find<TcTableRow>( Search.ByIndex( index ), depth: 1 );
         }
     }
 }

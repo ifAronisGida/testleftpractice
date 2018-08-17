@@ -1,7 +1,7 @@
 ﻿using System;
 using DevExpress.Xpf.Grid;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
-using TestLeft.TestLeftBase.ControlObjects.OptimizedGrid;
+using TestLeft.TestLeftBase.Utilities;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects
@@ -17,22 +17,16 @@ namespace TestLeft.TestLeftBase.ControlObjects
         public int RowCount => Node.GetProperty<int>( "ItemsSource.Count" );
         public int SelectedCount => Node.GetProperty<int>( "SelectedItems.Count" );
 
-        public TcTableView<TRow> GetTableView<TRow>( Func<TcTableRow, TRow> rowFactory )
+        public TcTableView<TRow> GetTableView<TRow>( Func<TcTableRow, TRow> rowWrapper )
         {
-            var tableView = Find<TcTableView<TRow>>( depth: 1 );
-
-            tableView.RowFactory = rowFactory;
-
-            return tableView;
+            var tableView = this.FindGeneric( Search.By<TableView>(), depth: 1 );
+            return new TcTableView<TRow>( tableView, rowWrapper );
         }
 
-        public TcOptimizedTableView<TRow> GetOptimizedTableView<TRow>( Func<TcOptimizedTableRow, TRow> rowFactory )
+        public TcOptimizedTableView<TRow> GetOptimizedTableView<TRow>( Func<TcOptimizedTableRow, TRow> rowWrapper )
         {
-            var tableView = Find<TcOptimizedTableView<TRow>>( depth: 1 );
-
-            tableView.RowFactory = rowFactory;
-
-            return tableView;
+            var tableView = this.FindGeneric( Search.By<TableView>(), depth: 1 );
+            return new TcOptimizedTableView<TRow>( tableView, rowWrapper );
         }
 
         public void UnselectAll()

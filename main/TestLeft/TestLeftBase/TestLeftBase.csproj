@@ -68,8 +68,9 @@
     <Compile Include="ControlObjects\Grid\TcPrivateIntermediates.cs" />
     <Compile Include="ControlObjects\Grid\TcTableRow.cs" />
     <Compile Include="ControlObjects\Grid\TcTableView.cs" />
-    <Compile Include="ControlObjects\OptimizedGrid\TcOptimizedTableRow.cs" />
-    <Compile Include="ControlObjects\OptimizedGrid\TcOptimizedTableView.cs" />
+    <Compile Include="ControlObjects\Grid\TcOptimizedTableRow.cs" />
+    <Compile Include="ControlObjects\Grid\TcOptimizedTableView.cs" />
+    <Compile Include="ControlObjects\Grid\TcTableViewBase.cs" />
     <Compile Include="ControlObjects\TcButton.cs" />
     <Compile Include="ControlObjects\TcCheckBox.cs" />
     <Compile Include="ControlObjects\TcComboBox.cs" />

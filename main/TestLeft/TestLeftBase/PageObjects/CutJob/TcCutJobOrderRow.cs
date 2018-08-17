@@ -66,7 +66,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             }
         }
 
-        public string CuttingProgram => mRow.GetColumn( 12 )
+        public string CuttingProgram => mRow.GetCell( 12 )
                     .Find<TcReadOnlyText>( Search.By<TextEdit>(), depth: 1 )
                     .Text;
 
@@ -79,7 +79,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             .Find<TcReadOnlyText>( Search.ByUid( "PartDistanceMode" ) )
             .Text;
 
-        public TcCheckBox IgnoreProcessings => mRow.GetColumn( 15 )
+        public TcCheckBox IgnoreProcessings => mRow.GetCell( 15 )
             .Find<TcCheckBox>( depth: 1 );
 
         // TODO: do something about the editability of these cells
@@ -87,7 +87,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                var fakeTextEdit = mRow.GetColumn( 16 ).Find<TcReadOnlyText>( Search.By<TextEdit>(), depth: 1 );
+                var fakeTextEdit = mRow.GetCell( 16 ).Find<TcReadOnlyText>( Search.By<TextEdit>(), depth: 1 );
 
                 return int.Parse(fakeTextEdit.Text);
             }
@@ -97,7 +97,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             get
             {
-                var fakeTextEdit = mRow.GetColumn( 17 ).Find<TcReadOnlyText>( Search.By<TextEdit>(), depth: 1 );
+                var fakeTextEdit = mRow.GetCell( 17 ).Find<TcReadOnlyText>( Search.By<TextEdit>(), depth: 1 );
 
                 return int.Parse( fakeTextEdit.Text );
 

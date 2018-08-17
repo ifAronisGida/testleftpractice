@@ -1,4 +1,4 @@
-using TestLeft.TestLeftBase.ControlObjects.OptimizedGrid;
+using TestLeft.TestLeftBase.ControlObjects.Grid;
 
 namespace TestLeft.TestLeftBase.PageObjects.Customer
 {
