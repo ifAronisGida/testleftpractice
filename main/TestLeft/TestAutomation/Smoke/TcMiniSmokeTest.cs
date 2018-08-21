@@ -45,35 +45,5 @@ namespace TestLeft.TestAutomation.Smoke
                 //DeleteTestItems();
             } );
         }
-
-        ///// <summary>
-        ///// Creates the test items.
-        ///// </summary>
-        //public void CreateTestItems()
-        //{
-        //    var smokeHelpers = new TcSmokeHelpers();
-
-        //    smokeHelpers.CreateTestMaterials();
-        //    smokeHelpers.CreateTestMachines();
-        //    smokeHelpers.CreateTestCustomers();
-        //    smokeHelpers.CreateTestParts();
-        //    smokeHelpers.CreateTestPartOrders();
-        //    smokeHelpers.CreateTestCutJobs();
-        //}
-
-        ///// <summary>
-        ///// Deletes the test items.
-        ///// </summary>
-        //public void DeleteTestItems()
-        //{
-        //    var smokeHelpers = new TcSmokeHelpers();
-
-        //    smokeHelpers.DeleteTestCutJobs();
-        //    smokeHelpers.DeleteTestPartOrders();
-        //    smokeHelpers.DeleteTestParts();
-        //    smokeHelpers.DeleteTestCustomers();
-        //    smokeHelpers.DeleteTestMachines();
-        //    smokeHelpers.DeleteTestMaterials();
-        //}
     }
 }
