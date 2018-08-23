@@ -2,39 +2,40 @@ using System;
 using System.Threading;
 using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
-using SmartBear.TestLeft.TestObjects.Qt;
+using SmartBear.TestLeft.TestObjects.UIAutomation;
 
 namespace TestLeft.TestLeftBase.PageObjects.Cut
 {
     /// <summary>
-    /// PageObject for the Cut app.
+    /// PageObject for the technology table selection dialog.
     /// </summary>
-    public class TcCut
+    public class TcTTSelectionDialog
     {
         private TcCutApp mApp;
-        private ITopLevelWindow mMainWindow;
+        private ITopLevelWindow mWindow;
         private readonly IDriver mDriver;
-        private readonly Lazy<TcTTSelectionDialog> mTTSelectionDialog;
 
-        public TcCut( IDriver driver )
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TcTTSelectionDialog"/> class.
+        /// </summary>
+        /// <param name="driver">The driver.</param>
+        public TcTTSelectionDialog( IDriver driver )
         {
             mDriver = driver;
-
-            mTTSelectionDialog = new Lazy<TcTTSelectionDialog>( () => new TcTTSelectionDialog( mDriver ) );
         }
 
         /// <summary>
-        /// Gets a value indicating whether the main window is visible.
+        /// Gets a value indicating whether the dialog is visible.
         /// </summary>
         /// <param name="timeout">The timeout.</param>
         /// <param name="retryWaitTime">The retry wait time.</param>
         /// <returns>
         ///   <c>true</c> if main window is visible; otherwise, <c>false</c>.
         /// </returns>
-        public bool MainWindowIsVisible( TimeSpan timeout, TimeSpan retryWaitTime )
+        public bool DialogIsVisible( TimeSpan timeout, TimeSpan retryWaitTime )
         {
             mApp = null;
-            mMainWindow = null;
+            mWindow = null;
             var startTime = DateTime.Now;
 
             while( DateTime.Now - startTime < timeout )
@@ -51,15 +52,21 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
                         Index = index
                     }, 1, out var proc );
 
-                    if( processFound )       // search MainWindow
+                    if( processFound )       // search dialog
                     {
                         mApp = new TcCutApp( proc ) { Driver = mDriver };
 
-                        if( mApp.Node.TryFind<ITopLevelWindow>( new QtPattern { objectName = "qt_ribbonMainWindow" }, out var window, 1 ) )
+                        if( mApp.Node.TryFind<ITopLevelWindow>( new UIAPattern()
                         {
-                            if( window.VisibleOnScreen )         // -> found, store MainWindow and return
+                            FrameworkId = "Win32",
+                            ClassName = "GritDialogWindow",
+                            ObjectIdentifier = "Technologietabellen_Auswahl",       //TODO should be language independant
+                            ObjectGroupIndex = 1
+                        }, out var window, 1 ) )
+                        {
+                            if( window.VisibleOnScreen )         // -> found, store dialog window and return
                             {
-                                mMainWindow = window;
+                                mWindow = window;
                                 return true;
                             }
                         }
@@ -73,31 +80,17 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
             }
 
             mApp = null;
-            mMainWindow = null;
+            mWindow = null;
 
             return false;
         }
 
         /// <summary>
-        /// Gets the technology table selection dialog.
+        /// Closes the dialog.
         /// </summary>
-        /// <value>
-        /// The technology table selection dialog.
-        /// </value>
-        public TcTTSelectionDialog TechnologyTableSelectionDialog => mTTSelectionDialog.Value;
-
-        /// <summary>
-        /// Closes the application.
-        /// </summary>
-        public void CloseApp()
+        public void Close()
         {
-            mMainWindow?.CallMethod( "Close" );
-
-            var messageBox = mApp.On<TcCutMessageBox>();
-            if( messageBox.VisibleOnScreen )
-            {
-                messageBox.Close();
-            }
+            mWindow?.CallMethod( "Close" );
         }
     }
 }

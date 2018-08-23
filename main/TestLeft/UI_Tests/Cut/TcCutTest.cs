@@ -26,7 +26,7 @@ namespace TestLeft.UI_Tests.Cut
                 Driver.Log.Message( @"Starting Cut open / close test." );
                 var parts = HomeZoneApp.Goto<TcParts>();
 
-                parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
+                parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
@@ -36,7 +36,12 @@ namespace TestLeft.UI_Tests.Cut
 
                 var cut = new TcCut( Driver );
 
-                var visible = cut.MainWindowVisible( TcSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                if( cut.TechnologyTableSelectionDialog.DialogIsVisible( TcSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) ) )
+                {
+                    cut.TechnologyTableSelectionDialog.Close();
+                }
+
+                var visible = cut.MainWindowIsVisible( TcSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                 if( visible )
                 {
                     cut.CloseApp();
@@ -46,7 +51,7 @@ namespace TestLeft.UI_Tests.Cut
 
                 parts.DeletePart();
 
-                Assert.IsTrue( visible );
+                Assert.IsTrue( visible, "Cut window was not visible." );
             } );
         }
     }

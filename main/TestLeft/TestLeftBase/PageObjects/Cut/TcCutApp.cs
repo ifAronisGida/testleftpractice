@@ -11,10 +11,10 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
     {
         /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:TestLeft.TestLeftBase.PageObjects.Cut.TcCutApp" /> class.
+        /// Initializes a new instance of the <see cref="TcCutApp" /> class.
         /// </summary>
         /// <param name="process">The Cut process.</param>
-        public TcCutApp( string process ) : base( process )
+        public TcCutApp( IProcess process ) : base( process )
         {
         }
     }

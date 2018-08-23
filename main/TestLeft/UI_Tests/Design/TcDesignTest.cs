@@ -44,7 +44,7 @@ namespace TestLeft.UI_Tests.Design
 
                 parts.DeletePart();
 
-                Assert.IsTrue( visible );
+                Assert.IsTrue( visible, "Design window was not visible." );
             } );
         }
     }

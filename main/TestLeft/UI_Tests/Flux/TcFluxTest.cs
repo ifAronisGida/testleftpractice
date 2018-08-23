@@ -81,7 +81,7 @@ namespace TestLeft.UI_Tests.Flux
                     parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
                 }
 
-                Assert.IsTrue( visible );
+                Assert.IsTrue( visible, "Flux window was not visible." );
 
                 // delete the 2 parts
                 parts.ResultColumn.SelectItems( namePrefix );
