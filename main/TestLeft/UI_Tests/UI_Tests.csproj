@@ -35,7 +35,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="factshub.connector, Version=4.5.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\factshub.connector.4.5.2\lib\net451\factshub.connector.dll</HintPath>
     </Reference>
     <Reference Include="FactsHub.Framework.Connector, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -44,23 +43,26 @@
     <Reference Include="FactsHub.Framework.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FactsHub.Framework.Model.3.0.0-beta4\lib\net451\FactsHub.Framework.Model.dll</HintPath>
     </Reference>
+    <Reference Include="FactsHub.Model, Version=4.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\factshub.connector.4.5.2\lib\net451\FactsHub.Model.dll</HintPath>
+    </Reference>
     <Reference Include="MimeTypeMap, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MediaTypeMap.2.1.0.0\lib\net40\MimeTypeMap.dll</HintPath>
     </Reference>
-    <Reference Include="MimeTypes, Version=2.3.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MediaTypeMap.Core.2.3.3\lib\net45\MimeTypes.dll</HintPath>
+    <Reference Include="MimeTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\factshub.connector.4.5.2\lib\net451\MimeTypes.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.0\lib\net451\RestSharp.dll</HintPath>
+      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.1-beta1\lib\net451\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="SmartBear.TestLeft, Version=12.31.1833.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.0\lib\net451\SmartBear.TestLeft.dll</HintPath>
+      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.1-beta1\lib\net451\SmartBear.TestLeft.dll</HintPath>
     </Reference>
     <Reference Include="SmartBear.TestLeft.WebApiWrapper, Version=12.31.1833.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.0\lib\net451\SmartBear.TestLeft.WebApiWrapper.dll</HintPath>
+      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.1-beta1\lib\net451\SmartBear.TestLeft.WebApiWrapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -70,15 +72,15 @@
     <Reference Include="Trumpf.AutoTest.Artifacts, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Trumpf.AutoTest.Artifacts.1.2.2\lib\net451\Trumpf.AutoTest.Artifacts.dll</HintPath>
     </Reference>
-    <Reference Include="Trumpf.AutoTest.Facts, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Trumpf.AutoTest.Facts.3.3.0\lib\net451\Trumpf.AutoTest.Facts.dll</HintPath>
+    <Reference Include="Trumpf.AutoTest.Facts, Version=3.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Trumpf.AutoTest.Facts.3.3.3\lib\net451\Trumpf.AutoTest.Facts.dll</HintPath>
     </Reference>
-    <Reference Include="Trumpf.AutoTest.Utilities, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Trumpf.AutoTest.Facts.3.3.0\lib\net451\Trumpf.AutoTest.Utilities.dll</HintPath>
+    <Reference Include="Trumpf.AutoTest.Utilities, Version=3.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Trumpf.AutoTest.Facts.3.3.3\lib\net451\Trumpf.AutoTest.Utilities.dll</HintPath>
     </Reference>
-    <Reference Include="Trumpf.PageObjects, Version=3.4.1.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL" />
+    <Reference Include="Trumpf.PageObjects, Version=3.4.1.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.1-beta1\lib\net451\Trumpf.PageObjects.dll</HintPath>
+    </Reference>
     <Reference Include="Trumpf.TruTops.UnitTestAttribute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a29b70238a00b455, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\_external\Trumpf\Trumpf.TruTops.UnitTestAttribute.dll</HintPath>
