@@ -205,6 +205,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public void CancelClick()
         {
+            CancelButton.Enabled.WaitFor( TimeSpan.FromSeconds( 10 ) );
             CancelButton.Click();
             CleanUp();
         }

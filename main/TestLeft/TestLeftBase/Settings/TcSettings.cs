@@ -93,7 +93,7 @@ namespace TestLeft.TestLeftBase.Settings
         /// <value>
         /// The saving timeout.
         /// </value>
-        public static TimeSpan SavingTimeout => TimeSpan.FromSeconds( 20 );
+        public static TimeSpan SavingTimeout => TimeSpan.FromSeconds( 60 );
 
         /// <summary>
         /// Gets timeout for starting Flux.

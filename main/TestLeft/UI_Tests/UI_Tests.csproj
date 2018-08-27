@@ -34,8 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="factshub.connector, Version=4.5.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\factshub.connector.4.5.2\lib\net451\factshub.connector.dll</HintPath>
+    <Reference Include="factshub.connector, Version=4.5.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\factshub.connector.4.5.5\lib\net451\factshub.connector.dll</HintPath>
     </Reference>
     <Reference Include="FactsHub.Framework.Connector, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FactsHub.Framework.Model.3.0.0-beta4\lib\net451\FactsHub.Framework.Connector.dll</HintPath>
@@ -43,14 +43,14 @@
     <Reference Include="FactsHub.Framework.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FactsHub.Framework.Model.3.0.0-beta4\lib\net451\FactsHub.Framework.Model.dll</HintPath>
     </Reference>
-    <Reference Include="FactsHub.Model, Version=4.5.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\factshub.connector.4.5.2\lib\net451\FactsHub.Model.dll</HintPath>
+    <Reference Include="FactsHub.Model, Version=4.5.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\factshub.connector.4.5.5\lib\net451\FactsHub.Model.dll</HintPath>
     </Reference>
     <Reference Include="MimeTypeMap, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MediaTypeMap.2.1.0.0\lib\net40\MimeTypeMap.dll</HintPath>
     </Reference>
     <Reference Include="MimeTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\factshub.connector.4.5.2\lib\net451\MimeTypes.dll</HintPath>
+      <HintPath>..\..\packages\factshub.connector.4.5.5\lib\net451\MimeTypes.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
