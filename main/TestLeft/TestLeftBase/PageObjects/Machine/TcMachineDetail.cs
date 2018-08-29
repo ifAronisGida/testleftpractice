@@ -1,4 +1,5 @@
-﻿using Trumpf.PageObjects;
+﻿using SmartBear.TestLeft.TestObjects;
+using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
@@ -128,6 +129,15 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
             set => CreateSubDirectoryCheckBox.Checked = value;
 
             get => CreateSubDirectoryCheckBox.Checked;
+        }
+
+        /// <summary>
+        /// Opens the machine configuration for bend.
+        /// </summary>
+        public void OpenMachineConfigurationBend()
+        {
+            var button = Node.Find<IControl>( Search.ByUid( "Machine.Detail.Base.OpenConfigurationDialog" ) );
+            button.Click();
         }
     }
 }

@@ -84,37 +84,90 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
         }
 
         /// <summary>
-        /// DEMO
+        /// Saves the and close part in flux.
         /// </summary>
-        /// <returns>true</returns>
-        public bool MenuFile()
+        public void SaveAndClosePartInFlux()
         {
-            var rc = mMainWindow.Find<IWPFMenu>( new WPFPattern()
+            // Open the menu File
+            var fileButton = mMainWindow.Find<IWPFMenu>( new WPFPattern()
             {
                 WPFControlName = "mMainMenu"
             }, 3 ).Find<IControl>( new WPFPattern()
             {
                 WPFControlName = "menuFile"
             } );
+            fileButton.Click();
 
-            // MainWindow holen:
-            // IDriver driver = new LocalDriver();
-            // IControl menuItem = driver.Find<IProcess>(new ProcessPattern(){ 
-            //	                                                ProcessName = "Flux" 
-            //                                                  }).Find<IControl>(new WPFPattern(){ 
-            //	                                                                    ClrFullClassName = "Flux.App.MainWindow" 
-            //                                                                      }, 2)       
+            // Press save
+            IProcess flux = mDriver.Find<IProcess>( new ProcessPattern()
+            {
+                ProcessName = "Flux"
+            } );
+            flux.TryFind<IControl>( new WPFPattern { ClrFullClassName = "System.Windows.Controls.Primitives.PopupRoot" }, 2, out var popup );
+            var save = popup.Find<IControl>( new WPFPattern()
+            {
+                WPFControlName = "menuSave"
+            }, 3 );
+            save.Click();
 
-            // dann den Menüeintrag finden:
-            // .Find<IWPFMenu>(new WPFPattern()
-            //    { 
-            //      WPFControlName = "mMainMenu" 
-            //    }, 3).Find<IControl>(new WPFPattern()
-            //    { 
-            //	    WPFControlName = "menuFile" 
-            //    });
-            
-            return true;
+            // Close flux
+            var close = mMainWindow.Find<IControl>( new WPFPattern()
+            {
+                ClrFullClassName = "System.Windows.Controls.Image",
+                WPFControlOrdinalNo = 3
+            }, 5 );
+            close.Click();
+        }
+
+        /// <summary>
+        /// Changes the solution.
+        /// WARNING: This function is language dependent
+        /// </summary>
+        public void ChangeSolution()
+        {
+            // Skip 1st bend
+            IProcess flux = mDriver.Find<IProcess>( new ProcessPattern()
+            {
+                ProcessName = "Flux"
+            } );
+            var firstBend = flux.Find<IControl>( new WPFPattern()
+            {
+                ClrFullClassName = "Flux.BendNavigator"
+            }, 2 ).Find<IControl>( new WPFPattern()
+            {
+                ClrFullClassName = "System.Windows.Controls.TextBlock",
+                WPFControlText = "1"
+            }, 7 );
+            firstBend.Click();
+
+            var skipBendButton = flux.Find<IControl>( new WPFPattern()
+            {
+                ClrFullClassName = "Flux.GlobHost"
+            }, 2 ).Find<IControl>( new WPFPattern()
+            {
+                ClrFullClassName = "System.Windows.Controls.TextBlock",
+                WPFControlText = "Biegung überspringen"  // This is not language independent
+            }, 4 );
+            skipBendButton.Click();
+
+            // close part
+            var close = mMainWindow.Find<IControl>( new WPFPattern()
+            {
+                ClrFullClassName = "System.Windows.Controls.Image",
+                WPFControlOrdinalNo = 3
+            }, 5 );
+            close.Click();
+
+            // check for message box
+            var noButton = flux.Find<IControl>( new WPFPattern()
+            {
+                ClrFullClassName = "Flux.MsgBox"
+            }, 2 ).Find<IButton>( new WPFPattern()
+            {
+                ClrFullClassName = "System.Windows.Controls.Button",
+                WPFControlText = "Nein"  // This is not language independent
+            }, 3 );
+            noButton.Click();
         }
 
         /// <summary>

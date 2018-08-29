@@ -130,6 +130,8 @@
     <Compile Include="PageObjects\Flux\TcFlux.cs" />
     <Compile Include="PageObjects\Flux\TcFluxApp.cs" />
     <Compile Include="PageObjects\Dialogs\TcHelpDialog.cs" />
+    <Compile Include="PageObjects\Flux\TcFluxConfigureMachine.cs" />
+    <Compile Include="PageObjects\Flux\TcLandingPages.cs" />
     <Compile Include="PageObjects\Machine\TcMachineDetail.cs" />
     <Compile Include="PageObjects\Machine\TcMachinePopupMenu.cs" />
     <Compile Include="PageObjects\Machine\TcMachines.cs" />

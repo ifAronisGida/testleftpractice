@@ -1,5 +1,13 @@
+using System;
+using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SmartBear.TestLeft.TestObjects;
+using SmartBear.TestLeft.TestObjects.WPF;
+using TestLeft.TestLeftBase.PageObjects.Flux;
+using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.PageObjects.Settings;
+using TestLeft.TestLeftBase.PageObjects.Shell;
+using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
 
@@ -26,35 +34,12 @@ namespace TestLeft.UI_Tests.Settings
 
                 bendSettings.OpenToolsConfiguration();
 
-
-                //TODO implement test
-                //.
-                //.
-
-
-                HomeZoneApp.On<TcSettingsDialog>().Cancel();
-            } );
-        }
-
-        /// <summary>
-        /// Tests the tool lists configuration.
-        /// </summary>
-        [TestMethod, UniqueName( "204D1ED2-6B77-43E8-A638-9B1020488A1D" )]
-        public void ToolListsConfigurationTest()
-        {
-            Act( () =>
-            {
-                var bendSettings = HomeZoneApp.Goto<TcBendSettings>();
-
-                Assert.IsTrue( bendSettings.VisibleOnScreen.TryWaitFor() );
-
-                bendSettings.OpenToolListsConfiguration();
-
-
-                //TODO implement test
-                //.
-                //.
-
+                TcLandingPages flux = new TcLandingPages( Driver );
+                bool visible = flux.ToolsDialogVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                if( visible )
+                {
+                    flux.CloseToolsDialog();
+                }
 
                 HomeZoneApp.On<TcSettingsDialog>().Cancel();
             } );
@@ -75,9 +60,12 @@ namespace TestLeft.UI_Tests.Settings
                 bendSettings.OpenBendDeductionConfiguration();
 
 
-                //TODO implement test
-                //.
-                //.
+                TcLandingPages flux = new TcLandingPages( Driver );
+                bool visible = flux.BendFactorsDialogVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                if( visible )
+                {
+                    flux.CloseBendFactorDialog();
+                }
 
 
                 HomeZoneApp.On<TcSettingsDialog>().Cancel();
@@ -99,9 +87,12 @@ namespace TestLeft.UI_Tests.Settings
                 bendSettings.OpenAppSettingsConfiguration();
 
 
-                //TODO implement test
-                //.
-                //.
+                TcLandingPages flux = new TcLandingPages( Driver );
+                bool visible = flux.SettingsDialogVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                if( visible )
+                {
+                    flux.CloseSettingsDialog();
+                }
 
 
                 HomeZoneApp.On<TcSettingsDialog>().Cancel();
