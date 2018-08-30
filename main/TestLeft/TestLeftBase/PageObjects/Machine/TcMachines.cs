@@ -3,10 +3,10 @@ using Trumpf.PageObjects;
 using Trumpf.PageObjects.Waiting;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
-using TestLeft.TestLeftBase.PageObjects.Common;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using SmartBear.TestLeft.TestObjects.WPF;
+using TestLeft.TestLeftBase.ControlObjects.Composite;
 
 namespace TestLeft.TestLeftBase.PageObjects.Machine
 {
@@ -29,7 +29,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         {
             mToolbar = new Lazy<TcMachineToolbar>( On<TcMachineToolbar> );
             mPopup = new Lazy<TcMachinePopupMenu>( On<TcMachinePopupMenu> );
-            mResultColumn = new Lazy<TcResultColumn>( On<TcResultColumn> );
+            mResultColumn = new Lazy<TcResultColumn>( () => Find<TcResultColumn>(Search.ByUid(TcResultColumn.Uid) ));
             mDetail = new Lazy<TcMachineDetail>( On<TcMachineDetail> );
         }
 

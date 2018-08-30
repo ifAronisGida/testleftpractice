@@ -5,7 +5,7 @@ using Trumpf.PageObjects.Waiting;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
-using TestLeft.TestLeftBase.PageObjects.Common;
+using TestLeft.TestLeftBase.ControlObjects.Composite;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
@@ -30,7 +30,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         public TcParts()
         {
             mToolbar = new Lazy<TcPartToolbar>( On<TcPartToolbar> );
-            mResultColumn = new Lazy<TcResultColumn>( On<TcResultColumn> );
+            mResultColumn = new Lazy<TcResultColumn>( () => Find<TcResultColumn>( Search.ByUid( TcResultColumn.Uid ) ) );
             mSingleDetail = new Lazy<TcPartSingleDetail>( On<TcPartSingleDetail> );
             mSingleDetailDesign = new Lazy<TcPartSingleDetailDesign>( On<TcPartSingleDetailDesign> );
             mSingleDetailBendSolutions = new Lazy<TcPartSingleDetailBendSolutions>( On<TcPartSingleDetailBendSolutions> );

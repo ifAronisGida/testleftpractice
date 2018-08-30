@@ -10,6 +10,8 @@ namespace TestLeft.TestLeftBase.ControlObjects
     {
         protected override Search SearchPattern => Search.Any;
 
+        public int Count => Node.GetProperty<int>( "Items.Count" );
+
         /// <summary>
         /// Gets or sets the index of the selected item.
         /// </summary>
@@ -29,7 +31,7 @@ namespace TestLeft.TestLeftBase.ControlObjects
         public int SelectAll()
         {
             Node.CallMethod( "SelectAll" );
-            return Node.GetProperty<int>( "Items.Count" );
+            return Count;
         }
     }
 }

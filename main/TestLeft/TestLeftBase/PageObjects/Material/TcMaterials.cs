@@ -3,9 +3,9 @@ using Trumpf.PageObjects;
 using Trumpf.PageObjects.Waiting;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
-using TestLeft.TestLeftBase.PageObjects.Common;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
+using TestLeft.TestLeftBase.ControlObjects.Composite;
 
 namespace TestLeft.TestLeftBase.PageObjects.Material
 {
@@ -26,7 +26,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         public TcMaterials()
         {
             mToolbar = new Lazy<TcMaterialToolbar>( On<TcMaterialToolbar> );
-            mResultColumn = new Lazy<TcResultColumn>( On<TcResultColumn> );
+            mResultColumn = new Lazy<TcResultColumn>( () => Find<TcResultColumn>(Search.ByUid( TcResultColumn.Uid ) ) );
             mDetail = new Lazy<TcMaterialDetail>( On<TcMaterialDetail> );
         }
 

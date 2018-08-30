@@ -1,24 +1,17 @@
-﻿using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
-using TestLeft.TestLeftBase.ControlObjects;
-using TestLeft.TestLeftBase.PageObjects.Shell;
 
-namespace TestLeft.TestLeftBase.PageObjects.Common
+namespace TestLeft.TestLeftBase.ControlObjects.Composite
 {
-    /// <summary>
-    /// The result column containing the search area with search text, clear and search buttons and the result list.
-    /// Because this PageObject is also used in some dialogs, it is placed in Common and not in the Shell folder.
-    /// </summary>
-    /// <seealso cref="PageObject" />
-    /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
-    public class TcResultColumn : PageObject, IChildOf<TcMainTabControl>
+    public class TcResultColumn : ControlObject
     {
-        protected override Search SearchPattern => Search.ByUid( "List.SearchAndResult" );
+        public const string Uid = "List.SearchAndResult";
 
-        internal TcTextEdit SearchTextTextEdit => Find<TcTextEdit>( Search.ByUid( "List.Search.Text" ) );
-        internal TcTruIconButton ClearSearchTextButton => Find<TcTruIconButton>( Search.ByUid( "List.Search.Clear" ) );
-        internal TcTruIconButton ExecuteSearchButton => Find<TcTruIconButton>( Search.ByUid( "List.Search.Execute" ) );
-        internal TcListView ResultListView => Find<TcListView>( Search.ByUid( "List.ResultList" ) );
+        protected override Search SearchPattern => Search.Any;
+
+        private TcTextEdit SearchTextTextEdit => Find<TcTextEdit>( Search.ByUid( "List.Search.Text" ) );
+        private TcTruIconButton ClearSearchTextButton => Find<TcTruIconButton>( Search.ByUid( "List.Search.Clear" ) );
+        private TcTruIconButton ExecuteSearchButton => Find<TcTruIconButton>( Search.ByUid( "List.Search.Execute" ) );
+        private TcListView ResultListView => Find<TcListView>( Search.ByUid( "List.ResultList" ) );
 
         /// <summary>
         /// Gets or sets the search text.
@@ -38,7 +31,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Common
         /// <value>
         /// The amount of items in the result list.
         /// </value>
-        public int Count => ResultListView.Node.GetProperty<int>( "Items.Count" );
+        public int Count => ResultListView.Count;
 
         /// <summary>
         /// Clears the search text.

@@ -1,8 +1,9 @@
 ﻿using System;
 using Trumpf.PageObjects;
-using TestLeft.TestLeftBase.PageObjects.Common;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
+using TestLeft.TestLeftBase.ControlObjects.Composite;
+using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
@@ -18,10 +19,10 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 
         public TcCutJobs()
         {
-            mToolbar = new Lazy<TcCutJobToolbar>( () => On<TcCutJobToolbar>() );
-            mResultColumn = new Lazy<TcResultColumn>( () => On<TcResultColumn>() );
-            mSingleDetail = new Lazy<TcCutJobDetail>( () => On<TcCutJobDetail>() );
-            mContainedOrders = new Lazy<TcCutJobContainedOrders>( () => On<TcCutJobContainedOrders>() );
+            mToolbar = new Lazy<TcCutJobToolbar>( On<TcCutJobToolbar> );
+            mResultColumn = new Lazy<TcResultColumn>( () => Find<TcResultColumn>( Search.ByUid( TcResultColumn.Uid ) ) );
+            mSingleDetail = new Lazy<TcCutJobDetail>( On<TcCutJobDetail> );
+            mContainedOrders = new Lazy<TcCutJobContainedOrders>( On<TcCutJobContainedOrders> );
         }
 
         public TcCutJobToolbar Toolbar => mToolbar.Value;
