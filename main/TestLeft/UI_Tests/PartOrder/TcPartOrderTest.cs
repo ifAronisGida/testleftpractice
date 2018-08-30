@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.TestLeftBase.PageObjects.PartOrder;
-using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
 
@@ -26,11 +25,11 @@ namespace TestLeft.UI_Tests.PartOrder
 
                 //Assert.IsTrue( partOrders.Toolbar.SaveButton.Enabled );
                 //partOrders.SavePart();
-                Assert.IsFalse( partOrders.Toolbar.SaveButton.Enabled );
+                Assert.IsFalse( partOrders.CanSave );
 
-                Assert.IsTrue( partOrders.Toolbar.DeleteButton.Enabled );
+                Assert.IsTrue( partOrders.CanDelete );
                 partOrders.DeletePartOrder();
-                Assert.IsFalse( partOrders.Toolbar.DeleteButton.Enabled );
+                Assert.IsFalse( partOrders.CanDelete );
             } );
         }
     }

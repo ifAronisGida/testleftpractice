@@ -1,7 +1,4 @@
 ﻿using Trumpf.PageObjects;
-using Trumpf.PageObjects.WPF;
-using Trumpf.PageObjects.Waiting;
-using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 
@@ -9,23 +6,8 @@ namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 {
     public class TcPartOrders : RepeaterObject, IChildOf<TcMainTabControl>
     {
-        private TcPartOrderToolbar mToolbar;
-        //private TcPartOrderSingleDetail mSingleDetail;
-        //private TcPartOrderSingleDetailDesign mSingleDetailPart;
-        //private TcPartOrderSingleDetailBendSolutions mSingleDetailCutJob;
-
-        public TcPartOrderToolbar Toolbar
-        {
-            get
-            {
-                if( mToolbar == null )
-                {
-                    mToolbar = On<TcPartOrderToolbar>();
-                }
-
-                return mToolbar;
-            }
-        }
+        public bool CanSave => On<TcPartOrderToolbar>().SaveButton.Enabled;
+        public bool CanDelete => On<TcPartOrderToolbar>().DeleteButton.Enabled;
 
         public override void Goto()
         {
@@ -36,12 +18,12 @@ namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 
         public void NewPartOrder()
         {
-            Toolbar.NewPartOrderButton.Click();
+            On<TcPartOrderToolbar>().NewPartOrderButton.Click();
         }
 
         public void DeletePartOrder()
         {
-            Toolbar.DeleteButton.Click();
+            On<TcPartOrderToolbar>().DeleteButton.Click();
 
             var dialog = On<TcMessageBox>();
             if( dialog.MessageBoxExists() )
