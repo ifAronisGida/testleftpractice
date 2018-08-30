@@ -1,7 +1,10 @@
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects.Composite
-{
+{ 
+    /// <summary>
+    /// The result column containing the search area with search text, clear and search buttons and the result list.
+    /// </summary>
     public class TcResultColumn : ControlObject
     {
         public const string Uid = "List.SearchAndResult";
