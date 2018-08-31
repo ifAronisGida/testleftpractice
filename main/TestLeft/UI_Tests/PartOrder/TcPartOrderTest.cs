@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.PageObjects.PartOrder;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -14,9 +15,7 @@ namespace TestLeft.UI_Tests.PartOrder
         {
             Act( () =>
             {
-                var partOrders = HomeZoneApp.On<TcPartOrders>();
-
-                partOrders.Goto();
+                var partOrders = HomeZoneApp.Goto<TcPartOrders>();
 
                 partOrders.NewPartOrder();
 
@@ -31,6 +30,22 @@ namespace TestLeft.UI_Tests.PartOrder
                 partOrders.DeletePartOrder();
                 Assert.IsFalse( partOrders.CanDelete );
             } );
+        }
+
+        [TestMethod, UniqueName( "79662E0F-0AF8-4F6D-8A44-F81537CF8430" )]
+        public void SelectPartIntoOrderTest()
+        {
+            var parts = HomeZoneApp.Goto<TcParts>();
+            parts.NewPart();
+            parts.SingleDetail.Id = "TestPart";
+            parts.SingleDetail.Name = "TestPart";
+            parts.SavePart();
+
+            var partOrders = HomeZoneApp.Goto<TcPartOrders>();
+            partOrders.NewPartOrder();
+            partOrders.SelectPart( "TestPart" );
+
+            Assert.IsTrue( partOrders.CanSave );
         }
     }
 }

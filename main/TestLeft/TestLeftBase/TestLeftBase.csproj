@@ -125,6 +125,7 @@
     <Compile Include="PageObjects\Design\TcDesign.cs" />
     <Compile Include="PageObjects\Design\TcDesignApp.cs" />
     <Compile Include="PageObjects\Dialogs\TcAboutDialog.cs" />
+    <Compile Include="PageObjects\Dialogs\TcEntitySelectionDialog.cs" />
     <Compile Include="PageObjects\Dialogs\TcMessageBox.cs" />
     <Compile Include="PageObjects\Dialogs\TcPartComputeAllConfirmation.cs" />
     <Compile Include="PageObjects\Flux\TcFlux.cs" />

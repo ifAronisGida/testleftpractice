@@ -15,6 +15,7 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
         private TcTruIconButton ClearSearchTextButton => Find<TcTruIconButton>( Search.ByUid( "List.Search.Clear" ) );
         private TcTruIconButton ExecuteSearchButton => Find<TcTruIconButton>( Search.ByUid( "List.Search.Execute" ) );
         private TcListView ResultListView => Find<TcListView>( Search.ByUid( "List.ResultList" ) );
+        private TcOverlay Overlay => Find<TcOverlay>( Search.ByUid( "ResultList.Overlay" ) );
 
         /// <summary>
         /// Gets or sets the search text.
@@ -37,11 +38,15 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
         public int Count => ResultListView.Count;
 
         /// <summary>
-        /// Clears the search text.
+        /// Clears the search text if it is not empty.
         /// </summary>
         public void ClearSearch()
         {
-            ClearSearchTextButton.Click();
+            if (ClearSearchTextButton.Visible)
+            {
+                ClearSearchTextButton.Click();
+                Overlay.Visible.WaitForFalse();
+            }
         }
 
         /// <summary>
@@ -50,6 +55,7 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
         public void DoSearch()
         {
             ExecuteSearchButton.Click();
+            Overlay.Visible.WaitForFalse();
         }
 
         /// <summary>
@@ -58,18 +64,10 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
         /// <param name="id">The identifier.</param>
         public void SelectItem( string id )
         {
-            if( id.Contains( "id:" ) )
-            {
-                SearchText = id;
-            }
-            else
-            {
-                SearchText = @"id:" + id;
-            }
+            SearchText = id.StartsWith( "id:" ) ? id : $"id:{id}";
 
             DoSearch();
             ResultListView.SelectedIndex = 0;
-            ClearSearch();
         }
 
         /// <summary>
@@ -90,6 +88,7 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
         /// <returns>The amount of selected entries.</returns>
         public int SelectAll()
         {
+            ClearSearch();
             return ResultListView.SelectAll();
         }
     }

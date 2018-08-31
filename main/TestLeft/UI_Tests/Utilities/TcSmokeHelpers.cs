@@ -29,49 +29,30 @@ namespace TestLeft.UI_Tests.Utilities
             var materials = HomeZoneApp.Goto<TcMaterials>();
             var materialCount = materials.ResultColumn.Count;
 
-            materials.SelectMaterial( "1.0038" );
+            DuplicateAndSave( "1.0038" );
+            DuplicateAndSave( "Cu" );
+            DuplicateAndSave( "Ti" );
 
-            materials.DuplicateMaterial();
-
-            var name = TcSettings.NamePrefix + materials.Detail.Id;
-            materials.Detail.Id = name;
-            materials.Detail.Name = name;
-
-            Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
-            materials.SaveMaterial();
-            materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
-            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
-            Assert.IsFalse( materials.Toolbar.SaveButton.Enabled );
-
-            materials.SelectMaterial( "Cu" );
-
-            materials.DuplicateMaterial();
-
-            name = TcSettings.NamePrefix + materials.Detail.Id;
-            materials.Detail.Id = name;
-            materials.Detail.Name = name;
-
-            Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
-            materials.SaveMaterial();
-            materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
-            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
-            Assert.IsFalse( materials.Toolbar.SaveButton.Enabled );
-
-            materials.SelectMaterial( "Ti" );
-
-            materials.DuplicateMaterial();
-
-            name = TcSettings.NamePrefix + materials.Detail.Id;
-            materials.Detail.Id = name;
-            materials.Detail.Name = name;
-
-            Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
-            materials.SaveMaterial();
-            materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
-            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
-            Assert.IsFalse( materials.Toolbar.SaveButton.Enabled );
+            materials.ResultColumn.ClearSearch();
 
             Assert.AreEqual( materialCount + 3, materials.ResultColumn.Count );
+
+            void DuplicateAndSave(string materialId)
+            {
+                materials.SelectMaterial( materialId );
+
+                materials.DuplicateMaterial();
+
+                var name = TcSettings.NamePrefix + materials.Detail.Id;
+                materials.Detail.Id = name;
+                materials.Detail.Name = name;
+
+                Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
+                materials.SaveMaterial();
+                materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
+                materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
+                Assert.IsFalse( materials.Toolbar.SaveButton.Enabled );
+            }
         }
 
         /// <summary>
