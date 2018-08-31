@@ -10,11 +10,11 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
     public class TcCutJobContainedOrders : PageObject, IChildOf<TcDetailContent>
     {
-        private readonly Lazy<TcTableView<TcCutJobOrderRow>> mTableView;
+        private readonly Lazy<TcRegularTableView<TcCutJobOrderRow>> mTableView;
 
         public TcCutJobContainedOrders()
         {
-            mTableView = new Lazy<TcTableView<TcCutJobOrderRow>>( () => PartOrdersGrid.GetTableView( underlyingRow => new TcCutJobOrderRow( underlyingRow ) ) );
+            mTableView = new Lazy<TcRegularTableView<TcCutJobOrderRow>>( () => PartOrdersGrid.GetTableView( underlyingRow => new TcCutJobOrderRow( underlyingRow ) ) );
         }
 
         public int PartOrdersCount => PartOrdersGrid.RowCount;

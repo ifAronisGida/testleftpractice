@@ -6,6 +6,10 @@ using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects.Grid
 {
+    /// <summary>
+    /// Represents a row in a grid table view running in optimized mode.
+    /// This class assumes that the cell contents are always textual.
+    /// </summary>
     public class TcOptimizedTableRow : ViewControlObject<RowControl>
     {
         private Lazy<IControlObject> mCellsParent;
@@ -15,6 +19,11 @@ namespace TestLeft.TestLeftBase.ControlObjects.Grid
             mCellsParent = new Lazy<IControlObject>( () => this.FindGeneric( Search.By<CellsControl>(), depth: 1 ) );
         }
 
+        /// <summary>
+        /// Returns the content of a cell at the given index.
+        /// </summary>
+        /// <param name="columnIndex">The zero-based index of the column in the row.</param>
+        /// <returns></returns>
         public string GetContent( int columnIndex )
         {
             var content = mCellsParent.Value

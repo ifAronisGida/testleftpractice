@@ -3,15 +3,11 @@ using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects.Grid
 {
-    public class TcOptimizedTableView<TRow> : TcTableViewBase<TRow, TcOptimizedTableRow>
+    public class TcOptimizedTableView<TRow> : TcTableView<TRow, TcOptimizedTableRow>
     {
-        public TcOptimizedTableView( IControlObject tableView, Func<TcOptimizedTableRow, TRow> rowWrapper ) : base( tableView, rowWrapper )
+        public TcOptimizedTableView( IControlObject gridTableView, Func<TcOptimizedTableRow, TRow> rowWrapper )
+            : base( gridTableView, rowWrapper )
         {
-        }
-
-        protected override TcOptimizedTableRow GetInternalRow( int index, IControlObject rowsParent )
-        {
-            return rowsParent.Find<TcOptimizedTableRow>( Search.ByIndex( index ), depth: 1 );
         }
     }
 }
