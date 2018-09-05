@@ -161,7 +161,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
 
             if( !string.IsNullOrEmpty( Name ) )
             {
-                NewCustomerClick();
+                NewCustomerButton.Click();
             }
 
             Name = name;
@@ -177,25 +177,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         }
 
         /// <summary>
-        /// Clicks on the new customer button.
-        /// </summary>
-        public void NewCustomerClick()
-        {
-            NewCustomerButton.Click();
-        }
-
-        /// <summary>
-        /// Clicks on the delete button.
-        /// </summary>
-        public void DeleteCustomerClick()
-        {
-            DeleteCustomerButton.Click();
-        }
-
-        /// <summary>
         /// Clicks on the apply button.
         /// </summary>
-        public void ApplyClick()
+        public void Apply()
         {
             ApplyButton.Click();
         }
@@ -203,7 +187,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// <summary>
         /// Clicks on the cancel button.
         /// </summary>
-        public void CancelClick()
+        public void Cancel()
         {
             CancelButton.Enabled.WaitFor( TimeSpan.FromSeconds( 10 ) );
             CancelButton.Click();
@@ -213,7 +197,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// <summary>
         /// Clicks on the select button.
         /// </summary>
-        public void SelectClick()
+        public void Select()
         {
             OkButton.Click();
             CleanUp();
@@ -280,6 +264,17 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         }
 
         /// <summary>
+        /// Deletes customers with the given name.
+        /// </summary>
+        /// <param name="name">The name to search for.</param>
+        public void DeleteCustomer( string name )
+        {
+            SelectCustomer( name );
+
+            DeleteSelectedCustomers();
+        }
+
+        /// <summary>
         /// Deletes customers whose names contain the given substring.
         /// Used to remove customers created for tests.
         /// </summary>
@@ -288,9 +283,17 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         {
             SelectOnlyCustomersWithNameContaining( substring );
 
+            DeleteSelectedCustomers();
+        }
+
+        /// <summary>
+        /// Deletes the selected customers.
+        /// </summary>
+        public void DeleteSelectedCustomers()
+        {
             if( SelectedCustomersCount() > 0 )
             {
-                DeleteCustomerClick();
+                DeleteCustomerButton.Click();
 
                 var dialog = On<TcMessageBox>();
                 if( dialog.MessageBoxExists() )
@@ -304,7 +307,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// Deletes the temporarily created part.
         /// See summary of Goto().
         /// </summary>
-        public void CleanUp()
+        private void CleanUp()
         {
             mParts?.Toolbar.DeleteButton.Click();
 

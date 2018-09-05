@@ -170,8 +170,8 @@ namespace TestLeft.UI_Tests.Part
                                   "Deutschland",
                                   "no comment" );
 
-            customers.ApplyClick();
-            customers.CancelClick();
+            customers.Apply();
+            customers.Cancel();
         }
 
         private void DeleteTestCustomer()
@@ -180,8 +180,8 @@ namespace TestLeft.UI_Tests.Part
 
             customers.DeleteCustomersWithNameContaining( mTestCustomerName );
 
-            customers.ApplyClick();
-            customers.CancelClick();
+            customers.Apply();
+            customers.Cancel();
         }
     }
 }

@@ -47,18 +47,18 @@ namespace TestLeft.UI_Tests.Customer
                                       "Deutschland",
                                       "hier auch nicht" );
 
-                customers.ApplyClick();
-                customers.CancelClick();
+                customers.Apply();
+                customers.Cancel();
 
                 customers.Goto();
                 Assert.AreEqual( customersCount + 2, customers.Count() );
 
                 customers.DeleteCustomersWithNameContaining( name1 );
                 customers.DeleteCustomersWithNameContaining( name2 );
-                customers.ApplyClick();
+                customers.Apply();
                 Assert.AreEqual( customersCount, customers.Count() );
 
-                customers.CancelClick();
+                customers.Cancel();
             } );
         }
     }

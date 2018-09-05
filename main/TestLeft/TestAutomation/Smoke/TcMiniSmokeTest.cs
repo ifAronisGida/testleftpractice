@@ -27,7 +27,8 @@ namespace TestLeft.TestAutomation.Smoke
             .Do( mSmokeHelpers.CreateTestCustomers, null, null, mSmokeHelpers.DeleteTestCustomers, "TestCustomers" )
             .Do( mSmokeHelpers.CreateTestParts, mSmokeHelpers.DeleteTestParts, "TestParts" )
             .Do( mSmokeHelpers.CreateTestPartOrders, mSmokeHelpers.DeleteTestPartOrders, "TestPartOrders" )
-            .Do( mSmokeHelpers.CreateTestCutJobs, mSmokeHelpers.DeleteTestCutJobs, "TestCutJobs" );
+            .Do( mSmokeHelpers.CreateTestCutJobs, mSmokeHelpers.DeleteTestCutJobs, "TestCutJobs" )
+            ;
 
         /// <summary>
         /// Mini smoke test: creating test items, adding bend and cut solutions to parts and boosting them, deleting the test items.

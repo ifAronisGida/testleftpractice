@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.PageObjects.CutJob;
@@ -19,6 +21,9 @@ namespace TestLeft.UI_Tests.Utilities
     [TestClass]
     public class TcSmokeHelpers : TcBaseTestClass
     {
+        private readonly IList<string> mCustomerNames = new List<string>();
+        private IList<string> mMaterialNames = new List<string>();
+
         /// <summary>
         /// Creates some test materials by duplicating existing materials:
         /// 1.0038, Cu and Ti.
@@ -28,16 +33,19 @@ namespace TestLeft.UI_Tests.Utilities
         {
             var materials = HomeZoneApp.Goto<TcMaterials>();
             var materialCount = materials.ResultColumn.Count;
+            var materialsToDuplicate = new List<string> { "1.0038", "Cu", "Ti" };
 
-            DuplicateAndSave( "1.0038" );
-            DuplicateAndSave( "Cu" );
-            DuplicateAndSave( "Ti" );
+            foreach( var material in materialsToDuplicate )
+            {
+                DuplicateAndSave( material );
+                mMaterialNames.Add( TcSettings.NamePrefix + material );
+            }
 
             materials.ResultColumn.ClearSearch();
 
             Assert.AreEqual( materialCount + 3, materials.ResultColumn.Count );
 
-            void DuplicateAndSave(string materialId)
+            void DuplicateAndSave( string materialId )
             {
                 materials.SelectMaterial( materialId );
 
@@ -62,20 +70,22 @@ namespace TestLeft.UI_Tests.Utilities
         public void DeleteTestMaterials()
         {
             var materials = HomeZoneApp.Goto<TcMaterials>();
-            var materialCount = materials.ResultColumn.Count;
+            var currentMaterialsCount = materials.ResultColumn.Count;
+            var testMaterialsCount = mMaterialNames.Count;
 
-            var testMaterialsCount = materials.SelectMaterials( TcSettings.NamePrefix );
-            if( testMaterialsCount > 0 )
+            while( mMaterialNames.Any() )
             {
+                var name = mMaterialNames.Last();
+                materials.SelectMaterial( name );
                 materials.DeleteMaterial();
+                mMaterialNames.Remove( name );
+
+                materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
+                materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
             }
 
-            materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
-            materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
 
-            materials.ResultColumn.ClearSearch();
-
-            Assert.AreEqual( materialCount - testMaterialsCount, materials.ResultColumn.Count );
+            Assert.AreEqual( currentMaterialsCount - testMaterialsCount, materials.ResultColumn.Count );
         }
 
         /// <summary>
@@ -153,8 +163,9 @@ namespace TestLeft.UI_Tests.Utilities
         {
             var customers = HomeZoneApp.On<TcCustomers>();
 
+            mCustomerNames.Add( TcSettings.NamePrefix + Guid.NewGuid() );
             customers.NewCustomer(
-                                  TcSettings.NamePrefix + "Kunde 1",
+                                  mCustomerNames.Last(),
                                   null,
                                   "TRUMPF Allee 1",
                                   "71254",
@@ -162,8 +173,9 @@ namespace TestLeft.UI_Tests.Utilities
                                   "Deutschland",
                                   "kein Kommentar" );
 
+            mCustomerNames.Add( TcSettings.NamePrefix + Guid.NewGuid() );
             customers.NewCustomer(
-                                  TcSettings.NamePrefix + "Kunde 2",
+                                  mCustomerNames.Last(),
                                   null,
                                   "TRUMPF Allee 2",
                                   "71254",
@@ -171,8 +183,9 @@ namespace TestLeft.UI_Tests.Utilities
                                   "Deutschland",
                                   "hier auch nicht" );
 
+            mCustomerNames.Add( TcSettings.NamePrefix + Guid.NewGuid() );
             customers.NewCustomer(
-                                  TcSettings.NamePrefix + "Kunde 3",
+                                  mCustomerNames.Last(),
                                   null,
                                   "TRUMPF Allee 3",
                                   "71254",
@@ -180,8 +193,8 @@ namespace TestLeft.UI_Tests.Utilities
                                   "Deutschland",
                                   "blablabla" );
 
-            customers.ApplyClick();
-            customers.CancelClick();
+            customers.Apply();
+            customers.Cancel();
         }
 
         /// <summary>
@@ -192,10 +205,15 @@ namespace TestLeft.UI_Tests.Utilities
         {
             var customers = HomeZoneApp.Goto<TcCustomers>();
 
-            customers.DeleteCustomersWithNameContaining( TcSettings.NamePrefix );
+            while( mCustomerNames.Any() )
+            {
+                var name = mCustomerNames.Last();
+                customers.DeleteCustomer( name );
+                mCustomerNames.Remove( name );
+            }
 
-            customers.ApplyClick();
-            customers.CancelClick();
+            customers.Apply();
+            customers.Cancel();
         }
 
         /// <summary>
