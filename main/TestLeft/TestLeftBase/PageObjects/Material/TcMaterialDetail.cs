@@ -35,6 +35,14 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         }
 
         /// <summary>
+        /// Gets a value indicating whether identifier TextBox is read only.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if identifier is read only; otherwise, <c>false</c>.
+        /// </value>
+        public bool IdIsReadOnly => IdTextEdit.IsReadOnly;
+
+        /// <summary>
         /// Gets or sets the name.
         /// </summary>
         /// <value>

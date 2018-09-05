@@ -26,7 +26,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         public TcMaterials()
         {
             mToolbar = new Lazy<TcMaterialToolbar>( On<TcMaterialToolbar> );
-            mResultColumn = new Lazy<TcResultColumn>( () => Find<TcResultColumn>(Search.ByUid( TcResultColumn.Uid ) ) );
+            mResultColumn = new Lazy<TcResultColumn>( () => Find<TcResultColumn>( Search.ByUid( TcResultColumn.Uid ) ) );
             mDetail = new Lazy<TcMaterialDetail>( On<TcMaterialDetail> );
         }
 
@@ -105,7 +105,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// </summary>
         public void DuplicateMaterial()
         {
-            Toolbar.DuplicateButton.Click();
+            Wait.ActAndWaitForChange( Toolbar.DuplicateButton.Click, () => ResultColumn.Count );
         }
 
         /// <summary>

@@ -22,5 +22,16 @@ namespace TestLeft.TestLeftBase.ControlObjects
             get => Node.GetProperty<string>( "Text" );
             set => Node.SetProperty( "Text", value );
         }
+
+        /// <summary>
+        /// Gets a value indicating whether this instance is read only.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is read only; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsReadOnly
+        {
+            get => Node.GetProperty<bool>( "IsReadOnly" );
+        }
     }
 }
