@@ -131,6 +131,16 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         }
 
         /// <summary>
+        /// Deletes the given material.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        public void DeleteMaterial( string id )
+        {
+            SelectMaterial( id );
+            DeleteMaterial();
+        }
+
+        /// <summary>
         /// Selects the material via identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>

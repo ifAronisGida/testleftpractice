@@ -21,24 +21,33 @@ namespace TestLeft.UI_Tests.Utilities
     [TestClass]
     public class TcSmokeHelpers : TcBaseTestClass
     {
-        private readonly IList<string> mCustomerNames = new List<string>();
-        private IList<string> mMaterialNames = new List<string>();
+        // test materials
+        private readonly IList<string> mMaterialNames = new List<string>{ "1.0038", "Cu", "Ti" };
+
+        // test machines
+        private readonly IList<string> mBendMachineNames = new List<string>{ "TruBend 5320 (6-axes) B23", "TruBend 1066 (4-axes,Trumpf_80mm) B22" };
+        private readonly IList<Tuple<string,string>> mCutMachineNames = new List<Tuple<string,string>>
+        {
+            new Tuple<string, string>(  "TruLaser 3030 (L20)", "5000"),
+            new Tuple<string, string>(  "TruLaser Center 7030 (L26)","6000"),
+            new Tuple<string, string>(  "TruLaser 3060 (L66)","8000")
+        };
+
+        // test customers
+        private readonly IList<string> mCustomerNames = new List<string>{"Testkunde1","Testkunde2","Testkunde3"};
 
         /// <summary>
-        /// Creates some test materials by duplicating existing materials:
-        /// 1.0038, Cu and Ti.
+        /// Creates some test materials by duplicating existing materials
         /// </summary>
         [TestMethod]
         public void CreateTestMaterials()
         {
             var materials = HomeZoneApp.Goto<TcMaterials>();
             var materialCount = materials.ResultColumn.Count;
-            var materialsToDuplicate = new List<string> { "1.0038", "Cu", "Ti" };
 
-            foreach( var material in materialsToDuplicate )
+            foreach( var material in mMaterialNames )
             {
                 DuplicateAndSave( material );
-                mMaterialNames.Add( TcSettings.NamePrefix + material );
             }
 
             materials.ResultColumn.ClearSearch();
@@ -51,7 +60,7 @@ namespace TestLeft.UI_Tests.Utilities
 
                 materials.DuplicateMaterial();
 
-                var name = TcSettings.NamePrefix + materials.Detail.Id;
+                var name = Name2UIT_Name( materials.Detail.Id );
                 materials.Detail.Id = name;
                 materials.Detail.Name = name;
 
@@ -73,17 +82,13 @@ namespace TestLeft.UI_Tests.Utilities
             var currentMaterialsCount = materials.ResultColumn.Count;
             var testMaterialsCount = mMaterialNames.Count;
 
-            while( mMaterialNames.Any() )
+            foreach( var material in mMaterialNames )
             {
-                var name = mMaterialNames.Last();
-                materials.SelectMaterial( name );
-                materials.DeleteMaterial();
-                mMaterialNames.Remove( name );
+                materials.DeleteMaterial( Name2UIT_Name( material ) );
 
                 materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
                 materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
             }
-
 
             Assert.AreEqual( currentMaterialsCount - testMaterialsCount, materials.ResultColumn.Count );
         }
@@ -97,42 +102,30 @@ namespace TestLeft.UI_Tests.Utilities
             var machines = HomeZoneApp.Goto<TcMachines>();
             var machineCount = machines.ResultColumn.Count;
 
-            machines.NewBendMachine( "TruBend 5320 (6-axes) B23", TcSettings.NamePrefix + Guid.NewGuid() );
-            Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
-            machines.SaveMachine();
-            Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
+            // create bend machines
+            foreach( var bendMachineName in mBendMachineNames )
+            {
+                machines.NewBendMachine( bendMachineName, Name2UIT_Name( bendMachineName ) );
+                Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
+                machines.SaveMachine();
+                Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
 
-            machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
+                machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
+            }
 
-            machines.NewBendMachine( "TruBend 1066 (4-axes,Trumpf_80mm) B22", TcSettings.NamePrefix + Guid.NewGuid() );
-            Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
-            machines.SaveMachine();
-            Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
+            // create cut machines
+            foreach( var cutMachineName in mCutMachineNames )
+            {
+                machines.NewCutMachine( cutMachineName.Item1, Name2UIT_Name( cutMachineName.Item1 ), cutMachineName.Item2 );
+                Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
+                machines.SaveMachine();
+                Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
 
-            machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
+                machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
+            }
 
-            machines.NewCutMachine( "TruLaser 3030 (L20)", TcSettings.NamePrefix + Guid.NewGuid(), 3 );
-            Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
-            machines.SaveMachine();
-            Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
 
-            machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
-
-            machines.NewCutMachine( "TruLaser Center 7030 (L26)", TcSettings.NamePrefix + Guid.NewGuid(), 0 );
-            Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
-            machines.SaveMachine();
-            Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
-
-            machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
-
-            machines.NewCutMachine( "TruLaser 3060 (L66)", TcSettings.NamePrefix + Guid.NewGuid(), "8000" );
-            Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
-            machines.SaveMachine();
-            Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
-
-            machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
-
-            Assert.AreEqual( machineCount + 5, machines.ResultColumn.Count );
+            Assert.AreEqual( machineCount + mBendMachineNames.Count + mCutMachineNames.Count, machines.ResultColumn.Count );
         }
 
         /// <summary>
@@ -144,15 +137,19 @@ namespace TestLeft.UI_Tests.Utilities
             var machines = HomeZoneApp.Goto<TcMachines>();
             var machineCount = machines.ResultColumn.Count;
 
-            var testMachinesCount = machines.SelectMachines( TcSettings.NamePrefix );
-            if( testMachinesCount > 0 )
+            foreach( var bendMachineName in mBendMachineNames )
             {
-                machines.DeleteMachine();
+                machines.DeleteMachine( Name2UIT_Name( bendMachineName ) );
+            }
+
+            foreach( var cutMachineName in mCutMachineNames )
+            {
+                machines.DeleteMachine( Name2UIT_Name( cutMachineName.Item1 ) );
             }
 
             machines.ResultColumn.ClearSearch();
 
-            Assert.AreEqual( machineCount - testMachinesCount, machines.ResultColumn.Count );
+            Assert.AreEqual( machineCount - mBendMachineNames.Count - mCutMachineNames.Count, machines.ResultColumn.Count );
         }
 
         /// <summary>
@@ -161,39 +158,29 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestCustomers()
         {
-            var customers = HomeZoneApp.On<TcCustomers>();
+            var customers = HomeZoneApp.Goto<TcCustomers>();
+            var customersCount = customers.Count();
+            if( string.IsNullOrEmpty( customers.Name ) )
+            {
+                customersCount--;       // do not count empty entry
+            }
 
-            mCustomerNames.Add( TcSettings.NamePrefix + Guid.NewGuid() );
-            customers.NewCustomer(
-                                  mCustomerNames.Last(),
-                                  null,
-                                  "TRUMPF Allee 1",
-                                  "71254",
-                                  "Ditzingen",
-                                  "Deutschland",
-                                  "kein Kommentar" );
-
-            mCustomerNames.Add( TcSettings.NamePrefix + Guid.NewGuid() );
-            customers.NewCustomer(
-                                  mCustomerNames.Last(),
-                                  null,
-                                  "TRUMPF Allee 2",
-                                  "71254",
-                                  "Ditzingen",
-                                  "Deutschland",
-                                  "hier auch nicht" );
-
-            mCustomerNames.Add( TcSettings.NamePrefix + Guid.NewGuid() );
-            customers.NewCustomer(
-                                  mCustomerNames.Last(),
-                                  null,
-                                  "TRUMPF Allee 3",
-                                  "71254",
-                                  "Ditzingen",
-                                  "Deutschland",
-                                  "blablabla" );
+            foreach( var customer in mCustomerNames )
+            {
+                customers.NewCustomer(
+                                      Name2UIT_Name( customer ),
+                                      null,
+                                      "TRUMPF Allee 1",
+                                      "71254",
+                                      "Ditzingen",
+                                      "Deutschland",
+                                      "kein Kommentar" );
+            }
 
             customers.Apply();
+
+            Assert.AreEqual( customersCount + mCustomerNames.Count, customers.Count() );
+
             customers.Cancel();
         }
 
@@ -204,15 +191,16 @@ namespace TestLeft.UI_Tests.Utilities
         public void DeleteTestCustomers()
         {
             var customers = HomeZoneApp.Goto<TcCustomers>();
+            var customersCount = customers.Count();
 
-            while( mCustomerNames.Any() )
+            foreach( var customer in mCustomerNames )
             {
-                var name = mCustomerNames.Last();
-                customers.DeleteCustomer( name );
-                mCustomerNames.Remove( name );
+                customers.DeleteCustomer( Name2UIT_Name( customer ) );
             }
 
             customers.Apply();
+            Assert.AreEqual( customersCount - mCustomerNames.Count, customers.Count() );
+
             customers.Cancel();
         }
 
@@ -231,7 +219,7 @@ namespace TestLeft.UI_Tests.Utilities
             parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
             parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
             parts.SingleDetail.Name = TcSettings.NamePrefix + parts.SingleDetail.Name;
-            parts.SingleDetail.Customer = TcSettings.NamePrefix + "Kunde 1";
+            parts.SingleDetail.Customer = mCustomerNames[ 0 ];
             parts.SingleDetail.DrawingNumber = TcSettings.NamePrefix + "DrawNr";
             parts.SingleDetail.DrawingVersion = "V08.15-007";
             parts.SingleDetail.ExternalName = TcSettings.NamePrefix + "ExtName";
@@ -252,7 +240,7 @@ namespace TestLeft.UI_Tests.Utilities
             parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
             parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
             parts.SingleDetail.Name = TcSettings.NamePrefix + parts.SingleDetail.Name;
-            parts.SingleDetail.Customer = TcSettings.NamePrefix + "Kunde 2";
+            parts.SingleDetail.Customer = mCustomerNames[ 1 ];
             parts.SingleDetail.DrawingNumber = TcSettings.NamePrefix + "DrawNr";
             parts.SingleDetail.DrawingVersion = "V08.15-007";
             parts.SingleDetail.ExternalName = TcSettings.NamePrefix + "ExtName";
@@ -273,7 +261,7 @@ namespace TestLeft.UI_Tests.Utilities
             parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
             parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
             parts.SingleDetail.Name = TcSettings.NamePrefix + parts.SingleDetail.Name;
-            parts.SingleDetail.Customer = TcSettings.NamePrefix + "Kunde 3";
+            parts.SingleDetail.Customer = mCustomerNames[ 2 ];
             parts.SingleDetail.DrawingNumber = TcSettings.NamePrefix + "DrawNr";
             parts.SingleDetail.DrawingVersion = "V08.15-007";
             parts.SingleDetail.ExternalName = TcSettings.NamePrefix + "ExtName";
@@ -456,6 +444,11 @@ namespace TestLeft.UI_Tests.Utilities
             smokeHelpers.DeleteTestCustomers();
             smokeHelpers.DeleteTestMachines();
             smokeHelpers.DeleteTestMaterials();
+        }
+
+        private string Name2UIT_Name( string name )
+        {
+            return TcSettings.NamePrefix + name;
         }
     }
 }

@@ -29,7 +29,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         {
             mToolbar = new Lazy<TcMachineToolbar>( On<TcMachineToolbar> );
             mPopup = new Lazy<TcMachinePopupMenu>( On<TcMachinePopupMenu> );
-            mResultColumn = new Lazy<TcResultColumn>( () => Find<TcResultColumn>(Search.ByUid(TcResultColumn.Uid) ));
+            mResultColumn = new Lazy<TcResultColumn>( () => Find<TcResultColumn>( Search.ByUid( TcResultColumn.Uid ) ) );
             mDetail = new Lazy<TcMachineDetail>( On<TcMachineDetail> );
         }
 
@@ -180,6 +180,16 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
             {
                 dialog.Yes();
             }
+        }
+
+        /// <summary>
+        /// Deletes the given machine.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        public void DeleteMachine( string id )
+        {
+            SelectMachine( id );
+            DeleteMachine();
         }
 
         /// <summary>
