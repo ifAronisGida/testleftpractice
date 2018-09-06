@@ -1,4 +1,5 @@
 ﻿using DevExpress.Xpf.Editors;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects
@@ -7,16 +8,13 @@ namespace TestLeft.TestLeftBase.ControlObjects
     /// The TextEdit ControlObject.
     /// </summary>
     /// <seealso cref="Trumpf.PageObjects.WPF.ViewControlObject{TextEdit}" />
-    public class TcTextEdit : ViewControlObject<TextEdit>
+    public class TcTextEdit : ViewControlObject<TextEdit>, TiSimpleValue<string>
     {
         protected override Search SearchPattern => Search.Any;
 
         /// <summary>
         /// Gets or sets the text of the TextEdit control.
         /// </summary>
-        /// <value>
-        /// The text.
-        /// </value>
         public string Text
         {
             get => Node.GetProperty<string>( "Text" );
@@ -32,6 +30,12 @@ namespace TestLeft.TestLeftBase.ControlObjects
         public bool IsReadOnly
         {
             get => Node.GetProperty<bool>( "IsReadOnly" );
+        }
+
+        string TiSimpleValue<string>.Value
+        {
+            get => this.Text;
+            set => this.Text = value;
         }
     }
 }

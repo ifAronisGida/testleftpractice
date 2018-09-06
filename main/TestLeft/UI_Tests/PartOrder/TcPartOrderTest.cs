@@ -3,8 +3,6 @@ using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.PageObjects.PartOrder;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
-
-
 namespace TestLeft.UI_Tests.PartOrder
 {
     [TestClass]
@@ -20,10 +18,6 @@ namespace TestLeft.UI_Tests.PartOrder
                 partOrders.NewPartOrder();
 
                 //TODO complete test
-                //partOrders.SingleDetail.Name = TcSettings.NamePrefix + "NewPartTest";
-
-                //Assert.IsTrue( partOrders.Toolbar.SaveButton.Enabled );
-                //partOrders.SavePart();
                 Assert.IsFalse( partOrders.CanSave );
 
                 Assert.IsTrue( partOrders.CanDelete );

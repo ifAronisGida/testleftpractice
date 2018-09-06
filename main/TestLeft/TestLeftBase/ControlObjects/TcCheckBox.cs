@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using DevExpress.Xpf.Editors;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects
@@ -7,7 +8,7 @@ namespace TestLeft.TestLeftBase.ControlObjects
     /// <summary>
     /// The CheckBox ControlObject for the built-in CheckBox and DevExpress' CheckEdit.
     /// </summary>
-    public class TcCheckBox : ControlObject
+    public class TcCheckBox : ControlObject, TiSimpleValue<bool>
     {
         protected override Search SearchPattern =>
             Search.By<CheckBox>().OrBy<CheckEdit>();
@@ -28,6 +29,12 @@ namespace TestLeft.TestLeftBase.ControlObjects
                     Click();
                 }
             }
+        }
+
+        bool TiSimpleValue<bool>.Value
+        {
+            get => this.Checked;
+            set => this.Checked = value;
         }
     }
 }

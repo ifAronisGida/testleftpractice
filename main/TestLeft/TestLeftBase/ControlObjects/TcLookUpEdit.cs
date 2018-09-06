@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using SmartBear.TestLeft.TestObjects;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 using TestLeft.TestLeftBase.Utilities;
 using Trumpf.PageObjects.WPF;
 
@@ -8,7 +9,7 @@ namespace TestLeft.TestLeftBase.ControlObjects
     /// <summary>
     /// The LookUpEdit ControlObject.
     /// </summary>
-    public class TcLookUpEdit : ControlObject
+    public class TcLookUpEdit : ControlObject, TiSimpleValue<string>
     {
         protected override Search SearchPattern => Search.Any;
 
@@ -34,6 +35,12 @@ namespace TestLeft.TestLeftBase.ControlObjects
         public IEnumerable<IObject> GetItemsSource()
         {
             return Node.GetProperty<IObject>( "ItemsSource" ).AsEnumerable<IObject>();
+        }
+
+        string TiSimpleValue<string>.Value
+        {
+            get => this.Text;
+            set => this.Text = value;
         }
     }
 }
