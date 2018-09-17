@@ -1,6 +1,5 @@
 using System;
 using System.Threading;
-using System.Windows.Forms;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.TestLeftBase.PageObjects.Flux;
 using TestLeft.TestLeftBase.PageObjects.Machine;
@@ -8,10 +7,7 @@ using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
-using Trumpf.AutoTest.Utilities;
-using SmartBear.TestLeft;
-using SmartBear.TestLeft.TestObjects;
-using SmartBear.TestLeft.TestObjects.WPF;
+
 
 namespace TestLeft.UI_Tests.Flux
 {
@@ -26,10 +22,10 @@ namespace TestLeft.UI_Tests.Flux
 
         private readonly TimeSpan CONFIGURE_MACHINE_OVERLAY = TimeSpan.FromSeconds( 20 );
 
-        /// <summary>
-        /// Gets the extended test environment.
-        /// Creates / deletes the test machine used by the test methods
-        /// </summary>
+        ///// <summary>
+        ///// Gets the extended test environment.
+        ///// Creates / deletes the test machine used by the test methods
+        ///// </summary>
         //public override IDoSequence TestEnvironment => base.TestEnvironment
         //.Do( CreateTestMachine, DeleteTestMachine, "TestMachine" );
 
@@ -51,7 +47,7 @@ namespace TestLeft.UI_Tests.Flux
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
-                parts.SingleDetail.Name = namePrefix + "1";
+                parts.SingleDetail.Name.Value = namePrefix + "1";
 
                 parts.SingleDetailBendSolutions.New();
                 parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
@@ -74,7 +70,7 @@ namespace TestLeft.UI_Tests.Flux
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
-                parts.SingleDetail.Name = namePrefix + "2";
+                parts.SingleDetail.Name.Value = namePrefix + "2";
 
                 parts.SingleDetailBendSolutions.New();
                 parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );

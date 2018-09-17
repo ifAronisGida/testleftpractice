@@ -28,13 +28,13 @@ namespace TestLeft.UI_Tests.Material
 
                     var guid = Convert.ToBase64String( Guid.NewGuid().ToByteArray() ).Substring( 0, 22 );
                     var name = TcSettings.NamePrefix + guid;
-                    materials.Detail.Id = name;
-                    materials.Detail.Name = name;
-                    materials.Detail.EModulus = @"210000";
-                    materials.Detail.SpecificWeight = @"7,42";
-                    materials.Detail.TensileStrengthMax = @"542";
-                    materials.Detail.TensileStrength = @"442";
-                    materials.Detail.TensileStrengthMin = @"342";
+                    materials.Detail.Id.Value = name;
+                    materials.Detail.Name.Value = name;
+                    materials.Detail.EModulus.Value = @"210000";
+                    materials.Detail.SpecificWeight.Value = @"7,42";
+                    materials.Detail.TensileStrengthMax.Value = @"542";
+                    materials.Detail.TensileStrength.Value = @"442";
+                    materials.Detail.TensileStrengthMin.Value = @"342";
 
                     Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
                     materials.SaveMaterial();
@@ -67,8 +67,8 @@ namespace TestLeft.UI_Tests.Material
                 materials.DuplicateMaterial();
 
                 var name = TcSettings.NamePrefix + materials.Detail.Id;
-                materials.Detail.Id = name;
-                materials.Detail.Name = name;
+                materials.Detail.Id.Value = name;
+                materials.Detail.Name.Value = name;
 
                 Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
                 materials.SaveMaterial();

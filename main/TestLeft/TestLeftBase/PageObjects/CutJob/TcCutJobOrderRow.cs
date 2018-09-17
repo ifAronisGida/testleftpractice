@@ -1,10 +1,10 @@
 using System;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
-using SmartBear.TestLeft.TestObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using Trumpf.PageObjects.WPF;
 using System.Windows.Documents;
 using DevExpress.Xpf.Editors;
+using TestLeft.TestLeftBase.Utilities;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
@@ -79,8 +79,8 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             .Find<TcReadOnlyText>( Search.ByUid( "PartDistanceMode" ) )
             .Text;
 
-        public TcCheckBox IgnoreProcessings => mRow.GetCell( 15 )
-            .Find<TcCheckBox>( depth: 1 );
+        public TcCheckBox IgnoreProcessings =>
+             TcControlMapper.Map<TcCheckBox>( mRow.GetCell( 15 ).FindGeneric( Search.Any, depth: 1 ) );
 
         // TODO: do something about the editability of these cells
         public int NestingPriority
@@ -89,7 +89,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             {
                 var fakeTextEdit = mRow.GetCell( 16 ).Find<TcReadOnlyText>( Search.By<TextEdit>(), depth: 1 );
 
-                return int.Parse(fakeTextEdit.Text);
+                return int.Parse( fakeTextEdit.Text );
             }
         }
 

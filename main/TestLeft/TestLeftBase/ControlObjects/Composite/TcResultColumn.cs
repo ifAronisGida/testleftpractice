@@ -1,33 +1,21 @@
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
+using TestLeft.TestLeftBase.Utilities;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects.Composite
-{ 
+{
     /// <summary>
     /// The result column containing the search area with search text, clear and search buttons and the result list.
     /// </summary>
-    public class TcResultColumn : ControlObject
+    public class TcResultColumn : TcGenericControlObject
     {
         public const string Uid = "List.SearchAndResult";
 
-        protected override Search SearchPattern => Search.Any;
-
-        private TcTextEdit SearchTextTextEdit => Find<TcTextEdit>( Search.ByUid( "List.Search.Text" ) );
+        private TiValueControl<string> SearchText => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "List.Search.Text" ) ) );
         private TcTruIconButton ClearSearchTextButton => Find<TcTruIconButton>( Search.ByUid( "List.Search.Clear" ) );
         private TcTruIconButton ExecuteSearchButton => Find<TcTruIconButton>( Search.ByUid( "List.Search.Execute" ) );
         private TcListView ResultListView => Find<TcListView>( Search.ByUid( "List.ResultList" ) );
         private TcOverlay Overlay => Find<TcOverlay>( Search.ByUid( "ResultList.Overlay" ) );
-
-        /// <summary>
-        /// Gets or sets the search text.
-        /// </summary>
-        /// <value>
-        /// The search text.
-        /// </value>
-        public string SearchText
-        {
-            get { return SearchTextTextEdit.Text; }
-            set { SearchTextTextEdit.Text = value; }
-        }
 
         /// <summary>
         /// Gets the amount of items in the result list.
@@ -42,7 +30,7 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
         /// </summary>
         public void ClearSearch()
         {
-            if (ClearSearchTextButton.Visible)
+            if( ClearSearchTextButton.Visible )
             {
                 ClearSearchTextButton.Click();
                 Overlay.Visible.WaitForFalse();
@@ -64,7 +52,7 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
         /// <param name="id">The identifier.</param>
         public void SelectItem( string id )
         {
-            SearchText = id.StartsWith( "id:" ) ? id : $"id:{id}";
+            SearchText.Value = id.StartsWith( "id:" ) ? id : $"id:{id}";
 
             DoSearch();
             ResultListView.SelectedIndex = 0;
@@ -77,7 +65,7 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
         /// <returns>The amount of selected entries.</returns>
         public int SelectItems( string searchText )
         {
-            SearchText = searchText;
+            SearchText.Value = searchText;
             DoSearch();
             return ResultListView.SelectAll();
         }

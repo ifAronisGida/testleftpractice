@@ -1,25 +1,44 @@
-﻿using DevExpress.Xpf.Editors;
+﻿using SmartBear.TestLeft.TestObjects;
 using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects
 {
     /// <summary>
-    /// The TextEdit ControlObject.
+    /// The TcTextEdit ControlObject.
     /// </summary>
-    /// <seealso cref="Trumpf.PageObjects.WPF.ViewControlObject{TextEdit}" />
-    public class TcTextEdit : ViewControlObject<TextEdit>, TiSimpleValue<string>
+    public class TcTextEdit : TiValueControl<string>
     {
-        protected override Search SearchPattern => Search.Any;
+        private readonly IControlObject mControlObject;
 
         /// <summary>
-        /// Gets or sets the text of the TextEdit control.
+        /// Initializes a new instance of the <see cref="TcTextEdit"/> class.
         /// </summary>
-        public string Text
+        /// <param name="controlObject">The control object.</param>
+        public TcTextEdit( IControlObject controlObject )
         {
-            get => Node.GetProperty<string>( "Text" );
-            set => Node.SetProperty( "Text", value );
+            mControlObject = controlObject;
         }
+
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        /// <value>
+        /// The value.
+        /// </value>
+        string TiValueControl<string>.Value
+        {
+            get => mControlObject.Node.Cast<ITextEdit>().GetText();
+            set => mControlObject.Node.Cast<ITextEdit>().SetText( value );
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether this <see cref="TcTextEdit"/> is enabled.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if enabled; otherwise, <c>false</c>.
+        /// </value>
+        bool TiValueControl<string>.Enabled => mControlObject.Node.Cast<ITextEdit>().Enabled;
 
         /// <summary>
         /// Gets a value indicating whether this instance is read only.
@@ -27,15 +46,10 @@ namespace TestLeft.TestLeftBase.ControlObjects
         /// <value>
         ///   <c>true</c> if this instance is read only; otherwise, <c>false</c>.
         /// </value>
-        public bool IsReadOnly
+        bool TiValueControl<string>.IsReadOnly
         {
-            get => Node.GetProperty<bool>( "IsReadOnly" );
-        }
-
-        string TiSimpleValue<string>.Value
-        {
-            get => this.Text;
-            set => this.Text = value;
+            get => mControlObject.Node.GetProperty<bool>( "IsReadOnly" );
+            set => mControlObject.Node.SetProperty( "IsReadOnly", value );
         }
     }
 }

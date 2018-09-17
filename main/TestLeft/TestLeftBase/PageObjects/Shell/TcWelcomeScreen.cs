@@ -1,4 +1,5 @@
-using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
+using TestLeft.TestLeftBase.Utilities;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 
@@ -8,12 +9,12 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
     {
         protected override Search SearchPattern => Search.ByUid( "WelcomeScreen" );
 
-        internal TcCheckBox ShowWelcomeScreenCheckBox => Find<TcCheckBox>( Search.ByUid( "ShowWelcomeScreen" ), depth: 3 );
+        internal TiValueControl<bool> ShowWelcomeScreenCheckBox => TcControlMapper.Map<TiValueControl<bool>>( this.FindGeneric( Search.ByUid( "ShowWelcomeScreen" ), depth: 3 ) );
 
         public bool ShowWelcomeScreen
         {
-            get => ShowWelcomeScreenCheckBox.Checked;
-            set => ShowWelcomeScreenCheckBox.Checked = value;
+            get => ShowWelcomeScreenCheckBox.Value;
+            set => ShowWelcomeScreenCheckBox.Value = value;
         }
     }
 }

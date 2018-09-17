@@ -121,7 +121,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         {
             NewCutMachine();
             Detail.CutMachineType = machineType;
-            Detail.Name = name;
+            Detail.Name.Value = name;
             Detail.LaserPowerIndex = laserPowerIndex;
         }
 
@@ -135,7 +135,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         {
             NewCutMachine();
             Detail.CutMachineType = machineType;
-            Detail.Name = name;
+            Detail.Name.Value = name;
             Detail.LaserPowerValue = laserPowerValue;
         }
 
@@ -157,7 +157,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
             NewBendMachine();
             Detail.VisibleOnScreen.WaitFor();
             Detail.BendMachineType = machineType;
-            Detail.Name = name;
+            Detail.Name.Value = name;
         }
 
         /// <summary>

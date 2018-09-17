@@ -40,15 +40,15 @@ namespace TestLeft.UI_Tests.Part
                     parts.NewPart();
                     parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
-                    parts.SingleDetail.Name = partName;
+                    parts.SingleDetail.Name.Value = partName;
 
                     parts.SingleDetail.Customer = mTestCustomerName;
 
-                    parts.SingleDetail.DrawingNumber = "NewPartTest_DrawNr";
-                    parts.SingleDetail.DrawingVersion = "V08.15-007";
-                    parts.SingleDetail.ExternalName = "NewPartTest_ExtName";
+                    parts.SingleDetail.DrawingNumber.Value = "NewPartTest_DrawNr";
+                    parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
+                    parts.SingleDetail.ExternalName.Value = "NewPartTest_ExtName";
                     parts.SingleDetail.Archivable = false;
-                    parts.SingleDetail.Note = "ImportPartTest_Note";
+                    parts.SingleDetail.Note.Value = "ImportPartTest_Note";
 
                     Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
                     parts.SavePart();
@@ -76,15 +76,15 @@ namespace TestLeft.UI_Tests.Part
                     parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
                     parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
-                    parts.SingleDetail.Name = TcSettings.NamePrefix + "ImportPartTest";
+                    parts.SingleDetail.Name.Value = TcSettings.NamePrefix + "ImportPartTest";
 
                     parts.SingleDetail.Customer = mTestCustomerName;
 
-                    parts.SingleDetail.DrawingNumber = "ImportPartTest_DrawNr";
-                    parts.SingleDetail.DrawingVersion = "V08.15-007";
-                    parts.SingleDetail.ExternalName = "ImportPartTest_ExtName";
+                    parts.SingleDetail.DrawingNumber.Value = "ImportPartTest_DrawNr";
+                    parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
+                    parts.SingleDetail.ExternalName.Value = "ImportPartTest_ExtName";
                     parts.SingleDetail.Archivable = false;
-                    parts.SingleDetail.Note = "ImportPartTest_Note";
+                    parts.SingleDetail.Note.Value = "ImportPartTest_Note";
                     parts.SingleDetailBendSolutions.New();
                     parts.SingleDetailCutSolutions.New();
 
@@ -127,16 +127,16 @@ namespace TestLeft.UI_Tests.Part
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
                 parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
-                parts.SingleDetail.Name = TcSettings.NamePrefix + "ImportDesignTest";
+                parts.SingleDetail.Name.Value = TcSettings.NamePrefix + "ImportDesignTest";
 
                 parts.SingleDetail.Customer = mTestCustomerName;
 
-                parts.SingleDetail.DrawingNumber = "ImportDesignTestt_DrawNr";
-                parts.SingleDetail.DrawingVersion = "V08.15-007";
+                parts.SingleDetail.DrawingNumber.Value = "ImportDesignTestt_DrawNr";
+                parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
                 parts.SingleDetail.Id = "UIT_" + parts.SingleDetail.Id;
-                parts.SingleDetail.ExternalName = "ImportDesignTest_ExtName";
+                parts.SingleDetail.ExternalName.Value = "ImportDesignTest_ExtName";
                 parts.SingleDetail.Archivable = false;
-                parts.SingleDetail.Note = "ImportDesignTest_Note";
+                parts.SingleDetail.Note.Value = "ImportDesignTest_Note";
                 parts.SingleDetailBendSolutions.New();
                 parts.SingleDetailCutSolutions.New();
 

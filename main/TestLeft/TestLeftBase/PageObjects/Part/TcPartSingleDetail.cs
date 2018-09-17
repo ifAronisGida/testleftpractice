@@ -3,9 +3,10 @@ using Trumpf.PageObjects;
 using Trumpf.PageObjects.Waiting;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TcTruIconButton = TestLeft.TestLeftBase.ControlObjects.TcTruIconButton;
-
+using TestLeft.TestLeftBase.Utilities;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
@@ -18,29 +19,16 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     {
         protected override Search SearchPattern => Search.ByUid( "Part.Details" );
 
-        private TcTextEdit NameTextEdit => Find<TcTextEdit>( Search.ByUid( "Part.Detail.Base.Description" ) );
-        private TcLookUpEdit CustomerLookUpEdit => Find<TcLookUpEdit>( Search.ByUid( "EditCustomerProperty.EditValue" ) );
+        public TiValueControl<string> Name => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Part.Detail.Base.Description" ) ) );
+        private TcLookUpEdit CustomerLookUpEdit => TcControlMapper.Map<TcLookUpEdit>( this.FindGeneric( Search.ByUid( "EditCustomerProperty.EditValue" ) ) );
         internal TcTruIconButton CustomerOpenAdministrationButton => Find<TcTruIconButton>( Search.ByUid( "EditCustomerProperty.OpenAdministration" ) );
-        private TcTextEdit DrawingNumberTextEdit => Find<TcTextEdit>( Search.ByUid( "Part.Detail.Base.DrawingNumber" ) );
-        private TcTextEdit DrawingVersionTextEdit => Find<TcTextEdit>( Search.ByUid( "Part.Detail.Base.DrawingVersion" ) );
+        public TiValueControl<string> DrawingNumber => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Part.Detail.Base.DrawingNumber" ) ) );
+        public TiValueControl<string> DrawingVersion => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Part.Detail.Base.DrawingVersion" ) ) );
         private TcGroupPanel DetailGroupPanel => Find<TcGroupPanel>( Search.ByUid( "Part.Detail.Base" ) );
-        private TcTextEdit IdTextEdit => Find<TcTextEdit>( Search.ByUid( "Part.Detail.Base.Name" ) );
-        private TcTextEdit ExternalNameTextEdit => Find<TcTextEdit>( Search.ByUid( "Part.Detail.Base.More.ExternalName" ) );
-        private TcCheckBox ArchivableCheckBox => Find<TcCheckBox>( Search.ByUid( "Part.Detail.Archivable" ) );
-        private TcTextEdit NoteTextEdit => Find<TcTextEdit>( Search.ByUid( "Part.Detail.Base.More.Note" ) );
-
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        /// <value>
-        /// The name.
-        /// </value>
-        public string Name
-        {
-            set => NameTextEdit.Text = value;
-
-            get => NameTextEdit.Text;
-        }
+        public TiValueControl<string> IdTextEdit => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Part.Detail.Base.Name" ) ) );
+        public TiValueControl<string> ExternalName => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Part.Detail.Base.More.ExternalName" ) ) );
+        private TiValueControl<bool> ArchivableCheckBox => TcControlMapper.Map<TiValueControl<bool>>( this.FindGeneric( Search.ByUid( "Part.Detail.Archivable" ) ) );
+        public TiValueControl<string> Note => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Part.Detail.Base.More.Note" ) ) );
 
         /// <summary>
         /// Waits for name TextBox enabled.
@@ -48,7 +36,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <param name="timeout">The timeout.</param>
         public void WaitForNameEnabled( TimeSpan timeout )
         {
-            Wait.For( () => NameTextEdit.Enabled, timeout );
+            Wait.For( () => Name.Enabled, timeout );
         }
 
         /// <summary>
@@ -63,32 +51,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
             set => CustomerLookUpEdit.Text = value;
 
             get => CustomerLookUpEdit.Text;
-        }
-
-        /// <summary>
-        /// Gets or sets the drawing number.
-        /// </summary>
-        /// <value>
-        /// The drawing number.
-        /// </value>
-        public string DrawingNumber
-        {
-            set => DrawingNumberTextEdit.Text = value;
-
-            get => DrawingNumberTextEdit.Text;
-        }
-
-        /// <summary>
-        /// Gets or sets the drawing version.
-        /// </summary>
-        /// <value>
-        /// The drawing version.
-        /// </value>
-        public string DrawingVersion
-        {
-            set => DrawingVersionTextEdit.Text = value;
-
-            get => DrawingVersionTextEdit.Text;
         }
 
         /// <summary>
@@ -115,34 +77,13 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
             set
             {
                 IsMoreExpanded = true;
-                IdTextEdit.Text = value;
+                IdTextEdit.Value = value;
             }
 
             get
             {
                 IsMoreExpanded = true;
-                return IdTextEdit.Text;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the external name.
-        /// </summary>
-        /// <value>
-        /// The external name.
-        /// </value>
-        public string ExternalName
-        {
-            set
-            {
-                IsMoreExpanded = true;
-                ExternalNameTextEdit.Text = value;
-            }
-
-            get
-            {
-                IsMoreExpanded = true;
-                return ExternalNameTextEdit.Text;
+                return IdTextEdit.Value;
             }
         }
 
@@ -157,34 +98,13 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
             set
             {
                 IsMoreExpanded = true;
-                ArchivableCheckBox.Checked = value;
+                ArchivableCheckBox.Value = value;
             }
 
             get
             {
                 IsMoreExpanded = true;
-                return ArchivableCheckBox.Checked;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the note.
-        /// </summary>
-        /// <value>
-        /// The note.
-        /// </value>
-        public string Note
-        {
-            set
-            {
-                IsMoreExpanded = true;
-                NoteTextEdit.Text = value;
-            }
-
-            get
-            {
-                IsMoreExpanded = true;
-                return NoteTextEdit.Text;
+                return ArchivableCheckBox.Value;
             }
         }
     }

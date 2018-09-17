@@ -94,6 +94,7 @@
     <Compile Include="ControlObjects\Grid\TcTableRow.cs" />
     <Compile Include="ControlObjects\Grid\TcOptimizedTableRow.cs" />
     <Compile Include="ControlObjects\Grid\TcTableView.cs" />
+    <Compile Include="ControlObjects\Interfaces\TiValueControl.cs" />
     <Compile Include="ControlObjects\TcButton.cs" />
     <Compile Include="ControlObjects\TcCheckBox.cs" />
     <Compile Include="ControlObjects\TcComboBox.cs" />
@@ -106,8 +107,8 @@
     <Compile Include="ControlObjects\TcLookUpEdit.cs" />
     <Compile Include="ControlObjects\TcReadOnlyText.cs" />
     <Compile Include="ControlObjects\TcSpinEdit.cs" />
-    <Compile Include="ControlObjects\TcTruIconButton.cs" />
     <Compile Include="ControlObjects\TcTextEdit.cs" />
+    <Compile Include="ControlObjects\TcTruIconButton.cs" />
     <Compile Include="PageObjects\Customer\TcCustomerRow.cs" />
     <Compile Include="PageObjects\Customer\TcCustomers.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobContainedOrders.cs" />
@@ -165,9 +166,11 @@
     <Compile Include="Settings\TcSystemLanguageSpecific.cs" />
     <Compile Include="TcHomeZoneApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\EnumerableProxy.cs" />
-    <Compile Include="Utilities\ObjectExtensions.cs" />
-    <Compile Include="Utilities\UIObjectExtensions.cs" />
+    <Compile Include="Utilities\TcEnumerableProxy.cs" />
+    <Compile Include="Utilities\TcGenericControlObject.cs" />
+    <Compile Include="Utilities\TcObjectExtensions.cs" />
+    <Compile Include="Utilities\TcControlMapper.cs" />
+    <Compile Include="Utilities\TcUIObjectExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

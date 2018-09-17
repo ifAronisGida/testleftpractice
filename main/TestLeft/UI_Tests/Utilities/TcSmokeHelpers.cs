@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.PageObjects.CutJob;
@@ -60,9 +59,9 @@ namespace TestLeft.UI_Tests.Utilities
 
                 materials.DuplicateMaterial();
 
-                var name = Name2UIT_Name( materials.Detail.Id );
-                materials.Detail.Id = name;
-                materials.Detail.Name = name;
+                var name = Name2UIT_Name( materials.Detail.Id.Value );
+                materials.Detail.Id.Value = name;
+                materials.Detail.Name.Value = name;
 
                 Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
                 materials.SaveMaterial();
@@ -90,6 +89,7 @@ namespace TestLeft.UI_Tests.Utilities
                 materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
             }
 
+            materials.ResultColumn.ClearSearch();
             Assert.AreEqual( currentMaterialsCount - testMaterialsCount, materials.ResultColumn.Count );
         }
 
@@ -160,7 +160,7 @@ namespace TestLeft.UI_Tests.Utilities
         {
             var customers = HomeZoneApp.Goto<TcCustomers>();
             var customersCount = customers.Count();
-            if( string.IsNullOrEmpty( customers.Name ) )
+            if( string.IsNullOrEmpty( customers.Name.Value ) )
             {
                 customersCount--;       // do not count empty entry
             }
@@ -218,64 +218,64 @@ namespace TestLeft.UI_Tests.Utilities
             parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
             parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
             parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
-            parts.SingleDetail.Name = TcSettings.NamePrefix + parts.SingleDetail.Name;
-            parts.SingleDetail.Customer = mCustomerNames[ 0 ];
-            parts.SingleDetail.DrawingNumber = TcSettings.NamePrefix + "DrawNr";
-            parts.SingleDetail.DrawingVersion = "V08.15-007";
-            parts.SingleDetail.ExternalName = TcSettings.NamePrefix + "ExtName";
-            parts.SingleDetail.Note = TcSettings.NamePrefix + "Note";
+            parts.SingleDetail.Name.Value = TcSettings.NamePrefix + parts.SingleDetail.Name;
+            parts.SingleDetail.Customer = Name2UIT_Name( mCustomerNames[ 0 ] );
+            parts.SingleDetail.DrawingNumber.Value = TcSettings.NamePrefix + "DrawNr";
+            parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
+            parts.SingleDetail.ExternalName.Value = TcSettings.NamePrefix + "ExtName";
+            parts.SingleDetail.Note.Value = TcSettings.NamePrefix + "Note";
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailCutSolutions.New();
             Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
             parts.SavePart();
             Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
-            OpenFluxBendSolutionAndCloseFlux( parts );
-            Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
-            parts.BoostPart();
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+            //OpenFluxBendSolutionAndCloseFlux( parts );
+            //Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
+            //parts.BoostPart();
+            //parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            //parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
             parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
             parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
             parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
             parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
-            parts.SingleDetail.Name = TcSettings.NamePrefix + parts.SingleDetail.Name;
-            parts.SingleDetail.Customer = mCustomerNames[ 1 ];
-            parts.SingleDetail.DrawingNumber = TcSettings.NamePrefix + "DrawNr";
-            parts.SingleDetail.DrawingVersion = "V08.15-007";
-            parts.SingleDetail.ExternalName = TcSettings.NamePrefix + "ExtName";
-            parts.SingleDetail.Note = TcSettings.NamePrefix + "Note";
+            parts.SingleDetail.Name.Value = TcSettings.NamePrefix + parts.SingleDetail.Name;
+            parts.SingleDetail.Customer = Name2UIT_Name( mCustomerNames[ 1 ] );
+            parts.SingleDetail.DrawingNumber.Value = TcSettings.NamePrefix + "DrawNr";
+            parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
+            parts.SingleDetail.ExternalName.Value = TcSettings.NamePrefix + "ExtName";
+            parts.SingleDetail.Note.Value = TcSettings.NamePrefix + "Note";
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailCutSolutions.New();
             Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
             parts.SavePart();
             Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
-            OpenFluxBendSolutionAndCloseFlux( parts );
-            Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
-            parts.BoostPart();
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+            //OpenFluxBendSolutionAndCloseFlux( parts );
+            //Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
+            //parts.BoostPart();
+            //parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            //parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
             parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Zugwinkel.scdoc" );
             parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
             parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
             parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
-            parts.SingleDetail.Name = TcSettings.NamePrefix + parts.SingleDetail.Name;
-            parts.SingleDetail.Customer = mCustomerNames[ 2 ];
-            parts.SingleDetail.DrawingNumber = TcSettings.NamePrefix + "DrawNr";
-            parts.SingleDetail.DrawingVersion = "V08.15-007";
-            parts.SingleDetail.ExternalName = TcSettings.NamePrefix + "ExtName";
-            parts.SingleDetail.Note = TcSettings.NamePrefix + "Note";
+            parts.SingleDetail.Name.Value = TcSettings.NamePrefix + parts.SingleDetail.Name;
+            parts.SingleDetail.Customer = Name2UIT_Name( mCustomerNames[ 2 ] );
+            parts.SingleDetail.DrawingNumber.Value = TcSettings.NamePrefix + "DrawNr";
+            parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
+            parts.SingleDetail.ExternalName.Value = TcSettings.NamePrefix + "ExtName";
+            parts.SingleDetail.Note.Value = TcSettings.NamePrefix + "Note";
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailCutSolutions.New();
             Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
             parts.SavePart();
             Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
-            OpenFluxBendSolutionAndCloseFlux( parts );
-            Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
-            parts.BoostPart();
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+            //OpenFluxBendSolutionAndCloseFlux( parts );
+            //Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
+            //parts.BoostPart();
+            //parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            //parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
             Assert.AreEqual( partCount + 3, parts.ResultColumn.Count );
         }
@@ -402,7 +402,7 @@ namespace TestLeft.UI_Tests.Utilities
             //cutJobs.CutJobContainedOrders.AddPartOrder();
 
             //Tafelprogramm
-            cutJobs.CutJobSolution.Note = "Kommentar";
+            cutJobs.CutJobSolution.Note.Value = "Kommentar";
             cutJobs.CutJobSolution.SelectMachine( 1 );
             //cutJobs.CutJobSolution.SelectRawSheet( 1 );
             cutJobs.CutJobSolution.DeleteProgram();

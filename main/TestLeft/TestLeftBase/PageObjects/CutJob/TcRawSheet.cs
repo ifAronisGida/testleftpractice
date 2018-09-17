@@ -1,5 +1,6 @@
 using System.Windows.Controls;
 using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.Utilities;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
@@ -8,8 +9,8 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
     {
         protected override Search SearchPattern => Search.By<ContentPresenter>();
 
-        public TcLookUpEdit RawSheet => Find<TcLookUpEdit>( Search.ByControlName( "rawsheetComboBox" ) );
-        public TcSpinEdit Quantity => Find<TcSpinEdit>( Search.ByUid( "CutJob.Detail.JobSolution.MaxQuantity" ) );
+        public TcLookUpEdit RawSheet => TcControlMapper.Map<TcLookUpEdit>( this.FindGeneric( Search.ByControlName( "rawsheetComboBox" ) ) );
+        public TcSpinEdit Quantity => TcControlMapper.Map<TcSpinEdit>( this.FindGeneric( Search.ByUid( "CutJob.Detail.JobSolution.MaxQuantity" ) ) );
         private TcTruIconButton DeleteButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.RemovePresetRawSheet" ) );
 
         public void Delete()

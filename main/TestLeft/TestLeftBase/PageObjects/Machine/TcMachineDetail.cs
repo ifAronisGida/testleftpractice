@@ -2,7 +2,9 @@
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 using TestLeft.TestLeftBase.PageObjects.Shell;
+using TestLeft.TestLeftBase.Utilities;
 
 namespace TestLeft.TestLeftBase.PageObjects.Machine
 {
@@ -15,13 +17,13 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     {
         protected override Search SearchPattern => Search.ByUid( "Machine.Details" );
 
-        private TcLookUpEdit CutMachineTypeLookUpEdit => Find<TcLookUpEdit>( Search.ByUid( "Machine.Detail.Base.TemplateSelection" ) );
-        private TcLookUpEdit BendMachineTypeLookUpEdit => Find<TcLookUpEdit>( Search.ByUid( "Machine.Detail.Base.BendTemplateSelection" ) );
-        private TcTextEdit NameTextEdit => Find<TcTextEdit>( Search.ByUid( "Machine.Detail.Base.Name" ) );
-        private TcTextEdit MachineNumberTextEdit => Find<TcTextEdit>( Search.ByUid( "Machine.Detail.Base.MachineEquipmentNr" ) );
+        private TcLookUpEdit CutMachineTypeLookUpEdit => TcControlMapper.Map<TcLookUpEdit>( this.FindGeneric( Search.ByUid( "Machine.Detail.Base.TemplateSelection" ) ) );
+        private TcLookUpEdit BendMachineTypeLookUpEdit => TcControlMapper.Map<TcLookUpEdit>( this.FindGeneric( Search.ByUid( "Machine.Detail.Base.BendTemplateSelection" ) ));
+        public TiValueControl<string> Name => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Machine.Detail.Base.Name" ) ) );
+        public TiValueControl<string> MachineNumber => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Machine.Detail.Base.MachineEquipmentNr" ) ) );
         private TcComboBox LaserPowerComboBox => Find<TcComboBox>( Search.ByUid( "Machine.Detail.Base.LaserPowers" ) );
-        private TcTextEdit TransferDirectoryTextEdit => Find<TcTextEdit>( Search.ByUid( "Machine.Detail.Base.TransferDirectory" ) );
-        private TcCheckBox CreateSubDirectoryCheckBox => Find<TcCheckBox>( Search.ByUid( "Machine.Detail.Base.CreateSubDirectory" ) );
+        public TiValueControl<string> TransferDirectory => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Machine.Detail.Base.TransferDirectory" ) ) );
+        public TiValueControl<bool> CreateSubDirectory => TcControlMapper.Map<TiValueControl<bool>>( this.FindGeneric( Search.ByUid( "Machine.Detail.Base.CreateSubDirectory" ) ));
 
         /// <summary>
         /// Gets or sets the type of the cut machine.
@@ -47,32 +49,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
             set => BendMachineTypeLookUpEdit.Text = value;
 
             get => BendMachineTypeLookUpEdit.Text;
-        }
-
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        /// <value>
-        /// The name.
-        /// </value>
-        public string Name
-        {
-            set => NameTextEdit.Text = value;
-
-            get => NameTextEdit.Text;
-        }
-
-        /// <summary>
-        /// Gets or sets the machine number.
-        /// </summary>
-        /// <value>
-        /// The machine number.
-        /// </value>
-        public string MachineNumber
-        {
-            set => MachineNumberTextEdit.Text = value;
-
-            get => MachineNumberTextEdit.Text;
         }
 
         /// <summary>
@@ -104,32 +80,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// The laser power.
         /// </value>
         public string LaserPower => LaserPowerComboBox.GetText();
-
-        /// <summary>
-        /// Gets or sets the transfer directory.
-        /// </summary>
-        /// <value>
-        /// The transfer directory.
-        /// </value>
-        public string TransferDirectory
-        {
-            set => TransferDirectoryTextEdit.Text = value;
-
-            get => TransferDirectoryTextEdit.Text;
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether a sub directory is created.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if sub directory is created; otherwise, <c>false</c>.
-        /// </value>
-        public bool CreateSubDirectory
-        {
-            set => CreateSubDirectoryCheckBox.Checked = value;
-
-            get => CreateSubDirectoryCheckBox.Checked;
-        }
 
         /// <summary>
         /// Opens the machine configuration for bend.

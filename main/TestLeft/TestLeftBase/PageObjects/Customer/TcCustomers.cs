@@ -1,9 +1,11 @@
 ﻿using System;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 using Trumpf.PageObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Part;
+using TestLeft.TestLeftBase.Utilities;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.Customer
@@ -35,13 +37,13 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         private TcTruIconButton ApplyButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Dialog.Apply" ) );
         private TcTruIconButton CancelButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Dialog.Cancel" ) );
         private TcTruIconButton OkButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Dialog.Ok" ) );
-        private TcTextEdit CityTextEdit => Find<TcTextEdit>( Search.ByUid( "Customer.Detail.City" ) );
-        private TcTextEdit CommentTextEdit => Find<TcTextEdit>( Search.ByUid( "Customer.Detail.Comment" ) );
-        private TcTextEdit CountryTextEdit => Find<TcTextEdit>( Search.ByUid( "Customer.Detail.Country" ) );
-        private TcTextEdit IdTextEdit => Find<TcTextEdit>( Search.ByUid( "Customer.Detail.No" ) );
-        private TcTextEdit NameTextEdit => Find<TcTextEdit>( Search.ByUid( "Customer.Detail.Name" ) );
-        private TcTextEdit PostalCodeTextEdit => Find<TcTextEdit>( Search.ByUid( "Customer.Detail.PostalCode" ) );
-        private TcTextEdit StreetTextEdit => Find<TcTextEdit>( Search.ByUid( "Customer.Detail.Street" ) );
+        public TiValueControl<string> City => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Customer.Detail.City" ) ) );
+        public TiValueControl<string> Comment => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Customer.Detail.Comment" ) ) );
+        public TiValueControl<string> Country => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Customer.Detail.Country" ) ) );
+        public TiValueControl<string> Id => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Customer.Detail.No" ) ) );
+        public TiValueControl<string> Name => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Customer.Detail.Name" ) ) );
+        public TiValueControl<string> PostalCode => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Customer.Detail.PostalCode" ) ) );
+        public TiValueControl<string> Street => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Customer.Detail.Street" ) ) );
 
         /// <summary>
         /// The customer administration dialog is not direct accessible, only via button click in several detail views.
@@ -62,118 +64,34 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         }
 
         /// <summary>
-        /// Gets or sets the name of the customer.
-        /// </summary>
-        /// <value>
-        /// The name.
-        /// </value>
-        public string Name
-        {
-            get => NameTextEdit.Text;
-            set => NameTextEdit.Text = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the identifier of the customer.
-        /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
-        public string ID
-        {
-            get => IdTextEdit.Text;
-            set => IdTextEdit.Text = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the address of the customer.
-        /// </summary>
-        /// <value>
-        /// The address.
-        /// </value>
-        public string Address
-        {
-            get => StreetTextEdit.Text;
-            set => StreetTextEdit.Text = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the postal code of the customer.
-        /// </summary>
-        /// <value>
-        /// The postal code.
-        /// </value>
-        public string PostalCode
-        {
-            get => PostalCodeTextEdit.Text;
-            set => PostalCodeTextEdit.Text = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the city of the customer.
-        /// </summary>
-        /// <value>
-        /// The city.
-        /// </value>
-        public string City
-        {
-            get => CityTextEdit.Text;
-            set => CityTextEdit.Text = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the country of the customer.
-        /// </summary>
-        /// <value>
-        /// The country.
-        /// </value>
-        public string Country
-        {
-            get => CountryTextEdit.Text;
-            set => CountryTextEdit.Text = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the comment about the customer.
-        /// </summary>
-        /// <value>
-        /// The comment.
-        /// </value>
-        public string Comment
-        {
-            get => CommentTextEdit.Text;
-            set => CommentTextEdit.Text = value;
-        }
-
-        /// <summary>
         /// Creates a new Customer.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="id">The identifier.</param>
-        /// <param name="address">The address.</param>
+        /// <param name="street">The street.</param>
         /// <param name="postalCode">The postal code.</param>
         /// <param name="city">The city.</param>
         /// <param name="country">The country.</param>
         /// <param name="comment">The comment.</param>
-        public void NewCustomer( string name, string id, string address, string postalCode, string city, string country, string comment )
+        public void NewCustomer( string name, string id, string street, string postalCode, string city, string country, string comment )
         {
             Goto();
 
-            if( !string.IsNullOrEmpty( Name ) )
+            if( !string.IsNullOrEmpty( Name.Value ) )
             {
                 NewCustomerButton.Click();
             }
 
-            Name = name;
+            Name.Value = name;
             if( !string.IsNullOrEmpty( id ) )
             {
-                ID = id;
+                Id.Value = id;
             }
-            Address = address;
-            PostalCode = postalCode;
-            City = city;
-            Country = country;
-            Comment = comment;
+            Street.Value = street;
+            PostalCode.Value = postalCode;
+            City.Value = city;
+            Country.Value = country;
+            Comment.Value = comment;
         }
 
         /// <summary>

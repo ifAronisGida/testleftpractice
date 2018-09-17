@@ -32,7 +32,7 @@ namespace TestLeft.UI_Tests.PartOrder
             var parts = HomeZoneApp.Goto<TcParts>();
             parts.NewPart();
             parts.SingleDetail.Id = "TestPart";
-            parts.SingleDetail.Name = "TestPart";
+            parts.SingleDetail.Name.Value = "TestPart";
             parts.SavePart();
 
             var partOrders = HomeZoneApp.Goto<TcPartOrders>();
