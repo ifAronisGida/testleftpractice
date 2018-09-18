@@ -11,7 +11,7 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
     {
         public const string Uid = "List.SearchAndResult";
 
-        private TiValueControl<string> SearchText => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "List.Search.Text" ) ) );
+        private TiValueControl<string> SearchText => this.FindGeneric<TiValueControl<string>>( "List.Search.Text" );
         private TcTruIconButton ClearSearchTextButton => Find<TcTruIconButton>( Search.ByUid( "List.Search.Clear" ) );
         private TcTruIconButton ExecuteSearchButton => Find<TcTruIconButton>( Search.ByUid( "List.Search.Execute" ) );
         private TcListView ResultListView => Find<TcListView>( Search.ByUid( "List.ResultList" ) );

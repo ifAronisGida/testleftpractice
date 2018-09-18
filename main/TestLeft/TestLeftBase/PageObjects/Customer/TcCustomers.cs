@@ -37,13 +37,13 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         private TcTruIconButton ApplyButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Dialog.Apply" ) );
         private TcTruIconButton CancelButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Dialog.Cancel" ) );
         private TcTruIconButton OkButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Dialog.Ok" ) );
-        public TiValueControl<string> City => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Customer.Detail.City" ) ) );
-        public TiValueControl<string> Comment => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Customer.Detail.Comment" ) ) );
-        public TiValueControl<string> Country => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Customer.Detail.Country" ) ) );
-        public TiValueControl<string> Id => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Customer.Detail.No" ) ) );
-        public TiValueControl<string> Name => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Customer.Detail.Name" ) ) );
-        public TiValueControl<string> PostalCode => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Customer.Detail.PostalCode" ) ) );
-        public TiValueControl<string> Street => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Customer.Detail.Street" ) ) );
+        public TiValueControl<string> City => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.City" );
+        public TiValueControl<string> Comment => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.Comment" );
+        public TiValueControl<string> Country => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.Country" );
+        public TiValueControl<string> Id => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.No" );
+        public TiValueControl<string> Name => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.Name" );
+        public TiValueControl<string> PostalCode => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.PostalCode" );
+        public TiValueControl<string> Street => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.Street" );
 
         /// <summary>
         /// The customer administration dialog is not direct accessible, only via button click in several detail views.
@@ -79,7 +79,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
 
             if( SelectedCustomersCount() == 0 )
             {
-                CustomerGrid.SelectItem(0);
+                CustomerGrid.SelectItem( 0 );
             }
 
             if( !string.IsNullOrEmpty( Name.Value ) )
