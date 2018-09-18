@@ -22,8 +22,8 @@ namespace TestLeft.UI_Tests.Part
         /// Gets the extended test environment.
         /// Creates / deletes the test customer used by the test methods
         /// </summary>
-        public override IDoSequence TestEnvironment => base.TestEnvironment
-            .Do( CreateTestCustomer, DeleteTestCustomer, "TestCustomer" );
+        //public override IDoSequence TestEnvironment => base.TestEnvironment
+        //    .Do( CreateTestCustomer, DeleteTestCustomer, "TestCustomer" );
 
         /// <summary>
         /// Creates a new part, saves and then deletes it.
@@ -42,7 +42,7 @@ namespace TestLeft.UI_Tests.Part
 
                     parts.SingleDetail.Name.Value = partName;
 
-                    parts.SingleDetail.Customer = mTestCustomerName;
+                    //parts.SingleDetail.Customer = mTestCustomerName;
 
                     parts.SingleDetail.DrawingNumber.Value = "NewPartTest_DrawNr";
                     parts.SingleDetail.DrawingVersion.Value = "V08.15-007";

@@ -13,7 +13,7 @@ namespace TestLeft.TestLeftBase.Utilities
             ["DevExpress.Xpf.Editors.TextEdit"] = controlObject => new TcTextEdit(controlObject),
             ["DevExpress.Xpf.Grid.LookUp.LookUpEdit"] = controlObject => new TcLookUpEdit(controlObject),
             ["DevExpress.Xpf.Editors.SpinEdit"] = controlObject => new TcSpinEdit(controlObject),
-            ["System.Windows.Controls.ComboBox"] = controlObject => new TcComboBox(),
+            ["System.Windows.Controls.CheckBox"] = controlObject => new TcCheckBox(controlObject),
             ["Trumpf.TruTops.Control.Infrastructure.ModuleBase.Controls.TcLookUpEdit"] = controlObject => new TcLookUpEdit(controlObject)
         };
 

@@ -19,16 +19,16 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     {
         protected override Search SearchPattern => Search.ByUid( "Part.Details" );
 
-        public TiValueControl<string> Name => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Part.Detail.Base.Description" ) ) );
-        private TcLookUpEdit CustomerLookUpEdit => TcControlMapper.Map<TcLookUpEdit>( this.FindGeneric( Search.ByUid( "EditCustomerProperty.EditValue" ) ) );
+        public TiValueControl<string> Name => this.FindGeneric<TiValueControl<string>>( "Part.Detail.Base.Description" );
+        private TcLookUpEdit CustomerLookUpEdit => this.FindGeneric<TcLookUpEdit>( "EditCustomerProperty.EditValue" );
         internal TcTruIconButton CustomerOpenAdministrationButton => Find<TcTruIconButton>( Search.ByUid( "EditCustomerProperty.OpenAdministration" ) );
-        public TiValueControl<string> DrawingNumber => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Part.Detail.Base.DrawingNumber" ) ) );
-        public TiValueControl<string> DrawingVersion => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Part.Detail.Base.DrawingVersion" ) ) );
+        public TiValueControl<string> DrawingNumber => this.FindGeneric<TiValueControl<string>>( "Part.Detail.Base.DrawingNumber" );
+        public TiValueControl<string> DrawingVersion => this.FindGeneric<TiValueControl<string>>( "Part.Detail.Base.DrawingVersion" );
         private TcGroupPanel DetailGroupPanel => Find<TcGroupPanel>( Search.ByUid( "Part.Detail.Base" ) );
-        public TiValueControl<string> IdTextEdit => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Part.Detail.Base.Name" ) ) );
-        public TiValueControl<string> ExternalName => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Part.Detail.Base.More.ExternalName" ) ) );
-        private TiValueControl<bool> ArchivableCheckBox => TcControlMapper.Map<TiValueControl<bool>>( this.FindGeneric( Search.ByUid( "Part.Detail.Archivable" ) ) );
-        public TiValueControl<string> Note => TcControlMapper.Map<TiValueControl<string>>( this.FindGeneric( Search.ByUid( "Part.Detail.Base.More.Note" ) ) );
+        public TiValueControl<string> IdTextEdit => this.FindGeneric<TiValueControl<string>>( "Part.Detail.Base.Name" );
+        public TiValueControl<string> ExternalName => this.FindGeneric<TiValueControl<string>>( "Part.Detail.Base.More.ExternalName" );
+        private TiValueControl<bool> ArchivableCheckBox => this.FindGeneric<TiValueControl<bool>>( "Part.Detail.Archivable" );
+        public TiValueControl<string> Note => this.FindGeneric<TiValueControl<string>>( "Part.Detail.Base.More.Note" );
 
         /// <summary>
         /// Waits for name TextBox enabled.
