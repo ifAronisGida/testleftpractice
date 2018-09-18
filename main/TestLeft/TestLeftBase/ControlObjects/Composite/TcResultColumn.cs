@@ -50,12 +50,18 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
         /// Selects the item with the given id.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        public void SelectItem( string id )
+        /// <returns>true if item found, else false</returns>
+        public bool SelectItem( string id )
         {
             SearchText.Value = id.StartsWith( "id:" ) ? id : $"id:{id}";
 
             DoSearch();
+            if( ResultListView.Count == 0 )
+            {
+                return false;
+            }
             ResultListView.SelectedIndex = 0;
+            return true;
         }
 
         /// <summary>
@@ -79,5 +85,13 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
             ClearSearch();
             return ResultListView.SelectAll();
         }
+
+        /// <summary>
+        /// Gets the amount of selected items.
+        /// </summary>
+        /// <value>
+        /// The amount of selected items.
+        /// </value>
+        public int SelectedItemsCount => ResultListView.SelectedItemsCount;
     }
 }

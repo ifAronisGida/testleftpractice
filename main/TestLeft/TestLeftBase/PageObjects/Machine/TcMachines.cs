@@ -186,19 +186,25 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// Deletes the given machine.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        public void DeleteMachine( string id )
+        /// <returns>true if deleted</returns>
+        public bool DeleteMachine( string id )
         {
-            SelectMachine( id );
+            if( !SelectMachine( id ) )
+            {
+                return false;
+            }
+
             DeleteMachine();
+            return true;
         }
 
         /// <summary>
         /// Selects the machine via identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        public void SelectMachine( string id )
+        public bool SelectMachine( string id )
         {
-            ResultColumn.SelectItem( id );
+            return ResultColumn.SelectItem( id );
         }
 
         /// <summary>

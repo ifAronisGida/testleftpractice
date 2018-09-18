@@ -27,10 +27,16 @@ namespace TestLeft.TestLeftBase.PageObjects.Dialogs
             OkButton.Click();
         }
 
-        public void SelectClose(string entityId)
+        public bool SelectClose(string entityId)
         {
-            ResultColumn.SelectItem( entityId );
+            if( !ResultColumn.SelectItem( entityId ) )
+            {
+                return false;
+            }
+
             Ok();
+            return true;
+
         }
     }
 }

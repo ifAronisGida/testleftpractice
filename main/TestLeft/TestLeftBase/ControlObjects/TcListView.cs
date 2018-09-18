@@ -20,8 +20,8 @@ namespace TestLeft.TestLeftBase.ControlObjects
         /// </value>
         public int SelectedIndex
         {
-            get { return Node.GetProperty<int>( "SelectedIndex" ); }
-            set { Node.SetProperty( "SelectedIndex", value ); }
+            get => Node.GetProperty<int>( "SelectedIndex" );
+            set => Node.SetProperty( "SelectedIndex", value );
         }
 
         /// <summary>
@@ -33,5 +33,13 @@ namespace TestLeft.TestLeftBase.ControlObjects
             Node.CallMethod( "SelectAll" );
             return Count;
         }
+
+        /// <summary>
+        /// Gets the amount of selected items.
+        /// </summary>
+        /// <value>
+        /// The amount of selected items.
+        /// </value>
+        public int SelectedItemsCount => Node.GetProperty<int>( "SelectedItems.Count" );
     }
 }

@@ -79,9 +79,9 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             }
         }
 
-        public void SelectCutJob( string id )
+        public bool SelectCutJob( string id )
         {
-            ResultColumn.SelectItem( id );
+            return ResultColumn.SelectItem( id );
         }
 
         public int SelectCutJobsOrders( string searchText )

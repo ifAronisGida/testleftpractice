@@ -77,6 +77,11 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         {
             Goto();
 
+            if( SelectedCustomersCount() == 0 )
+            {
+                CustomerGrid.SelectItem(0);
+            }
+
             if( !string.IsNullOrEmpty( Name.Value ) )
             {
                 NewCustomerButton.Click();
@@ -143,7 +148,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// Selects the customer with the given name.
         /// </summary>
         /// <param name="name">The name of the customer to select.</param>
-        public void SelectCustomer( string name )
+        /// <returns>true if successful</returns>
+        public bool SelectCustomer( string name )
         {
             var count = Count();
 
@@ -156,9 +162,11 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
                 {
                     CustomerGrid.SelectItem( rowIndex );
 
-                    break;
+                    return true;
                 }
             }
+
+            return false;
         }
 
         /// <summary>
@@ -185,11 +193,16 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// Deletes customers with the given name.
         /// </summary>
         /// <param name="name">The name to search for.</param>
-        public void DeleteCustomer( string name )
+        /// <returns>true if successful</returns>
+        public bool DeleteCustomer( string name )
         {
-            SelectCustomer( name );
+            if( !SelectCustomer( name ) )
+            {
+                return false;
+            }
 
             DeleteSelectedCustomers();
+            return true;
         }
 
         /// <summary>

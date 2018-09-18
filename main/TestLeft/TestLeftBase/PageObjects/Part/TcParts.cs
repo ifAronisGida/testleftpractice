@@ -169,8 +169,15 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <summary>
         /// Deletes the part.
         /// </summary>
-        public void DeletePart()
+        /// <returns>true if successful</returns>
+        public bool DeletePart()
         {
+            if( ResultColumn.SelectedItemsCount == -1 )
+            {
+                return false;
+
+            }
+
             Toolbar.DeleteButton.Click();
 
             var dialog = On<TcMessageBox>();
@@ -178,15 +185,34 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
             {
                 dialog.Yes();
             }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Deletes the given part.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>true if successful</returns>
+        public bool DeletePart( string id )
+        {
+            if( !SelectPart( id ) )
+            {
+                return false;
+            }
+
+            DeletePart();
+            return true;
         }
 
         /// <summary>
         /// Selects the part via identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        public void SelectPart( string id )
+        /// <returns>true if successful</returns>
+        public bool SelectPart( string id )
         {
-            ResultColumn.SelectItem( id );
+            return ResultColumn.SelectItem( id );
         }
 
         /// <summary>

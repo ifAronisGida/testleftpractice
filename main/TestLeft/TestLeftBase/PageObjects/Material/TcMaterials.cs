@@ -119,8 +119,15 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <summary>
         /// Deletes the current material.
         /// </summary>
-        public void DeleteMaterial()
+        /// <returns>true if successful</returns>
+        public bool DeleteMaterial()
         {
+            if( ResultColumn.SelectedItemsCount == -1 )
+            {
+                return false;
+
+            }
+
             Toolbar.DeleteButton.Click();
 
             var dialog = On<TcMessageBox>();
@@ -128,25 +135,34 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
             {
                 dialog.Yes();
             }
+
+            return true;
         }
 
         /// <summary>
         /// Deletes the given material.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        public void DeleteMaterial( string id )
+        /// <returns>true if successful</returns>
+        public bool DeleteMaterial( string id )
         {
-            SelectMaterial( id );
+            if( !SelectMaterial( id ) )
+            {
+                return false;
+            }
+
             DeleteMaterial();
+            return true;
         }
 
         /// <summary>
         /// Selects the material via identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        public void SelectMaterial( string id )
+        /// <returns>true if found</returns>
+        public bool SelectMaterial( string id )
         {
-            ResultColumn.SelectItem( id );
+            return ResultColumn.SelectItem( id );
         }
 
         /// <summary>

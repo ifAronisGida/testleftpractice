@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.PageObjects.CutJob;
@@ -31,9 +32,19 @@ namespace TestLeft.UI_Tests.Utilities
             new Tuple<string, string>(  "TruLaser Center 7030 (L26)","6000"),
             new Tuple<string, string>(  "TruLaser 3060 (L66)","8000")
         };
+        private bool mTestMachinesCreated = false;
 
         // test customers
         private readonly IList<string> mCustomerNames = new List<string>{"Testkunde1","Testkunde2","Testkunde3"};
+        private bool mTestCustomersCreated = false;
+
+        // test parts
+        private readonly IList<FileInfo> mPartNames = new List<FileInfo>
+        {
+            new FileInfo( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc"),
+            new FileInfo( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo"),
+            new FileInfo( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Zugwinkel.scdoc")
+        };
 
         /// <summary>
         /// Creates some test materials by duplicating existing materials
@@ -43,18 +54,27 @@ namespace TestLeft.UI_Tests.Utilities
         {
             var materials = HomeZoneApp.Goto<TcMaterials>();
             var materialCount = materials.ResultColumn.Count;
+            var materialsCreatedCount = 0;
 
             foreach( var material in mMaterialNames )
             {
-                DuplicateAndSave( material );
+                if( DuplicateAndSave( material ) )
+                {
+                    materialsCreatedCount++;
+                }
             }
 
             materials.ResultColumn.ClearSearch();
 
-            Assert.AreEqual( materialCount + 3, materials.ResultColumn.Count );
+            Assert.AreEqual( materialCount + materialsCreatedCount, materials.ResultColumn.Count );
 
-            void DuplicateAndSave( string materialId )
+            bool DuplicateAndSave( string materialId )
             {
+                if( materials.SelectMaterial( Name2UIT_Name( materialId ) ) )
+                {
+                    return false;     // material already exists
+                }
+
                 materials.SelectMaterial( materialId );
 
                 materials.DuplicateMaterial();
@@ -68,6 +88,7 @@ namespace TestLeft.UI_Tests.Utilities
                 materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
                 materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
                 Assert.IsFalse( materials.Toolbar.SaveButton.Enabled );
+                return true;
             }
         }
 
@@ -79,18 +100,20 @@ namespace TestLeft.UI_Tests.Utilities
         {
             var materials = HomeZoneApp.Goto<TcMaterials>();
             var currentMaterialsCount = materials.ResultColumn.Count;
-            var testMaterialsCount = mMaterialNames.Count;
+            var deletedMaterialsCount = 0;
 
             foreach( var material in mMaterialNames )
             {
-                materials.DeleteMaterial( Name2UIT_Name( material ) );
-
-                materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
-                materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
+                if( materials.DeleteMaterial( Name2UIT_Name( material ) ) )
+                {
+                    materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
+                    materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
+                    deletedMaterialsCount++;
+                }
             }
 
             materials.ResultColumn.ClearSearch();
-            Assert.AreEqual( currentMaterialsCount - testMaterialsCount, materials.ResultColumn.Count );
+            Assert.AreEqual( currentMaterialsCount - deletedMaterialsCount, materials.ResultColumn.Count );
         }
 
         /// <summary>
@@ -100,32 +123,50 @@ namespace TestLeft.UI_Tests.Utilities
         public void CreateTestMachines()
         {
             var machines = HomeZoneApp.Goto<TcMachines>();
+
+            machines.ResultColumn.ClearSearch();
+
             var machineCount = machines.ResultColumn.Count;
+            var machinesCreatedCount = 0;
 
             // create bend machines
             foreach( var bendMachineName in mBendMachineNames )
             {
+                if( machines.ResultColumn.SelectItem( Name2UIT_Name( bendMachineName ) ) )
+                {
+                    continue;   // machine already exists
+                }
+
                 machines.NewBendMachine( bendMachineName, Name2UIT_Name( bendMachineName ) );
                 Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
                 machines.SaveMachine();
                 Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
 
                 machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
+                machinesCreatedCount++;
             }
 
             // create cut machines
             foreach( var cutMachineName in mCutMachineNames )
             {
+                if( machines.ResultColumn.SelectItem( Name2UIT_Name( cutMachineName.Item1 ) ) )
+                {
+                    continue;   // machine already exists
+                }
+
                 machines.NewCutMachine( cutMachineName.Item1, Name2UIT_Name( cutMachineName.Item1 ), cutMachineName.Item2 );
                 Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
                 machines.SaveMachine();
                 Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
 
                 machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
+                machinesCreatedCount++;
             }
 
+            machines.ResultColumn.ClearSearch();
 
-            Assert.AreEqual( machineCount + mBendMachineNames.Count + mCutMachineNames.Count, machines.ResultColumn.Count );
+            Assert.AreEqual( machineCount + machinesCreatedCount, machines.ResultColumn.Count );
+            mTestMachinesCreated = true;
         }
 
         /// <summary>
@@ -136,20 +177,28 @@ namespace TestLeft.UI_Tests.Utilities
         {
             var machines = HomeZoneApp.Goto<TcMachines>();
             var machineCount = machines.ResultColumn.Count;
+            var deletedMachinesCount = 0;
 
             foreach( var bendMachineName in mBendMachineNames )
             {
-                machines.DeleteMachine( Name2UIT_Name( bendMachineName ) );
+                if( machines.DeleteMachine( Name2UIT_Name( bendMachineName ) ) )
+                {
+                    deletedMachinesCount++;
+                }
             }
 
             foreach( var cutMachineName in mCutMachineNames )
             {
-                machines.DeleteMachine( Name2UIT_Name( cutMachineName.Item1 ) );
+                if( machines.DeleteMachine( Name2UIT_Name( cutMachineName.Item1 ) ) )
+                {
+                    deletedMachinesCount++;
+                }
             }
 
             machines.ResultColumn.ClearSearch();
 
-            Assert.AreEqual( machineCount - mBendMachineNames.Count - mCutMachineNames.Count, machines.ResultColumn.Count );
+            Assert.AreEqual( machineCount - deletedMachinesCount, machines.ResultColumn.Count );
+            mTestMachinesCreated = false;
         }
 
         /// <summary>
@@ -159,6 +208,7 @@ namespace TestLeft.UI_Tests.Utilities
         public void CreateTestCustomers()
         {
             var customers = HomeZoneApp.Goto<TcCustomers>();
+            var customersCreatedCount = 0;
             var customersCount = customers.Count();
             if( string.IsNullOrEmpty( customers.Name.Value ) )
             {
@@ -167,6 +217,10 @@ namespace TestLeft.UI_Tests.Utilities
 
             foreach( var customer in mCustomerNames )
             {
+                if( customers.SelectCustomer( Name2UIT_Name( customer ) ) )
+                {
+                    continue;       // customer already exists
+                }
                 customers.NewCustomer(
                                       Name2UIT_Name( customer ),
                                       null,
@@ -175,13 +229,15 @@ namespace TestLeft.UI_Tests.Utilities
                                       "Ditzingen",
                                       "Deutschland",
                                       "kein Kommentar" );
+                customersCreatedCount++;
             }
 
             customers.Apply();
 
-            Assert.AreEqual( customersCount + mCustomerNames.Count, customers.Count() );
+            Assert.AreEqual( customersCount + customersCreatedCount, customers.Count() );
 
             customers.Cancel();
+            mTestCustomersCreated = true;
         }
 
         /// <summary>
@@ -192,16 +248,21 @@ namespace TestLeft.UI_Tests.Utilities
         {
             var customers = HomeZoneApp.Goto<TcCustomers>();
             var customersCount = customers.Count();
+            var deletedCustomersCount = 0;
 
             foreach( var customer in mCustomerNames )
             {
-                customers.DeleteCustomer( Name2UIT_Name( customer ) );
+                if( customers.DeleteCustomer( Name2UIT_Name( customer ) ) )
+                {
+                    deletedCustomersCount++;
+                }
             }
 
             customers.Apply();
-            Assert.AreEqual( customersCount - mCustomerNames.Count, customers.Count() );
+            Assert.AreEqual( customersCount - deletedCustomersCount, customers.Count() );
 
             customers.Cancel();
+            mTestCustomersCreated = false;
         }
 
         /// <summary>
@@ -211,73 +272,49 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestParts()
         {
+            if( !mTestMachinesCreated )
+            {
+                CreateTestMachines();
+            }
+
+            if( !mTestCustomersCreated )
+            {
+                CreateTestCustomers();
+            }
+
             var parts = HomeZoneApp.Goto<TcParts>();
             var partCount = parts.ResultColumn.Count;
+            var partsCreatedCount = 0;
 
-            parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
-            parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
-            parts.SingleDetail.Name.Value = TcSettings.NamePrefix + parts.SingleDetail.Name;
-            parts.SingleDetail.Customer = Name2UIT_Name( mCustomerNames[ 0 ] );
-            parts.SingleDetail.DrawingNumber.Value = TcSettings.NamePrefix + "DrawNr";
-            parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
-            parts.SingleDetail.ExternalName.Value = TcSettings.NamePrefix + "ExtName";
-            parts.SingleDetail.Note.Value = TcSettings.NamePrefix + "Note";
-            parts.SingleDetailBendSolutions.New();
-            parts.SingleDetailCutSolutions.New();
-            Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
-            parts.SavePart();
-            Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
-            //OpenFluxBendSolutionAndCloseFlux( parts );
-            //Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
-            //parts.BoostPart();
-            //parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-            //parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+            for( int i = 0; i < mPartNames.Count; i++ )
+            {
+                if( parts.ResultColumn.SelectItem( Name2UIT_Name( Path.GetFileNameWithoutExtension( mPartNames[ i ].Name ) ) ) )
+                {
+                    continue;   // part already exists
+                }
 
-            parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
-            parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
-            parts.SingleDetail.Name.Value = TcSettings.NamePrefix + parts.SingleDetail.Name;
-            parts.SingleDetail.Customer = Name2UIT_Name( mCustomerNames[ 1 ] );
-            parts.SingleDetail.DrawingNumber.Value = TcSettings.NamePrefix + "DrawNr";
-            parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
-            parts.SingleDetail.ExternalName.Value = TcSettings.NamePrefix + "ExtName";
-            parts.SingleDetail.Note.Value = TcSettings.NamePrefix + "Note";
-            parts.SingleDetailBendSolutions.New();
-            parts.SingleDetailCutSolutions.New();
-            Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
-            parts.SavePart();
-            Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
-            //OpenFluxBendSolutionAndCloseFlux( parts );
-            //Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
-            //parts.BoostPart();
-            //parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-            //parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.Import( mPartNames[ i ].FullName );
+                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
+                parts.SingleDetail.Name.Value = TcSettings.NamePrefix + parts.SingleDetail.Name.Value;
+                parts.SingleDetail.Id = parts.SingleDetail.Name.Value;
+                parts.SingleDetail.Customer = Name2UIT_Name( mCustomerNames[ i ] );
+                parts.SingleDetail.DrawingNumber.Value = TcSettings.NamePrefix + "DrawNr";
+                parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
+                parts.SingleDetail.ExternalName.Value = TcSettings.NamePrefix + "ExtName";
+                parts.SingleDetail.Note.Value = TcSettings.NamePrefix + "Note";
+                parts.SingleDetailBendSolutions.New();
+                parts.SingleDetailCutSolutions.New();
+                Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
+                parts.SavePart();
+                Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
+                partsCreatedCount++;
+            }
 
-            parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Zugwinkel.scdoc" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
-            parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
-            parts.SingleDetail.Name.Value = TcSettings.NamePrefix + parts.SingleDetail.Name;
-            parts.SingleDetail.Customer = Name2UIT_Name( mCustomerNames[ 2 ] );
-            parts.SingleDetail.DrawingNumber.Value = TcSettings.NamePrefix + "DrawNr";
-            parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
-            parts.SingleDetail.ExternalName.Value = TcSettings.NamePrefix + "ExtName";
-            parts.SingleDetail.Note.Value = TcSettings.NamePrefix + "Note";
-            parts.SingleDetailBendSolutions.New();
-            parts.SingleDetailCutSolutions.New();
-            Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
-            parts.SavePart();
-            Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
-            //OpenFluxBendSolutionAndCloseFlux( parts );
-            //Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
-            //parts.BoostPart();
-            //parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-            //parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+            parts.ResultColumn.ClearSearch();
 
-            Assert.AreEqual( partCount + 3, parts.ResultColumn.Count );
+            Assert.AreEqual( partCount + partsCreatedCount, parts.ResultColumn.Count );
         }
 
         private bool OpenFluxBendSolutionAndCloseFlux( TcParts parts )
@@ -308,16 +345,20 @@ namespace TestLeft.UI_Tests.Utilities
         {
             var parts = HomeZoneApp.Goto<TcParts>();
             var partCount = parts.ResultColumn.Count;
+            var deletedPartsCount = 0;
 
-            var testPartsCount = parts.SelectParts( TcSettings.NamePrefix );
-            if( testPartsCount > 0 )
+            for( int i = 0; i < mPartNames.Count; i++ )
             {
-                parts.DeletePart();
+                var partName = Path.GetFileNameWithoutExtension( mPartNames[ i ].Name );
+                if( parts.DeletePart( Name2UIT_Name( partName ) ) )
+                {
+                    deletedPartsCount++;
+                }
             }
 
             parts.ResultColumn.ClearSearch();
 
-            Assert.AreEqual( partCount - testPartsCount, parts.ResultColumn.Count );
+            Assert.AreEqual( partCount - deletedPartsCount, parts.ResultColumn.Count );
         }
 
         /// <summary>
