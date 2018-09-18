@@ -10,7 +10,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         protected override Search SearchPattern => Search.By<ContentPresenter>();
 
         public TcLookUpEdit RawSheet => TcControlMapper.Map<TcLookUpEdit>( this.FindGeneric( Search.ByControlName( "rawsheetComboBox" ) ) );
-        public TcSpinEdit Quantity => TcControlMapper.Map<TcSpinEdit>( this.FindGeneric( Search.ByUid( "CutJob.Detail.JobSolution.MaxQuantity" ) ) );
+        public TcSpinEdit Quantity => this.FindGeneric<TcSpinEdit>( "CutJob.Detail.JobSolution.MaxQuantity" );
         private TcTruIconButton DeleteButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.RemovePresetRawSheet" ) );
 
         public void Delete()

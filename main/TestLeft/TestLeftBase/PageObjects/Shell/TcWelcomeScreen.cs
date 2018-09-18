@@ -9,7 +9,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
     {
         protected override Search SearchPattern => Search.ByUid( "WelcomeScreen" );
 
-        internal TiValueControl<bool> ShowWelcomeScreenCheckBox => TcControlMapper.Map<TiValueControl<bool>>( this.FindGeneric( Search.ByUid( "ShowWelcomeScreen" ), depth: 3 ) );
+        internal TiValueControl<bool> ShowWelcomeScreenCheckBox => this.FindGeneric<TiValueControl<bool>>( "ShowWelcomeScreen", depth: 3 );
 
         public bool ShowWelcomeScreen
         {

@@ -17,13 +17,13 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     {
         protected override Search SearchPattern => Search.ByUid( "Machine.Details" );
 
-        private TcLookUpEdit CutMachineTypeLookUpEdit => TcControlMapper.Map<TcLookUpEdit>( this.FindGeneric( Search.ByUid( "Machine.Detail.Base.TemplateSelection" ) ) );
-        private TcLookUpEdit BendMachineTypeLookUpEdit => TcControlMapper.Map<TcLookUpEdit>( this.FindGeneric( Search.ByUid( "Machine.Detail.Base.BendTemplateSelection" ) ) );
+        private TcLookUpEdit CutMachineTypeLookUpEdit => this.FindGeneric<TcLookUpEdit>( "Machine.Detail.Base.TemplateSelection" );
+        private TcLookUpEdit BendMachineTypeLookUpEdit => this.FindGeneric<TcLookUpEdit>( "Machine.Detail.Base.BendTemplateSelection" );
         public TiValueControl<string> Name => this.FindGeneric<TiValueControl<string>>( "Machine.Detail.Base.Name" );
         public TiValueControl<string> MachineNumber => this.FindGeneric<TiValueControl<string>>( "Machine.Detail.Base.MachineEquipmentNr" );
         private TcComboBox LaserPowerComboBox => Find<TcComboBox>( Search.ByUid( "Machine.Detail.Base.LaserPowers" ) );
         public TiValueControl<string> TransferDirectory => this.FindGeneric<TiValueControl<string>>( "Machine.Detail.Base.TransferDirectory" );
-        public TiValueControl<bool> CreateSubDirectory => TcControlMapper.Map<TiValueControl<bool>>( this.FindGeneric( Search.ByUid( "Machine.Detail.Base.CreateSubDirectory" ) ) );
+        public TiValueControl<bool> CreateSubDirectory => this.FindGeneric<TiValueControl<bool>>( "Machine.Detail.Base.CreateSubDirectory" );
 
         /// <summary>
         /// Gets or sets the type of the cut machine.

@@ -23,11 +23,11 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         private TcTruIconButton OpenButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.Open" ) );
         private TcTruIconButton DeleteButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.Delete" ) );
         private TcComboBox MachineCombo => Find<TcComboBox>( Search.ByUid( "CutJob.Detail.JobSolution.Machine" ) );
-        private TcLookUpEdit TechnoProfile => TcControlMapper.Map<TcLookUpEdit>( this.FindGeneric( Search.ByUid( "CutJob.Detail.JobSolution.TechnologyProfile" ) ) );
+        private TcLookUpEdit TechnoProfile => this.FindGeneric<TcLookUpEdit>( "CutJob.Detail.JobSolution.TechnologyProfile" );
         private TcTruIconButton AddPresetRawSheetButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.AddPresetRawSheet" ) );
-        private TcLookUpEdit NestingModeEdit => TcControlMapper.Map<TcLookUpEdit>( this.FindGeneric( Search.ByUid( "CutJob.Detail.JobSolution.NestingMode" ) ) );
-        private TcLookUpEdit LaserTechnologyTableEdit => TcControlMapper.Map<TcLookUpEdit>( this.FindGeneric( Search.ByUid( "CutJob.Detail.JobSolution.LaserTechnologyTable" ) ) );
-        private TcLookUpEdit LaserProcessRule => TcControlMapper.Map<TcLookUpEdit>( this.FindGeneric( Search.ByUid( "CutJob.Detail.JobSolution.LaserProcessRule" ) ) );
+        private TcLookUpEdit NestingModeEdit => this.FindGeneric<TcLookUpEdit>( "CutJob.Detail.JobSolution.NestingMode" );
+        private TcLookUpEdit LaserTechnologyTableEdit => this.FindGeneric<TcLookUpEdit>( "CutJob.Detail.JobSolution.LaserTechnologyTable" );
+        private TcLookUpEdit LaserProcessRule => this.FindGeneric<TcLookUpEdit>( "CutJob.Detail.JobSolution.LaserProcessRule" );
         public TiValueControl<string> Note => this.FindGeneric<TiValueControl<string>>( "CutJob.Detail.JobSolution.Comment" );
         private TcTruIconButton OpenSetupPlanButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.OpenSetupPlan" ) );
         private TcTruIconButton OpenReleaseFolderButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.OpenReleaseFolder" ) );

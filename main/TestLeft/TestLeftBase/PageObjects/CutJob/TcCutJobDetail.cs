@@ -12,7 +12,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
     {
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail" );
 
-        private TcReadOnlyText DateText => TcControlMapper.Map<TcReadOnlyText>( this.FindGeneric( Search.ByUid( "CutJob.Detail.Base.FinishDate" ) ) );
+        private TcReadOnlyText DateText => this.FindGeneric<TcReadOnlyText>( "CutJob.Detail.Base.FinishDate" );
         public TiValueControl<string> Id => this.FindGeneric<TiValueControl<string>>( "CutJob.Detail.Base.Name" );
         private TcComboBox RawMaterialComboBox => Find<TcComboBox>( Search.ByUid( "CutJob.Detail.Base.RawMaterial.ComboBoxEdit" ) );
         private TcTruIconButton OpenRawMaterialSelectionDlg => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.Base.RawMaterial.OpenSelectionDialog" ) );
