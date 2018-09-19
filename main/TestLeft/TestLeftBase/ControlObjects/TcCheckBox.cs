@@ -45,7 +45,7 @@ namespace TestLeft.TestLeftBase.ControlObjects
         }
 
         /// <summary>
-        /// Gets a value indicating whether this <see cref="TcTextEdit"/> is enabled.
+        /// Gets a value indicating whether this <see cref="TcCheckBox"/> is enabled.
         /// </summary>
         /// <value>
         ///   <c>true</c> if enabled; otherwise, <c>false</c>.
@@ -61,7 +61,6 @@ namespace TestLeft.TestLeftBase.ControlObjects
         bool TiValueControl<bool>.IsReadOnly
         {
             get => mControlObject.Node.GetProperty<bool>( "IsReadOnly" );
-            set => mControlObject.Node.SetProperty( "IsReadOnly", value );
         }
     }
 }

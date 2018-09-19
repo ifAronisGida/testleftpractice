@@ -23,11 +23,11 @@ namespace TestLeft.TestLeftBase.ControlObjects.Interfaces
         bool Enabled { get; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this instance is read only.
+        /// Gets a value indicating whether this instance is read only.
         /// </summary>
         /// <value>
         ///   <c>true</c> if this instance is read only; otherwise, <c>false</c>.
         /// </value>
-        bool IsReadOnly { get; set; }
+        bool IsReadOnly { get; }
     }
 }

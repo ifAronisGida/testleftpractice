@@ -49,7 +49,6 @@ namespace TestLeft.TestLeftBase.ControlObjects
         bool TiValueControl<string>.IsReadOnly
         {
             get => mControlObject.Node.GetProperty<bool>( "IsReadOnly" );
-            set => mControlObject.Node.SetProperty( "IsReadOnly", value );
         }
     }
 }
