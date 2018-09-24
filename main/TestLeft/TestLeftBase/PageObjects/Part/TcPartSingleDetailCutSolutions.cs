@@ -1,8 +1,8 @@
 ﻿using SmartBear.TestLeft.TestObjects;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
-using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
@@ -11,12 +11,12 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcDetailContent}" />
-    public class TcPartSingleDetailCutSolutions : PageObject, IChildOf<TcDetailContent>
+    public class TcPartSingleDetailCutSolutions : PageObjectBase, IChildOf<TcDetailContent>
     {
         protected override Search SearchPattern => Search.ByUid( "Part.Detail.CutSolutions" );
 
         private IListBox CutSolutionList => Node.Find<IListBox>( Search.ByUid( "Part.Detail.CutSolutions.List" ) );
-        private TcTruIconButton NewButton => Find<TcTruIconButton>( Search.ByUid( "Part.Detail.CutSolutions.AddSolution" ) );
+        private TiButton NewButton => Find<TiButton>( "Part.Detail.CutSolutions.AddSolution" );
 
         /// <summary>
         /// Creates a new cut solution.

@@ -4,7 +4,7 @@ namespace TestLeft.TestLeftBase.ControlObjects.Interfaces
     /// Interface for a value control.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface TiValueControl<T>
+    public interface TiValueControl<T> : TiControl
     {
         /// <summary>
         /// Gets or sets the value.
@@ -13,14 +13,6 @@ namespace TestLeft.TestLeftBase.ControlObjects.Interfaces
         /// The value.
         /// </value>
         T Value { get; set; }
-
-        /// <summary>
-        /// Gets a value indicating whether this <see cref="TiValueControl{T}"/> is enabled.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if enabled; otherwise, <c>false</c>.
-        /// </value>
-        bool Enabled { get; }
 
         /// <summary>
         /// Gets a value indicating whether this instance is read only.

@@ -1,23 +1,19 @@
-﻿using Trumpf.PageObjects;
+﻿using System;
+using Trumpf.PageObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
-using TestLeft.TestLeftBase.ControlObjects;
-using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 {
     public class TcPartOrders : RepeaterObject, IChildOf<TcMainTabControl>
     {
-        private TcTruIconButton SelectPartButton => Find<TcTruIconButton>( Search.ByUid( "PartOrder.Detail.OrderedPart.Select" ) );
-
         public bool CanSave => On<TcPartOrderToolbar>().SaveButton.Enabled;
         public bool CanDelete => On<TcPartOrderToolbar>().DeleteButton.Enabled;
 
         public override void Goto()
         {
-            base.Goto();
             Goto<TcDomains>().PartOrder.Click();
-            VisibleOnScreen.WaitFor();
+            Visible.WaitFor();
         }
 
         public void NewPartOrder()
@@ -38,8 +34,10 @@ namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 
         public void SelectPart(string partId)
         {
-            SelectPartButton.Click();
-            On<TcEntitySelectionDialog>().SelectClose( partId );
+            //SelectPartButton.Click();
+            //On<TcEntitySelectionDialog>().SelectClose( partId );
+
+            throw new NotImplementedException();
         }
     }
 }

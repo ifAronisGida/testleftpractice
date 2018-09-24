@@ -1,4 +1,4 @@
-using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 
@@ -9,15 +9,15 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="IChildOf{TcSettingsDialog}" />
-    public class TcBendSettings : PageObject, IChildOf<TcSettingsDialog>
+    public class TcBendSettings : PageObjectBase, IChildOf<TcSettingsDialog>
     {
         protected override Search SearchPattern => Search.ByUid( "Settings.Bend" );
 
-        private TcTruIconButton ToolsOpenButton => Find<TcTruIconButton>( Search.ByUid( "Settings.Bend.Tools.Open" ) );
-        private TcTruIconButton ToolListsOpenButton => Find<TcTruIconButton>( Search.ByUid( "Settings.Bend.ToolLists.Open" ) );
-        private TcTruIconButton BendDeductionOpenButton => Find<TcTruIconButton>( Search.ByUid( "Settings.Bend.BendDeduction.Open" ) );
-        private TcTruIconButton AppSettingsOpenButton => Find<TcTruIconButton>( Search.ByUid( "Settings.Bend.AppSettings.Open" ) );
-        private TcTruIconButton DataManagerBendOpenButton => Find<TcTruIconButton>( Search.ByUid( "Settings.Bend.DataManagerBend.Open" ) );
+        private TiButton ToolsOpenButton => Find<TiButton>( "Settings.Bend.Tools.Open" );
+        private TiButton ToolListsOpenButton => Find<TiButton>( "Settings.Bend.ToolLists.Open" );
+        private TiButton BendDeductionOpenButton => Find<TiButton>( "Settings.Bend.BendDeduction.Open" );
+        private TiButton AppSettingsOpenButton => Find<TiButton>( "Settings.Bend.AppSettings.Open" );
+        private TiButton DataManagerBendOpenButton => Find<TiButton>( "Settings.Bend.DataManagerBend.Open" );
 
         /// <summary>
         /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.

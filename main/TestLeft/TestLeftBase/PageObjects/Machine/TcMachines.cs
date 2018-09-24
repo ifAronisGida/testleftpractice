@@ -116,27 +116,13 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </summary>
         /// <param name="machineType">Type of the machine.</param>
         /// <param name="name">The name.</param>
-        /// <param name="laserPowerIndex">Index of the laser power in the ComboBox.</param>
-        public void NewCutMachine( string machineType, string name, int laserPowerIndex )
-        {
-            NewCutMachine();
-            Detail.CutMachineType = machineType;
-            Detail.Name.Value = name;
-            Detail.LaserPowerIndex = laserPowerIndex;
-        }
-
-        /// <summary>
-        /// Creates a new cut machine with the given properties.
-        /// </summary>
-        /// <param name="machineType">Type of the machine.</param>
-        /// <param name="name">The name.</param>
         /// <param name="laserPowerValue">The laser power value.</param>
         public void NewCutMachine( string machineType, string name, string laserPowerValue )
         {
             NewCutMachine();
             Detail.CutMachineType = machineType;
             Detail.Name.Value = name;
-            Detail.LaserPowerValue = laserPowerValue;
+            Detail.LaserPower.Value = laserPowerValue;
         }
 
         /// <summary>

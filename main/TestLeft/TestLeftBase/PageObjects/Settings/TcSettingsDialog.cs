@@ -1,6 +1,7 @@
 using System;
 using SmartBear.TestLeft.TestObjects;
 using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
@@ -12,7 +13,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    public class TcSettingsDialog : PageObject, IChildOf<TcHomeZoneApp>
+    public class TcSettingsDialog : PageObjectBase, IChildOf<TcHomeZoneApp>
     {
         protected override Search SearchPattern => Search.ByUid( "SettingsDialog" );
 
@@ -21,8 +22,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
         internal IControl BendTab => Node.Find<IControl>( Search.ByUid( "SettingsPage.Bend" ), 3 );
         internal IControl CutTab => Node.Find<IControl>( Search.ByUid( "SettingsPage.Cut" ), 3 );
 
-        private TcTruIconButton CancelButton => Find<TcTruIconButton>( Search.ByUid( "CancelButton" ) );
-        private TcTruIconButton SaveButton => Find<TcTruIconButton>( Search.ByUid( "SaveButton" ) );
+        private TiButton CancelButton => Find<TiButton>( "CancelButton" );
+        private TiButton SaveButton => Find<TiButton>( "SaveButton" );
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TcSettingsDialog"/> class.

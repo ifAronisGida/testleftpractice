@@ -1,23 +1,23 @@
 ﻿using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
-using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 
 namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 {
-    public class TcPartOrderToolbar : PageObject, IChildOf<TcToolbars>
+    public class TcPartOrderToolbar : PageObjectBase, IChildOf<TcToolbars>
     {
         protected override Search SearchPattern => Search.ByUid( "PartOrder.Toolbar" );
 
-        public TcTruIconButton NewPartOrderButton => Find<TcTruIconButton>( Search.ByUid( "PartOrder.Toolbar.New" ) );
-        public TcTruIconButton DuplicateButton => Find<TcTruIconButton>( Search.ByUid( "PartOrder.Toolbar.Duplicate" ) );
-        public TcTruIconButton ImportButton => Find<TcTruIconButton>( Search.ByUid( "PartOrder.Toolbar.Import" ) );
-        public TcTruIconButton BoostButton => Find<TcTruIconButton>( Search.ByUid( "PartOrder.Toolbar.Calculate" ) );
-        public TcTruIconButton CreateCutJobButton => Find<TcTruIconButton>( Search.ByUid( "PartOrder.Toolbar.CreateCutJob" ) );
-        public TcTruIconButton SaveButton => Find<TcTruIconButton>( Search.ByUid( "PartOrder.Toolbar.Save" ) );
-        public TcTruIconButton RevertButton => Find<TcTruIconButton>( Search.ByUid( "PartOrder.Toolbar.Revert" ) );
-        public TcTruIconButton DeleteButton => Find<TcTruIconButton>( Search.ByUid( "PartOrder.Toolbar.Delete" ) );
-        public TcTruIconButton MoveToArchiveButton => Find<TcTruIconButton>( Search.ByUid( "PartOrder.Toolbar.MoveToArchive" ) );
-        public TcTruIconButton RemoveFromArchiveButton => Find<TcTruIconButton>( Search.ByUid( "PartOrder.Toolbar.RemoveFromArchive" ) );
+        public TiButton NewPartOrderButton => Find<TiButton>( "PartOrder.Toolbar.New" );
+        public TiButton DuplicateButton => Find<TiButton>( "PartOrder.Toolbar.Duplicate" );
+        public TiButton ImportButton => Find<TiButton>( "PartOrder.Toolbar.Import" );
+        public TiButton BoostButton => Find<TiButton>("PartOrder.Toolbar.Calculate" );
+        public TiButton CreateCutJobButton => Find<TiButton>( "PartOrder.Toolbar.CreateCutJob" );
+        public TiButton SaveButton => Find<TiButton>( "PartOrder.Toolbar.Save" );
+        public TiButton RevertButton => Find<TiButton>( "PartOrder.Toolbar.Revert" );
+        public TiButton DeleteButton => Find<TiButton>( "PartOrder.Toolbar.Delete" );
+        public TiButton MoveToArchiveButton => Find<TiButton>( "PartOrder.Toolbar.MoveToArchive" );
+        public TiButton RemoveFromArchiveButton => Find<TiButton>( "PartOrder.Toolbar.RemoveFromArchive" );
     }
 }

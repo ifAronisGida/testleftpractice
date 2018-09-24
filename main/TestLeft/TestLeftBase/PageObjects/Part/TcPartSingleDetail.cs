@@ -5,8 +5,8 @@ using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 using TestLeft.TestLeftBase.PageObjects.Shell;
-using TcTruIconButton = TestLeft.TestLeftBase.ControlObjects.TcTruIconButton;
 using TestLeft.TestLeftBase.Utilities;
+using TestLeft.TestLeftBase.PageObjects.Customer;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
@@ -15,20 +15,20 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcDetailContent}" />
-    public class TcPartSingleDetail : PageObject, IChildOf<TcDetailContent>
+    public class TcPartSingleDetail : PageObjectBase, IChildOf<TcDetailContent>
     {
         protected override Search SearchPattern => Search.ByUid( "Part.Details" );
 
-        public TiValueControl<string> Name => this.FindGeneric<TiValueControl<string>>( "Part.Detail.Base.Description" );
-        private TcLookUpEdit CustomerLookUpEdit => this.FindGeneric<TcLookUpEdit>( "EditCustomerProperty.EditValue" );
-        internal TcTruIconButton CustomerOpenAdministrationButton => Find<TcTruIconButton>( Search.ByUid( "EditCustomerProperty.OpenAdministration" ) );
+        public TiValueControl<string> Name => Find<TiValueControl<string>>( "Part.Detail.Base.Description" );
         public TiValueControl<string> DrawingNumber => this.FindGeneric<TiValueControl<string>>( "Part.Detail.Base.DrawingNumber" );
         public TiValueControl<string> DrawingVersion => this.FindGeneric<TiValueControl<string>>( "Part.Detail.Base.DrawingVersion" );
-        private TcGroupPanel DetailGroupPanel => Find<TcGroupPanel>( Search.ByUid( "Part.Detail.Base" ) );
         public TiValueControl<string> IdTextEdit => this.FindGeneric<TiValueControl<string>>( "Part.Detail.Base.Name" );
         public TiValueControl<string> ExternalName => this.FindGeneric<TiValueControl<string>>( "Part.Detail.Base.More.ExternalName" );
-        private TiValueControl<bool> ArchivableCheckBox => this.FindGeneric<TiValueControl<bool>>( "Part.Detail.Archivable" );
         public TiValueControl<string> Note => this.FindGeneric<TiValueControl<string>>( "Part.Detail.Base.More.Note" );
+        private TiValueControl<string> CustomerLookUpEdit => Find<TiValueControl<string>>( "EditCustomerProperty.EditValue" );
+        private TiButton CustomerOpenAdministrationButton => Find<TiButton>( "EditCustomerProperty.OpenAdministration" );
+        private TcGroupPanel DetailGroupPanel => Find<TcGroupPanel>( Search.ByUid( "Part.Detail.Base" ) );
+        private TiValueControl<bool> ArchivableCheckBox => this.FindGeneric<TiValueControl<bool>>( "Part.Detail.Archivable" );
 
         /// <summary>
         /// Waits for name TextBox enabled.
@@ -48,9 +48,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </value>
         public string Customer
         {
-            set => CustomerLookUpEdit.Text = value;
+            set => CustomerLookUpEdit.Value = value;
 
-            get => CustomerLookUpEdit.Text;
+            get => CustomerLookUpEdit.Value;
         }
 
         /// <summary>
@@ -106,6 +106,11 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
                 IsMoreExpanded = true;
                 return ArchivableCheckBox.Value;
             }
+        }
+
+        public void OpenCustomerAdministration()
+        {
+            CustomerOpenAdministrationButton.Click();
         }
     }
 }

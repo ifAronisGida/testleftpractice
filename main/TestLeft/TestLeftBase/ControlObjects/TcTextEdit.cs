@@ -5,19 +5,16 @@ using Trumpf.PageObjects.WPF;
 namespace TestLeft.TestLeftBase.ControlObjects
 {
     /// <summary>
-    /// The TcTextEdit ControlObject.
+    /// Represents a value control for text edit-like controls.
     /// </summary>
-    public class TcTextEdit : TiValueControl<string>
+    internal class TcTextEdit : TcControl, TiValueControl<string>
     {
-        private readonly IControlObject mControlObject;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="TcTextEdit"/> class.
         /// </summary>
         /// <param name="controlObject">The control object.</param>
-        public TcTextEdit( IControlObject controlObject )
+        public TcTextEdit( IControlObject controlObject ) : base(controlObject)
         {
-            mControlObject = controlObject;
         }
 
         /// <summary>
@@ -28,27 +25,19 @@ namespace TestLeft.TestLeftBase.ControlObjects
         /// </value>
         string TiValueControl<string>.Value
         {
-            get => mControlObject.Node.Cast<ITextEdit>().GetText();
-            set => mControlObject.Node.Cast<ITextEdit>().SetText( value );
+            get => ControlObject.Node.Cast<ITextEdit>().GetText();
+            set => ControlObject.Node.Cast<ITextEdit>().SetText( value );
         }
-
-        /// <summary>
-        /// Gets a value indicating whether this <see cref="TcTextEdit"/> is enabled.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if enabled; otherwise, <c>false</c>.
-        /// </value>
-        bool TiValueControl<string>.Enabled => mControlObject.Node.Cast<ITextEdit>().Enabled;
 
         /// <summary>
         /// Gets a value indicating whether this instance is read only.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if this instance is read only; otherwise, <c>false</c>.
+        /// <c>true</c> if this instance is read only; otherwise, <c>false</c>.
         /// </value>
         bool TiValueControl<string>.IsReadOnly
         {
-            get => mControlObject.Node.GetProperty<bool>( "IsReadOnly" );
+            get => ControlObject.Node.GetProperty<bool>( "IsReadOnly" );
         }
     }
 }

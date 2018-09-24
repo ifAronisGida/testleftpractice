@@ -105,6 +105,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// </summary>
         public void DuplicateMaterial()
         {
+            Toolbar.DuplicateButton.Enabled.WaitFor();
             Wait.ActAndWaitForChange( Toolbar.DuplicateButton.Click, () => ResultColumn.Count );
         }
 

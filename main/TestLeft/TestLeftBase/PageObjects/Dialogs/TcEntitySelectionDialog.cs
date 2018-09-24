@@ -1,20 +1,20 @@
 using SmartBear.TestLeft.TestObjects.WPF;
-using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.ControlObjects.Composite;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.Dialogs
 {
-    public class TcEntitySelectionDialog : PageObject, IChildOf<TcHomeZoneApp>
+    public class TcEntitySelectionDialog : PageObjectBase, IChildOf<TcHomeZoneApp>
     {
         protected override Search SearchPattern => Search.By(new WPFPattern()
         {
             ClrFullClassName = "Trumpf.TruTops.Control.Infrastructure.ModuleBase.Views.TcEntitySelectionDialogView"
         } );
 
-        private TcButton CancelButton => Find<TcButton>( Search.ByControlName( "CancelButton" ) );
-        private TcButton OkButton => Find<TcButton>( Search.ByControlName( "OkButton" ) );
+        private TiButton CancelButton => Find<TiButton>( "CancelButton" );
+        private TiButton OkButton => Find<TiButton>( "OkButton" );
         private TcResultColumn ResultColumn => Find<TcResultColumn>( Search.ByControlName( "ResultColumn" ) );
 
         public void Cancel()

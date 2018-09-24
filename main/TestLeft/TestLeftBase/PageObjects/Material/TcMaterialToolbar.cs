@@ -1,7 +1,7 @@
 ﻿using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
-using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 
 namespace TestLeft.TestLeftBase.PageObjects.Material
 {
@@ -10,7 +10,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcToolbars}" />
-    public class TcMaterialToolbar : PageObject, IChildOf<TcToolbars>
+    public class TcMaterialToolbar : PageObjectBase, IChildOf<TcToolbars>
     {
         protected override Search SearchPattern => Search.ByUid( "Material.Toolbar" );
 
@@ -20,7 +20,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The new button.
         /// </value>
-        public TcTruIconButton NewButton => Find<TcTruIconButton>( Search.ByUid( "Material.Toolbar.New" ) );
+        public TiButton NewButton => Find<TiButton>( "Material.Toolbar.New" );
 
         /// <summary>
         /// Gets the duplicate button.
@@ -28,7 +28,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The duplicate button.
         /// </value>
-        public TcTruIconButton DuplicateButton => Find<TcTruIconButton>( Search.ByUid( "Material.Toolbar.Duplicate" ) );
+        public TiButton DuplicateButton => Find<TiButton>( "Material.Toolbar.Duplicate" );
 
         /// <summary>
         /// Gets the save button.
@@ -36,7 +36,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The save button.
         /// </value>
-        public TcTruIconButton SaveButton => Find<TcTruIconButton>( Search.ByUid( "Material.Toolbar.Save" ) );
+        public TiButton SaveButton => Find<TiButton>( "Material.Toolbar.Save" );
 
         /// <summary>
         /// Gets the revert button.
@@ -44,7 +44,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The revert button.
         /// </value>
-        public TcTruIconButton RevertButton => Find<TcTruIconButton>( Search.ByUid( "Material.Toolbar.Revert" ) );
+        public TiButton RevertButton => Find<TiButton>( "Material.Toolbar.Revert" );
 
         /// <summary>
         /// Gets the delete button.
@@ -52,7 +52,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The delete button.
         /// </value>
-        public TcTruIconButton DeleteButton => Find<TcTruIconButton>( Search.ByUid( "Material.Toolbar.Delete" ) );
+        public TiButton DeleteButton => Find<TiButton>( "Material.Toolbar.Delete" );
 
         /// <summary>
         /// Gets the lock material button.
@@ -60,7 +60,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The lock material button.
         /// </value>
-        public TcTruIconButton LockMaterialButton => Find<TcTruIconButton>( Search.ByUid( "Material.Toolbar.LockMaterial" ) );
+        public TiButton LockMaterialButton => Find<TiButton>( "Material.Toolbar.LockMaterial" );
 
         /// <summary>
         /// Gets the unlock material button.
@@ -68,6 +68,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The unlock material button.
         /// </value>
-        public TcTruIconButton UnlockMaterialButton => Find<TcTruIconButton>( Search.ByUid( "Material.Toolbar.UnlockMaterial" ) );
+        public TiButton UnlockMaterialButton => Find<TiButton>( "Material.Toolbar.UnlockMaterial" );
     }
 }

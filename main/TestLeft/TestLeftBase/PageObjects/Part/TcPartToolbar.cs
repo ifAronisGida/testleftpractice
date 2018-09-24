@@ -2,6 +2,7 @@
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
@@ -10,7 +11,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcToolbars}" />
-    public class TcPartToolbar : PageObject, IChildOf<TcToolbars>
+    public class TcPartToolbar : PageObjectBase, IChildOf<TcToolbars>
     {
         protected override Search SearchPattern => Search.ByUid( "Part.Toolbar" );
 
@@ -20,7 +21,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The new part button.
         /// </value>
-        public TcTruIconButton NewPartButton => Find<TcTruIconButton>( Search.ByUid( "Part.Toolbar.New" ) );
+        public TiButton NewPartButton => Find<TiButton>( "Part.Toolbar.New" );
 
         /// <summary>
         /// Gets the duplicate button.
@@ -28,7 +29,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The duplicate button.
         /// </value>
-        public TcTruIconButton DuplicateButton => Find<TcTruIconButton>( Search.ByUid( "Part.Toolbar.Duplicate" ) );
+        public TiButton DuplicateButton => Find<TiButton>( "Part.Toolbar.Duplicate" );
 
         /// <summary>
         /// Gets the import button.
@@ -36,7 +37,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The import button.
         /// </value>
-        public TcTruIconButton ImportButton => Find<TcTruIconButton>( Search.ByUid( "Part.Toolbar.Import" ) );
+        public TiButton ImportButton => Find<TiButton>( "Part.Toolbar.Import" );
 
         /// <summary>
         /// Gets the export button.
@@ -44,7 +45,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The export button.
         /// </value>
-        public TcTruIconButton ExportButton => Find<TcTruIconButton>( Search.ByUid( "Part.Toolbar.Export" ) );
+        public TiButton ExportButton => Find<TiButton>( "Part.Toolbar.Export" );
 
         /// <summary>
         /// Gets the boost button.
@@ -52,7 +53,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The boost button.
         /// </value>
-        public TcTruIconButton BoostButton => Find<TcTruIconButton>( Search.ByUid( "Part.Toolbar.CalculateAll" ) );
+        public TiButton BoostButton => Find<TiButton>( "Part.Toolbar.CalculateAll" );
 
         /// <summary>
         /// Gets the create part order button.
@@ -60,7 +61,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The create part order button.
         /// </value>
-        public TcTruIconButton CreatePartOrderButton => Find<TcTruIconButton>( Search.ByUid( "Part.Toolbar.CreatePartOrder" ) );
+        public TiButton CreatePartOrderButton => Find<TiButton>( "Part.Toolbar.CreatePartOrder" );
 
         /// <summary>
         /// Gets the create cut job button.
@@ -68,7 +69,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The create cut job button.
         /// </value>
-        public TcTruIconButton CreateCutJobButton => Find<TcTruIconButton>( Search.ByUid( "Part.Toolbar.CreateCutJob" ) );
+        public TiButton CreateCutJobButton => Find<TiButton>( "Part.Toolbar.CreateCutJob" );
 
         /// <summary>
         /// Gets the save button.
@@ -76,7 +77,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The save button.
         /// </value>
-        public TcTruIconButton SaveButton => Find<TcTruIconButton>( Search.ByUid( "Part.Toolbar.Save" ) );
+        public TiButton SaveButton => Find<TiButton>( "Part.Toolbar.Save" );
 
         /// <summary>
         /// Gets the revert button.
@@ -84,7 +85,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The revert button.
         /// </value>
-        public TcTruIconButton RevertButton => Find<TcTruIconButton>( Search.ByUid( "Part.Toolbar.Revert" ) );
+        public TiButton RevertButton => Find<TiButton>( "Part.Toolbar.Revert" );
 
         /// <summary>
         /// Gets the delete button.
@@ -92,7 +93,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The delete button.
         /// </value>
-        public TcTruIconButton DeleteButton => Find<TcTruIconButton>( Search.ByUid( "Part.Toolbar.Delete" ) );
+        public TiButton DeleteButton => Find<TiButton>( "Part.Toolbar.Delete" );
 
         /// <summary>
         /// Gets the move to archive button.
@@ -100,7 +101,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The move to archive button.
         /// </value>
-        public TcTruIconButton MoveToArchiveButton => Find<TcTruIconButton>( Search.ByUid( "Part.Toolbar.MoveToArchive" ) );
+        public TiButton MoveToArchiveButton => Find<TiButton>( "Part.Toolbar.MoveToArchive" );
 
         /// <summary>
         /// Gets the remove from archive button.
@@ -108,7 +109,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The remove from archive button.
         /// </value>
-        public TcTruIconButton RemoveFromArchiveButton => Find<TcTruIconButton>( Search.ByUid( "Part.Toolbar.RemoveFromArchive" ) );
+        public TiButton RemoveFromArchiveButton => Find<TiButton>( "Part.Toolbar.RemoveFromArchive" );
 
         /// <summary>
         /// Gets the lock part button.
@@ -116,7 +117,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The lock part button.
         /// </value>
-        public TcTruIconButton LockPartButton => Find<TcTruIconButton>( Search.ByUid( "Part.Toolbar.LockPart" ) );
+        public TiButton LockPartButton => Find<TiButton>( "Part.Toolbar.LockPart" );
 
         /// <summary>
         /// Gets the unlock part button.
@@ -124,6 +125,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The unlock part button.
         /// </value>
-        public TcTruIconButton UnlockPartButton => Find<TcTruIconButton>( Search.ByUid( "Part.Toolbar.UnlockPart" ) );
+        public TiButton UnlockPartButton => Find<TiButton>( "Part.Toolbar.UnlockPart" );
     }
 }

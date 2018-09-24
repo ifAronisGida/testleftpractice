@@ -12,8 +12,8 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
         public const string Uid = "List.SearchAndResult";
 
         private TiValueControl<string> SearchText => this.FindGeneric<TiValueControl<string>>( "List.Search.Text" );
-        private TcTruIconButton ClearSearchTextButton => Find<TcTruIconButton>( Search.ByUid( "List.Search.Clear" ) );
-        private TcTruIconButton ExecuteSearchButton => Find<TcTruIconButton>( Search.ByUid( "List.Search.Execute" ) );
+        private TiButton ClearSearchTextButton => this.FindGeneric<TiButton>( "List.Search.Clear" );
+        private TiButton ExecuteSearchButton => this.FindGeneric<TiButton>( "List.Search.Execute" );
         private TcListView ResultListView => Find<TcListView>( Search.ByUid( "List.ResultList" ) );
         private TcOverlay Overlay => Find<TcOverlay>( Search.ByUid( "ResultList.Overlay" ) );
 

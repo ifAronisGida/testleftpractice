@@ -1,7 +1,7 @@
 ﻿using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
-using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
@@ -10,12 +10,12 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcDetailContent}" />
-    public class TcPartSingleDetailDesign : PageObject, IChildOf<TcPartSingleDetail>
+    public class TcPartSingleDetailDesign : PageObjectBase, IChildOf<TcPartSingleDetail>
     {
         protected override Search SearchPattern => Search.ByUid( "Part.Detail.Design" );
 
-        internal TcTruIconButton ImportButton => Find<TcTruIconButton>( Search.ByUid( "Part.Detail.Design.Import" ) );
-        internal TcTruIconButton OpenButton => Find<TcTruIconButton>( Search.ByUid( "Part.Detail.Design.Open" ) );
+        private TiButton ImportButton => Find<TiButton>( "Part.Detail.Design.Import" );
+        private TiButton OpenButton => Find<TiButton>( "Part.Detail.Design.Open" );
 
         /// <summary>
         /// Imports the specified design from the given filename.

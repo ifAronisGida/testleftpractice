@@ -31,12 +31,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
             mTableView = new Lazy<TcOptimizedTableView<TcCustomerRow>>( () => CustomerGrid.GetOptimizedTableView( underlyingRow => new TcCustomerRow( underlyingRow ) ) );
         }
 
-        private TcTruIconButton NewCustomerButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Add" ) );
-        private TcTruIconButton DeleteCustomerButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Delete" ) );
-        private TcGridControl CustomerGrid => Find<TcGridControl>( Search.ByUid( "Customer.List" ) );
-        private TcTruIconButton ApplyButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Dialog.Apply" ) );
-        private TcTruIconButton CancelButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Dialog.Cancel" ) );
-        private TcTruIconButton OkButton => Find<TcTruIconButton>( Search.ByUid( "Customer.Dialog.Ok" ) );
         public TiValueControl<string> City => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.City" );
         public TiValueControl<string> Comment => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.Comment" );
         public TiValueControl<string> Country => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.Country" );
@@ -44,6 +38,13 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         public TiValueControl<string> Name => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.Name" );
         public TiValueControl<string> PostalCode => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.PostalCode" );
         public TiValueControl<string> Street => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.Street" );
+
+        private TiButton NewCustomerButton => this.FindGeneric<TiButton>( "Customer.Add" );
+        private TiButton DeleteCustomerButton => this.FindGeneric<TiButton>( "Customer.Delete" );
+        private TcGridControl CustomerGrid => Find<TcGridControl>( Search.ByUid( "Customer.List" ) );
+        private TiButton ApplyButton => this.FindGeneric<TiButton>( "Customer.Dialog.Apply" );
+        private TiButton CancelButton => this.FindGeneric<TiButton>( "Customer.Dialog.Cancel" );
+        private TiButton OkButton => this.FindGeneric<TiButton>( "Customer.Dialog.Ok" );
 
         /// <summary>
         /// The customer administration dialog is not direct accessible, only via button click in several detail views.
@@ -60,7 +61,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
 
             mParts = Goto<TcParts>();
             mParts.NewPart();
-            mParts.SingleDetail.CustomerOpenAdministrationButton.Click();
+            mParts.SingleDetail.OpenCustomerAdministration();
         }
 
         /// <summary>

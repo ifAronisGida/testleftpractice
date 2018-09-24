@@ -1,7 +1,6 @@
-using SmartBear.TestLeft.TestObjects;
 using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 using TestLeft.TestLeftBase.Utilities;
-using Trumpf.PageObjects.WPF;
+using Trumpf.PageObjects.Waiting;
 
 namespace TestLeft.TestLeftBase.ControlObjects
 {
@@ -34,14 +33,6 @@ namespace TestLeft.TestLeftBase.ControlObjects
         }
 
         /// <summary>
-        /// Gets a value indicating whether this <see cref="TcTextEdit"/> is enabled.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if enabled; otherwise, <c>false</c>.
-        /// </value>
-        bool TiValueControl<string>.Enabled => Node.Cast<ITextEdit>().Enabled;
-
-        /// <summary>
         /// Gets a value indicating whether this instance is read only.
         /// </summary>
         /// <value>
@@ -51,5 +42,9 @@ namespace TestLeft.TestLeftBase.ControlObjects
         {
             get => Node.GetProperty<bool>( "IsReadOnly" );
         }
+
+        Wool TiControl.Enabled => throw new System.NotImplementedException();
+
+        Wool TiControl.Visible => throw new System.NotImplementedException();
     }
 }

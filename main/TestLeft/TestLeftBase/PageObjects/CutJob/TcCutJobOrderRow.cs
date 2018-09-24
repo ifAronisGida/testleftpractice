@@ -5,6 +5,7 @@ using Trumpf.PageObjects.WPF;
 using System.Windows.Documents;
 using DevExpress.Xpf.Editors;
 using TestLeft.TestLeftBase.Utilities;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
@@ -17,9 +18,9 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             mRow = row;
         }
 
-        public TcButton DrawingButton => mRow.Find<TcButton>( Search.ByUid( "ImageLinkButton" ) );
+        public TiButton DrawingButton => mRow.FindGeneric<TiButton>( "ImageLinkButton" );
 
-        public TcLinkButton PartLink => mRow.Find<TcLinkButton>( Search.ByUid( "PartLinkButton" ) );
+        public TiButton PartLink => mRow.FindGeneric<TiButton>( "PartLinkButton" );
 
         public int Pending
         {
@@ -45,7 +46,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             }
         }
 
-        public TcLinkButton OrderLink => mRow.Find<TcLinkButton>( Search.ByUid( "PartOrderLinkButton" ) );
+        public TiButton OrderLink => mRow.FindGeneric<TiButton>( "PartOrderLinkButton" );
 
         public string Customer => mRow
             .Find<TcReadOnlyText>( Search.ByUid( "CustomerName" ) )
@@ -79,8 +80,8 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             .Find<TcReadOnlyText>( Search.ByUid( "PartDistanceMode" ) )
             .Text;
 
-        public TcCheckBox IgnoreProcessings =>
-             TcControlMapper.Map<TcCheckBox>( mRow.GetCell( 15 ).FindGeneric( Search.Any, depth: 1 ) );
+        public TiValueControl<bool> IgnoreProcessings =>
+             TcControlMapper.Map<TiValueControl<bool>>( mRow.GetCell( 15 ).FindGeneric( Search.Any, depth: 1 ) );
 
         // TODO: do something about the editability of these cells
         public int NestingPriority

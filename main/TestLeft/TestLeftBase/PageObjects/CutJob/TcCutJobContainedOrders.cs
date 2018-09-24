@@ -1,10 +1,12 @@
-﻿using Trumpf.PageObjects;
+﻿using System;
+using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
-using System;
+using TestLeft.TestLeftBase.ControlObjects.Interfaces;
+using TestLeft.TestLeftBase.Utilities;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
@@ -21,10 +23,8 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.ContainedOrders" );
 
-        internal TcTruIconButton SelectButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.ContainedOrders.Select" ) );
-
-        internal TcTruIconButton RemoveButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.ContainedOrders.Remove" ) );
-
+        private TiButton SelectButton => this.FindGeneric<TiButton>( "CutJob.Detail.ContainedOrders.Select" );
+        private TiButton RemoveButton => this.FindGeneric<TiButton>( "CutJob.Detail.ContainedOrders.Remove" );
         private TcGridControl PartOrdersGrid => Find<TcGridControl>( Search.ByUid( "CutJob.Detail.ContainedOrders.PartOrders" ) );
 
         public void UnSelectAllPartOrders()
