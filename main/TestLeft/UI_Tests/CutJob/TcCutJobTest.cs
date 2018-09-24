@@ -49,11 +49,9 @@ namespace TestLeft.UI_Tests.CutJob
 
                 cutJobs.NewCutJob();
 
-                cutJobs.SingleDetail.SelectRawMaterial( 1 );
+                cutJobs.SingleDetail.RawMaterial.Value = "AL0M0130---";
 
                 Thread.Sleep( 3000 );
-
-                cutJobs.SingleDetail.SelectRawMaterial( "AL0M0130---" );
 
                 Assert.IsTrue( cutJobs.Toolbar.RevertButton.Enabled );
                 cutJobs.RevertCutJob();
@@ -82,7 +80,7 @@ namespace TestLeft.UI_Tests.CutJob
                 Assert.AreEqual( "Cut1", row.CuttingProgram );
                 Assert.IsTrue( row.AngularPositions.Contains( "360" ) );
                 Assert.AreEqual( "Grid machining", row.DistanceMode );
-                Assert.IsFalse( row.IgnoreProcessings.Checked );
+                Assert.IsFalse( row.IgnoreProcessings.Value );
                 Assert.AreEqual( 0, row.SamplePartsCount );
                 Assert.AreEqual( "UIT_Note", row.Note );
 
@@ -95,20 +93,18 @@ namespace TestLeft.UI_Tests.CutJob
         [TestMethod, UniqueName( "6E535F11-9B88-4F75-8240-B70C97EC8471" )]
         public void RawSheetsTest()
         {
-            var HZ = HomeZoneApp;
-
             Act( () =>
             {
-                HZ.Goto<TcCutJobs>()
-                    .NewCutJob();
+                var cutJobs = HomeZoneApp.Goto<TcCutJobs>();
+                cutJobs.NewCutJob();
 
-                HZ.On<TcCutJobDetail>().SelectRawMaterial( "AL0M0050---" );
+                cutJobs.SingleDetail.RawMaterial.Value = "AL0M0050---";
 
                 Thread.Sleep( 2000 );
 
-                var solution = HZ.On<TcCutJobSolution>();
+                var solution = cutJobs.CutJobSolution;
                 Assert.AreEqual( 1, solution.RawSheets.Count );
-                Assert.IsNotNull( solution.RawSheets.FindRawSheet( row => row.RawSheet.Text == "AL0M0050----2000x1000" ) );
+                Assert.IsNotNull( solution.RawSheets.FindRawSheet( row => row.RawSheet.Value == "AL0M0050----2000x1000" ) );
                 Assert.IsNull( solution.RawSheets.FindRawSheet( row => false ) );
 
                 var newRawSheet = solution.AddRawSheet();
@@ -118,7 +114,7 @@ namespace TestLeft.UI_Tests.CutJob
 
                 newRawSheet.Delete();
 
-                HZ.On<TcCutJobs>().SaveCutJob();
+                cutJobs.SaveCutJob();
             } );
         }
     }

@@ -9,12 +9,16 @@ namespace TestLeft.TestLeftBase.Utilities
     {
         private static readonly Dictionary<string, Func<IControlObject, object>> mappings = new Dictionary<string, Func<IControlObject, object>>
         {
-            ["System.Windows.Controls.TextBox"] = controlObject => new TcTextEdit(controlObject),
-            ["DevExpress.Xpf.Editors.TextEdit"] = controlObject => new TcTextEdit(controlObject),
-            ["DevExpress.Xpf.Grid.LookUp.LookUpEdit"] = controlObject => new TcLookUpEdit(controlObject),
-            ["DevExpress.Xpf.Editors.SpinEdit"] = controlObject => new TcSpinEdit(controlObject),
-            ["System.Windows.Controls.CheckBox"] = controlObject => new TcCheckBox(controlObject),
-            ["Trumpf.TruTops.Control.Infrastructure.ModuleBase.Controls.TcLookUpEdit"] = controlObject => new TcLookUpEdit(controlObject)
+            ["DevExpress.Xpf.Editors.SpinEdit"] = controlObject => new TcSpinEdit( controlObject ),
+            ["DevExpress.Xpf.Editors.TextEdit"] = controlObject => new TcTextEdit( controlObject ),
+            ["DevExpress.Xpf.Grid.LookUp.LookUpEdit"] = controlObject => new TcTextEdit( controlObject ),
+            ["System.Windows.Controls.Button"] = controlObject => new TcButton( controlObject ),
+            ["System.Windows.Controls.CheckBox"] = controlObject => new TcCheckBox( controlObject ),
+            ["System.Windows.Controls.Menu"] = controlObject => new TcButton( controlObject ),
+            ["System.Windows.Controls.TextBox"] = controlObject => new TcTextEdit( controlObject ),
+            ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruComboBox"] = controlObject => new TcTruComboBox( controlObject ),
+            ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruIconButton"] = controlObject => new TcButton( controlObject ),
+            ["Trumpf.TruTops.Control.Infrastructure.ModuleBase.Controls.TcLookUpEdit"] = controlObject => new TcTextEdit( controlObject ),
         };
 
         public static TInterface Map<TInterface>( IControlObject controlObject ) where TInterface : class
@@ -23,7 +27,7 @@ namespace TestLeft.TestLeftBase.Utilities
 
             try
             {
-                var factoryFunc = mappings[ fqClassName ];
+                var factoryFunc = mappings[fqClassName];
                 return ( TInterface )factoryFunc( controlObject );
             }
             catch( Exception e )
