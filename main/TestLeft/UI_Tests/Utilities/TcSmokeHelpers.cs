@@ -32,11 +32,11 @@ namespace TestLeft.UI_Tests.Utilities
             new Tuple<string, string>(  "TruLaser Center 7030 (L26)","6000"),
             new Tuple<string, string>(  "TruLaser 3060 (L66)","8000")
         };
-        private bool mTestMachinesCreated = false;
+        private bool mTestMachinesCreated ;
 
         // test customers
         private readonly IList<string> mCustomerNames = new List<string>{"Testkunde1","Testkunde2","Testkunde3"};
-        private bool mTestCustomersCreated = false;
+        private bool mTestCustomersCreated;
 
         // test parts
         private readonly IList<FileInfo> mPartNames = new List<FileInfo>
@@ -403,56 +403,6 @@ namespace TestLeft.UI_Tests.Utilities
         public void DeleteTestCutJobs()
         {
             //TODO
-        }
-
-        private static void CreateTestCutJobsFromParts()
-        {
-            //CreateTestParts(); //tut nicht ganz
-            var parts = HomeZoneApp.Goto<TcParts>();
-
-            parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Training\Laser\GEO\BL_01.geo" );
-            parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Training\Laser\GEO\BL_02.geo" );
-            parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Training\Laser\GEO\BL_03.geo" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
-
-            parts.SelectAll();
-            parts.CreateCutJob();
-        }
-
-        [TestMethod]
-        public void BoostCutJob()
-        {
-            //CreateTestCutJobsFromParts();
-
-            var cutJobs = HomeZoneApp.Goto<TcCutJobs>();
-            //cutJobs.SelectCutJob("N1");
-
-            // Details
-            var rawMaterial = cutJobs.SingleDetail.RawMaterial;
-            if( rawMaterial == "(Kein Rohmaterial)" )
-            {
-                cutJobs.SingleDetail.SelectRawMaterial( 1 );
-            }
-
-            // Auftragsliste
-            var partOrdersCount = cutJobs.ContainedOrders.PartOrdersCount;
-            cutJobs.ContainedOrders.UnSelectAllPartOrders();
-            cutJobs.ContainedOrders.SelectPartOrder( 1 );
-            cutJobs.ContainedOrders.RemovePartOrder();
-            //cutJobs.CutJobContainedOrders.AddPartOrder();
-
-            //Tafelprogramm
-            cutJobs.CutJobSolution.Note.Value = "Kommentar";
-            cutJobs.CutJobSolution.SelectMachine( 1 );
-            //cutJobs.CutJobSolution.SelectRawSheet( 1 );
-            cutJobs.CutJobSolution.DeleteProgram();
-            cutJobs.CutJobSolution.Boost();
-
-            //TODO
-            //cutJobs.DeleteCutJobs();
-            //partsOrder.DeletePartOder();
-            //parts.DeletePart();
         }
 
         /// <summary>

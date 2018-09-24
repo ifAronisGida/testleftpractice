@@ -53,7 +53,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public override void Goto()
         {
-            if( VisibleOnScreen )
+            if( VisibleOnScreen.TryWaitFor( TimeSpan.FromSeconds( 1 ) ) )
             {
                 return;
             }
