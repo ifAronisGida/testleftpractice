@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.TestLeftBase.PageObjects.Flux;
@@ -106,7 +107,7 @@ namespace TestLeft.UI_Tests.Flux
             {
                 CreateTestMachine();
 
-                Driver.Log.Message( @"Starting Flux open / close test." );
+                Trace.WriteLine( @"Starting Flux open / close test." );
                 var parts = HomeZoneApp.Goto<TcParts>();
                 string solutionName = "Bend1";
 
@@ -144,7 +145,7 @@ namespace TestLeft.UI_Tests.Flux
             Act( () =>
              {
                  CreateTestMachine();
-                 Driver.Log.Message( @"Starting Flux boost test." );
+                 Trace.WriteLine( @"Starting Flux boost test." );
                  var parts = HomeZoneApp.Goto<TcParts>();
                  string solutionName = "Bend1";
 
@@ -179,7 +180,7 @@ namespace TestLeft.UI_Tests.Flux
                  string testMachine = "TruBend 3066 (2-axes, Asia) B26";
                  CreateTestMachine( testMachine );
 
-                 Driver.Log.Message( @"Starting Flux boost with errors test." );
+                 Trace.WriteLine( @"Starting Flux boost with errors test." );
                  var parts = HomeZoneApp.Goto<TcParts>();
                  string solutionName = "Bend1";
 
@@ -212,7 +213,7 @@ namespace TestLeft.UI_Tests.Flux
             Act( () =>
             {
                 CreateTestMachine();
-                Driver.Log.Message( @"Starting Flux release solution after boost test." );
+                Trace.WriteLine( @"Starting Flux release solution after boost test." );
                 var parts = HomeZoneApp.Goto<TcParts>();
                 string solutionName = "Bend1";
 
@@ -258,7 +259,7 @@ namespace TestLeft.UI_Tests.Flux
         {
             Act( () =>
              {
-                 Driver.Log.Message( @"Starting configure machine test." );
+                 Trace.WriteLine( @"Starting configure machine test." );
                  string machineName = "TruBend 5320 (6-axes) B23";
                  CreateTestMachine( machineName );
 
@@ -286,7 +287,7 @@ namespace TestLeft.UI_Tests.Flux
             Act( () =>
              {
                  CreateTestMachine();
-                 Driver.Log.Message( @"Starting Flux close without save test." );
+                 Trace.WriteLine( @"Starting Flux close without save test." );
                  var parts = HomeZoneApp.Goto<TcParts>();
                  string solutionName = "Bend1";
 

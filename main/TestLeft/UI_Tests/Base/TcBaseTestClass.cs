@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using FactsHub.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft;
 using TestLeft.TestLeftBase;
 using TestLeft.TestLeftBase.Settings;
 using Trumpf.AutoTest.Facts;
+using Trumpf.AutoTest.Utilities;
 
 namespace TestLeft.UI_Tests.Base
 {
@@ -16,8 +19,13 @@ namespace TestLeft.UI_Tests.Base
     /// basic class and test initialization and clean up.
     /// </summary>
     [TestClass]
-    public class TcBaseTestClass : AutoTestWithFactsBase
+    public class TcBaseTestClass
     {
+        private readonly AutoFact mAutoFact;
+
+        public TcBaseTestClass()
+            => mAutoFact = new AutoFact( new TcTestOptions( GetType, () => TestContext ) );
+
         /// <summary>
         /// Initializes the <see cref="TcBaseTestClass"/> class and
         /// creates the driver object.
@@ -55,71 +63,67 @@ namespace TestLeft.UI_Tests.Base
             Driver = Driver
         };
 
-        ///// <summary>
-        ///// Initializes the test.
-        ///// The folder for the test result is created and the HomeZone will be started if it is not already running.
-        ///// </summary>
-        ///// <exception cref="Exception">Path not found to start process!</exception>
-        //[ TestInitialize()]
-        //public void Initialize()
-        //{
-        //    Driver.Log.OpenFolder( TestContext.FullyQualifiedTestClassName + "." + TestContext.TestName );
+        protected void Act( Action action, string caption = null )
+            => mAutoFact.Act( action, caption );
+    }
 
-        //    // check if HomeZone is already running
-        //    var runningHomeZone = System.Diagnostics.Process.GetProcessesByName( TcSettings.HomeZoneProcessName );
+    /// <summary>
+    /// Defining the test options.
+    /// </summary>
+    /// <seealso cref="Trumpf.AutoTest.Facts.IAutoFactOptions" />
+    public class TcTestOptions : IAutoFactOptions
+    {
+        private readonly Func<Type> mGetTestClass;
+        private readonly Func<TestContext> mTestContext;
+        private readonly Func<IDoSequence, IDoSequence> mDoSequenceConfiguration;
+        public TcTestOptions( Func<Type> getTestClass, Func<TestContext> testContext, Func<IDoSequence, IDoSequence> doSequenceConfiguration = null )
+        {
+            mGetTestClass = getTestClass;
+            mDoSequenceConfiguration = doSequenceConfiguration ?? ( e => e );
+            mTestContext = testContext;
+        }
 
-        //    if( runningHomeZone.Length == 0 )               // not running => start HomeZone
-        //    {
-        //        if( !Directory.Exists( TcSettings.ProgramPath ) )
-        //        {
-        //            throw new Exception( "Path not found to start process!" );
-        //        }
+        public string Remarks
+            => "no remarks";
 
-        //        var filename = Path.Combine( TcSettings.ProgramPath, TcSettings.HomeZoneProcessName + ".exe" );
-        //        var startInfo = new System.Diagnostics.ProcessStartInfo
-        //        {
-        //            FileName = filename,
-        //            WorkingDirectory = TcSettings.ProgramPath
-        //        };
-        //        var process = System.Diagnostics.Process.Start( startInfo );
-        //    }
+        public string[] TagsExtractor
+            => TestMethod.GetCustomAttributes<TagAttribute>().Select( e => e.Name ).ToArray();
 
-        //    var mainWindow = HomeZoneApp.On<TcMainWindow>();
-        //    mainWindow.Exists.WaitFor(TimeSpan.FromSeconds(60));
-        // }
+        public MethodInfo TestMethod
+            => mGetTestClass().Assembly.GetTypes().FirstOrDefault( f => f.FullName == mTestContext().FullyQualifiedTestClassName )?.GetMethod( mTestContext().TestName );
 
-        ///// <summary>
-        ///// Cleaning up after the test run.
-        ///// If the test did not pass, the result file is written.
-        ///// </summary>
-        //[TestCleanup]
-        //public void TestCleanup()
-        //{
-        //    if( TestContext.CurrentTestOutcome != UnitTestOutcome.Passed )
-        //    {
-        //        Driver.Log.Error( "The test failed. See information on errors in the MSTest log." );
-        //        TestContext.AddResultFile( TestContext.ResultsDirectory + @"\UI_Tests TestResults\index.htm" );
-        //    }
+        public void AddAssetAction( string path )
+            => mTestContext().AddResultFile( path );
 
-        //    Driver.Log.CloseFolder();
-        //}
+        public IClaim ClaimConfiguration( IClaim claim )
+        {
+            claim.Product = @"HomeZone";
+            claim.Version = "8.0.0";  //TODO
+            claim.Context = "LAP013742";  //TODO
+            claim.Process = "Developer test";  //TODO
+            return claim;
+        }
 
-        protected override MethodInfo TestMethod => GetType().Assembly.GetTypes().FirstOrDefault( f => f.FullName == TestContext.FullyQualifiedTestClassName )?.GetMethod( TestContext.TestName );
-        protected override Uri FactsHubServiceUri => new Uri( "http://LAP013742:5000" );    //TODO use settings
-        public override string Product => @"HomeZone";
-        public override string Version => "8.0.0";  //TODO
-        public override string Context => "LAP013742";  //TODO
-        public override string Process => "Developer test";  //TODO
-        public override string Remarks => "no remarks";  //TODO
+        public ICollectorsOptions CollectorsConfigurator( ICollectorsOptions collectors )
+            => collectors
+                .ScreenRecorder.Enable();
 
-#if DEBUG
-        public override bool EnableSoftResetter => false;
-        public override bool EnableSystemLocker => false;
+        public IExceptionActionMap ExceptionActionMap( IRunningAutoFact runningAutoFact, IExceptionActionMap exceptionActionMap )
+            => exceptionActionMap;
 
-        //override TestSkipper
-        //protected override bool SendResultsIntoTheCloud => false;     // uncomment later
-#endif
+        public IExceptionActionMap ExceptionActionMapConfigurator( IExceptionActionMap exceptionActionMap )
+            => exceptionActionMap;
 
+        public void Log( string line )
+           => Trace.WriteLine( line );
 
+        public ISendToFactsHubOptions SendToFactsHubConfigurator( ISendToFactsHubOptions options )
+            =>
+            options
+                .Enable( new Uri( "http://LAP013742:5000" ) )       //TODO
+                .ThrowOnErrors.Disable();
+
+        public IDoSequence TestEnvironmentConfiguration( IDoSequence doSequence )
+            => mDoSequenceConfiguration( doSequence );
     }
 }

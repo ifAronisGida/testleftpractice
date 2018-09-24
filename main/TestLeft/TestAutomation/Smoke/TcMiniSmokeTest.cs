@@ -2,7 +2,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.UI_Tests.Base;
 using TestLeft.UI_Tests.Utilities;
 using Trumpf.AutoTest.Facts;
-using Trumpf.AutoTest.Utilities;
 
 namespace TestLeft.TestAutomation.Smoke
 {
@@ -17,33 +16,22 @@ namespace TestLeft.TestAutomation.Smoke
     {
         private readonly TcSmokeHelpers mSmokeHelpers= new TcSmokeHelpers();
 
-        /// <summary>
-        /// Gets the extended test environment.
-        /// Creates / deletes the test items used by the test methods
-        /// </summary>
-        public override IDoSequence TestEnvironment => base.TestEnvironment
-            .Do( mSmokeHelpers.CreateTestMaterials, null, null, mSmokeHelpers.DeleteTestMaterials, "TestMaterials" )
-            .Do( mSmokeHelpers.CreateTestMachines, null, null, mSmokeHelpers.DeleteTestMachines, "TestMachines" )
-            .Do( mSmokeHelpers.CreateTestCustomers, null, null, mSmokeHelpers.DeleteTestCustomers, "TestCustomers" )
-            .Do( mSmokeHelpers.CreateTestParts, mSmokeHelpers.DeleteTestParts, "TestParts" )
-            .Do( mSmokeHelpers.CreateTestPartOrders, mSmokeHelpers.DeleteTestPartOrders, "TestPartOrders" )
-            .Do( mSmokeHelpers.CreateTestCutJobs, mSmokeHelpers.DeleteTestCutJobs, "TestCutJobs" )
-            ;
 
         /// <summary>
-        /// Mini smoke test: creating test items, adding bend and cut solutions to parts and boosting them, deleting the test items.
+        /// Mini smoke test: creating test items, adding bend and cut solutions to parts, ..., deleting the test items.
         /// </summary>
         [TestMethod, UniqueName( "524A05EA-D25E-423E-8974-EF4CC6B7F8F0" )]
+        [Tag( "Smoke" )]
         public void _1_MiniSmokeTest()
         {
             Act( () =>
             {
-                //CreateTestItems();
+                mSmokeHelpers.CreateTestItems();
 
                 //TODO
                 //testing...
 
-                //DeleteTestItems();
+                mSmokeHelpers.DeleteTestItems();
             } );
         }
     }

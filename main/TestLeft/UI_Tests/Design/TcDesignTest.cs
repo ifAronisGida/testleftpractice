@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.TestLeftBase.PageObjects.Design;
 using TestLeft.TestLeftBase.PageObjects.Part;
@@ -23,7 +24,7 @@ namespace TestLeft.UI_Tests.Design
         {
             Act( () =>
             {
-                Driver.Log.Message( @"Starting Design open / close test." );
+                Trace.WriteLine( @"Starting Design open / close test." );
                 var parts = HomeZoneApp.Goto<TcParts>();
 
                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.Settings;
@@ -22,13 +23,21 @@ namespace TestLeft.UI_Tests.Customer
         {
             Act( () =>
             {
+                Trace.WriteLine( $"Starting {nameof( NewCustomersAndDeleteTest )}" );
+                Trace.Indent();
                 var name1 = TcSettings.NamePrefix + Guid.NewGuid();
                 var name2 = TcSettings.NamePrefix + Guid.NewGuid();
 
                 var customers = HomeZoneApp.Goto<TcCustomers>();
-
                 var customersCount = customers.Count();
+                if( string.IsNullOrEmpty( customers.Name.Value ) )
+                {
+                    customersCount--;       // do not count empty entry
+                }
 
+                Trace.WriteLine( $"Customers count is {customersCount} when starting" );
+
+                Trace.WriteLine( $"Creating first customer: {name1}" );
                 customers.NewCustomer(
                                       name1,
                                       "C" + Guid.NewGuid(),
@@ -38,6 +47,7 @@ namespace TestLeft.UI_Tests.Customer
                                       "Deutschland",
                                       "kein Kommentar" );
 
+                Trace.WriteLine( $"Creating second customer: {name2}" );
                 customers.NewCustomer(
                                       name2,
                                       null,
@@ -49,6 +59,9 @@ namespace TestLeft.UI_Tests.Customer
 
                 customers.Apply();
                 customers.Cancel();
+
+                Trace.Unindent();
+                Trace.WriteLine( "Customer dialog closed." );
 
                 customers.Goto();
                 Assert.AreEqual( customersCount + 2, customers.Count() );
