@@ -1,4 +1,5 @@
-using TestLeft.TestLeftBase.ControlObjects.Interfaces;
+using PageObjectInterfaces.Common;
+using PageObjectInterfaces.Controls;
 using TestLeft.TestLeftBase.Utilities;
 using Trumpf.PageObjects.WPF;
 
@@ -7,7 +8,7 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
     /// <summary>
     /// The result column containing the search area with search text, clear and search buttons and the result list.
     /// </summary>
-    public class TcResultColumn : TcGenericControlObject
+    public class TcResultColumn : TcGenericControlObject, TiResultColumn
     {
         public const string Uid = "List.SearchAndResult";
 

@@ -1,7 +1,7 @@
-﻿using Trumpf.PageObjects;
+﻿using PageObjectInterfaces.Controls;
+using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
-using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 
 namespace TestLeft.TestLeftBase.PageObjects.Material
 {

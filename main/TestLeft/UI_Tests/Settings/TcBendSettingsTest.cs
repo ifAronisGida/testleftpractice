@@ -1,12 +1,7 @@
 using System;
-using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SmartBear.TestLeft.TestObjects;
-using SmartBear.TestLeft.TestObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Flux;
-using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.PageObjects.Settings;
-using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;

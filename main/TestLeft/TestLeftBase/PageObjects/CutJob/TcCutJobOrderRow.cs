@@ -4,8 +4,8 @@ using TestLeft.TestLeftBase.ControlObjects;
 using Trumpf.PageObjects.WPF;
 using System.Windows.Documents;
 using DevExpress.Xpf.Editors;
+using PageObjectInterfaces.Controls;
 using TestLeft.TestLeftBase.Utilities;
-using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {

@@ -1,8 +1,8 @@
-﻿using Trumpf.PageObjects;
+﻿using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Part;
+using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
-using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
-using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
@@ -11,7 +11,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcToolbars}" />
-    public class TcPartToolbar : PageObjectBase, IChildOf<TcToolbars>
+    public class TcPartToolbar : PageObjectBase, IChildOf<TcToolbars>, TiPartToolbar
     {
         protected override Search SearchPattern => Search.ByUid( "Part.Toolbar" );
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using PageObjectInterfaces.Common;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using Trumpf.PageObjects.Waiting;
@@ -6,6 +7,7 @@ using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.ControlObjects.Composite;
+using PageObjectInterfaces.Part;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
@@ -14,7 +16,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// </summary>
     /// <seealso cref="RepeaterObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
-    public class TcParts : RepeaterObject, IChildOf<TcMainTabControl>
+    public class TcParts : RepeaterObject, IChildOf<TcMainTabControl>, TiParts
     {
         private readonly Lazy<TcPartToolbar> mToolbar;
         private readonly Lazy<TcResultColumn> mResultColumn;
@@ -43,7 +45,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The detail overlay.
         /// </value>
-        public TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
+        private TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
 
         /// <summary>
         /// Gets the toolbar.
@@ -51,7 +53,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The toolbar.
         /// </value>
-        public TcPartToolbar Toolbar => mToolbar.Value;
+        public TiPartToolbar Toolbar => mToolbar.Value;
 
         /// <summary>
         /// Gets the result column.
@@ -59,7 +61,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The result column.
         /// </value>
-        public TcResultColumn ResultColumn => mResultColumn.Value;
+        public TiResultColumn ResultColumn => mResultColumn.Value;
 
         /// <summary>
         /// Gets the single detail.
@@ -67,7 +69,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The single detail.
         /// </value>
-        public TcPartSingleDetail SingleDetail => mSingleDetail.Value;
+        public TiPartSingleDetail SingleDetail => mSingleDetail.Value;
 
         /// <summary>
         /// Gets the single detail design.
@@ -75,7 +77,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The single detail design.
         /// </value>
-        public TcPartSingleDetailDesign SingleDetailDesign => mSingleDetailDesign.Value;
+        public TiPartSingleDetailDesign SingleDetailDesign => mSingleDetailDesign.Value;
 
         /// <summary>
         /// Gets the single detail bend solutions.
@@ -83,7 +85,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The single detail bend solutions.
         /// </value>
-        public TcPartSingleDetailBendSolutions SingleDetailBendSolutions => mSingleDetailBendSolutions.Value;
+        public TiPartSingleDetailBendSolutions SingleDetailBendSolutions => mSingleDetailBendSolutions.Value;
 
         /// <summary>
         /// Gets the single detail cut solutions.
@@ -91,7 +93,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The single detail cut solutions.
         /// </value>
-        public TcPartSingleDetailCutSolutions SingleDetailCutSolutions => mSingleDetailCutSolutions.Value;
+        public TiPartSingleDetailCutSolutions SingleDetailCutSolutions => mSingleDetailCutSolutions.Value;
 
         /// <summary>
         /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
@@ -234,14 +236,30 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
             return ResultColumn.SelectAll();
         }
 
-        public void CreatePartOrder()
+        /// <summary>
+        /// Creates the part order.
+        /// </summary>
+        /// <returns>
+        /// true if successful
+        /// </returns>
+        public bool CreatePartOrder()
         {
             Toolbar.CreatePartOrderButton.Click();
+
+            return true;
         }
 
-        public void CreateCutJob()
+        /// <summary>
+        /// Creates the cut job.
+        /// </summary>
+        /// <returns>
+        /// true if successful
+        /// </returns>
+        public bool CreateCutJob()
         {
             Toolbar.CreateCutJobButton.Click();
+
+            return true;
         }
     }
 }

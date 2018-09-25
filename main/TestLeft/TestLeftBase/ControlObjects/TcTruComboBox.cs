@@ -1,5 +1,5 @@
 using System;
-using TestLeft.TestLeftBase.ControlObjects.Interfaces;
+using PageObjectInterfaces.Controls;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects

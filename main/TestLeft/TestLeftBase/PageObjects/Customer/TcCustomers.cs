@@ -1,7 +1,7 @@
 ﻿using System;
+using PageObjectInterfaces.Controls;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
-using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 using Trumpf.PageObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Part;

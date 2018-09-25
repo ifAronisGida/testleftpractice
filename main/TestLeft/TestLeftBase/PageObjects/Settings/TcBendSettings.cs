@@ -1,4 +1,4 @@
-using TestLeft.TestLeftBase.ControlObjects.Interfaces;
+using PageObjectInterfaces.Controls;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 

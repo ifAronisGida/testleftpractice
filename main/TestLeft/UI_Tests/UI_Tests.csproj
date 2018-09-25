@@ -103,8 +103,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PageObjectInterfaces\PageObjectInterfaces.csproj">
+      <Project>{FBDAA579-B218-4D39-8F5B-838DEF1890F3}</Project>
+      <Name>PageObjectInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestLeftBase\TestLeftBase.csproj">
-      <Project>{7c8d9ced-b73c-49a8-b168-5bbfe0ffed15}</Project>
+      <Project>{7C8D9CED-B73C-49A8-B168-5BBFE0FFED15}</Project>
       <Name>TestLeftBase</Name>
     </ProjectReference>
   </ItemGroup>

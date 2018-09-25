@@ -1,11 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.TestLeftBase.PageObjects.Customer;
-using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
-using Trumpf.AutoTest.Utilities;
 
 namespace TestLeft.UI_Tests.Part
 {
@@ -18,10 +16,10 @@ namespace TestLeft.UI_Tests.Part
     {
         private string mTestCustomerName;
 
-        /// <summary>
-        /// Gets the extended test environment.
-        /// Creates / deletes the test customer used by the test methods
-        /// </summary>
+        ///// <summary>
+        ///// Gets the extended test environment.
+        ///// Creates / deletes the test customer used by the test methods
+        ///// </summary>
         //public override IDoSequence TestEnvironment => base.TestEnvironment
         //    .Do( CreateTestCustomer, DeleteTestCustomer, "TestCustomer" );
 
@@ -35,7 +33,7 @@ namespace TestLeft.UI_Tests.Part
                 {
                     var partName = TcSettings.NamePrefix + "NewPartTest";
 
-                    var parts = HomeZoneApp.Goto<TcParts>();
+                    var parts = HomeZoneApp.GotoParts();
 
                     parts.NewPart();
                     parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
@@ -68,7 +66,7 @@ namespace TestLeft.UI_Tests.Part
         {
             Act( () =>
                 {
-                    var parts = HomeZoneApp.Goto<TcParts>();
+                    var parts = HomeZoneApp.GotoParts();
 
                     parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
 
@@ -117,7 +115,7 @@ namespace TestLeft.UI_Tests.Part
         {
             Act( () =>
             {
-                var parts = HomeZoneApp.Goto<TcParts>();
+                var parts = HomeZoneApp.GotoParts();
 
                 parts.NewPart();
 

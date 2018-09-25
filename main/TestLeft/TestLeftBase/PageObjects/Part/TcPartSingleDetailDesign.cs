@@ -1,7 +1,8 @@
-﻿using Trumpf.PageObjects;
+﻿using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Part;
+using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
-using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
@@ -10,7 +11,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcDetailContent}" />
-    public class TcPartSingleDetailDesign : PageObjectBase, IChildOf<TcPartSingleDetail>
+    public class TcPartSingleDetailDesign : PageObjectBase, IChildOf<TcPartSingleDetail>, TiPartSingleDetailDesign
     {
         protected override Search SearchPattern => Search.ByUid( "Part.Detail.Design" );
 

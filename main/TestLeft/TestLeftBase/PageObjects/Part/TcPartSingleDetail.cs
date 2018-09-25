@@ -1,12 +1,12 @@
 ﻿using System;
+using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Part;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.Waiting;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
-using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.Utilities;
-using TestLeft.TestLeftBase.PageObjects.Customer;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
@@ -15,7 +15,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcDetailContent}" />
-    public class TcPartSingleDetail : PageObjectBase, IChildOf<TcDetailContent>
+    public class TcPartSingleDetail : PageObjectBase, IChildOf<TcDetailContent>, TiPartSingleDetail
     {
         protected override Search SearchPattern => Search.ByUid( "Part.Details" );
 

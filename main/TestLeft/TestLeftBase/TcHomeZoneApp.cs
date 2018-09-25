@@ -1,4 +1,6 @@
-﻿using Trumpf.PageObjects;
+﻿using PageObjectInterfaces.Part;
+using TestLeft.TestLeftBase.PageObjects.Part;
+using Trumpf.PageObjects;
 
 namespace TestLeft.TestLeftBase
 {
@@ -14,6 +16,11 @@ namespace TestLeft.TestLeftBase
         /// <param name="processname">The name of the HomeZone process.</param>
         public TcHomeZoneApp( string processname ) : base( processname )
         {
+        }
+
+        public TiParts GotoParts()
+        {
+            return Goto<TcParts>();
         }
     }
 }

@@ -1,8 +1,9 @@
-﻿using SmartBear.TestLeft.TestObjects;
+﻿using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Part;
+using SmartBear.TestLeft.TestObjects;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
-using TestLeft.TestLeftBase.ControlObjects.Interfaces;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
@@ -11,7 +12,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcDetailContent}" />
-    public class TcPartSingleDetailBendSolutions : PageObjectBase, IChildOf<TcDetailContent>
+    public class TcPartSingleDetailBendSolutions : PageObjectBase, IChildOf<TcDetailContent>, TiPartSingleDetailBendSolutions
     {
         protected override Search SearchPattern => Search.ByUid( "Part.Detail.BendSolutions" );
 

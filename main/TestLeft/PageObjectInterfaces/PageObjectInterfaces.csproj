@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FBDAA579-B218-4D39-8F5B-838DEF1890F3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PageObjectInterfaces</RootNamespace>
+    <AssemblyName>PageObjectInterfaces</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.1-beta1\lib\net451\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SmartBear.TestLeft, Version=12.31.1833.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.1-beta1\lib\net451\SmartBear.TestLeft.dll</HintPath>
+    </Reference>
+    <Reference Include="SmartBear.TestLeft.WebApiWrapper, Version=12.31.1833.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.1-beta1\lib\net451\SmartBear.TestLeft.WebApiWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Trumpf.PageObjects, Version=3.4.1.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.1-beta1\lib\net451\Trumpf.PageObjects.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\TiResultColumn.cs" />
+    <Compile Include="Controls\TiButton.cs" />
+    <Compile Include="Controls\TiControl.cs" />
+    <Compile Include="Controls\TiTruIconButton.cs" />
+    <Compile Include="Controls\TiValueControl.cs" />
+    <Compile Include="Part\TiParts.cs" />
+    <Compile Include="Part\TiPartSingleDetail.cs" />
+    <Compile Include="Part\TiPartSingleDetailBendSolutions.cs" />
+    <Compile Include="Part\TiPartSingleDetailCutSolutions.cs" />
+    <Compile Include="Part\TiPartSingleDetailDesign.cs" />
+    <Compile Include="Part\TiPartToolbar.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

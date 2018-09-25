@@ -50,7 +50,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// Creates some test materials by duplicating existing materials
         /// </summary>
         [TestMethod]
-        public TcSmokeHelpers CreateTestMaterials()
+        public void CreateTestMaterials()
         {
             var materials = HomeZoneApp.Goto<TcMaterials>();
             var materialCount = materials.ResultColumn.Count;
@@ -90,15 +90,13 @@ namespace TestLeft.UI_Tests.Utilities
                 Assert.IsFalse( materials.Toolbar.SaveButton.Enabled );
                 return true;
             }
-
-            return this;
         }
 
         /// <summary>
         /// Deletes the test materials.
         /// </summary>
         [TestMethod]
-        public TcSmokeHelpers DeleteTestMaterials()
+        public void DeleteTestMaterials()
         {
             var materials = HomeZoneApp.Goto<TcMaterials>();
             var currentMaterialsCount = materials.ResultColumn.Count;
@@ -116,15 +114,13 @@ namespace TestLeft.UI_Tests.Utilities
 
             materials.ResultColumn.ClearSearch();
             Assert.AreEqual( currentMaterialsCount - deletedMaterialsCount, materials.ResultColumn.Count );
-
-            return this;
         }
 
         /// <summary>
         /// Creates some bend and cut test machines.
         /// </summary>
         [TestMethod]
-        public TcSmokeHelpers CreateTestMachines()
+        public void CreateTestMachines()
         {
             var machines = HomeZoneApp.Goto<TcMachines>();
 
@@ -171,15 +167,13 @@ namespace TestLeft.UI_Tests.Utilities
 
             Assert.AreEqual( machineCount + machinesCreatedCount, machines.ResultColumn.Count );
             mTestMachinesCreated = true;
-
-            return this;
         }
 
         /// <summary>
         /// Deletes the test machines.
         /// </summary>
         [TestMethod]
-        public TcSmokeHelpers DeleteTestMachines()
+        public void DeleteTestMachines()
         {
             var machines = HomeZoneApp.Goto<TcMachines>();
             var machineCount = machines.ResultColumn.Count;
@@ -205,15 +199,13 @@ namespace TestLeft.UI_Tests.Utilities
 
             Assert.AreEqual( machineCount - deletedMachinesCount, machines.ResultColumn.Count );
             mTestMachinesCreated = false;
-
-            return this;
         }
 
         /// <summary>
         /// Creates some test customers.
         /// </summary>
         [TestMethod]
-        public TcSmokeHelpers CreateTestCustomers()
+        public void CreateTestCustomers()
         {
             var customers = HomeZoneApp.Goto<TcCustomers>();
             var customersCreatedCount = 0;
@@ -246,15 +238,13 @@ namespace TestLeft.UI_Tests.Utilities
 
             customers.Cancel();
             mTestCustomersCreated = true;
-
-            return this;
         }
 
         /// <summary>
         /// Deletes the test customers.
         /// </summary>
         [TestMethod]
-        public TcSmokeHelpers DeleteTestCustomers()
+        public void DeleteTestCustomers()
         {
             var customers = HomeZoneApp.Goto<TcCustomers>();
             var customersCount = customers.Count();
@@ -273,8 +263,6 @@ namespace TestLeft.UI_Tests.Utilities
 
             customers.Cancel();
             mTestCustomersCreated = false;
-
-            return this;
         }
 
         /// <summary>
@@ -282,7 +270,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// Needs test machines and customers to be present.
         /// </summary>
         [TestMethod]
-        public TcSmokeHelpers CreateTestParts()
+        public void CreateTestParts()
         {
             if( !mTestMachinesCreated )
             {
@@ -294,7 +282,7 @@ namespace TestLeft.UI_Tests.Utilities
                 CreateTestCustomers();
             }
 
-            var parts = HomeZoneApp.Goto<TcParts>();
+            var parts = HomeZoneApp.GotoParts();
             var partCount = parts.ResultColumn.Count;
             var partsCreatedCount = 0;
 
@@ -327,8 +315,6 @@ namespace TestLeft.UI_Tests.Utilities
             parts.ResultColumn.ClearSearch();
 
             Assert.AreEqual( partCount + partsCreatedCount, parts.ResultColumn.Count );
-
-            return this;
         }
 
         private bool OpenFluxBendSolutionAndCloseFlux( TcParts parts )
@@ -355,7 +341,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// Deletes the test parts.
         /// </summary>
         [TestMethod]
-        public TcSmokeHelpers DeleteTestParts()
+        public void DeleteTestParts()
         {
             var parts = HomeZoneApp.Goto<TcParts>();
             var partCount = parts.ResultColumn.Count;
@@ -373,94 +359,84 @@ namespace TestLeft.UI_Tests.Utilities
             parts.ResultColumn.ClearSearch();
 
             Assert.AreEqual( partCount - deletedPartsCount, parts.ResultColumn.Count );
-
-            return this;
         }
 
         /// <summary>
         /// Creates some test part orders.
         /// </summary>
         [TestMethod]
-        public TcSmokeHelpers CreateTestPartOrders()
+        public void CreateTestPartOrders()
         {
             var partOrders = HomeZoneApp.Goto<TcPartOrders>();
 
             partOrders.NewPartOrder();
             //TODO
             partOrders.DeletePartOrder();
-
-            return this;
         }
 
         /// <summary>
         /// Deletes the test part orders.
         /// </summary>
         [TestMethod]
-        public TcSmokeHelpers DeleteTestPartOrders()
+        public void DeleteTestPartOrders()
         {
             //TODO
 
-            return this;
         }
 
         /// <summary>
         /// Creates some test cut jobs.
         /// </summary>
         [TestMethod]
-        public TcSmokeHelpers CreateTestCutJobs()
+        public void CreateTestCutJobs()
         {
             var cutJobs = HomeZoneApp.Goto<TcCutJobs>();
 
             cutJobs.NewCutJob();
             //TODO
             cutJobs.DeleteCutJob();
-
-            return this;
         }
 
         /// <summary>
         /// Deletes the test cut jobs.
         /// </summary>
         [TestMethod]
-        public TcSmokeHelpers DeleteTestCutJobs()
+        public void DeleteTestCutJobs()
         {
             //TODO
 
-            return this;
         }
 
         /// <summary>
         /// Creates the test items.
         /// </summary>
         [TestMethod]
-        public TcSmokeHelpers CreateTestItems()
+        public void CreateTestItems()
         {
-            var smokeHelpers = new TcSmokeHelpers()
-                                    .CreateTestMaterials()
-                                    .CreateTestMachines()
-                                    .CreateTestCustomers()
-                                    .CreateTestParts()
-                                    .CreateTestPartOrders()
-                                    .CreateTestCutJobs();
+            var smokeHelpers = new TcSmokeHelpers();
 
-            return this;
+            smokeHelpers.CreateTestMaterials();
+            smokeHelpers.CreateTestMachines();
+            smokeHelpers.CreateTestCustomers();
+            smokeHelpers.CreateTestParts();
+            smokeHelpers.CreateTestPartOrders();
+            smokeHelpers.CreateTestCutJobs();
         }
 
         /// <summary>
         /// Deletes the test items.
         /// </summary>
         [TestMethod]
-        public TcSmokeHelpers DeleteTestItems()
+        public void DeleteTestItems()
         {
-            var smokeHelpers = new TcSmokeHelpers()
-                                    .DeleteTestCutJobs()
-                                    .DeleteTestPartOrders()
-                                    .DeleteTestParts()
-                                    .DeleteTestCustomers()
-                                    .DeleteTestMachines()
-                                    .DeleteTestMaterials();
+            var smokeHelpers = new TcSmokeHelpers();
 
-            return this;
+            smokeHelpers.DeleteTestCutJobs();
+            smokeHelpers.DeleteTestPartOrders();
+            smokeHelpers.DeleteTestParts();
+            smokeHelpers.DeleteTestCustomers();
+            smokeHelpers.DeleteTestMachines();
+            smokeHelpers.DeleteTestMaterials();
         }
 
         private string Name2UIT_Name( string name )

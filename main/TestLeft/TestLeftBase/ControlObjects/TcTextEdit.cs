@@ -1,5 +1,5 @@
-﻿using SmartBear.TestLeft.TestObjects;
-using TestLeft.TestLeftBase.ControlObjects.Interfaces;
+﻿using PageObjectInterfaces.Controls;
+using SmartBear.TestLeft.TestObjects;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects
