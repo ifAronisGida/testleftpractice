@@ -1,0 +1,664 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Trumpf.AutoTest.Artifacts</name>
+    </assembly>
+    <members>
+        <member name="T:Trumpf.AutoTest.Artifacts.Exceptions.NoLineToStopException">
+            <summary>
+            No line to stop exception.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Artifacts.Exceptions.ShowAtTimeBeforeVideoStartedTime">
+            <summary>
+            Show at time before video started time exception.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.Exceptions.ShowAtTimeBeforeVideoStartedTime.#ctor(System.DateTime,System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter"/> class.
+            </summary>
+            <param name="showAt">The show-at time.</param>
+            <param name="videoStartedTime">The video started time.</param>
+        </member>
+        <member name="T:Trumpf.AutoTest.Artifacts.FailedToSendSigintToProcessException">
+            <summary>
+            Failed to send SIGINT to process exception.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.FailedToSendSigintToProcessException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Artifacts.FailedToSendSigintToProcessException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="T:Trumpf.AutoTest.Artifacts.ScreenRecorderPreset">
+            <summary>
+            A preset is a collection of options that will provide a certain encoding speed to compression ratio.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.ScreenRecorderPreset.ultrafast">
+            <summary>
+            Speed 1.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.ScreenRecorderPreset.superfast">
+            <summary>
+            Speed 2.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.ScreenRecorderPreset.veryfast">
+            <summary>
+            Speed 3.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.ScreenRecorderPreset.faster">
+            <summary>
+            Speed 4.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.ScreenRecorderPreset.fast">
+            <summary>
+            Speed 5.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.ScreenRecorderPreset.medium">
+            <summary>
+            Speed 6.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.ScreenRecorderPreset.slow">
+            <summary>
+            Speed 7.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.ScreenRecorderPreset.slower">
+            <summary>
+            Speed 8.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.ScreenRecorderPreset.veryslow">
+            <summary>
+            Speed 9.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.ScreenRecorderPreset.placebo">
+            <summary>
+            Speed 10.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Artifacts.Screenshooter">
+            <summary>
+            Screen shot class.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.Screenshooter.SaveScreenShot(System.String)">
+            <summary>
+            Save screen shot.
+            </summary>
+            <param name="fileNameWithoutExtension">The file name.</param>
+            <returns>The full path.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Artifacts.Subtitle">
+            <summary>
+            Line structure.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.Subtitle.#ctor(System.String,System.DateTime,System.TimeSpan)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Artifacts.Subtitle"/> class.
+            </summary>
+            <param name="title">The subtitle text.</param>
+            <param name="showAt">Show at time. Same reference time as passed to the constructor.</param>
+            <param name="duration">Display duration.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.Subtitle.Title">
+            <summary>
+            Gets the subtitle.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.Subtitle.ShowAt">
+            <summary>
+            Gets the time when the title should appear.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.Subtitle.Duration">
+            <summary>
+            Gets the duration.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Artifacts.SystemCounters">
+            <summary>
+            System and process counter types.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Processor_Percentage_Processor_Time_Total">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Processor_Percentage_Privileged_Time_Total">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Processor_Percentage_Interrupt_Time_Total">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Processor_Percentage_DPC_Time_Total">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Memory_Available_MBytes">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Memory_Committed_Bytes">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Memory_Commit_Limit">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Memory_Percentage_Committed_Bytes_In_Use">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Memory_Pool_Paged_Bytes">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Memory_Pool_Nonpaged_Bytes">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Memory_Cache_Bytes">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.PhysicalDisk_Avg_Disk_Queue_Length_Total">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.PhysicalDisk_Disk_Read_BytesPersec_Total">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.PhysicalDisk_Disk_Write_BytesPersec_Total">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.PhysicalDisk_Avg_Disk_secPerRead_Total">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.PhysicalDisk_Avg_Disk_secPerWrite_Total">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.PhysicalDisk_Percentage_Disk_Time_Total">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Process_Handle_Count_Total">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Process_Thread_Count_Total">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.System_Context_SwitchesPersec">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.System_System_CallsPersec">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.System_Processor_Queue_Length">
+            <summary>
+            System counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Process_Private_Bytes">
+            <summary>
+            Process counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Process_Working_Set">
+            <summary>
+            Process counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Process_Percentage_Processor_Time">
+            <summary>
+            Process counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Process_Percentage_User_Time">
+            <summary>
+            Process counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Process_Percentage_Privileged_Time">
+            <summary>
+            Process counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Process_Working_Set_Peak">
+            <summary>
+            Process counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Process_Handle_Count">
+            <summary>
+            Process counter.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemCounters.Process_Thread_Count">
+            <summary>
+            Process counter.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Artifacts.SystemMonitor">
+            <summary>
+            Collect system and process performance statistics.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.SystemMonitor.#ctor(System.Action{System.String},System.TimeSpan,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Artifacts.SystemMonitor"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="interval">The interval, default is one second.</param>
+            <param name="processes">The process names to monitor.</param>
+        </member>
+        <member name="T:Trumpf.AutoTest.Artifacts.SystemMonitor.States">
+            <summary>
+            Monitor states.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemMonitor.States.Undefined">
+            <summary>
+            Undefined state.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemMonitor.States.Init">
+            <summary>
+            Initial state.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemMonitor.States.Running">
+            <summary>
+            Running state.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.SystemMonitor.States.Finished">
+            <summary>
+            Finished state.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.SystemMonitor.Entries">
+            <summary>
+            Gets the number of collected data entries.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.SystemMonitor.CollectedProcessPerformaceCounters">
+            <summary>
+            Gets the performance counter to be collected for processes.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.SystemMonitor.CollectedSystemPerformaceCounters">
+            <summary>
+            Gets the performance counter to be collected for the client and server process.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.SystemMonitor.Interval">
+            <summary>
+            Gets the interval.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.SystemMonitor.Take(Trumpf.AutoTest.Artifacts.SystemCounters,System.String)">
+            <summary>
+            Gets a performance footprint.
+            </summary>
+            <param name="c">The performance counter to retrieve.</param>
+            <param name="processName">The process name; null for system counters.</param>
+            <returns>The performance value, or MIN if it could not be retrieved.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.SystemMonitor.Start">
+            <summary>
+            Start collecting performance statistics.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.SystemMonitor.Stop">
+            <summary>
+            Stop collecting statistics and write collected date to a file.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.SystemMonitor.GetSystemValues(Trumpf.AutoTest.Artifacts.SystemCounters)">
+            <summary>
+            Get performance values.
+            </summary>
+            <param name="counterType">The counter.</param>
+            <returns>The collected performance values.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.SystemMonitor.GetProcessValues(System.String,Trumpf.AutoTest.Artifacts.SystemCounters)">
+            <summary>
+            Get performance values
+            If monitor is running, stop it.
+            </summary>
+            <param name="processname">The process.</param>
+            <param name="counterType">The counter.</param>
+            <returns>The collected performance values.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.SystemMonitor.SaveTo(System.String)">
+            <summary>
+            Save statistics to a CSV file.
+            </summary>
+            <param name="fileWithoutExtension">The filename without extension.</param>
+            <returns>
+            The written file path.
+            </returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.SystemMonitor.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>
+            A string that represents the current object.
+            </returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.SystemMonitor.Dispose">
+            <summary>
+            Dispose managed resources.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.SystemMonitor.TryTake(Trumpf.AutoTest.Artifacts.SystemCounters,System.String,System.Double@)">
+            <summary>
+            Gets a performance footprint.
+            </summary>
+            <param name="c">The performance counter to retrieve.</param>
+            <param name="processName">The process name; null for system counters.</param>
+            <param name="value">The performance value.</param>
+            <returns>Whether the operation succeeded.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.SystemMonitor.MonitorProcess(System.String[])">
+            <summary>
+            Collects performance statistics for processes.
+            </summary>
+            <param name="processNames">The process names to monitor.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.SystemMonitor.Take(System.DateTime)">
+            <summary>
+            Gets a performance footprint.
+            </summary>
+            <param name="signalTime">The signal time.</param>
+        </member>
+        <member name="T:Trumpf.AutoTest.Artifacts.ScreenRecorder">
+            <summary>
+            The screen recorder.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.ScreenRecorder.#ctor(System.Action{System.String},System.Int32,System.Int32,System.Int32,Trumpf.AutoTest.Artifacts.ScreenRecorderPreset,System.Boolean,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Artifacts.ScreenRecorder"/> class.
+            </summary>
+            <param name="logger">The logger action.</param>
+            <param name="scale">The scale rate in percent; keeping the aspect ratio (100 => 1:1, 1 => 1:100).</param>
+            <param name="bitRate">The bit rate.</param>
+            <param name="frameRate">The frame rate.</param>
+            <param name="preset">The preset.</param>
+            <param name="hideConsole">Whether to hide the console.</param>
+            <param name="fileName">The file name.</param>
+            <param name="binaryPath">The binary path.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.ScreenRecorder.StartTime">
+            <summary>
+            Gets the time when recording started.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.ScreenRecorder.FileName">
+            <summary>
+            Gets the file name.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.ScreenRecorder.Start">
+            <summary>
+            Start recording.
+            </summary>
+            <returns>This object.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.ScreenRecorder.Stop">
+            <summary>
+            Stop recording.
+            </summary>
+            <returns>This object.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.ScreenRecorder.Dispose">
+            <summary>
+            Disposes the object.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Artifacts.TrxWriter">
+            <summary>
+            TRX writer class.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Artifacts.TrxWriter.UnitTestOutcome">
+            <summary>
+            Unit test outcomes as defined by VS quality assemblies.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.TrxWriter.UnitTestOutcome.Failed">
+            <summary>
+            Test failed.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.TrxWriter.UnitTestOutcome.Inconclusive">
+            <summary>
+            Test is inconclusive.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.TrxWriter.UnitTestOutcome.Passed">
+            <summary>
+            Test passed.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.TrxWriter.UnitTestOutcome.InProgress">
+            <summary>
+            Test is in progress.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.TrxWriter.UnitTestOutcome.Error">
+            <summary>
+            Test failed with an error.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.TrxWriter.UnitTestOutcome.Timeout">
+            <summary>
+            Test timed out.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.TrxWriter.UnitTestOutcome.Aborted">
+            <summary>
+            Test aborted.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Artifacts.TrxWriter.UnitTestOutcome.Unknown">
+            <summary>
+            Test result is unknown.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.TrxWriter.Content">
+            <summary>
+            Gets the content of the TRX file.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.TrxWriter.New(System.String,System.DateTime,System.DateTime,Trumpf.AutoTest.Artifacts.TrxWriter.UnitTestOutcome,System.String,System.Reflection.Assembly,System.String,System.Exception)">
+            <summary>
+            Get a new instance of the <see cref="T:Trumpf.AutoTest.Artifacts.TrxWriter"/> class.
+            </summary>
+            <param name="testName">The test name.</param>
+            <param name="start">The start time and date.</param>
+            <param name="finish">The finish time and date.</param>
+            <param name="outcome">The outcome.</param>
+            <param name="standardOut">The standard out.</param>
+            <param name="testAssembly">The test assembly.</param>
+            <param name="testClass">The test class.</param>
+            <param name="exception">The exception if any, or NULL.</param>
+            <returns>The new instance.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.TrxWriter.SaveTo(System.String,System.String)">
+            <summary>
+            Write the TRX file.
+            </summary>
+            <param name="fileNameWithoutExtension">The file path.</param>
+            <param name="extension">The file extension.</param>
+            <returns>The absolute path of the saved file.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.TrxWriter.SaveTo(System.String)">
+            <summary>
+            Write the TRX file.
+            </summary>
+            <param name="fileNameWithoutExtension">The file path.</param>
+            <returns>The absolute path of the saved file.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Artifacts.VncWriter">
+            <summary>
+            VNC writer class.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.VncWriter.Content">
+            <summary>
+            Gets the VNC file content.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.VncWriter.New(System.String,System.Int32)">
+            <summary>
+            Get a new instance of the <see cref="T:Trumpf.AutoTest.Artifacts.TrxWriter"/> class.
+            </summary>
+            <param name="host">The host name.</param>
+            <param name="port">The port.</param>
+            <returns>The VNC writer instance.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.VncWriter.SaveTo(System.String)">
+            <summary>
+            Write the TRX file.
+            </summary>
+            <param name="fileName">The file path.</param>
+            <returns>The absolute path of the saved file.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter">
+            <summary>
+            Video subtitle writer.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter.#ctor(System.DateTime,System.Func{System.DateTime})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter"/> class.
+            </summary>
+            <param name="videoStartedTime">The time when the corresponding video started.</param>
+            <param name="now">The now resolver.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter.#ctor(System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter"/> class.
+            </summary>
+            <param name="videoStartedTime">The time when the corresponding video started.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter.InProgress">
+            <summary>
+            Gets a value indicating whether a line is in progress.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter.VideoStartedTime">
+            <summary>
+            Gets the time when the corresponding video started.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter.Subtitles">
+            <summary>
+            Gets the subtitles.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter.Contents">
+            <summary>
+            Gets the contents in the VTT format.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter.WriteLine(System.String)">
+            <summary>
+            Write a subtitle, hiding any previous title.
+            </summary>
+            <param name="title">The line to show.</param>
+            <returns>This object.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter.WriteLine(Trumpf.AutoTest.Artifacts.Subtitle)">
+            <summary>
+            Write a subtitle at a specific time and for a specific duration.
+            This will not hide any previous title.
+            </summary>
+            <param name="subtitle">The subtitle.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter.StopLast">
+            <summary>
+            Stop the last line.
+            Thows if no line is in progress.
+            </summary>
+            <returns>This object.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter.SaveTo(System.String)">
+            <summary>
+            Save VTT file.
+            This will stop any line that is in currently process.
+            </summary>
+            <param name="filenameWithoutExtension"></param>
+            <returns>The file path.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter.ToVtt(System.TimeSpan)">
+            <summary>
+            Convert the time span to the VTT format.
+            </summary>
+            <param name="timeSpan">The time span.</param>
+            <returns>The formatted string.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter.StopLast(System.Boolean)">
+            <summary>
+            Stop the last line.
+            Thows if no line is in progress.
+            </summary>
+            <param name="throwIfNoLineIsInProgress">Whether to throw if no line is in progress.</param>
+            <returns>This object.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Artifacts.VideoSubtitleWriter.Add(Trumpf.AutoTest.Artifacts.Subtitle)">
+            <summary>
+            Add a subtile.
+            </summary>
+            <param name="subtitle">The subtitle.</param>
+            <returns>This object.</returns>
+        </member>
+    </members>
+</doc>

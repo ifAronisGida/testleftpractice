@@ -1,0 +1,850 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FactsHub.Model</name>
+    </assembly>
+    <members>
+        <member name="T:FactsHub.Model.Goodness">
+            <summary>
+            Goodness values.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.Goodness.Good">
+            <summary>
+            Good outcome.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.Goodness.Bad">
+            <summary>
+            Bad outcome.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.Goodness.MaybeBad">
+            <summary>
+            Maybe bad.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.Goodness.Unknown">
+            <summary>
+            Unknown.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.Outcome">
+            <summary>
+            The fact outcomes.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.Outcome.Inconclusive">
+            <summary>
+            The fact outcome is inconclusive.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.Outcome.Passed">
+            <summary>
+            The fact outcome is passed.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.Outcome.Failed">
+            <summary>
+            The fact outcome is failed.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.Outcome.Undefined">
+            <summary>
+            The fact outcome is undefined.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.State">
+            <summary>
+            The fact state.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.State.None">
+            <summary>
+            The fact has no state.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.State.Running">
+            <summary>
+            The fact is currently checked for evidence.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.State.Skipped">
+            <summary>
+            The fact was skipped.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.State.Aborted">
+            <summary>
+            The fact was aborted.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.State.Finished">
+            <summary>
+            The fact has finshed.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.YesNoAny">
+            <summary>
+            Verified types.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.YesNoAny.Any">
+            <summary>
+            Any state.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.YesNoAny.Yes">
+            <summary>
+            Verified state.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.YesNoAny.No">
+            <summary>
+            Unverified state.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.FactEntryFilter">
+            <summary>
+            Filter for fact entries.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.FactEntryFilter.ID">
+            <summary>
+            Gets the ID.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.FactEntryFilter.Verified">
+            <summary>
+            Gets or sets a value indicating whether to only match entries without an update time.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.FactEntryFilter.CreatedAfter">
+            <summary>
+            Gets the created lower limit.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.FactEntryFilter.CreatedBefore">
+            <summary>
+            Gets the created upper limit.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.FactEntryFilter.Clone">
+            <inheritdoc />
+        </member>
+        <member name="M:FactsHub.Model.FactEntryFilter.Query">
+            <inheritdoc />
+        </member>
+        <member name="T:FactsHub.Model.FactFilter">
+            <summary>
+            Filter for facts.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.FactFilter.Outcome">
+            <summary>
+            Gets or sets the outome.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.FactFilter.State">
+            <summary>
+            Gets or sets the state.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.FactFilter.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.FactFilter.Product">
+            <summary>
+            Gets or sets the product.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.FactFilter.Version">
+            <summary>
+            Gets or sets the version.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.FactFilter.Context">
+            <summary>
+            Gets or sets the context.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.FactFilter.ContextVersion">
+            <summary>
+            Gets or sets the version context.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.FactFilter.Process">
+            <summary>
+            Gets or sets the process.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.FactFilter.Remarks">
+            <summary>
+            Gets or sets the remarks.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.FactFilter.UniqueName">
+            <summary>
+            Gets or sets the unique name.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.FactFilter.Query">
+            <inheritdoc />
+        </member>
+        <member name="T:FactsHub.Model.TagFilter">
+            <summary>
+            Tag filter.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.TagFilter.TagId">
+            <summary>
+            Gets or sets the tag id filter.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.TagFilter.TagName">
+            <summary>
+            Gets or sets the tag name filer.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.TagFilter.TagType">
+            <summary>
+            Gets or sets the tag type filer.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.TagFilter.DaysSinceLastUse">
+            <summary>
+            Gets or sets the days since last use filter.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.TagFilter.Query">
+            <inheritdoc />
+        </member>
+        <member name="P:FactsHub.Model.TagFilter.IsEmpty">
+            <summary>
+            Gets a value indicating whether the filter is empty.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.TagFilter.Equal(FactsHub.Model.TagFilter)">
+            <summary>
+            Compare two tag filters for equality.
+            </summary>
+            <param name="other">The other tag filter.</param>
+            <returns></returns>
+        </member>
+        <member name="T:FactsHub.Model.SearchQuery">
+            <summary>
+            Search query class.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.SearchQuery.#ctor">
+            <summary>
+            Create an empty search query.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.SearchQuery.AddOrUpdate(System.String,System.Object)">
+            <summary>
+            Add a constraint if it does not yet exist, or otherwise update its value.
+            </summary>
+            <param name="key">The search key.</param>
+            <param name="value">The search value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FactsHub.Model.SearchQuery.For(System.String,System.Object)">
+            <summary>
+            Create a new single-constaint query.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <returns>The search query.</returns>
+        </member>
+        <member name="M:FactsHub.Model.SearchQuery.op_Addition(FactsHub.Model.SearchQuery,FactsHub.Model.SearchQuery)">
+            <summary>
+            Combine the search queries. If a key appear in both queries an exception is thrown.
+            </summary>
+            <param name="first">The first query.</param>
+            <param name="second">The second query.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FactsHub.Model.SearchQuery.ToString">
+            <summary>
+            Convert to URI string (for filtering via url), i.e. to a string of the <code>?key1=val1&amp;key2=val2</code> etc.
+            If no constraints exists, an empty string is returned.
+            Characters are URL-encoded.
+            </summary>
+            <returns>The URL string.</returns>
+        </member>
+        <member name="M:FactsHub.Model.SearchQuery.Clone">
+            <inheritdoc />
+        </member>
+        <member name="T:FactsHub.Model.IClaim">
+            <summary>
+            Interface for properties needed in order to start a new fact.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.IClaim.Name">
+            <summary>
+            Gets the claim name, e.g. "Installation", "SmokeTest", or "Run unit tests".
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.IClaim.UniqueName">
+            <summary>
+            Gets the claim unique name.
+            This value should remain the same even if the claim name is changed, e.g. during refactorings.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.IClaim.Product">
+            <summary>
+            Gets the product the claim is about.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.IClaim.Description">
+            <summary>
+            Gets the claim description.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.IClaim.Version">
+            <summary>
+            Gets the version of the product, ideally as a semantic version like 2.0.0, ABC_2.0.0, or ABC_2.0.0-beta1.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.IClaim.Context">
+            <summary>
+            Gets the context in which this fact is established.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.IClaim.ContextVersion">
+            <summary>
+            Gets the version of the context in which this fact is established.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.IClaim.Process">
+            <summary>
+            Gets the work process in whicht the claim was created, e.g. during manual tests, continuous integration, nightly build etc.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.ICreatedTrackable">
+            <summary>
+            Created trackable interface.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.ICreatedTrackable.Created">
+            <summary>
+            Gets the creation time and date.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.IId">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.IId.Id">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.IModifiedTrackable">
+            <summary>
+            Modified trackable interface.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.IModifiedTrackable.Modified">
+            <summary>
+            Gets the modified time and date.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.IFilter.Query">
+            <summary>
+            Convert the filter to a search query.
+            </summary>
+            <returns>The query.</returns>
+        </member>
+        <member name="T:FactsHub.Model.FactTag">
+            <summary>
+            Join class for fact and tags.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.JoinTableLeft`2">
+            <summary>
+            Join table for facts and tags.
+            </summary>
+            <typeparam name="TLeft">The left value type.</typeparam>
+            <typeparam name="TLeftKey">The left key type.</typeparam>
+        </member>
+        <member name="P:FactsHub.Model.JoinTableLeft`2.LeftId">
+            <summary>
+            Gets or sets the left ID.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.JoinTableLeft`2.Left">
+            <summary>
+            Gets or sets the left element.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.JoinTableRight`4">
+            <summary>
+            Join table for facts and tags.
+            </summary>
+            <typeparam name="TLeft">The left value type.</typeparam>
+            <typeparam name="TLeftKey">The left key type.</typeparam>
+            <typeparam name="TRight">The right value type.</typeparam>
+            <typeparam name="TRightKey">The right key type.</typeparam>
+        </member>
+        <member name="P:FactsHub.Model.JoinTableRight`4.RightId">
+            <summary>
+            Gets or sets the ID.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.JoinTableRight`4.Right">
+            <summary>
+            Gets or sets the right element.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.RelatedTagsAndFacts">
+            <summary>
+            Facts, tags and their relation.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.RelatedTagsAndFacts.Relation">
+            <summary>
+            Gets or sets the relation between facts and tags;
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.TaggedFacts">
+            <summary>
+            Facts, tags and their relation.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.TaggedFacts.Facts">
+            <summary>
+            Gets or sets the faccts;
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.TaggedFacts.Tags">
+            <summary>
+            Gets or sets the tags;
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.Claim">
+            <summary>
+            The claim.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.Claim.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FactsHub.Model.Claim"/> class.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.Claim.#ctor(FactsHub.Model.IClaim)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FactsHub.Model.Claim"/> class.
+            </summary>
+            <param name="origin">The claim to clone.</param>
+        </member>
+        <member name="P:FactsHub.Model.Claim.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:FactsHub.Model.Claim.Product">
+            <inheritdoc />
+        </member>
+        <member name="P:FactsHub.Model.Claim.Version">
+            <inheritdoc />
+        </member>
+        <member name="P:FactsHub.Model.Claim.Context">
+            <inheritdoc />
+        </member>
+        <member name="P:FactsHub.Model.Claim.ContextVersion">
+            <inheritdoc />
+        </member>
+        <member name="P:FactsHub.Model.Claim.Process">
+            <inheritdoc />
+        </member>
+        <member name="P:FactsHub.Model.Claim.UniqueName">
+            <inheritdoc />
+        </member>
+        <member name="P:FactsHub.Model.Claim.Description">
+            <inheritdoc />
+        </member>
+        <member name="M:FactsHub.Model.Claim.SemanticVersion">
+            <summary>
+            Gets the semantic version of the claim.
+            </summary>
+            <returns>The semantic version.</returns>
+        </member>
+        <member name="M:FactsHub.Model.Claim.HasUniqueName">
+            <summary>
+            Gets a value indicating whether the claim has a unique name.
+            </summary>
+            <returns>Whether the claim has a unique name</returns>
+        </member>
+        <member name="T:FactsHub.Model.Fact">
+            <summary>
+            Fact class.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Fact.Id">
+            <summary>
+            Gets the fact ID.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.Fact.Tags">
+            <summary>
+            Gets the tags associated with this fact.
+            </summary>
+            <returns>The tags.</returns>
+        </member>
+        <member name="P:FactsHub.Model.Fact.Claim">
+            <summary>
+            Gets or sets the claim.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Fact.Link">
+            <summary>
+            Gets or sets the link.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Fact.Result">
+            <summary>
+            Gets or sets the result.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Fact.Remarks">
+            <summary>
+            Gets or sets the remarks.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Fact.Verified">
+            <summary>
+            Gets or sets the date and time when the fact was verified.
+            Null = not verified.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Fact.Created">
+            <summary>
+            Gets or sets the date and time when the fact was created.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Fact.Modified">
+            <summary>
+            Gets or sets the date and time when the fact was modified, initially the creation time.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.Fact.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FactsHub.Model.Fact"/> class.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.Fact.IsVerified">
+            <summary>
+            Gets a value indicating whether the fact was verified.
+            </summary>
+            <returns>Whether the fact was verified.</returns>
+        </member>
+        <member name="T:FactsHub.Model.Link">
+            <summary>
+            The link class.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Link.Next">
+            <summary>
+            Gets or sets the fact ID of the fact executed next.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Link.Previous">
+            <summary>
+            Gets or sets the fact ID of the fact executed previously.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.Result">
+            <summary>
+            The fact result class.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Result.Started">
+            <summary>
+            Gets or set the date and time when the fact was started.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Result.Finished">
+            <summary>
+            Gets or set the date and time when the fact was finished.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Result.State">
+            <summary>
+            Gets or set the fact state.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Result.Outcome">
+            <summary>
+            Gets or set the fact outcome.
+            Null if the fact has not yet finished.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.Result.Duration">
+            <summary>
+            Gets the duration.
+            </summary>
+            <returns>The duration.</returns>
+        </member>
+        <member name="T:FactsHub.Model.DescriptionTag">
+            <summary>
+            Description tag class.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.DescriptionTag.Id">
+            <summary>
+            Gets or sets the unique name.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.DescriptionTag.Created">
+            <summary>
+            Gets or sets the creation time and date.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.DescriptionTag.Name">
+            <summary>
+            Gets or sets the display name.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.DescriptionTag.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.DescriptionTag.EqualityComparer">
+            <summary>
+            Simple fact fact name or unique name comparer.
+            If one has a unique name, yet the has none then they are considered unequal.
+            If both have a unique name then the GUID must be equal.
+            Otherwise they are equal iff the names are equal (ignoring case).
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.DescriptionTag.EqualityComparer.Equals(FactsHub.Model.DescriptionTag,FactsHub.Model.DescriptionTag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FactsHub.Model.DescriptionTag.EqualityComparer.GetHashCode(FactsHub.Model.DescriptionTag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FactsHub.Model.DescriptionTag.HasDescription">
+            <summary>
+            Gets a value indicatint whether a description exists.
+            </summary>
+            <returns>Whether a description exists.</returns>
+        </member>
+        <member name="M:FactsHub.Model.DescriptionTag.HasUniqueName">
+            <summary>
+            Gets a value indicatint whether a unique name exists.
+            </summary>
+            <returns>Whether a unique name exists.</returns>
+        </member>
+        <member name="T:FactsHub.Model.SemanticVersion">
+            <summary>
+            Semantic version wrapper.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.SemanticVersion.Format">
+            <summary>
+            String formats.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.SemanticVersion.Format.Suffix">
+            <summary>
+            All components including the suffix, if any.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.SemanticVersion.Format.Patch">
+            <summary>
+            All up to the patch component.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.SemanticVersion.Format.Minor">
+            <summary>
+            All up to the minor component.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.SemanticVersion.Format.Major">
+            <summary>
+            All up to the major component.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.SemanticVersion.Format.Product">
+            <summary>
+            Only the product component.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.SemanticVersion.#ctor(System.String)">
+            <summary>
+            Initialize a semantic version from a string.
+            </summary>
+            <param name="versionString">The version string, e.g. PRODUCT_V23.15.25.</param>
+        </member>
+        <member name="P:FactsHub.Model.SemanticVersion.Product">
+            <summary>
+            Gets the product component.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.SemanticVersion.Major">
+            <summary>
+            Gets the major component.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.SemanticVersion.Minor">
+            <summary>
+            Gets the minor component.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.SemanticVersion.Patch">
+            <summary>
+            Gets the patch component.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.SemanticVersion.Suffix">
+            <summary>
+            Gets the suffix component.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.SemanticVersion.ToString(FactsHub.Model.SemanticVersion.Format)">
+            <summary>
+            Convert the semantic version to a string.
+            </summary>
+            <param name="format">The format.</param>
+            <returns>The version string.</returns>
+        </member>
+        <member name="T:FactsHub.Model.TagType">
+            <summary>
+            Tag types.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.TagType.Normal">
+            <summary>
+            Normal tag.
+            Used to mark, e.g., the reason for failed fact.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.TagType.Stage">
+            <summary>
+            Stage tag.
+            Used to assign a fact to a quality stage.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.Tag">
+            <summary>
+            The tag class.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.Tag.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FactsHub.Model.Tag"/> class.
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.Tag.Facts">
+            <summary>
+            Gets the facts.
+            </summary>
+            <returns>The facts.</returns>
+        </member>
+        <member name="F:FactsHub.Model.Tag.JoinTable">
+            <summary>
+            Gets the join table.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Tag.Id">
+            <summary>
+            Gets or sets the tag ID.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Tag.Type">
+            <summary>
+            Gets or set the tag type.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Tag.Created">
+            <summary>
+            Gets or set the date and time when the tag was created.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Tag.Modified">
+            <summary>
+            Gets or set the date and time when the tag was modified, initially the creation date time.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Tag.LastAdd">
+            <summary>
+            Gets or set the date and time when the tag was added to a fact for the last time.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Tag.Name">
+            <summary>
+            Gets or sets the display name. (Not starting with #)
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.Tag.DisplayName">
+            <summary>
+            Gets the tag display name, i.e. the name prefixed by the symbol #.
+            </summary>
+        </member>
+        <member name="P:FactsHub.Model.Tag.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+        </member>
+        <member name="T:FactsHub.Model.Tag.EqualityComparer">
+            <summary>
+            Simple fact fact name or unique name comparer.
+            If one has a unique name, yet the has none then they are considered unequal.
+            If both have a unique name then the GUID must be equal.
+            Otherwise they are equal iff the names are equal (ignoring case).
+            </summary>
+        </member>
+        <member name="M:FactsHub.Model.Tag.EqualityComparer.Equals(FactsHub.Model.Tag,FactsHub.Model.Tag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FactsHub.Model.Tag.EqualityComparer.GetHashCode(FactsHub.Model.Tag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FactsHub.Model.Tag.HasDescription">
+            <summary>
+            Gets a value indicating whether a description exists.
+            </summary>
+            <returns>Whether a description exists.</returns>
+        </member>
+        <member name="M:FactsHub.Model.Tag.HasId">
+            <summary>
+            Gets a value indicating whether a unique name exists.
+            </summary>
+            <returns>Whether a unique name exists.</returns>
+        </member>
+        <member name="T:FactsHub.Model.Routes">
+            <summary>
+            The api routes.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.Routes.FactsRoute">
+            <summary>
+            The facts route.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.Routes.TagsRoute">
+            <summary>
+            The tags route.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.Routes.ClaimRoute">
+            <summary>
+            The claim route.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.Routes.AssetsRoute">
+            <summary>
+            The assets route.
+            </summary>
+        </member>
+        <member name="F:FactsHub.Model.Routes.BadgesRoute">
+            <summary>
+            The badges route.
+            </summary>
+        </member>
+    </members>
+</doc>

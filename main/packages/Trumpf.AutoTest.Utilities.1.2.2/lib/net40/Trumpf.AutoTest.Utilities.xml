@@ -1,0 +1,1538 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Trumpf.AutoTest.Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:Trumpf.AutoTest.Utilities.AssembliesLogger">
+            <summary>
+            Assemblies looger pair.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.AssembliesLogger.#ctor(System.Action{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.SystemLocker"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.AssembliesLogger.Do">
+            <summary>
+            Do action.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.AssembliesLogger.Cleanup">
+            <summary>
+            Cleanup action.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.AssembliesLogger.AssembliesString">
+            <summary>
+            Gets the printable assemblies.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.AutoTest">
+            <summary>
+            Base class for automated tests.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.AutoTest.#ctor(Trumpf.AutoTest.Utilities.IAutoTestOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.AutoTest"/> class.
+            </summary>
+            <param name="options">The options.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.AutoTest.FailedTests">
+            <inheritdoc/>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.AutoTest.AddAsset(System.String)">
+            <summary>
+            Adds a file to the current test context.
+            </summary>
+            <param name="filePath">The path of the file to be added.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.AutoTest.Act(System.Action,System.String)">
+            <summary>
+            Act in reporting and test environment context.
+            </summary>
+            <param name="action">The action.</param>
+            <param name="caption">The caption.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.AutoTest.AssetDirectory">
+            <inheritdoc/>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.AutoTest.TraceContents">
+            <inheritdoc/>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.AutoTest.Name">
+            <inheritdoc/>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.AutoTest.Before">
+            <inheritdoc/>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.AutoTest.After(System.Exception,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.ExceptionActionMap">
+            <summary>
+            Exception action mapping class.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.ExceptionActionMap.exceptionHandlerLookUp">
+            <summary>
+            Gets the exception handler look-up table.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ExceptionActionMap.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.TestSkipper"/> class.
+            By default throw all exception if no handler was registered.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ExceptionActionMap.AddOrUpdate``1(System.Action{System.Exception})">
+            <summary>
+            Add or update an exception handler action.
+            </summary>
+            <typeparam name="T">The exception type.</typeparam>
+            <param name="handler">The handler action.</param>
+            <returns>This object.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ExceptionActionMap.GetHandlerActionForException(System.Type)">
+            <summary>
+            Get the handler for an exception type.
+            If the type is not registered return that for <code>Exception</code>.
+            </summary>
+            <param name="exceptionType">The exception type.</param>
+            <returns>The handler action.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IAutoTestOptions">
+            <summary>
+            Auto test options interface.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IAutoTestOptions.Log(System.String)">
+            <summary>
+            The logger.
+            </summary>
+            <param name="line">The line.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IAutoTestOptions.TestMethod">
+            <summary>
+            Gets the test method.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IAutoTestOptions.TestEnvironmentConfiguration(Trumpf.AutoTest.Utilities.IDoSequence)">
+            <summary>
+            Configure the test environment.
+            </summary>
+            <param name="doSequence">The sequence.</param>
+            <returns>The extended sequence.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IAutoTestOptions.AddAssetAction(System.String)">
+            <summary>
+            Add an asset.
+            </summary>
+            <param name="path">The file.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IAutoTestOptions.CollectorsConfigurator(Trumpf.AutoTest.Utilities.ICollectorsOptions)">
+            <summary>
+            Configure the collectors.
+            </summary>
+            <param name="collectors">The collectors.</param>
+            <returns>The extended collectors.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IAutoTestOptions.ExceptionActionMapConfigurator(Trumpf.AutoTest.Utilities.IExceptionActionMap)">
+            <summary>
+            Configure the exception action map.
+            </summary>
+            <param name="exceptionActionMap">The action map.</param>
+            <returns>The extended action map.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.InjectionPoint">
+            <summary>
+            Injection point.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.InjectionPoint.before">
+            <summary>
+            Execute before.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.InjectionPoint.afterSuccess">
+            <summary>
+            Execute after (success case).
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.InjectionPoint.afterFailed">
+            <summary>
+            Execute after (failed case).
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.InjectionPoint.final">
+            <summary>
+            Execute finally.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IAutoTestActions">
+            <summary>
+            Auto test actions.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IAutoTestActions.Act(System.Action,System.String)">
+            <summary>
+            Act.
+            </summary>
+            <param name="action">The action.</param>
+            <param name="caption">The caption.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IAutoTestActions.Before">
+            <summary>
+            Before action.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IAutoTestActions.After(System.Exception,System.Boolean)">
+            <summary>
+            After action.
+            Pass null if the action did not throw.
+            The method rethrows the passed exception.
+            </summary>
+            <param name="exception">The exception, or null if none was thrown.</param>
+            <param name="rethrow">Whether to rethrow the passed exception, if any.</param>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IAutoTest">
+            <summary>
+            Auto test interface.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IAutoTest.FailedTests">
+            <summary>
+            Gets the tests failed so far.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IAutoTest.AssetDirectory">
+            <summary>
+            Gets the asset directory.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IAutoTest.AddAsset(System.String)">
+            <summary>
+            Add an asset.
+            </summary>
+            <param name="filePath">The file path.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IAutoTest.TraceContents">
+            <summary>
+            Gets the trace contents.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IExceptionActionMap">
+            <summary>
+            Exception map interface.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IExceptionActionMap.AddOrUpdate``1(System.Action{System.Exception})">
+            <summary>
+            Add or update an exception handler action.
+            The handler action must not throw.
+            </summary>
+            <typeparam name="T">The exception type.</typeparam>
+            <param name="handler">The handler action.</param>
+            <returns>This object.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IExceptionActionMap.GetHandlerActionForException(System.Type)">
+            <summary>
+            Get the handler for an exception type.
+            If the type is not registered return that for <code>Exception</code>.
+            </summary>
+            <param name="exceptionType">The exception type.</param>
+            <returns>The handler action.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.InvalidCallException">
+            <summary>
+            Invalid recursion exception class.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.InvalidCallException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.InvalidCallException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.BooleanCollectorOptions`1">
+            <summary>
+            Boolean collector options.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.CollectorOptions`1">
+            <summary>
+            Base class for collector options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.CollectorOptions`1.IsEnabled">
+            <summary>
+            Gets a value indicating whether the collector is enabled.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.CollectorOptions`1.Disable">
+            <summary>
+            Disable the collector.
+            </summary>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.CollectorOptions`1.DoEnable(System.Boolean)">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="enable">Whether to enable the options.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.FileCollectorOptions`1">
+            <summary>
+            File collector options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.FileCollectorOptions`1.DefaultFilename">
+            <summary>
+            Gets the default file name without extension.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.FileCollectorOptions`1.DefaultExtension">
+            <summary>
+            Gets the default file extension.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.FileCollectorOptions`1.FileNameWithoutExtension">
+            <summary>
+            Gets the file name without extension.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.FileCollectorOptions`1.Extension">
+            <summary>
+            Gets the file extension.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.FileCollectorOptions`1.FileNameWithExtension">
+            <summary>
+            Gets the file name without extension.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.FileCollectorOptions`1.Enable">
+            <summary>
+            Enable the collector with the default file name.
+            </summary>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.FileCollectorOptions`1.Enable(System.String)">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="fileNameWithoutExtension">The file name without extension.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.FileCollectorOptions`1.Enable(System.String,System.String)">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="fileNameWithoutExtension">The file name without extension.</param>
+            <param name="extension">The extension.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.CollectorsOptions">
+            <summary>
+            Collectors options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.CollectorsOptions.OptionsPrinter">
+            <summary>
+            Gets the options printer options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.CollectorsOptions.SystemMonitor">
+            <summary>
+            Gets the system monitor options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.CollectorsOptions.TraceRedirector">
+            <summary>
+            Gets the trace redirector options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.CollectorsOptions.TestReport">
+            <summary>
+            Gets the test report collector options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.CollectorsOptions.ScreenRecorder">
+            <summary>
+            Gets the screen recorder options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.CollectorsOptions.EnvironmentDetailsPrinter">
+            <summary>
+            Gets the environment details printer options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.CollectorsOptions.AssemblyDetailsPrinter">
+            <summary>
+            Gets the assembly details printer options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.CollectorsOptions.ScreenShooter">
+            <summary>
+            Gets the screen shooter options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.CollectorsOptions.TestSkipper">
+            <summary>
+            Gets the test skipper options.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.CollectorsOptions.Default(System.Action{System.String})">
+            <summary>
+            Gets the default collection options.
+            </summary>
+            <param name="logger">The logger.</param>
+            <returns>The options.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.CollectorsOptions.ToString">
+            <inheritdoc />
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ScreenRecorderOptions.DefaultFilename">
+            <inheritdoc/>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ScreenRecorderOptions.DefaultExtension">
+            <inheritdoc/>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ScreenRecorderOptions.DoEnable(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ScreenShooterOptions.DefaultFilename">
+            <inheritdoc/>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ScreenShooterOptions.DefaultExtension">
+            <inheritdoc/>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.TestReportOptions.DefaultFilename">
+            <inheritdoc/>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.TestReportOptions.DefaultExtension">
+            <inheritdoc/>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.VideoSubtitlesOptions.DefaultFilename">
+            <inheritdoc/>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.VideoSubtitlesOptions.DefaultExtension">
+            <inheritdoc/>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.DoCleanupSequence">
+            <summary>
+            Do cleanup sequence.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.DoCleanupSequence.EmptyPair">
+            <summary>
+            Gets an empty do cleanup pair.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.DoCleanupSequence.#ctor(System.Action{System.String},System.Boolean,System.Boolean,System.Action{System.Exception})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.DoCleanupSequence"/> class.
+            </summary>
+            <param name="logger">The logger action.</param>
+            <param name="cleanupActionAlwaysFirst">Whether to call cleanupActionAlwaysFirst first.</param>
+            <param name="cleanUpOnThrow">Whether to clean up when a do action throws.</param>
+            <param name="cleanUpStateAction">The clean-up state action. null = default log message.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.DoCleanupSequence.InvalidCleanupExceptions">
+            <summary>
+            Gets the clean up exceptions thrown during clean up.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.DoCleanupSequence.OtherCleanupExceptions">
+            <summary>
+            Gets the exceptions other than the clean up exceptions thrown during clean up.
+            If the do actions succeeded the enumeration is always empty as these exception are not catched.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.DoCleanupSequence.AnyDoFailed">
+            <summary>
+            Gets or sets a value indicating whether a Do-action failed.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.DoCleanupSequence.Do(System.Action,System.String)">
+            <summary>
+            Perform an action with no cleanup action.
+            </summary>
+            <param name="action">The action.</param>
+            <param name="caption">The caption.</param>
+            <returns>The do cleanup sequence.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.DoCleanupSequence.Do(System.Action,System.Action,System.String)">
+            <summary>
+            Perform an action.
+            </summary>
+            <param name="action">The action to execute immediately.</param>
+            <param name="cleanupActionAlways">The clean up action to execute during clean up phase.</param>
+            <param name="caption">The caption.</param>
+            <returns>The clean up sequence.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.DoCleanupSequence.Do(System.Action,System.Action,System.Action,System.String)">
+            <summary>
+            Perform an action.
+            </summary>
+            <param name="action">The action to execute immediately.</param>
+            <param name="cleanupActionAlways">The clean up action to execute during clean up phase.</param>
+            <param name="cleanupActionOnThrow">The clean up action to execute during clean up phase if a non-cleanup action has thrown.</param>
+            <param name="caption">The caption.</param>
+            <returns>The clean up sequence.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.DoCleanupSequence.Do(System.Action,System.Action,System.Action,System.Action,System.String)">
+            <summary>
+            Perform an action.
+            </summary>
+            If A does not throw an InvalidCleanupStateException exception, Do(A,A',A'',A''') is equivalent to Do(A,{},{A';A''},{A';A'''})
+            Example 1
+                Do(A, A').Do(B,B').Do(T).Cleanup();
+                Good-case: (A B..T..B' A')
+                Bad case (B throws): (A B A')
+                Bad case (T throws): (A B T B' A')
+                Bad case (B' throws an <see cref="T:Trumpf.AutoTest.Utilities.InvalidCleanupStateException"/> exception): (A B T B' A'); Cleanup throws at after the clean up processes has finished
+                Bad case (B' throws an <see cref="T:System.Exception"/> exception): (A B T B'); Cleanup process termines abnormally, Cleanup throws.
+                Note:
+                    If B' throws an <see cref="T:Trumpf.AutoTest.Utilities.InvalidCleanupStateException"/> exception all further clean up action will be executed but the final Cleanup call will throw all collected exceptions of this type
+                    All other exception during B' are not catched and hence terminate the clean up process abnormally
+            Example 2
+                Do(A, A',A'').Do(B,B', B'').Do(T).Cleanup();
+                Good-case: (A B..T..B' A')
+                Bad-case (B throws)> (A B A'' A')
+                Bad-case (T throws)> (A B T B'' A'' B' A')
+            Example 3
+                Do(A, A').Do(new Seq().Do(C,C').Do(T1).Cleanup()) Do(B, B').Do(T2).Cleanup();
+                Good-case: (A B (C..T1..C') .. T2 .. B' A')
+            <param name="action">The action to execute</param>
+            <param name="cleanupActionAlways">Action to execute during clean up phase; the action is ignored if the the previous action throw.</param>
+            <param name="cleanupActionOnThrow">Action to execute during clean up phase if a non-cleanup action has thrown.</param>
+            <param name="cleanupActionOnNoThrow">Action to execute during clean up phase if no non-cleanup action has thrown.</param>
+            <param name="caption">The caption.</param>
+            <returns>The clean up sequence.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.DoCleanupSequence.TryCleanup">
+            <summary>
+            Call clean up actions.
+            The clean up terminated once an exception other than InvalidCleanupStateException is thrown by a clean up action.
+            Does not throw exceptions.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.DoCleanupSequence.Cleanup">
+            <summary>
+            Call clean up actions.
+            The clean up terminated once an exception other than InvalidCleanupStateException is thrown by a clean up action.
+            Throws an exceptions only if none of the do-actions threw.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.DoCleanupSequence.CleanUpActions">
+            <summary>
+            Clean up actions.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.DoCleanupSequence.CleanUpActions.#ctor(System.Action,System.Action,System.Action,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.DoCleanupSequence.CleanUpActions"/> class.
+            </summary>
+            <param name="cleanupActionAlways">The clean up always action.</param>
+            <param name="cleanupActionOnNoThrow">The clean up on no throw action.</param>
+            <param name="cleanupActionOnThrow">The clean up on throw action.</param>
+            <param name="caption">The caption.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.DoCleanupSequence.CleanUpActions.CleanupActionAlways">
+            <summary>
+            Gets the clean up always action.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.DoCleanupSequence.CleanUpActions.CleanupActionOnNoThrow">
+            <summary>
+            Gets the clean up on no throw action.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.DoCleanupSequence.CleanUpActions.CleanupActionOnThrow">
+            <summary>
+            Gets the clean up on throw action.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.DoCleanupSequence.CleanUpActions.Caption">
+            <summary>
+            Gets the caption.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.EmptyPair">
+            <summary>
+            Empty pair.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.EmptyPair.Cleanup">
+            <summary>
+            Cleanup that does nothing.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.EmptyPair.Do">
+            <summary>
+            Do that does nothing.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IDoCleanupSequence">
+            <summary>
+            Clean up interface.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IDoCleanupSequence.Cleanup">
+            <summary>
+            Call all clean up action of successfully executed action in reverse order.
+            
+            If doActionSucceeded is true:
+            Execute non-throw clean up actions.
+            The clean up continues even if a clean up action throws.
+            The function throws if one or more clean up action threw.
+            
+            If doActionSucceeded is false:
+            Execute throw-clean up actions.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.InvalidCleanupStateException">
+            <summary>
+            Invalid cleanup state exception.
+            Throw this exception during clean up if it shall not terminate the clean up sequence.
+            Anyway, after all clean up actions have been executed, this exception is thrown to indicate that the clean up did not succeed.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.InvalidCleanupStateException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.InvalidCleanupStateException"/> class.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.InvalidCleanupStateException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.InvalidCleanupStateException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.InvalidCleanupStateExceptions">
+            <summary>
+            Invalid cleanup state exceptions.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.InvalidCleanupStateExceptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.InvalidCleanupStateExceptions"/> class.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.InvalidCleanupStateExceptions.#ctor(System.Collections.Generic.IEnumerable{Trumpf.AutoTest.Utilities.InvalidCleanupStateException})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.InvalidCleanupStateExceptions"/> class.
+            </summary>
+            <param name="innerExceptions">The inner exceptions.</param>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.ScreenshooterDoer">
+            <summary>
+            Screen shooter pair.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ScreenshooterDoer.#ctor(System.String,System.Action{System.String},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.SystemLocker"/> class.
+            </summary>
+            <param name="filePath">File path of the save screen shot.</param>
+            <param name="executeOnScreenShotFile">Action to execute on the screen shot.</param>
+            <param name="saveAndExecuteOnThrowOnly">Whether to act only on throw.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ScreenshooterDoer.Do">
+            <summary>
+            Do action.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ScreenshooterDoer.Cleanup">
+            <summary>
+            Cleanup action.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ScreenshooterDoer.CleanupOnThrow">
+            <summary>
+            Clean up on throw action.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.ProhibitedProcessException">
+            <summary>
+            Prohibited process found exception
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ProhibitedProcessException.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.ProhibitedProcessException"/> class.
+            </summary>
+            <param name="prohibitedProcesses">The list of prohibited processes</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ProhibitedProcessException.Message">
+            <summary>
+            Gets a message that describes the current exception
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.ProhibitedWindowAndProcessException">
+            <summary>
+            Prohibited window and process found exception
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ProhibitedWindowAndProcessException.#ctor(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.ProhibitedWindowAndProcessException"/> class.
+            </summary>
+            <param name="prohibitedWindows">The list of prohibited windows</param>
+            <param name="prohibitedProcesses">The list of prohibited processes</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ProhibitedWindowAndProcessException.Message">
+            <summary>
+            Gets a message that describes the current exception
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.ProhibitedWindowException">
+            <summary>
+            Prohibited window found exception
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ProhibitedWindowException.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.ProhibitedWindowException"/> class.
+            </summary>
+            <param name="prohibitedWindows">The list of prohibited windows</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ProhibitedWindowException.Message">
+            <summary>
+            Gets a message that describes the current exception
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.EnvironmentWatcher">
+            <summary>
+            This class watches the environment regarding processes and windows.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.EnvironmentWatcher.#ctor(System.String[],System.String[],System.String[],System.String[],System.String[],System.TimeSpan,System.Action{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.EnvironmentWatcher"/> class.
+            </summary>
+            <param name="whiteListOfProcessNames">The allowed process names.</param>
+            <param name="whiteListOfProcessDirectoriesNames">The allowed process directories.</param>
+            <param name="whiteListOfProcessNamesThatAreNotKilled">The allowed process names that are not killed.</param>
+            <param name="whiteListOfWindowNames">The allowed window names.</param>
+            <param name="whiteListOfWindowNamesThatAreNotClosed">The allowed window names that are not closed.</param>
+            <param name="waitBetweenClosings">Waiting time between closing windows.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.EnvironmentWatcher.#ctor(System.Action{System.String},System.TimeSpan)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.EnvironmentWatcher"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="waitBetweenClosings">Waiting time between closing windows.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.EnvironmentWatcher.ProcessesWatcher">
+            <summary>
+            Gets the watcher of the processes.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.EnvironmentWatcher.WindowsWatcher">
+            <summary>
+            Gets the watcher of the windows.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.EnvironmentWatcher.CleanUpDanglingWindowsAndProcesses">
+            <summary>
+            Checks the environment.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.EnvironmentWatcher.ToString">
+            <summary>
+            Get a string with the processes and windows at construction
+            </summary>
+            <returns>The string of processes and windows</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.Internal.NativeMethods">
+            <summary>
+            Native methods.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.Internal.NativeMethods.WM_SYSCOMMAND">
+            <summary>
+            Constant for closing windows.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.Internal.NativeMethods.SC_CLOSE">
+            <summary>
+            Constant for closing windows.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.Internal.NativeMethods.TOKEN_QUERY">
+            <summary>
+            Constant for the token query.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.Internal.NativeMethods.EnumWindowsProc">
+            <summary>
+            Delegate for enumerate the windows.
+            </summary>
+            <param name="hWnd">The handle</param>
+            <param name="lParam">An application defined value.</param>
+            <returns>Returns always <c>true</c>.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.NativeMethods.CommandLineToArgvW(System.String,System.Int32@)">
+            <summary>
+            Parses a Unicode command line string and returns an array of pointers to the command line arguments, along with a count of such arguments, in a way that is similar to the standard C run-time ARGV and ARGC values.
+            </summary>
+            <param name="lpCmdLine">Pointer to a null-terminated Unicode string that contains the full command line. If this parameter is an empty string the function returns the path to the current executable file.</param>
+            <param name="pNumArgs">Pointer to an int that receives the number of array elements returned, similar to argc.</param>
+            <returns>A pointer to an array of LPWSTR values, similar to argv. If the function fails, the return value is NULL. To get extended error information, call GetLastError.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.NativeMethods.GetWindowThreadProcessId(System.IntPtr,System.IntPtr@)">
+            <summary>
+            Retrieves the identifier of the thread that created the specified window and, optionally, the identifier of the process that created the window.
+            </summary>
+            <param name="hWnd">A handle to the window.</param>
+            <param name="lpdwProcessId">A pointer to a variable that receives the process identifier. If this parameter is not <c>null</c>, GetWindowThreadProcessId copies the identifier of the process to the variable; otherwise, it does not.</param>
+            <returns>The return value is the identifier of the thread that created the window.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.NativeMethods.GetWindowText(System.IntPtr,System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Copies the text of the specified window's title bar (if it has one) into a buffer. If the specified window is a control, the text of the control is copied. However, GetWindowText cannot retrieve the text of a control in another application.
+            </summary>
+            <param name="hWnd">A handle to the window or control containing the text.</param>
+            <param name="lpString">The buffer that will receive the text. If the string is as long or longer than the buffer, the string is truncated and terminated with a null character.</param>
+            <param name="nMaxCount">The maximum number of characters to copy to the buffer, including the null character. If the text exceeds this limit, it is truncated.</param>
+            <returns>If the function succeeds, the return value is the length, in characters, of the copied string, not including the terminating null character. If the window has no title bar or text, if the title bar is empty, or if the window or control handle is invalid, the return value is zero. To get extended error information, call GetLastError. This function cannot retrieve the text of an edit control in another application.</returns>
+            <remarks>
+            <para>If the target window is owned by the current process, GetWindowText causes a WM_GETTEXT message to be sent to the specified window or control. If the target window is owned by another process and has a caption, GetWindowText retrieves the window caption text. If the window does not have a caption, the return value is a null string. This behavior is by design. It allows applications to call GetWindowText without becoming unresponsive if the process that owns the target window is not responding. However, if the target window is not responding and it belongs to the calling application, GetWindowText will cause the calling application to become unresponsive.</para>
+            <para>To retrieve the text of a control in another process, send a WM_GETTEXT message directly instead of calling GetWindowText.</para>
+            </remarks>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.NativeMethods.GetWindowTextLength(System.IntPtr)">
+            <summary>
+            Retrieves the length, in characters, of the specified window's title bar text (if the window has a title bar). If the specified window is a control, the function retrieves the length of the text within the control. However, GetWindowTextLength cannot retrieve the length of the text of an edit control in another application.
+            </summary>
+            <param name="hWnd">A handle to the window or control.</param>
+            <returns>If the function succeeds, the return value is the length, in characters, of the text. Under certain conditions, this value may actually be greater than the length of the text. For more information, see the following Remarks section. If the window has no text, the return value is zero. To get extended error information, call GetLastError.</returns>
+            <remarks>If the target window is owned by the current process, GetWindowTextLength causes a WM_GETTEXTLENGTH message to be sent to the specified window or control. Under certain conditions, the GetWindowTextLength function may return a value that is larger than the actual length of the text. This occurs with certain mixtures of ANSI and Unicode, and is due to the system allowing for the possible existence of double-byte character set (DBCS) characters within the text. The return value, however, will always be at least as large as the actual length of the text; you can thus always use it to guide buffer allocation. This behavior can occur when an application uses both ANSI functions and common dialogs, which use Unicode. It can also occur when an application uses the ANSI version of GetWindowTextLength with a window whose window procedure is Unicode, or the Unicode version of GetWindowTextLength with a window whose window procedure is ANSI. For more information on ANSI and ANSI functions, see Conventions for Function Prototypes. To obtain the exact length of the text, use the WM_GETTEXT, LB_GETTEXT, or CB_GETLBTEXT messages, or the GetWindowText function.</remarks>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.NativeMethods.GetShellWindow">
+            <summary>
+            Retrieves a handle to the Shell's desktop window.
+            </summary>
+            <returns>The return value is the handle of the Shell's desktop window. If no Shell process is present, the return value is <c>null</c>.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.NativeMethods.IsWindowVisible(System.IntPtr)">
+            <summary>
+            Determines the visibility state of the specified window.
+            </summary>
+            <param name="hWnd">A handle to the window to be tested.</param>
+            <returns>If the specified window, its parent window, its parent's parent window, and so forth, have the WS_VISIBLE style, the return value is nonzero. Otherwise, the return value is zero. Because the return value specifies whether the window has the WS_VISIBLE style, it may be nonzero even if the window is totally obscured by other windows.</returns>
+            <remarks>The visibility state of a window is indicated by the WS_VISIBLE style bit. When WS_VISIBLE is set, the window is displayed and subsequent drawing into it is displayed as long as the window has the WS_VISIBLE style. Any drawing to a window with the WS_VISIBLE style will not be displayed if the window is obscured by other windows or is clipped by its parent window.</remarks>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.NativeMethods.GetForegroundWindow">
+            <summary>
+            Retrieves a handle to the foreground window (the window with which the user is currently working).
+            The system assigns a slightly higher priority to the thread that creates the foreground window than it does to other threads.
+            </summary>
+            <returns>
+            The return value is a handle to the foreground window.
+            The foreground window can be NULL in certain circumstances, such as when a window is losing activation.
+            </returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.NativeMethods.OpenProcessToken(System.IntPtr,System.UInt32,System.IntPtr@)">
+            <summary>
+            The OpenProcessToken function opens the access token associated with a process.
+            </summary>
+            <param name="processHandle">
+            A handle to the process whose access token is opened. The process must have the PROCESS_QUERY_INFORMATION access permission.
+            </param>
+            <param name="desiredAccess">
+            Specifies an access mask that specifies the requested types of access to the access token.
+            These requested access types are compared with the discretionary access control list (DACL) of the token to determine which accesses are granted or denied.
+            For a list of access rights for access tokens, see Access Rights for Access-Token Objects.
+            </param>
+            <param name="tokenHandle">
+            A pointer to a handle that identifies the newly opened access token when the function returns.
+            </param>
+            <returns>
+            If the function succeeds, the return value is nonzero.
+            If the function fails, the return value is zero. To get extended error information, call GetLastError.
+            </returns>
+            <remarks>
+            Close the access token handle returned through the TokenHandle parameter by calling <see cref="M:Trumpf.AutoTest.Utilities.Internal.NativeMethods.CloseHandle(System.IntPtr)"/>.
+            </remarks>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.NativeMethods.CloseHandle(System.IntPtr)">
+            <summary>
+            Close handle
+            </summary>
+            <param name="hObject">The object</param>
+            <returns>The return value</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.NativeMethods.EnumWindows(Trumpf.AutoTest.Utilities.Internal.NativeMethods.EnumWindowsProc,System.Int32)">
+            <summary>
+            Enumerates all top-level windows on the screen by passing the handle to each window, in turn, to an application-defined callback function. EnumWindows continues until the last top-level window is enumerated or the callback function returns FALSE.
+            </summary>
+            <param name="enumFunc">A pointer to an application-defined callback function. For more information, see EnumWindowsProc.</param>
+            <param name="lParam">An application-defined value to be passed to the callback function.</param>
+            <returns>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call GetLastError. If EnumWindowsProc returns zero, the return value is also zero. In this case, the callback function should call SetLastError to obtain a meaningful error code to be returned to the caller of EnumWindows.</returns>
+            <remarks>
+            The EnumWindows function does not enumerate child windows, with the exception of a few top-level windows owned by the system that have the WS_CHILD style. This function is more reliable than calling the GetWindow function in a loop. An application that calls GetWindow to perform this task risks being caught in an infinite loop or referencing a handle to a window that has been destroyed. Note  For Windows 8 and later, EnumWindows enumerates only top-level windows of desktop apps.
+            </remarks>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.NativeMethods.SendNotifyMessage(System.IntPtr,System.UInt32,System.IntPtr,System.IntPtr)">
+            <summary>
+            Send notify message
+            </summary>
+            <param name="hWnd">Argument 1; see internet for more...</param>
+            <param name="msg">Argument 2</param>
+            <param name="wParam">Argument 3</param>
+            <param name="lParam">Argument 4</param>
+            <returns>The return value</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.Internal.ProcessHelpers">
+            <summary>
+            Prcess helpers.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.ProcessHelpers.GetOwnerName(System.Diagnostics.Process)">
+            <summary>
+            Gets the owner of the process.
+            </summary>
+            <param name="instance">The instance of the process.</param>
+            <returns>Returns the process owner.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.ProcessHelpers.ToDetailedString(System.Diagnostics.Process)">
+            <summary>
+            Gets process details.
+            </summary>
+            <param name="instance">The instance of the process.</param>
+            <returns>Returns process details as string.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.ProcessHelpers.GetExecutablePath(System.Diagnostics.Process)">
+            <summary>
+            Gets the file name of a process.
+            </summary>
+            <param name="instance">The instance of the process.</param>
+            <returns>Returns the file name of the process.</returns>
+            <remarks>This method is needed because a 32-bit application cannot access a 64-bit process.</remarks>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.ProcessHelpers.ShutdownProcess(System.Int32,System.Action{System.String},System.Boolean)">
+            <summary>
+            Shuts down the process and all its child processes.
+            </summary>
+            <param name="processId">The id of the process to kill.</param>
+            <param name="logger">The logger.</param>
+            <param name="includeChildren">Kill process children as well.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.ProcessHelpers.GetRunningProcessesOfCurrentUser">
+            <summary>
+            Gets all running process of the current user.
+            </summary>
+            <returns>A list of all process</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.ProcessHelpers.GetOwner(System.Diagnostics.Process)">
+            <summary>
+            Gets the owner of a process.
+            </summary>
+            <param name="process">The process.</param>
+            <returns>Returns the owner of the process.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.ProcessHelpers.ShutdownProcessTree(System.Int32,System.Boolean,System.Int32,System.Collections.Generic.HashSet{System.Int32},System.Action{System.String})">
+            <summary>
+            Shuts down the process and all its child processes.
+            </summary>
+            <param name="processId">The id of the process to kill.</param>
+            <param name="includeChildren">Kill process children as well.</param>
+            <param name="depth">The depth.</param>
+            <param name="seenProcesses">Processes already seen.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.ProcessHelpers.TryKillProcess(System.Diagnostics.Process)">
+            <summary>
+            Try to kill the given process
+            </summary>
+            <param name="process">The process to kill.</param>
+            <returns>Returns <c>true</c> if the process could be killed. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.ProcessHelpers.TryGetProcessById(System.Int32)">
+            <summary>
+            Try to get the process of the given process id
+            </summary>
+            <param name="processId">The process id.</param>
+            <returns>Returns <c>true</c> if the process object could be retrieved. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.ProcessHelpers.TryGetProcessById(System.Int32,System.Diagnostics.Process@)">
+            <summary>
+            Try to get the process of the given process id
+            </summary>
+            <param name="processId">The process id.</param>
+            <param name="process">The process.</param>
+            <returns>Returns <c>true</c> if the process object could be retrieved. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.ProcessHelpers.TryGetProcessNameById(System.Int32,System.String@)">
+            <summary>
+            Try to get the process name of the given process id
+            </summary>
+            <param name="processId">The process id.</param>
+            <param name="processName">The process name.</param>
+            <returns>Returns <c>true</c> if the process name could be retrieved. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.ProcessHelpers.ProcessWithIdOrChildrenOfItExists(System.Int32,System.Action{System.String})">
+            <summary>
+            Checks if a process with the id <paramref name="pid"/> or a child process with the parent id <paramref name="pid"/> exists.
+            </summary>
+            <param name="pid">The id of the process.</param>
+            <param name="logger">The logger.</param>
+            <returns>Returns <c>true</c> if a process with the id <paramref name="pid"/> or a child process with the parent id <paramref name="pid"/> exists. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.Internal.Synchronisation">
+            <summary>
+            Synchronisation helpers.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.Synchronisation.RetryUntilSuccessOrTimeout``1(System.Func{``0},System.Func{``0,System.Boolean},System.String)">
+            <summary>
+            Executes <paramref name="function"/> until its result is not <c>null</c>.
+            </summary>
+            <returns>The first result of <paramref name="function"/> which is not <c>null</c>.</returns>
+            <param name="function">The function which is executed.</param>
+            <param name="condition">The condition.</param>
+            <param name="exceptionMessage">The exception message</param>
+            <typeparam name="T">The type of the variable.</typeparam>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.Synchronisation.RetryUntilSuccessOrTimeout``1(System.Func{``0},System.Func{``0,System.Boolean},System.TimeSpan,System.TimeSpan,System.String)">
+            <summary>
+            Executes <paramref name="function"/> until its result is not <c>null</c>.
+            </summary>
+            <returns>The first result of <paramref name="function"/> which is not <c>null</c>.</returns>
+            <param name="function">The function which is executed.</param>
+            <param name="condition">The condition.</param>
+            <param name="pollingPeriod">The time in milliseconds for waiting between successive executions of <paramref name="function"/>.</param>
+            <param name="maxWaitingTime">The maximum waiting time in milliseconds.</param>
+            <param name="exceptionMessage">The exception message</param>
+            <typeparam name="T">The type of the variable.</typeparam>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.Internal.WindowHelpers">
+            <summary>
+            Window helpers.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.WindowHelpers.GetWindowTextA(System.IntPtr)">
+            <summary>
+            Gets the ASCII text of a window.
+            </summary>
+            <param name="windowPointer">The pointer of the window.</param>
+            <returns>Returns the text of the window.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.WindowHelpers.GetProcessOfWindow(System.IntPtr,System.Action{System.String})">
+            <summary>
+            Gets the process of a window.
+            </summary>
+            <param name="windowHandle">The handle of the window to retrieve the process from.</param>
+            <param name="logger">The logger.</param>
+            <returns>The process of the window.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.WindowHelpers.CloseWindow(System.IntPtr)">
+            <summary>
+            Close a window
+            </summary>
+            <param name="handle">The windows handle.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.Internal.WindowHelpers.GetOpenWindows">
+            <summary>
+            Returns a dictionary that contains the handle and title of all the open windows.
+            </summary>
+            <returns>A dictionary that contains the handle and title of all the open windows.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.ProcessesWatcher">
+            <summary>
+            This class watches processes.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.ProcessesWatcher.mProcessesAtConstruction">
+            <summary>
+            The list of processes at instance construction.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ProcessesWatcher.#ctor(System.String[],System.String[],System.String[],System.Action{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.ProcessesWatcher"/> class.
+            It takes a snap-shot of all currently running processes
+            </summary>
+            <param name="whiteListOfProcessNames">The name of the processes which are not reported as a failure.</param>
+            <param name="whiteListOfProcessDirectoriesNames">The directories of the processes which are not reported as a failure.</param>
+            <param name="processNameWhiteListNotKilled">The directories of the processes which are not reported as a failure and not killed.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ProcessesWatcher.ProcessNameWhiteList">
+            <summary>
+            Gets or sets the process whitelist; processes that are "not prohibited"
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ProcessesWatcher.ProcessNameWhiteListNotKilled">
+            <summary>
+            Gets or sets the process whitelist; processes that are "not prohibited", yet not killed
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ProcessesWatcher.ProcessDirectoryWhiteList">
+            <summary>
+            Gets or sets the directory whitelist; processes that are "not prohibited"
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ProcessesWatcher.ProcessesAtConstruction">
+            <summary>
+            Gets the list of processes at instance construction.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ProcessesWatcher.ToString">
+            <summary>
+            Return a string with all processes at construction
+            </summary>
+            <returns>The processes at construction</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ProcessesWatcher.KillNewProcesses">
+            <summary>
+            Kill new processes. Which are started after initiating a new instance.
+            </summary>
+            <returns>Returns the list of prohibited processes</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ProcessesWatcher.ProcessesString(System.Collections.Generic.IEnumerable{System.Diagnostics.Process})">
+            <summary>
+            Format list of processes as string.
+            </summary>
+            <param name="processes">The process list.</param>
+            <returns>Returns the string.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ProcessesWatcher.IsProcessProhibited(System.Diagnostics.Process)">
+            <summary>
+            Filters the process to its needs.
+            </summary>
+            <param name="process">The process.</param>
+            <returns>Returns the filtered processes.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.WindowsWatcher">
+            <summary>
+            This class watches processes
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.WindowsWatcher.mWindowsAtConstruction">
+            <summary>
+            The product setups.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.WindowsWatcher.#ctor(System.String[],System.String[],System.TimeSpan,System.Action{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.WindowsWatcher"/> class.
+            </summary>
+            <param name="whiteListOfWindowNames">The allowed window names.</param>
+            <param name="windowWhiteListNotClosed">The allowed window names that are not closed.</param>
+            <param name="waitBetweenClosings"></param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.WindowsWatcher.WindowWhiteList">
+            <summary>
+            Gets the list of windows that are closed
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.WindowsWatcher.WindowWhiteListNotClosed">
+            <summary>
+            Gets the list of windows that are not closed.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.WindowsWatcher.GetNewWindows">
+            <summary>
+            The product setups.
+            </summary>
+            <returns>Returns <c>true</c>, if the process exists. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.WindowsWatcher.CloseNewWindows">
+            <summary>
+            The product setups.
+            </summary>
+            <returns>Returns <c>true</c>, if no prohibited window was closed. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.WindowsWatcher.ToString">
+            <summary>
+            Get a string with the names of windows that existed at construction
+            </summary>
+            <returns>The open window names at construction</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.WindowsWatcher.WindowInformation">
+            <summary>
+            Class containing information about a window.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.WindowsWatcher.WindowInformation.#ctor(System.IntPtr,System.String,System.Diagnostics.Process)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.WindowsWatcher.WindowInformation"/> class.
+            </summary>
+            <param name="handle">The handle of the window.</param>
+            <param name="title">The title of the window.</param>
+            <param name="process">The process of the window.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.WindowsWatcher.WindowInformation.Handle">
+            <summary>
+            Gets the handle of the window.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.WindowsWatcher.WindowInformation.Title">
+            <summary>
+            Gets the title of the window.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.WindowsWatcher.WindowInformation.Process">
+            <summary>
+            Gets the process of the window.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.WindowsWatcher.WindowInformation.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>
+            A string that represents the current object.
+            </returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.SoftResetter">
+            <summary>
+            Soft resetter.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.SoftResetter.#ctor(Trumpf.AutoTest.Utilities.SoftResetterOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.SoftResetter"/> class.
+            </summary>
+            <param name="options">Soft resetter options.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.SoftResetter.Do">
+            <summary>
+            Create the environment watcher
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.SoftResetter.Cleanup">
+            <summary>
+            Clean up processes and windows
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.SoftResetterOptions">
+            <summary>
+            Soft resetter options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.SoftResetterOptions.Logger">
+            <summary>
+            Gets or sets the logger.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.SoftResetterOptions.Target">
+            <summary>
+            Possible tagets.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.SoftResetterOptions.Target.Process">
+            <summary>
+            A process.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.SoftResetterOptions.Target.Window">
+            <summary>
+            A window.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.SoftResetterOptions.Action">
+            <summary>
+            Possible actions.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.SoftResetterOptions.Action.Kill">
+            <summary>
+            Kill or close the process or window.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.SoftResetterOptions.Action.Keep">
+            <summary>
+            Keep it.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.SoftResetterOptions.ProcessNameWhiteList">
+            <summary>
+            Gets the process name white list.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.SoftResetterOptions.ProcessNameWhiteListNotKilled">
+            <summary>
+            Gets the process name white list (these will not be killed).
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.SoftResetterOptions.ProcessDirectoryWhiteList">
+            <summary>
+            Gets the process directory white list.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.SoftResetterOptions.WindowWhiteList">
+            <summary>
+            Gets the window white list.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.SoftResetterOptions.WindowWhiteListNotClosed">
+            <summary>
+            Gets the window white list (windows will not be closed).
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.SoftResetterOptions.AddDirectory(System.String[])">
+            <summary>
+            Add directory to the process white list.
+            </summary>
+            <param name="directories">The directories.</param>
+            <returns>This object.</returns>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.SoftResetterOptions.WaitingTimeBetweenClosingWindows">
+            <summary>
+            Gets or set the waiting time between closing windows.
+            The default is one seconds.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.SoftResetterOptions.LogAllWindowsAndProcessesAtCleanup">
+            <summary>
+            Gets or sets a value indicating whether to write all windows and processes to the logger.
+            This may be slow.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.SoftResetterOptions.AddOne(Trumpf.AutoTest.Utilities.SoftResetterOptions.Target,Trumpf.AutoTest.Utilities.SoftResetterOptions.Action,System.String)">
+            <summary>
+            Add a white list process or window.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="action">The action.</param>
+            <param name="name">The window or process name.</param>
+            <returns>This object.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.SoftResetterOptions.Add(Trumpf.AutoTest.Utilities.SoftResetterOptions.Target,Trumpf.AutoTest.Utilities.SoftResetterOptions.Action,System.String[])">
+            <summary>
+            Add a white list process or window.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="action">The action.</param>
+            <param name="names">The window or process names (null will match windows without a title)</param>
+            <returns>This object.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.SystemIsAlreadyLockedException">
+            <summary>
+            System is locked exception.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.SystemIsAlreadyLockedException.#ctor(Trumpf.AutoTest.Utilities.SystemIsAlreadyLockedException.Reason)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.SystemIsAlreadyLockedException"/> class.
+            </summary>
+            <param name="reason">The reason.</param>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.SystemIsAlreadyLockedException.Reason">
+            <summary>
+            The reason.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.SystemIsAlreadyLockedException.Reason.NoSpace">
+            <summary>
+            No space available.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.SystemIsAlreadyLockedException.Reason.InvalidSystemState">
+            <summary>
+            Invalid system state.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.SystemIsAlreadyLockedException.ReasonValue">
+            <summary>
+            Gets the reason.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.SystemLocker">
+            <summary>
+            System locker.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.SystemLocker.#ctor(System.Action{System.String},System.Int32,System.Action,System.Action,System.Func{System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.SystemLocker"/> class.
+            </summary>
+            <param name="logger">The logger action.</param>
+            <param name="expectedFreeSpaceInMegaByte">The expected free space on the drive of the current directory.</param>
+            <param name="lockAction">The lock action. If null, creates the file C:\NOT_READY_STATE.</param>
+            <param name="unlockAction">The unlock action. If null, deletes the file C:\NOT_READY_STATE.</param>
+            <param name="isLocked">A function returning a value that indicating whether the system is locked. If null, return true if file C:\NOT_READY_STATE exists.</param>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.SystemLocker.SystemState">
+            <summary>
+            The system state
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.SystemLocker.SystemState.Ready">
+            <summary>
+            The system is ready to run a test.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.SystemLocker.SystemState.NotReady">
+            <summary>
+            The system is not ready to run a test.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.SystemLocker.State">
+            <summary>
+            Gets or sets the system state.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.SystemLocker.EnoughDiscSpace">
+            <summary>
+            Gets a value indicating whether the disc space in the current directory is sufficient.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.SystemLocker.TryDeleteFile(System.String)">
+            <summary>
+            Try to delete a file.
+            </summary>
+            <param name="filePath">The path of the file.</param>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.SystemLocker.Do">
+            <summary>
+            If the system is in the ready state switch to the not-ready state, otherwise throw.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.SystemLocker.Cleanup">
+            <summary>
+            Set ready state.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.SystemMonitorer">
+            <summary>
+            Monitor the system
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.SystemMonitorer.filePathWithoutExtension">
+            <summary>
+            The filename of the system monitor.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.SystemMonitorer.#ctor(System.String,System.Action{System.String},System.Action{System.String},System.TimeSpan,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.SystemMonitorer"/> class.
+            </summary>
+            <param name="filePathWithoutExtension">The file path to store results (will get the extension csv).</param>
+            <param name="actOnResultFile">Action to perform on the result string</param>
+            <param name="logger">The logger.</param>
+            <param name="interval">The collection interval.</param>
+            <param name="processes">The processes to monitor</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.SystemMonitorer.FilePath">
+            <summary>
+            Gets the file path of the monitor file.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.SystemMonitorer.Monitor">
+            <summary>
+            Gets or sets the system monitor instance
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.SystemMonitorer.Do">
+            <summary>
+            Start the monitor
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.SystemMonitorer.Cleanup">
+            <summary>
+            Stop the monitor and act on the result string
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.TestSkipper">
+            <summary>
+            Test skipper.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.TestSkipper.#ctor(System.Int32,System.Func{System.Int32},System.Action{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.TestSkipper"/> class.
+            </summary>
+            <param name="maxFailedTests">Maximum number of failing tests before further tests are skipped</param>
+            <param name="incrementAndGetUpdated">The increment function.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.TestSkipper.FailedTests">
+            <summary>
+            Gets the number of failed tests.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.TestSkipper.Do">
+            <summary>
+            Fail if threshold is exceeded
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.TestSkipper.IncrementFailedTestCounter">
+            <summary>
+            Increment the failed tests counter.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.TestSkipperException">
+            <summary>
+            Test skipper exception
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.TestSkipperException.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.TestSkipperException"/> class.
+            </summary>
+            <param name="failedTestsSoFar">Failed tests so far</param>
+            <param name="maxFailed">Maximum number of failing tests before skipping further tests</param>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.TraceRedirector">
+            <summary>
+            File redirector.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.TraceRedirector.#ctor(System.String,System.Action{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.TraceRedirector"/> class.
+            </summary>
+            <param name="outFile">The file to redirect to.</param>
+            <param name="onCleanup">The action to executed on the file path after cleanup.</param>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.TraceRedirector.Contents">
+            <summary>
+            Gets the stream contents.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.TraceRedirector.Do">
+            <summary>
+            Setups the trace listener.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.TraceRedirector.Cleanup">
+            <summary>
+            Setups the trace listener.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.TraceRedirector.TcStringStreamWriter">
+            <summary>
+            String stream writer.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.TraceRedirector.TcStringStreamWriter.Contents">
+            <summary>
+            Gets the lines;
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.TraceRedirector.TcStringStreamWriter.Encoding">
+            <summary>
+            Gets the encoding.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.TraceRedirector.TcStringStreamWriter.Write(System.Char)">
+            <summary>
+            Write a character.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+    </members>
+</doc>
