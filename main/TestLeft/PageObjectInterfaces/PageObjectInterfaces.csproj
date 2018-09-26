@@ -58,6 +58,7 @@
     <Compile Include="Controls\TiControl.cs" />
     <Compile Include="Controls\TiTruIconButton.cs" />
     <Compile Include="Controls\TiValueControl.cs" />
+    <Compile Include="Customer\TiCustomers.cs" />
     <Compile Include="Part\TiParts.cs" />
     <Compile Include="Part\TiPartSingleDetail.cs" />
     <Compile Include="Part\TiPartSingleDetailBendSolutions.cs" />

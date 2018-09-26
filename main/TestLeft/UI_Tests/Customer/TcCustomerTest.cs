@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -28,7 +27,7 @@ namespace TestLeft.UI_Tests.Customer
                 var name1 = TcSettings.NamePrefix + Guid.NewGuid();
                 var name2 = TcSettings.NamePrefix + Guid.NewGuid();
 
-                var customers = HomeZoneApp.Goto<TcCustomers>();
+                var customers = HomeZoneApp.GotoCustomers();
                 var customersCount = customers.Count();
                 if( string.IsNullOrEmpty( customers.Name.Value ) )
                 {

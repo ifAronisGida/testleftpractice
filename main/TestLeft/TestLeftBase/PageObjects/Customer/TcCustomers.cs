@@ -1,5 +1,6 @@
 ﻿using System;
 using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Customer;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
 using Trumpf.PageObjects;
@@ -15,7 +16,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    public class TcCustomers : PageObject, IChildOf<TcHomeZoneApp>
+    public class TcCustomers : PageObject, IChildOf<TcHomeZoneApp>, TiCustomers
     {
         protected override Search SearchPattern => Search.ByUid( "Customer" );
 
