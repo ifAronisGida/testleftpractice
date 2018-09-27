@@ -1,4 +1,5 @@
 ﻿using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Machine;
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
@@ -11,7 +12,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcDetailContent}" />
-    public class TcMachineDetail : PageObjectBase, IChildOf<TcDetailContent>
+    public class TcMachineDetail : PageObjectBase, IChildOf<TcDetailContent>, TiMachineDetail
     {
         protected override Search SearchPattern => Search.ByUid( "Machine.Details" );
 

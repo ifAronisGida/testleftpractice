@@ -84,6 +84,6 @@ namespace PageObjectInterfaces.Customer
         /// <summary>
         /// Deletes the selected customers.
         /// </summary>
-        void DeleteSelectedCustomers( );
+        void DeleteSelectedCustomers();
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using PageObjectInterfaces.Common;
+using PageObjectInterfaces.Machine;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.Waiting;
 using Trumpf.PageObjects.WPF;
@@ -15,7 +17,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     /// </summary>
     /// <seealso cref="RepeaterObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
-    public class TcMachines : RepeaterObject, IChildOf<TcMainTabControl>
+    public class TcMachines : RepeaterObject, IChildOf<TcMainTabControl>, TiMachines
     {
         private readonly Lazy<TcMachineToolbar> mToolbar;
         private readonly Lazy<TcMachinePopupMenu> mPopup;
@@ -39,7 +41,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <value>
         /// The detail overlay.
         /// </value>
-        public TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
+        private TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
 
         /// <summary>
         /// Gets the toolbar.
@@ -47,7 +49,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <value>
         /// The toolbar.
         /// </value>
-        public TcMachineToolbar Toolbar => mToolbar.Value;
+        public TiMachineToolbar Toolbar => mToolbar.Value;
 
         /// <summary>
         /// Gets the PopupMenu.
@@ -63,7 +65,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <value>
         /// The result column.
         /// </value>
-        public TcResultColumn ResultColumn => mResultColumn.Value;
+        public TiResultColumn ResultColumn => mResultColumn.Value;
 
         /// <summary>
         /// Gets the detail area.
@@ -71,7 +73,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <value>
         /// The detail.
         /// </value>
-        public TcMachineDetail Detail => mDetail.Value;
+        public TiMachineDetail Detail => mDetail.Value;
 
         /// <summary>
         /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
@@ -141,7 +143,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         public void NewBendMachine( string machineType, string name )
         {
             NewBendMachine();
-            Detail.VisibleOnScreen.WaitFor();
+            //Detail.VisibleOnScreen.WaitFor();
             Detail.BendMachineType = machineType;
             Detail.Name.Value = name;
         }

@@ -1,6 +1,8 @@
 ﻿using PageObjectInterfaces.Customer;
+using PageObjectInterfaces.Machine;
 using PageObjectInterfaces.Part;
 using TestLeft.TestLeftBase.PageObjects.Customer;
+using TestLeft.TestLeftBase.PageObjects.Machine;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using Trumpf.PageObjects;
 
@@ -28,6 +30,11 @@ namespace TestLeft.TestLeftBase
         public TiParts GotoParts()
         {
             return Goto<TcParts>();
+        }
+
+        public TiMachines GotoMachines()
+        {
+            return Goto<TcMachines>();
         }
     }
 }

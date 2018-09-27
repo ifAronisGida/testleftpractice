@@ -23,7 +23,7 @@ namespace TestLeft.UI_Tests.Machine
             Act( () =>
                 {
                     var testMachineName = TcSettings.NamePrefix + Guid.NewGuid();
-                    var machines = HomeZoneApp.Goto<TcMachines>();
+                    var machines = HomeZoneApp.GotoMachines();
 
                     var machineCount = machines.ResultColumn.Count;
 
@@ -59,9 +59,9 @@ namespace TestLeft.UI_Tests.Machine
             Act( () =>
                 {
                     var testMachineName = TcSettings.NamePrefix + Guid.NewGuid();
-                    var machines = HomeZoneApp.Goto<TcMachines>();
+                    var machines = HomeZoneApp.GotoMachines();
 
-                    machines.VisibleOnScreen.WaitFor();
+                    //machines.VisibleOnScreen.WaitFor();
                     var machineCount = machines.ResultColumn.Count;
 
                     machines.NewBendMachine( "TruBend 5320 (6-axes) B23", testMachineName );

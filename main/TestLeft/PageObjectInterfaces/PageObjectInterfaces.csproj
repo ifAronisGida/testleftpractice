@@ -59,6 +59,9 @@
     <Compile Include="Controls\TiTruIconButton.cs" />
     <Compile Include="Controls\TiValueControl.cs" />
     <Compile Include="Customer\TiCustomers.cs" />
+    <Compile Include="Machine\TiMachineDetail.cs" />
+    <Compile Include="Machine\TiMachines.cs" />
+    <Compile Include="Machine\TiMachineToolbar.cs" />
     <Compile Include="Part\TiParts.cs" />
     <Compile Include="Part\TiPartSingleDetail.cs" />
     <Compile Include="Part\TiPartSingleDetailBendSolutions.cs" />
@@ -69,6 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dialogs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

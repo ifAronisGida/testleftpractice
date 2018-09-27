@@ -1,4 +1,5 @@
 ﻿using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Machine;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
@@ -12,7 +13,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcToolbars}" />
-    public class TcMachineToolbar : PageObjectBase, IChildOf<TcToolbars>
+    public class TcMachineToolbar : PageObjectBase, IChildOf<TcToolbars>, TiMachineToolbar
     {
         protected override Search SearchPattern => Search.ByUid( "Machine.Toolbar" );
 
@@ -22,7 +23,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <value>
         /// The new machine button.
         /// </value>
-        public IObjectTreeNode NewMachineButton => Node.Find<IObjectTreeNode>( new WPFPattern() {
+        public IObjectTreeNode NewMachineButton => Node.Find<IObjectTreeNode>( new WPFPattern()
+        {
             ClrFullClassName = "System.Windows.Controls.MenuItem",
             Uid = "Machine.Toolbar.New"
         } );
