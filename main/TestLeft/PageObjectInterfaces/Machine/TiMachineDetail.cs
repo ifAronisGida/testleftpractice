@@ -8,7 +8,7 @@ namespace PageObjectInterfaces.Machine
         TiValueControl<string> MachineNumber { get; }
         TiValueControl<string> LaserPower { get; }
         TiValueControl<string> TransferDirectory { get; }
-        TiValueControl<bool> CreateSubDirectory { get; }
+        TiValueControl<bool> CreateSubDirectory { get; } 
 
         /// <summary>
         /// Gets or sets the type of the cut machine.

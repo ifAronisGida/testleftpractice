@@ -11,7 +11,7 @@ namespace PageObjectInterfaces.Machine
         /// <value>
         /// The new machine button.
         /// </value>
-        IObjectTreeNode NewMachineButton { get; }
+        IObjectTreeNode NewMachineButton { get; } 
 
         /// <summary>
         /// Gets the save button.

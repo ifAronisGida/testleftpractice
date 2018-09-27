@@ -11,7 +11,7 @@ namespace PageObjectInterfaces.Machine
         /// <value>
         /// The toolbar.
         /// </value>
-        TiMachineToolbar Toolbar { get; }
+        TiMachineToolbar Toolbar { get; } 
 
         /// <summary>
         /// Gets the result column.

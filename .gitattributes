@@ -1,1 +1,2 @@
 *.csproj filter=utf8-autobom
+*.cs filter=utf8-autobom
