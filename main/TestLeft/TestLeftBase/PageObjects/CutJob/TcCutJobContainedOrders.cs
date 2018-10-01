@@ -6,11 +6,10 @@ using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
-using TestLeft.TestLeftBase.Utilities;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
-    public class TcCutJobContainedOrders : PageObject, IChildOf<TcDetailContent>
+    public class TcCutJobContainedOrders : TcPageObjectBase, IChildOf<TcDetailContent>
     {
         private readonly Lazy<TcRegularTableView<TcCutJobOrderRow>> mTableView;
 
@@ -23,8 +22,8 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.ContainedOrders" );
 
-        private TiButton SelectButton => this.FindGeneric<TiButton>( "CutJob.Detail.ContainedOrders.Select" );
-        private TiButton RemoveButton => this.FindGeneric<TiButton>( "CutJob.Detail.ContainedOrders.Remove" );
+        private TiButton SelectButton => Find<TiButton>( "CutJob.Detail.ContainedOrders.Select" );
+        private TiButton RemoveButton => Find<TiButton>( "CutJob.Detail.ContainedOrders.Remove" );
         private TcGridControl PartOrdersGrid => Find<TcGridControl>( Search.ByUid( "CutJob.Detail.ContainedOrders.PartOrders" ) );
 
         public void UnSelectAllPartOrders()
