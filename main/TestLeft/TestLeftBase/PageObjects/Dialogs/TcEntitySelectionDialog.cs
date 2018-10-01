@@ -36,7 +36,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Dialogs
 
             Ok();
             return true;
-
         }
     }
 }

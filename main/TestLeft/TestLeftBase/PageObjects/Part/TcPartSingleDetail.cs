@@ -6,7 +6,6 @@ using Trumpf.PageObjects.Waiting;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
-using TestLeft.TestLeftBase.Utilities;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
@@ -20,15 +19,15 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         protected override Search SearchPattern => Search.ByUid( "Part.Details" );
 
         public TiValueControl<string> Name => Find<TiValueControl<string>>( "Part.Detail.Base.Description" );
-        public TiValueControl<string> DrawingNumber => this.FindMapped<TiValueControl<string>>( "Part.Detail.Base.DrawingNumber" );
-        public TiValueControl<string> DrawingVersion => this.FindMapped<TiValueControl<string>>( "Part.Detail.Base.DrawingVersion" );
-        public TiValueControl<string> IdTextEdit => this.FindMapped<TiValueControl<string>>( "Part.Detail.Base.Name" );
-        public TiValueControl<string> ExternalName => this.FindMapped<TiValueControl<string>>( "Part.Detail.Base.More.ExternalName" );
-        public TiValueControl<string> Note => this.FindMapped<TiValueControl<string>>( "Part.Detail.Base.More.Note" );
+        public TiValueControl<string> DrawingNumber => Find<TiValueControl<string>>( "Part.Detail.Base.DrawingNumber" );
+        public TiValueControl<string> DrawingVersion => Find<TiValueControl<string>>( "Part.Detail.Base.DrawingVersion" );
+        public TiValueControl<string> IdTextEdit => Find<TiValueControl<string>>( "Part.Detail.Base.Name" );
+        public TiValueControl<string> ExternalName => Find<TiValueControl<string>>( "Part.Detail.Base.More.ExternalName" );
+        public TiValueControl<string> Note => Find<TiValueControl<string>>( "Part.Detail.Base.More.Note" );
         private TiValueControl<string> CustomerLookUpEdit => Find<TiValueControl<string>>( "EditCustomerProperty.EditValue" );
         private TiButton CustomerOpenAdministrationButton => Find<TiButton>( "EditCustomerProperty.OpenAdministration" );
         private TcGroupPanel DetailGroupPanel => Find<TcGroupPanel>( Search.ByUid( "Part.Detail.Base" ) );
-        private TiValueControl<bool> ArchivableCheckBox => this.FindMapped<TiValueControl<bool>>( "Part.Detail.Archivable" );
+        private TiValueControl<bool> ArchivableCheckBox => Find<TiValueControl<bool>>( "Part.Detail.Archivable" );
 
         /// <summary>
         /// Waits for name TextBox enabled.
