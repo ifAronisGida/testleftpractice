@@ -77,25 +77,5 @@ namespace PageObjectInterfaces.Material
         /// <param name="id">The identifier.</param>
         /// <returns>true if successful</returns>
         bool DeleteMaterial( string id );
-
-        /// <summary>
-        /// Selects the material via identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns>true if found</returns>
-        bool SelectMaterial( string id );
-
-        /// <summary>
-        /// Selects the materials containing the given search text.
-        /// </summary>
-        /// <param name="searchText">The search text.</param>
-        /// <returns>The amount of selected materials.</returns>
-        int SelectMaterials( string searchText );
-
-        /// <summary>
-        /// Selects all materials.
-        /// </summary>
-        /// <returns>The amount of selected materials.</returns>
-        int SelectAll();
     }
 }

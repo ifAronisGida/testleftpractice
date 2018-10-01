@@ -41,26 +41,6 @@ namespace PageObjectInterfaces.Part
         bool DeletePart( string id );
 
         /// <summary>
-        /// Selects the part via identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns>true if successful</returns>
-        bool SelectPart( string id );
-
-        /// <summary>
-        /// Selects the parts containing the given search text.
-        /// </summary>
-        /// <param name="searchText">The search text.</param>
-        /// <returns>The amount of selected parts.</returns>
-        int SelectParts( string searchText );
-
-        /// <summary>
-        /// Selects all parts.
-        /// </summary>
-        /// <returns>The amount of selected parts.</returns>
-        int SelectAll();
-
-        /// <summary>
         /// Creates the part order.
         /// </summary>
         /// <returns>true if successful</returns>

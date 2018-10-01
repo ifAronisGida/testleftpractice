@@ -149,42 +149,13 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <returns>true if successful</returns>
         public bool DeleteMaterial( string id )
         {
-            if( !SelectMaterial( id ) )
+            if( !ResultColumn.SelectItem( id ) )
             {
                 return false;
             }
 
             DeleteMaterial();
             return true;
-        }
-
-        /// <summary>
-        /// Selects the material via identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns>true if found</returns>
-        public bool SelectMaterial( string id )
-        {
-            return ResultColumn.SelectItem( id );
-        }
-
-        /// <summary>
-        /// Selects the materials containing the given search text.
-        /// </summary>
-        /// <param name="searchText">The search text.</param>
-        /// <returns>The amount of selected materials.</returns>
-        public int SelectMaterials( string searchText )
-        {
-            return ResultColumn.SelectItems( searchText );
-        }
-
-        /// <summary>
-        /// Selects all materials.
-        /// </summary>
-        /// <returns>The amount of selected materials.</returns>
-        public int SelectAll()
-        {
-            return ResultColumn.SelectAll();
         }
     }
 }

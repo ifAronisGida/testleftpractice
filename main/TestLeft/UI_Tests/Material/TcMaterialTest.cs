@@ -61,7 +61,7 @@ namespace TestLeft.UI_Tests.Material
 
                 materials.Goto();
 
-                materials.SelectMaterial( "1.0038" );
+                materials.ResultColumn.SelectItem( "1.0038" );
 
                 materials.DuplicateMaterial();
 

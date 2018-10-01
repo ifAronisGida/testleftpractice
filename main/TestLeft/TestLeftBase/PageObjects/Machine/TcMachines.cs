@@ -177,41 +177,13 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <returns>true if deleted</returns>
         public bool DeleteMachine( string id )
         {
-            if( !SelectMachine( id ) )
+            if( !ResultColumn.SelectItem( id ) )
             {
                 return false;
             }
 
             DeleteMachine();
             return true;
-        }
-
-        /// <summary>
-        /// Selects the machine via identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        public bool SelectMachine( string id )
-        {
-            return ResultColumn.SelectItem( id );
-        }
-
-        /// <summary>
-        /// Selects the machines containing the given search text.
-        /// </summary>
-        /// <param name="searchText">The search text.</param>
-        /// <returns>The amount of selected machines.</returns>
-        public int SelectMachines( string searchText )
-        {
-            return ResultColumn.SelectItems( searchText );
-        }
-
-        /// <summary>
-        /// Selects all machines.
-        /// </summary>
-        /// <returns>The amount of selected machines.</returns>
-        public int SelectAll()
-        {
-            return ResultColumn.SelectAll();
         }
     }
 }

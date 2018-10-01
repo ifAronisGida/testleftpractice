@@ -198,42 +198,13 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <returns>true if successful</returns>
         public bool DeletePart( string id )
         {
-            if( !SelectPart( id ) )
+            if( !ResultColumn.SelectItem(id) )
             {
                 return false;
             }
 
             DeletePart();
             return true;
-        }
-
-        /// <summary>
-        /// Selects the part via identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns>true if successful</returns>
-        public bool SelectPart( string id )
-        {
-            return ResultColumn.SelectItem( id );
-        }
-
-        /// <summary>
-        /// Selects the parts containing the given search text.
-        /// </summary>
-        /// <param name="searchText">The search text.</param>
-        /// <returns>The amount of selected parts.</returns>
-        public int SelectParts( string searchText )
-        {
-            return ResultColumn.SelectItems( searchText );
-        }
-
-        /// <summary>
-        /// Selects all parts.
-        /// </summary>
-        /// <returns>The amount of selected parts.</returns>
-        public int SelectAll()
-        {
-            return ResultColumn.SelectAll();
         }
 
         /// <summary>

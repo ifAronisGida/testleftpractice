@@ -70,12 +70,12 @@ namespace TestLeft.UI_Tests.Utilities
 
             bool DuplicateAndSave( string materialId )
             {
-                if( materials.SelectMaterial( Name2UIT_Name( materialId ) ) )
+                if( materials.ResultColumn.SelectItem( Name2UIT_Name( materialId ) ) )
                 {
                     return false;     // material already exists
                 }
 
-                materials.SelectMaterial( materialId );
+                materials.ResultColumn.SelectItem( materialId );
 
                 materials.DuplicateMaterial();
 

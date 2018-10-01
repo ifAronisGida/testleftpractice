@@ -89,24 +89,5 @@ namespace PageObjectInterfaces.Machine
         /// <param name="id">The identifier.</param>
         /// <returns>true if deleted</returns>
         bool DeleteMachine( string id );
-
-        /// <summary>
-        /// Selects the machine via identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        bool SelectMachine( string id );
-
-        /// <summary>
-        /// Selects the machines containing the given search text.
-        /// </summary>
-        /// <param name="searchText">The search text.</param>
-        /// <returns>The amount of selected machines.</returns>
-        int SelectMachines( string searchText );
-
-        /// <summary>
-        /// Selects all machines.
-        /// </summary>
-        /// <returns>The amount of selected machines.</returns>
-        int SelectAll();
     }
 }
