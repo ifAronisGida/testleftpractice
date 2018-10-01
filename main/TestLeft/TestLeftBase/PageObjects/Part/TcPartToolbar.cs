@@ -11,7 +11,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcToolbars}" />
-    public class TcPartToolbar : PageObjectBase, IChildOf<TcToolbars>, TiPartToolbar
+    public class TcPartToolbar : TcPageObjectBase, IChildOf<TcToolbars>, TiPartToolbar
     {
         protected override Search SearchPattern => Search.ByUid( "Part.Toolbar" );
 

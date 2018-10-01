@@ -10,7 +10,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcToolbars}" />
-    public class TcMaterialToolbar : PageObjectBase, IChildOf<TcToolbars>
+    public class TcMaterialToolbar : TcPageObjectBase, IChildOf<TcToolbars>
     {
         protected override Search SearchPattern => Search.ByUid( "Material.Toolbar" );
 

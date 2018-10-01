@@ -12,7 +12,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcDetailContent}" />
-    public class TcMachineDetail : PageObjectBase, IChildOf<TcDetailContent>, TiMachineDetail
+    public class TcMachineDetail : TcPageObjectBase, IChildOf<TcDetailContent>, TiMachineDetail
     {
         protected override Search SearchPattern => Search.ByUid( "Machine.Details" );
 

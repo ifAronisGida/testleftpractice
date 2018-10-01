@@ -3,7 +3,7 @@ using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects
 {
-    public abstract class PageObjectBase : PageObject
+    public abstract class TcPageObjectBase : PageObject
     {
         protected TInterface Find<TInterface>(string uid) where TInterface : class
         {

@@ -12,7 +12,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    public class TcSettingsDialog : PageObjectBase, IChildOf<TcHomeZoneApp>
+    public class TcSettingsDialog : TcPageObjectBase, IChildOf<TcHomeZoneApp>
     {
         protected override Search SearchPattern => Search.ByUid( "SettingsDialog" );
 

@@ -5,7 +5,7 @@ using TestLeft.TestLeftBase.PageObjects.Shell;
 
 namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 {
-    public class TcPartOrderToolbar : PageObjectBase, IChildOf<TcToolbars>
+    public class TcPartOrderToolbar : TcPageObjectBase, IChildOf<TcToolbars>
     {
         protected override Search SearchPattern => Search.ByUid( "PartOrder.Toolbar" );
 

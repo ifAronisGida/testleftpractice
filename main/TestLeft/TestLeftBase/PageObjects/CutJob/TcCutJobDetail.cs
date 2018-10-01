@@ -7,7 +7,7 @@ using TestLeft.TestLeftBase.Utilities;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
-    public class TcCutJobDetail : PageObjectBase, IChildOf<TcDetailContent>
+    public class TcCutJobDetail : TcPageObjectBase, IChildOf<TcDetailContent>
     {
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail" );
 

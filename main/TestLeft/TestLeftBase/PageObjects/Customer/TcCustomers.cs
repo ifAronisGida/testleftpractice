@@ -15,7 +15,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    public class TcCustomers : PageObjectBase, IChildOf<TcHomeZoneApp>, TiCustomers
+    public class TcCustomers : TcPageObjectBase, IChildOf<TcHomeZoneApp>, TiCustomers
     {
         protected override Search SearchPattern => Search.ByUid( "Customer" );
 

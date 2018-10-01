@@ -142,7 +142,7 @@
     <Compile Include="PageObjects\Material\TcMaterialDetail.cs" />
     <Compile Include="PageObjects\Material\TcMaterials.cs" />
     <Compile Include="PageObjects\Material\TcMaterialToolbar.cs" />
-    <Compile Include="PageObjects\PageObjectBase.cs" />
+    <Compile Include="PageObjects\TcPageObjectBase.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrders.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrderToolbar.cs" />
     <Compile Include="PageObjects\Part\TcParts.cs" />

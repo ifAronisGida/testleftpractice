@@ -106,7 +106,7 @@ namespace TestLeft.UI_Tests.Base
 
         public ICollectorsOptions CollectorsConfigurator( ICollectorsOptions collectors )
             => collectors
-                .ScreenRecorder.Enable();
+                .ScreenRecorder.Disable();
 
         public IExceptionActionMap ExceptionActionMap( IRunningAutoFact runningAutoFact, IExceptionActionMap exceptionActionMap )
             => exceptionActionMap;

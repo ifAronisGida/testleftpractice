@@ -6,7 +6,7 @@ using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.Dialogs
 {
-    public class TcEntitySelectionDialog : PageObjectBase, IChildOf<TcHomeZoneApp>
+    public class TcEntitySelectionDialog : TcPageObjectBase, IChildOf<TcHomeZoneApp>
     {
         protected override Search SearchPattern => Search.By(new WPFPattern()
         {

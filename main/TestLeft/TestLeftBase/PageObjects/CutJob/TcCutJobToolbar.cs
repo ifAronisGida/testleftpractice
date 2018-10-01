@@ -5,7 +5,7 @@ using TestLeft.TestLeftBase.PageObjects.Shell;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
-    public class TcCutJobToolbar : PageObjectBase, IChildOf<TcToolbars>
+    public class TcCutJobToolbar : TcPageObjectBase, IChildOf<TcToolbars>
     {
         protected override Search SearchPattern => Search.ByUid( "CutJob.Toolbar" );
 

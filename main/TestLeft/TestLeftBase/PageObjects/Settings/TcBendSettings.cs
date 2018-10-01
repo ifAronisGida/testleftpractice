@@ -9,7 +9,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="IChildOf{TcSettingsDialog}" />
-    public class TcBendSettings : PageObjectBase, IChildOf<TcSettingsDialog>
+    public class TcBendSettings : TcPageObjectBase, IChildOf<TcSettingsDialog>
     {
         protected override Search SearchPattern => Search.ByUid( "Settings.Bend" );
 

@@ -11,7 +11,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcDetailContent}" />
-    public class TcPartSingleDetailDesign : PageObjectBase, IChildOf<TcPartSingleDetail>, TiPartSingleDetailDesign
+    public class TcPartSingleDetailDesign : TcPageObjectBase, IChildOf<TcPartSingleDetail>, TiPartSingleDetailDesign
     {
         protected override Search SearchPattern => Search.ByUid( "Part.Detail.Design" );
 

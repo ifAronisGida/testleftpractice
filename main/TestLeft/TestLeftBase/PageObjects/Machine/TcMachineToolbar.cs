@@ -13,7 +13,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcToolbars}" />
-    public class TcMachineToolbar : PageObjectBase, IChildOf<TcToolbars>, TiMachineToolbar
+    public class TcMachineToolbar : TcPageObjectBase, IChildOf<TcToolbars>, TiMachineToolbar
     {
         protected override Search SearchPattern => Search.ByUid( "Machine.Toolbar" );
 
