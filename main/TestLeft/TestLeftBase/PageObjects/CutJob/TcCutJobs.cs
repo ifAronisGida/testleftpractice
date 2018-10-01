@@ -12,8 +12,9 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         private readonly Lazy<TcCutJobToolbar> mToolbar;
         private readonly Lazy<TcResultColumn> mResultColumn;
 
-        private readonly Lazy<TcCutJobDetail> mSingleDetail;
+        private readonly Lazy<TcCutJobDetail> mBaseInfo;
         private readonly Lazy<TcCutJobContainedOrders> mContainedOrders;
+        private readonly Lazy<TcCutJobSolution> mSheetProgram;
 
         private TcCutJobSolution mCutJobSolution;
 
@@ -21,30 +22,20 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             mToolbar = new Lazy<TcCutJobToolbar>( On<TcCutJobToolbar> );
             mResultColumn = new Lazy<TcResultColumn>( () => Find<TcResultColumn>( Search.ByUid( TcResultColumn.Uid ) ) );
-            mSingleDetail = new Lazy<TcCutJobDetail>( On<TcCutJobDetail> );
+            mBaseInfo = new Lazy<TcCutJobDetail>( On<TcCutJobDetail> );
             mContainedOrders = new Lazy<TcCutJobContainedOrders>( On<TcCutJobContainedOrders> );
+            mSheetProgram = new Lazy<TcCutJobSolution>( On<TcCutJobSolution> );
         }
 
         public TcCutJobToolbar Toolbar => mToolbar.Value;
 
         public TcResultColumn ResultColumn => mResultColumn.Value;
 
-        public TcCutJobDetail SingleDetail => mSingleDetail.Value;
+        public TcCutJobDetail BaseInfo => mBaseInfo.Value;
 
         public TcCutJobContainedOrders ContainedOrders => mContainedOrders.Value;
 
-        public TcCutJobSolution CutJobSolution
-        {
-            get
-            {
-                if( mCutJobSolution == null )
-                {
-                    mCutJobSolution = On<TcCutJobSolution>();
-                }
-
-                return mCutJobSolution;
-            }
-        }
+        public TcCutJobSolution SheetProgram => mSheetProgram.Value;
 
         public override void Goto()
         {

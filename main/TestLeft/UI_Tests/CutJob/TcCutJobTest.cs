@@ -28,7 +28,7 @@ namespace TestLeft.UI_Tests.CutJob
 
                     cutJobs.NewCutJob();
 
-                    cutJobs.SingleDetail.Id.Value = TcSettings.NamePrefix + Guid.NewGuid().ToString().Replace( '-', '_' );
+                    cutJobs.BaseInfo.Id.Value = TcSettings.NamePrefix + Guid.NewGuid().ToString().Replace( '-', '_' );
 
                     Assert.IsTrue( cutJobs.Toolbar.SaveButton.Enabled );
                     cutJobs.SaveCutJob();
@@ -49,7 +49,7 @@ namespace TestLeft.UI_Tests.CutJob
 
                 cutJobs.NewCutJob();
 
-                cutJobs.SingleDetail.RawMaterial.Value = "AL0M0130---";
+                cutJobs.BaseInfo.RawMaterial.Value = "AL0M0130---";
 
                 Thread.Sleep( 3000 );
 
@@ -98,11 +98,11 @@ namespace TestLeft.UI_Tests.CutJob
                 var cutJobs = HomeZoneApp.Goto<TcCutJobs>();
                 cutJobs.NewCutJob();
 
-                cutJobs.SingleDetail.RawMaterial.Value = "AL0M0050---";
+                cutJobs.BaseInfo.RawMaterial.Value = "AL0M0050---";
 
                 Thread.Sleep( 2000 );
 
-                var solution = cutJobs.CutJobSolution;
+                var solution = cutJobs.SheetProgram;
                 Assert.AreEqual( 1, solution.RawSheets.Count );
                 Assert.IsNotNull( solution.RawSheets.FindRawSheet( row => row.RawSheet.Value == "AL0M0050----2000x1000" ) );
                 Assert.IsNull( solution.RawSheets.FindRawSheet( row => false ) );
