@@ -12,7 +12,12 @@ namespace TestLeft.TestLeftBase.Utilities
             return uiObject.Find<TcGenericControlObject>( pattern, predicate, depth );
         }
 
-        public static T FindGeneric<T>( this IUIObject uiObject, string uid, Predicate<IControl> predicate = null, int? depth = null ) where T : class
+        public static T FindMapped<T>( this IUIObject uiObject, Search pattern, int? depth = null ) where T : class
+        {
+            return TcControlMapper.Map<T>( uiObject.FindGeneric( pattern, null, depth ) );
+        }
+
+        public static T FindMapped<T>( this IUIObject uiObject, string uid, Predicate<IControl> predicate = null, int? depth = null ) where T : class
         {
             return TcControlMapper.Map<T>( uiObject.FindGeneric( Search.ByUid( uid ), predicate, depth ) );
         }

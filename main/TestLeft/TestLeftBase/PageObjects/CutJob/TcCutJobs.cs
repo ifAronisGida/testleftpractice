@@ -16,8 +16,6 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         private readonly Lazy<TcCutJobContainedOrders> mContainedOrders;
         private readonly Lazy<TcCutJobSolution> mSheetProgram;
 
-        private TcCutJobSolution mCutJobSolution;
-
         public TcCutJobs()
         {
             mToolbar = new Lazy<TcCutJobToolbar>( On<TcCutJobToolbar> );

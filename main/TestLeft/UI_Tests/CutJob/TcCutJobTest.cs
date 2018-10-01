@@ -104,8 +104,6 @@ namespace TestLeft.UI_Tests.CutJob
 
                 var solution = cutJobs.SheetProgram;
                 Assert.AreEqual( 1, solution.RawSheets.Count );
-                Assert.IsNotNull( solution.RawSheets.FindRawSheet( row => row.RawSheet.Value == "AL0M0050----2000x1000" ) );
-                Assert.IsNull( solution.RawSheets.FindRawSheet( row => false ) );
 
                 var newRawSheet = solution.AddRawSheet();
                 newRawSheet.Quantity.Value = 3;

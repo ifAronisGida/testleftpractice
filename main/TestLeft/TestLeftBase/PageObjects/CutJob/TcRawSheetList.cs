@@ -1,24 +1,26 @@
 using System;
 using System.Linq;
+using System.Windows.Controls;
 using SmartBear.TestLeft.TestObjects;
+using TestLeft.TestLeftBase.Utilities;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
-    public class TcRawSheetList : ControlObject
+    public class TcRawSheetList
     {
-        protected override Search SearchPattern => Search.ByControlName( "RawSheetListe" );
+        private readonly IControlObject mControlObject;
 
-        public int Count => Node.Cast<IObjectTreeNode>().Children.Count; // there's ChildCount, but it often doesn't work
+        public TcRawSheetList( IControlObject controlObject )
+        {
+            mControlObject = controlObject;
+        }
+
+        public int Count => mControlObject.Node.Cast<IObjectTreeNode>().Children.Count; // there's ChildCount, but it often doesn't work
 
         public TcRawSheet GetRawSheet( int index )
         {
-            return Find<TcRawSheet>( Search.ByIndex( index ) );
-        }
-
-        public TcRawSheet FindRawSheet( Func<TcRawSheet, bool> predicate )
-        {
-            return FindAll<TcRawSheet>().Where( predicate ).FirstOrDefault();
+            return new TcRawSheet( mControlObject.FindGeneric( Search.By<ContentPresenter>().AndByIndex( index ) ) );
         }
     }
 }

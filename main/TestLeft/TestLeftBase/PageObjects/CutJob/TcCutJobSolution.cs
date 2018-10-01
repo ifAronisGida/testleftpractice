@@ -6,8 +6,8 @@ using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.Settings;
-using TestLeft.TestLeftBase.Utilities;
 using TestLeft.TestLeftBase.ControlObjects;
+using TestLeft.TestLeftBase.Utilities;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
@@ -15,17 +15,8 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
     {
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.JobSolution" );
 
-        //private TcComboBox MachineCombo => Find<TcComboBox>( Search.ByUid( "CutJob.Detail.JobSolution.Machine" ) );
-        //private TcLookUpEdit TechnoProfile => this.FindGeneric<TcLookUpEdit>( "CutJob.Detail.JobSolution.TechnologyProfile" );
-        //private TcTruIconButton AddPresetRawSheetButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.AddPresetRawSheet" ) );
-        //private TcLookUpEdit NestingModeEdit => this.FindGeneric<TcLookUpEdit>( "CutJob.Detail.JobSolution.NestingMode" );
-        //private TcLookUpEdit LaserTechnologyTableEdit => this.FindGeneric<TcLookUpEdit>( "CutJob.Detail.JobSolution.LaserTechnologyTable" );
-        //private TcLookUpEdit LaserProcessRule => this.FindGeneric<TcLookUpEdit>( "CutJob.Detail.JobSolution.LaserProcessRule" );
-        //private TcTruIconButton OpenSetupPlanButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.OpenSetupPlan" ) );
-        //private TcTruIconButton OpenReleaseFolderButton => Find<TcTruIconButton>( Search.ByUid( "CutJob.Detail.JobSolution.OpenReleaseFolder" ) );
-
-        public TiValueControl<string> Note => this.FindGeneric<TiValueControl<string>>( "CutJob.Detail.JobSolution.Comment" );
-        public TcRawSheetList RawSheets => Find<TcRawSheetList>();
+        public TiValueControl<string> Note => Find<TiValueControl<string>>( "CutJob.Detail.JobSolution.Comment" );
+        public TcRawSheetList RawSheets => new TcRawSheetList( this.FindGeneric( Search.ByControlName( "RawSheetListe" ) ) );
 
         private TiButton AddPresetRawSheetButton => Find<TiButton>( "CutJob.Detail.JobSolution.AddPresetRawSheet" );
         private TiButton DeleteButton => Find<TiButton>( "CutJob.Detail.JobSolution.Delete" );

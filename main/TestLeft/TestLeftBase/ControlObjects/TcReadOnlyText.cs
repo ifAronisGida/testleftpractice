@@ -1,6 +1,4 @@
-using PageObjectInterfaces.Controls;
-using TestLeft.TestLeftBase.Utilities;
-using Trumpf.PageObjects.Waiting;
+using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects
 {
@@ -8,8 +6,9 @@ namespace TestLeft.TestLeftBase.ControlObjects
     /// The TcReadOnlyText ControlObject.
     /// </summary>
     /// <seealso cref="string" />
-    public class TcReadOnlyText : TcGenericControlObject, TiValueControl<string>
+    internal class TcReadOnlyText : ControlObject
     {
+        protected override Search SearchPattern => Search.Any;
 
         /// <summary>
         /// Gets the text.
@@ -18,33 +17,5 @@ namespace TestLeft.TestLeftBase.ControlObjects
         /// The text.
         /// </value>
         public string Text => Node.GetProperty<string>( "Text" );
-
-        /// <summary>
-        /// Gets or sets the value.
-        /// </summary>
-        /// <value>
-        /// The value.
-        /// </value>
-        /// <exception cref="System.NotSupportedException"></exception>
-        string TiValueControl<string>.Value
-        {
-            get => Text;
-            set => throw new System.NotSupportedException();
-        }
-
-        /// <summary>
-        /// Gets a value indicating whether this instance is read only.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is read only; otherwise, <c>false</c>.
-        /// </value>
-        bool TiValueControl<string>.IsReadOnly
-        {
-            get => Node.GetProperty<bool>( "IsReadOnly" );
-        }
-
-        Wool TiControl.Enabled => throw new System.NotImplementedException();
-
-        Wool TiControl.Visible => throw new System.NotImplementedException();
     }
 }

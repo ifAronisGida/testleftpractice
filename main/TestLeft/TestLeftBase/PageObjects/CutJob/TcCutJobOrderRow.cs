@@ -18,9 +18,9 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             mRow = row;
         }
 
-        public TiButton DrawingButton => mRow.FindGeneric<TiButton>( "ImageLinkButton" );
+        public TiButton DrawingButton => mRow.FindMapped<TiButton>( "ImageLinkButton" );
 
-        public TiButton PartLink => mRow.FindGeneric<TiButton>( "PartLinkButton" );
+        public TiButton PartLink => mRow.FindMapped<TiButton>( "PartLinkButton" );
 
         public int Pending
         {
@@ -46,7 +46,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             }
         }
 
-        public TiButton OrderLink => mRow.FindGeneric<TiButton>( "PartOrderLinkButton" );
+        public TiButton OrderLink => mRow.FindMapped<TiButton>( "PartOrderLinkButton" );
 
         public string Customer => mRow
             .Find<TcReadOnlyText>( Search.ByUid( "CustomerName" ) )
@@ -63,7 +63,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
                     return null;
                 }
 
-                return DateTime.Parse( textBlock.Text );
+                return textBlock.Node.GetDataContextProperty<DateTime>( "Value" );
             }
         }
 
@@ -80,8 +80,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             .Find<TcReadOnlyText>( Search.ByUid( "PartDistanceMode" ) )
             .Text;
 
-        public TiValueControl<bool> IgnoreProcessings =>
-             TcControlMapper.Map<TiValueControl<bool>>( mRow.GetCell( 15 ).FindGeneric( Search.Any, depth: 1 ) );
+        public TiValueControl<bool> IgnoreProcessings => mRow.GetCell( 15 ).FindMapped<TiValueControl<bool>>( Search.Any, depth: 1 );
 
         // TODO: do something about the editability of these cells
         public int NestingPriority

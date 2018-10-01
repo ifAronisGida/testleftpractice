@@ -11,6 +11,8 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
     public class TcCutJobContainedOrders : TcPageObjectBase, IChildOf<TcDetailContent>
     {
+        protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.ContainedOrders" );
+
         private readonly Lazy<TcRegularTableView<TcCutJobOrderRow>> mTableView;
 
         public TcCutJobContainedOrders()
@@ -19,8 +21,6 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         }
 
         public int PartOrdersCount => PartOrdersGrid.RowCount;
-
-        protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.ContainedOrders" );
 
         private TiButton SelectButton => Find<TiButton>( "CutJob.Detail.ContainedOrders.Select" );
         private TiButton RemoveButton => Find<TiButton>( "CutJob.Detail.ContainedOrders.Remove" );
