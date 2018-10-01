@@ -1,4 +1,6 @@
-﻿using System;
+using System;
+using PageObjectInterfaces.Common;
+using PageObjectInterfaces.Material;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.Waiting;
 using Trumpf.PageObjects.WPF;
@@ -14,7 +16,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
     /// </summary>
     /// <seealso cref="RepeaterObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
-    public class TcMaterials : RepeaterObject, IChildOf<TcMainTabControl>
+    public class TcMaterials : RepeaterObject, IChildOf<TcMainTabControl>, TiMaterials
     {
         private readonly Lazy<TcMaterialToolbar> mToolbar;
         private readonly Lazy<TcResultColumn> mResultColumn;
@@ -44,7 +46,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The toolbar.
         /// </value>
-        public TcMaterialToolbar Toolbar => mToolbar.Value;
+        public TiMaterialToolbar Toolbar => mToolbar.Value;
 
         /// <summary>
         /// Gets the result column.
@@ -52,7 +54,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The result column.
         /// </value>
-        public TcResultColumn ResultColumn => mResultColumn.Value;
+        public TiResultColumn ResultColumn => mResultColumn.Value;
 
         /// <summary>
         /// Gets the detail area.
@@ -60,7 +62,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The detail.
         /// </value>
-        public TcMaterialDetail Detail => mDetail.Value;
+        public TiMaterialDetail Detail => mDetail.Value;
 
         /// <summary>
         /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.

@@ -9,6 +9,8 @@ using TestLeft.TestLeftBase;
 using TestLeft.TestLeftBase.Settings;
 using Trumpf.AutoTest.Facts;
 using Trumpf.AutoTest.Utilities;
+using Trumpf.PageObjects;
+
 
 namespace TestLeft.UI_Tests.Base
 {

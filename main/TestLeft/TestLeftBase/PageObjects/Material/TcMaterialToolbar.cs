@@ -1,4 +1,5 @@
-﻿using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Material;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
@@ -10,7 +11,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcToolbars}" />
-    public class TcMaterialToolbar : TcPageObjectBase, IChildOf<TcToolbars>
+    public class TcMaterialToolbar : TcPageObjectBase, IChildOf<TcToolbars>, TiMaterialToolbar
     {
         protected override Search SearchPattern => Search.ByUid( "Material.Toolbar" );
 

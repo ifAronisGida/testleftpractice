@@ -62,6 +62,9 @@
     <Compile Include="Machine\TiMachineDetail.cs" />
     <Compile Include="Machine\TiMachines.cs" />
     <Compile Include="Machine\TiMachineToolbar.cs" />
+    <Compile Include="Material\TiMaterialDetail.cs" />
+    <Compile Include="Material\TiMaterials.cs" />
+    <Compile Include="Material\TiMaterialToolbar.cs" />
     <Compile Include="Part\TiParts.cs" />
     <Compile Include="Part\TiPartSingleDetail.cs" />
     <Compile Include="Part\TiPartSingleDetailBendSolutions.cs" />
