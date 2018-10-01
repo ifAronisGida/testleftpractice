@@ -23,9 +23,9 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.Goto<TcBendSettings>();
+                var bendSettings = HomeZoneApp.GotoBendSettings();
 
-                Assert.IsTrue( bendSettings.VisibleOnScreen.TryWaitFor() );
+                Assert.IsTrue( bendSettings.WaitUntilVisible() );
 
                 bendSettings.OpenToolsConfiguration();
 
@@ -48,9 +48,9 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.Goto<TcBendSettings>();
+                var bendSettings = HomeZoneApp.GotoBendSettings();
 
-                Assert.IsTrue( bendSettings.VisibleOnScreen.TryWaitFor() );
+                Assert.IsTrue( bendSettings.WaitUntilVisible() );
 
                 bendSettings.OpenBendDeductionConfiguration();
 
@@ -75,9 +75,9 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.Goto<TcBendSettings>();
+                var bendSettings = HomeZoneApp.GotoBendSettings();
 
-                Assert.IsTrue( bendSettings.VisibleOnScreen.TryWaitFor() );
+                Assert.IsTrue( bendSettings.WaitUntilVisible() );
 
                 bendSettings.OpenAppSettingsConfiguration();
 
@@ -102,9 +102,9 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.Goto<TcBendSettings>();
+                var bendSettings = HomeZoneApp.GotoBendSettings();
 
-                Assert.IsTrue( bendSettings.VisibleOnScreen.TryWaitFor() );
+                Assert.IsTrue( bendSettings.WaitUntilVisible() );
 
                 bendSettings.OpenDataManagerBend();
 

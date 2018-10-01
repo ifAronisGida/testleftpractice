@@ -2,10 +2,12 @@ using PageObjectInterfaces.Customer;
 using PageObjectInterfaces.Machine;
 using PageObjectInterfaces.Material;
 using PageObjectInterfaces.Part;
+using PageObjectInterfaces.Settings;
 using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.PageObjects.Machine;
 using TestLeft.TestLeftBase.PageObjects.Material;
 using TestLeft.TestLeftBase.PageObjects.Part;
+using TestLeft.TestLeftBase.PageObjects.Settings;
 using Trumpf.PageObjects;
 
 namespace TestLeft.TestLeftBase
@@ -42,6 +44,11 @@ namespace TestLeft.TestLeftBase
         public TiMaterials GotoMaterials()
         {
             return Goto<TcMaterials>();
+        }
+
+        public TiBendSettings GotoBendSettings()
+        {
+            return Goto<TcBendSettings>();
         }
     }
 }

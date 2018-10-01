@@ -1,4 +1,5 @@
 using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Settings;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 
@@ -9,7 +10,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="IChildOf{TcSettingsDialog}" />
-    public class TcBendSettings : TcPageObjectBase, IChildOf<TcSettingsDialog>
+    public class TcBendSettings : TcPageObjectBase, IChildOf<TcSettingsDialog>, TiBendSettings
     {
         protected override Search SearchPattern => Search.ByUid( "Settings.Bend" );
 
@@ -69,6 +70,15 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
         public void OpenDataManagerBend()
         {
             DataManagerBendOpenButton.Click();
+        }
+
+        /// <summary>
+        /// Waits until visible.
+        /// </summary>
+        /// <returns>true if visible</returns>
+        public bool WaitUntilVisible()
+        {
+            return VisibleOnScreen.TryWaitFor();
         }
     }
 }

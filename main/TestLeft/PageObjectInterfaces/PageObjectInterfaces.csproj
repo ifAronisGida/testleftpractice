@@ -72,12 +72,14 @@
     <Compile Include="Part\TiPartSingleDetailDesign.cs" />
     <Compile Include="Part\TiPartToolbar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\TiBendSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dialogs\" />
+    <Folder Include="Shell\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
