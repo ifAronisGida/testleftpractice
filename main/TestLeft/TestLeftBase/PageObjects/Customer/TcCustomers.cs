@@ -6,7 +6,6 @@ using TestLeft.TestLeftBase.ControlObjects.Grid;
 using Trumpf.PageObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Part;
-using TestLeft.TestLeftBase.Utilities;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.Customer
@@ -16,7 +15,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    public class TcCustomers : PageObject, IChildOf<TcHomeZoneApp>, TiCustomers
+    public class TcCustomers : PageObjectBase, IChildOf<TcHomeZoneApp>, TiCustomers
     {
         protected override Search SearchPattern => Search.ByUid( "Customer" );
 
@@ -32,20 +31,20 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
             mTableView = new Lazy<TcOptimizedTableView<TcCustomerRow>>( () => CustomerGrid.GetOptimizedTableView( underlyingRow => new TcCustomerRow( underlyingRow ) ) );
         }
 
-        public TiValueControl<string> City => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.City" );
-        public TiValueControl<string> Comment => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.Comment" );
-        public TiValueControl<string> Country => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.Country" );
-        public TiValueControl<string> Id => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.No" );
-        public TiValueControl<string> Name => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.Name" );
-        public TiValueControl<string> PostalCode => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.PostalCode" );
-        public TiValueControl<string> Street => this.FindGeneric<TiValueControl<string>>( "Customer.Detail.Street" );
+        public TiValueControl<string> City => Find<TiValueControl<string>>( "Customer.Detail.City" );
+        public TiValueControl<string> Comment => Find<TiValueControl<string>>( "Customer.Detail.Comment" );
+        public TiValueControl<string> Country => Find<TiValueControl<string>>( "Customer.Detail.Country" );
+        public TiValueControl<string> Id => Find<TiValueControl<string>>( "Customer.Detail.No" );
+        public TiValueControl<string> Name => Find<TiValueControl<string>>( "Customer.Detail.Name" );
+        public TiValueControl<string> PostalCode => Find<TiValueControl<string>>( "Customer.Detail.PostalCode" );
+        public TiValueControl<string> Street => Find<TiValueControl<string>>( "Customer.Detail.Street" );
 
-        private TiButton NewCustomerButton => this.FindGeneric<TiButton>( "Customer.Add" );
-        private TiButton DeleteCustomerButton => this.FindGeneric<TiButton>( "Customer.Delete" );
+        private TiButton NewCustomerButton => Find<TiButton>( "Customer.Add" );
+        private TiButton DeleteCustomerButton => Find<TiButton>( "Customer.Delete" );
         private TcGridControl CustomerGrid => Find<TcGridControl>( Search.ByUid( "Customer.List" ) );
-        private TiButton ApplyButton => this.FindGeneric<TiButton>( "Customer.Dialog.Apply" );
-        private TiButton CancelButton => this.FindGeneric<TiButton>( "Customer.Dialog.Cancel" );
-        private TiButton OkButton => this.FindGeneric<TiButton>( "Customer.Dialog.Ok" );
+        private TiButton ApplyButton => Find<TiButton>( "Customer.Dialog.Apply" );
+        private TiButton CancelButton => Find<TiButton>( "Customer.Dialog.Cancel" );
+        private TiButton OkButton => Find<TiButton>( "Customer.Dialog.Ok" );
 
         /// <summary>
         /// The customer administration dialog is not direct accessible, only via button click in several detail views.
