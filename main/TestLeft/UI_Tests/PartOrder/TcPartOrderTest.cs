@@ -37,7 +37,7 @@ namespace TestLeft.UI_Tests.PartOrder
 
             var partOrders = HomeZoneApp.Goto<TcPartOrders>();
             partOrders.NewPartOrder();
-            partOrders.SelectPart( "TestPart" );
+            partOrders.PartInfo.SelectPart( "TestPart" );
 
             Assert.IsTrue( partOrders.CanSave );
         }

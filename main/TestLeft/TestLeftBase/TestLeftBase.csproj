@@ -142,6 +142,8 @@
     <Compile Include="PageObjects\Material\TcMaterialDetail.cs" />
     <Compile Include="PageObjects\Material\TcMaterials.cs" />
     <Compile Include="PageObjects\Material\TcMaterialToolbar.cs" />
+    <Compile Include="PageObjects\PartOrder\TcPartOrderBaseInfo.cs" />
+    <Compile Include="PageObjects\PartOrder\TcPartOrderPartInfo.cs" />
     <Compile Include="PageObjects\TcPageObjectBase.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrders.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrderToolbar.cs" />
@@ -187,9 +189,7 @@
       <Name>PageObjectInterfaces</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ControlObjects\Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -7,12 +7,24 @@ namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 {
     public class TcPartOrders : RepeaterObject, IChildOf<TcMainTabControl>
     {
+        private readonly Lazy<TcPartOrderBaseInfo> mBaseInfo;
+        private readonly Lazy<TcPartOrderPartInfo> mPartInfo;
+
+        public TcPartOrders()
+        {
+            mBaseInfo = new Lazy<TcPartOrderBaseInfo>( On<TcPartOrderBaseInfo> );
+            mPartInfo = new Lazy<TcPartOrderPartInfo>( On<TcPartOrderPartInfo> );
+        }
+
+        public TcPartOrderBaseInfo BaseInfo => mBaseInfo.Value;
+        public TcPartOrderPartInfo PartInfo => mPartInfo.Value;
+
         public bool CanSave => On<TcPartOrderToolbar>().SaveButton.Enabled;
         public bool CanDelete => On<TcPartOrderToolbar>().DeleteButton.Enabled;
 
         public override void Goto()
         {
-            Goto<TcDomains>().PartOrder.Click();
+            On<TcDomains>().PartOrder.Click();
             Visible.WaitFor();
         }
 
@@ -30,14 +42,6 @@ namespace TestLeft.TestLeftBase.PageObjects.PartOrder
             {
                 dialog.Yes();
             }
-        }
-
-        public void SelectPart(string partId)
-        {
-            //SelectPartButton.Click();
-            //On<TcEntitySelectionDialog>().SelectClose( partId );
-
-            throw new NotImplementedException();
         }
     }
 }

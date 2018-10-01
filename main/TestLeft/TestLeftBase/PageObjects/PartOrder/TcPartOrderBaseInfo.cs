@@ -1,12 +1,11 @@
 using System;
-using TestLeft.TestLeftBase.ControlObjects;
-using TestLeft.TestLeftBase.ControlObjects.Interfaces;
+using PageObjectInterfaces.Controls;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 {
-    public class TcPartOrderBaseInfo : PageObject, IChildOf<TcPartOrders>
+    public class TcPartOrderBaseInfo : TcPageObjectBase, IChildOf<TcPartOrders>
     {
         protected override Search SearchPattern => Search.ByUid( "PartOrder.Detail.Base" );
 
@@ -17,10 +16,10 @@ namespace TestLeft.TestLeftBase.PageObjects.PartOrder
             this.mMoreProps = new Lazy<MoreProps>( () => new MoreProps( this ) );
         }
 
-        public TiSimpleValue<string> ID => Find<TcTextEdit>( Search.ByUid( "PartOrder.Detail.Base.Name" ) );
-        public TiSimpleValue<string> Customer => Find<TcLookUpEdit>( Search.ByUid( "EditCustomerProperty.EditValue" ) );
-        public TiSimpleValue<DateTime?> FinishDate => Find<TcDateEdit>( Search.ByUid( "PartOrder.Detail.Base.FinishDate" ) );
-        public TiSimpleValue<int> Quantity => Find<TcSpinEdit>( Search.ByUid( "PartOrder.Detail.Base.TargetQuantity" ) );
+        public TiValueControl<string> ID => Find<TiValueControl<string>>( "PartOrder.Detail.Base.Name" );
+        public TiValueControl<string> Customer => Find<TiValueControl<string>>( "EditCustomerProperty.EditValue" );
+        public TiValueControl<DateTime?> FinishDate => Find<TiValueControl<DateTime?>>( "PartOrder.Detail.Base.FinishDate" );
+        public TiValueControl<int> Quantity => Find<TiValueControl<int>>( "PartOrder.Detail.Base.TargetQuantity" );
 
         public MoreProps More => mMoreProps.Value;
 
@@ -32,19 +31,19 @@ namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 
         public class MoreProps
         {
-            private readonly PageObject page;
+            private readonly TcPageObjectBase page;
 
-            public MoreProps( PageObject page )
+            internal MoreProps( TcPageObjectBase page )
             {
                 this.page = page;
             }
 
-            public TiSimpleValue<string> RawMaterial => page.Find<TcReadOnlyText>( Search.ByUid( "PartOrder.Detail.Base.More.RawMaterial" ) );
-            public TiSimpleValue<bool> IsFiller => page.Find<TcCheckBox>( Search.ByUid( "PartOrder.Detail.Base.More.FillerPartOrder" ) );
-            public TiSimpleValue<string> CustomerOrderNumber => page.Find<TcTextEdit>( Search.ByUid( "PartOrder.Detail.Base.CustomerPartOrderNumber" ) );
-            public TiSimpleValue<string> OrderCategory => page.Find<TcTextEdit>( Search.ByUid( "PartOrder.Detail.Base.Category" ) );
-            public TiSimpleValue<string> ExternalAssembly => page.Find<TcTextEdit>( Search.ByUid( "PartOrder.Detail.Base.AssemblyOrderName" ) );
-            public TiSimpleValue<bool> IsArchivable => page.Find<TcCheckBox>( Search.ByUid( "PartOrder.Detail.Base.Archivable" ) );
+            public TiValueControl<string> RawMaterial => page.Find<TiValueControl<string>>( "PartOrder.Detail.Base.More.RawMaterial" );
+            public TiValueControl<bool> IsFiller => page.Find<TiValueControl<bool>>( "PartOrder.Detail.Base.More.FillerPartOrder" );
+            public TiValueControl<string> CustomerOrderNumber => page.Find<TiValueControl<string>>( "PartOrder.Detail.Base.CustomerPartOrderNumber" );
+            public TiValueControl<string> OrderCategory => page.Find<TiValueControl<string>>( "PartOrder.Detail.Base.Category" );
+            public TiValueControl<string> ExternalAssembly => page.Find<TiValueControl<string>>( "PartOrder.Detail.Base.AssemblyOrderName" );
+            public TiValueControl<bool> IsArchivable => page.Find<TiValueControl<bool>>( "PartOrder.Detail.Base.Archivable" );
         }
     }
 }
