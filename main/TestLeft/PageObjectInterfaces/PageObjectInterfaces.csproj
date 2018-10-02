@@ -56,7 +56,6 @@
     <Compile Include="Common\TiResultColumn.cs" />
     <Compile Include="Controls\TiButton.cs" />
     <Compile Include="Controls\TiControl.cs" />
-    <Compile Include="Controls\TiTruIconButton.cs" />
     <Compile Include="Controls\TiValueControl.cs" />
     <Compile Include="Customer\TiCustomers.cs" />
     <Compile Include="Machine\TiMachineDetail.cs" />
