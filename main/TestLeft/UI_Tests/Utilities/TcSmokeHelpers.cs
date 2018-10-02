@@ -369,9 +369,9 @@ namespace TestLeft.UI_Tests.Utilities
         {
             var partOrders = HomeZoneApp.Goto<TcPartOrders>();
 
-            partOrders.NewPartOrder();
+            partOrders.Toolbar.New();
             //TODO
-            partOrders.DeletePartOrder();
+            partOrders.Toolbar.Delete();
         }
 
         /// <summary>

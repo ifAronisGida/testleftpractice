@@ -1,10 +1,11 @@
 using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.PartOrder;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 {
-    public class TcPartOrderPartInfo : TcPageObjectBase
+    public class TcPartOrderPartInfo : TcPageObjectBase, TiPartOrderPartInfo
     {
         protected override Search SearchPattern => Search.ByUid( "PartOrder.Detail.OrderedPart.Info" );
 
