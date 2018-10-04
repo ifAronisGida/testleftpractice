@@ -37,6 +37,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\_external\3rdParty\Castle.Core\net45\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Xpf.Core.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\_external\3rdParty\DevExpress\DevExpress.Xpf.Core.v16.1.dll</HintPath>
@@ -144,6 +147,7 @@
     <Compile Include="PageObjects\Material\TcMaterialToolbar.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrderBaseInfo.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrderPartInfo.cs" />
+    <Compile Include="PageObjects\TcExpandablePageObject.cs" />
     <Compile Include="PageObjects\TcPageObjectBase.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrders.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrderToolbar.cs" />
@@ -171,6 +175,7 @@
     <Compile Include="TcHomeZoneApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\TcEnumerableProxy.cs" />
+    <Compile Include="Utilities\TcExpandOnAccessInterceptor.cs" />
     <Compile Include="Utilities\TcGenericControlObject.cs" />
     <Compile Include="Utilities\TcObjectExtensions.cs" />
     <Compile Include="Utilities\TcControlMapper.cs" />

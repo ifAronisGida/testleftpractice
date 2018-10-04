@@ -6,7 +6,7 @@ using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 {
-    public class TcPartOrderBaseInfo : TcPageObjectBase, IChildOf<TcPartOrders>, TiPartOrderBaseInfo
+    public class TcPartOrderBaseInfo : TcExpandablePageObject, IChildOf<TcPartOrders>, TiPartOrderBaseInfo
     {
         protected override Search SearchPattern => Search.ByUid( "PartOrder.Detail.Base" );
 
@@ -15,64 +15,11 @@ namespace TestLeft.TestLeftBase.PageObjects.PartOrder
         public TiValueControl<DateTime?> FinishDate => Find<TiValueControl<DateTime?>>( "PartOrder.Detail.Base.FinishDate" );
         public TiValueControl<int> Quantity => Find<TiValueControl<int>>( "PartOrder.Detail.Base.TargetQuantity" );
 
-        public TiValueControl<string> CustomerOrderNumber
-        {
-            get
-            {
-                IsMoreExpanded = true;
-                return Find<TiValueControl<string>>( "PartOrder.Detail.Base.CustomerPartOrderNumber" );
-            }
-        }
-
-        public TiValueControl<string> ExternalAssembly
-        {
-            get
-            {
-                IsMoreExpanded = true;
-                return Find<TiValueControl<string>>( "PartOrder.Detail.Base.AssemblyOrderName" );
-            }
-        }
-
-        public TiValueControl<bool> IsArchivable
-        {
-            get
-            {
-                IsMoreExpanded = true;
-                return Find<TiValueControl<bool>>( "PartOrder.Detail.Base.Archivable" );
-            }
-        }
-
-        public TiValueControl<bool> IsFiller
-        {
-            get
-            {
-                IsMoreExpanded = true;
-                return Find<TiValueControl<bool>>( "PartOrder.Detail.Base.More.FillerPartOrder" );
-            }
-        }
-
-        public TiValueControl<string> OrderCategory
-        {
-            get
-            {
-                IsMoreExpanded = true;
-                return Find<TiValueControl<string>>( "PartOrder.Detail.Base.Category" );
-            }
-        }
-
-        public TiValueControl<string> RawMaterial
-        {
-            get
-            {
-                IsMoreExpanded = true;
-                return Find<TiValueControl<string>>( "PartOrder.Detail.Base.More.RawMaterial" );
-            }
-        }
-
-        private bool IsMoreExpanded
-        {
-            get => Node.GetProperty<bool>( "IsMoreExpanded" );
-            set => Node.SetProperty( "IsMoreExpanded", value );
-        }
+        public TiValueControl<string> RawMaterial => Find<TiValueControl<string>>( "PartOrder.Detail.Base.More.RawMaterial", expandOnAccess: true );
+        public TiValueControl<bool> IsFiller => Find<TiValueControl<bool>>( "PartOrder.Detail.Base.More.FillerPartOrder", expandOnAccess: true );
+        public TiValueControl<string> CustomerOrderNumber => Find<TiValueControl<string>>( "PartOrder.Detail.Base.CustomerPartOrderNumber", expandOnAccess: true );
+        public TiValueControl<string> OrderCategory => Find<TiValueControl<string>>( "PartOrder.Detail.Base.Category", expandOnAccess: true );
+        public TiValueControl<string> ExternalAssembly => Find<TiValueControl<string>>( "PartOrder.Detail.Base.AssemblyOrderName", expandOnAccess: true );
+        public TiValueControl<bool> IsArchivable => Find<TiValueControl<bool>>( "PartOrder.Detail.Base.Archivable", expandOnAccess: true );
     }
 }
