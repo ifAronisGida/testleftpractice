@@ -4,7 +4,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Flux;
-using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.PageObjects.Settings;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.Settings;
@@ -29,7 +28,8 @@ namespace TestLeft.UI_Tests.Settings
             Act( () =>
             {
                 // Create a toollist
-                var bendSettings = HomeZoneApp.GotoBendSettings();
+                var bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
 
@@ -72,7 +72,8 @@ namespace TestLeft.UI_Tests.Settings
             Act( () =>
              {
                  // Create a toollist
-                 var bendSettings = HomeZoneApp.GotoBendSettings();
+                 var bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                 bendSettings.Goto();
                  Assert.IsTrue( bendSettings.WaitUntilVisible() );
                  bendSettings.OpenToolListsConfiguration();
 
@@ -86,7 +87,8 @@ namespace TestLeft.UI_Tests.Settings
                  HomeZoneApp.On<TcSettingsDialog>().Save();
 
                  // Delete the  toollist
-                 bendSettings = HomeZoneApp.GotoBendSettings();
+                 bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                 bendSettings.Goto();
                  Assert.IsTrue( bendSettings.WaitUntilVisible() );
                  bendSettings.OpenToolListsConfiguration();
                  Thread.Sleep( TcSettings.FluxStartTimeout );
@@ -121,7 +123,8 @@ namespace TestLeft.UI_Tests.Settings
             Act( () =>
              {
                  // Create a toollist
-                 var bendSettings = HomeZoneApp.GotoBendSettings();
+                 var bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                 bendSettings.Goto();
                  Assert.IsTrue( bendSettings.WaitUntilVisible() );
                  bendSettings.OpenToolListsConfiguration();
 
@@ -136,7 +139,8 @@ namespace TestLeft.UI_Tests.Settings
 
                  // rename toollist
                  string newName = "newName";
-                 bendSettings = HomeZoneApp.GotoBendSettings();
+                 bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                 bendSettings.Goto();
                  Assert.IsTrue( bendSettings.WaitUntilVisible() );
                  bendSettings.OpenToolListsConfiguration();
                  Thread.Sleep( TcSettings.FluxStartTimeout );
@@ -162,10 +166,7 @@ namespace TestLeft.UI_Tests.Settings
                  parts.DeletePart();
              } );
         }
-
-
-
-
+        
         /// <summary>
         /// Check for Toollist in Design dropdown
         /// </summary>

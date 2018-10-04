@@ -48,9 +48,9 @@ namespace TestLeft.TestLeftBase
             return Goto<TcMaterials>();
         }
 
-        public TiBendSettings GotoBendSettings()
+        public TiSettingsDialog GotoSettings()
         {
-            return Goto<TcBendSettings>();
+            return Goto<TcSettingsDialog>();
         }
 
         public TiPartOrders GotoPartOrders()

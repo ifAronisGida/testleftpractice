@@ -23,7 +23,8 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.GotoBendSettings();
+                var bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
 
@@ -48,7 +49,8 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.GotoBendSettings();
+                var bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
 
@@ -75,7 +77,8 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.GotoBendSettings();
+                var bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
 
@@ -102,7 +105,8 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.GotoBendSettings();
+                var bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
 

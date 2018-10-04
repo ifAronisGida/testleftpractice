@@ -1,5 +1,6 @@
 using System;
 using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Settings;
 using SmartBear.TestLeft.TestObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using Trumpf.PageObjects;
@@ -12,7 +13,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    public class TcSettingsDialog : TcPageObjectBase, IChildOf<TcHomeZoneApp>
+    public class TcSettingsDialog : TcPageObjectBase, IChildOf<TcHomeZoneApp>, TiSettingsDialog
     {
         protected override Search SearchPattern => Search.ByUid( "SettingsDialog" );
 
@@ -37,9 +38,21 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
         /// </summary>
         public override void Goto()
         {
-            base.Goto();
-            Goto<TcMainMenu>().OpenSettingsDialog();
-            VisibleOnScreen.WaitFor();
+            if( !VisibleOnScreen )
+            {
+                base.Goto();
+                Goto<TcMainMenu>().OpenSettingsDialog();
+                VisibleOnScreen.WaitFor();
+            }
+        }
+
+        /// <summary>
+        /// Waits until visible.
+        /// </summary>
+        /// <returns>true if visible</returns>
+        public bool WaitUntilVisible()
+        {
+            return VisibleOnScreen.TryWaitFor();
         }
 
         /// <summary>
@@ -48,7 +61,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
         /// <value>
         /// The bend settings PageObject.
         /// </value>
-        public TcBendSettings BendSettings => mBendSettings.Value;
+        public TiBendSettings BendSettings => mBendSettings.Value;
 
         /// <summary>
         /// Saves the setings.

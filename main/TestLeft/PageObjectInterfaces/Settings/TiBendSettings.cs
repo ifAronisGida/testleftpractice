@@ -3,6 +3,11 @@ namespace PageObjectInterfaces.Settings
     public interface TiBendSettings
     {
         /// <summary>
+        /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
+        /// </summary>
+        void Goto();
+
+        /// <summary>
         /// Opens the Flux tools configuration dialog.
         /// </summary>
         void OpenToolsConfiguration();

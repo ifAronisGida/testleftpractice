@@ -76,6 +76,7 @@
     <Compile Include="Part\TiPartToolbar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\TiBendSettings.cs" />
+    <Compile Include="Settings\TiSettingsDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
