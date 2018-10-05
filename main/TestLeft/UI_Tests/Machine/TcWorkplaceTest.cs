@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestLeft.TestLeftBase.PageObjects.Machine;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;

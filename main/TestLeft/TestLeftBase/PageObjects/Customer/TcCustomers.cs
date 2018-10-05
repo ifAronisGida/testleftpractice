@@ -1,6 +1,7 @@
 ﻿using System;
 using PageObjectInterfaces.Controls;
 using PageObjectInterfaces.Customer;
+using PageObjectInterfaces.Dialogs;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
 using Trumpf.PageObjects;
@@ -227,7 +228,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
             {
                 DeleteCustomerButton.Click();
 
-                var dialog = On<TcMessageBox>();
+                var dialog = On<TiMessageBox>();
                 if( dialog.MessageBoxExists() )
                 {
                     dialog.Yes();
@@ -243,10 +244,10 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         {
             mParts?.Toolbar.DeleteButton.Click();
 
-            var dialog = On<TcMessageBox>();
+            var dialog = On<TiMessageBox>();
             if( dialog != null && dialog.MessageBoxExists() )
             {
-                dialog.YesButton.Click();
+                dialog.Yes();
             }
         }
     }

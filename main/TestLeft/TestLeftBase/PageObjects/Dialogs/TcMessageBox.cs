@@ -1,4 +1,5 @@
-﻿using SmartBear.TestLeft.TestObjects;
+﻿using PageObjectInterfaces.Dialogs;
+using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
@@ -10,7 +11,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Dialogs
     /// </summary>
     /// <seealso cref="Trumpf.PageObjects.WPF.PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    internal class TcMessageBox : PageObject, IChildOf<TcHomeZoneApp>
+    internal class TcMessageBox : PageObject, IChildOf<TcHomeZoneApp>, TiMessageBox
     {
         protected override Search SearchPattern => Search.Any;
 

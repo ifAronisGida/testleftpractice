@@ -1,3 +1,4 @@
+using PageObjectInterfaces.Dialogs;
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
@@ -9,7 +10,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Dialogs
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    public class TcAboutDialog : PageObject, IChildOf<TcHomeZoneApp>
+    public class TcAboutDialog : PageObject, IChildOf<TcHomeZoneApp>, TiAboutDialog
     {
         protected override Search SearchPattern => Search.ByUid( "AboutDialog" );
 

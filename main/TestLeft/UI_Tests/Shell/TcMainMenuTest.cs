@@ -1,6 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
-using TestLeft.TestLeftBase.PageObjects.Settings;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -22,7 +21,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var menu = HomeZoneApp.Goto<TcMainMenu>();
+                var menu = HomeZoneApp.GotoMainMenu();
 
                 menu.RefreshMasterData();
             } );
@@ -36,10 +35,11 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var menu = HomeZoneApp.Goto<TcMainMenu>().OpenSettingsDialog();
-                var settings = HomeZoneApp.On<TcSettingsDialog>();
+                HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                var settings = HomeZoneApp.GotoSettings();
+                var visible = settings.WaitUntilVisible();
 
-                Assert.IsTrue( settings.VisibleOnScreen.TryWaitFor() );
+                Assert.IsTrue( visible );
 
                 settings.Cancel();
             } );
@@ -53,7 +53,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var menu = HomeZoneApp.Goto<TcMainMenu>();
+                var menu = HomeZoneApp.GotoMainMenu();
 
                 menu.OpenHelp();
 
@@ -73,7 +73,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var menu = HomeZoneApp.Goto<TcMainMenu>();
+                var menu = HomeZoneApp.GotoMainMenu();
 
                 menu.ShowWelcomeScreen();
 
@@ -91,7 +91,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var menu = HomeZoneApp.Goto<TcMainMenu>();
+                var menu = HomeZoneApp.GotoMainMenu();
 
                 menu.OpenAboutDialog();
 

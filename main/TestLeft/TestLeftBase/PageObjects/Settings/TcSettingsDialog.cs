@@ -47,15 +47,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
         }
 
         /// <summary>
-        /// Waits until visible.
-        /// </summary>
-        /// <returns>true if visible</returns>
-        public bool WaitUntilVisible()
-        {
-            return VisibleOnScreen.TryWaitFor();
-        }
-
-        /// <summary>
         /// Gets the bend settings PageObject.
         /// </summary>
         /// <value>

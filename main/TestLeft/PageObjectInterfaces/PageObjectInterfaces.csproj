@@ -54,10 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\TiResultColumn.cs" />
+    <Compile Include="Common\TiVisibility.cs" />
     <Compile Include="Controls\TiButton.cs" />
     <Compile Include="Controls\TiControl.cs" />
     <Compile Include="Controls\TiValueControl.cs" />
     <Compile Include="Customer\TiCustomers.cs" />
+    <Compile Include="Dialogs\TiAboutDialog.cs" />
+    <Compile Include="Dialogs\TiHelpDialog.cs" />
+    <Compile Include="Dialogs\TiMessageBox.cs" />
     <Compile Include="Machine\TiMachineDetail.cs" />
     <Compile Include="Machine\TiMachines.cs" />
     <Compile Include="Machine\TiMachineToolbar.cs" />
@@ -77,13 +81,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\TiBendSettings.cs" />
     <Compile Include="Settings\TiSettingsDialog.cs" />
+    <Compile Include="Shell\TiMainMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dialogs\" />
-    <Folder Include="Shell\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

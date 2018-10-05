@@ -1,13 +1,9 @@
+using PageObjectInterfaces.Common;
+
 namespace PageObjectInterfaces.Settings
 {
-    public interface TiSettingsDialog
+    public interface TiSettingsDialog : TiVisibility
     {
-        /// <summary>
-        /// Waits until visible.
-        /// </summary>
-        /// <returns>true if visible</returns>
-        bool WaitUntilVisible();
-
         /// <summary>
         /// Gets the bend settings PageObject.
         /// </summary>

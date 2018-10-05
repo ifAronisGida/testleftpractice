@@ -4,12 +4,14 @@ using PageObjectInterfaces.Material;
 using PageObjectInterfaces.Part;
 using PageObjectInterfaces.PartOrder;
 using PageObjectInterfaces.Settings;
+using PageObjectInterfaces.Shell;
 using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.PageObjects.Machine;
 using TestLeft.TestLeftBase.PageObjects.Material;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.PageObjects.PartOrder;
 using TestLeft.TestLeftBase.PageObjects.Settings;
+using TestLeft.TestLeftBase.PageObjects.Shell;
 using Trumpf.PageObjects;
 
 namespace TestLeft.TestLeftBase
@@ -26,6 +28,11 @@ namespace TestLeft.TestLeftBase
         /// <param name="processname">The name of the HomeZone process.</param>
         public TcHomeZoneApp( string processname ) : base( processname )
         {
+        }
+
+        public TiMainMenu GotoMainMenu()
+        {
+            return Goto<TcMainMenu>();
         }
 
         public TiCustomers GotoCustomers()

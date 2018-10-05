@@ -1,6 +1,8 @@
+using PageObjectInterfaces.Common;
+
 namespace PageObjectInterfaces.Settings
 {
-    public interface TiBendSettings
+    public interface TiBendSettings : TiVisibility
     {
         /// <summary>
         /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
@@ -31,11 +33,5 @@ namespace PageObjectInterfaces.Settings
         /// Opens the data manager bend.
         /// </summary>
         void OpenDataManagerBend();
-
-        /// <summary>
-        /// Waits until visible.
-        /// </summary>
-        /// <returns>true if visible</returns>
-        bool WaitUntilVisible();
     }
 }

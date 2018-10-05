@@ -1,4 +1,5 @@
 using System;
+using PageObjectInterfaces.Shell;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.PageObjects;
@@ -9,7 +10,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
     /// <summary>
     /// The main menu.
     /// </summary>
-    public class TcMainMenu : PageObject, IChildOf<TcHomeZoneApp>
+    public class TcMainMenu : PageObject, IChildOf<TcHomeZoneApp>, TiMainMenu
     {
         protected override Search SearchPattern => Search.ByControlName( "System.Windows.Controls.Menu" );
 
@@ -20,6 +21,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
             mPopup = new Lazy<TcMainMenuPopupMenu>( On<TcMainMenuPopupMenu> );
         }
 
+        /// <summary>
+        /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
+        /// </summary>
         public override void Goto()
         {
             if( !IsVisibleOnScreen )
@@ -44,13 +48,13 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
         /// <value>
         /// The toolbar.
         /// </value>
-        public TcMainMenuPopupMenu Popup => mPopup.Value;
+        private TcMainMenuPopupMenu Popup => mPopup.Value;
 
         /// <summary>
         /// Refreshes the master data.
         /// </summary>
         /// <returns>this</returns>
-        public PageObject RefreshMasterData()
+        public TiMainMenu RefreshMasterData()
         {
             Popup.Refresh.Click();
 
@@ -61,7 +65,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
         /// Opens the settings dialog.
         /// </summary>
         /// <returns>this</returns>
-        public PageObject OpenSettingsDialog()
+        public TiMainMenu OpenSettingsDialog()
         {
             Popup.Settings.Click();
 
@@ -72,7 +76,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
         /// Shows the help.
         /// </summary>
         /// <returns>this</returns>
-        public PageObject OpenHelp()
+        public TiMainMenu OpenHelp()
         {
             Popup.Help.Click();
 
@@ -83,7 +87,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
         /// Shows the welcome screen.
         /// </summary>
         /// <returns>this</returns>
-        public PageObject ShowWelcomeScreen()
+        public TiMainMenu ShowWelcomeScreen()
         {
             Popup.WelcomeScreen.Click();
 
@@ -94,7 +98,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
         /// Opens the about dialog.
         /// </summary>
         /// <returns>this</returns>
-        public PageObject OpenAboutDialog()
+        public TiMainMenu OpenAboutDialog()
         {
             Popup.About.Click();
 
@@ -105,7 +109,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
         /// Closes the application.
         /// </summary>
         /// <returns>this</returns>
-        public PageObject CloseApplication()
+        public TiMainMenu CloseApplication()
         {
             Popup.Exit.Click();
 

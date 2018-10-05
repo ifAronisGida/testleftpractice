@@ -71,14 +71,5 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
         {
             DataManagerBendOpenButton.Click();
         }
-
-        /// <summary>
-        /// Waits until visible.
-        /// </summary>
-        /// <returns>true if visible</returns>
-        public bool WaitUntilVisible()
-        {
-            return VisibleOnScreen.TryWaitFor();
-        }
     }
 }
