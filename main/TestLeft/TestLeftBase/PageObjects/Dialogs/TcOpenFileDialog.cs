@@ -1,4 +1,5 @@
-﻿using SmartBear.TestLeft.TestObjects;
+﻿using PageObjectInterfaces.Dialogs;
+using SmartBear.TestLeft.TestObjects;
 using Trumpf.PageObjects;
 
 namespace TestLeft.TestLeftBase.PageObjects.Dialogs
@@ -8,7 +9,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Dialogs
     /// </summary>
     /// <seealso cref="RepeaterObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    public class TcOpenFileDialog : RepeaterObject, IChildOf<TcHomeZoneApp>
+    public class TcOpenFileDialog : RepeaterObject, IChildOf<TcHomeZoneApp>, TiOpenFileDialog
     {
         /// <summary>
         /// Enters the given filename and clicks the open button.

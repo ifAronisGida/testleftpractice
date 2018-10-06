@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PageObjectInterfaces.Part;
 using TestLeft.TestLeftBase.PageObjects.Customer;
+using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -33,7 +35,7 @@ namespace TestLeft.UI_Tests.Part
                 {
                     var partName = TcSettings.NamePrefix + "NewPartTest";
 
-                    var parts = HomeZoneApp.GotoParts();
+                    var parts = HomeZoneApp.Goto<TiParts, TcParts>();
 
                     parts.NewPart();
                     parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
@@ -66,7 +68,7 @@ namespace TestLeft.UI_Tests.Part
         {
             Act( () =>
                 {
-                    var parts = HomeZoneApp.GotoParts();
+                    var parts = HomeZoneApp.Goto<TiParts, TcParts>();
 
                     parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
 
@@ -115,7 +117,7 @@ namespace TestLeft.UI_Tests.Part
         {
             Act( () =>
             {
-                var parts = HomeZoneApp.GotoParts();
+                var parts = HomeZoneApp.Goto<TiParts, TcParts>();
 
                 parts.NewPart();
 

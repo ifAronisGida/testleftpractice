@@ -1,3 +1,4 @@
+using PageObjectInterfaces.Dialogs;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.PageObjects;
@@ -10,7 +11,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Dialogs
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    internal class TcPartComputeAllConfirmation : PageObject, IChildOf<TcHomeZoneApp>
+    internal class TcPartComputeAllConfirmation : TcPageObjectBase, IChildOf<TcHomeZoneApp>, TiPartComputeAllConfirmation
     {
         protected override Search SearchPattern => Search.Any;
 

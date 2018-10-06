@@ -1,8 +1,6 @@
-using Trumpf.PageObjects;
-
 namespace PageObjectInterfaces.Dialogs
 {
-    public interface TiMessageBox : IPageObject
+    public interface TiMessageBox 
     {
         /// <summary>
         /// Returns true if a message box exists.

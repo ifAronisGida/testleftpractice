@@ -55,14 +55,12 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         public override void Goto()
         {
-            if( VisibleOnScreen.TryWaitFor( TimeSpan.FromSeconds( 1 ) ) )
+            if( !VisibleOnScreen )
             {
-                return;
+                mParts = Goto<TcParts>();
+                mParts.NewPart();
+                mParts.SingleDetail.OpenCustomerAdministration();
             }
-
-            mParts = Goto<TcParts>();
-            mParts.NewPart();
-            mParts.SingleDetail.OpenCustomerAdministration();
         }
 
         /// <summary>
@@ -228,7 +226,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
             {
                 DeleteCustomerButton.Click();
 
-                var dialog = On<TiMessageBox>();
+                var dialog = On<TiMessageBox, TcMessageBox>();
                 if( dialog.MessageBoxExists() )
                 {
                     dialog.Yes();
@@ -244,7 +242,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         {
             mParts?.Toolbar.DeleteButton.Click();
 
-            var dialog = On<TiMessageBox>();
+            var dialog = On<TiMessageBox, TcMessageBox>();
             if( dialog != null && dialog.MessageBoxExists() )
             {
                 dialog.Yes();

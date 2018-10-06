@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PageObjectInterfaces.Material;
+using TestLeft.TestLeftBase.PageObjects.Material;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -21,7 +23,7 @@ namespace TestLeft.UI_Tests.Material
         {
             Act( () =>
                 {
-                    var materials = HomeZoneApp.GotoMaterials();
+                    var materials = HomeZoneApp.Goto<TiMaterials, TcMaterials>();
 
                     materials.NewMaterial();
 
@@ -57,7 +59,7 @@ namespace TestLeft.UI_Tests.Material
         {
             Act( () =>
             {
-                var materials = HomeZoneApp.GotoMaterials();
+                var materials = HomeZoneApp.Goto<TiMaterials, TcMaterials>();
 
                 materials.Goto();
 

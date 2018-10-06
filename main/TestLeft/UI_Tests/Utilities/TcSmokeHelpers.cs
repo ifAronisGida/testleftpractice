@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PageObjectInterfaces.Customer;
+using PageObjectInterfaces.Material;
+using PageObjectInterfaces.Part;
 using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.PageObjects.CutJob;
 using TestLeft.TestLeftBase.PageObjects.Flux;
@@ -52,7 +55,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestMaterials()
         {
-            var materials = HomeZoneApp.Goto<TcMaterials>();
+            var materials = HomeZoneApp.Goto<TiMaterials, TcMaterials>();
             var materialCount = materials.ResultColumn.Count;
             var materialsCreatedCount = 0;
 
@@ -98,7 +101,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void DeleteTestMaterials()
         {
-            var materials = HomeZoneApp.Goto<TcMaterials>();
+            var materials = HomeZoneApp.Goto<TiMaterials, TcMaterials>();
             var currentMaterialsCount = materials.ResultColumn.Count;
             var deletedMaterialsCount = 0;
 
@@ -207,7 +210,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestCustomers()
         {
-            var customers = HomeZoneApp.Goto<TcCustomers>();
+            var customers = HomeZoneApp.Goto<TiCustomers, TcCustomers>();
             var customersCreatedCount = 0;
             var customersCount = customers.Count();
             if( string.IsNullOrEmpty( customers.Name.Value ) )
@@ -246,7 +249,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void DeleteTestCustomers()
         {
-            var customers = HomeZoneApp.Goto<TcCustomers>();
+            var customers = HomeZoneApp.Goto<TiCustomers, TcCustomers>();
             var customersCount = customers.Count();
             var deletedCustomersCount = 0;
 
@@ -282,7 +285,7 @@ namespace TestLeft.UI_Tests.Utilities
                 CreateTestCustomers();
             }
 
-            var parts = HomeZoneApp.GotoParts();
+            var parts = HomeZoneApp.Goto<TiParts, TcParts>();
             var partCount = parts.ResultColumn.Count;
             var partsCreatedCount = 0;
 

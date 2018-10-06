@@ -19,6 +19,7 @@ namespace TestLeft.TestLeftBase.Utilities
             ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruComboBox"] = controlObject => new TcTruComboBox( controlObject ),
             ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruIconButton"] = controlObject => new TcButton( controlObject ),
             ["Trumpf.TruTops.Control.Infrastructure.ModuleBase.Controls.TcLookUpEdit"] = controlObject => new TcTextEdit( controlObject ),
+            ["Trumpf.TruTops.Control.Infrastructure.ModuleBase.Controls.TcNullableTextEdit"] = controlObject => new TcTextEdit( controlObject ),
         };
 
         public static TInterface Map<TInterface>( IControlObject controlObject ) where TInterface : class

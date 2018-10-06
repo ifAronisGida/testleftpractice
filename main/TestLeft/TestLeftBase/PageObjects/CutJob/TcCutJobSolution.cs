@@ -1,5 +1,6 @@
 ﻿using System;
 using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Dialogs;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.Waiting;
 using Trumpf.PageObjects.WPF;
@@ -31,7 +32,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             {
                 deleteBtn.Click();
 
-                var dialog = On<TcMessageBox>();
+                var dialog = On<TiMessageBox, TcMessageBox>();
                 if( dialog.MessageBoxExists() )
                 {
                     dialog.Yes();

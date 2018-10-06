@@ -1,4 +1,5 @@
 ﻿using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Dialogs;
 using PageObjectInterfaces.Part;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
@@ -27,7 +28,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         {
             ImportButton.Click();
 
-            var openDlg = On<TcOpenFileDialog>();
+            var openDlg = On<TiOpenFileDialog, TcOpenFileDialog>();
             return openDlg.SetFilename( filename );
         }
 

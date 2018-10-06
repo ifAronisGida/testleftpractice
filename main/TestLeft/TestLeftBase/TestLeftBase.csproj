@@ -170,6 +170,7 @@
     <Compile Include="PageObjects\Shell\TcToolbars.cs" />
     <Compile Include="PageObjects\Dialogs\TcOpenFileDialog.cs" />
     <Compile Include="PageObjects\Shell\TcWelcomeScreen.cs" />
+    <Compile Include="PageObjects\TcRepeaterObjectBase.cs" />
     <Compile Include="Settings\TcSettings.cs" />
     <Compile Include="Settings\TcSystemLanguageSpecific.cs" />
     <Compile Include="TcHomeZoneApp.cs" />

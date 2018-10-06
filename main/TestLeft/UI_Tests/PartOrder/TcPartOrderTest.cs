@@ -1,4 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PageObjectInterfaces.Part;
+using PageObjectInterfaces.PartOrder;
+using TestLeft.TestLeftBase.PageObjects.Part;
+using TestLeft.TestLeftBase.PageObjects.PartOrder;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
 
@@ -12,7 +16,7 @@ namespace TestLeft.UI_Tests.PartOrder
         {
             Act( () =>
             {
-                var partOrders = HomeZoneApp.GotoPartOrders();
+                var partOrders = HomeZoneApp.Goto<TiPartOrders, TcPartOrders>();
                 var toolbar = partOrders.Toolbar;
 
                 toolbar.New();
@@ -29,13 +33,13 @@ namespace TestLeft.UI_Tests.PartOrder
         [TestMethod, UniqueName( "79662E0F-0AF8-4F6D-8A44-F81537CF8430" )]
         public void SelectPartIntoOrderTest()
         {
-            var parts = HomeZoneApp.GotoParts();
+            var parts = HomeZoneApp.Goto<TiParts, TcParts>();
             parts.NewPart();
             parts.SingleDetail.Id = "TestPart";
             parts.SingleDetail.Name.Value = "TestPart";
             parts.SavePart();
 
-            var partOrders = HomeZoneApp.GotoPartOrders();
+            var partOrders = HomeZoneApp.Goto<TiPartOrders, TcPartOrders>();
             partOrders.Toolbar.New();
             partOrders.PartInfo.SelectPart( "TestPart" );
 

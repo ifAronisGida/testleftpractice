@@ -1,5 +1,6 @@
 ﻿using System;
 using PageObjectInterfaces.Common;
+using PageObjectInterfaces.Dialogs;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using Trumpf.PageObjects.Waiting;
@@ -14,9 +15,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// <summary>
     /// PageObject for the parts category.
     /// </summary>
-    /// <seealso cref="RepeaterObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
-    public class TcParts : RepeaterObject, IChildOf<TcMainTabControl>, TiParts
+    public class TcParts : TcRepeaterObjectBase, IChildOf<TcMainTabControl>, TiParts
     {
         private readonly Lazy<TcPartToolbar> mToolbar;
         private readonly Lazy<TcResultColumn> mResultColumn;
@@ -102,7 +102,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         {
             base.Goto();
             Goto<TcDomains>().Part.Click();
-            VisibleOnScreen.WaitFor();
         }
 
         /// <summary>
@@ -142,7 +141,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         {
             Toolbar.ImportButton.Click();
 
-            var openDlg = On<TcOpenFileDialog>();
+            var openDlg = On<TiOpenFileDialog, TcOpenFileDialog>();
             return openDlg.SetFilename( filename );
         }
 
@@ -153,7 +152,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         {
             Toolbar.BoostButton.Click();
 
-            var dialog = On<TcPartComputeAllConfirmation>();
+            var dialog = On<TiPartComputeAllConfirmation, TcPartComputeAllConfirmation>();
             if( dialog.DialogBoxExists() )
             {
                 dialog.Ok();
@@ -182,7 +181,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
 
             Toolbar.DeleteButton.Click();
 
-            var dialog = On<TcMessageBox>();
+            var dialog = On<TiMessageBox, TcMessageBox>();
             if( dialog.MessageBoxExists() )
             {
                 dialog.Yes();
@@ -198,7 +197,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <returns>true if successful</returns>
         public bool DeletePart( string id )
         {
-            if( !ResultColumn.SelectItem(id) )
+            if( !ResultColumn.SelectItem( id ) )
             {
                 return false;
             }

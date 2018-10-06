@@ -1,7 +1,9 @@
 using System;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PageObjectInterfaces.Part;
 using TestLeft.TestLeftBase.PageObjects.Cut;
+using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -24,7 +26,7 @@ namespace TestLeft.UI_Tests.Cut
             Act( () =>
             {
                 Trace.WriteLine( @"Starting Cut open / close test." );
-                var parts = HomeZoneApp.GotoParts();
+                var parts = HomeZoneApp.Goto<TiParts, TcParts>();
 
                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );

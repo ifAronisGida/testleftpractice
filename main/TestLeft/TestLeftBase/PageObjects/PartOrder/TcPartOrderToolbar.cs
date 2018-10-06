@@ -1,4 +1,5 @@
 ﻿using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Dialogs;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
@@ -35,7 +36,7 @@ namespace TestLeft.TestLeftBase.PageObjects.PartOrder
         {
             DeleteButton.Click();
 
-            var dialog = On<TcMessageBox>();
+            var dialog = On<TiMessageBox, TcMessageBox>();
             if( dialog.MessageBoxExists() )
             {
                 dialog.Yes();

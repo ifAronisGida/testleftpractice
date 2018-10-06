@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PageObjectInterfaces.Machine;
+using TestLeft.TestLeftBase.PageObjects.Machine;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -22,7 +24,7 @@ namespace TestLeft.UI_Tests.Machine
             Act( () =>
                 {
                     var testMachineName = TcSettings.NamePrefix + Guid.NewGuid();
-                    var machines = HomeZoneApp.GotoMachines();
+                    var machines = HomeZoneApp.Goto<TiMachines, TcMachines>();
 
                     var machineCount = machines.ResultColumn.Count;
 
@@ -58,9 +60,8 @@ namespace TestLeft.UI_Tests.Machine
             Act( () =>
                 {
                     var testMachineName = TcSettings.NamePrefix + Guid.NewGuid();
-                    var machines = HomeZoneApp.GotoMachines();
+                    var machines = HomeZoneApp.Goto<TiMachines, TcMachines>();
 
-                    //machines.VisibleOnScreen.WaitFor();
                     var machineCount = machines.ResultColumn.Count;
 
                     machines.NewBendMachine( "TruBend 5320 (6-axes) B23", testMachineName );

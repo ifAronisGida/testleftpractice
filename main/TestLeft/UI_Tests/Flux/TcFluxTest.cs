@@ -2,7 +2,11 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PageObjectInterfaces.Machine;
+using PageObjectInterfaces.Part;
 using TestLeft.TestLeftBase.PageObjects.Flux;
+using TestLeft.TestLeftBase.PageObjects.Machine;
+using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -38,7 +42,7 @@ namespace TestLeft.UI_Tests.Flux
                 CreateTestMachine();
 
                 var namePrefix = TcSettings.NamePrefix + Guid.NewGuid();
-                var parts = HomeZoneApp.GotoParts();
+                var parts = HomeZoneApp.Goto<TiParts, TcParts>();
 
                 // first part
                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
@@ -105,7 +109,7 @@ namespace TestLeft.UI_Tests.Flux
                 CreateTestMachine();
 
                 Trace.WriteLine( @"Starting Flux open / close test." );
-                var parts = HomeZoneApp.GotoParts();
+                var parts = HomeZoneApp.Goto<TiParts, TcParts>();
                 string solutionName = "Bend1";
 
                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
@@ -143,7 +147,7 @@ namespace TestLeft.UI_Tests.Flux
              {
                  CreateTestMachine();
                  Trace.WriteLine( @"Starting Flux boost test." );
-                 var parts = HomeZoneApp.GotoParts();
+                 var parts = HomeZoneApp.Goto<TiParts, TcParts>();
                  string solutionName = "Bend1";
 
                  parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
@@ -178,7 +182,7 @@ namespace TestLeft.UI_Tests.Flux
                  CreateTestMachine( testMachine );
 
                  Trace.WriteLine( @"Starting Flux boost with errors test." );
-                 var parts = HomeZoneApp.GotoParts();
+                 var parts = HomeZoneApp.Goto<TiParts, TcParts>();
                  string solutionName = "Bend1";
 
                  parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
@@ -211,7 +215,7 @@ namespace TestLeft.UI_Tests.Flux
             {
                 CreateTestMachine();
                 Trace.WriteLine( @"Starting Flux release solution after boost test." );
-                var parts = HomeZoneApp.GotoParts();
+                var parts = HomeZoneApp.Goto<TiParts, TcParts>();
                 string solutionName = "Bend1";
 
                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
@@ -285,7 +289,7 @@ namespace TestLeft.UI_Tests.Flux
              {
                  CreateTestMachine();
                  Trace.WriteLine( @"Starting Flux close without save test." );
-                 var parts = HomeZoneApp.GotoParts();
+                 var parts = HomeZoneApp.Goto<TiParts, TcParts>();
                  string solutionName = "Bend1";
 
                  parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
@@ -322,7 +326,7 @@ namespace TestLeft.UI_Tests.Flux
         {
             mTestMachineName = TcSettings.NamePrefix + Guid.NewGuid();
 
-            var machines = HomeZoneApp.GotoMachines();
+            var machines = HomeZoneApp.Goto<TiMachines, TcMachines>();
 
             if( machineName == null )
             {
@@ -343,7 +347,7 @@ namespace TestLeft.UI_Tests.Flux
 
         private void DeleteTestMachine( string machineName = null )
         {
-            var machines = HomeZoneApp.GotoMachines();
+            var machines = HomeZoneApp.Goto<TiMachines, TcMachines>();
 
             if( machineName == null )
             {
@@ -361,7 +365,7 @@ namespace TestLeft.UI_Tests.Flux
 
         private void OpenMachineConfiguration( string machineName )
         {
-            var machines = HomeZoneApp.GotoMachines();
+            var machines = HomeZoneApp.Goto<TiMachines, TcMachines>();
             machines.ResultColumn.SelectItem( machineName );
             machines.Detail.OpenMachineConfigurationBend();
         }

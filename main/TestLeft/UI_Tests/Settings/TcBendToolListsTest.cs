@@ -1,9 +1,12 @@
 using System;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PageObjectInterfaces.Part;
+using PageObjectInterfaces.Settings;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Flux;
+using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.PageObjects.Settings;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.Settings;
@@ -28,7 +31,7 @@ namespace TestLeft.UI_Tests.Settings
             Act( () =>
             {
                 // Create a toollist
-                var bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                var bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
                 bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
@@ -47,7 +50,7 @@ namespace TestLeft.UI_Tests.Settings
                 HomeZoneApp.On<TcSettingsDialog>().Cancel();
 
                 // import part and use toollist
-                var parts = HomeZoneApp.GotoParts();
+                var parts = HomeZoneApp.Goto<TiParts, TcParts>();
                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
@@ -72,7 +75,7 @@ namespace TestLeft.UI_Tests.Settings
             Act( () =>
              {
                  // Create a toollist
-                 var bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                 var bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
                  bendSettings.Goto();
                  Assert.IsTrue( bendSettings.WaitUntilVisible() );
                  bendSettings.OpenToolListsConfiguration();
@@ -87,7 +90,7 @@ namespace TestLeft.UI_Tests.Settings
                  HomeZoneApp.On<TcSettingsDialog>().Save();
 
                  // Delete the  toollist
-                 bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                 bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
                  bendSettings.Goto();
                  Assert.IsTrue( bendSettings.WaitUntilVisible() );
                  bendSettings.OpenToolListsConfiguration();
@@ -103,7 +106,7 @@ namespace TestLeft.UI_Tests.Settings
                  HomeZoneApp.On<TcSettingsDialog>().Save();
 
                  // import part and use toollist
-                 var parts = HomeZoneApp.GotoParts();
+                 var parts = HomeZoneApp.Goto<TiParts, TcParts>();
                  parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                  parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                  parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
@@ -123,7 +126,7 @@ namespace TestLeft.UI_Tests.Settings
             Act( () =>
              {
                  // Create a toollist
-                 var bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                 var bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
                  bendSettings.Goto();
                  Assert.IsTrue( bendSettings.WaitUntilVisible() );
                  bendSettings.OpenToolListsConfiguration();
@@ -139,7 +142,7 @@ namespace TestLeft.UI_Tests.Settings
 
                  // rename toollist
                  string newName = "newName";
-                 bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                 bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
                  bendSettings.Goto();
                  Assert.IsTrue( bendSettings.WaitUntilVisible() );
                  bendSettings.OpenToolListsConfiguration();
@@ -156,7 +159,7 @@ namespace TestLeft.UI_Tests.Settings
                  HomeZoneApp.On<TcSettingsDialog>().Save();
 
                  // import part and use toollist
-                 var parts = HomeZoneApp.GotoParts();
+                 var parts = HomeZoneApp.Goto<TiParts, TcParts>();
                  parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                  parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                  parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );

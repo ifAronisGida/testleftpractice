@@ -60,8 +60,11 @@
     <Compile Include="Controls\TiValueControl.cs" />
     <Compile Include="Customer\TiCustomers.cs" />
     <Compile Include="Dialogs\TiAboutDialog.cs" />
+    <Compile Include="Dialogs\TiEntitySelectionDialog.cs" />
     <Compile Include="Dialogs\TiHelpDialog.cs" />
     <Compile Include="Dialogs\TiMessageBox.cs" />
+    <Compile Include="Dialogs\TiOpenFileDialog.cs" />
+    <Compile Include="Dialogs\TiPartComputeAllConfirmation.cs" />
     <Compile Include="Machine\TiMachineDetail.cs" />
     <Compile Include="Machine\TiMachines.cs" />
     <Compile Include="Machine\TiMachineToolbar.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using PageObjectInterfaces.Dialogs;
 using Trumpf.PageObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
@@ -7,7 +8,7 @@ using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
-    public class TcCutJobs : RepeaterObject, IChildOf<TcMainTabControl>
+    public class TcCutJobs : TcRepeaterObjectBase, IChildOf<TcMainTabControl>
     {
         private readonly Lazy<TcCutJobToolbar> mToolbar;
         private readonly Lazy<TcResultColumn> mResultColumn;
@@ -39,7 +40,6 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             base.Goto();
             Goto<TcDomains>().CutJob.Click();
-            VisibleOnScreen.WaitFor();
         }
 
         public void NewCutJob()
@@ -61,7 +61,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         {
             Toolbar.DeleteButton.Click();
 
-            var dialog = On<TcMessageBox>();
+            var dialog = On<TiMessageBox, TcMessageBox>();
             if( dialog.MessageBoxExists() )
             {
                 dialog.Yes();

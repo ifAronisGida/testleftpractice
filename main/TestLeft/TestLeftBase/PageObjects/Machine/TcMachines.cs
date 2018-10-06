@@ -1,5 +1,6 @@
 ﻿using System;
 using PageObjectInterfaces.Common;
+using PageObjectInterfaces.Dialogs;
 using PageObjectInterfaces.Machine;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.Waiting;
@@ -15,9 +16,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     /// <summary>
     /// PageObject for the machines category.
     /// </summary>
-    /// <seealso cref="RepeaterObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
-    public class TcMachines : RepeaterObject, IChildOf<TcMainTabControl>, TiMachines
+    public class TcMachines : TcRepeaterObjectBase, IChildOf<TcMainTabControl>, TiMachines
     {
         private readonly Lazy<TcMachineToolbar> mToolbar;
         private readonly Lazy<TcMachinePopupMenu> mPopup;
@@ -82,7 +82,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         {
             base.Goto();
             Goto<TcDomainsMore>().GotoWorkplace();
-            VisibleOnScreen.WaitFor();
         }
 
         /// <summary>
@@ -143,7 +142,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         public void NewBendMachine( string machineType, string name )
         {
             NewBendMachine();
-            //Detail.VisibleOnScreen.WaitFor();
             Detail.BendMachineType = machineType;
             Detail.Name.Value = name;
         }
@@ -163,7 +161,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         {
             Toolbar.DeleteButton.Click();
 
-            var dialog = On<TcMessageBox>();
+            var dialog = On<TiMessageBox, TcMessageBox>();
             if( dialog.MessageBoxExists() )
             {
                 dialog.Yes();

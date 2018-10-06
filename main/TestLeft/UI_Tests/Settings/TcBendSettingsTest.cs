@@ -1,5 +1,6 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PageObjectInterfaces.Settings;
 using TestLeft.TestLeftBase.PageObjects.Flux;
 using TestLeft.TestLeftBase.PageObjects.Settings;
 using TestLeft.TestLeftBase.Settings;
@@ -23,7 +24,7 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                var bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
                 bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
@@ -49,7 +50,7 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                var bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
                 bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
@@ -77,7 +78,7 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                var bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
                 bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
@@ -105,7 +106,7 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.GotoSettings().BendSettings;
+                var bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
                 bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );

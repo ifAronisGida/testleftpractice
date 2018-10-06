@@ -1,4 +1,5 @@
 using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Dialogs;
 using PageObjectInterfaces.PartOrder;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using Trumpf.PageObjects.WPF;
@@ -14,7 +15,7 @@ namespace TestLeft.TestLeftBase.PageObjects.PartOrder
         public void SelectPart( string partId )
         {
             SelectPartButton.Click();
-            On<TcEntitySelectionDialog>().SelectClose( partId );
+            On<TiEntitySelectionDialog, TcEntitySelectionDialog>().SelectClose( partId );
         }
     }
 }

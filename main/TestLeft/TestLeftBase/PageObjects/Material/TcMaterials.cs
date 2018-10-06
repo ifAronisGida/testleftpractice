@@ -1,5 +1,6 @@
 using System;
 using PageObjectInterfaces.Common;
+using PageObjectInterfaces.Dialogs;
 using PageObjectInterfaces.Material;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.Waiting;
@@ -14,9 +15,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
     /// <summary>
     /// PageObject for the materials category.
     /// </summary>
-    /// <seealso cref="RepeaterObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
-    public class TcMaterials : RepeaterObject, IChildOf<TcMainTabControl>, TiMaterials
+    public class TcMaterials : TcRepeaterObjectBase, IChildOf<TcMainTabControl>, TiMaterials
     {
         private readonly Lazy<TcMaterialToolbar> mToolbar;
         private readonly Lazy<TcResultColumn> mResultColumn;
@@ -71,7 +71,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         {
             base.Goto();
             Goto<TcDomainsMore>().GotoMaterial();
-            VisibleOnScreen.WaitFor();
         }
 
         /// <summary>
@@ -133,7 +132,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
 
             Toolbar.DeleteButton.Click();
 
-            var dialog = On<TcMessageBox>();
+            var dialog = On<TiMessageBox, TcMessageBox>();
             if( dialog.MessageBoxExists() )
             {
                 dialog.Yes();

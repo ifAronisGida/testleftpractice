@@ -1,6 +1,5 @@
 using PageObjectInterfaces.Controls;
 
-
 namespace PageObjectInterfaces.Customer
 {
     public interface TiCustomers

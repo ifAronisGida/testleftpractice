@@ -38,12 +38,13 @@ namespace TestLeft.TestLeftBase.PageObjects.Settings
         /// </summary>
         public override void Goto()
         {
-            if( !VisibleOnScreen )
+            if( VisibleOnScreen )
             {
-                base.Goto();
-                Goto<TcMainMenu>().OpenSettingsDialog();
-                VisibleOnScreen.WaitFor();
+                return;
             }
+
+            base.Goto();
+            Goto<TcMainMenu>().OpenSettingsDialog();
         }
 
         /// <summary>
