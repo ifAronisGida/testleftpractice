@@ -85,6 +85,8 @@
     <Compile Include="Settings\TiBendSettings.cs" />
     <Compile Include="Settings\TiSettingsDialog.cs" />
     <Compile Include="Shell\TiMainMenu.cs" />
+    <Compile Include="Shell\TiMainTabControl.cs" />
+    <Compile Include="Shell\TiWelcomeScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

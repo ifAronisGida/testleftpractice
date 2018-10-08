@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PageObjectInterfaces.Shell;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.UI_Tests.Base;
@@ -21,7 +22,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
                 {
-                    var mainTabControl = HomeZoneApp.On<TcMainTabControl>();
+                    var mainTabControl = HomeZoneApp.On<TiMainTabControl, TcMainTabControl>();
                     var initialTabCount = mainTabControl.Count();
 
                     mainTabControl.AddNewTab();
@@ -40,7 +41,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
                 {
-                    var mainTabControl = HomeZoneApp.On<TcMainTabControl>();
+                    var mainTabControl = HomeZoneApp.On<TiMainTabControl, TcMainTabControl>();
                     var initialTabCount = mainTabControl.Count();
 
                     for( int i = 0; i < 10; i++ )
@@ -60,7 +61,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
                 {
-                    var mainTabControl = HomeZoneApp.On<TcMainTabControl>();
+                    var mainTabControl = HomeZoneApp.On<TiMainTabControl, TcMainTabControl>();
                     var initialTabCount = mainTabControl.Count();
                     var parts = HomeZoneApp.On<TcParts>();
 
@@ -81,7 +82,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var mainTabControl = HomeZoneApp.On<TcMainTabControl>();
+                var mainTabControl = HomeZoneApp.On<TiMainTabControl, TcMainTabControl>();
 
                 var count = mainTabControl.Count();
 

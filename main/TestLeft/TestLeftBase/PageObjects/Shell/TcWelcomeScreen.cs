@@ -1,11 +1,12 @@
 using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Shell;
 using TestLeft.TestLeftBase.Utilities;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.Shell
 {
-    public class TcWelcomeScreen : PageObject, IChildOf<TcMainTabControl>
+    public class TcWelcomeScreen : TcPageObjectBase, IChildOf<TcMainTabControl>, TiWelcomeScreen
     {
         protected override Search SearchPattern => Search.ByUid( "WelcomeScreen" );
 

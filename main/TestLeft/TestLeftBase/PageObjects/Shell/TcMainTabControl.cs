@@ -1,4 +1,5 @@
-﻿using SmartBear.TestLeft.TestObjects;
+﻿using PageObjectInterfaces.Shell;
+using SmartBear.TestLeft.TestObjects;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 
@@ -9,7 +10,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainWindow}" />
-    public class TcMainTabControl : PageObject, IChildOf<TcMainWindow>
+    public class TcMainTabControl : PageObject, IChildOf<TcMainWindow>, TiMainTabControl
     {
         protected override Search SearchPattern => Search.ByUid( "MainTabControl" );
 
