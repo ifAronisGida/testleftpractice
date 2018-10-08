@@ -17,6 +17,11 @@ namespace TestLeft.TestLeftBase.PageObjects
             return TcControlMapper.Map<TInterface>( this.FindGeneric( Search.ByUid( uid ) ) );
         }
 
+        public TInterface FindByControlName<TInterface>( string controlName ) where TInterface : class
+        {
+            return TcControlMapper.Map<TInterface>( this.FindGeneric( Search.ByControlName( controlName ) ) );
+        }
+
         /// <summary>
         /// Returns the interface of the given PageObject.
         /// </summary>

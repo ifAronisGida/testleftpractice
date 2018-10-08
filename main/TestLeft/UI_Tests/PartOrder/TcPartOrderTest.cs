@@ -16,6 +16,12 @@ namespace TestLeft.UI_Tests.PartOrder
         {
             Act( () =>
             {
+                var parts = HomeZoneApp.Goto<TiParts, TcParts>();
+                parts.NewPart();
+                parts.SingleDetail.Id = "TestPart";
+                parts.SingleDetail.Name.Value = "TestPart";
+                parts.SavePart();
+
                 var partOrders = HomeZoneApp.Goto<TiPartOrders, TcPartOrders>();
                 var toolbar = partOrders.Toolbar;
 
@@ -24,9 +30,19 @@ namespace TestLeft.UI_Tests.PartOrder
                 //TODO complete test
                 Assert.IsFalse( toolbar.CanSave );
 
+                partOrders.BaseInfo.ID.Value = "TestOrder";
+                partOrders.PartInfo.SelectPart( "TestPart" );
+                partOrders.Toolbar.Save();
+
+                partOrders.ResultColumn.SelectItem( "TestOrder" );
+
                 Assert.IsTrue( toolbar.CanDelete );
                 toolbar.Delete();
                 Assert.IsFalse( toolbar.CanDelete );
+
+                parts = HomeZoneApp.Goto<TiParts, TcParts>();
+                parts.ResultColumn.SelectItem( "TestPart" );
+                parts.Toolbar.DeleteButton.Click();
             } );
         }
 

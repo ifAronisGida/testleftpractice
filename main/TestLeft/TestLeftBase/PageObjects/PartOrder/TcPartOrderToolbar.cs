@@ -32,6 +32,11 @@ namespace TestLeft.TestLeftBase.PageObjects.PartOrder
             NewPartOrderButton.Click();
         }
 
+        public void Save()
+        {
+            SaveButton.Click();
+        }
+
         public void Delete()
         {
             DeleteButton.Click();

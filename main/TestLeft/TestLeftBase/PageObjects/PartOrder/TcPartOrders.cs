@@ -5,7 +5,7 @@ using PageObjectInterfaces.PartOrder;
 
 namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 {
-    public class TcPartOrders : TcRepeaterObjectBase, IChildOf<TcMainTabControl>, TiPartOrders
+    public class TcPartOrders : TcDomain, IChildOf<TcMainTabControl>, TiPartOrders
     {
         private readonly Lazy<TcPartOrderToolbar> mToolbar;
         private readonly Lazy<TcPartOrderBaseInfo> mBaseInfo;

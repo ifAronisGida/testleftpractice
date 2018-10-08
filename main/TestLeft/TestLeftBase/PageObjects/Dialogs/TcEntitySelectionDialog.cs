@@ -14,8 +14,8 @@ namespace TestLeft.TestLeftBase.PageObjects.Dialogs
             ClrFullClassName = "Trumpf.TruTops.Control.Infrastructure.ModuleBase.Views.TcEntitySelectionDialogView"
         } );
 
-        private TiButton CancelButton => Find<TiButton>( "CancelButton" );
-        private TiButton OkButton => Find<TiButton>( "OkButton" );
+        private TiButton CancelButton => FindByControlName<TiButton>( "CancelButton" );
+        private TiButton OkButton => FindByControlName<TiButton>( "OkButton" );
         private TcResultColumn ResultColumn => Find<TcResultColumn>( Search.ByControlName( "ResultColumn" ) );
 
         public void Cancel()

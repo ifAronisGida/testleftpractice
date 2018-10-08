@@ -6,6 +6,7 @@ namespace PageObjectInterfaces.PartOrder
         bool CanDelete { get; }
 
         void New();
+        void Save();
         void Delete();
     }
 }

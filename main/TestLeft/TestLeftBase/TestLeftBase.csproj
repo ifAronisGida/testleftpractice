@@ -147,6 +147,7 @@
     <Compile Include="PageObjects\Material\TcMaterialToolbar.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrderBaseInfo.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrderPartInfo.cs" />
+    <Compile Include="PageObjects\TcDomain.cs" />
     <Compile Include="PageObjects\TcExpandablePageObject.cs" />
     <Compile Include="PageObjects\TcPageObjectBase.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrders.cs" />
