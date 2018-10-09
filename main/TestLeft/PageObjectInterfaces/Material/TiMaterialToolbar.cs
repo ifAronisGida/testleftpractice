@@ -1,64 +1,30 @@
-using PageObjectInterfaces.Controls;
-
-
 namespace PageObjectInterfaces.Material
 {
     public interface TiMaterialToolbar
     {
-        /// <summary>
-        /// Gets the new button.
-        /// </summary>
-        /// <value>
-        /// The new button.
-        /// </value>
-        TiButton NewButton { get; }
+        bool CanSave { get; }
+        bool CanDelete { get; }
+        bool CanRevert { get; }
 
         /// <summary>
-        /// Gets the duplicate button.
+        /// Creates a new material.
         /// </summary>
-        /// <value>
-        /// The duplicate button.
-        /// </value>
-        TiButton DuplicateButton { get; }
+        void New();
 
         /// <summary>
-        /// Gets the save button.
+        /// Duplicates the current material.
         /// </summary>
-        /// <value>
-        /// The save button.
-        /// </value>
-        TiButton SaveButton { get; }
+        void Duplicate();
 
         /// <summary>
-        /// Gets the revert button.
+        /// Saves the current material.
         /// </summary>
-        /// <value>
-        /// The revert button.
-        /// </value>
-        TiButton RevertButton { get; }
+        void Save();
 
         /// <summary>
-        /// Gets the delete button.
+        /// Deletes the current material.
         /// </summary>
-        /// <value>
-        /// The delete button.
-        /// </value>
-        TiButton DeleteButton { get; }
-
-        /// <summary>
-        /// Gets the lock material button.
-        /// </summary>
-        /// <value>
-        /// The lock material button.
-        /// </value>
-        TiButton LockMaterialButton { get; }
-
-        /// <summary>
-        /// Gets the unlock material button.
-        /// </summary>
-        /// <value>
-        /// The unlock material button.
-        /// </value>
-        TiButton UnlockMaterialButton { get; }
+        /// <returns>true if successful</returns>
+        void Delete();
     }
 }

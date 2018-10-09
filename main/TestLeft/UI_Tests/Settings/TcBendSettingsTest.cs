@@ -1,8 +1,6 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PageObjectInterfaces.Settings;
 using TestLeft.TestLeftBase.PageObjects.Flux;
-using TestLeft.TestLeftBase.PageObjects.Settings;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -24,7 +22,8 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
+                var settingsDialog = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                var bendSettings = settingsDialog.BendSettings;
                 bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
@@ -38,7 +37,7 @@ namespace TestLeft.UI_Tests.Settings
                     flux.CloseToolsDialog();
                 }
 
-                HomeZoneApp.On<TcSettingsDialog>().Cancel();
+                settingsDialog.Cancel();
             } );
         }
 
@@ -50,7 +49,8 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
+                var settingsDialog = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                var bendSettings = settingsDialog.BendSettings;
                 bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
@@ -66,7 +66,7 @@ namespace TestLeft.UI_Tests.Settings
                 }
 
 
-                HomeZoneApp.On<TcSettingsDialog>().Cancel();
+                settingsDialog.Cancel();
             } );
         }
 
@@ -78,7 +78,8 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
+                var settingsDialog = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                var bendSettings = settingsDialog.BendSettings;
                 bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
@@ -94,7 +95,7 @@ namespace TestLeft.UI_Tests.Settings
                 }
 
 
-                HomeZoneApp.On<TcSettingsDialog>().Cancel();
+                settingsDialog.Cancel();
             } );
         }
 
@@ -106,14 +107,15 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
+                var settingsDialog = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                var bendSettings = settingsDialog.BendSettings;
                 bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
 
                 bendSettings.OpenDataManagerBend();
 
-                HomeZoneApp.On<TcSettingsDialog>().Cancel();
+                settingsDialog.Cancel();
             } );
         }
     }

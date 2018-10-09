@@ -23,7 +23,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Dialogs
             {
                 if( mMessageBox == null )
                 {
-                    mMessageBox = Parent.Node.Find<IControl>( new WPFPattern { Uid = "TcMessageBox" }, 2 );
+                    Parent.Node.TryFind<IControl>( new WPFPattern { Uid = "TcMessageBox" }, out mMessageBox, 2 );
                 }
 
                 return mMessageBox;

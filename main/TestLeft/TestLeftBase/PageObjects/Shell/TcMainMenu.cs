@@ -1,7 +1,11 @@
 using System;
+using PageObjectInterfaces.Dialogs;
+using PageObjectInterfaces.Settings;
 using PageObjectInterfaces.Shell;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
+using TestLeft.TestLeftBase.PageObjects.Dialogs;
+using TestLeft.TestLeftBase.PageObjects.Settings;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 
@@ -65,44 +69,44 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
         /// Opens the settings dialog.
         /// </summary>
         /// <returns>this</returns>
-        public TiMainMenu OpenSettingsDialog()
+        public TiSettingsDialog OpenSettingsDialog()
         {
             Popup.Settings.Click();
 
-            return this;
+            return On<TcSettingsDialog>();
         }
 
         /// <summary>
         /// Shows the help.
         /// </summary>
-        /// <returns>this</returns>
-        public TiMainMenu OpenHelp()
+        /// <returns>The help dialog</returns>
+        public TiHelpDialog OpenHelp()
         {
             Popup.Help.Click();
 
-            return this;
+            return On<TcHelpDialog>();
         }
 
         /// <summary>
         /// Shows the welcome screen.
         /// </summary>
-        /// <returns>this</returns>
-        public TiMainMenu ShowWelcomeScreen()
+        /// <returns>The welcome screen</returns>
+        public TiWelcomeScreen ShowWelcomeScreen()
         {
             Popup.WelcomeScreen.Click();
 
-            return this;
+            return On<TcWelcomeScreen>();
         }
 
         /// <summary>
         /// Opens the about dialog.
         /// </summary>
-        /// <returns>this</returns>
-        public TiMainMenu OpenAboutDialog()
+        /// <returns>The about dialog</returns>
+        public TiAboutDialog OpenAboutDialog()
         {
             Popup.About.Click();
 
-            return this;
+            return On<TcAboutDialog>();
         }
 
         /// <summary>

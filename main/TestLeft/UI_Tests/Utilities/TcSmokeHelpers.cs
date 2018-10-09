@@ -2,18 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PageObjectInterfaces.Customer;
-using PageObjectInterfaces.Material;
-using PageObjectInterfaces.Part;
-using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.PageObjects.CutJob;
 using TestLeft.TestLeftBase.PageObjects.Flux;
 using TestLeft.TestLeftBase.PageObjects.Machine;
-using TestLeft.TestLeftBase.PageObjects.Material;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.PageObjects.PartOrder;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
+using Trumpf.PageObjects.Waiting;
 
 namespace TestLeft.UI_Tests.Utilities
 {
@@ -55,7 +51,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestMaterials()
         {
-            var materials = HomeZoneApp.Goto<TiMaterials, TcMaterials>();
+            var materials = HomeZoneApp.GotoMaterials();
             var materialCount = materials.ResultColumn.Count;
             var materialsCreatedCount = 0;
 
@@ -80,17 +76,17 @@ namespace TestLeft.UI_Tests.Utilities
 
                 materials.ResultColumn.SelectItem( materialId );
 
-                materials.DuplicateMaterial();
+                Wait.ActAndWaitForChange( materials.Toolbar.Duplicate, () => materials.ResultColumn.Count );
 
                 var name = Name2UIT_Name( materials.Detail.Id.Value );
                 materials.Detail.Id.Value = name;
                 materials.Detail.Name.Value = name;
 
-                Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
-                materials.SaveMaterial();
+                Assert.IsTrue( materials.Toolbar.CanSave );
+                materials.Toolbar.Save();
                 materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
                 materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
-                Assert.IsFalse( materials.Toolbar.SaveButton.Enabled );
+                Assert.IsFalse( materials.Toolbar.CanSave );
                 return true;
             }
         }
@@ -101,7 +97,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void DeleteTestMaterials()
         {
-            var materials = HomeZoneApp.Goto<TiMaterials, TcMaterials>();
+            var materials = HomeZoneApp.GotoMaterials();
             var currentMaterialsCount = materials.ResultColumn.Count;
             var deletedMaterialsCount = 0;
 
@@ -141,9 +137,9 @@ namespace TestLeft.UI_Tests.Utilities
                 }
 
                 machines.NewBendMachine( bendMachineName, Name2UIT_Name( bendMachineName ) );
-                Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
-                machines.SaveMachine();
-                Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
+                Assert.IsTrue( machines.Toolbar.CanSave );
+                machines.Toolbar.Save();
+                Assert.IsFalse( machines.Toolbar.CanSave );
 
                 machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
                 machinesCreatedCount++;
@@ -158,9 +154,9 @@ namespace TestLeft.UI_Tests.Utilities
                 }
 
                 machines.NewCutMachine( cutMachineName.Item1, Name2UIT_Name( cutMachineName.Item1 ), cutMachineName.Item2 );
-                Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
-                machines.SaveMachine();
-                Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
+                Assert.IsTrue( machines.Toolbar.CanSave );
+                machines.Toolbar.Save();
+                Assert.IsFalse( machines.Toolbar.CanSave );
 
                 machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
                 machinesCreatedCount++;
@@ -210,7 +206,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestCustomers()
         {
-            var customers = HomeZoneApp.Goto<TiCustomers, TcCustomers>();
+            var customers = HomeZoneApp.GotoCustomers();
             var customersCreatedCount = 0;
             var customersCount = customers.Count();
             if( string.IsNullOrEmpty( customers.Name.Value ) )
@@ -249,7 +245,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void DeleteTestCustomers()
         {
-            var customers = HomeZoneApp.Goto<TiCustomers, TcCustomers>();
+            var customers = HomeZoneApp.GotoCustomers();
             var customersCount = customers.Count();
             var deletedCustomersCount = 0;
 
@@ -285,7 +281,7 @@ namespace TestLeft.UI_Tests.Utilities
                 CreateTestCustomers();
             }
 
-            var parts = HomeZoneApp.Goto<TiParts, TcParts>();
+            var parts = HomeZoneApp.GotoParts();
             var partCount = parts.ResultColumn.Count;
             var partsCreatedCount = 0;
 
@@ -296,7 +292,7 @@ namespace TestLeft.UI_Tests.Utilities
                     continue;   // part already exists
                 }
 
-                parts.Import( mPartNames[ i ].FullName );
+                parts.Toolbar.Import( mPartNames[ i ].FullName );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
                 parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
@@ -309,9 +305,9 @@ namespace TestLeft.UI_Tests.Utilities
                 parts.SingleDetail.Note.Value = TcSettings.NamePrefix + "Note";
                 parts.SingleDetailBendSolutions.New();
                 parts.SingleDetailCutSolutions.New();
-                Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
-                parts.SavePart();
-                Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
+                Assert.IsTrue( parts.Toolbar.CanSave );
+                parts.Toolbar.Save();
+                Assert.IsFalse( parts.Toolbar.CanSave );
                 partsCreatedCount++;
             }
 

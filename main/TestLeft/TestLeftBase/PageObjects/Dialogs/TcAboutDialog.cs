@@ -32,5 +32,10 @@ namespace TestLeft.TestLeftBase.PageObjects.Dialogs
         {
             OkButton.Click();
         }
+
+        public bool WaitUntilVisible()
+        {
+            return VisibleOnScreen.TryWaitFor();
+        }
     }
 }

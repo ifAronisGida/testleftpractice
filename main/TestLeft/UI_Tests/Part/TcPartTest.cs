@@ -1,8 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PageObjectInterfaces.Part;
 using TestLeft.TestLeftBase.PageObjects.Customer;
-using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -35,9 +33,9 @@ namespace TestLeft.UI_Tests.Part
                 {
                     var partName = TcSettings.NamePrefix + "NewPartTest";
 
-                    var parts = HomeZoneApp.Goto<TiParts, TcParts>();
+                    var parts = HomeZoneApp.GotoParts();
 
-                    parts.NewPart();
+                    parts.Toolbar.New();
                     parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
                     parts.SingleDetail.Name.Value = partName;
@@ -50,13 +48,13 @@ namespace TestLeft.UI_Tests.Part
                     parts.SingleDetail.Archivable = false;
                     parts.SingleDetail.Note.Value = "ImportPartTest_Note";
 
-                    Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
-                    parts.SavePart();
-                    Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
+                    Assert.IsTrue( parts.Toolbar.CanSave );
+                    parts.Toolbar.Save();
+                    Assert.IsFalse( parts.Toolbar.CanSave );
 
-                    Assert.IsTrue( parts.Toolbar.DeleteButton.Enabled );
-                    parts.DeletePart();
-                    Assert.IsFalse( parts.Toolbar.DeleteButton.Enabled );
+                    Assert.IsTrue( parts.Toolbar.CanDelete );
+                    parts.Toolbar.Delete();
+                    Assert.IsFalse( parts.Toolbar.CanDelete );
                 } );
         }
 
@@ -68,9 +66,9 @@ namespace TestLeft.UI_Tests.Part
         {
             Act( () =>
                 {
-                    var parts = HomeZoneApp.Goto<TiParts, TcParts>();
+                    var parts = HomeZoneApp.GotoParts();
 
-                    parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
+                    parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
 
                     parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                     parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
@@ -88,24 +86,24 @@ namespace TestLeft.UI_Tests.Part
                     parts.SingleDetailBendSolutions.New();
                     parts.SingleDetailCutSolutions.New();
 
-                    Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
-                    parts.SavePart();
-                    Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
+                    Assert.IsTrue( parts.Toolbar.CanSave );
+                    parts.Toolbar.Save();
+                    Assert.IsFalse( parts.Toolbar.CanSave );
 
-                    Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
-                    parts.BoostPart();
+                    Assert.IsTrue( parts.Toolbar.CanBoost );
+                    parts.Toolbar.Boost();
                     parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                     parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
                     // boost again to check dialog box handling
-                    Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
-                    parts.BoostPart();
+                    Assert.IsTrue( parts.Toolbar.CanBoost );
+                    parts.Toolbar.Boost();
                     parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                     parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
-                    Assert.IsTrue( parts.Toolbar.DeleteButton.Enabled );
-                    parts.DeletePart();
-                    Assert.IsFalse( parts.Toolbar.DeleteButton.Enabled );
+                    Assert.IsTrue( parts.Toolbar.CanDelete );
+                    parts.Toolbar.Delete();
+                    Assert.IsFalse( parts.Toolbar.CanDelete );
                 } );
         }
 
@@ -117,9 +115,9 @@ namespace TestLeft.UI_Tests.Part
         {
             Act( () =>
             {
-                var parts = HomeZoneApp.Goto<TiParts, TcParts>();
+                var parts = HomeZoneApp.GotoParts();
 
-                parts.NewPart();
+                parts.Toolbar.New();
 
                 parts.SingleDetailDesign.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
 
@@ -140,18 +138,18 @@ namespace TestLeft.UI_Tests.Part
                 parts.SingleDetailBendSolutions.New();
                 parts.SingleDetailCutSolutions.New();
 
-                Assert.IsTrue( parts.Toolbar.SaveButton.Enabled );
-                parts.SavePart();
-                Assert.IsFalse( parts.Toolbar.SaveButton.Enabled );
+                Assert.IsTrue( parts.Toolbar.CanSave );
+                parts.Toolbar.Save();
+                Assert.IsFalse( parts.Toolbar.CanSave );
 
-                Assert.IsTrue( parts.Toolbar.BoostButton.Enabled );
-                parts.BoostPart();
+                Assert.IsTrue( parts.Toolbar.CanBoost );
+                parts.Toolbar.Boost();
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
-                Assert.IsTrue( parts.Toolbar.DeleteButton.Enabled );
-                parts.DeletePart();
-                Assert.IsFalse( parts.Toolbar.DeleteButton.Enabled );
+                Assert.IsTrue( parts.Toolbar.CanDelete );
+                parts.Toolbar.Delete();
+                Assert.IsFalse( parts.Toolbar.CanDelete );
             } );
         }
 

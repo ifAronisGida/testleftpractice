@@ -3,7 +3,7 @@ using PageObjectInterfaces.Common;
 
 namespace PageObjectInterfaces.Machine
 {
-    public interface TiMachines
+    public interface TiMachines : TiDomain
     {
         /// <summary>
         /// Gets the toolbar.
@@ -12,15 +12,7 @@ namespace PageObjectInterfaces.Machine
         /// The toolbar.
         /// </value>
         TiMachineToolbar Toolbar { get; } 
-
-        /// <summary>
-        /// Gets the result column.
-        /// </summary>
-        /// <value>
-        /// The result column.
-        /// </value>
-        TiResultColumn ResultColumn { get; }
-
+        
         /// <summary>
         /// Gets the detail area.
         /// </summary>
@@ -49,11 +41,6 @@ namespace PageObjectInterfaces.Machine
         bool WaitForDetailOverlayDisappear( TimeSpan timeout );
 
         /// <summary>
-        /// Creates a new cut machine.
-        /// </summary>
-        void NewCutMachine();
-
-        /// <summary>
         /// Creates a new cut machine with the given properties.
         /// </summary>
         /// <param name="machineType">Type of the machine.</param>
@@ -62,26 +49,11 @@ namespace PageObjectInterfaces.Machine
         void NewCutMachine( string machineType, string name, string laserPowerValue );
 
         /// <summary>
-        /// Creates a new bend machine.
-        /// </summary>
-        void NewBendMachine();
-
-        /// <summary>
         /// Creates a new bend machine with the given properties.
         /// </summary>
         /// <param name="machineType">Type of the machine.</param>
         /// <param name="name">The name.</param>
         void NewBendMachine( string machineType, string name );
-
-        /// <summary>
-        /// Saves the current machine.
-        /// </summary>
-        void SaveMachine();
-
-        /// <summary>
-        /// Deletes the current machine.
-        /// </summary>
-        void DeleteMachine();
 
         /// <summary>
         /// Deletes the given machine.

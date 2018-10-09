@@ -1,3 +1,6 @@
+using PageObjectInterfaces.Dialogs;
+using PageObjectInterfaces.Settings;
+
 namespace PageObjectInterfaces.Shell
 {
     public interface TiMainMenu
@@ -16,26 +19,26 @@ namespace PageObjectInterfaces.Shell
         /// <summary>
         /// Opens the settings dialog.
         /// </summary>
-        /// <returns>this</returns>
-        TiMainMenu OpenSettingsDialog();
+        /// <returns>The settings dialog</returns>
+        TiSettingsDialog OpenSettingsDialog();
 
         /// <summary>
         /// Shows the help.
         /// </summary>
-        /// <returns>this</returns>
-        TiMainMenu OpenHelp();
+        /// <returns>The help dialog</returns>
+        TiHelpDialog OpenHelp();
 
         /// <summary>
         /// Shows the welcome screen.
         /// </summary>
-        /// <returns>this</returns>
-        TiMainMenu ShowWelcomeScreen();
+        /// <returns>The welcome screen</returns>
+        TiWelcomeScreen ShowWelcomeScreen();
 
         /// <summary>
         /// Opens the about dialog.
         /// </summary>
-        /// <returns>this</returns>
-        TiMainMenu OpenAboutDialog();
+        /// <returns>The about dialog</returns>
+        TiAboutDialog OpenAboutDialog();
 
         /// <summary>
         /// Closes the application.

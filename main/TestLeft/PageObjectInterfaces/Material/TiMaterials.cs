@@ -1,11 +1,9 @@
 using System;
 using PageObjectInterfaces.Common;
-using Trumpf.PageObjects.Waiting;
-
 
 namespace PageObjectInterfaces.Material
 {
-    public interface TiMaterials
+    public interface TiMaterials : TiDomain
     {
         /// <summary>
         /// Gets the toolbar.
@@ -14,14 +12,6 @@ namespace PageObjectInterfaces.Material
         /// The toolbar.
         /// </value>
         TiMaterialToolbar Toolbar { get; }
-
-        /// <summary>
-        /// Gets the result column.
-        /// </summary>
-        /// <value>
-        /// The result column.
-        /// </value>
-        TiResultColumn ResultColumn { get; }
 
         /// <summary>
         /// Gets the detail area.
@@ -49,27 +39,6 @@ namespace PageObjectInterfaces.Material
         /// <param name="timeout">The timeout.</param>
         /// <returns></returns>
         bool WaitForDetailOverlayDisappear( TimeSpan timeout );
-
-        /// <summary>
-        /// Creates a new material.
-        /// </summary>
-        void NewMaterial();
-
-        /// <summary>
-        /// Duplicates the current material.
-        /// </summary>
-        void DuplicateMaterial();
-
-        /// <summary>
-        /// Saves the current material.
-        /// </summary>
-        void SaveMaterial();
-
-        /// <summary>
-        /// Deletes the current material.
-        /// </summary>
-        /// <returns>true if successful</returns>
-        bool DeleteMaterial();
 
         /// <summary>
         /// Deletes the given material.

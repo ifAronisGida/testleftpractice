@@ -1,5 +1,7 @@
 ﻿using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Dialogs;
 using PageObjectInterfaces.Part;
+using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
@@ -13,118 +15,107 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcToolbars}" />
     public class TcPartToolbar : TcPageObjectBase, IChildOf<TcToolbars>, TiPartToolbar
     {
+        public bool CanSave => SaveButton.Enabled;
+        public bool CanDelete => DeleteButton.Enabled;
+        public bool CanRevert => RevertButton.Enabled;
+        public bool CanBoost => BoostButton.Enabled;
+
         protected override Search SearchPattern => Search.ByUid( "Part.Toolbar" );
 
-        /// <summary>
-        /// Gets the new part button.
-        /// </summary>
-        /// <value>
-        /// The new part button.
-        /// </value>
-        public TiButton NewPartButton => Find<TiButton>( "Part.Toolbar.New" );
+        private TiButton NewPartButton => Find<TiButton>( "Part.Toolbar.New" );
+        private TiButton DuplicateButton => Find<TiButton>( "Part.Toolbar.Duplicate" );
+        private TiButton ImportButton => Find<TiButton>( "Part.Toolbar.Import" );
+        private TiButton ExportButton => Find<TiButton>( "Part.Toolbar.Export" );
+        private TiButton BoostButton => Find<TiButton>( "Part.Toolbar.CalculateAll" );
+        private TiButton CreatePartOrderButton => Find<TiButton>( "Part.Toolbar.CreatePartOrder" );
+        private TiButton CreateCutJobButton => Find<TiButton>( "Part.Toolbar.CreateCutJob" );
+        private TiButton SaveButton => Find<TiButton>( "Part.Toolbar.Save" );
+        private TiButton RevertButton => Find<TiButton>( "Part.Toolbar.Revert" );
+        private TiButton DeleteButton => Find<TiButton>( "Part.Toolbar.Delete" );
+        private TiButton MoveToArchiveButton => Find<TiButton>( "Part.Toolbar.MoveToArchive" );
+        private TiButton RemoveFromArchiveButton => Find<TiButton>( "Part.Toolbar.RemoveFromArchive" );
+        private TiButton LockPartButton => Find<TiButton>( "Part.Toolbar.LockPart" );
+        private TiButton UnlockPartButton => Find<TiButton>( "Part.Toolbar.UnlockPart" );
 
         /// <summary>
-        /// Gets the duplicate button.
+        /// Creates a new part.
         /// </summary>
-        /// <value>
-        /// The duplicate button.
-        /// </value>
-        public TiButton DuplicateButton => Find<TiButton>( "Part.Toolbar.Duplicate" );
+        public void New()
+        {
+            NewPartButton.Click();
+        }
 
         /// <summary>
-        /// Gets the import button.
+        /// Imports the specified part from the given filename.
         /// </summary>
-        /// <value>
-        /// The import button.
-        /// </value>
-        public TiButton ImportButton => Find<TiButton>( "Part.Toolbar.Import" );
+        /// <param name="filename">The filename.</param>
+        /// <returns>true if successful; otherwise false</returns>
+        public bool Import( string filename )
+        {
+            ImportButton.Click();
+
+            var openDlg = On<TiOpenFileDialog, TcOpenFileDialog>();
+            return openDlg.SetFilename( filename );
+        }
 
         /// <summary>
-        /// Gets the export button.
+        /// Boosts the part via toolbar.
         /// </summary>
-        /// <value>
-        /// The export button.
-        /// </value>
-        public TiButton ExportButton => Find<TiButton>( "Part.Toolbar.Export" );
+        public void Boost()
+        {
+            BoostButton.Click();
+
+            var dialog = On<TiPartComputeAllConfirmation, TcPartComputeAllConfirmation>();
+            if( dialog.DialogBoxExists() )
+            {
+                dialog.Ok();
+            }
+        }
 
         /// <summary>
-        /// Gets the boost button.
+        /// Saves the part.
         /// </summary>
-        /// <value>
-        /// The boost button.
-        /// </value>
-        public TiButton BoostButton => Find<TiButton>( "Part.Toolbar.CalculateAll" );
+        public void Save()
+        {
+            SaveButton.Click();
+        }
 
         /// <summary>
-        /// Gets the create part order button.
+        /// Reverts the part.
         /// </summary>
-        /// <value>
-        /// The create part order button.
-        /// </value>
-        public TiButton CreatePartOrderButton => Find<TiButton>( "Part.Toolbar.CreatePartOrder" );
+        public void Revert()
+        {
+            RevertButton.Click();
+        }
 
         /// <summary>
-        /// Gets the create cut job button.
+        /// Deletes the part.
         /// </summary>
-        /// <value>
-        /// The create cut job button.
-        /// </value>
-        public TiButton CreateCutJobButton => Find<TiButton>( "Part.Toolbar.CreateCutJob" );
+        public void Delete()
+        {
+            DeleteButton.Click();
+
+            var dialog = On<TiMessageBox, TcMessageBox>();
+            if( dialog.MessageBoxExists() )
+            {
+                dialog.Yes();
+            }
+        }
 
         /// <summary>
-        /// Gets the save button.
+        /// Creates the part order.
         /// </summary>
-        /// <value>
-        /// The save button.
-        /// </value>
-        public TiButton SaveButton => Find<TiButton>( "Part.Toolbar.Save" );
+        public void CreatePartOrder()
+        {
+            CreatePartOrderButton.Click();
+        }
 
         /// <summary>
-        /// Gets the revert button.
+        /// Creates the cut job.
         /// </summary>
-        /// <value>
-        /// The revert button.
-        /// </value>
-        public TiButton RevertButton => Find<TiButton>( "Part.Toolbar.Revert" );
-
-        /// <summary>
-        /// Gets the delete button.
-        /// </summary>
-        /// <value>
-        /// The delete button.
-        /// </value>
-        public TiButton DeleteButton => Find<TiButton>( "Part.Toolbar.Delete" );
-
-        /// <summary>
-        /// Gets the move to archive button.
-        /// </summary>
-        /// <value>
-        /// The move to archive button.
-        /// </value>
-        public TiButton MoveToArchiveButton => Find<TiButton>( "Part.Toolbar.MoveToArchive" );
-
-        /// <summary>
-        /// Gets the remove from archive button.
-        /// </summary>
-        /// <value>
-        /// The remove from archive button.
-        /// </value>
-        public TiButton RemoveFromArchiveButton => Find<TiButton>( "Part.Toolbar.RemoveFromArchive" );
-
-        /// <summary>
-        /// Gets the lock part button.
-        /// </summary>
-        /// <value>
-        /// The lock part button.
-        /// </value>
-        public TiButton LockPartButton => Find<TiButton>( "Part.Toolbar.LockPart" );
-
-        /// <summary>
-        /// Gets the unlock part button.
-        /// </summary>
-        /// <value>
-        /// The unlock part button.
-        /// </value>
-        public TiButton UnlockPartButton => Find<TiButton>( "Part.Toolbar.UnlockPart" );
+        public void CreateCutJob()
+        {
+            CreateCutJobButton.Click();
+        }
     }
 }

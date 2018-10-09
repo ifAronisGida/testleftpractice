@@ -1,13 +1,9 @@
 using System;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PageObjectInterfaces.Part;
-using PageObjectInterfaces.Settings;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Flux;
-using TestLeft.TestLeftBase.PageObjects.Part;
-using TestLeft.TestLeftBase.PageObjects.Settings;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
@@ -31,7 +27,8 @@ namespace TestLeft.UI_Tests.Settings
             Act( () =>
             {
                 // Create a toollist
-                var bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
+                var settingsDialog = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                var bendSettings = settingsDialog.BendSettings;
                 bendSettings.Goto();
 
                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
@@ -47,11 +44,11 @@ namespace TestLeft.UI_Tests.Settings
                     Thread.Sleep( TcLandingPages.SYNC_TIMEOUT );
                 }
 
-                HomeZoneApp.On<TcSettingsDialog>().Cancel();
+                settingsDialog.Cancel();
 
                 // import part and use toollist
-                var parts = HomeZoneApp.Goto<TiParts, TcParts>();
-                parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+                var parts = HomeZoneApp.GotoParts();
+                parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
@@ -62,7 +59,7 @@ namespace TestLeft.UI_Tests.Settings
                 }
                 Assert.IsTrue( found );
 
-                parts.DeletePart();
+                parts.Toolbar.Delete();
             } );
         }
 
@@ -75,7 +72,8 @@ namespace TestLeft.UI_Tests.Settings
             Act( () =>
              {
                  // Create a toollist
-                 var bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
+                 var settingsDialog = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                 var bendSettings = settingsDialog.BendSettings;
                  bendSettings.Goto();
                  Assert.IsTrue( bendSettings.WaitUntilVisible() );
                  bendSettings.OpenToolListsConfiguration();
@@ -87,10 +85,10 @@ namespace TestLeft.UI_Tests.Settings
                  {
                      flux.CreateNewToolList( toollistName );
                  }
-                 HomeZoneApp.On<TcSettingsDialog>().Save();
+                 settingsDialog.Save();
 
                  // Delete the  toollist
-                 bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
+                 bendSettings = HomeZoneApp.GotoMainMenu().OpenSettingsDialog().BendSettings;
                  bendSettings.Goto();
                  Assert.IsTrue( bendSettings.WaitUntilVisible() );
                  bendSettings.OpenToolListsConfiguration();
@@ -103,17 +101,17 @@ namespace TestLeft.UI_Tests.Settings
                      flux.DeleteToollist( toollistName );
                  }
 
-                 HomeZoneApp.On<TcSettingsDialog>().Save();
+                 settingsDialog.Save();
 
                  // import part and use toollist
-                 var parts = HomeZoneApp.Goto<TiParts, TcParts>();
-                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+                 var parts = HomeZoneApp.GotoParts();
+                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                  parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                  parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
                  Assert.IsFalse( CheckToolListDropdown( toollistName, out var control ) );
 
-                 parts.DeletePart();
+                 parts.Toolbar.Delete();
              } );
         }
 
@@ -126,7 +124,8 @@ namespace TestLeft.UI_Tests.Settings
             Act( () =>
              {
                  // Create a toollist
-                 var bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
+                 var settingsDialog = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                 var bendSettings = settingsDialog.BendSettings;
                  bendSettings.Goto();
                  Assert.IsTrue( bendSettings.WaitUntilVisible() );
                  bendSettings.OpenToolListsConfiguration();
@@ -138,11 +137,11 @@ namespace TestLeft.UI_Tests.Settings
                  {
                      flux.CreateNewToolList( toollistName );
                  }
-                 HomeZoneApp.On<TcSettingsDialog>().Save();
+                 settingsDialog.Save();
 
                  // rename toollist
                  string newName = "newName";
-                 bendSettings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>().BendSettings;
+                 bendSettings = HomeZoneApp.GotoMainMenu().OpenSettingsDialog().BendSettings;
                  bendSettings.Goto();
                  Assert.IsTrue( bendSettings.WaitUntilVisible() );
                  bendSettings.OpenToolListsConfiguration();
@@ -156,20 +155,20 @@ namespace TestLeft.UI_Tests.Settings
                      Thread.Sleep( TcLandingPages.SYNC_TIMEOUT );
                  }
 
-                 HomeZoneApp.On<TcSettingsDialog>().Save();
+                 settingsDialog.Save();
 
                  // import part and use toollist
-                 var parts = HomeZoneApp.Goto<TiParts, TcParts>();
-                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+                 var parts = HomeZoneApp.GotoParts();
+                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                  parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                  parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
                  Assert.IsTrue( CheckToolListDropdown( newName, out var control ) );
 
-                 parts.DeletePart();
+                 parts.Toolbar.Delete();
              } );
         }
-        
+
         /// <summary>
         /// Check for Toollist in Design dropdown
         /// </summary>

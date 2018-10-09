@@ -58,7 +58,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
             if( !VisibleOnScreen )
             {
                 mParts = Goto<TcParts>();
-                mParts.NewPart();
+                mParts.Toolbar.New();
                 mParts.SingleDetail.OpenCustomerAdministration();
             }
         }
@@ -240,7 +240,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Customer
         /// </summary>
         private void CleanUp()
         {
-            mParts?.Toolbar.DeleteButton.Click();
+            mParts?.Toolbar.Delete();
 
             var dialog = On<TiMessageBox, TcMessageBox>();
             if( dialog != null && dialog.MessageBoxExists() )

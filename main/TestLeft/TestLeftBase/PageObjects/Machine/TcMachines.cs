@@ -1,15 +1,10 @@
 ﻿using System;
-using PageObjectInterfaces.Common;
-using PageObjectInterfaces.Dialogs;
 using PageObjectInterfaces.Machine;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.Waiting;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
-using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
-using SmartBear.TestLeft.TestObjects.WPF;
-using TestLeft.TestLeftBase.ControlObjects.Composite;
 
 namespace TestLeft.TestLeftBase.PageObjects.Machine
 {
@@ -17,11 +12,10 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     /// PageObject for the machines category.
     /// </summary>
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
-    public class TcMachines : TcRepeaterObjectBase, IChildOf<TcMainTabControl>, TiMachines
+    public class TcMachines : TcDomain, IChildOf<TcMainTabControl>, TiMachines
     {
         private readonly Lazy<TcMachineToolbar> mToolbar;
         private readonly Lazy<TcMachinePopupMenu> mPopup;
-        private readonly Lazy<TcResultColumn> mResultColumn;
         private readonly Lazy<TcMachineDetail> mDetail;
 
         /// <summary>
@@ -31,7 +25,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         {
             mToolbar = new Lazy<TcMachineToolbar>( On<TcMachineToolbar> );
             mPopup = new Lazy<TcMachinePopupMenu>( On<TcMachinePopupMenu> );
-            mResultColumn = new Lazy<TcResultColumn>( () => Find<TcResultColumn>( Search.ByUid( TcResultColumn.Uid ) ) );
             mDetail = new Lazy<TcMachineDetail>( On<TcMachineDetail> );
         }
 
@@ -58,14 +51,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// The toolbar.
         /// </value>
         public TcMachinePopupMenu Popup => mPopup.Value;
-
-        /// <summary>
-        /// Gets the result column.
-        /// </summary>
-        /// <value>
-        /// The result column.
-        /// </value>
-        public TiResultColumn ResultColumn => mResultColumn.Value;
 
         /// <summary>
         /// Gets the detail area.
@@ -105,14 +90,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         }
 
         /// <summary>
-        /// Creates a new cut machine.
-        /// </summary>
-        public void NewCutMachine()
-        {
-            Toolbar.NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click( "|[0]" );
-        }
-
-        /// <summary>
         /// Creates a new cut machine with the given properties.
         /// </summary>
         /// <param name="machineType">Type of the machine.</param>
@@ -120,18 +97,10 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <param name="laserPowerValue">The laser power value.</param>
         public void NewCutMachine( string machineType, string name, string laserPowerValue )
         {
-            NewCutMachine();
+            Toolbar.NewCutMachine();
             Detail.CutMachineType = machineType;
             Detail.Name.Value = name;
             Detail.LaserPower.Value = laserPowerValue;
-        }
-
-        /// <summary>
-        /// Creates a new bend machine.
-        /// </summary>
-        public void NewBendMachine()
-        {
-            Toolbar.NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click( "|[1]" );
         }
 
         /// <summary>
@@ -141,31 +110,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <param name="name">The name.</param>
         public void NewBendMachine( string machineType, string name )
         {
-            NewBendMachine();
+            Toolbar.NewBendMachine();
             Detail.BendMachineType = machineType;
             Detail.Name.Value = name;
-        }
-
-        /// <summary>
-        /// Saves the current machine.
-        /// </summary>
-        public void SaveMachine()
-        {
-            Toolbar.SaveButton.Click();
-        }
-
-        /// <summary>
-        /// Deletes the current machine.
-        /// </summary>
-        public void DeleteMachine()
-        {
-            Toolbar.DeleteButton.Click();
-
-            var dialog = On<TiMessageBox, TcMessageBox>();
-            if( dialog.MessageBoxExists() )
-            {
-                dialog.Yes();
-            }
         }
 
         /// <summary>
@@ -180,7 +127,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
                 return false;
             }
 
-            DeleteMachine();
+            Toolbar.Delete();
             return true;
         }
     }

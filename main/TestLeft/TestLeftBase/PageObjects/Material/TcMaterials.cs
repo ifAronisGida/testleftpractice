@@ -1,14 +1,10 @@
 using System;
-using PageObjectInterfaces.Common;
-using PageObjectInterfaces.Dialogs;
 using PageObjectInterfaces.Material;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.Waiting;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
-using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
-using TestLeft.TestLeftBase.ControlObjects.Composite;
 
 namespace TestLeft.TestLeftBase.PageObjects.Material
 {
@@ -16,10 +12,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
     /// PageObject for the materials category.
     /// </summary>
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
-    public class TcMaterials : TcRepeaterObjectBase, IChildOf<TcMainTabControl>, TiMaterials
+    public class TcMaterials : TcDomain, IChildOf<TcMainTabControl>, TiMaterials
     {
         private readonly Lazy<TcMaterialToolbar> mToolbar;
-        private readonly Lazy<TcResultColumn> mResultColumn;
         private readonly Lazy<TcMaterialDetail> mDetail;
 
         /// <summary>
@@ -28,7 +23,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         public TcMaterials()
         {
             mToolbar = new Lazy<TcMaterialToolbar>( On<TcMaterialToolbar> );
-            mResultColumn = new Lazy<TcResultColumn>( () => Find<TcResultColumn>( Search.ByUid( TcResultColumn.Uid ) ) );
             mDetail = new Lazy<TcMaterialDetail>( On<TcMaterialDetail> );
         }
 
@@ -47,14 +41,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// The toolbar.
         /// </value>
         public TiMaterialToolbar Toolbar => mToolbar.Value;
-
-        /// <summary>
-        /// Gets the result column.
-        /// </summary>
-        /// <value>
-        /// The result column.
-        /// </value>
-        public TiResultColumn ResultColumn => mResultColumn.Value;
 
         /// <summary>
         /// Gets the detail area.
@@ -94,54 +80,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         }
 
         /// <summary>
-        /// Creates a new material.
-        /// </summary>
-        public void NewMaterial()
-        {
-            Toolbar.NewButton.Click();
-        }
-
-        /// <summary>
-        /// Duplicates the current material.
-        /// </summary>
-        public void DuplicateMaterial()
-        {
-            Toolbar.DuplicateButton.Enabled.WaitFor();
-            Wait.ActAndWaitForChange( Toolbar.DuplicateButton.Click, () => ResultColumn.Count );
-        }
-
-        /// <summary>
-        /// Saves the current material.
-        /// </summary>
-        public void SaveMaterial()
-        {
-            Toolbar.SaveButton.Click();
-        }
-
-        /// <summary>
-        /// Deletes the current material.
-        /// </summary>
-        /// <returns>true if successful</returns>
-        public bool DeleteMaterial()
-        {
-            if( ResultColumn.SelectedItemsCount == -1 )
-            {
-                return false;
-
-            }
-
-            Toolbar.DeleteButton.Click();
-
-            var dialog = On<TiMessageBox, TcMessageBox>();
-            if( dialog.MessageBoxExists() )
-            {
-                dialog.Yes();
-            }
-
-            return true;
-        }
-
-        /// <summary>
         /// Deletes the given material.
         /// </summary>
         /// <param name="id">The identifier.</param>
@@ -153,7 +91,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
                 return false;
             }
 
-            DeleteMaterial();
+            Toolbar.Delete();
             return true;
         }
     }

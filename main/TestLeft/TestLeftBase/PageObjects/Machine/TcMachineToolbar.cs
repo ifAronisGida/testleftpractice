@@ -5,6 +5,7 @@ using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using SmartBear.TestLeft.TestObjects.WPF;
 using SmartBear.TestLeft.TestObjects;
+using TestLeft.TestLeftBase.PageObjects.Dialogs;
 
 namespace TestLeft.TestLeftBase.PageObjects.Machine
 {
@@ -15,42 +16,57 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcToolbars}" />
     public class TcMachineToolbar : TcPageObjectBase, IChildOf<TcToolbars>, TiMachineToolbar
     {
+        public bool CanSave => SaveButton.Enabled;
+        public bool CanDelete => DeleteButton.Enabled;
+        public bool CanRevert => RevertButton.Enabled;
+
         protected override Search SearchPattern => Search.ByUid( "Machine.Toolbar" );
 
-        /// <summary>
-        /// Gets the new machine button.
-        /// </summary>
-        /// <value>
-        /// The new machine button.
-        /// </value>
-        public IObjectTreeNode NewMachineButton => Node.Find<IObjectTreeNode>( new WPFPattern()
+        private IObjectTreeNode NewMachineButton => Node.Find<IObjectTreeNode>( new WPFPattern()
         {
             ClrFullClassName = "System.Windows.Controls.MenuItem",
             Uid = "Machine.Toolbar.New"
         } );
+        private TiButton SaveButton => Find<TiButton>( "Machine.Toolbar.Save" );
+        private TiButton RevertButton => Find<TiButton>( "Machine.Toolbar.Revert" );
+        private TiButton DeleteButton => Find<TiButton>( "Machine.Toolbar.Delete" );
 
         /// <summary>
-        /// Gets the save button.
+        /// Creates a new cut machine.
         /// </summary>
-        /// <value>
-        /// The save button.
-        /// </value>
-        public TiButton SaveButton => Find<TiButton>( "Machine.Toolbar.Save" );
+        public void NewCutMachine()
+        {
+            NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click( "|[0]" );
+        }
 
         /// <summary>
-        /// Gets the revert button.
+        /// Creates a new bend machine.
         /// </summary>
-        /// <value>
-        /// The revert button.
-        /// </value>
-        public TiButton RevertButton => Find<TiButton>( "Machine.Toolbar.Revert" );
+        public void NewBendMachine()
+        {
+            NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click( "|[1]" );
+        }
 
         /// <summary>
-        /// Gets the delete button.
+        /// Saves the current machine.
         /// </summary>
-        /// <value>
-        /// The delete button.
-        /// </value>
-        public TiButton DeleteButton => Find<TiButton>( "Machine.Toolbar.Delete" );
+        public void Save()
+        {
+            SaveButton.Click();
+        }
+
+        /// <summary>
+        /// Deletes the current machine.
+        /// </summary>
+        public void Delete()
+        {
+            DeleteButton.Click();
+
+            var dialog = On<TcMessageBox>();
+            if( dialog.MessageBoxExists() )
+            {
+                dialog.Yes();
+            }
+        }
     }
 }

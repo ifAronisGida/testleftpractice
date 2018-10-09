@@ -1,13 +1,9 @@
 ﻿using System;
-using PageObjectInterfaces.Common;
-using PageObjectInterfaces.Dialogs;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using Trumpf.PageObjects.Waiting;
 using TestLeft.TestLeftBase.ControlObjects;
-using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
-using TestLeft.TestLeftBase.ControlObjects.Composite;
 using PageObjectInterfaces.Part;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
@@ -16,10 +12,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// PageObject for the parts category.
     /// </summary>
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
-    public class TcParts : TcRepeaterObjectBase, IChildOf<TcMainTabControl>, TiParts
+    public class TcParts : TcDomain, IChildOf<TcMainTabControl>, TiParts
     {
         private readonly Lazy<TcPartToolbar> mToolbar;
-        private readonly Lazy<TcResultColumn> mResultColumn;
 
         private readonly Lazy<TcPartSingleDetail> mSingleDetail;
         private readonly Lazy<TcPartSingleDetailDesign> mSingleDetailDesign;
@@ -32,7 +27,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         public TcParts()
         {
             mToolbar = new Lazy<TcPartToolbar>( On<TcPartToolbar> );
-            mResultColumn = new Lazy<TcResultColumn>( () => Find<TcResultColumn>( Search.ByUid( TcResultColumn.Uid ) ) );
             mSingleDetail = new Lazy<TcPartSingleDetail>( On<TcPartSingleDetail> );
             mSingleDetailDesign = new Lazy<TcPartSingleDetailDesign>( On<TcPartSingleDetailDesign> );
             mSingleDetailBendSolutions = new Lazy<TcPartSingleDetailBendSolutions>( On<TcPartSingleDetailBendSolutions> );
@@ -54,14 +48,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// The toolbar.
         /// </value>
         public TiPartToolbar Toolbar => mToolbar.Value;
-
-        /// <summary>
-        /// Gets the result column.
-        /// </summary>
-        /// <value>
-        /// The result column.
-        /// </value>
-        public TiResultColumn ResultColumn => mResultColumn.Value;
 
         /// <summary>
         /// Gets the single detail.
@@ -125,76 +111,9 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         }
 
         /// <summary>
-        /// Creates a new part.
-        /// </summary>
-        public void NewPart()
-        {
-            Toolbar.NewPartButton.Click();
-        }
-
-        /// <summary>
-        /// Imports the specified part from the given filename.
-        /// </summary>
-        /// <param name="filename">The filename.</param>
-        /// <returns>true if successful; otherwise false</returns>
-        public bool Import( string filename )
-        {
-            Toolbar.ImportButton.Click();
-
-            var openDlg = On<TiOpenFileDialog, TcOpenFileDialog>();
-            return openDlg.SetFilename( filename );
-        }
-
-        /// <summary>
-        /// Boosts the part via toolbar.
-        /// </summary>
-        public void BoostPart()
-        {
-            Toolbar.BoostButton.Click();
-
-            var dialog = On<TiPartComputeAllConfirmation, TcPartComputeAllConfirmation>();
-            if( dialog.DialogBoxExists() )
-            {
-                dialog.Ok();
-            }
-        }
-
-        /// <summary>
-        /// Saves the part.
-        /// </summary>
-        public void SavePart()
-        {
-            Toolbar.SaveButton.Click();
-        }
-
-        /// <summary>
-        /// Deletes the part.
-        /// </summary>
-        /// <returns>true if successful</returns>
-        public bool DeletePart()
-        {
-            if( ResultColumn.SelectedItemsCount == -1 )
-            {
-                return false;
-
-            }
-
-            Toolbar.DeleteButton.Click();
-
-            var dialog = On<TiMessageBox, TcMessageBox>();
-            if( dialog.MessageBoxExists() )
-            {
-                dialog.Yes();
-            }
-
-            return true;
-        }
-
-        /// <summary>
         /// Deletes the given part.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <returns>true if successful</returns>
         public bool DeletePart( string id )
         {
             if( !ResultColumn.SelectItem( id ) )
@@ -202,33 +121,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
                 return false;
             }
 
-            DeletePart();
-            return true;
-        }
-
-        /// <summary>
-        /// Creates the part order.
-        /// </summary>
-        /// <returns>
-        /// true if successful
-        /// </returns>
-        public bool CreatePartOrder()
-        {
-            Toolbar.CreatePartOrderButton.Click();
-
-            return true;
-        }
-
-        /// <summary>
-        /// Creates the cut job.
-        /// </summary>
-        /// <returns>
-        /// true if successful
-        /// </returns>
-        public bool CreateCutJob()
-        {
-            Toolbar.CreateCutJobButton.Click();
-
+            Toolbar.Delete();
             return true;
         }
     }

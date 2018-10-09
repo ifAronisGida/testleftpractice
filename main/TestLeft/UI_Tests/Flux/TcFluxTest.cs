@@ -2,11 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PageObjectInterfaces.Machine;
-using PageObjectInterfaces.Part;
 using TestLeft.TestLeftBase.PageObjects.Flux;
-using TestLeft.TestLeftBase.PageObjects.Machine;
-using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -42,10 +38,10 @@ namespace TestLeft.UI_Tests.Flux
                 CreateTestMachine();
 
                 var namePrefix = TcSettings.NamePrefix + Guid.NewGuid();
-                var parts = HomeZoneApp.Goto<TiParts, TcParts>();
+                var parts = HomeZoneApp.GotoParts();
 
                 // first part
-                parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
+                parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
@@ -68,7 +64,7 @@ namespace TestLeft.UI_Tests.Flux
                 Assert.IsTrue( visible );
 
                 //second part
-                parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+                parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
@@ -92,7 +88,7 @@ namespace TestLeft.UI_Tests.Flux
 
                 // delete the 2 parts
                 parts.ResultColumn.SelectItems( namePrefix );
-                parts.DeletePart();
+                parts.Toolbar.Delete();
 
                 DeleteTestMachine();
             } );
@@ -109,10 +105,10 @@ namespace TestLeft.UI_Tests.Flux
                 CreateTestMachine();
 
                 Trace.WriteLine( @"Starting Flux open / close test." );
-                var parts = HomeZoneApp.Goto<TiParts, TcParts>();
+                var parts = HomeZoneApp.GotoParts();
                 string solutionName = "Bend1";
 
-                parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+                parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
@@ -132,7 +128,7 @@ namespace TestLeft.UI_Tests.Flux
                 var isManual = parts.SingleDetailBendSolutions.IsManuallyChanged( solutionName );
                 Assert.IsTrue( isManual );
 
-                parts.DeletePart();
+                parts.Toolbar.Delete();
                 DeleteTestMachine();
             } );
         }
@@ -147,10 +143,10 @@ namespace TestLeft.UI_Tests.Flux
              {
                  CreateTestMachine();
                  Trace.WriteLine( @"Starting Flux boost test." );
-                 var parts = HomeZoneApp.Goto<TiParts, TcParts>();
+                 var parts = HomeZoneApp.GotoParts();
                  string solutionName = "Bend1";
 
-                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                  parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                  parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
@@ -165,7 +161,7 @@ namespace TestLeft.UI_Tests.Flux
                  Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
                  Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
 
-                 parts.DeletePart();
+                 parts.Toolbar.Delete();
                  DeleteTestMachine();
              } );
         }
@@ -182,10 +178,10 @@ namespace TestLeft.UI_Tests.Flux
                  CreateTestMachine( testMachine );
 
                  Trace.WriteLine( @"Starting Flux boost with errors test." );
-                 var parts = HomeZoneApp.Goto<TiParts, TcParts>();
+                 var parts = HomeZoneApp.GotoParts();
                  string solutionName = "Bend1";
 
-                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                  parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                  parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
@@ -200,7 +196,7 @@ namespace TestLeft.UI_Tests.Flux
                  Assert.IsFalse( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
                  Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
 
-                 parts.DeletePart();
+                 parts.Toolbar.Delete();
                  DeleteTestMachine( testMachine );
              } );
         }
@@ -215,10 +211,10 @@ namespace TestLeft.UI_Tests.Flux
             {
                 CreateTestMachine();
                 Trace.WriteLine( @"Starting Flux release solution after boost test." );
-                var parts = HomeZoneApp.Goto<TiParts, TcParts>();
+                var parts = HomeZoneApp.GotoParts();
                 string solutionName = "Bend1";
 
-                parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+                parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
@@ -247,7 +243,7 @@ namespace TestLeft.UI_Tests.Flux
                 Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
                 Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
 
-                parts.DeletePart();
+                parts.Toolbar.Delete();
                 DeleteTestMachine();
             } );
         }
@@ -289,10 +285,10 @@ namespace TestLeft.UI_Tests.Flux
              {
                  CreateTestMachine();
                  Trace.WriteLine( @"Starting Flux close without save test." );
-                 var parts = HomeZoneApp.Goto<TiParts, TcParts>();
+                 var parts = HomeZoneApp.GotoParts();
                  string solutionName = "Bend1";
 
-                 parts.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                  parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                  parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
@@ -307,7 +303,7 @@ namespace TestLeft.UI_Tests.Flux
                      flux.ChangeSolution();
                      parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
                  }
-                 parts.DeletePart();
+                 parts.Toolbar.Delete();
                  DeleteTestMachine();
              } );
         }
@@ -326,7 +322,7 @@ namespace TestLeft.UI_Tests.Flux
         {
             mTestMachineName = TcSettings.NamePrefix + Guid.NewGuid();
 
-            var machines = HomeZoneApp.Goto<TiMachines, TcMachines>();
+            var machines = HomeZoneApp.GotoMachines();
 
             if( machineName == null )
             {
@@ -337,9 +333,9 @@ namespace TestLeft.UI_Tests.Flux
                 machines.NewBendMachine( machineName, machineName );
             }
 
-            Assert.IsTrue( machines.Toolbar.SaveButton.Enabled );
-            machines.SaveMachine();
-            Assert.IsFalse( machines.Toolbar.SaveButton.Enabled );
+            Assert.IsTrue( machines.Toolbar.CanSave );
+            machines.Toolbar.Save();
+            Assert.IsFalse( machines.Toolbar.CanSave );
 
             machines.WaitForDetailOverlayAppear( TcSettings.MachineOverlayAppearTimeout );
             machines.WaitForDetailOverlayDisappear( TcSettings.MachineOverlayDisappearTimeout );
@@ -347,7 +343,7 @@ namespace TestLeft.UI_Tests.Flux
 
         private void DeleteTestMachine( string machineName = null )
         {
-            var machines = HomeZoneApp.Goto<TiMachines, TcMachines>();
+            var machines = HomeZoneApp.GotoMachines();
 
             if( machineName == null )
             {
@@ -358,14 +354,14 @@ namespace TestLeft.UI_Tests.Flux
                 machines.ResultColumn.SelectItem( machineName );
             }
 
-            Assert.IsTrue( machines.Toolbar.DeleteButton.Enabled );
-            machines.DeleteMachine();
-            Assert.IsFalse( machines.Toolbar.DeleteButton.Enabled );
+            Assert.IsTrue( machines.Toolbar.CanDelete );
+            machines.Toolbar.Delete();
+            Assert.IsFalse( machines.Toolbar.CanDelete );
         }
 
         private void OpenMachineConfiguration( string machineName )
         {
-            var machines = HomeZoneApp.Goto<TiMachines, TcMachines>();
+            var machines = HomeZoneApp.GotoMachines();
             machines.ResultColumn.SelectItem( machineName );
             machines.Detail.OpenMachineConfigurationBend();
         }

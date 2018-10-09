@@ -1,5 +1,6 @@
 using PageObjectInterfaces.Controls;
 using PageObjectInterfaces.Material;
+using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
@@ -13,62 +14,59 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcToolbars}" />
     public class TcMaterialToolbar : TcPageObjectBase, IChildOf<TcToolbars>, TiMaterialToolbar
     {
+        public bool CanSave => SaveButton.Enabled;
+        public bool CanDelete => DeleteButton.Enabled;
+        public bool CanRevert => RevertButton.Enabled;
+
+
         protected override Search SearchPattern => Search.ByUid( "Material.Toolbar" );
 
-        /// <summary>
-        /// Gets the new button.
-        /// </summary>
-        /// <value>
-        /// The new button.
-        /// </value>
-        public TiButton NewButton => Find<TiButton>( "Material.Toolbar.New" );
+        private TiButton NewButton => Find<TiButton>( "Material.Toolbar.New" );
+        private TiButton DuplicateButton => Find<TiButton>( "Material.Toolbar.Duplicate" );
+        private TiButton SaveButton => Find<TiButton>( "Material.Toolbar.Save" );
+        private TiButton RevertButton => Find<TiButton>( "Material.Toolbar.Revert" );
+        private TiButton DeleteButton => Find<TiButton>( "Material.Toolbar.Delete" );
+        private TiButton LockMaterialButton => Find<TiButton>( "Material.Toolbar.LockMaterial" );
+        private TiButton UnlockMaterialButton => Find<TiButton>( "Material.Toolbar.UnlockMaterial" );
 
         /// <summary>
-        /// Gets the duplicate button.
+        /// Creates a new material.
         /// </summary>
-        /// <value>
-        /// The duplicate button.
-        /// </value>
-        public TiButton DuplicateButton => Find<TiButton>( "Material.Toolbar.Duplicate" );
+        public void New()
+        {
+            NewButton.Click();
+        }
 
         /// <summary>
-        /// Gets the save button.
+        /// Duplicates the current material.
         /// </summary>
-        /// <value>
-        /// The save button.
-        /// </value>
-        public TiButton SaveButton => Find<TiButton>( "Material.Toolbar.Save" );
+        public void Duplicate()
+        {
+            DuplicateButton.Enabled.WaitFor();
+            DuplicateButton.Click();
+        }
 
         /// <summary>
-        /// Gets the revert button.
+        /// Saves the current material.
         /// </summary>
-        /// <value>
-        /// The revert button.
-        /// </value>
-        public TiButton RevertButton => Find<TiButton>( "Material.Toolbar.Revert" );
+        public void Save()
+        {
+            SaveButton.Click();
+        }
 
         /// <summary>
-        /// Gets the delete button.
+        /// Deletes the current material.
         /// </summary>
-        /// <value>
-        /// The delete button.
-        /// </value>
-        public TiButton DeleteButton => Find<TiButton>( "Material.Toolbar.Delete" );
+        /// <returns>true if successful</returns>
+        public void Delete()
+        {
+            DeleteButton.Click();
 
-        /// <summary>
-        /// Gets the lock material button.
-        /// </summary>
-        /// <value>
-        /// The lock material button.
-        /// </value>
-        public TiButton LockMaterialButton => Find<TiButton>( "Material.Toolbar.LockMaterial" );
-
-        /// <summary>
-        /// Gets the unlock material button.
-        /// </summary>
-        /// <value>
-        /// The unlock material button.
-        /// </value>
-        public TiButton UnlockMaterialButton => Find<TiButton>( "Material.Toolbar.UnlockMaterial" );
+            var dialog = On<TcMessageBox>();
+            if( dialog.MessageBoxExists() )
+            {
+                dialog.Yes();
+            }
+        }
     }
 }

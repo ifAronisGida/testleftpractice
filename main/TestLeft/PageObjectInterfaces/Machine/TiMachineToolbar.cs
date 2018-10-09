@@ -1,40 +1,29 @@
-using PageObjectInterfaces.Controls;
-using SmartBear.TestLeft.TestObjects;
-
 namespace PageObjectInterfaces.Machine
 {
     public interface TiMachineToolbar
     {
-        /// <summary>
-        /// Gets the new machine button.
-        /// </summary>
-        /// <value>
-        /// The new machine button.
-        /// </value>
-        IObjectTreeNode NewMachineButton { get; } 
+        bool CanSave { get; }
+        bool CanDelete { get; }
+        bool CanRevert { get; }
 
         /// <summary>
-        /// Gets the save button.
+        /// Creates a new cut machine.
         /// </summary>
-        /// <value>
-        /// The save button.
-        /// </value>
-        TiButton SaveButton { get; }
+        void NewCutMachine();
 
         /// <summary>
-        /// Gets the revert button.
+        /// Creates a new bend machine.
         /// </summary>
-        /// <value>
-        /// The revert button.
-        /// </value>
-        TiButton RevertButton { get; }
+        void NewBendMachine();
 
         /// <summary>
-        /// Gets the delete button.
+        /// Saves the current machine.
         /// </summary>
-        /// <value>
-        /// The delete button.
-        /// </value>
-        TiButton DeleteButton { get; }
+        void Save();
+
+        /// <summary>
+        /// Deletes the current machine.
+        /// </summary>
+        void Delete();
     }
 }

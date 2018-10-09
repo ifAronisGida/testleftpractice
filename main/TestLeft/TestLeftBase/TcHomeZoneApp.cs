@@ -1,3 +1,17 @@
+using PageObjectInterfaces.Customer;
+using PageObjectInterfaces.CutJob;
+using PageObjectInterfaces.Machine;
+using PageObjectInterfaces.Material;
+using PageObjectInterfaces.Part;
+using PageObjectInterfaces.PartOrder;
+using PageObjectInterfaces.Shell;
+using TestLeft.TestLeftBase.PageObjects.Customer;
+using TestLeft.TestLeftBase.PageObjects.CutJob;
+using TestLeft.TestLeftBase.PageObjects.Machine;
+using TestLeft.TestLeftBase.PageObjects.Material;
+using TestLeft.TestLeftBase.PageObjects.Part;
+using TestLeft.TestLeftBase.PageObjects.PartOrder;
+using TestLeft.TestLeftBase.PageObjects.Shell;
 using Trumpf.PageObjects;
 
 namespace TestLeft.TestLeftBase
@@ -16,17 +30,41 @@ namespace TestLeft.TestLeftBase
         {
         }
 
-        /// <summary>
-        /// Goto the page object. If the current page object cannot directly navigate to
-        /// the target, it may forward it to its child page objects. Throws if the page object
-        /// cannot be navigated to.
-        /// </summary>
-        /// <typeparam name="TInterface">The interface of the target page object.</typeparam>
-        /// <typeparam name="TPageObject">The target page object type.</typeparam>
-        /// <returns>Interface of the target page object</returns>
-        public TInterface Goto<TInterface, TPageObject>() where TInterface : class where TPageObject : class, IPageObject
+        public TiMainTabControl MainTabControl => On<TcMainTabControl>();
+
+        public TiCustomers GotoCustomers()
         {
-            return Goto<TPageObject>() as TInterface;
+            return Goto<TcCustomers>();
+        }
+
+        public TiMainMenu GotoMainMenu()
+        {
+            return Goto<TcMainMenu>();
+        }
+
+        public TiParts GotoParts()
+        {
+            return Goto<TcParts>();
+        }
+
+        public TiMaterials GotoMaterials()
+        {
+            return Goto<TcMaterials>();
+        }
+
+        public TiMachines GotoMachines()
+        {
+            return Goto<TcMachines>();
+        }
+
+        public TiPartOrders GotoPartOrders()
+        {
+            return Goto<TcPartOrders>();
+        }
+
+        public TiCutJobs GotoCutJobs()
+        {
+            return Goto<TcCutJobs>();
         }
 
         /// <summary>

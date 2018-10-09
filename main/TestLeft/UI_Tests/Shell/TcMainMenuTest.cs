@@ -1,7 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PageObjectInterfaces.Settings;
-using PageObjectInterfaces.Shell;
-using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Settings;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.UI_Tests.Base;
@@ -24,7 +22,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var menu = HomeZoneApp.Goto<TiMainMenu, TcMainMenu>();
+                var menu = HomeZoneApp.GotoMainMenu();
 
                 menu.RefreshMasterData();
             } );
@@ -38,8 +36,8 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                HomeZoneApp.Goto<TiMainMenu, TcMainMenu>().OpenSettingsDialog();
-                var settings = HomeZoneApp.Goto<TiSettingsDialog, TcSettingsDialog>();
+                HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                var settings = HomeZoneApp.On<TiSettingsDialog, TcSettingsDialog>();
                 var visible = settings.WaitUntilVisible();
 
                 Assert.IsTrue( visible );
@@ -56,13 +54,9 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var menu = HomeZoneApp.Goto<TiMainMenu, TcMainMenu>();
+                var help = HomeZoneApp.GotoMainMenu().OpenHelp();
 
-                menu.OpenHelp();
-
-                var help = HomeZoneApp.On<TcHelpDialog>();
-
-                Assert.IsTrue( help.VisibleOnScreen );
+                Assert.IsTrue( help.WaitUntilVisible() );
 
                 help.Close();
             } );
@@ -76,13 +70,9 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var menu = HomeZoneApp.Goto<TiMainMenu, TcMainMenu>();
+                var welcomeScreen = HomeZoneApp.GotoMainMenu().ShowWelcomeScreen();
 
-                menu.ShowWelcomeScreen();
-
-                var welcomeScreen = HomeZoneApp.On<TcWelcomeScreen>();
-
-                Assert.IsTrue( welcomeScreen.VisibleOnScreen );
+                Assert.IsTrue( welcomeScreen.WaitUntilVisible() );
             } );
         }
 
@@ -94,13 +84,9 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var menu = HomeZoneApp.Goto<TiMainMenu, TcMainMenu>();
+                var about = HomeZoneApp.GotoMainMenu().OpenAboutDialog();
 
-                menu.OpenAboutDialog();
-
-                var about = HomeZoneApp.On<TcAboutDialog>();
-
-                Assert.IsTrue( about.VisibleOnScreen );
+                Assert.IsTrue( about.WaitUntilVisible() );
 
                 about.CopyToClipboard();
                 about.Close();

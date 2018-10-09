@@ -1,7 +1,5 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PageObjectInterfaces.Material;
-using TestLeft.TestLeftBase.PageObjects.Material;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -23,9 +21,9 @@ namespace TestLeft.UI_Tests.Material
         {
             Act( () =>
                 {
-                    var materials = HomeZoneApp.Goto<TiMaterials, TcMaterials>();
+                    var materials = HomeZoneApp.GotoMaterials();
 
-                    materials.NewMaterial();
+                    materials.Toolbar.New();
 
                     var guid = Convert.ToBase64String( Guid.NewGuid().ToByteArray() ).Substring( 0, 22 );
                     var name = TcSettings.NamePrefix + guid;
@@ -37,17 +35,17 @@ namespace TestLeft.UI_Tests.Material
                     materials.Detail.TensileStrength.Value = @"442";
                     materials.Detail.TensileStrengthMin.Value = @"342";
 
-                    Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
-                    materials.SaveMaterial();
+                    Assert.IsTrue( materials.Toolbar.CanSave );
+                    materials.Toolbar.Save();
 
                     materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
                     materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
 
-                    Assert.IsFalse( materials.Toolbar.SaveButton.Enabled );
+                    Assert.IsFalse( materials.Toolbar.CanSave );
 
-                    Assert.IsTrue( materials.Toolbar.DeleteButton.Enabled );
-                    materials.DeleteMaterial();
-                    Assert.IsFalse( materials.Toolbar.DeleteButton.Enabled );
+                    Assert.IsTrue( materials.Toolbar.CanDelete );
+                    materials.Toolbar.Delete();
+                    Assert.IsFalse( materials.Toolbar.CanDelete );
                 } );
         }
 
@@ -59,29 +57,29 @@ namespace TestLeft.UI_Tests.Material
         {
             Act( () =>
             {
-                var materials = HomeZoneApp.Goto<TiMaterials, TcMaterials>();
+                var materials = HomeZoneApp.GotoMaterials();
 
                 materials.Goto();
 
                 materials.ResultColumn.SelectItem( "1.0038" );
 
-                materials.DuplicateMaterial();
+                materials.Toolbar.Duplicate();
 
                 var name = TcSettings.NamePrefix + materials.Detail.Id;
                 materials.Detail.Id.Value = name;
                 materials.Detail.Name.Value = name;
 
-                Assert.IsTrue( materials.Toolbar.SaveButton.Enabled );
-                materials.SaveMaterial();
+                Assert.IsTrue( materials.Toolbar.CanSave );
+                materials.Toolbar.Save();
 
                 materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
                 materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
 
-                Assert.IsFalse( materials.Toolbar.SaveButton.Enabled );
+                Assert.IsFalse( materials.Toolbar.CanSave );
 
-                Assert.IsTrue( materials.Toolbar.DeleteButton.Enabled );
-                materials.DeleteMaterial();
-                Assert.IsFalse( materials.Toolbar.DeleteButton.Enabled );
+                Assert.IsTrue( materials.Toolbar.CanDelete );
+                materials.Toolbar.Delete();
+                Assert.IsFalse( materials.Toolbar.CanDelete );
             } );
         }
     }

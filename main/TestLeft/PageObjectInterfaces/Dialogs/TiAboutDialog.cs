@@ -1,6 +1,8 @@
+using PageObjectInterfaces.Common;
+
 namespace PageObjectInterfaces.Dialogs
 {
-    public interface TiAboutDialog
+    public interface TiAboutDialog : TiVisibility
     {
         /// <summary>
         /// Closes the about dialog.

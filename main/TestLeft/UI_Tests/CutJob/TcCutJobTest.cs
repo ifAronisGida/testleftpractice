@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PageObjectInterfaces.CutJob;
 using TestLeft.TestLeftBase.PageObjects.CutJob;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
@@ -25,7 +24,7 @@ namespace TestLeft.UI_Tests.CutJob
         {
             Act( () =>
                 {
-                    var cutJobs = HomeZoneApp.Goto<TiCutJobs, TcCutJobs>();
+                    var cutJobs = HomeZoneApp.GotoCutJobs();
 
                     cutJobs.Toolbar.New();
 
@@ -46,7 +45,7 @@ namespace TestLeft.UI_Tests.CutJob
         {
             Act( () =>
             {
-                var cutJobs = HomeZoneApp.Goto<TiCutJobs, TcCutJobs>();
+                var cutJobs = HomeZoneApp.GotoCutJobs();
 
                 cutJobs.Toolbar.New();
 
@@ -67,7 +66,7 @@ namespace TestLeft.UI_Tests.CutJob
 
             Act( () =>
             {
-                var orders = HomeZoneApp.Goto<TiCutJobs, TcCutJobs>().ContainedOrders;
+                var orders = HomeZoneApp.GotoCutJobs().ContainedOrders;
 
                 var row = orders.GetRow( 0 );
 

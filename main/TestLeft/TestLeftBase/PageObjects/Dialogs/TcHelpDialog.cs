@@ -22,5 +22,10 @@ namespace TestLeft.TestLeftBase.PageObjects.Dialogs
         {
             Node.CallMethod( "Close" );
         }
+
+        public bool WaitUntilVisible()
+        {
+            return VisibleOnScreen.TryWaitFor();
+        }
     }
 }

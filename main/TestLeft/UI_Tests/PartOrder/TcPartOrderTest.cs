@@ -1,8 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PageObjectInterfaces.Part;
-using PageObjectInterfaces.PartOrder;
-using TestLeft.TestLeftBase.PageObjects.Part;
-using TestLeft.TestLeftBase.PageObjects.PartOrder;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
 
@@ -16,13 +12,13 @@ namespace TestLeft.UI_Tests.PartOrder
         {
             Act( () =>
             {
-                var parts = HomeZoneApp.Goto<TiParts, TcParts>();
-                parts.NewPart();
+                var parts = HomeZoneApp.GotoParts();
+                parts.Toolbar.New();
                 parts.SingleDetail.Id = "TestPart";
                 parts.SingleDetail.Name.Value = "TestPart";
-                parts.SavePart();
+                parts.Toolbar.Save();
 
-                var partOrders = HomeZoneApp.Goto<TiPartOrders, TcPartOrders>();
+                var partOrders = HomeZoneApp.GotoPartOrders();
                 var toolbar = partOrders.Toolbar;
 
                 toolbar.New();
@@ -40,22 +36,22 @@ namespace TestLeft.UI_Tests.PartOrder
                 toolbar.Delete();
                 Assert.IsFalse( toolbar.CanDelete );
 
-                parts = HomeZoneApp.Goto<TiParts, TcParts>();
+                parts = HomeZoneApp.GotoParts();
                 parts.ResultColumn.SelectItem( "TestPart" );
-                parts.Toolbar.DeleteButton.Click();
+                parts.Toolbar.Delete();
             } );
         }
 
         [TestMethod, UniqueName( "79662E0F-0AF8-4F6D-8A44-F81537CF8430" )]
         public void SelectPartIntoOrderTest()
         {
-            var parts = HomeZoneApp.Goto<TiParts, TcParts>();
-            parts.NewPart();
+            var parts = HomeZoneApp.GotoParts();
+            parts.Toolbar.New();
             parts.SingleDetail.Id = "TestPart";
             parts.SingleDetail.Name.Value = "TestPart";
-            parts.SavePart();
+            parts.Toolbar.Save();
 
-            var partOrders = HomeZoneApp.Goto<TiPartOrders, TcPartOrders>();
+            var partOrders = HomeZoneApp.GotoPartOrders();
             partOrders.Toolbar.New();
             partOrders.PartInfo.SelectPart( "TestPart" );
 
