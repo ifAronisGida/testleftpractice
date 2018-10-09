@@ -6,10 +6,11 @@ using System.Windows.Documents;
 using DevExpress.Xpf.Editors;
 using PageObjectInterfaces.Controls;
 using TestLeft.TestLeftBase.Utilities;
+using PageObjectInterfaces.CutJob;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
-    public class TcCutJobOrderRow
+    public class TcCutJobOrderRow : TiCutJobOrderRow
     {
         private readonly TcTableRow mRow;
 

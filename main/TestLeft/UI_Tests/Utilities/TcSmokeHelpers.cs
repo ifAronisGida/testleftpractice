@@ -395,9 +395,9 @@ namespace TestLeft.UI_Tests.Utilities
         {
             var cutJobs = HomeZoneApp.Goto<TcCutJobs>();
 
-            cutJobs.NewCutJob();
+            cutJobs.Toolbar.New();
             //TODO
-            cutJobs.DeleteCutJob();
+            cutJobs.Toolbar.Delete();
         }
 
         /// <summary>

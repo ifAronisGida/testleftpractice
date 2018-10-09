@@ -9,15 +9,16 @@ using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.Utilities;
+using PageObjectInterfaces.CutJob;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
-    public class TcCutJobSolution : TcPageObjectBase, IChildOf<TcDetailContent>
+    public class TcCutJobSolution : TcPageObjectBase, IChildOf<TcDetailContent>, TiCutJobSheetProgram
     {
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.JobSolution" );
 
         public TiValueControl<string> Note => Find<TiValueControl<string>>( "CutJob.Detail.JobSolution.Comment" );
-        public TcRawSheetList RawSheets => new TcRawSheetList( this.FindGeneric( Search.ByControlName( "RawSheetListe" ) ) );
+        public TiRawSheetList RawSheets => new TcRawSheetList( this.FindGeneric( Search.ByControlName( "RawSheetListe" ) ) );
 
         private TiButton AddPresetRawSheetButton => Find<TiButton>( "CutJob.Detail.JobSolution.AddPresetRawSheet" );
         private TiButton DeleteButton => Find<TiButton>( "CutJob.Detail.JobSolution.Delete" );
@@ -51,7 +52,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             }
         }
 
-        public TcRawSheet AddRawSheet()
+        public TiRawSheet AddRawSheet()
         {
             AddPresetRawSheetButton.Click();
 

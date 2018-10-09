@@ -1,13 +1,14 @@
 using System;
 using System.Linq;
 using System.Windows.Controls;
+using PageObjectInterfaces.CutJob;
 using SmartBear.TestLeft.TestObjects;
 using TestLeft.TestLeftBase.Utilities;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
-    public class TcRawSheetList
+    public class TcRawSheetList : TiRawSheetList
     {
         private readonly IControlObject mControlObject;
 
@@ -18,7 +19,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 
         public int Count => mControlObject.Node.Cast<IObjectTreeNode>().Children.Count; // there's ChildCount, but it often doesn't work
 
-        public TcRawSheet GetRawSheet( int index )
+        public TiRawSheet GetRawSheet( int index )
         {
             return new TcRawSheet( mControlObject.FindGeneric( Search.By<ContentPresenter>().AndByIndex( index ) ) );
         }

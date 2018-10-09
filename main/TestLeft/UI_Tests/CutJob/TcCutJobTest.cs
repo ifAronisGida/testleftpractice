@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PageObjectInterfaces.CutJob;
 using TestLeft.TestLeftBase.PageObjects.CutJob;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
@@ -24,19 +25,19 @@ namespace TestLeft.UI_Tests.CutJob
         {
             Act( () =>
                 {
-                    var cutJobs = HomeZoneApp.Goto<TcCutJobs>();
+                    var cutJobs = HomeZoneApp.Goto<TiCutJobs, TcCutJobs>();
 
-                    cutJobs.NewCutJob();
+                    cutJobs.Toolbar.New();
 
                     cutJobs.BaseInfo.Id.Value = TcSettings.NamePrefix + Guid.NewGuid().ToString().Replace( '-', '_' );
 
-                    Assert.IsTrue( cutJobs.Toolbar.SaveButton.Enabled );
-                    cutJobs.SaveCutJob();
-                    Assert.IsFalse( cutJobs.Toolbar.SaveButton.Enabled );
+                    Assert.IsTrue( cutJobs.Toolbar.CanSave );
+                    cutJobs.Toolbar.Save();
+                    Assert.IsFalse( cutJobs.Toolbar.CanSave );
 
-                    Assert.IsTrue( cutJobs.Toolbar.DeleteButton.Enabled );
-                    cutJobs.DeleteCutJob();
-                    Assert.IsFalse( cutJobs.Toolbar.DeleteButton.Enabled );
+                    Assert.IsTrue( cutJobs.Toolbar.CanDelete );
+                    cutJobs.Toolbar.Delete();
+                    Assert.IsFalse( cutJobs.Toolbar.CanDelete );
                 } );
         }
 
@@ -45,17 +46,17 @@ namespace TestLeft.UI_Tests.CutJob
         {
             Act( () =>
             {
-                var cutJobs = HomeZoneApp.Goto<TcCutJobs>();
+                var cutJobs = HomeZoneApp.Goto<TiCutJobs, TcCutJobs>();
 
-                cutJobs.NewCutJob();
+                cutJobs.Toolbar.New();
 
                 cutJobs.BaseInfo.RawMaterial.Value = "AL0M0130---";
 
                 Thread.Sleep( 3000 );
 
-                Assert.IsTrue( cutJobs.Toolbar.RevertButton.Enabled );
-                cutJobs.RevertCutJob();
-                Assert.IsFalse( cutJobs.Toolbar.RevertButton.Enabled );
+                Assert.IsTrue( cutJobs.Toolbar.CanRevert );
+                cutJobs.Toolbar.Revert();
+                Assert.IsFalse( cutJobs.Toolbar.CanRevert );
             } );
         }
 
@@ -66,7 +67,7 @@ namespace TestLeft.UI_Tests.CutJob
 
             Act( () =>
             {
-                var orders = HomeZoneApp.On<TcCutJobContainedOrders>();
+                var orders = HomeZoneApp.Goto<TiCutJobs, TcCutJobs>().ContainedOrders;
 
                 var row = orders.GetRow( 0 );
 
@@ -96,7 +97,7 @@ namespace TestLeft.UI_Tests.CutJob
             Act( () =>
             {
                 var cutJobs = HomeZoneApp.Goto<TcCutJobs>();
-                cutJobs.NewCutJob();
+                cutJobs.Toolbar.New();
 
                 cutJobs.BaseInfo.RawMaterial.Value = "AL0M0050---";
 
@@ -112,7 +113,7 @@ namespace TestLeft.UI_Tests.CutJob
 
                 newRawSheet.Delete();
 
-                cutJobs.SaveCutJob();
+                cutJobs.Toolbar.Save();
             } );
         }
     }

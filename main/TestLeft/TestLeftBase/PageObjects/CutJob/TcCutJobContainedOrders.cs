@@ -1,19 +1,17 @@
 ﻿using System;
 using PageObjectInterfaces.Controls;
-using PageObjectInterfaces.Dialogs;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
+using PageObjectInterfaces.CutJob;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
-    public class TcCutJobContainedOrders : TcPageObjectBase, IChildOf<TcDetailContent>
+    public class TcCutJobContainedOrders : TcPageObjectBase, IChildOf<TcDetailContent>, TiCutJobContainedOrders
     {
-        protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.ContainedOrders" );
-
         private readonly Lazy<TcRegularTableView<TcCutJobOrderRow>> mTableView;
 
         public TcCutJobContainedOrders()
@@ -22,6 +20,8 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         }
 
         public int PartOrdersCount => PartOrdersGrid.RowCount;
+
+        protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.ContainedOrders" );
 
         private TiButton SelectButton => Find<TiButton>( "CutJob.Detail.ContainedOrders.Select" );
         private TiButton RemoveButton => Find<TiButton>( "CutJob.Detail.ContainedOrders.Remove" );
@@ -48,7 +48,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             {
                 RemoveButton.Click();
 
-                var dialog = On<TiMessageBox, TcMessageBox>();
+                var dialog = On<TcMessageBox>();
                 if( dialog.MessageBoxExists() )
                 {
                     dialog.Yes();
@@ -56,7 +56,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             }
         }
 
-        public TcCutJobOrderRow GetRow( int index )
+        public TiCutJobOrderRow GetRow( int index )
         {
             return mTableView.Value.GetRow( index );
         }

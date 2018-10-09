@@ -3,10 +3,11 @@ using PageObjectInterfaces.Controls;
 using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
+using PageObjectInterfaces.CutJob;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
-    public class TcCutJobDetail : TcPageObjectBase, IChildOf<TcDetailContent>
+    public class TcCutJobDetail : TcPageObjectBase, IChildOf<TcDetailContent>, TiCutJobBaseInfo
     {
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail" );
 
