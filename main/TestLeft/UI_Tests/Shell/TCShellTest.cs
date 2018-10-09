@@ -1,7 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PageObjectInterfaces.Shell;
-using TestLeft.TestLeftBase.PageObjects.Part;
-using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
 
@@ -22,7 +19,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
                 {
-                    var mainTabControl = HomeZoneApp.On<TiMainTabControl, TcMainTabControl>();
+                    var mainTabControl = HomeZoneApp.MainTabControl;
                     var initialTabCount = mainTabControl.Count();
 
                     mainTabControl.AddNewTab();
@@ -41,7 +38,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
                 {
-                    var mainTabControl = HomeZoneApp.On<TiMainTabControl, TcMainTabControl>();
+                    var mainTabControl = HomeZoneApp.MainTabControl;
                     var initialTabCount = mainTabControl.Count();
 
                     for( int i = 0; i < 10; i++ )
@@ -61,14 +58,13 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
                 {
-                    var mainTabControl = HomeZoneApp.On<TiMainTabControl, TcMainTabControl>();
+                    var mainTabControl = HomeZoneApp.MainTabControl;
                     var initialTabCount = mainTabControl.Count();
-                    var parts = HomeZoneApp.On<TcParts>();
 
                     for( int i = 0; i < 10; i++ )
                     {
                         mainTabControl.AddNewTab();
-                        parts.Goto();
+                        HomeZoneApp.GotoParts();
                     }
                     Assert.AreEqual( mainTabControl.Count(), initialTabCount + 10 );
                 } );
@@ -82,7 +78,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var mainTabControl = HomeZoneApp.On<TiMainTabControl, TcMainTabControl>();
+                var mainTabControl = HomeZoneApp.MainTabControl;
 
                 var count = mainTabControl.Count();
 

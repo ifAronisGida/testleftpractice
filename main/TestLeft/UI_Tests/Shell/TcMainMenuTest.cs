@@ -1,6 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PageObjectInterfaces.Settings;
-using TestLeft.TestLeftBase.PageObjects.Settings;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -36,8 +34,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
-                var settings = HomeZoneApp.On<TiSettingsDialog, TcSettingsDialog>();
+                var settings = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
                 var visible = settings.WaitUntilVisible();
 
                 Assert.IsTrue( visible );

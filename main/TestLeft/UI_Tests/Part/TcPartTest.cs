@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -14,15 +13,6 @@ namespace TestLeft.UI_Tests.Part
     [TestClass]
     public class TcPartTest : TcBaseTestClass
     {
-        private string mTestCustomerName;
-
-        ///// <summary>
-        ///// Gets the extended test environment.
-        ///// Creates / deletes the test customer used by the test methods
-        ///// </summary>
-        //public override IDoSequence TestEnvironment => base.TestEnvironment
-        //    .Do( CreateTestCustomer, DeleteTestCustomer, "TestCustomer" );
-
         /// <summary>
         /// Creates a new part, saves and then deletes it.
         /// </summary>
@@ -39,8 +29,6 @@ namespace TestLeft.UI_Tests.Part
                     parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
                     parts.SingleDetail.Name.Value = partName;
-
-                    //parts.SingleDetail.Customer = mTestCustomerName;
 
                     parts.SingleDetail.DrawingNumber.Value = "NewPartTest_DrawNr";
                     parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
@@ -75,8 +63,6 @@ namespace TestLeft.UI_Tests.Part
                     parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
                     parts.SingleDetail.Name.Value = TcSettings.NamePrefix + "ImportPartTest";
-
-                    parts.SingleDetail.Customer = mTestCustomerName;
 
                     parts.SingleDetail.DrawingNumber.Value = "ImportPartTest_DrawNr";
                     parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
@@ -127,8 +113,6 @@ namespace TestLeft.UI_Tests.Part
 
                 parts.SingleDetail.Name.Value = TcSettings.NamePrefix + "ImportDesignTest";
 
-                parts.SingleDetail.Customer = mTestCustomerName;
-
                 parts.SingleDetail.DrawingNumber.Value = "ImportDesignTestt_DrawNr";
                 parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
                 parts.SingleDetail.Id = "UIT_" + parts.SingleDetail.Id;
@@ -151,35 +135,6 @@ namespace TestLeft.UI_Tests.Part
                 parts.Toolbar.Delete();
                 Assert.IsFalse( parts.Toolbar.CanDelete );
             } );
-        }
-
-        private void CreateTestCustomer()
-        {
-            mTestCustomerName = TcSettings.NamePrefix + Guid.NewGuid();
-
-            var customers = HomeZoneApp.On<TcCustomers>();
-
-            customers.NewCustomer(
-                                  mTestCustomerName,
-                                  "C" + Guid.NewGuid(),
-                                  "TRUMPF Allee 1",
-                                  "71254",
-                                  "Ditzingen",
-                                  "Deutschland",
-                                  "no comment" );
-
-            customers.Apply();
-            customers.Cancel();
-        }
-
-        private void DeleteTestCustomer()
-        {
-            var customers = HomeZoneApp.Goto<TcCustomers>();
-
-            customers.DeleteCustomersWithNameContaining( mTestCustomerName );
-
-            customers.Apply();
-            customers.Cancel();
         }
     }
 }
