@@ -3,6 +3,7 @@ using Trumpf.PageObjects;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using PageObjectInterfaces.CutJob;
+using TestLeft.TestLeftBase.PageObjects.Dialogs;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {
@@ -32,6 +33,13 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
         public void Delete()
         {
             DeleteButton.Click();
+
+            var dialog = On<TcMessageBox>();
+            if( dialog.MessageBoxExists() )
+            {
+                dialog.Yes();
+            }
+
         }
 
         public void Revert()
