@@ -24,7 +24,7 @@ namespace TestLeft.UI_Tests.Cut
             Act( () =>
             {
                 Trace.WriteLine( @"Starting Cut open / close test." );
-                var parts = HomeZoneApp.GotoParts();
+                var parts = HomeZone.GotoParts();
 
                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );

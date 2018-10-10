@@ -31,6 +31,11 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 
         public override void Goto()
         {
+            if( Toolbar.IsVisible )
+            {
+                return;
+            }
+
             base.Goto();
             Goto<TcDomains>().CutJob.Click();
         }

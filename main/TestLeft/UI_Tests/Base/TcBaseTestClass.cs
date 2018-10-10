@@ -4,13 +4,12 @@ using System.Linq;
 using System.Reflection;
 using FactsHub.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PageObjectInterfaces;
 using SmartBear.TestLeft;
 using TestLeft.TestLeftBase;
 using TestLeft.TestLeftBase.Settings;
 using Trumpf.AutoTest.Facts;
 using Trumpf.AutoTest.Utilities;
-using Trumpf.PageObjects;
-
 
 namespace TestLeft.UI_Tests.Base
 {
@@ -60,7 +59,7 @@ namespace TestLeft.UI_Tests.Base
         /// <value>
         /// The HomeZone ProcessObject.
         /// </value>
-        public static TcHomeZoneApp HomeZoneApp { get; } = new TcHomeZoneApp( TcSettings.HomeZoneProcessName )
+        public static TiHomeZoneApp HomeZone { get; } = new TcHomeZoneApp( TcSettings.HomeZoneProcessName )
         {
             Driver = Driver
         };
@@ -90,6 +89,11 @@ namespace TestLeft.UI_Tests.Base
 
         public string[] TagsExtractor
             => TestMethod.GetCustomAttributes<TagAttribute>().Select( e => e.Name ).ToArray();
+
+        public IAssetCleanerOptions AssetCleanerConfigurator( IAssetCleanerOptions assetCleanerOptions )
+        {
+            return assetCleanerOptions;
+        }
 
         public MethodInfo TestMethod
             => mGetTestClass().Assembly.GetTypes().FirstOrDefault( f => f.FullName == mTestContext().FullyQualifiedTestClassName )?.GetMethod( mTestContext().TestName );

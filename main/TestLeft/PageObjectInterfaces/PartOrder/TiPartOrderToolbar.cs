@@ -1,6 +1,8 @@
+using PageObjectInterfaces.Common;
+
 namespace PageObjectInterfaces.PartOrder
 {
-    public interface TiPartOrderToolbar
+    public interface TiPartOrderToolbar : TiVisibility
     {
         bool CanSave { get; }
         bool CanDelete { get; }

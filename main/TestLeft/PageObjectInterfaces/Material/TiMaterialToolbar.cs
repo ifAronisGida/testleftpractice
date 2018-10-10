@@ -1,6 +1,8 @@
+using PageObjectInterfaces.Common;
+
 namespace PageObjectInterfaces.Material
 {
-    public interface TiMaterialToolbar
+    public interface TiMaterialToolbar : TiVisibility
     {
         bool CanSave { get; }
         bool CanDelete { get; }

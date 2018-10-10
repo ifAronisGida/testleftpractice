@@ -1,5 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
 
@@ -20,7 +19,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var menu = HomeZoneApp.GotoMainMenu();
+                var menu = HomeZone.GotoMainMenu();
 
                 menu.RefreshMasterData();
             } );
@@ -34,8 +33,8 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var settings = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
-                var visible = settings.WaitUntilVisible();
+                var settings = HomeZone.GotoMainMenu().OpenSettingsDialog();
+                var visible = settings.IsVisible;
 
                 Assert.IsTrue( visible );
 
@@ -51,9 +50,9 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var help = HomeZoneApp.GotoMainMenu().OpenHelp();
+                var help = HomeZone.GotoMainMenu().OpenHelp();
 
-                Assert.IsTrue( help.WaitUntilVisible() );
+                Assert.IsTrue( help.IsVisible );
 
                 help.Close();
             } );
@@ -67,9 +66,9 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var welcomeScreen = HomeZoneApp.GotoMainMenu().ShowWelcomeScreen();
+                var welcomeScreen = HomeZone.GotoMainMenu().ShowWelcomeScreen();
 
-                Assert.IsTrue( welcomeScreen.WaitUntilVisible() );
+                Assert.IsTrue( welcomeScreen.IsVisible );
             } );
         }
 
@@ -81,9 +80,9 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var about = HomeZoneApp.GotoMainMenu().OpenAboutDialog();
+                var about = HomeZone.GotoMainMenu().OpenAboutDialog();
 
-                Assert.IsTrue( about.WaitUntilVisible() );
+                Assert.IsTrue( about.IsVisible );
 
                 about.CopyToClipboard();
                 about.Close();
@@ -100,7 +99,7 @@ namespace TestLeft.UI_Tests.Shell
             {
                 Assert.Inconclusive();      // the test closes the HomeZone
 
-                var menu = HomeZoneApp.Goto<TcMainMenu>();
+                var menu = HomeZone.GotoMainMenu();
 
                 menu.CloseApplication();
             } );

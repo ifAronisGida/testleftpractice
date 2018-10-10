@@ -27,7 +27,7 @@ namespace TestLeft.UI_Tests.Customer
                 var name1 = TcSettings.NamePrefix + Guid.NewGuid();
                 var name2 = TcSettings.NamePrefix + Guid.NewGuid();
 
-                var customers = HomeZoneApp.GotoCustomers();
+                var customers = HomeZone.GotoCustomers();
                 var customersCount = customers.Count();
                 if( string.IsNullOrEmpty( customers.Name.Value ) )
                 {

@@ -12,7 +12,14 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
     {
         public const string Uid = "List.SearchAndResult";
 
-        private TiValueControl<string> SearchText => this.FindMapped<TiValueControl<string>>( "List.Search.Text" );
+        /// <summary>
+        /// Gets the search text control.
+        /// </summary>
+        /// <value>
+        /// The search text control.
+        /// </value>
+        public TiValueControl<string> SearchText => this.FindMapped<TiValueControl<string>>( "List.Search.Text" );
+
         private TiButton ClearSearchTextButton => this.FindMapped<TiButton>( "List.Search.Clear" );
         private TiButton ExecuteSearchButton => this.FindMapped<TiButton>( "List.Search.Execute" );
         private TcListView ResultListView => Find<TcListView>( Search.ByUid( "List.ResultList" ) );

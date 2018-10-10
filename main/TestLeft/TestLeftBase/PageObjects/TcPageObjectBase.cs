@@ -34,12 +34,11 @@ namespace TestLeft.TestLeftBase.PageObjects
         }
 
         /// <summary>
-        /// Waits until PageObject is visible.
+        /// PageObject is visible or not.
         /// </summary>
-        /// <returns>true if visible</returns>
-        public bool WaitUntilVisible()
-        {
-            return VisibleOnScreen.TryWaitFor();
-        }
+        /// <value>
+        ///   <c>true</c> if this instance is visible; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsVisible => VisibleOnScreen.Value;
     }
 }

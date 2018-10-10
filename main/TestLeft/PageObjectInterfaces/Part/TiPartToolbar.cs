@@ -1,8 +1,8 @@
-using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Common;
 
 namespace PageObjectInterfaces.Part
 {
-    public interface TiPartToolbar
+    public interface TiPartToolbar : TiVisibility
     {
         bool CanSave { get; }
         bool CanDelete { get; }

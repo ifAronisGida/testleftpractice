@@ -86,6 +86,11 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// </summary>
         public override void Goto()
         {
+            if( Toolbar.IsVisible )
+            {
+                return;
+            }
+
             base.Goto();
             Goto<TcDomains>().Part.Click();
         }

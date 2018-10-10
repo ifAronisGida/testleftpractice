@@ -1,6 +1,8 @@
+using PageObjectInterfaces.Common;
+
 namespace PageObjectInterfaces.CutJob
 {
-    public interface TiCutJobToolbar
+    public interface TiCutJobToolbar : TiVisibility
     {
         bool CanSave { get; }
         bool CanDelete { get; }

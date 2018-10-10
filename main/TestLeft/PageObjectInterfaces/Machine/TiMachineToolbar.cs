@@ -1,6 +1,8 @@
+using PageObjectInterfaces.Common;
+
 namespace PageObjectInterfaces.Machine
 {
-    public interface TiMachineToolbar
+    public interface TiMachineToolbar : TiVisibility
     {
         bool CanSave { get; }
         bool CanDelete { get; }

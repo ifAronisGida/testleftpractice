@@ -38,7 +38,7 @@ namespace TestLeft.UI_Tests.Flux
                 CreateTestMachine();
 
                 var namePrefix = TcSettings.NamePrefix + Guid.NewGuid();
-                var parts = HomeZoneApp.GotoParts();
+                var parts = HomeZone.GotoParts();
 
                 // first part
                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
@@ -105,7 +105,7 @@ namespace TestLeft.UI_Tests.Flux
                 CreateTestMachine();
 
                 Trace.WriteLine( @"Starting Flux open / close test." );
-                var parts = HomeZoneApp.GotoParts();
+                var parts = HomeZone.GotoParts();
                 string solutionName = "Bend1";
 
                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
@@ -143,7 +143,7 @@ namespace TestLeft.UI_Tests.Flux
              {
                  CreateTestMachine();
                  Trace.WriteLine( @"Starting Flux boost test." );
-                 var parts = HomeZoneApp.GotoParts();
+                 var parts = HomeZone.GotoParts();
                  string solutionName = "Bend1";
 
                  parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
@@ -178,7 +178,7 @@ namespace TestLeft.UI_Tests.Flux
                  CreateTestMachine( testMachine );
 
                  Trace.WriteLine( @"Starting Flux boost with errors test." );
-                 var parts = HomeZoneApp.GotoParts();
+                 var parts = HomeZone.GotoParts();
                  string solutionName = "Bend1";
 
                  parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
@@ -211,7 +211,7 @@ namespace TestLeft.UI_Tests.Flux
             {
                 CreateTestMachine();
                 Trace.WriteLine( @"Starting Flux release solution after boost test." );
-                var parts = HomeZoneApp.GotoParts();
+                var parts = HomeZone.GotoParts();
                 string solutionName = "Bend1";
 
                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
@@ -285,7 +285,7 @@ namespace TestLeft.UI_Tests.Flux
              {
                  CreateTestMachine();
                  Trace.WriteLine( @"Starting Flux close without save test." );
-                 var parts = HomeZoneApp.GotoParts();
+                 var parts = HomeZone.GotoParts();
                  string solutionName = "Bend1";
 
                  parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
@@ -322,7 +322,7 @@ namespace TestLeft.UI_Tests.Flux
         {
             mTestMachineName = TcSettings.NamePrefix + Guid.NewGuid();
 
-            var machines = HomeZoneApp.GotoMachines();
+            var machines = HomeZone.GotoMachines();
 
             if( machineName == null )
             {
@@ -343,7 +343,7 @@ namespace TestLeft.UI_Tests.Flux
 
         private void DeleteTestMachine( string machineName = null )
         {
-            var machines = HomeZoneApp.GotoMachines();
+            var machines = HomeZone.GotoMachines();
 
             if( machineName == null )
             {
@@ -361,7 +361,7 @@ namespace TestLeft.UI_Tests.Flux
 
         private void OpenMachineConfiguration( string machineName )
         {
-            var machines = HomeZoneApp.GotoMachines();
+            var machines = HomeZone.GotoMachines();
             machines.ResultColumn.SelectItem( machineName );
             machines.Detail.OpenMachineConfigurationBend();
         }

@@ -65,6 +65,11 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// </summary>
         public override void Goto()
         {
+            if( Toolbar.IsVisible )
+            {
+                return;
+            }
+
             base.Goto();
             Goto<TcDomainsMore>().GotoWorkplace();
         }

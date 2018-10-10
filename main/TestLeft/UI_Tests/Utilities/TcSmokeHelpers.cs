@@ -2,11 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestLeft.TestLeftBase.PageObjects.CutJob;
 using TestLeft.TestLeftBase.PageObjects.Flux;
-using TestLeft.TestLeftBase.PageObjects.Machine;
 using TestLeft.TestLeftBase.PageObjects.Part;
-using TestLeft.TestLeftBase.PageObjects.PartOrder;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.PageObjects.Waiting;
@@ -51,7 +48,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestMaterials()
         {
-            var materials = HomeZoneApp.GotoMaterials();
+            var materials = HomeZone.GotoMaterials();
             var materialCount = materials.ResultColumn.Count;
             var materialsCreatedCount = 0;
 
@@ -97,7 +94,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void DeleteTestMaterials()
         {
-            var materials = HomeZoneApp.GotoMaterials();
+            var materials = HomeZone.GotoMaterials();
             var currentMaterialsCount = materials.ResultColumn.Count;
             var deletedMaterialsCount = 0;
 
@@ -121,7 +118,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestMachines()
         {
-            var machines = HomeZoneApp.Goto<TcMachines>();
+            var machines = HomeZone.GotoMachines();
 
             machines.ResultColumn.ClearSearch();
 
@@ -174,7 +171,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void DeleteTestMachines()
         {
-            var machines = HomeZoneApp.Goto<TcMachines>();
+            var machines = HomeZone.GotoMachines();
             var machineCount = machines.ResultColumn.Count;
             var deletedMachinesCount = 0;
 
@@ -206,7 +203,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestCustomers()
         {
-            var customers = HomeZoneApp.GotoCustomers();
+            var customers = HomeZone.GotoCustomers();
             var customersCreatedCount = 0;
             var customersCount = customers.Count();
             if( string.IsNullOrEmpty( customers.Name.Value ) )
@@ -245,7 +242,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void DeleteTestCustomers()
         {
-            var customers = HomeZoneApp.GotoCustomers();
+            var customers = HomeZone.GotoCustomers();
             var customersCount = customers.Count();
             var deletedCustomersCount = 0;
 
@@ -281,7 +278,7 @@ namespace TestLeft.UI_Tests.Utilities
                 CreateTestCustomers();
             }
 
-            var parts = HomeZoneApp.GotoParts();
+            var parts = HomeZone.GotoParts();
             var partCount = parts.ResultColumn.Count;
             var partsCreatedCount = 0;
 
@@ -342,7 +339,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void DeleteTestParts()
         {
-            var parts = HomeZoneApp.Goto<TcParts>();
+            var parts = HomeZone.GotoParts();
             var partCount = parts.ResultColumn.Count;
             var deletedPartsCount = 0;
 
@@ -366,7 +363,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestPartOrders()
         {
-            var partOrders = HomeZoneApp.Goto<TcPartOrders>();
+            var partOrders = HomeZone.GotoPartOrders();
 
             partOrders.Toolbar.New();
             //TODO
@@ -389,7 +386,7 @@ namespace TestLeft.UI_Tests.Utilities
         [TestMethod]
         public void CreateTestCutJobs()
         {
-            var cutJobs = HomeZoneApp.Goto<TcCutJobs>();
+            var cutJobs = HomeZone.GotoCutJobs();
 
             cutJobs.Toolbar.New();
             //TODO

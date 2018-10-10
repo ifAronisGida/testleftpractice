@@ -19,7 +19,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
                 {
-                    var mainTabControl = HomeZoneApp.MainTabControl;
+                    var mainTabControl = HomeZone.MainTabControl;
                     var initialTabCount = mainTabControl.Count();
 
                     mainTabControl.AddNewTab();
@@ -38,7 +38,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
                 {
-                    var mainTabControl = HomeZoneApp.MainTabControl;
+                    var mainTabControl = HomeZone.MainTabControl;
                     var initialTabCount = mainTabControl.Count();
 
                     for( int i = 0; i < 10; i++ )
@@ -58,13 +58,13 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
                 {
-                    var mainTabControl = HomeZoneApp.MainTabControl;
+                    var mainTabControl = HomeZone.MainTabControl;
                     var initialTabCount = mainTabControl.Count();
 
                     for( int i = 0; i < 10; i++ )
                     {
                         mainTabControl.AddNewTab();
-                        HomeZoneApp.GotoParts();
+                        HomeZone.GotoParts();
                     }
                     Assert.AreEqual( mainTabControl.Count(), initialTabCount + 10 );
                 } );
@@ -78,7 +78,7 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var mainTabControl = HomeZoneApp.MainTabControl;
+                var mainTabControl = HomeZone.MainTabControl;
 
                 var count = mainTabControl.Count();
 

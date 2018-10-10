@@ -1,3 +1,5 @@
+using PageObjectInterfaces.Controls;
+
 namespace PageObjectInterfaces.Common
 {
     public interface TiResultColumn
@@ -19,6 +21,14 @@ namespace PageObjectInterfaces.Common
         /// Executes the search.
         /// </summary>
         void DoSearch();
+
+        /// <summary>
+        /// Gets the search text control.
+        /// </summary>
+        /// <value>
+        /// The search text control.
+        /// </value>
+        TiValueControl<string> SearchText { get; }
 
         /// <summary>
         /// Selects the item with the given id.

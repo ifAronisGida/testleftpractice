@@ -23,7 +23,7 @@ namespace TestLeft.UI_Tests.Part
                 {
                     var partName = TcSettings.NamePrefix + "NewPartTest";
 
-                    var parts = HomeZoneApp.GotoParts();
+                    var parts = HomeZone.GotoParts();
 
                     parts.Toolbar.New();
                     parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
@@ -54,7 +54,7 @@ namespace TestLeft.UI_Tests.Part
         {
             Act( () =>
                 {
-                    var parts = HomeZoneApp.GotoParts();
+                    var parts = HomeZone.GotoParts();
 
                     parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
 
@@ -101,7 +101,7 @@ namespace TestLeft.UI_Tests.Part
         {
             Act( () =>
             {
-                var parts = HomeZoneApp.GotoParts();
+                var parts = HomeZone.GotoParts();
 
                 parts.Toolbar.New();
 

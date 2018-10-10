@@ -21,7 +21,7 @@ namespace TestLeft.UI_Tests.Material
         {
             Act( () =>
                 {
-                    var materials = HomeZoneApp.GotoMaterials();
+                    var materials = HomeZone.GotoMaterials();
 
                     materials.Toolbar.New();
 
@@ -57,7 +57,7 @@ namespace TestLeft.UI_Tests.Material
         {
             Act( () =>
             {
-                var materials = HomeZoneApp.GotoMaterials();
+                var materials = HomeZone.GotoMaterials();
 
                 materials.Goto();
 

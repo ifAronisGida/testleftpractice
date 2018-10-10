@@ -1,3 +1,4 @@
+using PageObjectInterfaces;
 using PageObjectInterfaces.Customer;
 using PageObjectInterfaces.CutJob;
 using PageObjectInterfaces.Machine;
@@ -20,7 +21,7 @@ namespace TestLeft.TestLeftBase
     /// The HomeZone ProcessObject.
     /// </summary>
     /// <seealso cref="Trumpf.PageObjects.ProcessObject" />
-    public class TcHomeZoneApp : ProcessObject
+    public class TcHomeZoneApp : ProcessObject, TiHomeZoneApp
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TcHomeZoneApp"/> class.

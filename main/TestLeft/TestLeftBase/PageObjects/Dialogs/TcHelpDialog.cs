@@ -23,9 +23,12 @@ namespace TestLeft.TestLeftBase.PageObjects.Dialogs
             Node.CallMethod( "Close" );
         }
 
-        public bool WaitUntilVisible()
-        {
-            return VisibleOnScreen.TryWaitFor();
-        }
+        /// <summary>
+        /// PageObject is visible or not.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is visible; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsVisible => VisibleOnScreen.Value;
     }
 }

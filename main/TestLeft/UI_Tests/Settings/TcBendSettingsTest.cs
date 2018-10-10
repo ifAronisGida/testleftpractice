@@ -22,11 +22,11 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var settingsDialog = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
                 var bendSettings = settingsDialog.BendSettings;
                 bendSettings.Goto();
 
-                Assert.IsTrue( bendSettings.WaitUntilVisible() );
+                Assert.IsTrue( bendSettings.IsVisible );
 
                 bendSettings.OpenToolsConfiguration();
 
@@ -49,11 +49,11 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var settingsDialog = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
                 var bendSettings = settingsDialog.BendSettings;
                 bendSettings.Goto();
 
-                Assert.IsTrue( bendSettings.WaitUntilVisible() );
+                Assert.IsTrue( bendSettings.IsVisible );
 
                 bendSettings.OpenBendDeductionConfiguration();
 
@@ -78,11 +78,11 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var settingsDialog = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
                 var bendSettings = settingsDialog.BendSettings;
                 bendSettings.Goto();
 
-                Assert.IsTrue( bendSettings.WaitUntilVisible() );
+                Assert.IsTrue( bendSettings.IsVisible );
 
                 bendSettings.OpenAppSettingsConfiguration();
 
@@ -107,11 +107,11 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var settingsDialog = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
                 var bendSettings = settingsDialog.BendSettings;
                 bendSettings.Goto();
 
-                Assert.IsTrue( bendSettings.WaitUntilVisible() );
+                Assert.IsTrue( bendSettings.IsVisible );
 
                 bendSettings.OpenDataManagerBend();
 

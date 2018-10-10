@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestLeft.TestLeftBase.PageObjects.CutJob;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
@@ -24,7 +23,7 @@ namespace TestLeft.UI_Tests.CutJob
         {
             Act( () =>
                 {
-                    var cutJobs = HomeZoneApp.GotoCutJobs();
+                    var cutJobs = HomeZone.GotoCutJobs();
 
                     cutJobs.Toolbar.New();
 
@@ -45,7 +44,7 @@ namespace TestLeft.UI_Tests.CutJob
         {
             Act( () =>
             {
-                var cutJobs = HomeZoneApp.GotoCutJobs();
+                var cutJobs = HomeZone.GotoCutJobs();
 
                 cutJobs.Toolbar.New();
 
@@ -66,7 +65,7 @@ namespace TestLeft.UI_Tests.CutJob
 
             Act( () =>
             {
-                var orders = HomeZoneApp.GotoCutJobs().ContainedOrders;
+                var orders = HomeZone.GotoCutJobs().ContainedOrders;
 
                 var row = orders.GetRow( 0 );
 
@@ -86,7 +85,8 @@ namespace TestLeft.UI_Tests.CutJob
 
                 row.DrawingButton.Click();
                 Thread.Sleep( 5000 );
-                Assert.IsTrue( HomeZoneApp.On<TcParts>().Visible );
+                var searchText = HomeZone.GotoParts().ResultColumn.SearchText.Value;
+                Assert.AreEqual( "id:Eckwinkel", searchText );
             } );
         }
 
@@ -95,7 +95,7 @@ namespace TestLeft.UI_Tests.CutJob
         {
             Act( () =>
             {
-                var cutJobs = HomeZoneApp.Goto<TcCutJobs>();
+                var cutJobs = HomeZone.GotoCutJobs();
                 cutJobs.Toolbar.New();
 
                 cutJobs.BaseInfo.RawMaterial.Value = "AL0M0050---";

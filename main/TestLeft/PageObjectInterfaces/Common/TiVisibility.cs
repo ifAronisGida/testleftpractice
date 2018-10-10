@@ -3,9 +3,11 @@ namespace PageObjectInterfaces.Common
     public interface TiVisibility
     {
         /// <summary>
-        /// Waits until visible.
+        /// Is visible or not.
         /// </summary>
-        /// <returns>true if visible</returns>
-        bool WaitUntilVisible();
+        /// <value>
+        ///   <c>true</c> if this instance is visible; otherwise, <c>false</c>.
+        /// </value>
+        bool IsVisible { get; }
     }
 }

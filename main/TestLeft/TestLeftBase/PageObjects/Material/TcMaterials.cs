@@ -55,6 +55,11 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// </summary>
         public override void Goto()
         {
+            if( Toolbar.IsVisible )
+            {
+                return;
+            }
+
             base.Goto();
             Goto<TcDomainsMore>().GotoMaterial();
         }

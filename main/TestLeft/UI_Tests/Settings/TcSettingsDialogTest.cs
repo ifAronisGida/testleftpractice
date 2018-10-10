@@ -19,9 +19,9 @@ namespace TestLeft.UI_Tests.Settings
         {
             Act( () =>
             {
-                var settings = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                var settings = HomeZone.GotoMainMenu().OpenSettingsDialog();
 
-                Assert.IsTrue( settings.WaitUntilVisible() );
+                Assert.IsTrue( settings.IsVisible );
 
                 settings.Cancel();
             } );

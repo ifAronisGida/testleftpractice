@@ -12,13 +12,13 @@ namespace TestLeft.UI_Tests.PartOrder
         {
             Act( () =>
             {
-                var parts = HomeZoneApp.GotoParts();
+                var parts = HomeZone.GotoParts();
                 parts.Toolbar.New();
                 parts.SingleDetail.Id = "TestPart";
                 parts.SingleDetail.Name.Value = "TestPart";
                 parts.Toolbar.Save();
 
-                var partOrders = HomeZoneApp.GotoPartOrders();
+                var partOrders = HomeZone.GotoPartOrders();
                 var toolbar = partOrders.Toolbar;
 
                 toolbar.New();
@@ -36,7 +36,7 @@ namespace TestLeft.UI_Tests.PartOrder
                 toolbar.Delete();
                 Assert.IsFalse( toolbar.CanDelete );
 
-                parts = HomeZoneApp.GotoParts();
+                parts = HomeZone.GotoParts();
                 parts.ResultColumn.SelectItem( "TestPart" );
                 parts.Toolbar.Delete();
             } );
@@ -45,13 +45,13 @@ namespace TestLeft.UI_Tests.PartOrder
         [TestMethod, UniqueName( "79662E0F-0AF8-4F6D-8A44-F81537CF8430" )]
         public void SelectPartIntoOrderTest()
         {
-            var parts = HomeZoneApp.GotoParts();
+            var parts = HomeZone.GotoParts();
             parts.Toolbar.New();
             parts.SingleDetail.Id = "TestPart";
             parts.SingleDetail.Name.Value = "TestPart";
             parts.Toolbar.Save();
 
-            var partOrders = HomeZoneApp.GotoPartOrders();
+            var partOrders = HomeZone.GotoPartOrders();
             partOrders.Toolbar.New();
             partOrders.PartInfo.SelectPart( "TestPart" );
 

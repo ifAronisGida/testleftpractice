@@ -4,7 +4,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using TestLeft.TestLeftBase.PageObjects.Flux;
-using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -27,11 +26,11 @@ namespace TestLeft.UI_Tests.Settings
             Act( () =>
             {
                 // Create a toollist
-                var settingsDialog = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
                 var bendSettings = settingsDialog.BendSettings;
                 bendSettings.Goto();
 
-                Assert.IsTrue( bendSettings.WaitUntilVisible() );
+                Assert.IsTrue( bendSettings.IsVisible );
 
                 bendSettings.OpenToolListsConfiguration();
 
@@ -47,7 +46,7 @@ namespace TestLeft.UI_Tests.Settings
                 settingsDialog.Cancel();
 
                 // import part and use toollist
-                var parts = HomeZoneApp.GotoParts();
+                var parts = HomeZone.GotoParts();
                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
@@ -72,10 +71,10 @@ namespace TestLeft.UI_Tests.Settings
             Act( () =>
              {
                  // Create a toollist
-                 var settingsDialog = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                 var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
                  var bendSettings = settingsDialog.BendSettings;
                  bendSettings.Goto();
-                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
+                 Assert.IsTrue( bendSettings.IsVisible );
                  bendSettings.OpenToolListsConfiguration();
 
                  string toollistName = "rubbishTools";
@@ -88,9 +87,9 @@ namespace TestLeft.UI_Tests.Settings
                  settingsDialog.Save();
 
                  // Delete the  toollist
-                 bendSettings = HomeZoneApp.GotoMainMenu().OpenSettingsDialog().BendSettings;
+                 bendSettings = HomeZone.GotoMainMenu().OpenSettingsDialog().BendSettings;
                  bendSettings.Goto();
-                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
+                 Assert.IsTrue( bendSettings.IsVisible );
                  bendSettings.OpenToolListsConfiguration();
                  Thread.Sleep( TcSettings.FluxStartTimeout );
 
@@ -104,7 +103,7 @@ namespace TestLeft.UI_Tests.Settings
                  settingsDialog.Save();
 
                  // import part and use toollist
-                 var parts = HomeZoneApp.GotoParts();
+                 var parts = HomeZone.GotoParts();
                  parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                  parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                  parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
@@ -124,10 +123,10 @@ namespace TestLeft.UI_Tests.Settings
             Act( () =>
              {
                  // Create a toollist
-                 var settingsDialog = HomeZoneApp.GotoMainMenu().OpenSettingsDialog();
+                 var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
                  var bendSettings = settingsDialog.BendSettings;
                  bendSettings.Goto();
-                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
+                 Assert.IsTrue( bendSettings.IsVisible );
                  bendSettings.OpenToolListsConfiguration();
 
                  string toollistName = "oldName";
@@ -141,9 +140,9 @@ namespace TestLeft.UI_Tests.Settings
 
                  // rename toollist
                  string newName = "newName";
-                 bendSettings = HomeZoneApp.GotoMainMenu().OpenSettingsDialog().BendSettings;
+                 bendSettings = HomeZone.GotoMainMenu().OpenSettingsDialog().BendSettings;
                  bendSettings.Goto();
-                 Assert.IsTrue( bendSettings.WaitUntilVisible() );
+                 Assert.IsTrue( bendSettings.IsVisible );
                  bendSettings.OpenToolListsConfiguration();
                  Thread.Sleep( TcSettings.FluxStartTimeout );
 
@@ -158,7 +157,7 @@ namespace TestLeft.UI_Tests.Settings
                  settingsDialog.Save();
 
                  // import part and use toollist
-                 var parts = HomeZoneApp.GotoParts();
+                 var parts = HomeZone.GotoParts();
                  parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                  parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                  parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
@@ -178,7 +177,7 @@ namespace TestLeft.UI_Tests.Settings
         private bool CheckToolListDropdown( string toolListName, out IControl control )
         {
             control = null;
-            var menu = HomeZoneApp.Goto<TcMainMenu>();
+            var menu = HomeZone.GotoMainMenu();
             menu.RefreshMasterData();
             bool found = false;
 

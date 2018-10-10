@@ -19,28 +19,28 @@ namespace TestLeft.UI_Tests.Shell
         {
             Act( () =>
             {
-                var menu = HomeZoneApp.GotoMainMenu();
+                var menu = HomeZone.GotoMainMenu();
 
                 var welcomeScreen = menu.ShowWelcomeScreen();
 
-                Assert.IsTrue( welcomeScreen.WaitUntilVisible() );
+                Assert.IsTrue( welcomeScreen.IsVisible );
 
                 var toggle = welcomeScreen.ShowWelcomeScreen;
 
                 // invert toggle
                 welcomeScreen.ShowWelcomeScreen = !toggle;
 
-                HomeZoneApp.MainTabControl.CloseCurrentTab();
+                HomeZone.MainTabControl.CloseCurrentTab();
 
                 menu.Goto();
                 menu.ShowWelcomeScreen();
-                Assert.IsTrue( welcomeScreen.WaitUntilVisible() );
+                Assert.IsTrue( welcomeScreen.IsVisible );
                 Assert.AreNotEqual( welcomeScreen.ShowWelcomeScreen, toggle );
 
                 // restore toggle
                 welcomeScreen.ShowWelcomeScreen = toggle;
 
-                HomeZoneApp.MainTabControl.CloseCurrentTab();
+                HomeZone.MainTabControl.CloseCurrentTab();
             } );
         }
     }

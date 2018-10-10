@@ -24,6 +24,11 @@ namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 
         public override void Goto()
         {
+            if( Toolbar.IsVisible )
+            {
+                return;
+            }
+
             On<TcDomains>().PartOrder.Click();
             Visible.WaitFor();
         }

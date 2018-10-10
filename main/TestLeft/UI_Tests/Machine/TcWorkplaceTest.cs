@@ -22,7 +22,7 @@ namespace TestLeft.UI_Tests.Machine
             Act( () =>
                 {
                     var testMachineName = TcSettings.NamePrefix + Guid.NewGuid();
-                    var machines = HomeZoneApp.GotoMachines();
+                    var machines = HomeZone.GotoMachines();
 
                     var machineCount = machines.ResultColumn.Count;
 
@@ -58,7 +58,7 @@ namespace TestLeft.UI_Tests.Machine
             Act( () =>
                 {
                     var testMachineName = TcSettings.NamePrefix + Guid.NewGuid();
-                    var machines = HomeZoneApp.GotoMachines();
+                    var machines = HomeZone.GotoMachines();
 
                     var machineCount = machines.ResultColumn.Count;
 
