@@ -1,29 +1,36 @@
 using System;
-using TestLeft.TestLeftBase.ControlObjects.Interfaces;
+using PageObjectInterfaces.Controls;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects
 {
-    public class TcDateEdit : ControlObject, TiSimpleValue<DateTime?>
+    internal class TcDateEdit : TcControl, TiValueControl<DateTime?>
     {
-        protected override Search SearchPattern => Search.Any;
+        private readonly IControlObject mControlObject;
+
+        public TcDateEdit( IControlObject controlObject ) : base( controlObject )
+        {
+            this.mControlObject = controlObject;
+        }
 
         public DateTime? Value
         {
             get
             {
-                if( string.IsNullOrEmpty( Node.GetProperty<string>("Text") ) )
+                if( string.IsNullOrEmpty( mControlObject.Node.GetProperty<string>( "Text" ) ) )
                 {
                     return null;
                 }
 
-                return Node.GetProperty<DateTime>( "DateTime" );
+                return mControlObject.Node.GetProperty<DateTime>( "DateTime" );
             }
 
             set
             {
-                Node.SetProperty( "DateTime", value );
+                mControlObject.Node.SetProperty( "DateTime", value );
             }
         }
+
+        public bool IsReadOnly => mControlObject.Node.GetProperty<bool>( "IsReadOnly" );
     }
 }

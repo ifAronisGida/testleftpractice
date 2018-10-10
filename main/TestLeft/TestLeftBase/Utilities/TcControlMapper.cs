@@ -19,6 +19,7 @@ namespace TestLeft.TestLeftBase.Utilities
             ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruComboBox"] = controlObject => new TcTruComboBox( controlObject ),
             ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruIconButton"] = controlObject => new TcButton( controlObject ),
             ["Trumpf.TruTops.Control.Infrastructure.ModuleBase.Controls.TcLookUpEdit"] = controlObject => new TcTextEdit( controlObject ),
+            ["Trumpf.TruTops.Control.Infrastructure.ModuleBase.Controls.TcNullableDateEdit"] = controlObject => new TcDateEdit( controlObject ),
             ["Trumpf.TruTops.Control.Infrastructure.ModuleBase.Controls.TcNullableTextEdit"] = controlObject => new TcTextEdit( controlObject ),
         };
 

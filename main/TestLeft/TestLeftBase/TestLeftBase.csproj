@@ -104,6 +104,7 @@
     <Compile Include="ControlObjects\TcButton.cs" />
     <Compile Include="ControlObjects\TcCheckBox.cs" />
     <Compile Include="ControlObjects\TcControl.cs" />
+    <Compile Include="ControlObjects\TcDateEdit.cs" />
     <Compile Include="ControlObjects\TcGridControl.cs" />
     <Compile Include="ControlObjects\TcGroupPanel.cs" />
     <Compile Include="ControlObjects\TcListView.cs" />
