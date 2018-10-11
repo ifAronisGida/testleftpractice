@@ -1,55 +1,92 @@
 using System;
 using SmartBear.TestLeft.TestObjects;
-using SmartBear.TestLeft.TestObjects.UIAutomation;
+using SmartBear.TestLeft.TestObjects.Qt;
 using Trumpf.PageObjects;
-using Trumpf.PageObjects.UIA;
 
 namespace TestLeft.TestLeftBase.PageObjects.Cut
 {
-    public class TcCutMessageBox : PageObject, IChildOf<TcCutApp>
+    public class TcCutMessageBox : RepeaterObject, IChildOf<TcCutApp>
     {
-        protected override Search SearchPattern => Search.ByClassname( "TcMessageBox" );
+        private ITopLevelWindow mMessageBox;
 
-        private readonly Lazy<IControl> mframeButtons;
+        internal ITopLevelWindow MessageBox
+        {
+            get
+            {
+                if( mMessageBox == null )
+                {
+                    Parent.Node.TryFind( new QtPattern() { objectName = "TcMessageBox" }, out mMessageBox, 1 );
+                }
+
+                return mMessageBox;
+            }
+        }
+
+        private readonly Lazy<IControl> mFrameButtons;
 
         public TcCutMessageBox()
         {
-            mframeButtons = new Lazy<IControl>( () => Node.Find<IControl>( new UIAPattern()
+            mFrameButtons = new Lazy<IControl>( () => MessageBox.Find<IControl>( new QtPattern()
             {
-                FrameworkId = "Qt",
-                ClassName = "QWidget",
-                ObjectIdentifier = "qt_ribbonMainWindow_TcMessageBox_container"
-            } ).Find<IControl>( new UIAPattern()
+                objectName = "container"
+            } ).Find<IControl>( new QtPattern()
             {
-                FrameworkId = "Qt",
-                ClassName = "QWidget",
-                ObjectIdentifier = "qt_ribbonMainWindow_TcMessageBox_container_frame"
-            } ).Find<IControl>( new UIAPattern()
+                objectName = "frame"
+            } ).Find<IControl>( new QtPattern()
             {
-                FrameworkId = "Qt",
-                ClassName = "QWidget",
-                ObjectIdentifier = "qt_ribbonMainWindow_TcMessageBox_container_frame_content"
-            } ).Find<IControl>( new UIAPattern()
+                objectName = "content"
+            } ).Find<IControl>( new QtPattern()
             {
-                FrameworkId = "Qt",
-                ClassName = "QFrame",
-                ObjectIdentifier = "qt_ribbonMainWindow_TcMessageBox_container_frame_content_frameButtons"
+                objectName = "frameButtons"
             } ) );
         }
 
-        internal IControl YesButton => mframeButtons.Value.Find<IControl>( new UIAPattern()
+        private IControl YesButton => mFrameButtons.Value.Find<IButton>( new QtPattern()
         {
-            FrameworkId = "Qt",
-            ClassName = "QPushButton",
-            ObjectIdentifier = "Ja"
+            objectName = "yesButton"
+        } );
+
+        private IControl NoButton => mFrameButtons.Value.Find<IButton>( new QtPattern()
+        {
+            objectName = "noButton"
+        } );
+
+        private IControl CancelButton => mFrameButtons.Value.Find<IButton>( new QtPattern()
+        {
+            objectName = "cancelButton"
         } );
 
         /// <summary>
-        /// Closes the message box.
+        /// Returns true if a message box exists.
         /// </summary>
-        public void Close()
+        /// <returns>True if a message box exists, otherwise false.</returns>
+        public bool MessageBoxExists()
         {
-            Node.CallMethod( "Close" );
+            return MessageBox != null;
+        }
+
+        /// <summary>
+        /// Clicks the yes button.
+        /// </summary>
+        public void Yes()
+        {
+            YesButton.Click();
+        }
+
+        /// <summary>
+        /// Clicks the no button.
+        /// </summary>
+        public void No()
+        {
+            NoButton.Click();
+        }
+
+        /// <summary>
+        /// Clicks the cancel button.
+        /// </summary>
+        public void Cancel()
+        {
+            CancelButton.Click();
         }
     }
 }

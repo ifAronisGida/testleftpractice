@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestLeft.TestLeftBase.PageObjects.Cut;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -34,14 +33,14 @@ namespace TestLeft.UI_Tests.Cut
                 parts.SingleDetailCutSolutions.OpenCutSolution( "Cut1" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
 
-                var cut = new TcCut( Driver );
+                var cut = CutApp;
 
-                if( cut.TechnologyTableSelectionDialog.DialogIsVisible( TcSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) ) )
+                if( cut.TechnologyTableSelectionDialog.IsDialogVisible( TcSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) ) )
                 {
                     cut.TechnologyTableSelectionDialog.Close();
                 }
 
-                var visible = cut.MainWindowIsVisible( TcSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                var visible = cut.IsMainWindowVisible( TcSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                 if( visible )
                 {
                     cut.CloseApp();

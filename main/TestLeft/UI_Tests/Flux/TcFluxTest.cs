@@ -51,9 +51,9 @@ namespace TestLeft.UI_Tests.Flux
                 parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
 
-                var flux = new TcFlux( Driver );
+                var flux = FluxApp;
 
-                var visible = flux.MainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                var visible = flux.IsMainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                 if( visible )
                 {
                     flux.CloseApp();
@@ -74,9 +74,9 @@ namespace TestLeft.UI_Tests.Flux
                 parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
 
-                flux = new TcFlux( Driver );
+                flux = FluxApp;
 
-                visible = flux.MainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                visible = flux.IsMainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                 if( visible )
                 {
                     flux.CloseApp();
@@ -116,8 +116,8 @@ namespace TestLeft.UI_Tests.Flux
                 parts.SingleDetailBendSolutions.OpenBendSolution( solutionName );
                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
 
-                var flux = new TcFlux( Driver );
-                bool visible = flux.MainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                var flux = FluxApp;
+                bool visible = flux.IsMainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                 if( visible )
                 {
                     flux.SaveAndClosePartInFlux();
@@ -296,8 +296,8 @@ namespace TestLeft.UI_Tests.Flux
                  parts.SingleDetailBendSolutions.OpenBendSolution( solutionName );
                  parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
 
-                 var flux = new TcFlux( Driver );
-                 bool visible = flux.MainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                 var flux = FluxApp;
+                 bool visible = flux.IsMainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                  if( visible )
                  {
                      flux.ChangeSolution();

@@ -5,8 +5,14 @@ using System.Reflection;
 using FactsHub.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PageObjectInterfaces;
+using PageObjectInterfaces.Cut;
+using PageObjectInterfaces.Design;
+using PageObjectInterfaces.Flux;
 using SmartBear.TestLeft;
 using TestLeft.TestLeftBase;
+using TestLeft.TestLeftBase.PageObjects.Cut;
+using TestLeft.TestLeftBase.PageObjects.Design;
+using TestLeft.TestLeftBase.PageObjects.Flux;
 using TestLeft.TestLeftBase.Settings;
 using Trumpf.AutoTest.Facts;
 using Trumpf.AutoTest.Utilities;
@@ -24,17 +30,21 @@ namespace TestLeft.UI_Tests.Base
     {
         private readonly AutoFact mAutoFact;
 
-        public TcBaseTestClass()
-            => mAutoFact = new AutoFact( new TcTestOptions( GetType, () => TestContext ) );
-
         /// <summary>
         /// Initializes the <see cref="TcBaseTestClass"/> class and
         /// creates the driver object.
         /// </summary>
-        static TcBaseTestClass()
+        public TcBaseTestClass()
         {
+            mAutoFact = new AutoFact( new TcTestOptions( GetType, () => TestContext ) );
+
             //Create a local Driver object
             Driver = new LocalDriver();
+
+            HomeZone.Driver = Driver;
+            DesignApp.Driver = Driver;
+            CutApp.Driver = Driver;
+            FluxApp.Driver = Driver;
 
             //Use line below instead of the above to create a remote Driver
             //_driver = new RemoteDriver("myhost", "userName", "password");
@@ -46,7 +56,7 @@ namespace TestLeft.UI_Tests.Base
         /// <summary>
         /// Interface to the TestLeft engine.
         /// </summary>
-        protected static IDriver Driver { get; }
+        protected IDriver Driver { get; }
 
         /// <summary>
         /// The test context.
@@ -59,10 +69,33 @@ namespace TestLeft.UI_Tests.Base
         /// <value>
         /// The HomeZone ProcessObject.
         /// </value>
-        public static TiHomeZoneApp HomeZone { get; } = new TcHomeZoneApp( TcSettings.HomeZoneProcessName )
-        {
-            Driver = Driver
-        };
+        public TiHomeZoneApp HomeZone { get; } = new TcHomeZoneApp( TcSettings.HomeZoneProcessName );
+
+        /// <summary>
+        /// Manages access to the Design application.
+        /// </summary>
+        /// <value>
+        /// The Design application.
+        /// </value>
+        public TiDesign DesignApp { get; } = new TcDesign();
+
+        /// <summary>
+        /// Manages access to the Cut application.
+        /// </summary>
+        /// <value>
+        /// The Cut application.
+        /// </value>
+        public TiCut CutApp { get; } = new TcCut();
+
+
+        /// <summary>
+        /// Manages access to the Flux application.
+        /// </summary>
+        /// <value>
+        /// The Flux application.
+        /// </value>
+        public TiFlux FluxApp { get; } = new TcFlux();
+
 
         protected void Act( Action action, string caption = null )
             => mAutoFact.Act( action, caption );

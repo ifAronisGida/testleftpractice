@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestLeft.TestLeftBase.PageObjects.Design;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
@@ -32,12 +31,10 @@ namespace TestLeft.UI_Tests.Design
 
                 parts.SingleDetailDesign.Open();
 
-                var design = new TcDesign( Driver );
-
-                var visible = design.MainWindowVisible( TcSettings.DesignStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                var visible = DesignApp.IsMainWindowVisible( TcSettings.DesignStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                 if( visible )
                 {
-                    design.CloseApp();
+                    DesignApp.CloseApp();
 
                     parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
                 }

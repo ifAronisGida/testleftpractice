@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-using SmartBear.TestLeft;
+using PageObjectInterfaces.Flux;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 
@@ -9,16 +9,10 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
     /// <summary>
     /// PageObject for the Flux app.
     /// </summary>
-    public class TcFlux
+    public class TcFlux : TcApp, TiFlux
     {
         private TcFluxApp mApp;
         private IControl mMainWindow;
-        private readonly IDriver mDriver;
-
-        public TcFlux( IDriver driver )
-        {
-            mDriver = driver;
-        }
 
         /// <summary>
         /// Gets a value indicating whether the main window is visible.
@@ -29,7 +23,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
         /// <value>
         ///   <c>true</c> if main window is visible; otherwise, <c>false</c>.
         /// </value>
-        public bool MainWindowVisible( TimeSpan timeout, TimeSpan retryWaitTime )
+        public override bool IsMainWindowVisible( TimeSpan timeout, TimeSpan retryWaitTime )
         {
             mApp = null;
             mMainWindow = null;
@@ -43,7 +37,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
                 do
                 {
                     // search process
-                    processFound = mDriver.TryFind<IProcess>( new ProcessPattern()
+                    processFound = Driver.TryFind<IProcess>( new ProcessPattern()
                     {
                         ProcessName = "Flux",
                         Index = index
@@ -51,7 +45,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
 
                     if( processFound )       // search MainWindow
                     {
-                        mApp = new TcFluxApp( flux ) { Driver = mDriver };
+                        mApp = new TcFluxApp( flux ) { Driver = Driver };
 
                         try
                         {
@@ -99,7 +93,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
             fileButton.Click();
 
             // Press save
-            IProcess flux = mDriver.Find<IProcess>( new ProcessPattern()
+            IProcess flux = Driver.Find<IProcess>( new ProcessPattern()
             {
                 ProcessName = "Flux"
             } );
@@ -126,7 +120,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
         public void ChangeSolution()
         {
             // Skip 1st bend
-            IProcess flux = mDriver.Find<IProcess>( new ProcessPattern()
+            IProcess flux = Driver.Find<IProcess>( new ProcessPattern()
             {
                 ProcessName = "Flux"
             } );
@@ -173,7 +167,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
         /// <summary>
         /// Closes the application.
         /// </summary>
-        public void CloseApp()
+        public override void CloseApp()
         {
             mMainWindow?.CallMethod( "Close" );
         }

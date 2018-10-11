@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-using SmartBear.TestLeft;
+using PageObjectInterfaces.Cut;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.Qt;
 
@@ -9,18 +9,15 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
     /// <summary>
     /// PageObject for the Cut app.
     /// </summary>
-    public class TcCut
+    public class TcCut : TcApp, TiCut
     {
         private TcCutApp mApp;
         private ITopLevelWindow mMainWindow;
-        private readonly IDriver mDriver;
         private readonly Lazy<TcTTSelectionDialog> mTTSelectionDialog;
 
-        public TcCut( IDriver driver )
+        public TcCut()
         {
-            mDriver = driver;
-
-            mTTSelectionDialog = new Lazy<TcTTSelectionDialog>( () => new TcTTSelectionDialog( mDriver ) );
+            mTTSelectionDialog = new Lazy<TcTTSelectionDialog>( () => new TcTTSelectionDialog( Driver ) );
         }
 
         /// <summary>
@@ -31,7 +28,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
         /// <returns>
         ///   <c>true</c> if main window is visible; otherwise, <c>false</c>.
         /// </returns>
-        public bool MainWindowIsVisible( TimeSpan timeout, TimeSpan retryWaitTime )
+        public override bool IsMainWindowVisible( TimeSpan timeout, TimeSpan retryWaitTime )
         {
             mApp = null;
             mMainWindow = null;
@@ -45,7 +42,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
                 do
                 {
                     // search process
-                    processFound = mDriver.TryFind<IProcess>( new ProcessPattern()
+                    processFound = Driver.TryFind<IProcess>( new ProcessPattern()
                     {
                         ProcessName = "cut",
                         Index = index
@@ -53,7 +50,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
 
                     if( processFound )       // search MainWindow
                     {
-                        mApp = new TcCutApp( proc ) { Driver = mDriver };
+                        mApp = new TcCutApp( proc ) { Driver = Driver };
 
                         if( mApp.Node.TryFind<ITopLevelWindow>( new QtPattern { objectName = "qt_ribbonMainWindow" }, out var window, 1 ) )
                         {
@@ -84,19 +81,19 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
         /// <value>
         /// The technology table selection dialog.
         /// </value>
-        public TcTTSelectionDialog TechnologyTableSelectionDialog => mTTSelectionDialog.Value;
+        public TiTTSelectionDialog TechnologyTableSelectionDialog => mTTSelectionDialog.Value;
 
         /// <summary>
         /// Closes the application.
         /// </summary>
-        public void CloseApp()
+        public override void CloseApp()
         {
             mMainWindow?.CallMethod( "Close" );
 
             var messageBox = mApp.On<TcCutMessageBox>();
-            if( messageBox.VisibleOnScreen )
+            if( messageBox.MessageBoxExists() )
             {
-                messageBox.Close();
+                messageBox.No();
             }
         }
     }

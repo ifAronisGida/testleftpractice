@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestLeft.TestLeftBase.PageObjects.Flux;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
@@ -318,8 +317,8 @@ namespace TestLeft.UI_Tests.Utilities
             parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
             parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
 
-            var flux = new TcFlux( Driver );
-            var visible = flux.MainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            var flux = FluxApp;
+            var visible = flux.IsMainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
 
             if( visible )
             {

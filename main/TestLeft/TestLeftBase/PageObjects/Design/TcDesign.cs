@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using PageObjectInterfaces.Design;
 using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WinForms;
@@ -9,16 +10,10 @@ namespace TestLeft.TestLeftBase.PageObjects.Design
     /// <summary>
     /// PageObject for the Design app.
     /// </summary>
-    public class TcDesign
+    public class TcDesign : TcApp, TiDesign
     {
         private TcDesignApp mApp;
         private ITopLevelWindow mMainWindow;
-        private readonly IDriver mDriver;
-
-        public TcDesign( IDriver driver )
-        {
-            mDriver = driver;
-        }
 
         /// <summary>
         /// Gets a value indicating whether the main window is visible.
@@ -29,7 +24,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Design
         /// <value>
         ///   <c>true</c> if main window is visible; otherwise, <c>false</c>.
         /// </value>
-        public bool MainWindowVisible( TimeSpan timeout, TimeSpan retryWaitTime )
+        public override bool IsMainWindowVisible( TimeSpan timeout, TimeSpan retryWaitTime )
         {
             mApp = null;
             mMainWindow = null;
@@ -43,7 +38,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Design
                 do
                 {
                     // search process
-                    processFound = mDriver.TryFind<IProcess>( new ProcessPattern()
+                    processFound = Driver.TryFind<IProcess>( new ProcessPattern()
                     {
                         ProcessName = "SpaceClaim",
                         Index = index
@@ -51,7 +46,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Design
 
                     if( processFound )       // search MainWindow
                     {
-                        mApp = new TcDesignApp( proc ) { Driver = mDriver };
+                        mApp = new TcDesignApp( proc ) { Driver = Driver };
 
                         if( mApp.Node.TryFind<ITopLevelWindow>( new WinFormsPattern { WinFormsControlName = "MainForm" }, out var window, 1 ) )
                         {
@@ -79,9 +74,15 @@ namespace TestLeft.TestLeftBase.PageObjects.Design
         /// <summary>
         /// Closes the Design application.
         /// </summary>
-        public void CloseApp()
+        public override void CloseApp()
         {
             mMainWindow?.CallMethod( "Close" );
+
+            var messageBox = mApp.On<TcDesignMessageBox>();
+            if( messageBox.MessageBoxExists() )
+            {
+                messageBox.No();
+            }
         }
     }
 }

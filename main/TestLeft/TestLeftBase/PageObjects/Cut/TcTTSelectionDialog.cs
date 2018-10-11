@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using PageObjectInterfaces.Cut;
 using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.UIAutomation;
@@ -9,7 +10,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
     /// <summary>
     /// PageObject for the technology table selection dialog.
     /// </summary>
-    public class TcTTSelectionDialog
+    public class TcTTSelectionDialog : TiTTSelectionDialog
     {
         private TcCutApp mApp;
         private ITopLevelWindow mWindow;
@@ -32,7 +33,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
         /// <returns>
         ///   <c>true</c> if main window is visible; otherwise, <c>false</c>.
         /// </returns>
-        public bool DialogIsVisible( TimeSpan timeout, TimeSpan retryWaitTime )
+        public bool IsDialogVisible( TimeSpan timeout, TimeSpan retryWaitTime )
         {
             mApp = null;
             mWindow = null;
@@ -56,13 +57,12 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
                     {
                         mApp = new TcCutApp( proc ) { Driver = mDriver };
 
-                        if( mApp.Node.TryFind<ITopLevelWindow>( new UIAPattern()
-                        {
-                            FrameworkId = "Win32",
-                            ClassName = "GritDialogWindow",
-                            ObjectIdentifier = "Technologietabellen_Auswahl",       //TODO should be language independant
-                            ObjectGroupIndex = 1
-                        }, out var window, 1 ) )
+                        if( mApp.Node.TryFind<ITopLevelWindow>( new WindowPattern()
+                                                                    {
+                                                                        WndClass = "GritDialogWindow",
+                                                                        WndCaption = "Technologietabellen Auswahl"       //TODO should be language independant
+                                                                    }, out var window, 1 ) )
+
                         {
                             if( window.VisibleOnScreen )         // -> found, store dialog window and return
                             {

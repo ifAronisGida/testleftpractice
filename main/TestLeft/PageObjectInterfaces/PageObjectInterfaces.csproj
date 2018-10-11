@@ -71,12 +71,16 @@
     <Compile Include="CutJob\TiCutJobToolbar.cs" />
     <Compile Include="CutJob\TiRawSheet.cs" />
     <Compile Include="CutJob\TiRawSheetList.cs" />
+    <Compile Include="Cut\TiCut.cs" />
+    <Compile Include="Cut\TiTTSelectionDialog.cs" />
+    <Compile Include="Design\TiDesign.cs" />
     <Compile Include="Dialogs\TiAboutDialog.cs" />
     <Compile Include="Dialogs\TiEntitySelectionDialog.cs" />
     <Compile Include="Dialogs\TiHelpDialog.cs" />
     <Compile Include="Dialogs\TiMessageBox.cs" />
     <Compile Include="Dialogs\TiOpenFileDialog.cs" />
     <Compile Include="Dialogs\TiPartComputeAllConfirmation.cs" />
+    <Compile Include="Flux\TiFlux.cs" />
     <Compile Include="Machine\TiMachineDetail.cs" />
     <Compile Include="Machine\TiMachines.cs" />
     <Compile Include="Machine\TiMachineToolbar.cs" />
@@ -99,6 +103,7 @@
     <Compile Include="Shell\TiMainMenu.cs" />
     <Compile Include="Shell\TiMainTabControl.cs" />
     <Compile Include="Shell\TiWelcomeScreen.cs" />
+    <Compile Include="TiApp.cs" />
     <Compile Include="TiHomeZoneApp.cs" />
   </ItemGroup>
   <ItemGroup>
