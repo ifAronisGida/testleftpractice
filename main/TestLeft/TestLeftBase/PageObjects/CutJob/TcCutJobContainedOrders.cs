@@ -23,7 +23,7 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
 
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.ContainedOrders" );
 
-        private TiButton SelectButton => Find<TiButton>( "CutJob.Detail.ContainedOrders.Select" );
+        private TiButton AddOrderButton => Find<TiButton>( "CutJob.Detail.ContainedOrders.Select" );
         private TiButton RemoveButton => Find<TiButton>( "CutJob.Detail.ContainedOrders.Remove" );
         private TcGridControl PartOrdersGrid => Find<TcGridControl>( Search.ByUid( "CutJob.Detail.ContainedOrders.PartOrders" ) );
 
@@ -37,9 +37,10 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             PartOrdersGrid.SelectItem( index );
         }
 
-        public void AddPartOrder()
+        public void AddPartOrder(string orderId)
         {
-            SelectButton.Click();
+            AddOrderButton.Click();
+            On<TcEntitySelectionDialog>().SelectClose( orderId );
         }
 
         public void RemovePartOrder()

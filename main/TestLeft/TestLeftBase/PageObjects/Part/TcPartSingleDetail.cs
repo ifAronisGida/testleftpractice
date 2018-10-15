@@ -6,6 +6,8 @@ using Trumpf.PageObjects.Waiting;
 using Trumpf.PageObjects.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
+using TestLeft.TestLeftBase.PageObjects.Customer;
+using PageObjectInterfaces.Customer;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
@@ -107,9 +109,10 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
             }
         }
 
-        public void OpenCustomerAdministration()
+        public TiCustomers OpenCustomerAdministration()
         {
             CustomerOpenAdministrationButton.Click();
+            return On<TcCustomers>();
         }
     }
 }

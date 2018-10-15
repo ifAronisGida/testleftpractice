@@ -61,32 +61,86 @@ namespace TestLeft.UI_Tests.CutJob
         [TestMethod, UniqueName( "C3E21D8B-A964-4B72-89BC-C3940289ECE0" )]
         public void OrdersTableTest()
         {
-            // Requires unfortunately a specially prepared nesting at the moment.
+            const string PartName = "UiT_Demoteil";
+            const string OrderName = "UiT_OR_OrdersTable";
+            const string NestingName = "UiT_N_OrdersTable";
+            const string CustomerName = "UiT_OrdersTableTest";
+            var FinishDate = new DateTime( 2018, 7, 31 );
 
             Act( () =>
             {
-                var orders = HomeZone.GotoCutJobs().ContainedOrders;
+                var parts = HomeZone.GotoParts();
+                parts.Toolbar.Import( @"c:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+                parts.SingleDetail.Name.Value = PartName;
+                parts.SingleDetail.Id = PartName;
+                parts.SingleDetail.Note.Value = "Noote";
 
-                var row = orders.GetRow( 0 );
+                var customerAdmin = parts.SingleDetail.OpenCustomerAdministration();
+                if( customerAdmin.Count() == 1 && customerAdmin.Name.Value == string.Empty )
+                {
+                    customerAdmin.Name.Value = CustomerName;
+                    customerAdmin.Apply();
+                    customerAdmin.Select();
+                }
+                else if( !customerAdmin.SelectCustomer( CustomerName ) )
+                {
+                    customerAdmin.NewCustomer( CustomerName, "", "", "", "", "", "" );
+                    customerAdmin.Apply();
+                    customerAdmin.Select();
+                }
+                else
+                {
+                    customerAdmin.Select();
+                }
+
+                parts.Toolbar.Save();
+
+                var partOrders = HomeZone.GotoPartOrders();
+                partOrders.Toolbar.New();
+                partOrders.BaseInfo.ID.Value = OrderName;
+                partOrders.BaseInfo.FinishDate.Value = FinishDate;
+                partOrders.PartInfo.SelectPart( PartName );
+                partOrders.Toolbar.Save();
+
+                var nestings = HomeZone.GotoCutJobs();
+                nestings.Toolbar.New();
+                nestings.BaseInfo.Id.Value = NestingName;
+                nestings.ContainedOrders.AddPartOrder( OrderName );
+                nestings.Toolbar.Save();
+
+                var row = nestings.ContainedOrders.GetRow( 0 );
 
                 Assert.IsNotNull( row.DrawingButton );
-                Assert.AreEqual( "UIT_Eckwinkel (Eckwinkel)", row.PartLink.Label );
+                Assert.AreEqual( $"{PartName} ({PartName})", row.PartLink.Label );
                 Assert.AreEqual( 0, row.Pending );
                 Assert.AreEqual( 1, row.Total );
-                Assert.AreEqual( "OR1", row.OrderLink.Label );
-                Assert.AreEqual( "UIT_Kunde 1", row.Customer );
-                Assert.AreEqual( new DateTime( 2018, 7, 31 ), row.TargetDate );
-                Assert.AreEqual( "Cut1", row.CuttingProgram );
-                Assert.IsTrue( row.AngularPositions.Contains( "360" ) );
+                Assert.AreEqual( OrderName, row.OrderLink.Label );
+                Assert.AreEqual( CustomerName, row.Customer );
+                Assert.AreEqual( StripTime( FinishDate ), StripTime( row.TargetDate.Value ) );
+                Assert.AreEqual( "Reprocessing", row.CuttingProgram );
+                Assert.IsTrue( row.AngularPositions.Contains( "0" ) );
                 Assert.AreEqual( "Grid machining", row.DistanceMode );
                 Assert.IsFalse( row.IgnoreProcessings.Value );
                 Assert.AreEqual( 0, row.SamplePartsCount );
-                Assert.AreEqual( "UIT_Note", row.Note );
+                Assert.AreEqual( "Noote", row.Note );
 
                 row.DrawingButton.Click();
                 Thread.Sleep( 5000 );
+
                 var searchText = HomeZone.GotoParts().ResultColumn.SearchText.Value;
-                Assert.AreEqual( "id:Eckwinkel", searchText );
+                Assert.AreEqual( $"id:{PartName}", searchText );
+
+                HomeZone.GotoCutJobs();
+                nestings.ResultColumn.SelectItem( NestingName );
+                nestings.Toolbar.Delete();
+
+                HomeZone.GotoPartOrders();
+                partOrders.ResultColumn.SelectItem( OrderName );
+                partOrders.Toolbar.Delete();
+
+                HomeZone.GotoParts();
+                parts.ResultColumn.SelectItem( PartName );
+                parts.Toolbar.Delete();
             } );
         }
 
@@ -114,6 +168,18 @@ namespace TestLeft.UI_Tests.CutJob
 
                 cutJobs.Toolbar.Save();
             } );
+        }
+
+        private DateTime? StripTime( DateTime? date )
+        {
+            if( date == null )
+            {
+                return null;
+            }
+
+            var d = ( DateTime )date;
+
+            return new DateTime( d.Year, d.Month, d.Day );
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using PageObjectInterfaces.Controls;
+using PageObjectInterfaces.Customer;
 
 namespace PageObjectInterfaces.Part
 {
@@ -50,6 +51,6 @@ namespace PageObjectInterfaces.Part
         /// </value>
         bool Archivable { get; set; }
 
-        void OpenCustomerAdministration();
+        TiCustomers OpenCustomerAdministration();
     }
 }
