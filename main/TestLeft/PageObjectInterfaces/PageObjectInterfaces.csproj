@@ -87,6 +87,9 @@
     <Compile Include="Material\TiMaterialDetail.cs" />
     <Compile Include="Material\TiMaterials.cs" />
     <Compile Include="Material\TiMaterialToolbar.cs" />
+    <Compile Include="NestingTemplate\TiNestingTemplateBaseInfo.cs" />
+    <Compile Include="NestingTemplate\TiNestingTemplates.cs" />
+    <Compile Include="NestingTemplate\TiNestingTemplateToolbar.cs" />
     <Compile Include="PartOrder\TiPartOrderBaseInfo.cs" />
     <Compile Include="PartOrder\TiPartOrderPartInfo.cs" />
     <Compile Include="PartOrder\TiPartOrders.cs" />

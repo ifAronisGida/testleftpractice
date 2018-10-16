@@ -2,6 +2,7 @@ using PageObjectInterfaces.Customer;
 using PageObjectInterfaces.CutJob;
 using PageObjectInterfaces.Machine;
 using PageObjectInterfaces.Material;
+using PageObjectInterfaces.NestingTemplate;
 using PageObjectInterfaces.Part;
 using PageObjectInterfaces.PartOrder;
 using PageObjectInterfaces.Shell;
@@ -34,5 +35,7 @@ namespace PageObjectInterfaces
         TiPartOrders GotoPartOrders();
 
         TiCutJobs GotoCutJobs();
+
+        TiNestingTemplates GotoNestingTemplates();
     }
 }

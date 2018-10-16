@@ -14,20 +14,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
     public class TcMachines : TcDomain, IChildOf<TcMainTabControl>, TiMachines
     {
-        private readonly Lazy<TcMachineToolbar> mToolbar;
-        private readonly Lazy<TcMachinePopupMenu> mPopup;
-        private readonly Lazy<TcMachineDetail> mDetail;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TcMachines"/> class.
-        /// </summary>
-        public TcMachines()
-        {
-            mToolbar = new Lazy<TcMachineToolbar>( On<TcMachineToolbar> );
-            mPopup = new Lazy<TcMachinePopupMenu>( On<TcMachinePopupMenu> );
-            mDetail = new Lazy<TcMachineDetail>( On<TcMachineDetail> );
-        }
-
         /// <summary>
         /// Gets the detail overlay.
         /// </summary>
@@ -42,7 +28,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <value>
         /// The toolbar.
         /// </value>
-        public TiMachineToolbar Toolbar => mToolbar.Value;
+        public TiMachineToolbar Toolbar => On<TcMachineToolbar>( cache: true );
 
         /// <summary>
         /// Gets the PopupMenu.
@@ -50,7 +36,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <value>
         /// The toolbar.
         /// </value>
-        public TcMachinePopupMenu Popup => mPopup.Value;
+        public TcMachinePopupMenu Popup => On<TcMachinePopupMenu>( cache: true );
 
         /// <summary>
         /// Gets the detail area.
@@ -58,7 +44,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <value>
         /// The detail.
         /// </value>
-        public TiMachineDetail Detail => mDetail.Value;
+        public TiMachineDetail Detail => On<TcMachineDetail>( cache: true );
 
         /// <summary>
         /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.

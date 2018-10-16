@@ -1,5 +1,4 @@
-﻿using System;
-using Trumpf.PageObjects;
+﻿using Trumpf.PageObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using PageObjectInterfaces.PartOrder;
 
@@ -7,20 +6,9 @@ namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 {
     public class TcPartOrders : TcDomain, IChildOf<TcMainTabControl>, TiPartOrders
     {
-        private readonly Lazy<TcPartOrderToolbar> mToolbar;
-        private readonly Lazy<TcPartOrderBaseInfo> mBaseInfo;
-        private readonly Lazy<TcPartOrderPartInfo> mPartInfo;
-
-        public TcPartOrders()
-        {
-            mToolbar = new Lazy<TcPartOrderToolbar>( On<TcPartOrderToolbar> );
-            mBaseInfo = new Lazy<TcPartOrderBaseInfo>( On<TcPartOrderBaseInfo> );
-            mPartInfo = new Lazy<TcPartOrderPartInfo>( On<TcPartOrderPartInfo> );
-        }
-
-        public TiPartOrderToolbar Toolbar => mToolbar.Value;
-        public TiPartOrderBaseInfo BaseInfo => mBaseInfo.Value;
-        public TiPartOrderPartInfo PartInfo => mPartInfo.Value;
+        public TiPartOrderToolbar Toolbar => On<TcPartOrderToolbar>( cache: true );
+        public TiPartOrderBaseInfo BaseInfo => On<TcPartOrderBaseInfo>( cache: true );
+        public TiPartOrderPartInfo PartInfo => On<TcPartOrderPartInfo>( cache: true );
 
         public override void Goto()
         {
@@ -30,7 +18,6 @@ namespace TestLeft.TestLeftBase.PageObjects.PartOrder
             }
 
             On<TcDomains>().PartOrder.Click();
-            Visible.WaitFor();
         }
     }
 }

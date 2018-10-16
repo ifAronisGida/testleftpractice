@@ -115,6 +115,7 @@
     <Compile Include="ControlObjects\TcDomainSelector.cs" />
     <Compile Include="ControlObjects\TcReadOnlyText.cs" />
     <Compile Include="ControlObjects\TcSpinEdit.cs" />
+    <Compile Include="ControlObjects\TcTextBlock.cs" />
     <Compile Include="ControlObjects\TcTextEdit.cs" />
     <Compile Include="ControlObjects\TcTruComboBox.cs" />
     <Compile Include="PageObjects\Customer\TcCustomerRow.cs" />
@@ -150,6 +151,9 @@
     <Compile Include="PageObjects\Material\TcMaterialDetail.cs" />
     <Compile Include="PageObjects\Material\TcMaterials.cs" />
     <Compile Include="PageObjects\Material\TcMaterialToolbar.cs" />
+    <Compile Include="PageObjects\NestingTemplate\TcNestingTemplateBaseInfo.cs" />
+    <Compile Include="PageObjects\NestingTemplate\TcNestingTemplates.cs" />
+    <Compile Include="PageObjects\NestingTemplate\TcNestingTemplateToolbar.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrderBaseInfo.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrderPartInfo.cs" />
     <Compile Include="PageObjects\TcDomain.cs" />

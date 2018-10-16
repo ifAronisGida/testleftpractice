@@ -14,18 +14,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
     public class TcMaterials : TcDomain, IChildOf<TcMainTabControl>, TiMaterials
     {
-        private readonly Lazy<TcMaterialToolbar> mToolbar;
-        private readonly Lazy<TcMaterialDetail> mDetail;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TcMaterials"/> class.
-        /// </summary>
-        public TcMaterials()
-        {
-            mToolbar = new Lazy<TcMaterialToolbar>( On<TcMaterialToolbar> );
-            mDetail = new Lazy<TcMaterialDetail>( On<TcMaterialDetail> );
-        }
-
         /// <summary>
         /// Gets the detail overlay.
         /// </summary>
@@ -40,7 +28,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The toolbar.
         /// </value>
-        public TiMaterialToolbar Toolbar => mToolbar.Value;
+        public TiMaterialToolbar Toolbar => On<TcMaterialToolbar>( cache: true );
 
         /// <summary>
         /// Gets the detail area.
@@ -48,7 +36,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The detail.
         /// </value>
-        public TiMaterialDetail Detail => mDetail.Value;
+        public TiMaterialDetail Detail => On<TcMaterialDetail>( cache: true );
 
         /// <summary>
         /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.

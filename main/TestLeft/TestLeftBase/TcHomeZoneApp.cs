@@ -3,6 +3,7 @@ using PageObjectInterfaces.Customer;
 using PageObjectInterfaces.CutJob;
 using PageObjectInterfaces.Machine;
 using PageObjectInterfaces.Material;
+using PageObjectInterfaces.NestingTemplate;
 using PageObjectInterfaces.Part;
 using PageObjectInterfaces.PartOrder;
 using PageObjectInterfaces.Shell;
@@ -10,6 +11,7 @@ using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.PageObjects.CutJob;
 using TestLeft.TestLeftBase.PageObjects.Machine;
 using TestLeft.TestLeftBase.PageObjects.Material;
+using TestLeft.TestLeftBase.PageObjects.NestingTemplate;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.PageObjects.PartOrder;
 using TestLeft.TestLeftBase.PageObjects.Shell;
@@ -66,6 +68,11 @@ namespace TestLeft.TestLeftBase
         public TiCutJobs GotoCutJobs()
         {
             return Goto<TcCutJobs>();
+        }
+
+        public TiNestingTemplates GotoNestingTemplates()
+        {
+            return Goto<TcNestingTemplates>();
         }
 
         /// <summary>

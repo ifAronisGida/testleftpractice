@@ -14,25 +14,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
     public class TcParts : TcDomain, IChildOf<TcMainTabControl>, TiParts
     {
-        private readonly Lazy<TcPartToolbar> mToolbar;
-
-        private readonly Lazy<TcPartSingleDetail> mSingleDetail;
-        private readonly Lazy<TcPartSingleDetailDesign> mSingleDetailDesign;
-        private readonly Lazy<TcPartSingleDetailBendSolutions> mSingleDetailBendSolutions;
-        private readonly Lazy<TcPartSingleDetailCutSolutions> mSingleDetailCutSolutions;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TcParts"/> class.
-        /// </summary>
-        public TcParts()
-        {
-            mToolbar = new Lazy<TcPartToolbar>( On<TcPartToolbar> );
-            mSingleDetail = new Lazy<TcPartSingleDetail>( On<TcPartSingleDetail> );
-            mSingleDetailDesign = new Lazy<TcPartSingleDetailDesign>( On<TcPartSingleDetailDesign> );
-            mSingleDetailBendSolutions = new Lazy<TcPartSingleDetailBendSolutions>( On<TcPartSingleDetailBendSolutions> );
-            mSingleDetailCutSolutions = new Lazy<TcPartSingleDetailCutSolutions>( On<TcPartSingleDetailCutSolutions> );
-        }
-
         /// <summary>
         /// Gets the detail overlay.
         /// </summary>
@@ -47,7 +28,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The toolbar.
         /// </value>
-        public TiPartToolbar Toolbar => mToolbar.Value;
+        public TiPartToolbar Toolbar => On<TcPartToolbar>( cache: true );
 
         /// <summary>
         /// Gets the single detail.
@@ -55,7 +36,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The single detail.
         /// </value>
-        public TiPartSingleDetail SingleDetail => mSingleDetail.Value;
+        public TiPartSingleDetail SingleDetail => On<TcPartSingleDetail>( cache: true );
 
         /// <summary>
         /// Gets the single detail design.
@@ -63,7 +44,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The single detail design.
         /// </value>
-        public TiPartSingleDetailDesign SingleDetailDesign => mSingleDetailDesign.Value;
+        public TiPartSingleDetailDesign SingleDetailDesign => On<TcPartSingleDetailDesign>( cache: true );
 
         /// <summary>
         /// Gets the single detail bend solutions.
@@ -71,7 +52,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The single detail bend solutions.
         /// </value>
-        public TiPartSingleDetailBendSolutions SingleDetailBendSolutions => mSingleDetailBendSolutions.Value;
+        public TiPartSingleDetailBendSolutions SingleDetailBendSolutions => On<TcPartSingleDetailBendSolutions>( cache: true );
 
         /// <summary>
         /// Gets the single detail cut solutions.
@@ -79,7 +60,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The single detail cut solutions.
         /// </value>
-        public TiPartSingleDetailCutSolutions SingleDetailCutSolutions => mSingleDetailCutSolutions.Value;
+        public TiPartSingleDetailCutSolutions SingleDetailCutSolutions => On<TcPartSingleDetailCutSolutions>( cache: true );
 
         /// <summary>
         /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
