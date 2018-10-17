@@ -20,38 +20,40 @@ namespace TestLeft.UI_Tests.Cut
         [TestMethod, UniqueName( "5F3AF1BB-5308-440E-8E46-9268518E0FF1" )]
         public void CutOpenCloseTest()
         {
-            Act( () =>
+            Act( DoCutOpenClose );
+        }
+
+        public void DoCutOpenClose()
+        {
+            Trace.WriteLine( @"Starting Cut open / close test." );
+            var parts = HomeZone.GotoParts();
+
+            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+
+            parts.SingleDetailCutSolutions.New();
+            parts.SingleDetailCutSolutions.OpenCutSolution( "Cut1" );
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+
+            var cut = CutApp;
+
+            if( cut.TechnologyTableSelectionDialog.IsDialogVisible( TcSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) ) )
             {
-                Trace.WriteLine( @"Starting Cut open / close test." );
-                var parts = HomeZone.GotoParts();
+                cut.TechnologyTableSelectionDialog.Close();
+            }
 
-                parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            var visible = cut.IsMainWindowVisible( TcSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            if( visible )
+            {
+                cut.CloseApp();
+
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+            }
 
-                parts.SingleDetailCutSolutions.New();
-                parts.SingleDetailCutSolutions.OpenCutSolution( "Cut1" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.Toolbar.Delete();
 
-                var cut = CutApp;
-
-                if( cut.TechnologyTableSelectionDialog.IsDialogVisible( TcSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) ) )
-                {
-                    cut.TechnologyTableSelectionDialog.Close();
-                }
-
-                var visible = cut.IsMainWindowVisible( TcSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-                if( visible )
-                {
-                    cut.CloseApp();
-
-                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
-                }
-
-                parts.Toolbar.Delete();
-
-                Assert.IsTrue( visible, "Cut window was not visible." );
-            }, nameof( CutOpenCloseTest ) );
+            Assert.IsTrue( visible, "Cut window was not visible." );
         }
     }
 }

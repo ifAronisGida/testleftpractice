@@ -18,7 +18,7 @@ namespace TestLeft.UI_Tests.Flux
     {
         private string mTestMachineName;
 
-        private readonly TimeSpan CONFIGURE_MACHINE_OVERLAY = TimeSpan.FromSeconds( 20 );
+        private readonly TimeSpan mConfigureMachineOverlay = TimeSpan.FromSeconds( 20 );
 
         ///// <summary>
         ///// Gets the extended test environment.
@@ -33,65 +33,68 @@ namespace TestLeft.UI_Tests.Flux
         [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319A" )]
         public void FluxOpenCloseTest()
         {
-            Act( () =>
+            Act( DoFluxOpenClose );
+        }
+
+        public void DoFluxOpenClose()
+        {
+            CreateTestMachine();
+
+            var namePrefix = TcSettings.NamePrefix + Guid.NewGuid();
+            var parts = HomeZone.GotoParts();
+
+            // first part
+            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+
+            parts.SingleDetail.Name.Value = namePrefix + "1";
+
+            parts.SingleDetailBendSolutions.New();
+            parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+
+            var flux = FluxApp;
+
+            var visible = flux.IsMainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            if( visible )
             {
-                CreateTestMachine();
+                flux.CloseApp();
 
-                var namePrefix = TcSettings.NamePrefix + Guid.NewGuid();
-                var parts = HomeZone.GotoParts();
-
-                // first part
-                parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+            }
 
-                parts.SingleDetail.Name.Value = namePrefix + "1";
+            Assert.IsTrue( visible );
 
-                parts.SingleDetailBendSolutions.New();
-                parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            //second part
+            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
 
-                var flux = FluxApp;
+            parts.SingleDetail.Name.Value = namePrefix + "2";
 
-                var visible = flux.IsMainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-                if( visible )
-                {
-                    flux.CloseApp();
+            parts.SingleDetailBendSolutions.New();
+            parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
 
-                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
-                }
+            flux = FluxApp;
 
-                Assert.IsTrue( visible );
+            visible = flux.IsMainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            if( visible )
+            {
+                flux.CloseApp();
 
-                //second part
-                parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+            }
 
-                parts.SingleDetail.Name.Value = namePrefix + "2";
+            Assert.IsTrue( visible, "Flux window was not visible." );
 
-                parts.SingleDetailBendSolutions.New();
-                parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            // delete the 2 parts
+            parts.ResultColumn.SelectItems( namePrefix );
+            parts.Toolbar.Delete();
+            parts.ResultColumn.ClearSearch();
 
-                flux = FluxApp;
-
-                visible = flux.IsMainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-                if( visible )
-                {
-                    flux.CloseApp();
-
-                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
-                }
-
-                Assert.IsTrue( visible, "Flux window was not visible." );
-
-                // delete the 2 parts
-                parts.ResultColumn.SelectItems( namePrefix );
-                parts.Toolbar.Delete();
-
-                DeleteTestMachine();
-            } );
+            DeleteTestMachine();
         }
 
         /// <summary>
@@ -262,13 +265,13 @@ namespace TestLeft.UI_Tests.Flux
 
                  // open dialog
                  OpenMachineConfiguration( machineName );
-                 Thread.Sleep( CONFIGURE_MACHINE_OVERLAY );
+                 Thread.Sleep( mConfigureMachineOverlay );
                  TcFluxConfigureMachine flux = new TcFluxConfigureMachine( Driver );
                  bool visible = flux.MachineDialogVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                  if( visible )
                  {
                      flux.CloseMachienDialog();
-                     Thread.Sleep( CONFIGURE_MACHINE_OVERLAY );
+                     Thread.Sleep( mConfigureMachineOverlay );
                  }
 
                  DeleteTestMachine( machineName );
@@ -308,16 +311,6 @@ namespace TestLeft.UI_Tests.Flux
              } );
         }
 
-
-
-
-
-
-
-
-
-
-
         private void CreateTestMachine( string machineName = null )
         {
             mTestMachineName = TcSettings.NamePrefix + Guid.NewGuid();
@@ -356,6 +349,7 @@ namespace TestLeft.UI_Tests.Flux
 
             Assert.IsTrue( machines.Toolbar.CanDelete );
             machines.Toolbar.Delete();
+            machines.ResultColumn.ClearSearch();
             Assert.IsFalse( machines.Toolbar.CanDelete );
         }
 

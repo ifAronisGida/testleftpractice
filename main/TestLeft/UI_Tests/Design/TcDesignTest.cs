@@ -20,29 +20,31 @@ namespace TestLeft.UI_Tests.Design
         [TestMethod, UniqueName( "744806A6-EABF-40FB-BC99-F3683F62D44C" )]
         public void DesignOpenCloseTest()
         {
-            Act( () =>
+            Act( DoDesignOpenClose );
+        }
+
+        public void DoDesignOpenClose()
+        {
+            Trace.WriteLine( @"Starting Design open / close test." );
+            var parts = HomeZone.GotoParts();
+
+            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+
+            parts.SingleDetailDesign.Open();
+
+            var visible = DesignApp.IsMainWindowVisible( TcSettings.DesignStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            if( visible )
             {
-                Trace.WriteLine( @"Starting Design open / close test." );
-                var parts = HomeZone.GotoParts();
+                DesignApp.CloseApp();
 
-                parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+            }
 
-                parts.SingleDetailDesign.Open();
+            parts.Toolbar.Delete();
 
-                var visible = DesignApp.IsMainWindowVisible( TcSettings.DesignStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-                if( visible )
-                {
-                    DesignApp.CloseApp();
-
-                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
-                }
-
-                parts.Toolbar.Delete();
-
-                Assert.IsTrue( visible, "Design window was not visible." );
-            } );
+            Assert.IsTrue( visible, "Design window was not visible." );
         }
     }
 }

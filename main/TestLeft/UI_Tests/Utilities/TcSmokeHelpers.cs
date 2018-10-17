@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
+using Trumpf.AutoTest.Facts;
 using Trumpf.PageObjects.Waiting;
 
 namespace TestLeft.UI_Tests.Utilities
@@ -44,7 +45,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// <summary>
         /// Creates some test materials by duplicating existing materials
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "B7FF4E45-01F3-4BED-921F-D1CF480AD0C9" )]
         public void CreateTestMaterials()
         {
             var materials = HomeZone.GotoMaterials();
@@ -90,7 +91,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// <summary>
         /// Deletes the test materials.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "BE80E7E6-D3E0-466D-A1BB-258EE54BF188" )]
         public void DeleteTestMaterials()
         {
             var materials = HomeZone.GotoMaterials();
@@ -114,7 +115,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// <summary>
         /// Creates some bend and cut test machines.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "2F659CB3-F9E1-4C23-80A2-5D9984878D5C" )]
         public void CreateTestMachines()
         {
             var machines = HomeZone.GotoMachines();
@@ -167,7 +168,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// <summary>
         /// Deletes the test machines.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "5548C38A-0B90-4FD3-ACDC-B325B05B99A8" )]
         public void DeleteTestMachines()
         {
             var machines = HomeZone.GotoMachines();
@@ -199,7 +200,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// <summary>
         /// Creates some test customers.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "1A7DB08C-B1F9-44EF-8DD8-A4805B140E1F" )]
         public void CreateTestCustomers()
         {
             var customers = HomeZone.GotoCustomers();
@@ -238,7 +239,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// <summary>
         /// Deletes the test customers.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "51909558-AB5D-48F0-8A67-CF60458DBC5D" )]
         public void DeleteTestCustomers()
         {
             var customers = HomeZone.GotoCustomers();
@@ -264,7 +265,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// Creates some test parts: adding a bend and a cut solution and boosting.
         /// Needs test machines and customers to be present.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "2A2DDFB4-4AA0-4CFC-A234-774609B8BFBF" )]
         public void CreateTestParts()
         {
             if( !mTestMachinesCreated )
@@ -335,7 +336,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// <summary>
         /// Deletes the test parts.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "3D759D38-F6CD-44DE-92E5-FD5FA5E587FD" )]
         public void DeleteTestParts()
         {
             var parts = HomeZone.GotoParts();
@@ -359,7 +360,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// <summary>
         /// Creates some test part orders.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "620C3D83-9CE7-4B28-BCEF-5665FADC1E78" )]
         public void CreateTestPartOrders()
         {
             var partOrders = HomeZone.GotoPartOrders();
@@ -372,7 +373,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// <summary>
         /// Deletes the test part orders.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "06EA8653-D88C-4605-8C21-72EC3366EB99" )]
         public void DeleteTestPartOrders()
         {
             //TODO
@@ -382,7 +383,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// <summary>
         /// Creates some test cut jobs.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "D07C2E9E-E864-4F90-AE22-015551F9C768" )]
         public void CreateTestCutJobs()
         {
             var cutJobs = HomeZone.GotoCutJobs();
@@ -395,7 +396,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// <summary>
         /// Deletes the test cut jobs.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "49524C47-CC25-41BA-A6DA-3230FE7B0A7B" )]
         public void DeleteTestCutJobs()
         {
             //TODO
@@ -405,7 +406,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// <summary>
         /// Creates the test items.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "C515019F-E2AB-4DD7-8C1F-211A2E1ADBCF" )]
         public void CreateTestItems()
         {
             var smokeHelpers = new TcSmokeHelpers();
@@ -421,7 +422,7 @@ namespace TestLeft.UI_Tests.Utilities
         /// <summary>
         /// Deletes the test items.
         /// </summary>
-        [TestMethod]
+        [TestMethod, UniqueName( "D511E169-3EFB-437F-867F-0365F58939A3" )]
         public void DeleteTestItems()
         {
             var smokeHelpers = new TcSmokeHelpers();

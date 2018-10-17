@@ -15,14 +15,14 @@ namespace TestLeft.TestAutomation.Smoke
     public class TcMiniSmokeTest : TcBaseTestClass
     {
         private readonly TcSmokeHelpers mSmokeHelpers= new TcSmokeHelpers();
-
+        private readonly TcSmokeTestsPart mSmokeTestsPart = new TcSmokeTestsPart();
 
         /// <summary>
-        /// Mini smoke test: creating test items, adding bend and cut solutions to parts, ..., deleting the test items.
+        /// Mini smoke test: creating test items, adding bend and cut solutions to parts, testing..., deleting the test items.
         /// </summary>
         [TestMethod, UniqueName( "524A05EA-D25E-423E-8974-EF4CC6B7F8F0" )]
         [Tag( "Smoke" )]
-        public void _1_MiniSmokeTest()
+        public void MiniSmokeTest()
         {
             Act( () =>
             {
@@ -30,6 +30,7 @@ namespace TestLeft.TestAutomation.Smoke
 
                 //TODO
                 //testing...
+                mSmokeTestsPart.ExecutePartSmokeTests();
 
                 mSmokeHelpers.DeleteTestItems();
             } );
