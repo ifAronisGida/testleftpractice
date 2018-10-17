@@ -152,6 +152,8 @@
     <Compile Include="PageObjects\Material\TcMaterials.cs" />
     <Compile Include="PageObjects\Material\TcMaterialToolbar.cs" />
     <Compile Include="PageObjects\NestingTemplate\TcNestingTemplateBaseInfo.cs" />
+    <Compile Include="PageObjects\NestingTemplate\TcNestingTemplatePartRow.cs" />
+    <Compile Include="PageObjects\NestingTemplate\TcNestingTemplatePartList.cs" />
     <Compile Include="PageObjects\NestingTemplate\TcNestingTemplates.cs" />
     <Compile Include="PageObjects\NestingTemplate\TcNestingTemplateToolbar.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrderBaseInfo.cs" />

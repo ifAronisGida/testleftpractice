@@ -4,7 +4,7 @@ namespace PageObjectInterfaces.CutJob
     {
         int PartOrdersCount { get; }
 
-        void AddPartOrder(string orderId);
+        void AddPartOrder( string orderId );
         TiCutJobOrderRow GetRow( int index );
         void RemovePartOrder();
         void SelectPartOrder( int index );

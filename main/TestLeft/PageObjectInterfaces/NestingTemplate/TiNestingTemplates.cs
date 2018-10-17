@@ -7,6 +7,7 @@ namespace PageObjectInterfaces.NestingTemplate
     {
         TiNestingTemplateToolbar Toolbar { get; }
         TiNestingTemplateBaseInfo BaseInfo { get; }
+        TiNestingTemplatePartList PartList { get; }
 
         void WaitForOverlayDisappear( TimeSpan timeout );
     }

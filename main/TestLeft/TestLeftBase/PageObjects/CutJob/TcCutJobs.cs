@@ -1,5 +1,4 @@
-﻿using System;
-using Trumpf.PageObjects;
+﻿using Trumpf.PageObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using PageObjectInterfaces.CutJob;
 

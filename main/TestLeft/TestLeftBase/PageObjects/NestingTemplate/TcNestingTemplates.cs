@@ -9,8 +9,9 @@ namespace TestLeft.TestLeftBase.PageObjects.NestingTemplate
 {
     internal class TcNestingTemplates : TcDomain, IChildOf<TcMainTabControl>, TiNestingTemplates
     {
-        public TiNestingTemplateToolbar Toolbar => On<TcNestingTemplateToolbar>(cache: true);
-        public TiNestingTemplateBaseInfo BaseInfo => On<TcNestingTemplateBaseInfo>(cache: true);
+        public TiNestingTemplateToolbar Toolbar => On<TcNestingTemplateToolbar>( cache: true );
+        public TiNestingTemplateBaseInfo BaseInfo => On<TcNestingTemplateBaseInfo>( cache: true );
+        public TiNestingTemplatePartList PartList => On<TcNestingTemplatePartList>( cache: true );
 
         private TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
 
