@@ -4,8 +4,8 @@
 // -------------------------------------------------------------------------------------------------
 //
 //$File: //SW08/HomeZone_Testing/main/TestLeft/TestLeftBase/PageObjects/Flux/TcFluxConfigureMachine.cs $
-//$Author: gutzwillersi $
-//$Revision: #1 $ - $Date: 2018/08/29 $ 
+//$Author: kovacspe $
+//$Revision: #2 $ - $Date: 2018/10/18 $ 
 // -------------------------------------------------------------------------------------------------
 #endregion
 
@@ -77,7 +77,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
 
                     if( processFound )       // search MainWindow
                     {
-                        mApp = new TcFluxApp( flux ) { Driver = mDriver };
+                        mApp = new TcAppProcess( flux, mDriver );
 
                         try
                         {
@@ -136,7 +136,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
         /// <summary>
         /// The application
         /// </summary>
-        private TcFluxApp mApp;
+        private TcAppProcess mApp;
 
         /// <summary>
         /// The machine dialog

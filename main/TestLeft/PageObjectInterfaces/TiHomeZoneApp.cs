@@ -6,20 +6,11 @@ using PageObjectInterfaces.NestingTemplate;
 using PageObjectInterfaces.Part;
 using PageObjectInterfaces.PartOrder;
 using PageObjectInterfaces.Shell;
-using SmartBear.TestLeft;
 
 namespace PageObjectInterfaces
 {
     public interface TiHomeZoneApp
     {
-        /// <summary>
-        ///  Gets or sets the (static) TestExecute driver.
-        /// </summary>
-        /// <value>
-        /// The driver.
-        /// </value>
-        IDriver Driver { get; set; }
-
         TiMainTabControl MainTabControl { get; }
 
         TiCustomers GotoCustomers();

@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using PageObjectInterfaces.Flux;
+using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 
@@ -11,8 +12,12 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
     /// </summary>
     public class TcFlux : TcApp, TiFlux
     {
-        private TcFluxApp mApp;
+        private TcAppProcess mApp;
         private IControl mMainWindow;
+
+        public TcFlux( IDriver driver ) : base( driver )
+        {
+        }
 
         /// <summary>
         /// Gets a value indicating whether the main window is visible.
@@ -45,7 +50,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
 
                     if( processFound )       // search MainWindow
                     {
-                        mApp = new TcFluxApp( flux ) { Driver = Driver };
+                        mApp = new TcAppProcess( flux, Driver );
 
                         try
                         {

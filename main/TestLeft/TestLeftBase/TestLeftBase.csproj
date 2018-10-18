@@ -129,18 +129,15 @@
     <Compile Include="PageObjects\CutJob\TcRawSheet.cs" />
     <Compile Include="PageObjects\CutJob\TcRawSheetList.cs" />
     <Compile Include="PageObjects\Cut\TcCut.cs" />
-    <Compile Include="PageObjects\Cut\TcCutApp.cs" />
     <Compile Include="PageObjects\Cut\TcCutMessageBox.cs" />
     <Compile Include="PageObjects\Cut\TcTTSelectionDialog.cs" />
     <Compile Include="PageObjects\Design\TcDesign.cs" />
-    <Compile Include="PageObjects\Design\TcDesignApp.cs" />
     <Compile Include="PageObjects\Design\TcDesignMessageBox.cs" />
     <Compile Include="PageObjects\Dialogs\TcAboutDialog.cs" />
     <Compile Include="PageObjects\Dialogs\TcEntitySelectionDialog.cs" />
     <Compile Include="PageObjects\Dialogs\TcMessageBox.cs" />
     <Compile Include="PageObjects\Dialogs\TcPartComputeAllConfirmation.cs" />
     <Compile Include="PageObjects\Flux\TcFlux.cs" />
-    <Compile Include="PageObjects\Flux\TcFluxApp.cs" />
     <Compile Include="PageObjects\Dialogs\TcHelpDialog.cs" />
     <Compile Include="PageObjects\Flux\TcFluxConfigureMachine.cs" />
     <Compile Include="PageObjects\Flux\TcLandingPages.cs" />
@@ -186,6 +183,7 @@
     <Compile Include="Settings\TcSettings.cs" />
     <Compile Include="Settings\TcSystemLanguageSpecific.cs" />
     <Compile Include="TcApp.cs" />
+    <Compile Include="TcAppProcess.cs" />
     <Compile Include="TcHomeZoneApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\TcEnumerableProxy.cs" />

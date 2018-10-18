@@ -12,8 +12,12 @@ namespace TestLeft.TestLeftBase.PageObjects.Design
     /// </summary>
     public class TcDesign : TcApp, TiDesign
     {
-        private TcDesignApp mApp;
+        private TcAppProcess mApp;
         private ITopLevelWindow mMainWindow;
+
+        public TcDesign( IDriver driver ) : base( driver )
+        {
+        }
 
         /// <summary>
         /// Gets a value indicating whether the main window is visible.
@@ -46,7 +50,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Design
 
                     if( processFound )       // search MainWindow
                     {
-                        mApp = new TcDesignApp( proc ) { Driver = Driver };
+                        mApp = new TcAppProcess( proc, Driver );
 
                         if( mApp.Node.TryFind<ITopLevelWindow>( new WinFormsPattern { WinFormsControlName = "MainForm" }, out var window, 1 ) )
                         {

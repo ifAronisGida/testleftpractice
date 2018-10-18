@@ -38,25 +38,13 @@ namespace TestLeft.UI_Tests.Base
         {
             mAutoFact = new AutoFact( new TcTestOptions( GetType, () => TestContext ) );
 
-            //Create a local Driver object
-            Driver = new LocalDriver();
-
-            HomeZone.Driver = Driver;
-            DesignApp.Driver = Driver;
-            CutApp.Driver = Driver;
-            FluxApp.Driver = Driver;
-
-            //Use line below instead of the above to create a remote Driver
-            //_driver = new RemoteDriver("myhost", "userName", "password");
-
-            //Uncomment the line below to perform additional checks during code execution
-            //_driver.Options.Debug.RuntimeChecks = SmartBear.TestLeft.Options.RuntimeChecks.All;
+            HomeZone = new TcHomeZoneApp( TcSettings.HomeZoneProcessName, Driver );
+            DesignApp = new TcDesign( Driver );
+            CutApp = new TcCut( Driver );
+            FluxApp = new TcFlux( Driver );
         }
 
-        /// <summary>
-        /// Interface to the TestLeft engine.
-        /// </summary>
-        protected IDriver Driver { get; }
+        protected static IDriver Driver { get; } = new LocalDriver();
 
         /// <summary>
         /// The test context.
@@ -69,7 +57,7 @@ namespace TestLeft.UI_Tests.Base
         /// <value>
         /// The HomeZone ProcessObject.
         /// </value>
-        public TiHomeZoneApp HomeZone { get; } = new TcHomeZoneApp( TcSettings.HomeZoneProcessName );
+        public TiHomeZoneApp HomeZone { get; }
 
         /// <summary>
         /// Manages access to the Design application.
@@ -77,7 +65,7 @@ namespace TestLeft.UI_Tests.Base
         /// <value>
         /// The Design application.
         /// </value>
-        public TiDesign DesignApp { get; } = new TcDesign();
+        public TiDesign DesignApp { get; }
 
         /// <summary>
         /// Manages access to the Cut application.
@@ -85,7 +73,7 @@ namespace TestLeft.UI_Tests.Base
         /// <value>
         /// The Cut application.
         /// </value>
-        public TiCut CutApp { get; } = new TcCut();
+        public TiCut CutApp { get; }
 
 
         /// <summary>
@@ -94,7 +82,7 @@ namespace TestLeft.UI_Tests.Base
         /// <value>
         /// The Flux application.
         /// </value>
-        public TiFlux FluxApp { get; } = new TcFlux();
+        public TiFlux FluxApp { get; }
 
 
         protected void Act( Action action, string caption = null )

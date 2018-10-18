@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using PageObjectInterfaces.Cut;
+using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.Qt;
 
@@ -11,11 +12,11 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
     /// </summary>
     public class TcCut : TcApp, TiCut
     {
-        private TcCutApp mApp;
+        private TcAppProcess mApp;
         private ITopLevelWindow mMainWindow;
         private readonly Lazy<TcTTSelectionDialog> mTTSelectionDialog;
 
-        public TcCut()
+        public TcCut( IDriver driver ) : base( driver )
         {
             mTTSelectionDialog = new Lazy<TcTTSelectionDialog>( () => new TcTTSelectionDialog( Driver ) );
         }
@@ -50,7 +51,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
 
                     if( processFound )       // search MainWindow
                     {
-                        mApp = new TcCutApp( proc ) { Driver = Driver };
+                        mApp = new TcAppProcess( proc, Driver );
 
                         if( mApp.Node.TryFind<ITopLevelWindow>( new QtPattern { objectName = "qt_ribbonMainWindow" }, out var window, 1 ) )
                         {

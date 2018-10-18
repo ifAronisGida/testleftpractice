@@ -7,6 +7,7 @@ using PageObjectInterfaces.NestingTemplate;
 using PageObjectInterfaces.Part;
 using PageObjectInterfaces.PartOrder;
 using PageObjectInterfaces.Shell;
+using SmartBear.TestLeft;
 using TestLeft.TestLeftBase.PageObjects.Customer;
 using TestLeft.TestLeftBase.PageObjects.CutJob;
 using TestLeft.TestLeftBase.PageObjects.Machine;
@@ -29,8 +30,10 @@ namespace TestLeft.TestLeftBase
         /// Initializes a new instance of the <see cref="TcHomeZoneApp"/> class.
         /// </summary>
         /// <param name="processname">The name of the HomeZone process.</param>
-        public TcHomeZoneApp( string processname ) : base( processname )
+        /// <param name="driver">The driver to be used by this instance.</param>
+        public TcHomeZoneApp( string processname, IDriver driver ) : base( processname )
         {
+            this.Driver = driver;
         }
 
         public TiMainTabControl MainTabControl => On<TcMainTabControl>();
@@ -73,17 +76,6 @@ namespace TestLeft.TestLeftBase
         public TiNestingTemplates GotoNestingTemplates()
         {
             return Goto<TcNestingTemplates>();
-        }
-
-        /// <summary>
-        /// Gets the interface of the PageObject.
-        /// </summary>
-        /// <typeparam name="TInterface">The type of the interface.</typeparam>
-        /// <typeparam name="TPageObject">The type of the page object.</typeparam>
-        /// <returns>Interface of the target page object</returns>
-        public TInterface On<TInterface, TPageObject>() where TInterface : class where TPageObject : class, IPageObject
-        {
-            return On<TPageObject>() as TInterface;
         }
     }
 }

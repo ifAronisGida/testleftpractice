@@ -6,13 +6,18 @@ namespace TestLeft.TestLeftBase
 {
     public abstract class TcApp : TiApp
     {
+        protected TcApp( IDriver driver )
+        {
+            this.Driver = driver;
+        }
+
         /// <summary>
-        ///  Gets or sets the (static) TestExecute driver.
+        ///  Gets the TestExecute driver used by this instance.
         /// </summary>
         /// <value>
         /// The driver.
         /// </value>
-        public IDriver Driver { get; set; }
+        public IDriver Driver { get; }
 
         /// <summary>
         /// Gets a value indicating whether the main window is visible.

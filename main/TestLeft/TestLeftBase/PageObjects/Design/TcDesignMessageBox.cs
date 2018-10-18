@@ -3,7 +3,7 @@ using Trumpf.PageObjects;
 
 namespace TestLeft.TestLeftBase.PageObjects.Design
 {
-    public class TcDesignMessageBox : RepeaterObject, IChildOf<TcDesignApp>
+    public class TcDesignMessageBox : RepeaterObject, IChildOf<TcAppProcess>
     {
         private ITopLevelWindow mMessageBox;
 

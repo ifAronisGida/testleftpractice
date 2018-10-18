@@ -5,7 +5,7 @@ using Trumpf.PageObjects;
 
 namespace TestLeft.TestLeftBase.PageObjects.Cut
 {
-    public class TcCutMessageBox : RepeaterObject, IChildOf<TcCutApp>
+    public class TcCutMessageBox : RepeaterObject, IChildOf<TcAppProcess>
     {
         private ITopLevelWindow mMessageBox;
 

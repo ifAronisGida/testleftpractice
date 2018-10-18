@@ -1,18 +1,9 @@
 using System;
-using SmartBear.TestLeft;
 
 namespace PageObjectInterfaces
 {
     public interface TiApp
     {
-        /// <summary>
-        ///  Gets or sets the (static) TestExecute driver.
-        /// </summary>
-        /// <value>
-        /// The driver.
-        /// </value>
-        IDriver Driver { get; set; }
-
         /// <summary>
         /// Gets a value indicating whether the main window is visible.
         /// </summary>
@@ -25,7 +16,7 @@ namespace PageObjectInterfaces
         bool IsMainWindowVisible( TimeSpan timeout, TimeSpan retryWaitTime );
 
         /// <summary>
-        /// Closes the Design application.
+        /// Closes the application.
         /// </summary>
         void CloseApp();
     }

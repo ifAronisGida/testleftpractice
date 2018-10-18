@@ -3,7 +3,6 @@ using System.Threading;
 using PageObjectInterfaces.Cut;
 using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
-using SmartBear.TestLeft.TestObjects.UIAutomation;
 
 namespace TestLeft.TestLeftBase.PageObjects.Cut
 {
@@ -12,7 +11,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
     /// </summary>
     public class TcTTSelectionDialog : TiTTSelectionDialog
     {
-        private TcCutApp mApp;
+        private TcAppProcess mApp;
         private ITopLevelWindow mWindow;
         private readonly IDriver mDriver;
 
@@ -55,7 +54,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Cut
 
                     if( processFound )       // search dialog
                     {
-                        mApp = new TcCutApp( proc ) { Driver = mDriver };
+                        mApp = new TcAppProcess( proc, mDriver );
 
                         if( mApp.Node.TryFind<ITopLevelWindow>( new WindowPattern()
                                                                     {
