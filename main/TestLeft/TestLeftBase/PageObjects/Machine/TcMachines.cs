@@ -12,7 +12,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
     /// PageObject for the machines category.
     /// </summary>
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
-    public class TcMachines : TcDomain, IChildOf<TcMainTabControl>, TiMachines
+    public class TcMachines : TcDomain<TiMachineToolbar>, IChildOf<TcMainTabControl>, TiMachines
     {
         /// <summary>
         /// Gets the detail overlay.
@@ -28,7 +28,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// <value>
         /// The toolbar.
         /// </value>
-        public TiMachineToolbar Toolbar => On<TcMachineToolbar>( cache: true );
+        public override TiMachineToolbar Toolbar => On<TcMachineToolbar>( cache: true );
 
         /// <summary>
         /// Gets the PopupMenu.
@@ -45,20 +45,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
         /// The detail.
         /// </value>
         public TiMachineDetail Detail => On<TcMachineDetail>( cache: true );
-
-        /// <summary>
-        /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
-        /// </summary>
-        public override void Goto()
-        {
-            if( Toolbar.IsVisible )
-            {
-                return;
-            }
-
-            base.Goto();
-            Goto<TcDomainsMore>().GotoWorkplace();
-        }
 
         /// <summary>
         /// Waits for detail overlay appear.
@@ -120,6 +106,11 @@ namespace TestLeft.TestLeftBase.PageObjects.Machine
 
             Toolbar.Delete();
             return true;
+        }
+
+        protected override void DoGoto()
+        {
+            On<TcDomainsMore>().GotoWorkplace();
         }
     }
 }

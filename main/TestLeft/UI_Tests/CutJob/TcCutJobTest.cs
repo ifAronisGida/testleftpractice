@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
+using TestLeft.UI_Tests.Utilities;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
 

@@ -1,6 +1,6 @@
 namespace PageObjectInterfaces.Common
 {
-    public interface TiDomain
+    public interface TiDomain : TiVisibility
     {
         /// <summary>
         /// Gets the result column.
@@ -9,5 +9,7 @@ namespace PageObjectInterfaces.Common
         /// The result column.
         /// </value>
         TiResultColumn ResultColumn { get; }
+
+        void Goto();
     }
 }

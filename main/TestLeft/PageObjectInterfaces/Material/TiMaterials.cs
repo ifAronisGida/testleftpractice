@@ -22,11 +22,6 @@ namespace PageObjectInterfaces.Material
         TiMaterialDetail Detail { get; }
 
         /// <summary>
-        /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
-        /// </summary>
-        void Goto();
-
-        /// <summary>
         /// Waits for detail overlay appear.
         /// </summary>
         /// <param name="timeout">The timeout.</param>

@@ -38,44 +38,20 @@ namespace TestLeft.TestLeftBase
 
         public TiMainTabControl MainTabControl => On<TcMainTabControl>();
 
-        public TiCustomers GotoCustomers()
-        {
-            return Goto<TcCustomers>();
-        }
+        public TiCustomers Customers => On<TcCustomers>();
 
-        public TiMainMenu GotoMainMenu()
-        {
-            return Goto<TcMainMenu>();
-        }
+        public TiMainMenu MainMenu => On<TcMainMenu>();
 
-        public TiParts GotoParts()
-        {
-            return Goto<TcParts>();
-        }
+        public TiParts Parts => On<TcParts>();
 
-        public TiMaterials GotoMaterials()
-        {
-            return Goto<TcMaterials>();
-        }
+        public TiMaterials Materials => On<TcMaterials>();
 
-        public TiMachines GotoMachines()
-        {
-            return Goto<TcMachines>();
-        }
+        public TiMachines Machines => On<TcMachines>();
 
-        public TiPartOrders GotoPartOrders()
-        {
-            return Goto<TcPartOrders>();
-        }
+        public TiPartOrders PartOrders => On<TcPartOrders>();
 
-        public TiCutJobs GotoCutJobs()
-        {
-            return Goto<TcCutJobs>();
-        }
+        public TiCutJobs CutJobs => On<TcCutJobs>();
 
-        public TiNestingTemplates GotoNestingTemplates()
-        {
-            return Goto<TcNestingTemplates>();
-        }
+        public TiNestingTemplates NestingTemplates => On<TcNestingTemplates>();
     }
 }

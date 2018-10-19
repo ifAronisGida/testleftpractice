@@ -102,6 +102,7 @@
     <Compile Include="Shell\TcMainMenuTest.cs" />
     <Compile Include="Shell\TcShellTest.cs" />
     <Compile Include="Shell\TcWelcomeScreenTest.cs" />
+    <Compile Include="Utilities\TcHomeZoneExtensions.cs" />
     <Compile Include="Utilities\TcSmokeHelpers.cs" />
     <Compile Include="Utilities\TcSmokeTestsPart.cs" />
   </ItemGroup>

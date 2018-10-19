@@ -4,19 +4,14 @@ using PageObjectInterfaces.PartOrder;
 
 namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 {
-    public class TcPartOrders : TcDomain, IChildOf<TcMainTabControl>, TiPartOrders
+    public class TcPartOrders : TcDomain<TiPartOrderToolbar>, IChildOf<TcMainTabControl>, TiPartOrders
     {
-        public TiPartOrderToolbar Toolbar => On<TcPartOrderToolbar>( cache: true );
+        public override TiPartOrderToolbar Toolbar => On<TcPartOrderToolbar>( cache: true );
         public TiPartOrderBaseInfo BaseInfo => On<TcPartOrderBaseInfo>( cache: true );
         public TiPartOrderPartInfo PartInfo => On<TcPartOrderPartInfo>( cache: true );
 
-        public override void Goto()
+        protected override void DoGoto()
         {
-            if( Toolbar.IsVisible )
-            {
-                return;
-            }
-
             On<TcDomains>().PartOrder.Click();
         }
     }

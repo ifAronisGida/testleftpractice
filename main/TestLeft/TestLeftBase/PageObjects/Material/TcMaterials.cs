@@ -12,7 +12,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
     /// PageObject for the materials category.
     /// </summary>
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
-    public class TcMaterials : TcDomain, IChildOf<TcMainTabControl>, TiMaterials
+    public class TcMaterials : TcDomain<TiMaterialToolbar>, IChildOf<TcMainTabControl>, TiMaterials
     {
         /// <summary>
         /// Gets the detail overlay.
@@ -28,7 +28,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// <value>
         /// The toolbar.
         /// </value>
-        public TiMaterialToolbar Toolbar => On<TcMaterialToolbar>( cache: true );
+        public override TiMaterialToolbar Toolbar => On<TcMaterialToolbar>( cache: true );
 
         /// <summary>
         /// Gets the detail area.
@@ -37,20 +37,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
         /// The detail.
         /// </value>
         public TiMaterialDetail Detail => On<TcMaterialDetail>( cache: true );
-
-        /// <summary>
-        /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
-        /// </summary>
-        public override void Goto()
-        {
-            if( Toolbar.IsVisible )
-            {
-                return;
-            }
-
-            base.Goto();
-            Goto<TcDomainsMore>().GotoMaterial();
-        }
 
         /// <summary>
         /// Waits for detail overlay appear.
@@ -86,6 +72,11 @@ namespace TestLeft.TestLeftBase.PageObjects.Material
 
             Toolbar.Delete();
             return true;
+        }
+
+        protected override void DoGoto()
+        {
+            Goto<TcDomainsMore>().GotoMaterial();
         }
     }
 }

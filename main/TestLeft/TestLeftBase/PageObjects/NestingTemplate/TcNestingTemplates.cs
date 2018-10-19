@@ -7,27 +7,22 @@ using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.NestingTemplate
 {
-    internal class TcNestingTemplates : TcDomain, IChildOf<TcMainTabControl>, TiNestingTemplates
+    internal class TcNestingTemplates : TcDomain<TiNestingTemplateToolbar>, IChildOf<TcMainTabControl>, TiNestingTemplates
     {
-        public TiNestingTemplateToolbar Toolbar => On<TcNestingTemplateToolbar>( cache: true );
+        public override TiNestingTemplateToolbar Toolbar => On<TcNestingTemplateToolbar>( cache: true );
         public TiNestingTemplateBaseInfo BaseInfo => On<TcNestingTemplateBaseInfo>( cache: true );
         public TiNestingTemplatePartList PartList => On<TcNestingTemplatePartList>( cache: true );
 
         private TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
 
-        public override void Goto()
-        {
-            if( Toolbar.IsVisible )
-            {
-                return;
-            }
-
-            Goto<TcDomainsMore>().GotoCutJobTemplate();
-        }
-
         public void WaitForOverlayDisappear( TimeSpan timeout )
         {
             DetailOverlay.Visible.WaitForFalse( timeout );
+        }
+
+        protected override void DoGoto()
+        {
+            Goto<TcDomainsMore>().GotoCutJobTemplate();
         }
     }
 }

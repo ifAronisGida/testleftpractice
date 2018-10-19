@@ -13,20 +13,20 @@ namespace PageObjectInterfaces
     {
         TiMainTabControl MainTabControl { get; }
 
-        TiCustomers GotoCustomers();
+        TiCustomers Customers { get; }
 
-        TiMainMenu GotoMainMenu();
+        TiMainMenu MainMenu { get; }
 
-        TiParts GotoParts();
+        TiParts Parts { get; }
 
-        TiMaterials GotoMaterials();
+        TiMaterials Materials { get; }
 
-        TiMachines GotoMachines();
+        TiMachines Machines { get; }
 
-        TiPartOrders GotoPartOrders();
+        TiPartOrders PartOrders { get; }
 
-        TiCutJobs GotoCutJobs();
+        TiCutJobs CutJobs { get; }
 
-        TiNestingTemplates GotoNestingTemplates();
+        TiNestingTemplates NestingTemplates { get; }
     }
 }

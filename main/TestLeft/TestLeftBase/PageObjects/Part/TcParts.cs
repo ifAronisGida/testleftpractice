@@ -12,7 +12,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// PageObject for the parts category.
     /// </summary>
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
-    public class TcParts : TcDomain, IChildOf<TcMainTabControl>, TiParts
+    public class TcParts : TcDomain<TiPartToolbar>, IChildOf<TcMainTabControl>, TiParts
     {
         /// <summary>
         /// Gets the detail overlay.
@@ -28,7 +28,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         /// <value>
         /// The toolbar.
         /// </value>
-        public TiPartToolbar Toolbar => On<TcPartToolbar>( cache: true );
+        public override TiPartToolbar Toolbar => On<TcPartToolbar>( cache: true );
 
         /// <summary>
         /// Gets the single detail.
@@ -63,20 +63,6 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
         public TiPartSingleDetailCutSolutions SingleDetailCutSolutions => On<TcPartSingleDetailCutSolutions>( cache: true );
 
         /// <summary>
-        /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
-        /// </summary>
-        public override void Goto()
-        {
-            if( Toolbar.IsVisible )
-            {
-                return;
-            }
-
-            base.Goto();
-            Goto<TcDomains>().Part.Click();
-        }
-
-        /// <summary>
         /// Waits for detail overlay appear.
         /// </summary>
         /// <param name="timeout">The timeout.</param>
@@ -109,6 +95,11 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
 
             Toolbar.Delete();
             return true;
+        }
+
+        protected override void DoGoto()
+        {
+            Goto<TcDomains>().Part.Click();
         }
     }
 }

@@ -10,8 +10,6 @@ namespace TestLeft.TestLeftBase.ControlObjects.Composite
     /// </summary>
     public class TcResultColumn : TcGenericControlObject, TiResultColumn
     {
-        public const string Uid = "List.SearchAndResult";
-
         /// <summary>
         /// Gets the search text control.
         /// </summary>

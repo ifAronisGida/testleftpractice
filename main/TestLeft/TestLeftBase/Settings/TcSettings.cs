@@ -109,7 +109,7 @@ namespace TestLeft.TestLeftBase.Settings
         /// <value>
         /// The Design starting timeout.
         /// </value>
-        public static TimeSpan DesignStartTimeout => TimeSpan.FromSeconds( 40 );
+        public static TimeSpan DesignStartTimeout => TimeSpan.FromSeconds( 80 );
 
         /// <summary>
         /// Gets timeout for starting Cut.
