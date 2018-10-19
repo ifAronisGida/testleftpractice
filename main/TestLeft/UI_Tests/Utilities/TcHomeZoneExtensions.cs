@@ -36,7 +36,10 @@ namespace TestLeft.UI_Tests.Utilities
 
         public static TiMainMenu GotoMainMenu( this TiHomeZoneApp app )
         {
-            return app.MainMenu;
+            var menu = app.MainMenu;
+            menu.Goto();
+
+            return menu;
         }
 
         private static T Goto<T>(Func<T> domain) where T : TiDomain
