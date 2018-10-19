@@ -127,8 +127,7 @@ namespace TestLeft.UI_Tests.CutJob
                 row.DrawingButton.Click();
                 Thread.Sleep( 5000 );
 
-                var searchText = HomeZone.GotoParts().ResultColumn.SearchText.Value;
-                Assert.AreEqual( $"id:{PartName}", searchText );
+                Assert.IsTrue( parts.IsVisible );
 
                 HomeZone.GotoCutJobs();
                 nestings.ResultColumn.SelectItem( NestingName );
