@@ -1,17 +1,17 @@
 ﻿using System;
-using Trumpf.PageObjects;
-using Trumpf.PageObjects.WPF;
-using Trumpf.PageObjects.Waiting;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using PageObjectInterfaces.Part;
+using Trumpf.Coparoo.Desktop.Waiting;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
     /// <summary>
     /// PageObject for the parts category.
     /// </summary>
-    /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
+    /// <seealso cref="IChildOf{T}" />
     public class TcParts : TcDomain<TiPartToolbar>, IChildOf<TcMainTabControl>, TiParts
     {
         /// <summary>

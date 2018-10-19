@@ -1,6 +1,6 @@
 using PageObjectInterfaces.Dialogs;
-using Trumpf.PageObjects;
-using Trumpf.PageObjects.UIA;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.UIA;
 
 namespace TestLeft.TestLeftBase.PageObjects.Dialogs
 {

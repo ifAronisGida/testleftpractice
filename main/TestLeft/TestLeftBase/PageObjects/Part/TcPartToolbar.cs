@@ -2,8 +2,8 @@
 using PageObjectInterfaces.Dialogs;
 using PageObjectInterfaces.Part;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
-using Trumpf.PageObjects;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part

@@ -1,5 +1,5 @@
 using System;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects.Grid
 {

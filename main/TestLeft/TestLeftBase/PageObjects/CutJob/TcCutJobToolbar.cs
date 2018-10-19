@@ -1,6 +1,6 @@
 ﻿using PageObjectInterfaces.Controls;
-using Trumpf.PageObjects;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using PageObjectInterfaces.CutJob;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;

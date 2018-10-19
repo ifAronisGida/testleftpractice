@@ -1,4 +1,4 @@
-﻿using Trumpf.PageObjects;
+﻿using Trumpf.Coparoo.Desktop;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using PageObjectInterfaces.CutJob;
 

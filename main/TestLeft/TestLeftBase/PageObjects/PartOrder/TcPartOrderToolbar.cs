@@ -1,7 +1,7 @@
 ﻿using PageObjectInterfaces.Controls;
 using PageObjectInterfaces.Dialogs;
-using Trumpf.PageObjects;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using PageObjectInterfaces.PartOrder;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;

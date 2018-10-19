@@ -4,10 +4,10 @@ using PageObjectInterfaces.Customer;
 using PageObjectInterfaces.Dialogs;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
-using Trumpf.PageObjects;
+using Trumpf.Coparoo.Desktop;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Part;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.Customer
 {

@@ -1,7 +1,7 @@
 using PageObjectInterfaces.Common;
 using PageObjectInterfaces.Controls;
 using TestLeft.TestLeftBase.Utilities;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects.Composite
 {

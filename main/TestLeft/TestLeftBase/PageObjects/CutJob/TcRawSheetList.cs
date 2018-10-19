@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using PageObjectInterfaces.CutJob;
 using SmartBear.TestLeft.TestObjects;
 using TestLeft.TestLeftBase.Utilities;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {

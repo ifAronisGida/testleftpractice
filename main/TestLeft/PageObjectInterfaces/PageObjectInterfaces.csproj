@@ -31,28 +31,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.2-beta2\lib\net451\RestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="SmartBear.TestLeft, Version=12.31.1833.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.2-beta2\lib\net451\SmartBear.TestLeft.dll</HintPath>
-    </Reference>
-    <Reference Include="SmartBear.TestLeft.WebApiWrapper, Version=12.31.1833.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.2-beta2\lib\net451\SmartBear.TestLeft.WebApiWrapper.dll</HintPath>
-    </Reference>
-    <Reference Include="Stashbox, Version=2.6.1.0, Culture=neutral, PublicKeyToken=9778e33426732b68, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.2-beta2\lib\net451\Stashbox.dll</HintPath>
-    </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Trumpf.PageObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.2-beta2\lib\net451\Trumpf.PageObjects.dll</HintPath>
+    <Reference Include="Trumpf.Coparoo.Desktop, Version=4.0.1.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Trumpf.Coparoo.Desktop.4.0.1\lib\net451\Trumpf.Coparoo.Desktop.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +104,7 @@
     <Compile Include="TiHomeZoneApp.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

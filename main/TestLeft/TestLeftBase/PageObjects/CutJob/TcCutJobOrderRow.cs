@@ -1,7 +1,7 @@
 using System;
 using TestLeft.TestLeftBase.ControlObjects.Grid;
 using TestLeft.TestLeftBase.ControlObjects;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop.WPF;
 using System.Windows.Documents;
 using DevExpress.Xpf.Editors;
 using PageObjectInterfaces.Controls;

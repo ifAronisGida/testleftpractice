@@ -1,7 +1,7 @@
 using System;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.Qt;
-using Trumpf.PageObjects;
+using Trumpf.Coparoo.Desktop;
 
 namespace TestLeft.TestLeftBase.PageObjects.Cut
 {

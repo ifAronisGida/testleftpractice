@@ -1,5 +1,5 @@
-﻿using Trumpf.PageObjects;
-using Trumpf.PageObjects.WPF;
+﻿using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 
 namespace TestLeft.TestLeftBase.PageObjects.Shell

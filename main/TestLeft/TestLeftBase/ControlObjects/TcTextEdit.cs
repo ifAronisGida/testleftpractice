@@ -1,6 +1,6 @@
 ﻿using PageObjectInterfaces.Controls;
 using SmartBear.TestLeft.TestObjects;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects
 {

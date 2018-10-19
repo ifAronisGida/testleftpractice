@@ -6,7 +6,7 @@ using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.UI_Tests.Base;
 using Trumpf.AutoTest.Facts;
-using Trumpf.PageObjects.Waiting;
+using Trumpf.Coparoo.Desktop.Waiting;
 
 namespace TestLeft.UI_Tests.Utilities
 {

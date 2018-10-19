@@ -1,7 +1,7 @@
 using PageObjectInterfaces.Controls;
 using PageObjectInterfaces.CutJob;
 using TestLeft.TestLeftBase.Utilities;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {

@@ -46,22 +46,17 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.2-beta2\lib\net451\RestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="SmartBear.TestLeft, Version=12.31.1833.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.2-beta2\lib\net451\SmartBear.TestLeft.dll</HintPath>
-    </Reference>
-    <Reference Include="SmartBear.TestLeft.WebApiWrapper, Version=12.31.1833.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.2-beta2\lib\net451\SmartBear.TestLeft.WebApiWrapper.dll</HintPath>
-    </Reference>
-    <Reference Include="Stashbox, Version=2.6.1.0, Culture=neutral, PublicKeyToken=9778e33426732b68, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.2-beta2\lib\net451\Stashbox.dll</HintPath>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SmartBear.TestLeft, Version=12.60.5545.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\SmartBear.TestLeft.2.60.5545.12\lib\net45\SmartBear.TestLeft.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="Trumpf.AutoTest.Artifacts, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Trumpf.AutoTest.Artifacts.1.4.0\lib\net40\Trumpf.AutoTest.Artifacts.dll</HintPath>
@@ -75,8 +70,8 @@
     <Reference Include="Trumpf.AutoTest.Utilities, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Trumpf.AutoTest.Utilities.1.5.0\lib\net40\Trumpf.AutoTest.Utilities.dll</HintPath>
     </Reference>
-    <Reference Include="Trumpf.PageObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.PageObjects.3.4.2-beta2\lib\net451\Trumpf.PageObjects.dll</HintPath>
+    <Reference Include="Trumpf.Coparoo.Desktop, Version=4.0.1.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Trumpf.Coparoo.Desktop.4.0.1\lib\net451\Trumpf.Coparoo.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="Trumpf.TruTops.UnitTestAttribute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a29b70238a00b455, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

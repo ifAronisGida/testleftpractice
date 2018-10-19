@@ -1,0 +1,2971 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Stashbox</name>
+    </assembly>
+    <members>
+        <member name="T:Stashbox.Attributes.DependencyAttribute">
+            <summary>
+            Represents an attribute for tracking dependencies.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Attributes.DependencyAttribute.Name">
+            <summary>
+            The name of the dependency.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Attributes.DependencyAttribute.#ctor(System.String)">
+            <summary>
+            Constructs a <see cref="T:Stashbox.Attributes.DependencyAttribute"/>
+            </summary>
+            <param name="name">The name of the dependency.</param>
+        </member>
+        <member name="T:Stashbox.Attributes.InjectionMethodAttribute">
+            <summary>
+            Represents an attribute for tracking injection methods.
+            </summary>
+        </member>
+        <member name="T:Stashbox.BuildUp.IObjectBuilder">
+            <summary>
+            Represents an object builder.
+            </summary>
+        </member>
+        <member name="M:Stashbox.BuildUp.IObjectBuilder.GetExpression(Stashbox.IContainerContext,Stashbox.Registration.IServiceRegistration,Stashbox.Resolution.ResolutionContext,System.Type)">
+            <summary>
+            Creates the expression for creating an instance of a registered service.
+            </summary>
+            <param name="containerContext">The container context.</param>
+            <param name="serviceRegistration">The service registration.</param>
+            <param name="resolutionContext">The info about the actual resolution.</param>
+            <param name="resolveType">The requested type.</param>
+            <returns>The created object.</returns>
+        </member>
+        <member name="T:Stashbox.Configuration.ContainerConfiguration">
+            <summary>
+            Represents a container configuration
+            </summary>
+        </member>
+        <member name="P:Stashbox.Configuration.ContainerConfiguration.TrackTransientsForDisposalEnabled">
+            <summary>
+            If it's set to true the container will track transient objects for disposal.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Configuration.ContainerConfiguration.SetUniqueRegistrationNames">
+            <summary>
+            If it's set to true the container will set a unique registration name for every new registration even if the implementation type is the same.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Configuration.ContainerConfiguration.CircularDependencyTrackingEnabled">
+            <summary>
+            If it's set to true the container will track circular dependencies in the dependency graph and will throw an exception if any of it found.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Configuration.ContainerConfiguration.RuntimeCircularDependencyTrackingEnabled">
+            <summary>
+            If it's set to true the container will track circular dependencies in the compiled delegates and will throw an exception if any of it found.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Configuration.ContainerConfiguration.OptionalAndDefaultValueInjectionEnabled">
+            <summary>
+            If it's set to true, the container will inject optional and default values for missing dependencies and primitive types.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Configuration.ContainerConfiguration.UnknownTypeResolutionEnabled">
+            <summary>
+            If it's set to true the container will try to register the unknown type during the activation.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Configuration.ContainerConfiguration.MemberInjectionWithoutAnnotationEnabled">
+            <summary>
+            If it's set to true, the container will inject members even whithout <see cref="T:Stashbox.Attributes.DependencyAttribute"/>.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Configuration.ContainerConfiguration.CircularDependenciesWithLazyEnabled">
+            <summary>
+            If it's set to true, the container will not track circular dependencies performed with <see cref="T:System.Lazy`1"/>.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Configuration.ContainerConfiguration.MemberInjectionWithoutAnnotationRule">
+            <summary>
+            The annotationless member injection rule.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Configuration.ContainerConfiguration.UnknownTypeConfigurator">
+            <summary>
+            Represents the configuration which will be invoked when an unknown type being registered.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Configuration.ContainerConfiguration.ConstructorSelectionRule">
+            <summary>
+            The constructor selection rule.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Configuration.ContainerConfigurator">
+            <summary>
+            Represents a container configurator.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Configuration.ContainerConfigurator.ContainerConfiguration">
+            <summary>
+            The container configuration.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Configuration.ContainerConfigurator.WithDisposableTransientTracking">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Configuration.ContainerConfigurator.WithUniqueRegistrationIdentifiers">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Configuration.ContainerConfigurator.WithCircularDependencyTracking(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Configuration.ContainerConfigurator.WithCircularDependencyWithLazy">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Configuration.ContainerConfigurator.WithOptionalAndDefaultValueInjection">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Configuration.ContainerConfigurator.WithUnknownTypeResolution(System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Configuration.ContainerConfigurator.WithMemberInjectionWithoutAnnotation(Stashbox.Configuration.Rules.AutoMemberInjectionRules)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Configuration.ContainerConfigurator.WithConstructorSelectionRule(System.Func{System.Collections.Generic.IEnumerable{Stashbox.Entity.ConstructorInformation},System.Collections.Generic.IEnumerable{Stashbox.Entity.ConstructorInformation}})">
+            <inheritdoc />
+        </member>
+        <member name="T:Stashbox.Configuration.Rules">
+            <summary>
+            Represents the predefined configuration rules of the <see cref="T:Stashbox.StashboxContainer"/>
+            </summary>
+        </member>
+        <member name="T:Stashbox.Configuration.Rules.AutoMemberInjectionRules">
+            <summary>
+            Represents the rules for auto injecting members.
+            </summary>
+        </member>
+        <member name="F:Stashbox.Configuration.Rules.AutoMemberInjectionRules.PropertiesWithPublicSetter">
+            <summary>
+            With this flag the container will perform auto injection on properties which has a public setter.
+            </summary>
+        </member>
+        <member name="F:Stashbox.Configuration.Rules.AutoMemberInjectionRules.PropertiesWithLimitedAccess">
+            <summary>
+            With this flag the container will perform auto injection on properties which has a non public setter as well.
+            </summary>
+        </member>
+        <member name="F:Stashbox.Configuration.Rules.AutoMemberInjectionRules.PrivateFields">
+            <summary>
+            With this flag the container will perform auto injection on private fields too.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Configuration.Rules.ConstructorSelection">
+            <summary>
+            Represents a constructor selection rules.
+            </summary>
+        </member>
+        <member name="F:Stashbox.Configuration.Rules.ConstructorSelection.PreferMostParameters">
+            <summary>
+            Prefers the constructor which has the longest parameter list.
+            </summary>
+        </member>
+        <member name="F:Stashbox.Configuration.Rules.ConstructorSelection.PreferLeastParameters">
+            <summary>
+            Prefers the constructor which has the shortest parameter list.
+            </summary>
+        </member>
+        <member name="T:Stashbox.IContainerConfigurator">
+            <summary>
+            Represents a container configurator.
+            </summary>
+        </member>
+        <member name="P:Stashbox.IContainerConfigurator.ContainerConfiguration">
+            <summary>
+            The container configuration.
+            </summary>
+        </member>
+        <member name="M:Stashbox.IContainerConfigurator.WithDisposableTransientTracking">
+            <summary>
+            Enables the tracking of disposable transient objects.
+            </summary>
+            <returns>The container configurator.</returns>
+        </member>
+        <member name="M:Stashbox.IContainerConfigurator.WithUniqueRegistrationIdentifiers">
+            <summary>
+            Enables the unique registration id generation for services even if the implementation type is the same.
+            </summary>
+            <returns>The container configurator.</returns>
+        </member>
+        <member name="M:Stashbox.IContainerConfigurator.WithCircularDependencyTracking(System.Boolean)">
+            <summary>
+            Enables the circular dependency tracking.
+            </summary>
+            <param name="runtimeTrackingEnabled">If it's true the container will track circular dependencies in the compiled delegates and will throw an exception if any of it found.</param>
+            <returns>The container configurator.</returns>
+        </member>
+        <member name="M:Stashbox.IContainerConfigurator.WithCircularDependencyWithLazy">
+            <summary>
+            Allows circular dependencies through Lazy objects.
+            </summary>
+            <returns>The container configurator.</returns>
+        </member>
+        <member name="M:Stashbox.IContainerConfigurator.WithOptionalAndDefaultValueInjection">
+            <summary>
+            Enables the optional and default value injection.
+            </summary>
+            <returns>The container configurator.</returns>
+        </member>
+        <member name="M:Stashbox.IContainerConfigurator.WithUnknownTypeResolution(System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <summary>
+            Enables the unknown type resolution.
+            </summary>
+            <returns>The container configurator.</returns>
+        </member>
+        <member name="M:Stashbox.IContainerConfigurator.WithMemberInjectionWithoutAnnotation(Stashbox.Configuration.Rules.AutoMemberInjectionRules)">
+            <summary>
+            Enables the member injection without annotation.
+            </summary>
+            <returns>The container configurator.</returns>
+        </member>
+        <member name="M:Stashbox.IContainerConfigurator.WithConstructorSelectionRule(System.Func{System.Collections.Generic.IEnumerable{Stashbox.Entity.ConstructorInformation},System.Collections.Generic.IEnumerable{Stashbox.Entity.ConstructorInformation}})">
+            <summary>
+            Sets the constructor selection rule.
+            </summary>
+            <returns>The container configurator.</returns>
+        </member>
+        <member name="T:Stashbox.ContainerContext">
+            <summary>
+            Represents the container context.
+            </summary>
+        </member>
+        <member name="P:Stashbox.ContainerContext.RegistrationRepository">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.ContainerContext.DecoratorRepository">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.ContainerContext.Container">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.ContainerContext.ResolutionStrategy">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.ContainerContext.ContainerConfigurator">
+            <inheritdoc />
+        </member>
+        <member name="T:Stashbox.ContainerExtension.IContainerExtension">
+            <summary>
+            Represents a container extension.
+            </summary>
+        </member>
+        <member name="M:Stashbox.ContainerExtension.IContainerExtension.Initialize(Stashbox.IContainerContext)">
+            <summary>
+            Initializes the container extension.
+            </summary>
+            <param name="containerContext">The <see cref="T:Stashbox.IContainerContext"/> of the <see cref="T:Stashbox.StashboxContainer"/></param>
+        </member>
+        <member name="M:Stashbox.ContainerExtension.IContainerExtension.CleanUp">
+            <summary>
+            Cleans up the container extension.
+            </summary>
+        </member>
+        <member name="M:Stashbox.ContainerExtension.IContainerExtension.CreateCopy">
+            <summary>
+            Creates a copy of the extension.
+            </summary>
+            <returns>The actual copy.</returns>
+        </member>
+        <member name="T:Stashbox.ContainerExtension.IPostBuildExtension">
+            <summary>
+            Represents a post build extension.
+            </summary>
+        </member>
+        <member name="M:Stashbox.ContainerExtension.IPostBuildExtension.PostBuild(System.Object,Stashbox.IContainerContext,Stashbox.Resolution.ResolutionContext,Stashbox.Registration.IServiceRegistration,System.Type)">
+            <summary>
+            Executes the post build extension.
+            </summary>
+            <param name="instance">The resolved object.</param>
+            <param name="containerContext">The <see cref="T:Stashbox.IContainerContext"/> of the <see cref="T:Stashbox.StashboxContainer"/></param>
+            <param name="resolutionContext">Information about the actual resolution.</param>
+            <param name="serviceRegistration">The service registration.</param>
+            <param name="requestedType">The requested type.</param>
+            <returns>The extended object.</returns>
+        </member>
+        <member name="T:Stashbox.ContainerExtension.IRegistrationExtension">
+            <summary>
+            Represents a registration extension.
+            </summary>
+        </member>
+        <member name="M:Stashbox.ContainerExtension.IRegistrationExtension.OnRegistration(Stashbox.IContainerContext,Stashbox.Registration.IServiceRegistration)">
+            <summary>
+            Executes when a new service being registered.
+            </summary>
+            <param name="containerContext">The <see cref="T:Stashbox.IContainerContext"/> of the <see cref="T:Stashbox.StashboxContainer"/></param>
+            <param name="serviceRegistration">The service registration.</param>
+        </member>
+        <member name="T:Stashbox.Entity.ConstructorInformation">
+            <summary>
+            Represents information about a constructor.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.ConstructorInformation.Constructor">
+            <summary>
+            Stores the reflected constructor info.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.ConstructorInformation.Parameters">
+            <summary>
+            The parameters of the constructor.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Entity.InjectionParameter">
+            <summary>
+            Represents an injection parameter.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.InjectionParameter.Name">
+            <summary>
+            The name of the injection parameter.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.InjectionParameter.Value">
+            <summary>
+            The value of the injection parameter.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Entity.KeyValue`2">
+            <summary>
+            Represents a key-value reference type.
+            </summary>
+            <typeparam name="TKey">Type of the key.</typeparam>
+            <typeparam name="TValue">Type of the value.</typeparam>
+        </member>
+        <member name="P:Stashbox.Entity.KeyValue`2.Key">
+            <summary>
+            The key.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.KeyValue`2.Value">
+            <summary>
+            The value.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Entity.KeyValue`2.#ctor(`0,`1)">
+            <summary>
+            Constructs a <see cref="T:Stashbox.Entity.KeyValue`2"/>.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Entity.MemberInformation">
+            <summary>
+            Represents information about a member.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.MemberInformation.MemberInfo">
+            <summary>
+            Stores the reflected member information.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.MemberInformation.TypeInformation">
+            <summary>
+            Stores the type information about the member.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Entity.MethodInformation">
+            <summary>
+            Represents information about a method.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.MethodInformation.Method">
+            <summary>
+            Stores the reflected method information.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.MethodInformation.Parameters">
+            <summary>
+            Stores the parameters of the method.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Entity.Resolution.ResolutionConstructor">
+            <summary>
+            Represents a resolution constructor
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.Resolution.ResolutionConstructor.Constructor">
+            <summary>
+            The constructor info.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.Resolution.ResolutionConstructor.Parameters">
+            <summary>
+            The parameters of the constructor.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Entity.Resolution.ResolutionMember">
+            <summary>
+            Represents a resolution memeber.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.Resolution.ResolutionMember.Expression">
+            <summary>
+            The expression to set the member.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.Resolution.ResolutionMember.MemberInfo">
+            <summary>
+            The member info.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Entity.Resolution.ResolutionMethod">
+            <summary>
+            Represents a resolution method.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.Resolution.ResolutionMethod.Method">
+            <summary>
+            The method info.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.Resolution.ResolutionMethod.Parameters">
+            <summary>
+            The parameter expressions.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Entity.TypeInformation">
+            <summary>
+            Represents type information about a dependency.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.TypeInformation.Type">
+            <summary>
+            The reflected type of the dependency.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.TypeInformation.ParentType">
+            <summary>
+            The reflected type of the parent of the dependency.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.TypeInformation.DependencyName">
+            <summary>
+            The name of the dependency.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.TypeInformation.CustomAttributes">
+            <summary>
+            Custom attributes of the dependency.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.TypeInformation.ParameterName">
+            <summary>
+            The parameter name of the dependency if it's a param of a method.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.TypeInformation.HasDefaultValue">
+            <summary>
+            It's true if the dependency has default value.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.TypeInformation.DefaultValue">
+            <summary>
+            The default value of the dependency.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.TypeInformation.IsMember">
+            <summary>
+            Property or field.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Entity.TypeInformation.ForcedDependency">
+            <summary>
+            True if the dependency explicitly set to be injected.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Entity.TypeInformation.Clone(System.Type)">
+            <summary>
+            Creates a clone of this instance.
+            </summary>
+            <param name="type">The type param to override.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Stashbox.Exceptions.CircularDependencyException">
+            <summary>
+            Represents the exception which will be threw when a circular dependency found.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Exceptions.CircularDependencyException.#ctor(System.Type,System.Exception)">
+            <summary>
+            Constructs a <see cref="T:Stashbox.Exceptions.CircularDependencyException"/>
+            </summary>
+            <param name="type">The type of the service type.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Stashbox.Exceptions.CompositionRootNotFoundException">
+            <summary>
+            Threw when composing requested but no <see cref="T:Stashbox.ICompositionRoot"/> is present in the given assembly.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Exceptions.CompositionRootNotFoundException.Assembly">
+            <summary>
+            The scanned assembly.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Exceptions.CompositionRootNotFoundException.#ctor(System.Reflection.Assembly,System.Exception)">
+            <summary>
+            Constructs a <see cref="T:Stashbox.Exceptions.CompositionRootNotFoundException"/>.
+            </summary>
+            <param name="assembly">The scanned assembly.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Stashbox.Exceptions.ConstructorNotFoundException">
+            <summary>
+            Represents a constructor not found exception.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Exceptions.ConstructorNotFoundException.#ctor(System.Type,System.Type[],System.Exception)">
+            <summary>
+            Constructs a <see cref="T:Stashbox.Exceptions.ConstructorNotFoundException"/>.
+            </summary>
+            <param name="type">The type on the constructor was not found.</param>
+            <param name="argumentTypes">The arguments.</param>
+            <param name="innerException">The inner exception</param>
+        </member>
+        <member name="M:Stashbox.Exceptions.ConstructorNotFoundException.#ctor(System.Type,System.Exception)">
+            <summary>
+            Constructs a <see cref="T:Stashbox.Exceptions.ConstructorNotFoundException"/>.
+            </summary>
+            <param name="type">The type on the constructor was not found.</param>
+            <param name="innerException">The inner exception</param>
+        </member>
+        <member name="M:Stashbox.Exceptions.ConstructorNotFoundException.#ctor(System.Type,System.Type,System.Exception)">
+            <summary>
+            Constructs a <see cref="T:Stashbox.Exceptions.ConstructorNotFoundException"/>.
+            </summary>
+            <param name="type">The type on the constructor was not found.</param>
+            <param name="argument">The argument type.</param>
+            <param name="innerException">The inner exception</param>
+        </member>
+        <member name="T:Stashbox.Exceptions.ExceptionBaseException">
+            <summary>
+            Represents the base of the custom exceptions used by the <see cref="T:Stashbox.StashboxContainer"/>
+            </summary>
+        </member>
+        <member name="P:Stashbox.Exceptions.ExceptionBaseException.Type">
+            <summary>
+            The actually resolved type.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Exceptions.ExceptionBaseException.#ctor(System.Type,System.String,System.Exception)">
+            <summary>
+            Constructs a <see cref="T:Stashbox.Exceptions.ExceptionBaseException"/>
+            </summary>
+            <param name="type">The name of the type.</param>
+            <param name="message">The exception message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Stashbox.Exceptions.ResolutionFailedException">
+            <summary>
+            Represents the exception threw when a service resolution failed.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Exceptions.ResolutionFailedException.#ctor(System.Type,System.String,System.Exception)">
+            <summary>
+            Constructs a <see cref="T:Stashbox.Exceptions.ResolutionFailedException"/>
+            </summary>
+            <param name="type">The type of the service.</param>
+            <param name="message">The exception message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Stashbox.ICompositionRoot">
+            <summary>
+            Represents a composition root used by the <see cref="M:Stashbox.CollectionRegistratorExtensions.ComposeBy``1(Stashbox.IDependencyCollectionRegistrator)"/>, <see cref="M:Stashbox.IDependencyCollectionRegistrator.ComposeBy(System.Type)"/>, <see cref="M:Stashbox.CollectionRegistratorExtensions.ComposeAssembly(Stashbox.IDependencyCollectionRegistrator,System.Reflection.Assembly)"/>, <see cref="M:Stashbox.CollectionRegistratorExtensions.ComposeAssemblies(Stashbox.IDependencyCollectionRegistrator,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})"/>.
+            </summary>
+        </member>
+        <member name="M:Stashbox.ICompositionRoot.Compose(Stashbox.IStashboxContainer)">
+            <summary>
+            Composes services during the call of the <see cref="M:Stashbox.CollectionRegistratorExtensions.ComposeBy``1(Stashbox.IDependencyCollectionRegistrator)"/>, <see cref="M:Stashbox.IDependencyCollectionRegistrator.ComposeBy(System.Type)"/>, <see cref="M:Stashbox.CollectionRegistratorExtensions.ComposeAssembly(Stashbox.IDependencyCollectionRegistrator,System.Reflection.Assembly)"/>, <see cref="M:Stashbox.CollectionRegistratorExtensions.ComposeAssemblies(Stashbox.IDependencyCollectionRegistrator,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})"/>.
+            </summary>
+            <param name="container">The <see cref="T:Stashbox.IStashboxContainer"/>.</param>
+        </member>
+        <member name="T:Stashbox.IContainerContext">
+            <summary>
+            Represents the container context.
+            </summary>
+        </member>
+        <member name="P:Stashbox.IContainerContext.RegistrationRepository">
+            <summary>
+            The repository of the registrations.
+            </summary>
+        </member>
+        <member name="P:Stashbox.IContainerContext.DecoratorRepository">
+            <summary>
+            The decorator repository.
+            </summary>
+        </member>
+        <member name="P:Stashbox.IContainerContext.Container">
+            <summary>
+            The container itself.
+            </summary>
+        </member>
+        <member name="P:Stashbox.IContainerContext.ResolutionStrategy">
+            <summary>
+            The resolution strategy.
+            </summary>
+        </member>
+        <member name="P:Stashbox.IContainerContext.ContainerConfigurator">
+            <summary>
+            Indicates that the container should track transient objects for disposal or not.
+            </summary>
+        </member>
+        <member name="T:Stashbox.IDecoratorRegistrator">
+            <summary>
+            Represents a decorator registrator.
+            </summary>
+        </member>
+        <member name="M:Stashbox.IDecoratorRegistrator.RegisterDecorator(System.Type,System.Type,System.Action{Stashbox.Registration.IFluentDecoratorRegistrator})">
+            <summary>
+            Registers a decorator type into the container with custom configuration.
+            </summary>
+            <param name="typeFrom">Type that will be requested.</param>
+            <param name="typeTo">Type that will be returned.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="T:Stashbox.IDependencyCollectionRegistrator">
+            <summary>
+            Represents a dependency collection registrator.
+            </summary>
+        </member>
+        <member name="M:Stashbox.IDependencyCollectionRegistrator.RegisterTypesAs(System.Type,System.Collections.Generic.IEnumerable{System.Type},System.Func{System.Type,System.Boolean},System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <summary>
+            Registers types into the container mapped to an interface type.
+            </summary>
+            <param name="typeFrom">The interface type.</param>
+            <param name="types">Types to register.</param>
+            <param name="selector">The type selector.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyCollectionRegistrator.RegisterTypes(System.Collections.Generic.IEnumerable{System.Type},System.Func{System.Type,System.Boolean},System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <summary>
+            Registers types into the container.
+            </summary>
+            <param name="types">Types to register.</param>
+            <param name="selector">The type selector.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyCollectionRegistrator.ComposeBy(System.Type)">
+            <summary>
+            Composes services by calling the <see cref="M:Stashbox.ICompositionRoot.Compose(Stashbox.IStashboxContainer)"/> method of the given type.
+            </summary>
+            <param name="compositionRootType">The type of an <see cref="T:Stashbox.ICompositionRoot"/> implementation.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="T:Stashbox.IDependencyRegistrator">
+            <summary>
+            Represents a dependency registrator.
+            </summary>
+        </member>
+        <member name="M:Stashbox.IDependencyRegistrator.RegisterType``2(System.Action{Stashbox.Registration.IFluentServiceRegistrator{``1}})">
+            <summary>
+            Registers a type into the container with custom configuration.
+            </summary>
+            <typeparam name="TFrom">Type that will be requested.</typeparam>
+            <typeparam name="TTo">Type that will be returned.</typeparam>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyRegistrator.RegisterType``1(System.Type,System.Action{Stashbox.Registration.IFluentServiceRegistrator{``0}})">
+            <summary>
+            Registers a type into the container with custom configuration.
+            </summary>
+            <typeparam name="TFrom">Type that will be requested.</typeparam>
+            <param name="typeTo">Type that will be returned.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyRegistrator.RegisterType(System.Type,System.Type,System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <summary>
+            Registers a type into the container with custom configuration.
+            </summary>
+            <param name="typeFrom">Type that will be requested.</param>
+            <param name="typeTo">Type that will be returned.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyRegistrator.RegisterType``1(System.Action{Stashbox.Registration.IFluentServiceRegistrator{``0}})">
+            <summary>
+            Registers a type into the container with custom configuration.
+            </summary>
+            <typeparam name="TTo">Type that will be returned.</typeparam>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyRegistrator.RegisterType(System.Type,System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <summary>
+            Registers a type into the container with custom configuration.
+            </summary>
+            <param name="typeTo">Type that will be returned.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyRegistrator.RegisterInstanceAs``1(``0,System.Object,System.Boolean,System.Action{``0})">
+            <summary>
+            Registers an already constructed instance into the container.
+            </summary>
+            <typeparam name="TFrom">Type that will be requested.</typeparam>
+            <param name="instance">The constructed object.</param>
+            <param name="name">The name of the registration.</param>
+            <param name="withoutDisposalTracking">If it's set to true the container will exclude the instance from the disposal tracking.</param>
+            <param name="finalizerDelegate">The cleanup delegate to call before dispose.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyRegistrator.RegisterInstance(System.Type,System.Object,System.Object,System.Boolean)">
+            <summary>
+            Registers an already constructed instance into the container.
+            </summary>
+            <param name="serviceType">The service type.</param>
+            <param name="instance">The constructed object.</param>
+            <param name="name">The name of the registration.</param>
+            <param name="withoutDisposalTracking">If it's set to true the container will exclude the instance from the disposal tracking.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyRegistrator.WireUpAs``1(``0,System.Object,System.Boolean,System.Action{``0})">
+            <summary>
+            Registers an already constructed instance, but the container will perform injections and extensions on it.
+            </summary>
+            <typeparam name="TFrom">Type that will be requested.</typeparam>
+            <param name="instance">The constructed object.</param>
+            <param name="name">The name of the registration.</param>
+            <param name="withoutDisposalTracking">If it's set to true the container will exclude the instance from the disposal tracking.</param>
+            <param name="finalizerDelegate">The cleanup delegate to call before dispose.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyRegistrator.WireUp(System.Type,System.Object,System.Object,System.Boolean)">
+            <summary>
+            Registers an already constructed instance, but the container will perform injections and extensions on it.
+            </summary>
+            <param name="serviceType">The service type.</param>
+            <param name="instance">The constructed object.</param>
+            <param name="name">The name of the registration.</param>
+            <param name="withoutDisposalTracking">If it's set to true the container will exclude the instance from the disposal tracking.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="T:Stashbox.IDependencyReMapper">
+            <summary>
+            Represents a dependency remapper.
+            </summary>
+        </member>
+        <member name="M:Stashbox.IDependencyReMapper.ReMap``2(System.Action{Stashbox.Registration.IFluentServiceRegistrator{``1}})">
+            <summary>
+            Replaces an existing registration mapping.
+            </summary>
+            <typeparam name="TFrom">Type that will be requested.</typeparam>
+            <typeparam name="TTo">Type that will be returned.</typeparam>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyReMapper.ReMap``1(System.Type,System.Action{Stashbox.Registration.IFluentServiceRegistrator{``0}})">
+            <summary>
+            Replaces an existing registration mapping.
+            </summary>
+            <typeparam name="TFrom">Type that will be requested.</typeparam>
+            <param name="typeTo">Type that will be returned.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyReMapper.ReMap(System.Type,System.Type,System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <summary>
+            Replaces an existing registration mapping.
+            </summary>
+            <param name="typeFrom">Type that will be requested.</param>
+            <param name="typeTo">Type that will be returned.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyReMapper.ReMap``1(System.Action{Stashbox.Registration.IFluentServiceRegistrator{``0}})">
+            <summary>
+            Replaces an existing registration mapping.
+            </summary>
+            <typeparam name="TTo">Type that will be returned.</typeparam>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyReMapper.ReMapDecorator(System.Type,System.Type,System.Action{Stashbox.Registration.IFluentDecoratorRegistrator})">
+            <summary>
+            Replaces an existing decorator mapping.
+            </summary>
+            <param name="typeFrom">Type that will be requested.</param>
+            <param name="typeTo">Type that will be returned.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="T:Stashbox.IDependencyResolver">
+            <summary>
+            Represents a dependency resolver.
+            </summary>
+        </member>
+        <member name="M:Stashbox.IDependencyResolver.Resolve(System.Type,System.Boolean,System.Object[])">
+            <summary>
+            Resolves an instance from the container.
+            </summary>
+            <param name="typeFrom">The type of the requested instance.</param>
+            <param name="nullResultAllowed">If true, the container will return with null instead of throwing <see cref="T:Stashbox.Exceptions.ResolutionFailedException"/>.</param>
+            <param name="dependencyOverrides">A collection of objects which are used to override certain dependencies of the requested service.</param>
+            <returns>The resolved object.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyResolver.Resolve(System.Type,System.Object,System.Boolean,System.Object[])">
+            <summary>
+            Resolves an instance from the container.
+            </summary>
+            <param name="typeFrom">The type of the requested instance.</param>
+            <param name="name">The name of the requested registration.</param>
+            <param name="nullResultAllowed">If true, the container will return with null instead of throwing <see cref="T:Stashbox.Exceptions.ResolutionFailedException"/>.</param>
+            <param name="dependencyOverrides">A collection of objects which are used to override certain dependencies of the requested service.</param>
+            <returns>The resolved object.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyResolver.ResolveAll``1(System.Object[])">
+            <summary>
+            Resolves all registered types of a service.
+            </summary>
+            <typeparam name="TKey">The type of the requested instance.</typeparam>
+            <param name="dependencyOverrides">A collection of objects which are used to override certain dependencies of the requested services.</param>
+            <returns>The resolved object.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyResolver.ResolveAll(System.Type,System.Object[])">
+            <summary>
+            Resolves all registered types of a service.
+            </summary>
+            <param name="typeFrom">The type of the requested instances.</param>
+            <param name="dependencyOverrides">A collection of objects which are used to override certain dependencies of the requested services.</param>
+            <returns>The resolved object.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyResolver.ResolveFactory(System.Type,System.Object,System.Boolean,System.Type[])">
+            <summary>
+            Returns a factory method which can be used to activate a type.
+            </summary>
+            <param name="typeFrom">The type of the requested instances.</param>
+            <param name="name">The name of the requested registration.</param>
+            <param name="nullResultAllowed">If true, the container will return with null instead of throwing <see cref="T:Stashbox.Exceptions.ResolutionFailedException"/>.</param>
+            <param name="parameterTypes">The parameter type.</param>
+            <returns>The factory delegate.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyResolver.BeginScope(System.Object,System.Boolean)">
+            <summary>
+            Begins a new scope.
+            </summary>
+            <param name="name">The name of the scope.</param>
+            <param name="attachToParent">If true, the new scope will be attached to the lifecycle of the parent scope, when it's disposed, the new scope will be disposed with it.</param>
+            <returns>The created scope.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyResolver.PutInstanceInScope(System.Type,System.Object,System.Boolean)">
+            <summary>
+            Puts an instance into the scope which will be dropped when the scope is being disposed.
+            </summary>
+            <param name="typeFrom">The service type.</param>
+            <param name="instance">The instance.</param>
+            <param name="withoutDisposalTracking">If it's set to true the container will exclude the instance from the disposal tracking.</param>
+            <returns>The scope.</returns>
+        </member>
+        <member name="M:Stashbox.IDependencyResolver.BuildUp``1(``0)">
+            <summary>
+            Builds up an instance, the container will perform injections and extensions on it.
+            </summary>
+            <typeparam name="TTo">The type of the requested instance.</typeparam>
+            <param name="instance">The instance to build up.</param>
+            <returns>The built object.</returns>
+        </member>
+        <member name="T:Stashbox.IFuncRegistrator">
+            <summary>
+            Represents a factory registrator.
+            </summary>
+        </member>
+        <member name="M:Stashbox.IFuncRegistrator.RegisterFunc``1(System.Func{Stashbox.IDependencyResolver,``0},System.String)">
+            <summary>
+            Registers a service with a factory resolver.
+            </summary>
+            <typeparam name="TService">The service type.</typeparam>
+            <param name="factory">The factory delegate.</param>
+            <param name="name">The name of the factory registration.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IFuncRegistrator.RegisterFunc``2(System.Func{``0,Stashbox.IDependencyResolver,``1},System.String)">
+            <summary>
+            Registers a service with a factory resolver.
+            </summary>
+            <typeparam name="T1">The first parameter of the factory.</typeparam>
+            <typeparam name="TService">The service type.</typeparam>
+            <param name="factory">The factory delegate.</param>
+            <param name="name">The name of the factory registration.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IFuncRegistrator.RegisterFunc``3(System.Func{``0,``1,Stashbox.IDependencyResolver,``2},System.String)">
+            <summary>
+            Registers a service with a factory resolver.
+            </summary>
+            <typeparam name="T1">The first parameter of the factory.</typeparam>
+            <typeparam name="T2">The second parameter of the factory.</typeparam>
+            <typeparam name="TService">The service type.</typeparam>
+            <param name="factory">The factory delegate.</param>
+            <param name="name">The name of the factory registration.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IFuncRegistrator.RegisterFunc``4(System.Func{``0,``1,``2,Stashbox.IDependencyResolver,``3},System.String)">
+            <summary>
+            Registers a service with a factory resolver.
+            </summary>
+            <typeparam name="T1">The first parameter of the factory.</typeparam>
+            <typeparam name="T2">The second parameter of the factory.</typeparam>
+            <typeparam name="T3">The third parameter of the factory.</typeparam>
+            <typeparam name="TService">The service type.</typeparam>
+            <param name="factory">The factory delegate.</param>
+            <param name="name">The name of the factory registration.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.IFuncRegistrator.RegisterFunc``5(System.Func{``0,``1,``2,``3,Stashbox.IDependencyResolver,``4},System.String)">
+            <summary>
+            Registers a service with a factory resolver.
+            </summary>
+            <typeparam name="T1">The first parameter of the factory.</typeparam>
+            <typeparam name="T2">The second parameter of the factory.</typeparam>
+            <typeparam name="T3">The third parameter of the factory.</typeparam>
+            <typeparam name="T4">The fourth parameter of the factory.</typeparam>
+            <typeparam name="TService">The service type.</typeparam>
+            <param name="factory">The factory delegate.</param>
+            <param name="name">The name of the factory registration.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="T:Stashbox.IResolutionScope">
+            <summary>
+            Represents a resolution scope.
+            </summary>
+        </member>
+        <member name="P:Stashbox.IResolutionScope.RootScope">
+            <summary>
+            The root scope.
+            </summary>
+        </member>
+        <member name="P:Stashbox.IResolutionScope.ParentScope">
+            <summary>
+            The parent scope.
+            </summary>
+        </member>
+        <member name="P:Stashbox.IResolutionScope.HasScopedInstances">
+            <summary>
+            True if the scope contains scoped instances, otherwise false.
+            </summary>
+        </member>
+        <member name="P:Stashbox.IResolutionScope.Name">
+            <summary>
+            The name of the scope, if it's null then it's a regular nameless scope.
+            </summary>
+        </member>
+        <member name="M:Stashbox.IResolutionScope.AddScopedInstance(System.Type,System.Object)">
+            <summary>
+            Adds or updates an instance in the scope.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Stashbox.IResolutionScope.GetScopedInstanceOrDefault(System.Type)">
+            <summary>
+            Gets an instance from the scope.
+            </summary>
+            <param name="key">The key.</param>
+            <returns>The item or null if it doesn't exists.</returns>
+        </member>
+        <member name="M:Stashbox.IResolutionScope.AddDisposableTracking``1(``0)">
+            <summary>
+            Adds a service for further disposable tracking.
+            </summary>
+            <typeparam name="TDisposable">The type parameter.</typeparam>
+            <param name="disposable">The <see cref="T:System.IDisposable"/> object.</param>
+            <returns>The <see cref="T:System.IDisposable"/> object.</returns>
+        </member>
+        <member name="M:Stashbox.IResolutionScope.AddWithFinalizer``1(``0,System.Action{``0})">
+            <summary>
+            Adds a service with a cleanup delegate.
+            </summary>
+            <typeparam name="TService">The service type.</typeparam>
+            <param name="finalizable">The object to cleanup.</param>
+            <param name="finalizer">The cleanup delegate.</param>
+            <returns>The object to cleanup.</returns>
+        </member>
+        <member name="M:Stashbox.IResolutionScope.GetOrAddScopedItem(System.Object,System.Func{Stashbox.IResolutionScope,System.Object})">
+            <summary>
+            Gets or adds an item to the scope.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="factory">The value factory used if the item doesn't exist yet.</param>
+            <returns>The scoped item.</returns>
+        </member>
+        <member name="M:Stashbox.IResolutionScope.InvalidateDelegateCache">
+            <summary>
+            Invalidates the delegate cache.
+            </summary>
+        </member>
+        <member name="M:Stashbox.IResolutionScope.GetActiveScopeNames">
+            <summary>
+            Gets the names of the already opened scopes.
+            </summary>
+            <returns>The scope names.</returns>
+        </member>
+        <member name="M:Stashbox.IResolutionScope.CheckRuntimeCircularDependencyBarrier(System.Int32,System.Type)">
+            <summary>
+            Called by every node of the internal graph when the <see cref="P:Stashbox.Configuration.ContainerConfiguration.RuntimeCircularDependencyTrackingEnabled"/> is true.
+            Checks for runtime circular dependencies in the compiled delegates.
+            </summary>
+            <param name="key">The key of the dependency.</param>
+            <param name="type">The type of the dependency.</param>
+        </member>
+        <member name="M:Stashbox.IResolutionScope.ResetRuntimetCircularDependencyBarrier(System.Int32)">
+            <summary>
+            Called by every node of the internal graph when the <see cref="P:Stashbox.Configuration.ContainerConfiguration.RuntimeCircularDependencyTrackingEnabled"/> is true.
+            Resets the runtime circular dependency checks state for a node.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="T:Stashbox.IStashboxContainer">
+            <summary>
+            Represents a dependency injection container.
+            </summary>
+        </member>
+        <member name="M:Stashbox.IStashboxContainer.RegisterExtension(Stashbox.ContainerExtension.IContainerExtension)">
+            <summary>
+            Registers a <see cref="T:Stashbox.ContainerExtension.IContainerExtension"/> into the container.
+            </summary>
+            <param name="containerExtension">The container extension.</param>
+        </member>
+        <member name="M:Stashbox.IStashboxContainer.RegisterResolver(Stashbox.Resolution.IResolver)">
+            <summary>
+            Registers an <see cref="T:Stashbox.Resolution.IResolver"/> into the container.
+            </summary>
+            <param name="resolver">The resolver.</param>
+        </member>
+        <member name="M:Stashbox.IStashboxContainer.CreateChildContainer">
+            <summary>
+            Creates a child container.
+            </summary>
+        </member>
+        <member name="P:Stashbox.IStashboxContainer.ParentContainer">
+            <summary>
+            Stores the parent container object if has any, otherwise null.
+            </summary>
+        </member>
+        <member name="P:Stashbox.IStashboxContainer.ContainerContext">
+            <summary>
+            Stores the container context.
+            </summary>
+        </member>
+        <member name="P:Stashbox.IStashboxContainer.RootScope">
+            <summary>
+            The root scope.
+            </summary>
+        </member>
+        <member name="P:Stashbox.IStashboxContainer.ServiceRegistrator">
+            <summary>
+            The service registrator.
+            </summary>
+        </member>
+        <member name="M:Stashbox.IStashboxContainer.CanResolve``1(System.Object)">
+            <summary>
+            Checks a type can be resolved by the container.
+            </summary>
+            <typeparam name="TFrom">The service type.</typeparam>
+            <param name="name">The registration name.</param>
+            <returns>True if the service can be resolved, otherwise false.</returns>
+        </member>
+        <member name="M:Stashbox.IStashboxContainer.CanResolve(System.Type,System.Object)">
+            <summary>
+            Checks a type can be resolved by the container.
+            </summary>
+            <param name="typeFrom">The service type.</param>
+            <param name="name">The registration name.</param>
+            <returns>True if the service can be resolved, otherwise false.</returns>
+        </member>
+        <member name="M:Stashbox.IStashboxContainer.IsRegistered``1(System.Object)">
+            <summary>
+            Checks a type is registered in the container.
+            </summary>
+            <typeparam name="TFrom">The service type.</typeparam>
+            <param name="name">The registration name.</param>
+            <returns>True if the service is registered, otherwise false.</returns>
+        </member>
+        <member name="M:Stashbox.IStashboxContainer.IsRegistered(System.Type,System.Object)">
+            <summary>
+            Checks a type is registered in the container.
+            </summary>
+            <param name="typeFrom">The service type.</param>
+            <param name="name">The registration name.</param>
+            <returns>True if the service is registered, otherwise false.</returns>
+        </member>
+        <member name="M:Stashbox.IStashboxContainer.Configure(System.Action{Stashbox.IContainerConfigurator})">
+            <summary>
+            Configures the container.
+            </summary>
+            <param name="config">The action delegate which will configure the container.</param>
+        </member>
+        <member name="M:Stashbox.IStashboxContainer.Validate">
+            <summary>
+            Validates the current state of the container.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Lifetime.ILifetime">
+            <summary>
+            Represents a lifetime.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Lifetime.ILifetime.GetExpression(Stashbox.IContainerContext,Stashbox.Registration.IServiceRegistration,Stashbox.BuildUp.IObjectBuilder,Stashbox.Resolution.ResolutionContext,System.Type)">
+            <summary>
+            Gets the expression for getting the instance managed by the <see cref="T:Stashbox.Lifetime.ILifetime"/>
+            </summary>
+            <param name="containerContext">The container context.</param>
+            <param name="serviceRegistration">The service registration.</param>
+            <param name="objectBuilder">An <see cref="T:Stashbox.BuildUp.IObjectBuilder"/> implementation.</param>
+            <param name="resolutionContext">The info about the actual resolution.</param>
+            <param name="resolveType">The requested type.</param>
+            <returns>The lifetime managed object.</returns>
+        </member>
+        <member name="M:Stashbox.Lifetime.ILifetime.Create">
+            <summary>
+            Creates a new instance of this type.
+            </summary>
+            <returns>The new life time manager instance.</returns>
+        </member>
+        <member name="T:Stashbox.Lifetime.LifetimeBase">
+            <summary>
+            Represents a lifetime manager.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Lifetime.LifetimeBase.GetExpression(Stashbox.IContainerContext,Stashbox.Registration.IServiceRegistration,Stashbox.BuildUp.IObjectBuilder,Stashbox.Resolution.ResolutionContext,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Lifetime.LifetimeBase.Create">
+            <inheritdoc />
+        </member>
+        <member name="T:Stashbox.Lifetime.NamedScopeLifetime">
+            <summary>
+            Represents a named scope lifetime.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Lifetime.NamedScopeLifetime.#ctor(System.Object)">
+            <summary>
+            Constructs a <see cref="T:Stashbox.Lifetime.NamedScopeLifetime"/>.
+            </summary>
+            <param name="scopeName">The scope name.</param>
+        </member>
+        <member name="P:Stashbox.Lifetime.NamedScopeLifetime.ScopeName">
+            <summary>
+            The name of the scoped lifetime.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Lifetime.NamedScopeLifetime.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Lifetime.NamedScopeLifetime.GetExpression(Stashbox.IContainerContext,Stashbox.Registration.IServiceRegistration,Stashbox.BuildUp.IObjectBuilder,Stashbox.Resolution.ResolutionContext,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="T:Stashbox.Lifetime.ResolutionRequestLifetime">
+            <summary>
+            Represents a per resolution request lifetime.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Lifetime.ResolutionRequestLifetime.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Lifetime.ResolutionRequestLifetime.GetExpression(Stashbox.IContainerContext,Stashbox.Registration.IServiceRegistration,Stashbox.BuildUp.IObjectBuilder,Stashbox.Resolution.ResolutionContext,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="T:Stashbox.Lifetime.ScopedLifetime">
+            <summary>
+            Represents a scoped lifetime.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Lifetime.ScopedLifetime.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Lifetime.ScopedLifetime.GetExpression(Stashbox.IContainerContext,Stashbox.Registration.IServiceRegistration,Stashbox.BuildUp.IObjectBuilder,Stashbox.Resolution.ResolutionContext,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="T:Stashbox.Lifetime.ScopedLifetimeBase">
+            <summary>
+            Represents a shared base class for scoped lifetimes.
+            </summary>
+        </member>
+        <member name="F:Stashbox.Lifetime.ScopedLifetimeBase.ScopeId">
+            <summary>
+            The id of the scope.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Lifetime.ScopedLifetimeBase.GetFactoryDelegate(Stashbox.IContainerContext,Stashbox.Registration.IServiceRegistration,Stashbox.BuildUp.IObjectBuilder,Stashbox.Resolution.ResolutionContext,System.Type)">
+            <summary>
+            Produces a cached factory delegate to create scoped instances.
+            </summary>
+            <param name="containerContext">The container context.</param>
+            <param name="serviceRegistration">The service registration.</param>
+            <param name="objectBuilder">The object builder.</param>
+            <param name="resolutionContext">The resolution context.</param>
+            <param name="resolveType">The resolve type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Stashbox.Lifetime.ScopedLifetimeBase.StoreExpressionIntoLocalVariable(System.Linq.Expressions.Expression,Stashbox.Resolution.ResolutionContext,System.Type)">
+            <summary>
+            Stores the given expression in a local variable and saves it into the resolution context for further reuse.
+            </summary>
+            <param name="expression">The expression to store.</param>
+            <param name="resolutionContext">The resolution context.</param>
+            <param name="resolveType">The resolve type.</param>
+            <returns>The local variable.</returns>
+        </member>
+        <member name="T:Stashbox.Lifetime.SingletonLifetime">
+            <summary>
+            Represents a singleton lifetime manager.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Lifetime.SingletonLifetime.GetExpression(Stashbox.IContainerContext,Stashbox.Registration.IServiceRegistration,Stashbox.BuildUp.IObjectBuilder,Stashbox.Resolution.ResolutionContext,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Lifetime.SingletonLifetime.Create">
+            <inheritdoc />
+        </member>
+        <member name="T:Stashbox.MetaInfo.MetaInformation">
+            <summary>
+            Holds meta information about a service.
+            </summary>
+        </member>
+        <member name="P:Stashbox.MetaInfo.MetaInformation.Constructors">
+            <summary>
+            Holds the constructors of the service.
+            </summary>
+        </member>
+        <member name="P:Stashbox.MetaInfo.MetaInformation.InjectionMethods">
+            <summary>
+            Holds the injection methods of the service.
+            </summary>
+        </member>
+        <member name="P:Stashbox.MetaInfo.MetaInformation.InjectionMembers">
+            <summary>
+            Holds the injection member of the service.
+            </summary>
+        </member>
+        <member name="P:Stashbox.MetaInfo.MetaInformation.GenericTypeConstraints">
+            <summary>
+            Holds the generic type constraints of the service.
+            </summary>
+        </member>
+        <member name="M:Stashbox.MetaInfo.MetaInformation.ValidateGenericContraints(System.Type)">
+            <summary>
+            Validates a type against the generic constraints of the service.
+            </summary>
+            <param name="typeForValidation">The validated type.</param>
+            <returns>True if the given type is valid, otherwise false.</returns>
+        </member>
+        <member name="M:Stashbox.MetaInfo.MetaInformation.GetTypeInformationForParameter(System.Reflection.ParameterInfo)">
+            <summary>
+            Converts a <see cref="T:System.Reflection.ParameterInfo"/> to <see cref="T:Stashbox.Entity.TypeInformation"/>.
+            </summary>
+            <param name="parameter">The parameter info.</param>
+            <returns>The converted type info.</returns>
+        </member>
+        <member name="T:Stashbox.Registration.DecoratorRepository">
+            <summary>
+            Represents a decorator repository.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.DecoratorRepository.#ctor">
+            <summary>
+            Constructs a <see cref="T:Stashbox.Registration.DecoratorRepository"/>.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.DecoratorRepository.AddDecorator(System.Type,Stashbox.Registration.IServiceRegistration,System.Boolean,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Registration.DecoratorRepository.GetDecoratorsOrDefault(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="T:Stashbox.Registration.IBaseFluentRegistrator`1">
+            <summary>
+            Represents a fluent registrator base.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IBaseFluentRegistrator`1.ServiceType">
+            <summary>
+            The service type.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IBaseFluentRegistrator`1.ImplementationType">
+            <summary>
+            The implementation type.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.IBaseFluentRegistrator`1.WithInjectionParameters(Stashbox.Entity.InjectionParameter[])">
+            <summary>
+            Sets injection parameters for the registration.
+            </summary>
+            <param name="injectionParameters">The injection parameters.</param>
+            <returns>The fluent registrator.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IBaseFluentRegistrator`1.WithAutoMemberInjection(Stashbox.Configuration.Rules.AutoMemberInjectionRules)">
+            <summary>
+            Enables auto member injection on the registration.
+            </summary>
+            <param name="rule">The auto member injection rule.</param>
+            <returns>The fluent registrator.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IBaseFluentRegistrator`1.WithConstructorSelectionRule(System.Func{System.Collections.Generic.IEnumerable{Stashbox.Entity.ConstructorInformation},System.Collections.Generic.IEnumerable{Stashbox.Entity.ConstructorInformation}})">
+            <summary>
+            The constructor selection rule.
+            </summary>
+            <param name="rule">The constructor selection rule.</param>
+            <returns>The fluent registrator.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IBaseFluentRegistrator`1.WithConstructorByArgumentTypes(System.Type[])">
+            <summary>
+            Sets the selected constructor.
+            </summary>
+            <param name="argumentTypes">The constructor argument types.</param>
+            <returns>The fluent registrator.</returns>
+            <exception cref="T:Stashbox.Exceptions.ConstructorNotFoundException" />
+        </member>
+        <member name="M:Stashbox.Registration.IBaseFluentRegistrator`1.WithConstructorByArguments(System.Object[])">
+            <summary>
+            Sets the selected constructor.
+            </summary>
+            <param name="arguments">The constructor arguments.</param>
+            <returns>The fluent registrator.</returns>
+            <exception cref="T:Stashbox.Exceptions.ConstructorNotFoundException" />
+        </member>
+        <member name="M:Stashbox.Registration.IBaseFluentRegistrator`1.InjectMember(System.String,System.Object)">
+            <summary>
+            Set a member (property / field) with the given name as a dependency should be filled by the container.
+            </summary>
+            <param name="memberName">The name of the member.</param>
+            <param name="dependencyName">The name of the dependency.</param>
+            <returns>The fluent registrator.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IBaseFluentRegistrator`1.WithoutDisposalTracking">
+            <summary>
+            Tells the container that it shouldn't track the resolved transient object for disposal.
+            </summary>
+            <returns>The fluent registrator.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IBaseFluentRegistrator`1.ReplaceExisting">
+            <summary>
+            Tells the container that it should replace an existing registration with this one.
+            </summary>
+            <returns>The fluent registrator.</returns>
+        </member>
+        <member name="T:Stashbox.Registration.IDecoratorRegistrationContext">
+            <summary>
+            Represents a decorator registration context.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.IDecoratorRegistrationContext.Register">
+            <summary>
+            Registers the registration into the container.
+            </summary>
+            <returns>The container.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IDecoratorRegistrationContext.ReMap">
+            <summary>
+            Replaces an already registered service.
+            </summary>
+            <returns>The container.</returns>
+        </member>
+        <member name="T:Stashbox.Registration.IDecoratorRepository">
+            <summary>
+            Represents a decorator registration repository.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.IDecoratorRepository.AddDecorator(System.Type,Stashbox.Registration.IServiceRegistration,System.Boolean,System.Boolean)">
+            <summary>
+            Adds a decorator to the repository.
+            </summary>
+            <param name="type">The decorated type.</param>
+            <param name="serviceRegistration">The decorator registration.</param>
+            <param name="remap">If true, all the registrations mapped to a service type will be replaced.</param>
+            <param name="replace">True if an existing decorator registration should be replaced.</param>
+        </member>
+        <member name="M:Stashbox.Registration.IDecoratorRepository.GetDecoratorsOrDefault(System.Type)">
+            <summary>
+            Gets a decorator registration.
+            </summary>
+            <param name="type">The decorated type.</param>
+            <returns>The decorator registrations if any exists, otherwise null.</returns>
+        </member>
+        <member name="T:Stashbox.Registration.IFluentDecoratorRegistrator">
+            <summary>
+            Represents a fluent decorator registrator.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Registration.IFluentServiceRegistrator`1">
+            <summary>
+            Represents a generic fluent service registrator.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator`1.WithFinalizer(System.Action{`0})">
+            <summary>
+            Sets a delegate which will be called when the container is being disposed.
+            </summary>
+            <param name="finalizer">The cleanup delegate.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator`1"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator`1.WithInitializer(System.Action{`0,Stashbox.IDependencyResolver})">
+            <summary>
+            Sets a delegate which will be called when the service is being constructed.
+            </summary>
+            <param name="initializer">The initializer delegate.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator`1"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator`1.InjectMember``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Object)">
+            <summary>
+            Set a member (property / field) as a dependency should be filled by the container.
+            </summary>
+            <param name="expression">The member expression.</param>
+            <param name="dependencyName">The name of the dependency.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator`1"/> which on this method was called.</returns>
+        </member>
+        <member name="T:Stashbox.Registration.IFluentServiceRegistrator">
+            <summary>
+            Represents a fluent service registrator.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.WithLifetime(Stashbox.Lifetime.ILifetime)">
+            <summary>
+            Sets the lifetime of the registration.
+            </summary>
+            <param name="lifetime">An <see cref="T:Stashbox.Lifetime.ILifetime"/> implementation.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.WithScopedLifetime">
+            <summary>
+            Sets a scoped lifetime for the registration.
+            </summary>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.WithSingletonLifetime">
+            <summary>
+            Sets a singleton lifetime for the registration.
+            </summary>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.WithName(System.Object)">
+            <summary>
+            Sets the name of the registration.
+            </summary>
+            <param name="name">The name of the registration.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.WithFactory(System.Func{System.Object})">
+            <summary>
+            Sets a parameterless factory delegate for the registration.
+            </summary>
+            <param name="singleFactory">The factory delegate.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.WithFactory(System.Func{Stashbox.IDependencyResolver,System.Object})">
+            <summary>
+            Sets a container factory delegate for the registration.
+            </summary>
+            <param name="containerFactory">The container factory delegate.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.WithInstance(System.Object,System.Boolean)">
+            <summary>
+            Sets an instance as the resolution target of the registration.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="wireUp">If true, the instance will be wired into the container, it will perform member and method injection on it.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.WhenDependantIs``1">
+            <summary>
+            Sets a dependant target condition for the registration.
+            </summary>
+            <typeparam name="TTarget">The type of the dependant.</typeparam>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.WhenDependantIs(System.Type)">
+            <summary>
+            Sets a dependant target condition for the registration.
+            </summary>
+            <param name="targetType">The type of the dependant.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.WhenHas``1">
+            <summary>
+            Sets an attribute condition for the registration.
+            </summary>
+            <typeparam name="TAttribute">The type of the attribute.</typeparam>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.WhenHas(System.Type)">
+            <summary>
+            Sets an attribute condition for the registration.
+            </summary>
+            <param name="attributeType">The type of the attribute.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.When(System.Func{Stashbox.Entity.TypeInformation,System.Boolean})">
+            <summary>
+            Sets a generic condition for the registration.
+            </summary>
+            <param name="resolutionCondition">The predicate.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.AsImplementedTypes">
+            <summary>
+            Registers the given service by all of it's implemented types.
+            </summary>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.InNamedScope(System.Object)">
+            <summary>
+            Sets a scope name condition for the registration, it will be used only when a scope with the given name requests it.
+            </summary>
+            <param name="scopeName">The name of the scope.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.DefinesScope(System.Object)">
+            <summary>
+            It means this registration would be used as a logical scope for it's dependencies, the dependencies registered with the <see cref="M:Stashbox.Registration.IFluentServiceRegistrator.InNamedScope(System.Object)"/> and with the same name as it's param will be preffered during reolution.
+            </summary>
+            <param name="scopeName">The name of the scope.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IFluentServiceRegistrator.WithPerResolutionRequestLifetime">
+            <summary>
+            Sets the lifetime to <see cref="T:Stashbox.Lifetime.ResolutionRequestLifetime"/>. The container will inject this registration in a singleton per resolution request manner.
+            </summary>
+            <returns>The <see cref="T:Stashbox.Registration.IFluentServiceRegistrator"/> which on this method was called.</returns>
+        </member>
+        <member name="T:Stashbox.Registration.IRegistrationContext`1">
+            <summary>
+            Represents a registration context. Allows a fluent registration configuration.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Registration.IRegistrationContext">
+            <summary>
+            Represents a registration context. Allows a fluent registration configuration.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.IRegistrationContext.CreateServiceRegistration(System.Boolean)">
+            <summary>
+            Creates an <see cref="T:Stashbox.Registration.IServiceRegistration"/>.
+            </summary>
+            <param name="isDecorator">True if the requested registration is a decorator.</param>
+            <returns>The created <see cref="T:Stashbox.Registration.IServiceRegistration"/>.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IRegistrationContext.Register">
+            <summary>
+            Registers the registration into the container.
+            </summary>
+            <returns>The container.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IRegistrationContext.ReMap">
+            <summary>
+            Replaces an already registered service.
+            </summary>
+            <returns>The container.</returns>
+        </member>
+        <member name="T:Stashbox.Registration.IRegistrationContextMeta">
+            <summary>
+            Represents meta information of a service registration.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IRegistrationContextMeta.ServiceType">
+            <summary>
+            The service type.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IRegistrationContextMeta.ImplementationType">
+            <summary>
+            The implementation type.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IRegistrationContextMeta.Context">
+            <summary>
+            The registration context.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Registration.IRegistrationRepository">
+            <summary>
+            Represents a registration repository.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.IRegistrationRepository.AddOrUpdateRegistration(Stashbox.Registration.IServiceRegistration,System.Boolean,System.Boolean)">
+            <summary>
+            Adds or updates an element in the repository.
+            </summary>
+            <param name="remap">If true, all the registrations mapped to a service type will be replaced.</param>
+            <param name="replace">If true, only one existing registration will be replaced when multiple exists.</param>
+            <param name="registration">The registration.</param>
+        </member>
+        <member name="M:Stashbox.Registration.IRegistrationRepository.GetRegistrationOrDefault(System.Type,Stashbox.Resolution.ResolutionContext,System.Object)">
+            <summary>
+            Retrieves a registration.
+            </summary>
+            <param name="type">The requested type.</param>
+            <param name="resolutionContext">The resolution context.</param>
+            <param name="name">The requested name.</param>
+            <returns>The registration or null, if it doesn't exist.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IRegistrationRepository.GetRegistrationOrDefault(Stashbox.Entity.TypeInformation,Stashbox.Resolution.ResolutionContext)">
+            <summary>
+            Retrieves a registration.
+            </summary>
+            <param name="typeInfo">The type info.</param>
+            <param name="resolutionContext">The resolution context.</param>
+            <returns>The registration or null, if it doesn't exist.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IRegistrationRepository.GetRegistrationsOrDefault(System.Type,Stashbox.Resolution.ResolutionContext)">
+            <summary>
+            Retrieves all registrations for a type.
+            </summary>
+            <param name="type">The requested type.</param>
+            <param name="resolutionContext">The resolution context.</param>
+            <returns>The registrations or null, if it doesn't exist.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IRegistrationRepository.GetAllRegistrations">
+            <summary>
+            Retrieves all registrations.
+            </summary>
+            <returns>The registrations.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IRegistrationRepository.ContainsRegistration(System.Type,System.Object)">
+            <summary>
+            Check a type exists with conditions.
+            </summary>
+            <param name="type">The requested type.</param>
+            <param name="name">The requested name.</param>
+            <returns>True if the registration found, otherwise false.</returns>
+        </member>
+        <member name="T:Stashbox.Registration.IServiceRegistration">
+            <summary>
+            Represents a service registration.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IServiceRegistration.ServiceType">
+            <summary>
+            The service type.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IServiceRegistration.ImplementationType">
+            <summary>
+            The implementation type.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IServiceRegistration.MetaInformation">
+            <summary>
+            The meta info.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IServiceRegistration.RegistrationContext">
+            <summary>
+            The registration context.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IServiceRegistration.RegistrationNumber">
+            <summary>
+            The registration number.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IServiceRegistration.RegistrationId">
+            <summary>
+            The registration id.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IServiceRegistration.HasCondition">
+            <summary>
+            True if the registration contains any condition, otherwise false.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IServiceRegistration.IsDecorator">
+            <summary>
+            True if the registration is a decorator.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IServiceRegistration.HasScopeName">
+            <summary>
+            True if the registration is restricted to a named scope.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IServiceRegistration.ShouldHandleDisposal">
+            <summary>
+            True if the registration contains a disposable service which should be tracked.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.IServiceRegistration.HasName">
+            <summary>
+            True if the registration has a name set.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.IServiceRegistration.GetExpression(Stashbox.IContainerContext,Stashbox.Resolution.ResolutionContext,System.Type)">
+            <summary>
+            Creates an expression for creating the resolved instance.
+            </summary>
+            <param name="containerContext">The container context.</param>
+            <param name="resolutionContext">The info about the current resolution.</param>
+            <param name="resolveType">The requested type.</param>
+            <returns>The expression.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IServiceRegistration.IsUsableForCurrentContext(Stashbox.Entity.TypeInformation)">
+            <summary>
+            Checks whether the registration can be used for a current resolution.
+            </summary>
+            <param name="typeInfo">The type information.</param>
+            <returns>True if the registration can be used for the current resolution, otherwise false.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IServiceRegistration.ValidateGenericContraints(System.Type)">
+            <summary>
+            Validates that the given type's generic argument fullfills the generic constraint or not 
+            </summary>
+            <param name="type">The type information.</param>
+            <returns>True if the argument is valid.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IServiceRegistration.CanInjectMember(Stashbox.Entity.MemberInformation)">
+            <summary>
+            Checks that the registration can inject the given member.
+            </summary>
+            <param name="member">The member info to inject.</param>
+            <returns>True if the member could be injected, otherwise false.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IServiceRegistration.CanInjectIntoNamedScope(System.Collections.Generic.ISet{System.Object})">
+            <summary>
+            Checks that the registration can be injected into a named scope.
+            </summary>
+            <param name="scopeNames">The scope names.</param>
+            <returns>True if the registration could be injected into a named scope, otherwise false.</returns>
+        </member>
+        <member name="T:Stashbox.Registration.IServiceRegistrator">
+            <summary>
+            Represents a service registrator.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.IServiceRegistrator.PrepareContext(System.Type,System.Type)">
+            <summary>
+            Creates an <see cref="T:Stashbox.Registration.IRegistrationContext"/>.
+            </summary>
+            <param name="serviceType">The service type.</param>
+            <param name="implementationType">The implementation type.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IRegistrationContext"/>.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IServiceRegistrator.PrepareContext``1(System.Type,System.Type)">
+            <summary>
+            Creates an <see cref="T:Stashbox.Registration.IRegistrationContext"/>.
+            </summary>
+            <param name="serviceType">The service type.</param>
+            <param name="implementationType">The implementation type.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IRegistrationContext"/>.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IServiceRegistrator.PrepareContext(System.Type,System.Type,Stashbox.Registration.RegistrationContextData)">
+            <summary>
+            Creates an <see cref="T:Stashbox.Registration.IRegistrationContext"/>.
+            </summary>
+            <param name="serviceType">The service type.</param>
+            <param name="implementationType">The implementation type.</param>
+            <param name="registrationContextData">Existing registration context data.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IRegistrationContext"/>.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IServiceRegistrator.PrepareDecoratorContext(System.Type,System.Type)">
+            <summary>
+            Creates an <see cref="T:Stashbox.Registration.IDecoratorRegistrationContext"/>.
+            </summary>
+            <param name="serviceType">The service type.</param>
+            <param name="implementationType">The implementation type.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IDecoratorRegistrationContext"/>.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IServiceRegistrator.Register(Stashbox.Registration.IRegistrationContextMeta,System.Boolean,System.Boolean)">
+            <summary>
+            Registers an <see cref="T:Stashbox.Registration.IRegistrationContext"/>.
+            </summary>
+            <param name="registrationContextMeta">The registration context meta.</param>
+            <param name="isDecorator">True if the requested registration is a decorator.</param>
+            <param name="replace">True if the container should replace an existing registration.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/>.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IServiceRegistrator.ReMap(Stashbox.Registration.IRegistrationContextMeta,System.Boolean)">
+            <summary>
+            Remaps an <see cref="T:Stashbox.Registration.IRegistrationContext"/>.
+            </summary>
+            <param name="registrationContextMeta">The registration context meta.</param>
+            <param name="isDecorator">True if the requested registration is a decorator.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/>.</returns>
+        </member>
+        <member name="M:Stashbox.Registration.IServiceRegistrator.CreateServiceRegistration(Stashbox.Registration.IRegistrationContextMeta,System.Boolean)">
+            <summary>
+            Creates a service registration.
+            </summary>
+            <param name="registrationContextMeta">The registration context meta.</param>
+            <param name="isDecorator">True if the requested registration is a decorator.</param>
+            <returns>The <see cref="T:Stashbox.Registration.IServiceRegistration"/>.</returns>
+        </member>
+        <member name="T:Stashbox.Registration.RegistrationContextData">
+            <summary>
+            Represents the state of a scoped registration.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.RegistrationContextData.New">
+            <summary>
+            Empty registration data.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.Name">
+            <summary>
+            Name of the registration.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.ContainerFactory">
+            <summary>
+            Container factory of the registration.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.SingleFactory">
+            <summary>
+            Parameterless factory of the registration.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.InjectionParameters">
+            <summary>
+            Injection parameters of the registration.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.SelectedConstructor">
+            <summary>
+            The selected constructor if any was set.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.ConstructorArguments">
+            <summary>
+            The arguments of the selected constructor if any was set.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.Lifetime">
+            <summary>
+            Lifetime of the registration.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.TargetTypeCondition">
+            <summary>
+            Target type condition of the registration.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.ResolutionCondition">
+            <summary>
+            Resolution condition of the registration.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.AttributeConditions">
+            <summary>
+            Attribute condition collection of the registration.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.InjectionMemberNames">
+            <summary>
+            Member names which are explicitly set to be filled by the container.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.ExistingInstance">
+            <summary>
+            The already stored instance which was provided by instance or wireup registration.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.Finalizer">
+            <summary>
+            The cleanup delegate.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.Initializer">
+            <summary>
+            The initializer delegate.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.AutoMemberInjectionRule">
+            <summary>
+            The auto memeber injection rule for the registration.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.AutoMemberInjectionEnabled">
+            <summary>
+            True if auto member injection is enabled on this instance.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.IsLifetimeExternallyOwned">
+            <summary>
+            True if the lifetime of the service is owned externally.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.FuncDelegate">
+            <summary>
+            Holds the func delegate, if the registration is a factory.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.DefinedScopeName">
+            <summary>
+            The name of the scope this registration defines.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.IsWireUp">
+            <summary>
+            If true, the existing instance will be wired into the container, it will perform member and method injection on it.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.RegistrationContextData.ConstructorSelectionRule">
+            <summary>
+            The constructor selection rule.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.RegistrationContextData.#ctor">
+            <summary>
+            Constructs a <see cref="T:Stashbox.Registration.RegistrationContextData"/>
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.RegistrationContextData.CreateCopy">
+            <summary>
+            Creates a copy of this object.
+            </summary>
+            <returns>The copy of this instance.</returns>
+        </member>
+        <member name="T:Stashbox.Registration.ServiceRegistration">
+            <summary>
+            Represents a service registration.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Registration.ServiceRegistration.MetaInformation">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.Registration.ServiceRegistration.ServiceType">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.Registration.ServiceRegistration.ImplementationType">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.Registration.ServiceRegistration.RegistrationContext">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.Registration.ServiceRegistration.IsDecorator">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.Registration.ServiceRegistration.ShouldHandleDisposal">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.Registration.ServiceRegistration.RegistrationNumber">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.Registration.ServiceRegistration.RegistrationId">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.Registration.ServiceRegistration.HasName">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.Registration.ServiceRegistration.HasScopeName">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.Registration.ServiceRegistration.HasCondition">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Registration.ServiceRegistration.IsUsableForCurrentContext(Stashbox.Entity.TypeInformation)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Registration.ServiceRegistration.ValidateGenericContraints(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Registration.ServiceRegistration.GetExpression(Stashbox.IContainerContext,Stashbox.Resolution.ResolutionContext,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Registration.ServiceRegistration.CanInjectMember(Stashbox.Entity.MemberInformation)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Registration.ServiceRegistration.CanInjectIntoNamedScope(System.Collections.Generic.ISet{System.Object})">
+            <inheritdoc />
+        </member>
+        <member name="T:Stashbox.Registration.ServiceRegistrator">
+            <summary>
+            Represents a service registrator.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Registration.ServiceRegistrator.PrepareContext(System.Type,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Registration.ServiceRegistrator.PrepareContext``1(System.Type,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Registration.ServiceRegistrator.PrepareContext(System.Type,System.Type,Stashbox.Registration.RegistrationContextData)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Registration.ServiceRegistrator.PrepareDecoratorContext(System.Type,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Registration.ServiceRegistrator.Register(Stashbox.Registration.IRegistrationContextMeta,System.Boolean,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Registration.ServiceRegistrator.ReMap(Stashbox.Registration.IRegistrationContextMeta,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.Registration.ServiceRegistrator.CreateServiceRegistration(Stashbox.Registration.IRegistrationContextMeta,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Stashbox.CollectionRegistratorExtensions">
+            <summary>
+            Represents the extension methods of <see cref="T:Stashbox.IDependencyCollectionRegistrator"/>.
+            </summary>
+        </member>
+        <member name="M:Stashbox.CollectionRegistratorExtensions.RegisterTypesAs``1(Stashbox.IDependencyCollectionRegistrator,System.Collections.Generic.IEnumerable{System.Type},System.Func{System.Type,System.Boolean},System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <summary>
+            Registers types into the container mapped to an interface type.
+            </summary>
+            <typeparam name="TFrom">The interface type.</typeparam>
+            <param name="registrator">The registrator.</param>
+            <param name="types">Types to register.</param>
+            <param name="selector">The type selector.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.CollectionRegistratorExtensions.RegisterTypesAs``1(Stashbox.IDependencyCollectionRegistrator,System.Reflection.Assembly,System.Func{System.Type,System.Boolean},System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <summary>
+            Registers types into the container mapped to an interface type.
+            </summary>
+            <typeparam name="TFrom">The interface type.</typeparam>
+            <param name="registrator">The registrator.</param>
+            <param name="assembly">Assembly to register.</param>
+            <param name="selector">The type selector.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.CollectionRegistratorExtensions.RegisterTypesAs(Stashbox.IDependencyCollectionRegistrator,System.Type,System.Reflection.Assembly,System.Func{System.Type,System.Boolean},System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <summary>
+            Registers types into the container mapped to an interface type.
+            </summary>
+            <param name="typeFrom">The interface type.</param>
+            <param name="registrator">The registrator.</param>
+            <param name="assembly">Assembly to register.</param>
+            <param name="selector">The type selector.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.CollectionRegistratorExtensions.RegisterAssembly(Stashbox.IDependencyCollectionRegistrator,System.Reflection.Assembly,System.Func{System.Type,System.Boolean},System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <summary>
+            Registers the publicly visible types from an assembly into the container.
+            </summary>
+            <param name="registrator">The registrator.</param>
+            <param name="assembly">The assembly holding the types to register.</param>
+            <param name="selector">The type selector.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.CollectionRegistratorExtensions.RegisterAssemblies(Stashbox.IDependencyCollectionRegistrator,System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.Func{System.Type,System.Boolean},System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <summary>
+            Registers the publicly visible types from an assembly collection into the container.
+            </summary>
+            <param name="registrator">The registrator.</param>
+            <param name="assemblies">The assemblies holding the types to register.</param>
+            <param name="selector">The type selector.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.CollectionRegistratorExtensions.RegisterAssemblyContaining``1(Stashbox.IDependencyCollectionRegistrator,System.Func{System.Type,System.Boolean},System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <summary>
+            Registers the publicly visible types from an assembly which contains a given type into the container.
+            </summary>
+            <typeparam name="TFrom">The type the assembly contains.</typeparam>
+            <param name="registrator">The registrator.</param>
+            <param name="selector">The type selector.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.CollectionRegistratorExtensions.RegisterAssemblyContaining(Stashbox.IDependencyCollectionRegistrator,System.Type,System.Func{System.Type,System.Boolean},System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <summary>
+            Registers the publicly visible types from an assembly which contains a given type into the container.
+            </summary>
+            <param name="registrator">The registrator.</param>
+            <param name="typeFrom">The type the assembly contains.</param>
+            <param name="selector">The type selector.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.CollectionRegistratorExtensions.ComposeAssemblies(Stashbox.IDependencyCollectionRegistrator,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Searches the given assemblies for <see cref="T:Stashbox.ICompositionRoot"/> implementations and invokes their <see cref="M:Stashbox.ICompositionRoot.Compose(Stashbox.IStashboxContainer)"/> method.
+            </summary>
+            <param name="registrator">The registrator.</param>
+            <param name="assemblies">The assemblies to scan.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.CollectionRegistratorExtensions.ComposeBy``1(Stashbox.IDependencyCollectionRegistrator)">
+            <summary>
+            Composes services by calling the <see cref="M:Stashbox.ICompositionRoot.Compose(Stashbox.IStashboxContainer)"/> method of the given type parameter.
+            </summary>
+            <typeparam name="TCompositionRoot">The type of an <see cref="T:Stashbox.ICompositionRoot"/> implementation.</typeparam>
+            <param name="registrator">The registrator.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.CollectionRegistratorExtensions.ComposeAssembly(Stashbox.IDependencyCollectionRegistrator,System.Reflection.Assembly)">
+            <summary>
+            Searches the given assembly for <see cref="T:Stashbox.ICompositionRoot"/> implementations and invokes their <see cref="M:Stashbox.ICompositionRoot.Compose(Stashbox.IStashboxContainer)"/> method.
+            </summary>
+            <param name="registrator">The registrator.</param>
+            <param name="assembly">The assembly to scan.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="T:Stashbox.DecoratorRegistratorExtensions">
+            <summary>
+            Represents the extension methods of <see cref="T:Stashbox.IDecoratorRegistrator"/>.
+            </summary>
+        </member>
+        <member name="M:Stashbox.DecoratorRegistratorExtensions.RegisterDecorator``2(Stashbox.IDecoratorRegistrator,System.Action{Stashbox.Registration.IFluentDecoratorRegistrator})">
+            <summary>
+            Registers a decorator type into the container with custom configuration.
+            </summary>
+            <typeparam name="TFrom">Type that will be requested.</typeparam>
+            <typeparam name="TTo">Type that will be returned.</typeparam>
+            <param name="registrator">The decorator registrator.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.DecoratorRegistratorExtensions.RegisterDecorator``1(Stashbox.IDecoratorRegistrator,System.Type,System.Action{Stashbox.Registration.IFluentDecoratorRegistrator})">
+            <summary>
+            Registers a decorator type into the container with custom configuration.
+            </summary>
+            <typeparam name="TFrom">Type that will be requested.</typeparam>
+            <param name="registrator">The decorator registrator.</param>
+            <param name="typeTo">Type that will be returned.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="T:Stashbox.DependencyRegistratorExtensions">
+            <summary>
+            Represents the extension methods of <see cref="T:Stashbox.IDependencyRegistrator"/>.
+            </summary>
+        </member>
+        <member name="M:Stashbox.DependencyRegistratorExtensions.RegisterInstance(Stashbox.IDependencyRegistrator,System.Object,System.Object,System.Boolean)">
+            <summary>
+            Registers an already constructed instance into the container.
+            </summary>
+            <param name="registrator">The dependency registrator.</param>
+            <param name="instance">The constructed object.</param>
+            <param name="name">The name of the registration.</param>
+            <param name="withoutDisposalTracking">If it's set to true the container will exclude the instance from the disposal tracking.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyRegistratorExtensions.WireUp(Stashbox.IDependencyRegistrator,System.Object,System.Object,System.Boolean)">
+            <summary>
+            Registers an already constructed instance, but the container will perform injections and extensions on it.
+            </summary>
+            <param name="registrator">The dependency registrator.</param>
+            <param name="instance">The constructed object.</param>
+            <param name="name">The name of the registration.</param>
+            <param name="withoutDisposalTracking">If it's set to true the container will exclude the instance from the disposal tracking.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyRegistratorExtensions.RegisterSingleton``2(Stashbox.IDependencyRegistrator,System.Object)">
+            <summary>
+            Registers a type with singleton lifetime.
+            </summary>
+            <typeparam name="TFrom">Type that will be requested.</typeparam>
+            <typeparam name="TTo">Type that will be returned.</typeparam>
+            <param name="registrator">The dependency registrator.</param>
+            <param name="name">The name of the registration.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyRegistratorExtensions.RegisterSingleton``1(Stashbox.IDependencyRegistrator,System.Object)">
+            <summary>
+            Registers a type with singleton lifetime.
+            </summary>
+            <typeparam name="TTo">Type that will be returned.</typeparam>
+            <param name="registrator">The dependency registrator.</param>
+            <param name="name">The name of the registration.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyRegistratorExtensions.RegisterSingleton(Stashbox.IDependencyRegistrator,System.Type,System.Type,System.Object)">
+            <summary>
+            Registers a type with singleton lifetime.
+            </summary>
+            <param name="registrator">The dependency registrator.</param>
+            <param name="typeFrom">Type that will be requested.</param>
+            <param name="typeTo">Type that will be returned.</param>
+            <param name="name">The name of the registration.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyRegistratorExtensions.RegisterScoped``2(Stashbox.IDependencyRegistrator,System.Object)">
+            <summary>
+            Registers a type with scoped lifetime.
+            </summary>
+            <typeparam name="TFrom">Type that will be requested.</typeparam>
+            <typeparam name="TTo">Type that will be returned.</typeparam>
+            <param name="registrator">The dependency registrator.</param>
+            <param name="name">The name of the registration.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyRegistratorExtensions.RegisterScoped(Stashbox.IDependencyRegistrator,System.Type,System.Type,System.Object)">
+            <summary>
+            Registers a type with scoped lifetime.
+            </summary>
+            <param name="typeFrom">Type that will be requested.</param>
+            <param name="typeTo">Type that will be returned.</param>
+            <param name="registrator">The dependency registrator.</param>
+            <param name="name">The name of the registration.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyRegistratorExtensions.RegisterScoped``1(Stashbox.IDependencyRegistrator,System.Object)">
+            <summary>
+            Registers a type with scoped lifetime.
+            </summary>
+            <typeparam name="TTo">Type that will be returned.</typeparam>
+            <param name="registrator">The dependency registrator.</param>
+            <param name="name">The name of the registration.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="T:Stashbox.DependencyReMapperExtensions">
+            <summary>
+            Represents the extension methods of <see cref="T:Stashbox.IDependencyReMapper"/>.
+            </summary>
+        </member>
+        <member name="M:Stashbox.DependencyReMapperExtensions.ReMap(Stashbox.IDependencyReMapper,System.Type,System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <summary>
+            Replaces an existing registration mapping.
+            </summary>
+            <param name="reMapper">The remapper.</param>
+            <param name="typeTo">Type that will be returned.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyReMapperExtensions.ReMapDecorator``2(Stashbox.IDependencyReMapper,System.Action{Stashbox.Registration.IFluentDecoratorRegistrator})">
+            <summary>
+            Replaces an existing decorator mapping.
+            </summary>
+            <typeparam name="TFrom">Type that will be requested.</typeparam>
+            <typeparam name="TTo">Type that will be returned.</typeparam>
+            <param name="reMapper">The remapper.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyReMapperExtensions.ReMapDecorator``1(Stashbox.IDependencyReMapper,System.Type,System.Action{Stashbox.Registration.IFluentDecoratorRegistrator})">
+            <summary>
+            Replaces an existing decorator mapping.
+            </summary>
+            <typeparam name="TFrom">Type that will be requested.</typeparam>
+            <param name="reMapper">The remapper.</param>
+            <param name="typeTo">Type that will be returned.</param>
+            <param name="configurator">The configurator for the registered types.</param>
+            <returns>The <see cref="T:Stashbox.IStashboxContainer"/> which on this method was called.</returns>
+        </member>
+        <member name="P:Stashbox.ResolutionScope.HasScopedInstances">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.ResolutionScope.RootScope">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.ResolutionScope.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.ResolutionScope.ParentScope">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.ResolutionScope.BuildUp``1(``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.ResolutionScope.AddDisposableTracking``1(``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.ResolutionScope.AddScopedInstance(System.Type,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.ResolutionScope.GetScopedInstanceOrDefault(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.ResolutionScope.AddWithFinalizer``1(``0,System.Action{``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.ResolutionScope.GetOrAddScopedItem(System.Object,System.Func{Stashbox.IResolutionScope,System.Object})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.ResolutionScope.InvalidateDelegateCache">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.ResolutionScope.GetActiveScopeNames">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.ResolutionScope.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.ResolutionScope.Dispose(System.Boolean)">
+            <summary>
+            Disposes the scope.
+            </summary>
+            <param name="disposing">Indicates the scope is disposing or not.</param>
+        </member>
+        <member name="T:Stashbox.DependencyResolverExtensions">
+            <summary>
+            Represents the extensions of the <see cref="T:Stashbox.IDependencyResolver"/>.
+            </summary>
+        </member>
+        <member name="M:Stashbox.DependencyResolverExtensions.Resolve``1(Stashbox.IDependencyResolver,System.Boolean,System.Object[])">
+            <summary>
+            Resolves an instance from the container.
+            </summary>
+            <typeparam name="TKey">The type of the requested instance.</typeparam>
+            <param name="resolver">The dependency resolver.</param>
+            <param name="nullResultAllowed">If true, the container will return with null instead of throwing <see cref="T:Stashbox.Exceptions.ResolutionFailedException"/>.</param>
+            <param name="dependencyOverrides">A collection of objects which are used to override certain dependencies of the requested service.</param>
+            <returns>The resolved object.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyResolverExtensions.Resolve``1(Stashbox.IDependencyResolver,System.Object,System.Boolean,System.Object[])">
+            <summary>
+            Resolves an instance from the container.
+            </summary>
+            <typeparam name="TKey">The type of the requested instance.</typeparam>
+            <param name="resolver">The dependency resolver.</param>
+            <param name="name">The name of the requested registration.</param>
+            <param name="nullResultAllowed">If true, the container will return with null instead of throwing <see cref="T:Stashbox.Exceptions.ResolutionFailedException"/>.</param>
+            <param name="dependencyOverrides">A collection of objects which are used to override certain dependencies of the requested service.</param>
+            <returns>The resolved object.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyResolverExtensions.ResolveFactory``1(Stashbox.IDependencyResolver,System.Object,System.Boolean)">
+            <summary>
+            Returns a factory method which can be used to activate a type.
+            </summary>
+            <typeparam name="TService">The service type.</typeparam>
+            <param name="resolver">The dependency resolver.</param>
+            <param name="name">The name of the requested registration.</param>
+            <param name="nullResultAllowed">If true, the container will return with null instead of throwing <see cref="T:Stashbox.Exceptions.ResolutionFailedException"/>.</param>
+            <returns>The factory delegate.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyResolverExtensions.ResolveFactory``2(Stashbox.IDependencyResolver,System.Object,System.Boolean)">
+            <summary>
+            Returns a factory method which can be used to activate a type.
+            </summary>
+            <typeparam name="TService">The service type.</typeparam>
+            <typeparam name="T1">The first parameter of the factory.</typeparam>
+            <param name="resolver">The dependency resolver.</param>
+            <param name="name">The name of the requested registration.</param>
+            <param name="nullResultAllowed">If true, the container will return with null instead of throwing <see cref="T:Stashbox.Exceptions.ResolutionFailedException"/>.</param>
+            <returns>The factory delegate.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyResolverExtensions.ResolveFactory``3(Stashbox.IDependencyResolver,System.Object,System.Boolean)">
+            <summary>
+            Returns a factory method which can be used to activate a type.
+            </summary>
+            <typeparam name="TService">The service type.</typeparam>
+            <typeparam name="T1">The first parameter of the factory.</typeparam>
+            <typeparam name="T2">The second parameter of the factory.</typeparam>
+            <param name="resolver">The dependency resolver.</param>
+            <param name="name">The name of the requested registration.</param>
+            <param name="nullResultAllowed">If true, the container will return with null instead of throwing <see cref="T:Stashbox.Exceptions.ResolutionFailedException"/>.</param>
+            <returns>The factory delegate.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyResolverExtensions.ResolveFactory``4(Stashbox.IDependencyResolver,System.Object,System.Boolean)">
+            <summary>
+            Returns a factory method which can be used to activate a type.
+            </summary>
+            <typeparam name="TService">The service type.</typeparam>
+            <typeparam name="T1">The first parameter of the factory.</typeparam>
+            <typeparam name="T2">The second parameter of the factory.</typeparam>
+            <typeparam name="T3">The third parameter of the factory.</typeparam>
+            <param name="resolver">The dependency resolver.</param>
+            <param name="name">The name of the requested registration.</param>
+            <param name="nullResultAllowed">If true, the container will return with null instead of throwing <see cref="T:Stashbox.Exceptions.ResolutionFailedException"/>.</param>
+            <returns>The factory delegate.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyResolverExtensions.ResolveFactory``5(Stashbox.IDependencyResolver,System.Object,System.Boolean)">
+            <summary>
+            Returns a factory method which can be used to activate a type.
+            </summary>
+            <typeparam name="TService">The service type.</typeparam>
+            <typeparam name="T1">The first parameter of the factory.</typeparam>
+            <typeparam name="T2">The second parameter of the factory.</typeparam>
+            <typeparam name="T3">The third parameter of the factory.</typeparam>
+            <typeparam name="T4">The fourth parameter of the factory.</typeparam>
+            <param name="resolver">The dependency resolver.</param>
+            <param name="name">The name of the requested registration.</param>
+            <param name="nullResultAllowed">If true, the container will return with null instead of throwing <see cref="T:Stashbox.Exceptions.ResolutionFailedException"/>.</param>
+            <returns>The factory delegate.</returns>
+        </member>
+        <member name="M:Stashbox.DependencyResolverExtensions.PutInstanceInScope``1(Stashbox.IDependencyResolver,``0,System.Boolean)">
+            <summary>
+            Puts an instance into the scope which will be dropped when the scope is being disposed.
+            </summary>
+            <typeparam name="TFrom">The service type.</typeparam>
+            <param name="resolver">The dependency resolver.</param>
+            <param name="instance">The instance.</param>
+            <param name="withoutDisposalTracking">If it's set to true the container will exclude the instance from the disposal tracking.</param>
+            <returns>The scope.</returns>
+        </member>
+        <member name="T:Stashbox.Resolution.IResolutionStrategy">
+            <summary>
+            Represents a resolution strategy.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Resolution.IResolutionStrategy.BuildResolutionExpression(Stashbox.IContainerContext,Stashbox.Resolution.ResolutionContext,Stashbox.Entity.TypeInformation,Stashbox.Entity.InjectionParameter[])">
+            <summary>
+            Builds a resolution expression for a dependency.
+            </summary>
+            <param name="containerContext">The <see cref="T:Stashbox.IContainerContext"/> of the <see cref="T:Stashbox.StashboxContainer"/></param>
+            <param name="resolutionContext">The resolution info.</param>
+            <param name="typeInformation">The type info of the requested service.</param>
+            <param name="injectionParameters">The injection parameters.</param>
+            <returns>The created resolution target.</returns>
+        </member>
+        <member name="M:Stashbox.Resolution.IResolutionStrategy.BuildResolutionExpressions(Stashbox.IContainerContext,Stashbox.Resolution.ResolutionContext,Stashbox.Entity.TypeInformation)">
+            <summary>
+            Builds resolution expressions for an enumerable dependency.
+            </summary>
+            <param name="containerContext">The <see cref="T:Stashbox.IContainerContext"/> of the <see cref="T:Stashbox.StashboxContainer"/></param>
+            <param name="resolutionContext">The resolution info.</param>
+            <param name="typeInformation">The type info of the requested service.</param>
+            <returns>The created resolution target.</returns>
+        </member>
+        <member name="T:Stashbox.Resolution.IResolver">
+            <summary>
+            Represents a dependency resolver.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Resolution.IResolver.GetExpression(Stashbox.IContainerContext,Stashbox.Entity.TypeInformation,Stashbox.Resolution.ResolutionContext)">
+            <summary>
+            Produces an expression for creating an instance.
+            </summary>
+            <param name="containerContext">The container context.</param>
+            <param name="typeInfo">The type info.</param>
+            <param name="resolutionContext">The info about the actual resolution.</param>
+            <returns>The expression.</returns>
+        </member>
+        <member name="M:Stashbox.Resolution.IResolver.CanUseForResolution(Stashbox.IContainerContext,Stashbox.Entity.TypeInformation,Stashbox.Resolution.ResolutionContext)">
+            <summary>
+            Returns true, if the resolver can be used to activate the requested service, otherwise false.
+            </summary>
+            <param name="containerContext">The container context.</param>
+            <param name="typeInfo">The type info.</param>
+            <param name="resolutionContext">The info about the actual resolution.</param>
+            <returns>Returns true, if the resolver can be used to activate the requested service, otherwise false.</returns>
+        </member>
+        <member name="T:Stashbox.Resolution.IMultiServiceResolver">
+            <summary>
+            Represents a dependency resolver used by the <see cref="T:Stashbox.BuildUp.Resolution.EnumerableResolver"/> to construct collection of expressions.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Resolution.IMultiServiceResolver.GetExpressions(Stashbox.IContainerContext,Stashbox.Entity.TypeInformation,Stashbox.Resolution.ResolutionContext)">
+            <summary>
+            Produces an array of expressions, one for every registered service identified by the requested type.
+            </summary>
+            <param name="containerContext">The container context.</param>
+            <param name="typeInfo">The type info.</param>
+            <param name="resolutionContext">The resolution info.</param>
+            <returns>The enumerable item expressions.</returns>
+        </member>
+        <member name="T:Stashbox.Resolution.IResolverSelector">
+            <summary>
+            Represents the resolver selector.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Resolution.IResolverSelector.CanResolve(Stashbox.IContainerContext,Stashbox.Entity.TypeInformation,Stashbox.Resolution.ResolutionContext)">
+            <summary>
+            True if a type is resolvable by any of the stored resolvers, otherwise false.
+            </summary>
+            <param name="containerContext">The container context.</param>
+            <param name="typeInfo">The type info.</param>
+            <param name="resolutionContext">The resolution info.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Stashbox.Resolution.IResolverSelector.GetResolverExpression(Stashbox.IContainerContext,Stashbox.Entity.TypeInformation,Stashbox.Resolution.ResolutionContext)">
+            <summary>
+            Gets an expression built by a selected <see cref="T:Stashbox.Resolution.IResolver"/>.
+            </summary>
+            <param name="containerContext">The container context.</param>
+            <param name="typeInfo">The type info.</param>
+            <param name="resolutionContext">The resolution info.</param>
+            <returns>The expression.</returns>
+        </member>
+        <member name="M:Stashbox.Resolution.IResolverSelector.GetResolverExpressions(Stashbox.IContainerContext,Stashbox.Entity.TypeInformation,Stashbox.Resolution.ResolutionContext)">
+            <summary>
+            Gets the expressions built by a selected <see cref="T:Stashbox.Resolution.IMultiServiceResolver"/>.
+            </summary>
+            <param name="containerContext">The container context.</param>
+            <param name="typeInfo">The type info.</param>
+            <param name="resolutionContext">The resolution info.</param>
+            <returns>The expressions.</returns>
+        </member>
+        <member name="M:Stashbox.Resolution.IResolverSelector.AddResolver(Stashbox.Resolution.IResolver)">
+            <summary>
+            Adds a resolver to the selector.
+            </summary>
+            <param name="resolver">The resolver.</param>
+        </member>
+        <member name="T:Stashbox.Resolution.ResolutionContext">
+            <summary>
+            Represents information about the actual resolution flow.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Resolution.ResolutionContext.New(Stashbox.IResolutionScope,System.Boolean,System.Object[])">
+            <summary>
+            Static factory for <see cref="T:Stashbox.Resolution.ResolutionContext"/>.
+            </summary>
+            <returns>A new <see cref="T:Stashbox.Resolution.ResolutionContext"/> instance.</returns>
+        </member>
+        <member name="P:Stashbox.Resolution.ResolutionContext.NullResultAllowed">
+            <summary>
+            True if null result is allowed, otherwise false.
+            </summary>
+        </member>
+        <member name="P:Stashbox.Resolution.ResolutionContext.CurrentScopeParameter">
+            <summary>
+            The currently resolving scope.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Resolution.ResolutionContext.AddInstruction(System.Linq.Expressions.Expression)">
+            <summary>
+            Adds a custom expression to the instruction list
+            </summary>
+            <param name="instruction">The custom expression.</param>
+        </member>
+        <member name="M:Stashbox.Resolution.ResolutionContext.AddDefinedVariable(System.Object,System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            Adds a global keyed variable to the compiled expression tree.
+            </summary>
+            <param name="key">The key of the variable.</param>
+            <param name="parameter">The variable.</param>
+        </member>
+        <member name="M:Stashbox.Resolution.ResolutionContext.AddDefinedVariable(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            Adds a global variable to the compiled expression tree.
+            </summary>
+            <param name="parameter">The variable.</param>
+        </member>
+        <member name="M:Stashbox.Resolution.ResolutionContext.GetKnownVariableOrDefault(System.Object)">
+            <summary>
+            Gets an already defined global variable.
+            </summary>
+            <param name="key">The key of the variable.</param>
+            <returns>The variable.</returns>
+        </member>
+        <member name="T:Stashbox.StashboxContainer">
+            <summary>
+            Represents the stashbox dependency injection container.
+            </summary>
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterTypesAs(System.Type,System.Collections.Generic.IEnumerable{System.Type},System.Func{System.Type,System.Boolean},System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterTypes(System.Collections.Generic.IEnumerable{System.Type},System.Func{System.Type,System.Boolean},System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.ComposeBy(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.#ctor(System.Action{Stashbox.IContainerConfigurator})">
+            <summary>
+            Constructs a <see cref="T:Stashbox.StashboxContainer"/>
+            </summary>
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterExtension(Stashbox.ContainerExtension.IContainerExtension)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterResolver(Stashbox.Resolution.IResolver)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.CanResolve``1(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.CanResolve(System.Type,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.IsRegistered``1(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.IsRegistered(System.Type,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.Validate">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.StashboxContainer.ParentContainer">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.StashboxContainer.ContainerContext">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.StashboxContainer.RootScope">
+            <inheritdoc />
+        </member>
+        <member name="P:Stashbox.StashboxContainer.ServiceRegistrator">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.CreateChildContainer">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.BeginScope(System.Object,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.Configure(System.Action{Stashbox.IContainerConfigurator})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.Dispose(System.Boolean)">
+            <summary>
+            Disposes the container.
+            </summary>
+            <param name="disposing">Indicates the container is disposing or not.</param>
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterDecorator(System.Type,System.Type,System.Action{Stashbox.Registration.IFluentDecoratorRegistrator})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterFunc``1(System.Func{Stashbox.IDependencyResolver,``0},System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterFunc``2(System.Func{``0,Stashbox.IDependencyResolver,``1},System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterFunc``3(System.Func{``0,``1,Stashbox.IDependencyResolver,``2},System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterFunc``4(System.Func{``0,``1,``2,Stashbox.IDependencyResolver,``3},System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterFunc``5(System.Func{``0,``1,``2,``3,Stashbox.IDependencyResolver,``4},System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterType``2(System.Action{Stashbox.Registration.IFluentServiceRegistrator{``1}})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterType``1(System.Type,System.Action{Stashbox.Registration.IFluentServiceRegistrator{``0}})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterType(System.Type,System.Type,System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterType``1(System.Action{Stashbox.Registration.IFluentServiceRegistrator{``0}})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterType(System.Type,System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterInstanceAs``1(``0,System.Object,System.Boolean,System.Action{``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.RegisterInstance(System.Type,System.Object,System.Object,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.WireUpAs``1(``0,System.Object,System.Boolean,System.Action{``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.WireUp(System.Type,System.Object,System.Object,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.ReMap``2(System.Action{Stashbox.Registration.IFluentServiceRegistrator{``1}})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.ReMap``1(System.Type,System.Action{Stashbox.Registration.IFluentServiceRegistrator{``0}})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.ReMap(System.Type,System.Type,System.Action{Stashbox.Registration.IFluentServiceRegistrator})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.ReMap``1(System.Action{Stashbox.Registration.IFluentServiceRegistrator{``0}})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.ReMapDecorator(System.Type,System.Type,System.Action{Stashbox.Registration.IFluentDecoratorRegistrator})">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.Resolve(System.Type,System.Boolean,System.Object[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.Resolve(System.Type,System.Object,System.Boolean,System.Object[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.ResolveAll``1(System.Object[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.ResolveAll(System.Type,System.Object[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.ResolveFactory(System.Type,System.Object,System.Boolean,System.Type[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.PutInstanceInScope(System.Type,System.Object,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Stashbox.StashboxContainer.BuildUp``1(``0)">
+            <inheritdoc />
+        </member>
+        <member name="T:Stashbox.Utils.AtomicBool">
+            <summary>
+            Represents an atomic boolean implementation.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Utils.AtomicBool.#ctor(System.Boolean)">
+            <summary>
+            Constructs an <see cref="T:Stashbox.Utils.AtomicBool"/>
+            </summary>
+            <param name="initialValue">The initial internal value.</param>
+        </member>
+        <member name="P:Stashbox.Utils.AtomicBool.Value">
+            <summary>
+            Returns the value of the AtomicBool.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Utils.AtomicBool.CompareExchange(System.Boolean,System.Boolean)">
+            <summary>
+            Compares the internal value with the expected value and if they matches the internal value will be replaced with the new value in one atomic operation.
+            </summary>
+            <param name="expectedValue">The expected value of the comparison.</param>
+            <param name="newValue">The new value, the internal value will be replaced with this.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Stashbox.Utils.Constants">
+            <summary>
+            Holds the constant values used by the conainer.
+            </summary>
+        </member>
+        <member name="T:Stashbox.Utils.Shield">
+            <summary>
+            Represents a utility class for input validation.
+            </summary>
+        </member>
+        <member name="M:Stashbox.Utils.Shield.EnsureNotNull``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Checks the value of the given object and throws an ArgumentNullException if it is null.
+            </summary>
+            <typeparam name="T">Type of the object.</typeparam>
+            <param name="memberExpression">The expression which returns with the object to be checked.</param>
+        </member>
+        <member name="M:Stashbox.Utils.Shield.EnsureNotNull``1(``0,System.String)">
+            <summary>
+            Checks the value of the given object and throws an ArgumentNullException if it is null.
+            </summary>
+            <typeparam name="T">Type of the object.</typeparam>
+            <param name="obj">The object to be checked.</param>
+            <param name="parameterName">The name of the parameter to be checked.</param>
+        </member>
+        <member name="M:Stashbox.Utils.Shield.EnsureNotNull``1(System.Linq.Expressions.Expression{System.Func{``0}},System.String)">
+            <summary>
+            Checks the value of the given object and throws an ArgumentNullException with the given message if it is null.
+            </summary>
+            <typeparam name="T">Type of the object.</typeparam>
+            <param name="memberExpression">The expression which returns with the object to be checked.</param>
+            <param name="message">The message to be shown in the exception.</param>
+        </member>
+        <member name="M:Stashbox.Utils.Shield.EnsureNotNull``1(``0,System.String,System.String)">
+            <summary>
+            Checks the value of the given object and throws an ArgumentNullException with the given message if it is null.
+            </summary>
+            <typeparam name="T">Type of the object.</typeparam>
+            <param name="obj">The object to be checked.</param>
+            <param name="parameterName">The name of the parameter to be checked.</param>
+            <param name="message">The message to be shown in the exception.</param>
+        </member>
+        <member name="M:Stashbox.Utils.Shield.EnsureNotNullOrEmpty(System.Linq.Expressions.Expression{System.Func{System.String}})">
+            <summary>
+            Checks the value of the given string and throws an ArgumentException if it is null or empty.
+            </summary>
+            <param name="memberExpression">The expression which returns with the string to be checked.</param>
+        </member>
+        <member name="M:Stashbox.Utils.Shield.EnsureNotNullOrEmpty(System.String,System.String)">
+            <summary>
+            Checks the value of the given string and throws an ArgumentException if it is null or empty.
+            </summary>
+            <param name="obj">The string to be checked.</param>
+            <param name="parameterName">The name of the parameter to be checked.</param>
+        </member>
+        <member name="M:Stashbox.Utils.Shield.EnsureGreaterThan(System.Int32,System.Int32)">
+            <summary>
+            Checks two integers and throws an ArgumentException if the actual is lesser than the reference.
+            </summary>
+            <param name="actual">The actual value.</param>
+            <param name="reference">The reference value.</param>
+        </member>
+        <member name="M:Stashbox.Utils.Shield.EnsureTrue(System.Boolean,System.String)">
+            <summary>
+            Checks a bool condition and throws an ArgumentException if it is false.
+            </summary>
+            <param name="condition">The condition.</param>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:Stashbox.Utils.Shield.EnsureTypeOf``1(System.Object)">
+            <summary>
+            Checks the type of the given object and throws an ArgumentException if it doesn't matches with the given type parameter.
+            </summary>
+            <typeparam name="TType">The type parameter.</typeparam>
+            <param name="obj">The object to be checked.</param>
+        </member>
+        <member name="T:System.Linq.Expressions.ExpressionExtensions">
+            <summary>
+            Holds the <see cref="T:System.Linq.Expressions.Expression"/> extension methods.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.CompileDelegate(System.Linq.Expressions.Expression,Stashbox.Resolution.ResolutionContext)">
+            <summary>
+            Compiles an <see cref="T:System.Linq.Expressions.Expression"/> to a <see cref="T:System.Func`2"/> of <see cref="T:Stashbox.IResolutionScope"/>, <see cref="T:System.Object"/>.
+            </summary>
+            <param name="expression">The expression.</param>
+            <param name="resolutionContext">The resolution context.</param>
+            <returns>The compiled delegate.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.CompileDynamicDelegate(System.Linq.Expressions.Expression,Stashbox.Resolution.ResolutionContext)">
+            <summary>
+            Compiles an <see cref="T:System.Linq.Expressions.Expression"/> to a <see cref="T:System.Func`2"/> of <see cref="T:Stashbox.IResolutionScope"/>, <see cref="T:System.Delegate"/>.
+            </summary>
+            <param name="expression">The expression.</param>
+            <param name="resolutionContext">The resolution context.</param>
+            <returns>The compiled delegate.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.AssignTo(System.Linq.Expressions.Expression,System.Linq.Expressions.Expression)">
+            <summary>
+            Constructs an assigment expression, => Expression.Assign(left, right)
+            </summary>
+            <param name="left">The left part.</param>
+            <param name="right">The right part.</param>
+            <returns>The assignment expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.AssignTo(System.Reflection.MemberInfo,System.Linq.Expressions.Expression)">
+            <summary>
+            Constructs an assigment expression, => Expression.Bind(member, expression)
+            </summary>
+            <param name="memberInfo">The member info.</param>
+            <param name="expression">The right part.</param>
+            <returns>The assignment expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.AsConstant(System.Object)">
+            <summary>
+            Constructs a constant expression from an object, => Expression.Constant(obj)
+            </summary>
+            <param name="obj">The object.</param>
+            <returns>The constant expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.AsConstant(System.Object,System.Type)">
+            <summary>
+            Constructs a constant expression from an object and a type, => Expression.Constant(obj, type)
+            </summary>
+            <param name="obj">The object.</param>
+            <param name="type">The type.</param>
+            <returns>The constant expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.AsDefault(System.Type)">
+            <summary>
+            Constructs a default expression from a type, => Expression.Default(type)
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The default expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.AsBlock(System.Collections.Generic.IList{System.Linq.Expressions.Expression},System.Linq.Expressions.ParameterExpression[])">
+            <summary>
+            Constructs a block expression from an expression collection and variables, => Expression.Block(variables, expressions)
+            </summary>
+            <param name="expressions">The expressions.</param>
+            <param name="variables">The variables.</param>
+            <returns>The block expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.AsLambda(System.Linq.Expressions.Expression,System.Linq.Expressions.ParameterExpression[])">
+            <summary>
+            Constructs a lambda expression from an expression and parameters, => Expression.Lambda(expression, parameters)
+            </summary>
+            <param name="expression">The expression.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>The lambda expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.AsLambda(System.Linq.Expressions.Expression,System.Collections.Generic.IEnumerable{System.Linq.Expressions.ParameterExpression})">
+            <summary>
+            Constructs a lambda expression from an expression and parameters, => Expression.Lambda(expression, parameters)
+            </summary>
+            <param name="expression">The expression.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>The lambda expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.AsVariable(System.Type,System.String)">
+            <summary>
+            Constructs a variable expression from a type, => Expression.Variable(type, name)
+            </summary>
+            <param name="type">The type.</param>
+            <param name="name">The name.</param>
+            <returns>The variable expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.AsParameter(System.Type,System.String)">
+            <summary>
+            Constructs a parameter expression from a type, => Expression.Parameter(type, name)
+            </summary>
+            <param name="type">The type.</param>
+            <param name="name">The name.</param>
+            <returns>The parameter expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.InvokeMethod(System.Reflection.MethodInfo,System.Linq.Expressions.Expression[])">
+            <summary>
+            Constructs a method call expression from a <see cref="T:System.Reflection.MethodInfo"/> and parameters, => Expression.Call(methodInfo, parameters)
+            </summary>
+            <param name="methodInfo">The method info.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>The call expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.CallMethod(System.Linq.Expressions.Expression,System.Reflection.MethodInfo,System.Linq.Expressions.Expression[])">
+            <summary>
+            Constructs a method call expression from a target expression, method info and parameters, => Expression.Call(target, methodInfo, parameters)
+            </summary>
+            <param name="target">The target expression.</param>
+            <param name="methodInfo">The method info.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>The call expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.ConvertTo(System.Linq.Expressions.Expression,System.Type)">
+            <summary>
+            Constructs a convert expression, => Expression.Convert(expression, type)
+            </summary>
+            <param name="expression">The expression.</param>
+            <param name="type">The type.</param>
+            <returns>The convert expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.InvokeLambda(System.Linq.Expressions.LambdaExpression,System.Linq.Expressions.Expression[])">
+            <summary>
+            Constructs an invocation expression, => Expression.Invoke(expression, parameters)
+            </summary>
+            <param name="expression">The expression.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>The invocation expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.MakeNew(System.Reflection.ConstructorInfo,System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <summary>
+            Constructs an new expression, => Expression.New(constructor, arguments)
+            </summary>
+            <param name="constructor">The constructor info.</param>
+            <param name="arguments">The arguments.</param>
+            <returns>The new expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.MakeNew(System.Reflection.ConstructorInfo,System.Linq.Expressions.Expression[])">
+            <summary>
+            Constructs an new expression, => Expression.New(constructor, arguments)
+            </summary>
+            <param name="constructor">The constructor info.</param>
+            <param name="arguments">The arguments.</param>
+            <returns>The new expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.Member(System.Linq.Expressions.Expression,System.Reflection.MemberInfo)">
+            <summary>
+            Constructs a member access expression, => Expression.Property(expression, prop) or Expression.Field(expression, field)
+            </summary>
+            <param name="expression">The expression.</param>
+            <param name="memberInfo">The property or field info.</param>
+            <returns>The member access expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.Prop(System.Linq.Expressions.Expression,System.Reflection.PropertyInfo)">
+            <summary>
+            Constructs a property access expression, => Expression.Property(expression, prop)
+            </summary>
+            <param name="expression">The expression.</param>
+            <param name="propertyInfo">The property info.</param>
+            <returns>The property access expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.InitMembers(System.Linq.Expressions.Expression,System.Collections.Generic.IList{System.Linq.Expressions.MemberBinding})">
+            <summary>
+            Constructs a member init expression, => Expression.MemberInit(expression, bindings)
+            </summary>
+            <param name="expression">The expression.</param>
+            <param name="bindings">The member bindings.</param>
+            <returns>The member init expression.</returns>
+        </member>
+        <member name="M:System.Linq.Expressions.ExpressionExtensions.InitNewArray(System.Type,System.Linq.Expressions.Expression[])">
+            <summary>
+            Constructs a new array expression, => Expression.NewArrayInit(type, initializers)
+            </summary>
+            <param name="type">The type.</param>
+            <param name="initializers">The element initializer expressions.</param>
+            <returns>The new array expression.</returns>
+        </member>
+    </members>
+</doc>

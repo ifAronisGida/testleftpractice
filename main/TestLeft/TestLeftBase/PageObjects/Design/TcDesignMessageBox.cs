@@ -1,5 +1,5 @@
 using SmartBear.TestLeft.TestObjects;
-using Trumpf.PageObjects;
+using Trumpf.Coparoo.Desktop;
 
 namespace TestLeft.TestLeftBase.PageObjects.Design
 {

@@ -1,8 +1,8 @@
 using PageObjectInterfaces.Controls;
 using PageObjectInterfaces.Material;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
-using Trumpf.PageObjects;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 
 namespace TestLeft.TestLeftBase.PageObjects.Material

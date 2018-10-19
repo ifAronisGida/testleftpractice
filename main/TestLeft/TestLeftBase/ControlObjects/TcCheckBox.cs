@@ -1,5 +1,5 @@
 ﻿using PageObjectInterfaces.Controls;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects
 {

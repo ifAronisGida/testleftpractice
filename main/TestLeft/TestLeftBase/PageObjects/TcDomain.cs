@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using PageObjectInterfaces.Common;
 using TestLeft.TestLeftBase.ControlObjects.Composite;
-using Trumpf.PageObjects;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects
 {

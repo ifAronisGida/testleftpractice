@@ -2,7 +2,7 @@ using System;
 using DevExpress.Xpf.Editors;
 using DevExpress.Xpf.Grid;
 using TestLeft.TestLeftBase.Utilities;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects.Grid
 {

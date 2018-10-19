@@ -2,8 +2,8 @@ using PageObjectInterfaces.Controls;
 using PageObjectInterfaces.Dialogs;
 using PageObjectInterfaces.PartOrder;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
-using Trumpf.PageObjects;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.PartOrder
 {

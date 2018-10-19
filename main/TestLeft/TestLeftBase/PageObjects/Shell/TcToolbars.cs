@@ -1,5 +1,5 @@
-﻿using Trumpf.PageObjects;
-using Trumpf.PageObjects.WPF;
+﻿using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace TestLeft.TestLeftBase.PageObjects.Shell
 {
@@ -7,7 +7,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Shell
     /// The parent of all category toolbars.
     /// </summary>
     /// <seealso cref="PageObject" />
-    /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
+    /// <seealso cref="IChildOf{T}" />
     public class TcToolbars : PageObject, IChildOf<TcMainTabControl>
     {
         protected override Search SearchPattern => Search.ByUid( "Toolbars" );

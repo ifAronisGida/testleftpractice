@@ -1,7 +1,7 @@
 ﻿using PageObjectInterfaces.Controls;
 using PageObjectInterfaces.Machine;
-using Trumpf.PageObjects;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using SmartBear.TestLeft.TestObjects.WPF;
 using SmartBear.TestLeft.TestObjects;

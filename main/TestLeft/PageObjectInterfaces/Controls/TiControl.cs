@@ -1,4 +1,4 @@
-using Trumpf.PageObjects.Waiting;
+using Trumpf.Coparoo.Desktop.Waiting;
 
 namespace PageObjectInterfaces.Controls
 {

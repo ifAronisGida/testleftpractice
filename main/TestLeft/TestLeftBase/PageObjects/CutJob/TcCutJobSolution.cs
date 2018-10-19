@@ -1,15 +1,15 @@
 ﻿using System;
 using PageObjectInterfaces.Controls;
 using PageObjectInterfaces.Dialogs;
-using Trumpf.PageObjects;
-using Trumpf.PageObjects.Waiting;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 using TestLeft.TestLeftBase.PageObjects.Dialogs;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.Settings;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.Utilities;
 using PageObjectInterfaces.CutJob;
+using Trumpf.Coparoo.Desktop.Waiting;
 
 namespace TestLeft.TestLeftBase.PageObjects.CutJob
 {

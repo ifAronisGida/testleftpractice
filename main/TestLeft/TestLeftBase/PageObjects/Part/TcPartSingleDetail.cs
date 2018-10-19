@@ -1,13 +1,13 @@
 ﻿using System;
 using PageObjectInterfaces.Controls;
 using PageObjectInterfaces.Part;
-using Trumpf.PageObjects;
-using Trumpf.PageObjects.Waiting;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
 using TestLeft.TestLeftBase.PageObjects.Customer;
 using PageObjectInterfaces.Customer;
+using Trumpf.Coparoo.Desktop.Waiting;
 
 namespace TestLeft.TestLeftBase.PageObjects.Part
 {
@@ -15,7 +15,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Part
     /// The upper detail area of the part category.
     /// </summary>
     /// <seealso cref="PageObject" />
-    /// <seealso cref="Trumpf.PageObjects.IChildOf{TcDetailContent}" />
+    /// <seealso cref="IChildOf{T}" />
     public class TcPartSingleDetail : TcPageObjectBase, IChildOf<TcDetailContent>, TiPartSingleDetail
     {
         protected override Search SearchPattern => Search.ByUid( "Part.Details" );

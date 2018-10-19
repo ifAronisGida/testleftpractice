@@ -1,17 +1,17 @@
 using System;
 using PageObjectInterfaces.Material;
-using Trumpf.PageObjects;
-using Trumpf.PageObjects.Waiting;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 using TestLeft.TestLeftBase.ControlObjects;
 using TestLeft.TestLeftBase.PageObjects.Shell;
+using Trumpf.Coparoo.Desktop.Waiting;
 
 namespace TestLeft.TestLeftBase.PageObjects.Material
 {
     /// <summary>
     /// PageObject for the materials category.
     /// </summary>
-    /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainTabControl}" />
+    /// <seealso cref="IChildOf{T}" />
     public class TcMaterials : TcDomain<TiMaterialToolbar>, IChildOf<TcMainTabControl>, TiMaterials
     {
         /// <summary>

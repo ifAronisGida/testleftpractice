@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TestLeft.TestLeftBase.ControlObjects;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace TestLeft.TestLeftBase.Utilities
 {

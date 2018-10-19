@@ -1,6 +1,6 @@
 using DevExpress.Xpf.Grid;
 using SmartBear.TestLeft.TestObjects.WPF;
-using Trumpf.PageObjects.WPF;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects.Grid
 {

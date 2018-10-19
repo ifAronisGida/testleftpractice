@@ -16,14 +16,14 @@ using TestLeft.TestLeftBase.PageObjects.NestingTemplate;
 using TestLeft.TestLeftBase.PageObjects.Part;
 using TestLeft.TestLeftBase.PageObjects.PartOrder;
 using TestLeft.TestLeftBase.PageObjects.Shell;
-using Trumpf.PageObjects;
+using Trumpf.Coparoo.Desktop;
 
 namespace TestLeft.TestLeftBase
 {
     /// <summary>
     /// The HomeZone ProcessObject.
     /// </summary>
-    /// <seealso cref="Trumpf.PageObjects.ProcessObject" />
+    /// <seealso cref="ProcessObject" />
     public class TcHomeZoneApp : ProcessObject, TiHomeZoneApp
     {
         /// <summary>
