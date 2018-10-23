@@ -41,51 +41,51 @@ namespace TestLeft.UI_Tests.Flux
         {
             CreateTestMachine();
 
-            var namePrefix = TcSettings.NamePrefix + Guid.NewGuid();
+            var namePrefix = TestSettings.NamePrefix + Guid.NewGuid();
             var parts = HomeZone.GotoParts();
 
             // first part
             parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
             parts.SingleDetail.Name.Value = namePrefix + "1";
 
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
 
             var flux = FluxApp;
 
-            var visible = flux.IsMainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            var visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
             if( visible )
             {
                 flux.CloseApp();
 
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
             }
 
             Assert.IsTrue( visible );
 
             //second part
             parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
             parts.SingleDetail.Name.Value = namePrefix + "2";
 
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
 
             flux = FluxApp;
 
-            visible = flux.IsMainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
             if( visible )
             {
                 flux.CloseApp();
 
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
             }
 
             Assert.IsTrue( visible, "Flux window was not visible." );
@@ -113,19 +113,19 @@ namespace TestLeft.UI_Tests.Flux
                 string solutionName = "Bend1";
 
                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                 parts.SingleDetailBendSolutions.New();
                 parts.SingleDetailBendSolutions.OpenBendSolution( solutionName );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
 
                 var flux = FluxApp;
-                bool visible = flux.IsMainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                bool visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                 if( visible )
                 {
                     flux.SaveAndClosePartInFlux();
-                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                    parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
                 }
 
                 var isManual = parts.SingleDetailBendSolutions.IsManuallyChanged( solutionName );
@@ -150,13 +150,13 @@ namespace TestLeft.UI_Tests.Flux
                  string solutionName = "Bend1";
 
                  parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                  parts.SingleDetailBendSolutions.New();
                  parts.SingleDetailBendSolutions.BoostSolution( solutionName );
-                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                  parts.SingleDetailBendSolutions.OpenSolutionDetail( solutionName );
 
@@ -185,13 +185,13 @@ namespace TestLeft.UI_Tests.Flux
                  string solutionName = "Bend1";
 
                  parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                  parts.SingleDetailBendSolutions.New();
                  parts.SingleDetailBendSolutions.BoostSolution( solutionName );
-                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                  parts.SingleDetailBendSolutions.OpenSolutionDetail( solutionName );
 
@@ -218,18 +218,18 @@ namespace TestLeft.UI_Tests.Flux
                 string solutionName = "Bend1";
 
                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                 parts.SingleDetailBendSolutions.New();
                 parts.SingleDetailBendSolutions.BoostSolution( solutionName );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                 // freigeben
                 parts.SingleDetailBendSolutions.ToggleReleaseButton( solutionName );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                 parts.SingleDetailBendSolutions.OpenSolutionDetail( solutionName );
 
@@ -239,8 +239,8 @@ namespace TestLeft.UI_Tests.Flux
 
                 // widerrufen
                 parts.SingleDetailBendSolutions.ToggleReleaseButton( solutionName );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                 Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
                 Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
@@ -267,7 +267,7 @@ namespace TestLeft.UI_Tests.Flux
                  OpenMachineConfiguration( machineName );
                  Thread.Sleep( mConfigureMachineOverlay );
                  TcFluxConfigureMachine flux = new TcFluxConfigureMachine( Driver );
-                 bool visible = flux.MachineDialogVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                 bool visible = flux.MachineDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                  if( visible )
                  {
                      flux.CloseMachienDialog();
@@ -292,19 +292,19 @@ namespace TestLeft.UI_Tests.Flux
                  string solutionName = "Bend1";
 
                  parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                  parts.SingleDetailBendSolutions.New();
                  parts.SingleDetailBendSolutions.OpenBendSolution( solutionName );
-                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
 
                  var flux = FluxApp;
-                 bool visible = flux.IsMainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                 bool visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                  if( visible )
                  {
                      flux.ChangeSolution();
-                     parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                     parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
                  }
                  parts.Toolbar.Delete();
                  DeleteTestMachine();
@@ -313,7 +313,7 @@ namespace TestLeft.UI_Tests.Flux
 
         private void CreateTestMachine( string machineName = null )
         {
-            mTestMachineName = TcSettings.NamePrefix + Guid.NewGuid();
+            mTestMachineName = TestSettings.NamePrefix + Guid.NewGuid();
 
             var machines = HomeZone.GotoMachines();
 
@@ -330,8 +330,8 @@ namespace TestLeft.UI_Tests.Flux
             machines.Toolbar.Save();
             Assert.IsFalse( machines.Toolbar.CanSave );
 
-            machines.WaitForDetailOverlayAppear( TcSettings.MachineOverlayAppearTimeout );
-            machines.WaitForDetailOverlayDisappear( TcSettings.MachineOverlayDisappearTimeout );
+            machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
+            machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
         }
 
         private void DeleteTestMachine( string machineName = null )

@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\TcBaseTestClass.cs" />
+    <Compile Include="Base\TcTestOptions.cs" />
     <Compile Include="Customer\TcCustomerTest.cs" />
     <Compile Include="CutJob\TcCutJobTest.cs" />
     <Compile Include="Cut\TcCutTest.cs" />

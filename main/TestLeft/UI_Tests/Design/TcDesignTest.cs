@@ -30,17 +30,17 @@ namespace TestLeft.UI_Tests.Design
             var parts = HomeZone.GotoParts();
 
             parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
             parts.SingleDetailDesign.Open();
 
-            var visible = DesignApp.IsMainWindowVisible( TcSettings.DesignStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            var visible = DesignApp.IsMainWindowVisible( TestSettings.DesignStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
             if( visible )
             {
                 DesignApp.CloseApp();
 
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
             }
 
             parts.Toolbar.Delete();

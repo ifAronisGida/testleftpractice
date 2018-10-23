@@ -30,26 +30,26 @@ namespace TestLeft.UI_Tests.Cut
             var parts = HomeZone.GotoParts();
 
             parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
             parts.SingleDetailCutSolutions.New();
             parts.SingleDetailCutSolutions.OpenCutSolution( "Cut1" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
 
             var cut = CutApp;
 
-            if( cut.TechnologyTableSelectionDialog.IsDialogVisible( TcSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) ) )
+            if( cut.TechnologyTableSelectionDialog.IsDialogVisible( TestSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) ) )
             {
                 cut.TechnologyTableSelectionDialog.Close();
             }
 
-            var visible = cut.IsMainWindowVisible( TcSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            var visible = cut.IsMainWindowVisible( TestSettings.CutStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
             if( visible )
             {
                 cut.CloseApp();
 
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
             }
 
             parts.Toolbar.Delete();

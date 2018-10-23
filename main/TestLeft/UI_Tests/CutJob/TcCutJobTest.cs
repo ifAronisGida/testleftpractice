@@ -27,7 +27,7 @@ namespace TestLeft.UI_Tests.CutJob
 
                     cutJobs.Toolbar.New();
 
-                    cutJobs.BaseInfo.Id.Value = TcSettings.NamePrefix + Guid.NewGuid().ToString().Replace( '-', '_' );
+                    cutJobs.BaseInfo.Id.Value = TestSettings.NamePrefix + Guid.NewGuid().ToString().Replace( '-', '_' );
 
                     Assert.IsTrue( cutJobs.Toolbar.CanSave );
                     cutJobs.Toolbar.Save();

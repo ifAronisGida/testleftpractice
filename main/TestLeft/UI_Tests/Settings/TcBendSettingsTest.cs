@@ -32,7 +32,7 @@ namespace TestLeft.UI_Tests.Settings
                 bendSettings.OpenToolsConfiguration();
 
                 TcLandingPages flux = new TcLandingPages( Driver );
-                bool visible = flux.ToolsDialogVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                bool visible = flux.ToolsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                 if( visible )
                 {
                     flux.CloseToolsDialog();
@@ -60,7 +60,7 @@ namespace TestLeft.UI_Tests.Settings
 
 
                 TcLandingPages flux = new TcLandingPages( Driver );
-                bool visible = flux.BendFactorsDialogVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                bool visible = flux.BendFactorsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                 if( visible )
                 {
                     flux.CloseBendFactorDialog();
@@ -89,7 +89,7 @@ namespace TestLeft.UI_Tests.Settings
 
 
                 TcLandingPages flux = new TcLandingPages( Driver );
-                bool visible = flux.SettingsDialogVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                bool visible = flux.SettingsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                 if( visible )
                 {
                     flux.CloseSettingsDialog();

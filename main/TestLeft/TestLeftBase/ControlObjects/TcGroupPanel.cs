@@ -1,12 +1,10 @@
 ﻿using Trumpf.Coparoo.Desktop.WPF;
-using Trumpf.Coparoo.Desktop.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects
 {
     /// <summary>
     /// The ControlObject for group panels.
     /// </summary>
-    /// <seealso cref="Trumpf.PageObjects.WPF.ControlObject" />
     public class TcGroupPanel : ControlObject
     {
         protected override Search SearchPattern => Search.Any;
@@ -19,8 +17,8 @@ namespace TestLeft.TestLeftBase.ControlObjects
         /// </value>
         public bool IsMoreExpanded
         {
-            get { return Node.GetProperty<bool>( "IsMoreExpanded" ); }
-            set { Node.SetProperty( "IsMoreExpanded", value ); }
+            get => Node.GetProperty<bool>( "IsMoreExpanded" );
+            set => Node.SetProperty( "IsMoreExpanded", value );
         }
     }
 }

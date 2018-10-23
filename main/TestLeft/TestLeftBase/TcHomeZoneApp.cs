@@ -33,7 +33,7 @@ namespace TestLeft.TestLeftBase
         /// <param name="driver">The driver to be used by this instance.</param>
         public TcHomeZoneApp( string processname, IDriver driver ) : base( processname )
         {
-            this.Driver = driver;
+            Driver = driver;
         }
 
         public TiMainTabControl MainTabControl => On<TcMainTabControl>();

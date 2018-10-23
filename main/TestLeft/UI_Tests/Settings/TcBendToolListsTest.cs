@@ -37,7 +37,7 @@ namespace TestLeft.UI_Tests.Settings
 
                 string toollistName = "superTools";
                 TcLandingPages flux = new TcLandingPages( Driver );
-                bool visible = flux.ToolsListsDialogVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                bool visible = flux.ToolsListsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                 if( visible )
                 {
                     flux.CreateNewToolList( toollistName );
@@ -49,8 +49,8 @@ namespace TestLeft.UI_Tests.Settings
                 // import part and use toollist
                 var parts = HomeZone.GotoParts();
                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                 bool found = CheckToolListDropdown( toollistName, out var toolList );
                 if( found )
@@ -80,7 +80,7 @@ namespace TestLeft.UI_Tests.Settings
 
                  string toollistName = "rubbishTools";
                  TcLandingPages flux = new TcLandingPages( Driver );
-                 bool visible = flux.ToolsListsDialogVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                 bool visible = flux.ToolsListsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                  if( visible )
                  {
                      flux.CreateNewToolList( toollistName );
@@ -92,10 +92,10 @@ namespace TestLeft.UI_Tests.Settings
                  bendSettings.Goto();
                  Assert.IsTrue( bendSettings.IsVisible );
                  bendSettings.OpenToolListsConfiguration();
-                 Thread.Sleep( TcSettings.FluxStartTimeout );
+                 Thread.Sleep( TestSettings.FluxStartTimeout );
 
                  flux = new TcLandingPages( Driver );
-                 visible = flux.ToolsListsDialogVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                 visible = flux.ToolsListsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                  if( visible )
                  {
                      flux.DeleteToollist( toollistName );
@@ -109,8 +109,8 @@ namespace TestLeft.UI_Tests.Settings
                  // import part and use toollist
                  var parts = HomeZone.GotoParts();
                  parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                  Assert.IsFalse( CheckToolListDropdown( toollistName, out var control ) );
 
@@ -135,7 +135,7 @@ namespace TestLeft.UI_Tests.Settings
 
                  string toollistName = "oldName";
                  TcLandingPages flux = new TcLandingPages( Driver );
-                 bool visible = flux.ToolsListsDialogVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                 bool visible = flux.ToolsListsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                  if( visible )
                  {
                      flux.CreateNewToolList( toollistName );
@@ -148,10 +148,10 @@ namespace TestLeft.UI_Tests.Settings
                  bendSettings.Goto();
                  Assert.IsTrue( bendSettings.IsVisible );
                  bendSettings.OpenToolListsConfiguration();
-                 Thread.Sleep( TcSettings.FluxStartTimeout );
+                 Thread.Sleep( TestSettings.FluxStartTimeout );
 
                  flux = new TcLandingPages( Driver );
-                 visible = flux.ToolsListsDialogVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                 visible = flux.ToolsListsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                  if( visible )
                  {
                      flux.RenameToollist( toollistName, newName );
@@ -163,8 +163,8 @@ namespace TestLeft.UI_Tests.Settings
                  // import part and use toollist
                  var parts = HomeZone.GotoParts();
                  parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                 parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                 parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                  Assert.IsTrue( CheckToolListDropdown( newName, out var control ) );
 

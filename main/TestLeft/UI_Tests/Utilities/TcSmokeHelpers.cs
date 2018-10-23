@@ -81,8 +81,8 @@ namespace TestLeft.UI_Tests.Utilities
 
                 Assert.IsTrue( materials.Toolbar.CanSave );
                 materials.Toolbar.Save();
-                materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
-                materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
+                materials.WaitForDetailOverlayAppear( TestSettings.MaterialOverlayAppearTimeout );
+                materials.WaitForDetailOverlayDisappear( TestSettings.MaterialOverlayDisappearTimeout );
                 Assert.IsFalse( materials.Toolbar.CanSave );
                 return true;
             }
@@ -102,8 +102,8 @@ namespace TestLeft.UI_Tests.Utilities
             {
                 if( materials.DeleteMaterial( Name2UIT_Name( material ) ) )
                 {
-                    materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
-                    materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
+                    materials.WaitForDetailOverlayAppear( TestSettings.MaterialOverlayAppearTimeout );
+                    materials.WaitForDetailOverlayDisappear( TestSettings.MaterialOverlayDisappearTimeout );
                     deletedMaterialsCount++;
                 }
             }
@@ -138,7 +138,7 @@ namespace TestLeft.UI_Tests.Utilities
                 machines.Toolbar.Save();
                 Assert.IsFalse( machines.Toolbar.CanSave );
 
-                machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
+                machines.WaitForDetailOverlayDisappear( TestSettings.SavingTimeout );
                 machinesCreatedCount++;
             }
 
@@ -155,7 +155,7 @@ namespace TestLeft.UI_Tests.Utilities
                 machines.Toolbar.Save();
                 Assert.IsFalse( machines.Toolbar.CanSave );
 
-                machines.WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
+                machines.WaitForDetailOverlayDisappear( TestSettings.SavingTimeout );
                 machinesCreatedCount++;
             }
 
@@ -290,16 +290,16 @@ namespace TestLeft.UI_Tests.Utilities
                 }
 
                 parts.Toolbar.Import( mPartNames[ i ].FullName );
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
                 parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
-                parts.SingleDetail.Name.Value = TcSettings.NamePrefix + parts.SingleDetail.Name.Value;
+                parts.SingleDetail.Name.Value = TestSettings.NamePrefix + parts.SingleDetail.Name.Value;
                 parts.SingleDetail.Id = parts.SingleDetail.Name.Value;
                 parts.SingleDetail.Customer = Name2UIT_Name( mCustomerNames[ i ] );
-                parts.SingleDetail.DrawingNumber.Value = TcSettings.NamePrefix + "DrawNr";
+                parts.SingleDetail.DrawingNumber.Value = TestSettings.NamePrefix + "DrawNr";
                 parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
-                parts.SingleDetail.ExternalName.Value = TcSettings.NamePrefix + "ExtName";
-                parts.SingleDetail.Note.Value = TcSettings.NamePrefix + "Note";
+                parts.SingleDetail.ExternalName.Value = TestSettings.NamePrefix + "ExtName";
+                parts.SingleDetail.Note.Value = TestSettings.NamePrefix + "Note";
                 parts.SingleDetailBendSolutions.New();
                 parts.SingleDetailCutSolutions.New();
                 Assert.IsTrue( parts.Toolbar.CanSave );
@@ -316,16 +316,16 @@ namespace TestLeft.UI_Tests.Utilities
         private bool OpenFluxBendSolutionAndCloseFlux( TcParts parts )
         {
             parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
-            parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
 
             var flux = FluxApp;
-            var visible = flux.IsMainWindowVisible( TcSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            var visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
 
             if( visible )
             {
                 flux.CloseApp();
 
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
             }
 
             Assert.IsTrue( visible );
@@ -437,7 +437,7 @@ namespace TestLeft.UI_Tests.Utilities
 
         private string Name2UIT_Name( string name )
         {
-            return TcSettings.NamePrefix + name;
+            return TestSettings.NamePrefix + name;
         }
     }
 }

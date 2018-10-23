@@ -54,6 +54,7 @@
     <Reference Include="FactsHub.Model, Version=4.5.9.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Factshub.Connector.4.5.9\lib\net451\FactsHub.Model.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MimeTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Factshub.Connector.4.5.9\lib\net451\MimeTypes.dll</HintPath>
     </Reference>
@@ -74,6 +75,7 @@
       <HintPath>..\..\packages\Stashbox.2.6.1\lib\net45\Stashbox.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
@@ -181,7 +183,12 @@
     <Compile Include="PageObjects\Dialogs\TcOpenFileDialog.cs" />
     <Compile Include="PageObjects\Shell\TcWelcomeScreen.cs" />
     <Compile Include="PageObjects\TcRepeaterObjectBase.cs" />
-    <Compile Include="Settings\TcSettings.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\TcTestSettings.cs" />
     <Compile Include="Settings\TcSystemLanguageSpecific.cs" />
     <Compile Include="TcApp.cs" />
     <Compile Include="TcAppProcess.cs" />
@@ -200,6 +207,13 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Test.runsettings">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PageObjectInterfaces\PageObjectInterfaces.csproj">

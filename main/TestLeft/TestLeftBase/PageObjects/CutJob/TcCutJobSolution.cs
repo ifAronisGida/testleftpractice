@@ -46,9 +46,6 @@ namespace TestLeft.TestLeftBase.PageObjects.CutJob
             if( BoostButton.Enabled )
             {
                 BoostButton.Click();
-
-                WaitForDetailOverlayAppear( TcSettings.SavingTimeout );
-                WaitForDetailOverlayDisappear( TcSettings.SavingTimeout );
             }
         }
 

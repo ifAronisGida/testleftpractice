@@ -25,8 +25,8 @@ namespace TestLeft.UI_Tests.Customer
             {
                 Trace.WriteLine( $"Starting {nameof( NewCustomersAndDeleteTest )}" );
                 Trace.Indent();
-                var name1 = TcSettings.NamePrefix + Guid.NewGuid();
-                var name2 = TcSettings.NamePrefix + Guid.NewGuid();
+                var name1 = TestSettings.NamePrefix + Guid.NewGuid();
+                var name2 = TestSettings.NamePrefix + Guid.NewGuid();
 
                 var customers = HomeZone.GotoCustomers();
                 var customersCount = customers.Count();

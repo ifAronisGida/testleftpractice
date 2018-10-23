@@ -22,7 +22,7 @@ namespace TestLeft.UI_Tests.Machine
         {
             Act( () =>
                 {
-                    var testMachineName = TcSettings.NamePrefix + Guid.NewGuid();
+                    var testMachineName = TestSettings.NamePrefix + Guid.NewGuid();
                     var machines = HomeZone.GotoMachines();
 
                     var machineCount = machines.ResultColumn.Count;
@@ -34,16 +34,16 @@ namespace TestLeft.UI_Tests.Machine
                     Assert.IsFalse( machines.Toolbar.CanSave );
                     Assert.AreEqual( machineCount + 1, machines.ResultColumn.Count );
 
-                    machines.WaitForDetailOverlayAppear( TcSettings.MachineOverlayAppearTimeout );
-                    machines.WaitForDetailOverlayDisappear( TcSettings.MachineOverlayDisappearTimeout );
+                    machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
+                    machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
 
                     machines.ResultColumn.SelectItem( testMachineName );
 
                     Assert.IsTrue( machines.Toolbar.CanDelete );
                     machines.Toolbar.Delete();
 
-                    machines.WaitForDetailOverlayAppear( TcSettings.MachineOverlayAppearTimeout );
-                    machines.WaitForDetailOverlayDisappear( TcSettings.MachineOverlayDisappearTimeout );
+                    machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
+                    machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
 
                     Assert.IsFalse( machines.Toolbar.CanDelete );
                     Assert.AreEqual( machineCount, machines.ResultColumn.Count );
@@ -58,7 +58,7 @@ namespace TestLeft.UI_Tests.Machine
         {
             Act( () =>
                 {
-                    var testMachineName = TcSettings.NamePrefix + Guid.NewGuid();
+                    var testMachineName = TestSettings.NamePrefix + Guid.NewGuid();
                     var machines = HomeZone.GotoMachines();
 
                     var machineCount = machines.ResultColumn.Count;
@@ -72,8 +72,8 @@ namespace TestLeft.UI_Tests.Machine
                     Assert.IsFalse( machines.Toolbar.CanSave );
                     Assert.AreEqual( machineCount + 1, machines.ResultColumn.Count );
 
-                    machines.WaitForDetailOverlayAppear( TcSettings.MachineOverlayAppearTimeout );
-                    machines.WaitForDetailOverlayDisappear( TcSettings.MachineOverlayDisappearTimeout );
+                    machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
+                    machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
 
                     machines.ResultColumn.SelectItem( testMachineName );
 

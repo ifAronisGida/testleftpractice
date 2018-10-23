@@ -27,7 +27,7 @@ namespace TestLeft.UI_Tests.Material
                     materials.Toolbar.New();
 
                     var guid = Convert.ToBase64String( Guid.NewGuid().ToByteArray() ).Substring( 0, 22 );
-                    var name = TcSettings.NamePrefix + guid;
+                    var name = TestSettings.NamePrefix + guid;
                     materials.Detail.Id.Value = name;
                     materials.Detail.Name.Value = name;
                     materials.Detail.EModulus.Value = @"210000";
@@ -39,8 +39,8 @@ namespace TestLeft.UI_Tests.Material
                     Assert.IsTrue( materials.Toolbar.CanSave );
                     materials.Toolbar.Save();
 
-                    materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
-                    materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
+                    materials.WaitForDetailOverlayAppear( TestSettings.MaterialOverlayAppearTimeout );
+                    materials.WaitForDetailOverlayDisappear( TestSettings.MaterialOverlayDisappearTimeout );
 
                     Assert.IsFalse( materials.Toolbar.CanSave );
 
@@ -66,15 +66,15 @@ namespace TestLeft.UI_Tests.Material
 
                 materials.Toolbar.Duplicate();
 
-                var name = TcSettings.NamePrefix + materials.Detail.Id;
+                var name = TestSettings.NamePrefix + materials.Detail.Id;
                 materials.Detail.Id.Value = name;
                 materials.Detail.Name.Value = name;
 
                 Assert.IsTrue( materials.Toolbar.CanSave );
                 materials.Toolbar.Save();
 
-                materials.WaitForDetailOverlayAppear( TcSettings.MaterialOverlayAppearTimeout );
-                materials.WaitForDetailOverlayDisappear( TcSettings.MaterialOverlayDisappearTimeout );
+                materials.WaitForDetailOverlayAppear( TestSettings.MaterialOverlayAppearTimeout );
+                materials.WaitForDetailOverlayDisappear( TestSettings.MaterialOverlayDisappearTimeout );
 
                 Assert.IsFalse( materials.Toolbar.CanSave );
 

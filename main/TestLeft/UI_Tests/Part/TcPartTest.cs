@@ -21,30 +21,30 @@ namespace TestLeft.UI_Tests.Part
         public void NewPartAndDeleteTest()
         {
             Act( () =>
-                {
-                    var partName = TcSettings.NamePrefix + "NewPartTest";
+            {
+                var partName = TestSettings.NamePrefix + "NewPartTest";
 
-                    var parts = HomeZone.GotoParts();
+                var parts = HomeZone.GotoParts();
 
-                    parts.Toolbar.New();
-                    parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
+                parts.Toolbar.New();
+                parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
-                    parts.SingleDetail.Name.Value = partName;
+                parts.SingleDetail.Name.Value = partName;
 
-                    parts.SingleDetail.DrawingNumber.Value = "NewPartTest_DrawNr";
-                    parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
-                    parts.SingleDetail.ExternalName.Value = "NewPartTest_ExtName";
-                    parts.SingleDetail.Archivable = false;
-                    parts.SingleDetail.Note.Value = "ImportPartTest_Note";
+                parts.SingleDetail.DrawingNumber.Value = "NewPartTest_DrawNr";
+                parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
+                parts.SingleDetail.ExternalName.Value = "NewPartTest_ExtName";
+                parts.SingleDetail.Archivable = false;
+                parts.SingleDetail.Note.Value = "ImportPartTest_Note";
 
-                    Assert.IsTrue( parts.Toolbar.CanSave );
-                    parts.Toolbar.Save();
-                    Assert.IsFalse( parts.Toolbar.CanSave );
+                Assert.IsTrue( parts.Toolbar.CanSave );
+                parts.Toolbar.Save();
+                Assert.IsFalse( parts.Toolbar.CanSave );
 
-                    Assert.IsTrue( parts.Toolbar.CanDelete );
-                    parts.Toolbar.Delete();
-                    Assert.IsFalse( parts.Toolbar.CanDelete );
-                } );
+                Assert.IsTrue( parts.Toolbar.CanDelete );
+                parts.Toolbar.Delete();
+                Assert.IsFalse( parts.Toolbar.CanDelete );
+            } );
         }
 
         /// <summary>
@@ -59,11 +59,11 @@ namespace TestLeft.UI_Tests.Part
 
                     parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
 
-                    parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                    parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                    parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
                     parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
-                    parts.SingleDetail.Name.Value = TcSettings.NamePrefix + "ImportPartTest";
+                    parts.SingleDetail.Name.Value = TestSettings.NamePrefix + "ImportPartTest";
 
                     parts.SingleDetail.DrawingNumber.Value = "ImportPartTest_DrawNr";
                     parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
@@ -79,14 +79,14 @@ namespace TestLeft.UI_Tests.Part
 
                     Assert.IsTrue( parts.Toolbar.CanBoost );
                     parts.Toolbar.Boost();
-                    parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                    parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                    parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                     // boost again to check dialog box handling
                     Assert.IsTrue( parts.Toolbar.CanBoost );
                     parts.Toolbar.Boost();
-                    parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                    parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                    parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                    parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                     Assert.IsTrue( parts.Toolbar.CanDelete );
                     parts.Toolbar.Delete();
@@ -108,11 +108,11 @@ namespace TestLeft.UI_Tests.Part
 
                 parts.SingleDetailDesign.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
 
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
                 parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
-                parts.SingleDetail.Name.Value = TcSettings.NamePrefix + "ImportDesignTest";
+                parts.SingleDetail.Name.Value = TestSettings.NamePrefix + "ImportDesignTest";
 
                 parts.SingleDetail.DrawingNumber.Value = "ImportDesignTestt_DrawNr";
                 parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
@@ -129,8 +129,8 @@ namespace TestLeft.UI_Tests.Part
 
                 Assert.IsTrue( parts.Toolbar.CanBoost );
                 parts.Toolbar.Boost();
-                parts.WaitForDetailOverlayAppear( TcSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
                 Assert.IsTrue( parts.Toolbar.CanDelete );
                 parts.Toolbar.Delete();

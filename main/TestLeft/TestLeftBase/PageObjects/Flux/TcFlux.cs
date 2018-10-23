@@ -14,9 +14,11 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
     {
         private TcAppProcess mApp;
         private IControl mMainWindow;
+        private readonly string mFluxProcessName;
 
-        public TcFlux( IDriver driver ) : base( driver )
+        public TcFlux( string fluxProcessName, IDriver driver ) : base( driver )
         {
+            mFluxProcessName = fluxProcessName;
         }
 
         /// <summary>
@@ -44,7 +46,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
                     // search process
                     processFound = Driver.TryFind<IProcess>( new ProcessPattern()
                     {
-                        ProcessName = "Flux",
+                        ProcessName = mFluxProcessName,
                         Index = index
                     }, 1, out var flux );
 
@@ -100,7 +102,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
             // Press save
             IProcess flux = Driver.Find<IProcess>( new ProcessPattern()
             {
-                ProcessName = "Flux"
+                ProcessName = mFluxProcessName
             } );
             flux.TryFind<IControl>( new WPFPattern { ClrFullClassName = "System.Windows.Controls.Primitives.PopupRoot" }, 2, out var popup );
             var save = popup.Find<IControl>( new WPFPattern()
@@ -127,7 +129,7 @@ namespace TestLeft.TestLeftBase.PageObjects.Flux
             // Skip 1st bend
             IProcess flux = Driver.Find<IProcess>( new ProcessPattern()
             {
-                ProcessName = "Flux"
+                ProcessName = mFluxProcessName
             } );
             var firstBend = flux.Find<IControl>( new WPFPattern()
             {
