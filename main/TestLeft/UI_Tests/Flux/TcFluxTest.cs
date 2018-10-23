@@ -128,7 +128,6 @@ namespace TestLeft.UI_Tests.Flux
                     parts.WaitForDetailOverlayDisappear( TcSettings.PartOverlayDisappearTimeout );
                 }
 
-                // TODO: manuelle änderung detektieren
                 var isManual = parts.SingleDetailBendSolutions.IsManuallyChanged( solutionName );
                 Assert.IsTrue( isManual );
 
