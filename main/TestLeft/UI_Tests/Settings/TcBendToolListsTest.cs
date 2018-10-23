@@ -103,6 +103,9 @@ namespace TestLeft.UI_Tests.Settings
 
                  settingsDialog.Save();
 
+                 // wait for sync
+                 Thread.Sleep( 20000 );
+
                  // import part and use toollist
                  var parts = HomeZone.GotoParts();
                  parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
