@@ -1,9 +1,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestLeft.UI_Tests.Base;
-using TestLeft.UI_Tests.Utilities;
 using Trumpf.AutoTest.Facts;
+using UiTests.Base;
+using UiTests.Utilities;
 
-namespace TestLeft.TestAutomation.Smoke
+
+namespace SmokeTests.Smoke
 {
     /// <summary>
     /// This test class contains smoke tests and supporting test methods.

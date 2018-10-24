@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4A17E1CE-3A93-4FA6-B470-45BC26D8F1E0}</ProjectGuid>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8BF76EB4-CC36-49EA-931C-C6C3F1689EBB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SmokeTests</RootNamespace>
-    <AssemblyName>HomeZone.SmokeTests</AssemblyName>
+    <RootNamespace>UiTests</RootNamespace>
+    <AssemblyName>HomeZone.UiTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,7 +40,6 @@
     <Reference Include="FactsHub.Model, Version=4.5.9.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Factshub.Connector.4.5.9\lib\net451\FactsHub.Model.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MimeTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Factshub.Connector.4.5.9\lib\net451\MimeTypes.dll</HintPath>
     </Reference>
@@ -44,9 +47,6 @@
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework" />
-    <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\_external\packages\RestSharpSigned.105.2.3\lib\net46\RestSharp.dll</HintPath>
-    </Reference>
     <Reference Include="SmartBear.TestLeft, Version=12.60.5545.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
       <HintPath>..\_external\packages\SmartBear.TestLeft.2.60.5545.12\lib\net45\SmartBear.TestLeft.dll</HintPath>
     </Reference>
@@ -54,10 +54,11 @@
       <HintPath>..\_external\packages\SmartBear.TestLeft.2.60.5545.12\lib\net45\SmartBear.TestLeft.WebApiWrapper.dll</HintPath>
     </Reference>
     <Reference Include="Stashbox, Version=2.6.1.0, Culture=neutral, PublicKeyToken=9778e33426732b68, processorArchitecture=MSIL">
-      <HintPath>..\_external\packages\Stashbox.2.6.1\lib\net45\Stashbox.dll</HintPath>
+      <HintPath>..\..\packages\Stashbox.2.6.1\lib\net45\Stashbox.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.ServiceProcess" />
@@ -77,20 +78,61 @@
     <Reference Include="Trumpf.Coparoo.Desktop, Version=4.0.1.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
       <HintPath>..\_external\packages\Trumpf.Coparoo.Desktop.4.0.1\lib\net451\Trumpf.Coparoo.Desktop.dll</HintPath>
     </Reference>
+    <Reference Include="Trumpf.TruTops.UnitTestAttribute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a29b70238a00b455, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_external\Trumpf\Trumpf.TruTops.UnitTestAttribute.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\TcBaseTestClass.cs" />
+    <Compile Include="Base\TcTestOptions.cs" />
+    <Compile Include="Customer\TcCustomerTest.cs" />
+    <Compile Include="CutJob\TcCutJobTest.cs" />
+    <Compile Include="Cut\TcCutTest.cs" />
+    <Compile Include="Design\TcDesignTest.cs" />
+    <Compile Include="Flux\TcFluxTest.cs" />
+    <Compile Include="Machine\TcWorkplaceTest.cs" />
+    <Compile Include="Material\TcMaterialTest.cs" />
+    <Compile Include="NestingTemplate\TcNestingTemplateTest.cs" />
+    <Compile Include="PartOrder\TcPartOrderTest.cs" />
+    <Compile Include="Part\TcPartTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Smoke\TcMiniSmokeTest.cs" />
+    <Compile Include="Settings\TcBendSettingsTest.cs" />
+    <Compile Include="Settings\TcBendToolListsTest.cs" />
+    <Compile Include="Settings\TcSettingsDialogTest.cs" />
+    <Compile Include="Shell\TcMainMenuTest.cs" />
+    <Compile Include="Shell\TcShellTest.cs" />
+    <Compile Include="Shell\TcWelcomeScreenTest.cs" />
+    <Compile Include="Utilities\TcHomeZoneExtensions.cs" />
+    <Compile Include="Utilities\TcSmokeHelpers.cs" />
+    <Compile Include="Utilities\TcSmokeTestsPart.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Test.runsettings">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UiTests\UiTests.csproj">
-      <Project>{8BF76EB4-CC36-49EA-931C-C6C3F1689EBB}</Project>
-      <Name>UiTests</Name>
+    <ProjectReference Include="..\UiObjectInterfaces\UiObjectInterfaces.csproj">
+      <Project>{FBDAA579-B218-4D39-8F5B-838DEF1890F3}</Project>
+      <Name>UiObjectInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UiObjects\UiObjects.csproj">
+      <Project>{7C8D9CED-B73C-49A8-B168-5BBFE0FFED15}</Project>
+      <Name>UiObjects</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>
