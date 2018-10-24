@@ -51,7 +51,7 @@
       <HintPath>..\_external\packages\SmartBear.TestLeft.2.60.5545.12\lib\net45\SmartBear.TestLeft.WebApiWrapper.dll</HintPath>
     </Reference>
     <Reference Include="Stashbox, Version=2.6.1.0, Culture=neutral, PublicKeyToken=9778e33426732b68, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Stashbox.2.6.1\lib\net45\Stashbox.dll</HintPath>
+      <HintPath>..\_external\packages\Stashbox.2.6.1\lib\net45\Stashbox.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
