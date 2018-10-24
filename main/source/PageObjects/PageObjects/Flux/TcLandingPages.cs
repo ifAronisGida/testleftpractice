@@ -3,7 +3,7 @@
 // All rights reserved to TRUMPF GmbH + Co. KG, Germany
 // -------------------------------------------------------------------------------------------------
 //
-//$File: //SW08/HomeZone_Testing/main/source/TestLeftBase/PageObjects/Flux/TcLandingPages.cs $
+//$File: //SW08/HomeZone_Testing/main/source/PageObjects/PageObjects/Flux/TcLandingPages.cs $
 //$Author: steinertth $
 //$Revision: #1 $ - $Date: 2018/10/24 $ 
 // -------------------------------------------------------------------------------------------------
