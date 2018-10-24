@@ -31,13 +31,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Factshub.Connector, Version=4.5.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\_external\packages\Factshub.Connector.4.5.9\lib\net451\Factshub.Connector.dll</HintPath>
+    </Reference>
+    <Reference Include="FactsHub.Model, Version=4.5.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\_external\packages\Factshub.Connector.4.5.9\lib\net451\FactsHub.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="MimeTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\_external\packages\Factshub.Connector.4.5.9\lib\net451\MimeTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\_external\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework" />
+    <Reference Include="SmartBear.TestLeft, Version=12.60.5545.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
+      <HintPath>..\_external\packages\SmartBear.TestLeft.2.60.5545.12\lib\net45\SmartBear.TestLeft.dll</HintPath>
+    </Reference>
+    <Reference Include="SmartBear.TestLeft.WebApiWrapper, Version=12.60.5545.11, Culture=neutral, PublicKeyToken=483cb98dc5760d9e, processorArchitecture=MSIL">
+      <HintPath>..\_external\packages\SmartBear.TestLeft.2.60.5545.12\lib\net45\SmartBear.TestLeft.WebApiWrapper.dll</HintPath>
+    </Reference>
     <Reference Include="Stashbox, Version=2.6.1.0, Culture=neutral, PublicKeyToken=9778e33426732b68, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Stashbox.2.6.1\lib\net45\Stashbox.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -46,8 +65,20 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Trumpf.AutoTest.Artifacts, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\_external\packages\Trumpf.AutoTest.Artifacts.1.4.0\lib\net40\Trumpf.AutoTest.Artifacts.dll</HintPath>
+    </Reference>
+    <Reference Include="Trumpf.AutoTest.Facts, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\_external\packages\Trumpf.AutoTest.Facts.4.5.0\lib\net40\Trumpf.AutoTest.Facts.dll</HintPath>
+    </Reference>
+    <Reference Include="Trumpf.AutoTest.Facts.Interfaces, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\_external\packages\Trumpf.AutoTest.Facts.Interfaces.1.1.0\lib\net40\Trumpf.AutoTest.Facts.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Trumpf.AutoTest.Utilities, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\_external\packages\Trumpf.AutoTest.Utilities.1.5.0\lib\net40\Trumpf.AutoTest.Utilities.dll</HintPath>
+    </Reference>
     <Reference Include="Trumpf.Coparoo.Desktop, Version=4.0.1.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Trumpf.Coparoo.Desktop.4.0.1\lib\net451\Trumpf.Coparoo.Desktop.dll</HintPath>
+      <HintPath>..\_external\packages\Trumpf.Coparoo.Desktop.4.0.1\lib\net451\Trumpf.Coparoo.Desktop.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
