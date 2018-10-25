@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft;
 using Trumpf.AutoTest.Facts;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using DevExpress.Xpf.Grid;
 using Trumpf.Coparoo.Desktop.WPF;
 using UiObjects.ControlObjects.Grid;

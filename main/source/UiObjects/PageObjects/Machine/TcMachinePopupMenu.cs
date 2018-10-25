@@ -1,4 +1,4 @@
-﻿using SmartBear.TestLeft.TestObjects.WPF;
+using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 

@@ -1,4 +1,4 @@
-﻿using Trumpf.Coparoo.Desktop.WPF;
+using Trumpf.Coparoo.Desktop.WPF;
 using UiObjectInterfaces.Controls;
 
 

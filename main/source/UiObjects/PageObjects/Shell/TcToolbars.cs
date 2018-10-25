@@ -1,4 +1,4 @@
-﻿using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 
 

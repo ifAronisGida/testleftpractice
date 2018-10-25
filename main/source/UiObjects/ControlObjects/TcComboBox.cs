@@ -1,4 +1,4 @@
-﻿using SmartBear.TestLeft.TestObjects;
+using SmartBear.TestLeft.TestObjects;
 using Trumpf.PageObjects.WPF;
 
 namespace TestLeft.TestLeftBase.ControlObjects

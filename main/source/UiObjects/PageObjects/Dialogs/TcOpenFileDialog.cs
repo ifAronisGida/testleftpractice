@@ -1,4 +1,4 @@
-﻿using SmartBear.TestLeft.TestObjects;
+using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using UiObjectInterfaces.Dialogs;
 
