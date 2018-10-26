@@ -24,10 +24,11 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: NuGetCommand@2
+- task: NuGetCommand@3
   inputs:
     command: pack
     packagesToPack: '**/*.csproj'
+    configuration: '$(buildConfiguration)'
 
 #- task: VSTest@2
 #  inputs:
