@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/ThiloSteinertexternal/HomeZoneUiTests/_apis/build/status/HomeZoneUiTests)](https://dev.azure.com/ThiloSteinertexternal/HomeZoneUiTests/_build/latest?definitionId=1)
 # Introduction 
 This project contains the UI tests for the HomeZone.
 
