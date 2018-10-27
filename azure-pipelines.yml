@@ -47,13 +47,13 @@ steps:
     command: pack
     packagesToPack: '**/*.csproj'
 
-- task: NuGetCommand@2
-  inputs:
-    command: push
-    nuGetFeedType: external
+#- task: NuGetCommand@2
+#  inputs:
+#    command: push
+#    nuGetFeedType: external
 #    publishFeedCredentials: '<Name of the NuGet service connection>'
-    versioningScheme: byEnvVar
-    versionEnvVar: Version
+#    versioningScheme: byEnvVar
+#    versionEnvVar: Version
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
