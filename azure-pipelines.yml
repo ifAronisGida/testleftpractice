@@ -28,7 +28,7 @@ steps:
   displayName: 'NuGet pack'
   inputs:
     command: pack
-    packagesToPack: '**/*.csproj'
+    packagesToPack: 'main/source/HomeZoneUiTests.nuspec'
     versioningScheme: byPrereleaseNumber
 
 - task: CopyFiles@2
