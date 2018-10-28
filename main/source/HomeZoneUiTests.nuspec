@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>HomeZone.SmokeTests</id>
+    <version>1.0.0-alpha1</version>
+    <title>HomeZone UI tests</title>
+    <authors>TRUMPF Werkzeugmaschinen GmbH + Co. KG</authors>
+    <owners>TRUMPF Werkzeugmaschinen GmbH + Co. KG</owners>
+    <projectUrl></projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary></summary>
+    <description></description>
+    <releaseNotes></releaseNotes>
+    <copyright>2018 TRUMPF Werkzeugmaschinen GmbH + Co. KG</copyright>
+    <tags>Testing UI TestLeft HomeZone</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\*.*" target="lib\net461\" />
+  </files>
+</package>
