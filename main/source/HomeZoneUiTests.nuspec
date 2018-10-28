@@ -9,7 +9,7 @@
     <projectUrl>https://dev.azure.com/ThiloSteinertexternal/HomeZoneUiTests</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary></summary>
-    <description></description>
+    <description>Smoke and UI tests for the HomeZone</description>
     <releaseNotes></releaseNotes>
     <copyright>2018 TRUMPF Werkzeugmaschinen GmbH + Co. KG</copyright>
     <tags>Testing UI TestLeft HomeZone</tags>
