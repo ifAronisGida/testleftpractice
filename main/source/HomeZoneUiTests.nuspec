@@ -6,7 +6,7 @@
     <title>HomeZone UI tests</title>
     <authors>TRUMPF Werkzeugmaschinen GmbH + Co. KG</authors>
     <owners>TRUMPF Werkzeugmaschinen GmbH + Co. KG</owners>
-    <projectUrl></projectUrl>
+    <projectUrl>https://dev.azure.com/ThiloSteinertexternal/HomeZoneUiTests</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary></summary>
     <description></description>
