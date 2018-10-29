@@ -3,13 +3,10 @@ using Trumpf.AutoTest.Facts;
 using UiTests.Base;
 using UiTests.Utilities;
 
-
 namespace SmokeTests.Smoke
 {
     /// <summary>
     /// This test class contains smoke tests and supporting test methods.
-    /// These test methods are mainly used for module and PageObject tests.
-    /// The smoke tests should clean up at the end.
     /// </summary>
     /// <seealso cref="TcBaseTestClass" />
     [TestClass]
@@ -25,16 +22,36 @@ namespace SmokeTests.Smoke
         [Tag( "Smoke" )]
         public void MiniSmokeTest()
         {
+            Act( DoMiniSmokeTest );
+        }
+
+        /// <summary>
+        /// Repeating:
+        ///     Mini smoke test: creating test items, adding bend and cut solutions to parts, testing..., deleting the test items.
+        /// Endless
+        /// </summary>
+        [TestMethod, UniqueName( "4E5079D6-6820-4C01-B623-E1BB86AD8825" )]
+        [Tag( "Smoke" )]
+        public void EndlessMiniSmokeTest()
+        {
             Act( () =>
             {
-                mSmokeHelpers.CreateTestItems();
-
-                //TODO
-                //testing...
-                mSmokeTestsPart.ExecutePartSmokeTests();
-
-                mSmokeHelpers.DeleteTestItems();
+                while( true )
+                {
+                    DoMiniSmokeTest();
+                }
             } );
+        }
+
+        private void DoMiniSmokeTest()
+        {
+            mSmokeHelpers.CreateTestItems();
+
+            //TODO
+            //testing...
+            mSmokeTestsPart.ExecutePartSmokeTests();
+
+            mSmokeHelpers.DeleteTestItems();
         }
     }
 }
