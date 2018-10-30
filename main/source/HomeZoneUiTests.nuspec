@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>HomeZone.SmokeTests</id>
-    <version>1.0.0-alpha1</version>
+    <!--<version>1.0.0-alpha1</version>-->
     <title>HomeZone UI tests</title>
     <authors>TRUMPF Werkzeugmaschinen GmbH + Co. KG</authors>
     <owners>TRUMPF Werkzeugmaschinen GmbH + Co. KG</owners>
