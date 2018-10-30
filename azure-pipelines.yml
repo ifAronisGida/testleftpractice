@@ -29,7 +29,7 @@ steps:
   inputs:
     command: pack
     packagesToPack: 'main/source/HomeZoneUiTests.nuspec'
-    versioningScheme: byPrereleaseNumber
+#    versioningScheme: byPrereleaseNumber
 
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
