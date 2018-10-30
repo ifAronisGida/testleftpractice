@@ -29,6 +29,7 @@ steps:
   inputs:
     command: pack
     packagesToPack: 'main/source/HomeZoneUiTests.nuspec'
+    versioningScheme: byBuildNumber
 #    versioningScheme: byPrereleaseNumber
 
 - task: CopyFiles@2
