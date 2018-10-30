@@ -7,7 +7,8 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-steps:- task: NuGetCommand@2
+steps:
+- task: NuGetCommand@2
   displayName: 'NuGet pack'
   inputs:
     command: pack
