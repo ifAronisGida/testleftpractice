@@ -1,4 +1,13 @@
-- task: NuGetCommand@2
+
+pool:
+  vmImage: 'VS2017-Win2016'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:- task: NuGetCommand@2
   displayName: 'NuGet pack'
   inputs:
     command: pack
