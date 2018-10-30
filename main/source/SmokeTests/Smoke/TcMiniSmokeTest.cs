@@ -25,6 +25,7 @@ namespace SmokeTests.Smoke
             Act( DoMiniSmokeTest );
         }
 
+
         /// <summary>
         /// Repeating:
         ///     Mini smoke test: creating test items, adding bend and cut solutions to parts, testing..., deleting the test items.
