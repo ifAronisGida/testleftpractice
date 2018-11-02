@@ -5,7 +5,6 @@ using Trumpf.AutoTest.Facts;
 using UiTests.Base;
 using UiTests.Utilities;
 
-
 namespace UiTests.Cut
 {
     /// <summary>
@@ -19,6 +18,7 @@ namespace UiTests.Cut
         /// Creates a new part with cut solution, opens it and closes Cut.
         /// </summary>
         [TestMethod, UniqueName( "5F3AF1BB-5308-440E-8E46-9268518E0FF1" )]
+        [Tag( "Cut" )]
         public void CutOpenCloseTest()
         {
             Act( DoCutOpenClose );

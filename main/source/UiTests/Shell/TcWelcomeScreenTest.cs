@@ -3,7 +3,6 @@ using Trumpf.AutoTest.Facts;
 using UiTests.Base;
 using UiTests.Utilities;
 
-
 namespace UiTests.Shell
 {
     /// <summary>
@@ -17,6 +16,7 @@ namespace UiTests.Shell
         /// Tests the welcome screen toggle CheckBox.
         /// </summary>
         [TestMethod, UniqueName( "ADDE5BD8-9ECE-44E6-A0F5-08033D498254" )]
+        [Tag( "WelcomeScreen" )]
         public void ToggleShowWelcomeScreenTest()
         {
             Act( () =>

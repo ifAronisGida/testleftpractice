@@ -4,7 +4,6 @@ using Trumpf.AutoTest.Facts;
 using UiTests.Base;
 using UiTests.Utilities;
 
-
 namespace UiTests.Machine
 {
     /// <summary>
@@ -18,6 +17,7 @@ namespace UiTests.Machine
         /// Creates a new cut machine, saves and then deletes it.
         /// </summary>
         [TestMethod, UniqueName( "5AB063F6-E0E2-4E79-BD0C-2D276CFFB742" )]
+        [Tag( "Machine" )]
         public void NewCutMachineAndDeleteTest()
         {
             Act( () =>
@@ -54,6 +54,7 @@ namespace UiTests.Machine
         /// Creates a new bend machine, saves and then deletes it.
         /// </summary>
         [TestMethod, UniqueName( "5E83ACD3-80E9-497E-AF94-B4F67B8B17B7" )]
+        [Tag( "Machine" )]
         public void NewBendMachineAndDeleteTest()
         {
             Act( () =>

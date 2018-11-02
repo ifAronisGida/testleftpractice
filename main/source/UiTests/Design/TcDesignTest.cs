@@ -5,7 +5,6 @@ using Trumpf.AutoTest.Facts;
 using UiTests.Base;
 using UiTests.Utilities;
 
-
 namespace UiTests.Design
 {
     /// <summary>
@@ -19,6 +18,7 @@ namespace UiTests.Design
         /// Creates a new part, opens and closes Design.
         /// </summary>
         [TestMethod, UniqueName( "744806A6-EABF-40FB-BC99-F3683F62D44C" )]
+        [Tag( "Design" )]
         public void DesignOpenCloseTest()
         {
             Act( DoDesignOpenClose );

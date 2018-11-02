@@ -3,7 +3,6 @@ using Trumpf.AutoTest.Facts;
 using UiTests.Base;
 using UiTests.Utilities;
 
-
 namespace UiTests.Shell
 {
     /// <summary>
@@ -17,6 +16,7 @@ namespace UiTests.Shell
         /// Adds a single tab and closes it. Nothing else.
         /// </summary>
         [TestMethod, UniqueName( "E87747D2-4659-40D5-9D99-1058E925C933" )]
+        [Tag( "Shell" )]
         public void AddTab()
         {
             Act( () =>
@@ -36,6 +36,7 @@ namespace UiTests.Shell
         /// Adds 10 tabs in a loop.
         /// </summary>
         [TestMethod, UniqueName( "BC7A4769-4C91-47A9-A6AD-2E14D997EEC2" )]
+        [Tag( "Shell" )]
         public void Add10Tabs()
         {
             Act( () =>
@@ -56,6 +57,7 @@ namespace UiTests.Shell
         /// This is done 10 times.
         /// </summary>
         [TestMethod, UniqueName( "D9D5367A-1F0B-4E04-849C-EDD975C1CCEC" )]
+        [Tag( "Shell" )]
         public void Add10TabsWithPartSelected()
         {
             Act( () =>
@@ -76,6 +78,7 @@ namespace UiTests.Shell
         /// Closes all tabs except for the first one.
         /// </summary>
         [TestMethod, UniqueName( "8A5188D8-817A-4650-B420-B3AFE6DB55FA" )]
+        [Tag( "Shell" )]
         public void CloseAllAdditionalTabs()
         {
             Act( () =>
