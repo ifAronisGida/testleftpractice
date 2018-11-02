@@ -5,7 +5,6 @@ using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.Qt;
 using UiObjectInterfaces.Cut;
 
-
 namespace UiObjects.PageObjects.Cut
 {
     /// <summary>
