@@ -13,6 +13,9 @@ namespace UiObjects.ControlObjects
 
         public int Count => Node.GetProperty<int>( "Items.Count" );
 
+        public object Items => Node.GetProperty<int>( "Items" );
+        public object SelectedItem => Node.GetProperty<int>( "SelectedItem" );
+
         /// <summary>
         /// Gets or sets the index of the selected item.
         /// </summary>

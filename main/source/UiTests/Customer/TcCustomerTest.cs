@@ -5,7 +5,6 @@ using Trumpf.AutoTest.Facts;
 using UiTests.Base;
 using UiTests.Utilities;
 
-
 namespace UiTests.Customer
 {
     /// <summary>
@@ -19,6 +18,7 @@ namespace UiTests.Customer
         /// Creates new customers, saves and then deletes them.
         /// </summary>
         [TestMethod, UniqueName( "D54BAF5F-F41B-4CEF-9F6B-6907D642507E" )]
+        [Tag( "Customer" )]
         public void NewCustomersAndDeleteTest()
         {
             Act( () =>

@@ -10,7 +10,6 @@ using UiObjects.PageObjects.Dialogs;
 using UiObjects.PageObjects.Shell;
 using UiObjects.Utilities;
 
-
 namespace UiObjects.PageObjects.CutJob
 {
     public class TcCutJobSolution : TcPageObjectBase, IChildOf<TcDetailContent>, TiCutJobSheetProgram
@@ -40,6 +39,8 @@ namespace UiObjects.PageObjects.CutJob
                 }
             }
         }
+
+        public bool CanBoost => BoostButton.Enabled;
 
         public void Boost()
         {

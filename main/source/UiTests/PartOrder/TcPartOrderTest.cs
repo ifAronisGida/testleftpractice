@@ -3,13 +3,13 @@ using Trumpf.AutoTest.Facts;
 using UiTests.Base;
 using UiTests.Utilities;
 
-
 namespace UiTests.PartOrder
 {
     [TestClass]
     public class TcPartOrderTest : TcBaseTestClass
     {
         [TestMethod, UniqueName( "223E645A-9210-42A7-8C71-DCE3DFDC2AE7" )]
+        [Tag( "PartOrder" )]
         public void NewPartOrderAndDeleteTest()
         {
             Act( () =>
@@ -45,6 +45,7 @@ namespace UiTests.PartOrder
         }
 
         [TestMethod, UniqueName( "79662E0F-0AF8-4F6D-8A44-F81537CF8430" )]
+        [Tag( "PartOrder" )]
         public void SelectPartIntoOrderTest()
         {
             var parts = HomeZone.GotoParts();

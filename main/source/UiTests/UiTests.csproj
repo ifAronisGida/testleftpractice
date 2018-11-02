@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -89,6 +89,7 @@
     <Compile Include="Cut\TcCutTest.cs" />
     <Compile Include="Design\TcDesignTest.cs" />
     <Compile Include="Flux\TcFluxTest.cs" />
+    <Compile Include="FunctionalTests\DA07_Nesting\TcDa07.cs" />
     <Compile Include="Machine\TcWorkplaceTest.cs" />
     <Compile Include="Material\TcMaterialTest.cs" />
     <Compile Include="NestingTemplate\TcNestingTemplateTest.cs" />
@@ -121,6 +122,7 @@
       <Name>UiObjects</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

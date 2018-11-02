@@ -5,7 +5,6 @@ using Trumpf.Coparoo.Desktop.WPF;
 using UiObjectInterfaces.Common;
 using UiObjects.ControlObjects.Composite;
 
-
 namespace UiObjects.PageObjects
 {
     // it would be nice to mark this as a child of the main tab control,

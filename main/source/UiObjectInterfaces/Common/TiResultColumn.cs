@@ -12,6 +12,8 @@ namespace UiObjectInterfaces.Common
         /// The amount of items in the result list.
         /// </value>
         int Count { get; }
+        object Items { get; }
+        object SelectedItem { get; }
 
         /// <summary>
         /// Clears the search text if it is not empty.

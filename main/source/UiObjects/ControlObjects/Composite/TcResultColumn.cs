@@ -3,7 +3,6 @@ using UiObjectInterfaces.Common;
 using UiObjectInterfaces.Controls;
 using UiObjects.Utilities;
 
-
 namespace UiObjects.ControlObjects.Composite
 {
     /// <summary>
@@ -31,6 +30,8 @@ namespace UiObjects.ControlObjects.Composite
         /// The amount of items in the result list.
         /// </value>
         public int Count => ResultListView.Count;
+        public object Items => ResultListView.Items;
+        public object SelectedItem => ResultListView.SelectedItem;
 
         /// <summary>
         /// Clears the search text if it is not empty.

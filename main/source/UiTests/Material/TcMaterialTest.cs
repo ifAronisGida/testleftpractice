@@ -4,7 +4,6 @@ using Trumpf.AutoTest.Facts;
 using UiTests.Base;
 using UiTests.Utilities;
 
-
 namespace UiTests.Material
 {
     /// <summary>
@@ -18,6 +17,7 @@ namespace UiTests.Material
         /// Creates a new material, saves it and waits until the overlay disappears.
         /// </summary>
         [TestMethod, UniqueName( "398087D2-364F-41E3-B6B1-209112BCDEA9" )]
+        [Tag( "Material" )]
         public void NewMaterialAndDeleteTest()
         {
             Act( () =>
@@ -54,6 +54,7 @@ namespace UiTests.Material
         /// Duplicates material 1.0038, renames and saves it, waits until the overlay disappears and deletes the new material.
         /// </summary>
         [TestMethod, UniqueName( "6AD0682A-60D0-4A4D-9C29-4724701B431B" )]
+        [Tag( "Material" )]
         public void DuplicateMaterialAndDeleteTest()
         {
             Act( () =>

@@ -4,7 +4,6 @@ using Trumpf.AutoTest.Facts;
 using UiTests.Base;
 using UiTests.Utilities;
 
-
 namespace UiTests.Part
 {
     /// <summary>
@@ -18,13 +17,15 @@ namespace UiTests.Part
         /// Creates a new part, saves and then deletes it.
         /// </summary>
         [TestMethod, UniqueName( "FD4D71C7-26F6-4A4F-B16D-4A82C575FA33" )]
+        [Tag( "Part" )]
         public void NewPartAndDeleteTest()
         {
             Act( () =>
             {
                 var partName = TestSettings.NamePrefix + "NewPartTest";
 
-                var parts = HomeZone.GotoParts();
+                var parts = HomeZone.Parts;
+                parts.Goto();
 
                 parts.Toolbar.New();
                 parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
@@ -53,6 +54,7 @@ namespace UiTests.Part
         /// Imports a part, waits until the overlay disappears, fills some controls, saves the part and then deletes it.
         /// </summary>
         [TestMethod, UniqueName( "D74CE52A-BEF2-4959-83B8-3FD7088583A4" )]
+        [Tag( "Part" )]
         public void ImportPartTest()
         {
             Act( () =>
@@ -100,6 +102,7 @@ namespace UiTests.Part
         /// Imports a part via Import Design button, waits until the overlay disappears, fills some controls, saves the part and then deletes it.
         /// </summary>
         [TestMethod, UniqueName( "6A3D54A6-59A6-4CC5-A8F4-5AB3A34BD462" )]
+        [Tag( "Part" )]
         public void ImportDesignTest()
         {
             Act( () =>

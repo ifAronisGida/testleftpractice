@@ -3,7 +3,6 @@ using Trumpf.AutoTest.Facts;
 using UiTests.Base;
 using UiTests.Utilities;
 
-
 namespace UiTests.Shell
 {
     /// <summary>
@@ -17,6 +16,7 @@ namespace UiTests.Shell
         /// Tests the refresh menu item.
         /// </summary>
         [TestMethod, UniqueName( "29738EAF-376F-45C2-9B98-29E95C04B142" )]
+        [Tag( "MainMenu" )]
         public void RefreshMasterDataTest()
         {
             Act( () =>
@@ -31,6 +31,7 @@ namespace UiTests.Shell
         /// Tests the settings menu item.
         /// </summary>
         [TestMethod, UniqueName( "31113C97-7127-4082-AC82-F301CA91F36E" )]
+        [Tag( "MainMenu" )]
         public void OpenAndCloseSettingsTest()
         {
             Act( () =>
@@ -48,6 +49,7 @@ namespace UiTests.Shell
         /// Tests the help menu item.
         /// </summary>
         [TestMethod, UniqueName( "82FBBFE7-39DC-4773-8A60-2D0A2ADDA348" )]
+        [Tag( "MainMenu" )]
         public void ShowHelpTest()
         {
             Act( () =>
@@ -64,6 +66,7 @@ namespace UiTests.Shell
         /// Tests the welcome screen menu item.
         /// </summary>
         [TestMethod, UniqueName( "80F7B52C-6320-40AA-8F5E-908CFB512B05" )]
+        [Tag( "MainMenu" )]
         public void ShowWelcomeScreenTest()
         {
             Act( () =>
@@ -78,6 +81,7 @@ namespace UiTests.Shell
         /// Tests the about menu item.
         /// </summary>
         [TestMethod, UniqueName( "5BAE20E5-6DC2-4B48-A78B-D29483F772FD" )]
+        [Tag( "MainMenu" )]
         public void ShowAboutTest()
         {
             Act( () =>
@@ -95,6 +99,7 @@ namespace UiTests.Shell
         /// Tests the exit menu item.
         /// </summary>
         [TestMethod, UniqueName( "9E82E847-ABAE-4431-BDAA-51B6027E8918" )]
+        [Tag( "MainMenu" )]
         public void ExitTest()
         {
             Act( () =>
