@@ -17,8 +17,8 @@
       <Parameter name="TestedAppPath" value="C:\\Program Files\\TRUMPF\\TruTops\\Client\\Control" />
 
       <Parameter name="Product" value="HomeZone" />
-      <Parameter name="Version" value="8" />
-      <Parameter name="Context" value="Testkiste" />
+      <Parameter name="Version" value="9" />
+      <Parameter name="Context" value="LAPtest" />
       <Parameter name="Process" value="Developer test" />
 
       <Parameter name="Remarks" value="(with remarks)" />

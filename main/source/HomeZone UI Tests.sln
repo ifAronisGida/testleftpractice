@@ -17,6 +17,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiObjects", "UiObjects\UiOb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiTests", "UiTests\UiTests.csproj", "{8BF76EB4-CC36-49EA-931C-C6C3F1689EBB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cmd", "cmd", "{17E95451-663B-4583-89D4-0FA448AA0A4E}"
+	ProjectSection(SolutionItems) = preProject
+		cmd\CreateTestItems.cmd = cmd\CreateTestItems.cmd
+		cmd\DeleteTestItems.cmd = cmd\DeleteTestItems.cmd
+		cmd\RunEndlessMiniSmokeTest.cmd = cmd\RunEndlessMiniSmokeTest.cmd
+		cmd\RunMiniSmokeTest.cmd = cmd\RunMiniSmokeTest.cmd
+		cmd\RunSmokeTest.cmd = cmd\RunSmokeTest.cmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +51,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{17E95451-663B-4583-89D4-0FA448AA0A4E} = {BDFF1CE6-FA9A-470E-A920-54E2077ADF5B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F4BDC0B4-3375-43AF-AB9C-A1789FFE8C6B}

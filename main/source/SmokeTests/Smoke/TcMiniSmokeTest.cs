@@ -46,13 +46,13 @@ namespace SmokeTests.Smoke
 
         private void DoMiniSmokeTest()
         {
-            mSmokeHelpers.CreateTestItems();
+            mSmokeHelpers.DoCreateTestItems();
 
             //TODO
             //testing...
             mSmokeTestsPart.ExecutePartSmokeTests();
 
-            mSmokeHelpers.DeleteTestItems();
+            mSmokeHelpers.DoDeleteTestItems();
         }
     }
 }
