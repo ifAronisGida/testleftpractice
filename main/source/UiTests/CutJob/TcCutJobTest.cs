@@ -5,7 +5,6 @@ using Trumpf.AutoTest.Facts;
 using UiTests.Base;
 using UiTests.Utilities;
 
-
 namespace UiTests.CutJob
 {
     /// <summary>
@@ -19,6 +18,7 @@ namespace UiTests.CutJob
         /// Creates a new cut job, saves and then deletes it.
         /// </summary>
         [TestMethod, UniqueName( "6329FFBB-0DEA-43D0-A43F-472929C319A8" )]
+        [Tag( "CutJob" )]
         public void NewCutJobAndDeleteTest()
         {
             Act( () =>
@@ -40,6 +40,7 @@ namespace UiTests.CutJob
         }
 
         [TestMethod, UniqueName( "2CE74B5D-0F60-4076-B34D-51BB571C197C" )]
+        [Tag( "CutJob" )]
         public void RawMaterialSelectionTest()
         {
             Act( () =>
@@ -59,6 +60,7 @@ namespace UiTests.CutJob
         }
 
         [TestMethod, UniqueName( "C3E21D8B-A964-4B72-89BC-C3940289ECE0" )]
+        [Tag( "CutJob" )]
         public void OrdersTableTest()
         {
             const string PartName = "UiT_Demoteil";
@@ -144,6 +146,7 @@ namespace UiTests.CutJob
         }
 
         [TestMethod, UniqueName( "6E535F11-9B88-4F75-8240-B70C97EC8471" )]
+        [Tag( "CutJob" )]
         public void RawSheetsTest()
         {
             Act( () =>

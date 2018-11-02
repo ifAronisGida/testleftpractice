@@ -8,7 +8,6 @@ using UiObjects.PageObjects.Flux;
 using UiTests.Base;
 using UiTests.Utilities;
 
-
 namespace UiTests.Settings
 {
     /// <summary>
@@ -22,6 +21,7 @@ namespace UiTests.Settings
         /// Tests the tool lists configuration.
         /// </summary>
         [TestMethod, UniqueName( "204D1ED2-6B77-43E8-A638-9B1020488A1D" )]
+        [Tag( "ToolListSettings" )]
         public void ToolListsConfigurationTest()
         {
             Act( () =>
@@ -67,6 +67,7 @@ namespace UiTests.Settings
         /// Create toollist and delete it.
         /// </summary>
         [TestMethod, UniqueName( "200D1ED2-6B77-43E8-A638-9B1020488A1D" )]
+        [Tag( "ToolListSettings" )]
         public void DeleteToolListsTest()
         {
             Act( () =>
@@ -122,6 +123,7 @@ namespace UiTests.Settings
         /// Create toollist rename and choose it in Design
         /// </summary>
         [TestMethod, UniqueName( "201D1ED2-6B77-43E8-A638-9B1020488A1D" )]
+        [Tag( "ToolListSettings" )]
         public void RenameToolList()
         {
             Act( () =>

@@ -7,7 +7,6 @@ using UiObjects.PageObjects.Flux;
 using UiTests.Base;
 using UiTests.Utilities;
 
-
 namespace UiTests.Flux
 {
     /// <summary>
@@ -32,6 +31,7 @@ namespace UiTests.Flux
         /// Creates a new part with bend solution, opens it and closes Flux.
         /// </summary>
         [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319A" )]
+        [Tag( "Flux" )]
         public void FluxOpenCloseTest()
         {
             Act( DoFluxOpenClose );
@@ -102,6 +102,7 @@ namespace UiTests.Flux
         /// Creates a new part with bend solution, opens it, saves and closes Flux.
         /// </summary>
         [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319C" )]
+        [Tag( "Flux" )]
         public void FluxSaveAndCloseTest()
         {
             Act( () =>
@@ -140,6 +141,7 @@ namespace UiTests.Flux
         /// Boost part with Flux
         /// </summary>
         [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319D" )]
+        [Tag( "Flux" )]
         public void BoostPartSucessTest()
         {
             Act( () =>
@@ -173,6 +175,7 @@ namespace UiTests.Flux
         /// Boosts a part with error (missing clampings)
         /// </summary>
         [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319E" )]
+        [Tag( "Flux" )]
         public void BoostSolutionWithErrorTest()
         {
             Act( () =>
@@ -208,6 +211,7 @@ namespace UiTests.Flux
         /// checks if part can be released
         /// </summary>
         [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319F" )]
+        [Tag( "Flux" )]
         public void ReleaseBoostedPart()
         {
             Act( () =>
@@ -255,6 +259,7 @@ namespace UiTests.Flux
         /// Opens/Closes configure machine dialog
         /// </summary>
         [TestMethod, UniqueName( "511d5620-52c1-4735-9fc4-370a62552eca" )]
+        [Tag( "Flux" )]
         public void ConfigureMachineTest()
         {
             Act( () =>
@@ -282,6 +287,7 @@ namespace UiTests.Flux
         /// Closes a changed part without saving
         /// </summary>
         [TestMethod, UniqueName( "511d5620-52c1-4735-9fc4-370a62552eca" )]
+        [Tag( "Flux" )]
         public void CloseWithoutSave()
         {
             Act( () =>
