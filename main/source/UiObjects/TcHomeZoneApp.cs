@@ -18,7 +18,6 @@ using UiObjects.PageObjects.Part;
 using UiObjects.PageObjects.PartOrder;
 using UiObjects.PageObjects.Shell;
 
-
 namespace UiObjects
 {
     /// <summary>

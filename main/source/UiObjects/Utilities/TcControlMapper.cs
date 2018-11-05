@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Trumpf.Coparoo.Desktop.WPF;
 using UiObjects.ControlObjects;
 
-
 namespace UiObjects.Utilities
 {
     internal static class TcControlMapper
     {
         private static readonly Dictionary<string, Func<IControlObject, object>> mappings = new Dictionary<string, Func<IControlObject, object>>
         {
+            ["DevExpress.Xpf.Core.DXTabItem"] = controlObject => new TcButton( controlObject ),
             ["DevExpress.Xpf.Editors.CheckEdit"] = controlObject => new TcCheckBox( controlObject ),
             ["DevExpress.Xpf.Editors.SpinEdit"] = controlObject => new TcSpinEdit( controlObject ),
             ["DevExpress.Xpf.Editors.TextEdit"] = controlObject => new TcTextEdit( controlObject ),
@@ -32,7 +32,7 @@ namespace UiObjects.Utilities
 
             try
             {
-                var factoryFunc = mappings[fqClassName];
+                var factoryFunc = mappings[ fqClassName ];
                 return ( TInterface )factoryFunc( controlObject );
             }
             catch( KeyNotFoundException e )

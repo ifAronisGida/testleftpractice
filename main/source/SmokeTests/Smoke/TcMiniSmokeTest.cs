@@ -38,6 +38,7 @@ namespace SmokeTests.Smoke
             {
                 while( true )
                 {
+                    HomeZone.MainTabControl.AddNewTab();
                     DoMiniSmokeTest();
                 }
             } );
