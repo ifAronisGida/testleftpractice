@@ -9,7 +9,6 @@ using UiObjects.ControlObjects;
 using UiObjects.PageObjects.Customer;
 using UiObjects.PageObjects.Shell;
 
-
 namespace UiObjects.PageObjects.Part
 {
     /// <summary>

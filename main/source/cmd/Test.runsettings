@@ -26,7 +26,7 @@
       <Parameter name="FactsHubEnabled" value="true" />
       <Parameter name="FactsHubAddress" value="http://LAP013742:5000" />
 
-      <Parameter name="ScreenRecorderEnabled" value="false" />
+      <Parameter name="ScreenRecorderEnabled" value="true" />
 
       <Parameter name="NamePrefix" value="UIT_" />
 
