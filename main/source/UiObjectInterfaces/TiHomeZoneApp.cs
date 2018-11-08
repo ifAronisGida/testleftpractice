@@ -1,3 +1,4 @@
+using Trumpf.Coparoo.Desktop.Waiting;
 using UiObjectInterfaces.Customer;
 using UiObjectInterfaces.CutJob;
 using UiObjectInterfaces.Machine;
@@ -7,11 +8,12 @@ using UiObjectInterfaces.Part;
 using UiObjectInterfaces.PartOrder;
 using UiObjectInterfaces.Shell;
 
-
 namespace UiObjectInterfaces
 {
     public interface TiHomeZoneApp
     {
+        Wool MainWindowExists { get; }
+
         TiMainTabControl MainTabControl { get; }
 
         TiCustomers Customers { get; }

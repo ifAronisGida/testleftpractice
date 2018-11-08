@@ -5,11 +5,6 @@ namespace UiObjectInterfaces.Shell
     public interface TiMainTabControl
     {
         /// <summary>
-        /// Gets whether or not the current tab control is visible as a waitable bool.
-        /// </summary>
-        Wool Visible { get; }
-
-        /// <summary>
         /// Gets or sets the index of the selected tab.
         /// </summary>
         /// <value>
