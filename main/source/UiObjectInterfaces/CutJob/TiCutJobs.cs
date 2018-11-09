@@ -8,6 +8,6 @@ namespace UiObjectInterfaces.CutJob
         TiCutJobToolbar Toolbar { get; }
         TiCutJobBaseInfo BaseInfo { get; }
         TiCutJobContainedOrders ContainedOrders { get; }
-        TiCutJobSheetProgram SheetProgram { get; }
+        TiCutJobSolution SheetProgram { get; }
     }
 }

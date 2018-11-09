@@ -5,7 +5,6 @@ using UiObjectInterfaces.Controls;
 using UiObjectInterfaces.CutJob;
 using UiObjects.PageObjects.Shell;
 
-
 namespace UiObjects.PageObjects.CutJob
 {
     public class TcCutJobDetail : TcPageObjectBase, IChildOf<TcDetailContent>, TiCutJobBaseInfo

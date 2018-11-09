@@ -10,7 +10,7 @@ namespace UiObjects.PageObjects.CutJob
         public override TiCutJobToolbar Toolbar => On<TcCutJobToolbar>( cache: true );
         public TiCutJobBaseInfo BaseInfo => On<TcCutJobDetail>( cache: true );
         public TiCutJobContainedOrders ContainedOrders => On<TcCutJobContainedOrders>( cache: true );
-        public TiCutJobSheetProgram SheetProgram => On<TcCutJobSolution>( cache: true );
+        public TiCutJobSolution SheetProgram => On<TcCutJobSolution>( cache: true );
 
         protected override void DoGoto()
         {

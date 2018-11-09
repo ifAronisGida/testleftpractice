@@ -1,6 +1,5 @@
 using Trumpf.Coparoo.Desktop.WPF;
 
-
 namespace UiObjects.ControlObjects
 {
     /// <summary>

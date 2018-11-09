@@ -93,7 +93,7 @@
     <Compile Include="CutJob\TiCutJobContainedOrders.cs" />
     <Compile Include="CutJob\TiCutJobOrderRow.cs" />
     <Compile Include="CutJob\TiCutJobs.cs" />
-    <Compile Include="CutJob\TiCutJobSheetProgram.cs" />
+    <Compile Include="CutJob\TiCutJobSolution.cs" />
     <Compile Include="CutJob\TiCutJobToolbar.cs" />
     <Compile Include="CutJob\TiRawSheet.cs" />
     <Compile Include="CutJob\TiRawSheetList.cs" />
