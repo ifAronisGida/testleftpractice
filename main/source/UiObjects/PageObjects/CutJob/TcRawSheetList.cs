@@ -4,7 +4,6 @@ using Trumpf.Coparoo.Desktop.WPF;
 using UiObjectInterfaces.CutJob;
 using UiObjects.Utilities;
 
-
 namespace UiObjects.PageObjects.CutJob
 {
     public class TcRawSheetList : TiRawSheetList

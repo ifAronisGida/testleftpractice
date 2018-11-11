@@ -1,3 +1,5 @@
+using Trumpf.Coparoo.Desktop.Waiting;
+
 namespace UiObjectInterfaces.Shell
 {
     public interface TiMainTabControl

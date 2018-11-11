@@ -3,7 +3,6 @@ using UiObjectInterfaces.Controls;
 using UiObjectInterfaces.CutJob;
 using UiObjects.Utilities;
 
-
 namespace UiObjects.PageObjects.CutJob
 {
     public class TcRawSheet : TiRawSheet

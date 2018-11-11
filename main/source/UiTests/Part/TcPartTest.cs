@@ -142,5 +142,20 @@ namespace UiTests.Part
                 Assert.IsFalse( parts.Toolbar.CanDelete );
             } );
         }
+
+        [TestMethod, UniqueName( "FC1DB80F-D95D-49C1-A83C-5E37D513B30C" )]
+        [Tag( "Part" )]
+        public void NewPartTest()
+        {
+            var parts = HomeZone.Parts;     // get access to the parts category
+
+            parts.Goto();                   // go to the parts category
+
+            parts.Toolbar.New();            // create a new part
+
+            parts.SingleDetail.Name.Value = TestSettings.NamePrefix + "NewPart";    // assign a new name
+
+            parts.Toolbar.Save();           // save the new part
+        }
     }
 }

@@ -1,5 +1,7 @@
+using System;
 using SmartBear.TestLeft;
 using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.Waiting;
 using UiObjectInterfaces;
 using UiObjectInterfaces.Customer;
 using UiObjectInterfaces.CutJob;
@@ -18,7 +20,6 @@ using UiObjects.PageObjects.Part;
 using UiObjects.PageObjects.PartOrder;
 using UiObjects.PageObjects.Shell;
 
-
 namespace UiObjects
 {
     /// <summary>
@@ -27,6 +28,8 @@ namespace UiObjects
     /// <seealso cref="ProcessObject" />
     public class TcHomeZoneApp : ProcessObject, TiHomeZoneApp
     {
+        private readonly Lazy<TcMainWindow> mMainWindow;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TcHomeZoneApp"/> class.
         /// </summary>
@@ -35,7 +38,10 @@ namespace UiObjects
         public TcHomeZoneApp( string processname, IDriver driver ) : base( processname )
         {
             Driver = driver;
+            mMainWindow = new Lazy<TcMainWindow>( On<TcMainWindow> );
         }
+
+        public Wool MainWindowExists => mMainWindow.Value.Exists;
 
         public TiMainTabControl MainTabControl => On<TcMainTabControl>();
 

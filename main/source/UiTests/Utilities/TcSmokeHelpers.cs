@@ -406,7 +406,7 @@ namespace UiTests.Utilities
         /// Creates the test items.
         /// </summary>
         [TestMethod, UniqueName( "C515019F-E2AB-4DD7-8C1F-211A2E1ADBCF" )]
-        public void CreateTestItems()
+        public void DoCreateTestItems()
         {
             var smokeHelpers = new TcSmokeHelpers();
 
@@ -422,7 +422,7 @@ namespace UiTests.Utilities
         /// Deletes the test items.
         /// </summary>
         [TestMethod, UniqueName( "D511E169-3EFB-437F-867F-0365F58939A3" )]
-        public void DeleteTestItems()
+        public void DoDeleteTestItems()
         {
             var smokeHelpers = new TcSmokeHelpers();
 
@@ -432,6 +432,24 @@ namespace UiTests.Utilities
             smokeHelpers.DeleteTestCustomers();
             smokeHelpers.DeleteTestMachines();
             smokeHelpers.DeleteTestMaterials();
+        }
+
+        /// <summary>
+        /// Creates the test items.
+        /// </summary>
+        [TestMethod, UniqueName( "34D1BC63-EF77-4B73-9A64-9E19C9D2D226" )]
+        public void CreateTestItems()
+        {
+            Act( DoCreateTestItems );
+        }
+
+        /// <summary>
+        /// Deletes the test items.
+        /// </summary>
+        [TestMethod, UniqueName( "BA224F20-1FF2-4307-90C4-3102CBD691B7" )]
+        public void DeleteTestItems()
+        {
+            Act( DoDeleteTestItems );
         }
 
         private string Name2UIT_Name( string name )

@@ -1,7 +1,8 @@
+using System;
+using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 using UiObjects.Utilities;
-
 
 namespace UiObjects.PageObjects
 {
@@ -12,10 +13,12 @@ namespace UiObjects.PageObjects
         /// </summary>
         /// <typeparam name="TInterface">The type of the interface.</typeparam>
         /// <param name="uid">The uid.</param>
+        /// <param name="predicate"></param>
+        /// <param name="depth"></param>
         /// <returns></returns>
-        public TInterface Find<TInterface>( string uid ) where TInterface : class
+        public TInterface Find<TInterface>( string uid, Predicate<IControl> predicate = null, int? depth = null ) where TInterface : class
         {
-            return TcControlMapper.Map<TInterface>( this.FindGeneric( Search.ByUid( uid ) ) );
+            return TcControlMapper.Map<TInterface>( this.FindGeneric( Search.ByUid( uid ), predicate, depth ) );
         }
 
         public TInterface FindByControlName<TInterface>( string controlName ) where TInterface : class

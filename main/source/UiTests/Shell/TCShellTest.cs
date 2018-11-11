@@ -17,7 +17,7 @@ namespace UiTests.Shell
         /// </summary>
         [TestMethod, UniqueName( "E87747D2-4659-40D5-9D99-1058E925C933" )]
         [Tag( "Shell" )]
-        public void AddTab()
+        public void AddAndCloseTab()
         {
             Act( () =>
                 {

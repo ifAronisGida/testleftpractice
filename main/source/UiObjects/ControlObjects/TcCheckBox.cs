@@ -1,7 +1,6 @@
 using Trumpf.Coparoo.Desktop.WPF;
 using UiObjectInterfaces.Controls;
 
-
 namespace UiObjects.ControlObjects
 {
     /// <summary>

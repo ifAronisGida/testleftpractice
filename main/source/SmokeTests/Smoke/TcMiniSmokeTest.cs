@@ -38,6 +38,7 @@ namespace SmokeTests.Smoke
             {
                 while( true )
                 {
+                    HomeZone.MainTabControl.AddNewTab();
                     DoMiniSmokeTest();
                 }
             } );
@@ -45,13 +46,13 @@ namespace SmokeTests.Smoke
 
         private void DoMiniSmokeTest()
         {
-            mSmokeHelpers.CreateTestItems();
+            mSmokeHelpers.DoCreateTestItems();
 
             //TODO
             //testing...
             mSmokeTestsPart.ExecutePartSmokeTests();
 
-            mSmokeHelpers.DeleteTestItems();
+            mSmokeHelpers.DoDeleteTestItems();
         }
     }
 }

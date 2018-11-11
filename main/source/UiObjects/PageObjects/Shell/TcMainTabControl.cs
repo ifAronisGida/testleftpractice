@@ -1,8 +1,8 @@
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
+using UiObjectInterfaces.Controls;
 using UiObjectInterfaces.Shell;
-
 
 namespace UiObjects.PageObjects.Shell
 {
@@ -11,11 +11,11 @@ namespace UiObjects.PageObjects.Shell
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcMainWindow}" />
-    public class TcMainTabControl : PageObject, IChildOf<TcMainWindow>, TiMainTabControl
+    public class TcMainTabControl : TcPageObjectBase, IChildOf<TcMainWindow>, TiMainTabControl
     {
         protected override Search SearchPattern => Search.ByUid( "MainTabControl" );
 
-        internal IControlObject AddControlObject => Find<IControlObject>( Search.ByUid( "MainTabControl.Add" ), null, 20 );
+        private TiButton AddControlObject => Find<TiButton>( "MainTabControl.Add" , null, 20 );
 
         /// <summary>
         /// Gets or sets the index of the selected tab.
