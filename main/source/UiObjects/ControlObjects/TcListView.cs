@@ -1,20 +1,16 @@
 using Trumpf.Coparoo.Desktop.WPF;
 
-
 namespace UiObjects.ControlObjects
 {
     /// <summary>
     /// The ControlObject for list views.
     /// </summary>
-    /// <seealso cref="Trumpf.PageObjects.WPF.ControlObject" />
+    /// <seealso cref="ControlObject" />
     public class TcListView : ControlObject
     {
         protected override Search SearchPattern => Search.Any;
 
         public int Count => Node.GetProperty<int>( "Items.Count" );
-
-        public object Items => Node.GetProperty<int>( "Items" );
-        public object SelectedItem => Node.GetProperty<int>( "SelectedItem" );
 
         /// <summary>
         /// Gets or sets the index of the selected item.

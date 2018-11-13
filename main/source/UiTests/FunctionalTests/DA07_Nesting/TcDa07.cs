@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
 using UiTests.Base;
 
@@ -25,14 +25,14 @@ namespace UiTests.FunctionalTests.DA07_Nesting
             cutJobs.Goto();
 
             // Test step: create a new Nesting via toolbar "New Nesting".
+            var cutJobCount = cutJobs.ResultColumn.Count;
             cutJobs.Toolbar.New();
 
             // Expected results:
 
             // An empty entry appears at the top of the result list.
             //TODO
-            var items = cutJobs.ResultColumn.Items;
-            var selectedItem = cutJobs.ResultColumn.SelectedItem;
+            Assert.AreEqual( cutJobCount + 1, cutJobs.ResultColumn.Count );
 
             // An empty Job appears in the detail area.
             //TODO
@@ -58,7 +58,7 @@ namespace UiTests.FunctionalTests.DA07_Nesting
             //Assert.IsFalse( cutJobs.SheetProgram.CanOpen );
 
             // Sheet Program BOOST button is disabled
-            Assert.IsFalse(cutJobs.SheetProgram.CanBoost);
+            Assert.IsFalse( cutJobs.SheetProgram.CanBoost );
 
             // Order List state is MISSING
             //TODO

@@ -4,7 +4,6 @@ using Trumpf.Coparoo.Desktop.WPF;
 using UiObjects.ControlObjects.Grid;
 using UiObjects.Utilities;
 
-
 namespace UiObjects.ControlObjects
 {
     /// <summary>

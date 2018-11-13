@@ -8,7 +8,6 @@ using UiObjects.ControlObjects.Grid;
 using UiObjects.PageObjects.Dialogs;
 using UiObjects.PageObjects.Shell;
 
-
 namespace UiObjects.PageObjects.CutJob
 {
     public class TcCutJobContainedOrders : TcPageObjectBase, IChildOf<TcDetailContent>, TiCutJobContainedOrders
