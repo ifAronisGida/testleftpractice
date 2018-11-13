@@ -1,6 +1,6 @@
 using System;
 
-namespace UiObjects.PageObjects.CutJob
+namespace HomeZone.UiObjects.PageObjects.CutJob
 {
     public class TcCutJob
     {

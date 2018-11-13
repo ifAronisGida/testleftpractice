@@ -3,7 +3,7 @@ using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop.WPF;
 
 
-namespace UiObjects.ControlObjects.Grid
+namespace HomeZone.UiObjects.ControlObjects.Grid
 {
     internal class TcBandedViewContentSelector : ViewControlObject<BandedViewContentSelector>
     {

@@ -1,9 +1,9 @@
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
-using UiObjectInterfaces.Dialogs;
+using HomeZone.UiObjectInterfaces.Dialogs;
 
 
-namespace UiObjects.PageObjects.Dialogs
+namespace HomeZone.UiObjects.PageObjects.Dialogs
 {
     /// <summary>
     /// TcOpenFileDialog handles open file dialogs.

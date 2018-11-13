@@ -1,11 +1,10 @@
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.Shell;
-using UiObjects.Utilities;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Shell;
+using HomeZone.UiObjects.Utilities;
 
-
-namespace UiObjects.PageObjects.Shell
+namespace HomeZone.UiObjects.PageObjects.Shell
 {
     public class TcWelcomeScreen : TcPageObjectBase, IChildOf<TcMainTabControl>, TiWelcomeScreen
     {

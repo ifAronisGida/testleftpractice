@@ -1,9 +1,9 @@
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.CutJob;
-using UiObjects.Utilities;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.CutJob;
+using HomeZone.UiObjects.Utilities;
 
-namespace UiObjects.PageObjects.CutJob
+namespace HomeZone.UiObjects.PageObjects.CutJob
 {
     public class TcRawSheet : TiRawSheet
     {

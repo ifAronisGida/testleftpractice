@@ -1,12 +1,11 @@
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.Machine;
-using UiObjects.PageObjects.Shell;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Machine;
+using HomeZone.UiObjects.PageObjects.Shell;
 
-
-namespace UiObjects.PageObjects.Machine
+namespace HomeZone.UiObjects.PageObjects.Machine
 {
     /// <summary>
     /// The detail area of the machine category.

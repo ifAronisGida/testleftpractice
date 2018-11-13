@@ -1,8 +1,7 @@
 using System;
-using UiObjectInterfaces.Common;
+using HomeZone.UiObjectInterfaces.Common;
 
-
-namespace UiObjectInterfaces.Material
+namespace HomeZone.UiObjectInterfaces.Material
 {
     public interface TiMaterials : TiDomain
     {

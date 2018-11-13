@@ -1,4 +1,4 @@
-namespace UiObjectInterfaces.Common
+namespace HomeZone.UiObjectInterfaces.Common
 {
     public interface TiDomain : TiVisibility
     {

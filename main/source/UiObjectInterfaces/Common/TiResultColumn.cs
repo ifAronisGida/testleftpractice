@@ -1,6 +1,6 @@
-using UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Controls;
 
-namespace UiObjectInterfaces.Common
+namespace HomeZone.UiObjectInterfaces.Common
 {
     public interface TiResultColumn
     {

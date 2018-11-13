@@ -1,12 +1,11 @@
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.Dialogs;
-using UiObjects.ControlObjects.Composite;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Dialogs;
+using HomeZone.UiObjects.ControlObjects.Composite;
 
-
-namespace UiObjects.PageObjects.Dialogs
+namespace HomeZone.UiObjects.PageObjects.Dialogs
 {
     public class TcEntitySelectionDialog : TcPageObjectBase, IChildOf<TcHomeZoneApp>, TiEntitySelectionDialog
     {

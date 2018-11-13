@@ -1,7 +1,6 @@
-using UiObjects.ControlObjects.Grid;
+using HomeZone.UiObjects.ControlObjects.Grid;
 
-
-namespace UiObjects.PageObjects.Customer
+namespace HomeZone.UiObjects.PageObjects.Customer
 {
     public class TcCustomerRow
     {

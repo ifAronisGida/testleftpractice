@@ -1,9 +1,9 @@
 using System;
 using SmartBear.TestLeft;
-using UiObjectInterfaces;
+using HomeZone.UiObjectInterfaces;
 
 
-namespace UiObjects
+namespace HomeZone.UiObjects
 {
     public abstract class TcApp : TiApp
     {

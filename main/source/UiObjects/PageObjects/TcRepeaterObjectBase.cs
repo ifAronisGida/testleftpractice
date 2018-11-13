@@ -1,7 +1,7 @@
 using Trumpf.Coparoo.Desktop;
 
 
-namespace UiObjects.PageObjects
+namespace HomeZone.UiObjects.PageObjects
 {
     public abstract class TcRepeaterObjectBase : RepeaterObject
     {

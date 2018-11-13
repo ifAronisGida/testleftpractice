@@ -1,10 +1,10 @@
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.NestingTemplate;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.NestingTemplate;
 
 
-namespace UiObjects.PageObjects.NestingTemplate
+namespace HomeZone.UiObjects.PageObjects.NestingTemplate
 {
     internal class TcNestingTemplateBaseInfo : TcExpandablePageObject, IChildOf<TcNestingTemplates>, TiNestingTemplateBaseInfo
     {

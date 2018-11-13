@@ -1,9 +1,9 @@
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Controls;
 
 
-namespace UiObjects.ControlObjects
+namespace HomeZone.UiObjects.ControlObjects
 {
     /// <summary>
     /// Represents a value control for text edit-like controls.

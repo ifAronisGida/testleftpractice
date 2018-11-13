@@ -1,7 +1,6 @@
-using UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Controls;
 
-
-namespace UiObjectInterfaces.CutJob
+namespace HomeZone.UiObjectInterfaces.CutJob
 {
     public interface TiRawSheet
     {

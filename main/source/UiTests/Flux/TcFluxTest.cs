@@ -3,11 +3,11 @@ using System.Diagnostics;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
-using UiObjects.PageObjects.Flux;
-using UiTests.Base;
-using UiTests.Utilities;
+using HomeZone.UiObjects.PageObjects.Flux;
+using HomeZone.UiTests.Base;
+using HomeZone.UiTests.Utilities;
 
-namespace UiTests.Flux
+namespace HomeZone.UiTests.Flux
 {
     /// <summary>
     /// This test class contains Flux specific tests.

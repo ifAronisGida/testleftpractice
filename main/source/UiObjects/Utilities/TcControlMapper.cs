@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjects.ControlObjects;
+using HomeZone.UiObjects.ControlObjects;
 
-namespace UiObjects.Utilities
+namespace HomeZone.UiObjects.Utilities
 {
     internal static class TcControlMapper
     {

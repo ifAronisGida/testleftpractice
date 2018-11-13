@@ -1,7 +1,7 @@
-using UiObjectInterfaces.Common;
+using HomeZone.UiObjectInterfaces.Common;
 
 
-namespace UiObjectInterfaces.PartOrder
+namespace HomeZone.UiObjectInterfaces.PartOrder
 {
     public interface TiPartOrderToolbar : TiVisibility
     {

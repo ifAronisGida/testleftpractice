@@ -1,4 +1,4 @@
-namespace UiObjectInterfaces.Dialogs
+namespace HomeZone.UiObjectInterfaces.Dialogs
 {
     public interface TiPartComputeAllConfirmation
     {

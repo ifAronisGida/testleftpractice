@@ -1,4 +1,4 @@
-namespace UiObjectInterfaces.Controls
+namespace HomeZone.UiObjectInterfaces.Controls
 {
     public interface TiButton : TiControl
     {

@@ -1,8 +1,8 @@
-using UiObjectInterfaces.Dialogs;
-using UiObjectInterfaces.Settings;
+using HomeZone.UiObjectInterfaces.Dialogs;
+using HomeZone.UiObjectInterfaces.Settings;
 
 
-namespace UiObjectInterfaces.Shell
+namespace HomeZone.UiObjectInterfaces.Shell
 {
     public interface TiMainMenu
     {

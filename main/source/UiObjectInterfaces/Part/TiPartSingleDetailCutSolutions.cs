@@ -1,4 +1,4 @@
-namespace UiObjectInterfaces.Part
+namespace HomeZone.UiObjectInterfaces.Part
 {
     public interface TiPartSingleDetailCutSolutions
     {

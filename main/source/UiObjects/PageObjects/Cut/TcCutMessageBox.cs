@@ -4,7 +4,7 @@ using SmartBear.TestLeft.TestObjects.Qt;
 using Trumpf.Coparoo.Desktop;
 
 
-namespace UiObjects.PageObjects.Cut
+namespace HomeZone.UiObjects.PageObjects.Cut
 {
     public class TcCutMessageBox : RepeaterObject, IChildOf<TcAppProcess>
     {

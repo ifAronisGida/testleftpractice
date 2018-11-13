@@ -8,7 +8,7 @@
     <ProjectGuid>{8BF76EB4-CC36-49EA-931C-C6C3F1689EBB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UiTests</RootNamespace>
+    <RootNamespace>HomeZone.UiTests</RootNamespace>
     <AssemblyName>HomeZone.UiTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

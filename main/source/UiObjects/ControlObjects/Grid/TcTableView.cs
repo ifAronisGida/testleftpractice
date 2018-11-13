@@ -2,7 +2,7 @@ using System;
 using Trumpf.Coparoo.Desktop.WPF;
 
 
-namespace UiObjects.ControlObjects.Grid
+namespace HomeZone.UiObjects.ControlObjects.Grid
 {
     /// <summary>
     /// Wraps a DevExpress.Xpf.Grid.TableView object and creates "strongly-typed" rows.

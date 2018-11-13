@@ -1,7 +1,7 @@
-using UiObjectInterfaces.Common;
+using HomeZone.UiObjectInterfaces.Common;
 
 
-namespace UiObjectInterfaces.Settings
+namespace HomeZone.UiObjectInterfaces.Settings
 {
     public interface TiBendSettings : TiVisibility
     {

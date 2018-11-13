@@ -1,9 +1,8 @@
 using Trumpf.Coparoo.Desktop;
-using UiObjectInterfaces.CutJob;
-using UiObjects.PageObjects.Shell;
+using HomeZone.UiObjectInterfaces.CutJob;
+using HomeZone.UiObjects.PageObjects.Shell;
 
-
-namespace UiObjects.PageObjects.CutJob
+namespace HomeZone.UiObjects.PageObjects.CutJob
 {
     public class TcCutJobs : TcDomain<TiCutJobToolbar>, IChildOf<TcMainTabControl>, TiCutJobs
     {

@@ -3,14 +3,13 @@ using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Dialogs;
-using UiObjectInterfaces.Settings;
-using UiObjectInterfaces.Shell;
-using UiObjects.PageObjects.Dialogs;
-using UiObjects.PageObjects.Settings;
+using HomeZone.UiObjectInterfaces.Dialogs;
+using HomeZone.UiObjectInterfaces.Settings;
+using HomeZone.UiObjectInterfaces.Shell;
+using HomeZone.UiObjects.PageObjects.Dialogs;
+using HomeZone.UiObjects.PageObjects.Settings;
 
-
-namespace UiObjects.PageObjects.Shell
+namespace HomeZone.UiObjects.PageObjects.Shell
 {
     /// <summary>
     /// The main menu.

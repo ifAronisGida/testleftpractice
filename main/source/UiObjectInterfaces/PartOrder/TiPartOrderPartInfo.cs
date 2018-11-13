@@ -1,4 +1,4 @@
-namespace UiObjectInterfaces.PartOrder
+namespace HomeZone.UiObjectInterfaces.PartOrder
 {
     public interface TiPartOrderPartInfo
     {

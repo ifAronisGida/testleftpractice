@@ -1,6 +1,6 @@
 using Trumpf.Coparoo.Desktop.WPF;
 
-namespace UiObjects.ControlObjects
+namespace HomeZone.UiObjects.ControlObjects
 {
     /// <summary>
     /// The ControlObject for list views.

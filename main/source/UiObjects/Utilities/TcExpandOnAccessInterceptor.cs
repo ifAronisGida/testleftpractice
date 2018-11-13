@@ -1,8 +1,7 @@
 using Castle.DynamicProxy;
-using UiObjects.PageObjects;
+using HomeZone.UiObjects.PageObjects;
 
-
-namespace UiObjects.Utilities
+namespace HomeZone.UiObjects.Utilities
 {
     internal class TcExpandOnAccessInterceptor : IInterceptor
     {

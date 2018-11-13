@@ -1,7 +1,7 @@
 using System;
 
 
-namespace UiObjectInterfaces.Cut
+namespace HomeZone.UiObjectInterfaces.Cut
 {
     public interface TiTTSelectionDialog
     {

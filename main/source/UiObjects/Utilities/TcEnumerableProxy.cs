@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using SmartBear.TestLeft.TestObjects;
 
 
-namespace UiObjects.Utilities
+namespace HomeZone.UiObjects.Utilities
 {
     internal class TcEnumerableProxy<T> : IEnumerable<T>
     {

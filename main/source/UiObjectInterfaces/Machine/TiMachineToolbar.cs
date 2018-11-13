@@ -1,7 +1,6 @@
-using UiObjectInterfaces.Common;
+using HomeZone.UiObjectInterfaces.Common;
 
-
-namespace UiObjectInterfaces.Machine
+namespace HomeZone.UiObjectInterfaces.Machine
 {
     public interface TiMachineToolbar : TiVisibility
     {

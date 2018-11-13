@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using SmartBear.TestLeft.TestObjects;
 
 
-namespace UiObjects.Utilities
+namespace HomeZone.UiObjects.Utilities
 {
     internal static class TcObjectExtensions
     {

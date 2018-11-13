@@ -3,10 +3,10 @@ using System.Threading;
 using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
-using UiObjectInterfaces.Flux;
+using HomeZone.UiObjectInterfaces.Flux;
 
 
-namespace UiObjects.PageObjects.Flux
+namespace HomeZone.UiObjects.PageObjects.Flux
 {
     /// <summary>
     /// PageObject for the Flux app.

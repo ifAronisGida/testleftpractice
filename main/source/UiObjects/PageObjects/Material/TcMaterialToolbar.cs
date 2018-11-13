@@ -1,12 +1,11 @@
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.Material;
-using UiObjects.PageObjects.Dialogs;
-using UiObjects.PageObjects.Shell;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Material;
+using HomeZone.UiObjects.PageObjects.Dialogs;
+using HomeZone.UiObjects.PageObjects.Shell;
 
-
-namespace UiObjects.PageObjects.Material
+namespace HomeZone.UiObjects.PageObjects.Material
 {
     /// <summary>
     /// The material toolbar.

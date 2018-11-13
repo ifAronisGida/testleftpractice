@@ -1,4 +1,4 @@
-namespace UiObjectInterfaces.NestingTemplate
+namespace HomeZone.UiObjectInterfaces.NestingTemplate
 {
     public interface TiNestingTemplatePartList
     {

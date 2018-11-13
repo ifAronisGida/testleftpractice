@@ -1,12 +1,11 @@
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.Part;
-using UiObjects.PageObjects.Shell;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Part;
+using HomeZone.UiObjects.PageObjects.Shell;
 
-
-namespace UiObjects.PageObjects.Part
+namespace HomeZone.UiObjects.PageObjects.Part
 {
     /// <summary>
     /// The bend solutions area of the part category.

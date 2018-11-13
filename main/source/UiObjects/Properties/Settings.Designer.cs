@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UiObjects.Properties {
+namespace HomeZone.UiObjects.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

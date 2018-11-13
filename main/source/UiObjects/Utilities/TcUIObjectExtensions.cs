@@ -4,7 +4,7 @@ using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 
 
-namespace UiObjects.Utilities
+namespace HomeZone.UiObjects.Utilities
 {
     internal static class TcUIObjectExtensions
     {

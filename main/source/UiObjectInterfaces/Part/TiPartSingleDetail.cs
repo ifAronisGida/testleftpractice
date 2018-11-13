@@ -1,9 +1,8 @@
 using System;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.Customer;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Customer;
 
-
-namespace UiObjectInterfaces.Part
+namespace HomeZone.UiObjectInterfaces.Part
 {
     public interface TiPartSingleDetail
     {

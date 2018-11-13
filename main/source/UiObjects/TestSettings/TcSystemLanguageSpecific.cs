@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace UiObjects.TestSettings
+namespace HomeZone.UiObjects.TestSettings
 {
     /// <summary>
     /// This class contains strings dependant of the current system language.

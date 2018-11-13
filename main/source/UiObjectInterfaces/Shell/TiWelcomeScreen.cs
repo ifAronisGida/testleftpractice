@@ -1,7 +1,7 @@
-using UiObjectInterfaces.Common;
+using HomeZone.UiObjectInterfaces.Common;
 
 
-namespace UiObjectInterfaces.Shell
+namespace HomeZone.UiObjectInterfaces.Shell
 {
     public interface TiWelcomeScreen : TiVisibility
     {

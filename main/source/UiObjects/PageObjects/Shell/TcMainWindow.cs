@@ -2,7 +2,7 @@ using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 
 
-namespace UiObjects.PageObjects.Shell
+namespace HomeZone.UiObjects.PageObjects.Shell
 {
     /// <summary>
     /// The main window PageObject. The root of nearly all HomeZone PageObjects.

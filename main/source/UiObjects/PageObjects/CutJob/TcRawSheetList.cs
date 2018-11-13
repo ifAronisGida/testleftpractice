@@ -1,10 +1,10 @@
 using System.Windows.Controls;
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.CutJob;
-using UiObjects.Utilities;
+using HomeZone.UiObjectInterfaces.CutJob;
+using HomeZone.UiObjects.Utilities;
 
-namespace UiObjects.PageObjects.CutJob
+namespace HomeZone.UiObjects.PageObjects.CutJob
 {
     public class TcRawSheetList : TiRawSheetList
     {

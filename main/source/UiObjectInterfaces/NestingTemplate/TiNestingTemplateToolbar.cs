@@ -1,7 +1,7 @@
-using UiObjectInterfaces.Common;
+using HomeZone.UiObjectInterfaces.Common;
 
 
-namespace UiObjectInterfaces.NestingTemplate
+namespace HomeZone.UiObjectInterfaces.NestingTemplate
 {
     public interface TiNestingTemplateToolbar : TiVisibility
     {

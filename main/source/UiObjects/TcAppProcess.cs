@@ -3,7 +3,7 @@ using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 
 
-namespace UiObjects
+namespace HomeZone.UiObjects
 {
     internal class TcAppProcess : ProcessObject
     {

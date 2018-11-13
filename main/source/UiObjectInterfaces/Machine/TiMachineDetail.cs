@@ -1,7 +1,6 @@
-using UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Controls;
 
-
-namespace UiObjectInterfaces.Machine
+namespace HomeZone.UiObjectInterfaces.Machine
 {
     public interface TiMachineDetail
     {

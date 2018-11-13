@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Common;
-using UiObjects.ControlObjects.Composite;
+using HomeZone.UiObjectInterfaces.Common;
+using HomeZone.UiObjects.ControlObjects.Composite;
 
-namespace UiObjects.PageObjects
+namespace HomeZone.UiObjects.PageObjects
 {
     // it would be nice to mark this as a child of the main tab control,
     // but abstract classes are ignored when examining parent-child relationships

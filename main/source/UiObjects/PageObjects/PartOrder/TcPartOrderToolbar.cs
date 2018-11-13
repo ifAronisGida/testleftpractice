@@ -1,13 +1,12 @@
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.Dialogs;
-using UiObjectInterfaces.PartOrder;
-using UiObjects.PageObjects.Dialogs;
-using UiObjects.PageObjects.Shell;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Dialogs;
+using HomeZone.UiObjectInterfaces.PartOrder;
+using HomeZone.UiObjects.PageObjects.Dialogs;
+using HomeZone.UiObjects.PageObjects.Shell;
 
-
-namespace UiObjects.PageObjects.PartOrder
+namespace HomeZone.UiObjects.PageObjects.PartOrder
 {
     public class TcPartOrderToolbar : TcPageObjectBase, IChildOf<TcToolbars>, TiPartOrderToolbar
     {

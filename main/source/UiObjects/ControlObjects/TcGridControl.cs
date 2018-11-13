@@ -1,10 +1,10 @@
 using System;
 using DevExpress.Xpf.Grid;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjects.ControlObjects.Grid;
-using UiObjects.Utilities;
+using HomeZone.UiObjects.ControlObjects.Grid;
+using HomeZone.UiObjects.Utilities;
 
-namespace UiObjects.ControlObjects
+namespace HomeZone.UiObjects.ControlObjects
 {
     /// <summary>
     /// The ControlObject for grid controls. The contents of the grid can be accessed via the GetTableView and GetOptimizedTableView methods,

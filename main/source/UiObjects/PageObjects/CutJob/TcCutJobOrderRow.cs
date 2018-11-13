@@ -2,14 +2,13 @@ using System;
 using System.Windows.Documents;
 using DevExpress.Xpf.Editors;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.CutJob;
-using UiObjects.ControlObjects;
-using UiObjects.ControlObjects.Grid;
-using UiObjects.Utilities;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.CutJob;
+using HomeZone.UiObjects.ControlObjects;
+using HomeZone.UiObjects.ControlObjects.Grid;
+using HomeZone.UiObjects.Utilities;
 
-
-namespace UiObjects.PageObjects.CutJob
+namespace HomeZone.UiObjects.PageObjects.CutJob
 {
     public class TcCutJobOrderRow : TiCutJobOrderRow
     {

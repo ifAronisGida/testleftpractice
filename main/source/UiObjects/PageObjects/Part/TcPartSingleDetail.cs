@@ -2,14 +2,14 @@ using System;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.Waiting;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.Customer;
-using UiObjectInterfaces.Part;
-using UiObjects.ControlObjects;
-using UiObjects.PageObjects.Customer;
-using UiObjects.PageObjects.Shell;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Customer;
+using HomeZone.UiObjectInterfaces.Part;
+using HomeZone.UiObjects.ControlObjects;
+using HomeZone.UiObjects.PageObjects.Customer;
+using HomeZone.UiObjects.PageObjects.Shell;
 
-namespace UiObjects.PageObjects.Part
+namespace HomeZone.UiObjects.PageObjects.Part
 {
     /// <summary>
     /// The upper detail area of the part category.

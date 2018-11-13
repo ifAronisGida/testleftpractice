@@ -1,16 +1,16 @@
 using System;
-using UiObjectInterfaces;
-using UiObjectInterfaces.Common;
-using UiObjectInterfaces.Customer;
-using UiObjectInterfaces.CutJob;
-using UiObjectInterfaces.Machine;
-using UiObjectInterfaces.Material;
-using UiObjectInterfaces.NestingTemplate;
-using UiObjectInterfaces.Part;
-using UiObjectInterfaces.PartOrder;
-using UiObjectInterfaces.Shell;
+using HomeZone.UiObjectInterfaces;
+using HomeZone.UiObjectInterfaces.Common;
+using HomeZone.UiObjectInterfaces.Customer;
+using HomeZone.UiObjectInterfaces.CutJob;
+using HomeZone.UiObjectInterfaces.Machine;
+using HomeZone.UiObjectInterfaces.Material;
+using HomeZone.UiObjectInterfaces.NestingTemplate;
+using HomeZone.UiObjectInterfaces.Part;
+using HomeZone.UiObjectInterfaces.PartOrder;
+using HomeZone.UiObjectInterfaces.Shell;
 
-namespace UiTests.Utilities
+namespace HomeZone.UiTests.Utilities
 {
     internal static class TcHomeZoneExtensions
     {

@@ -2,7 +2,7 @@ using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 
 
-namespace UiObjects.PageObjects.Design
+namespace HomeZone.UiObjects.PageObjects.Design
 {
     public class TcDesignMessageBox : RepeaterObject, IChildOf<TcAppProcess>
     {

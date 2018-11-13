@@ -1,9 +1,8 @@
 using System;
 using Castle.DynamicProxy;
-using UiObjects.Utilities;
+using HomeZone.UiObjects.Utilities;
 
-
-namespace UiObjects.PageObjects
+namespace HomeZone.UiObjects.PageObjects
 {
     public abstract class TcExpandablePageObject : TcPageObjectBase
     {

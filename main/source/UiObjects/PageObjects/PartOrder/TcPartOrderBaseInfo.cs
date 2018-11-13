@@ -1,11 +1,11 @@
 using System;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.PartOrder;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.PartOrder;
 
 
-namespace UiObjects.PageObjects.PartOrder
+namespace HomeZone.UiObjects.PageObjects.PartOrder
 {
     public class TcPartOrderBaseInfo : TcExpandablePageObject, IChildOf<TcPartOrders>, TiPartOrderBaseInfo
     {

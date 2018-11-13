@@ -1,9 +1,9 @@
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Common;
-using UiObjectInterfaces.Controls;
-using UiObjects.Utilities;
+using HomeZone.UiObjectInterfaces.Common;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjects.Utilities;
 
-namespace UiObjects.ControlObjects.Composite
+namespace HomeZone.UiObjects.ControlObjects.Composite
 {
     /// <summary>
     /// The result column containing the search area with search text, clear and search buttons and the result list.

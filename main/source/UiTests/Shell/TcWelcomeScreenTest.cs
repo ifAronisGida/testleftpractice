@@ -1,9 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
-using UiTests.Base;
-using UiTests.Utilities;
+using HomeZone.UiTests.Base;
+using HomeZone.UiTests.Utilities;
 
-namespace UiTests.Shell
+namespace HomeZone.UiTests.Shell
 {
     /// <summary>
     /// This test class contains welcome screen specific tests.

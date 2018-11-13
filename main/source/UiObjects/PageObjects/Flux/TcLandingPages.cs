@@ -17,7 +17,7 @@ using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 #endregion
 
-namespace UiObjects.PageObjects.Flux
+namespace HomeZone.UiObjects.PageObjects.Flux
 {
     public class TcLandingPages
     {

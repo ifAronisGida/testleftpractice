@@ -1,12 +1,11 @@
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.Dialogs;
-using UiObjectInterfaces.Part;
-using UiObjects.PageObjects.Dialogs;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Dialogs;
+using HomeZone.UiObjectInterfaces.Part;
+using HomeZone.UiObjects.PageObjects.Dialogs;
 
-
-namespace UiObjects.PageObjects.Part
+namespace HomeZone.UiObjects.PageObjects.Part
 {
     /// <summary>
     /// The design detail area of the part category.

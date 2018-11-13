@@ -3,7 +3,7 @@ using DevExpress.Xpf.Grid;
 using Trumpf.Coparoo.Desktop.WPF;
 
 
-namespace UiObjects.ControlObjects.Grid
+namespace HomeZone.UiObjects.ControlObjects.Grid
 {
     /// <summary>
     /// Represents a row in a grid table view.

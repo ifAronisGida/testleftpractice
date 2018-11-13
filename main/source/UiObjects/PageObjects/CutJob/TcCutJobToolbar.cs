@@ -1,12 +1,11 @@
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.CutJob;
-using UiObjects.PageObjects.Dialogs;
-using UiObjects.PageObjects.Shell;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.CutJob;
+using HomeZone.UiObjects.PageObjects.Dialogs;
+using HomeZone.UiObjects.PageObjects.Shell;
 
-
-namespace UiObjects.PageObjects.CutJob
+namespace HomeZone.UiObjects.PageObjects.CutJob
 {
     public class TcCutJobToolbar : TcPageObjectBase, IChildOf<TcToolbars>, TiCutJobToolbar
     {

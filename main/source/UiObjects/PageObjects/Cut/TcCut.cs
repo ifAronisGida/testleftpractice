@@ -3,9 +3,9 @@ using System.Threading;
 using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.Qt;
-using UiObjectInterfaces.Cut;
+using HomeZone.UiObjectInterfaces.Cut;
 
-namespace UiObjects.PageObjects.Cut
+namespace HomeZone.UiObjects.PageObjects.Cut
 {
     /// <summary>
     /// PageObject for the Cut app.

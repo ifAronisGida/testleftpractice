@@ -1,11 +1,11 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
-using UiTests.Base;
-using UiTests.Cut;
-using UiTests.Design;
-using UiTests.Flux;
+using HomeZone.UiTests.Base;
+using HomeZone.UiTests.Cut;
+using HomeZone.UiTests.Design;
+using HomeZone.UiTests.Flux;
 
-namespace UiTests.Utilities
+namespace HomeZone.UiTests.Utilities
 {
     /// <summary>
     /// This test class contains smoke tests for parts.

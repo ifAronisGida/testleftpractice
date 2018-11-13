@@ -1,14 +1,14 @@
 using System;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.CutJob;
-using UiObjects.ControlObjects;
-using UiObjects.ControlObjects.Grid;
-using UiObjects.PageObjects.Dialogs;
-using UiObjects.PageObjects.Shell;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.CutJob;
+using HomeZone.UiObjects.ControlObjects;
+using HomeZone.UiObjects.ControlObjects.Grid;
+using HomeZone.UiObjects.PageObjects.Dialogs;
+using HomeZone.UiObjects.PageObjects.Shell;
 
-namespace UiObjects.PageObjects.CutJob
+namespace HomeZone.UiObjects.PageObjects.CutJob
 {
     public class TcCutJobContainedOrders : TcPageObjectBase, IChildOf<TcDetailContent>, TiCutJobContainedOrders
     {

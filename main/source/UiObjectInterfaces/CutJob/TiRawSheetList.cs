@@ -1,4 +1,4 @@
-namespace UiObjectInterfaces.CutJob
+namespace HomeZone.UiObjectInterfaces.CutJob
 {
     public interface TiRawSheetList
     {

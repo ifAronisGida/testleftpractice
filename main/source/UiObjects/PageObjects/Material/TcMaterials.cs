@@ -2,12 +2,11 @@ using System;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.Waiting;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Material;
-using UiObjects.ControlObjects;
-using UiObjects.PageObjects.Shell;
+using HomeZone.UiObjectInterfaces.Material;
+using HomeZone.UiObjects.ControlObjects;
+using HomeZone.UiObjects.PageObjects.Shell;
 
-
-namespace UiObjects.PageObjects.Material
+namespace HomeZone.UiObjects.PageObjects.Material
 {
     /// <summary>
     /// PageObject for the materials category.

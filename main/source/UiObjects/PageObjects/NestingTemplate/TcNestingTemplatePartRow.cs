@@ -1,14 +1,13 @@
 using System.Windows.Controls;
 using DevExpress.Xpf.Editors;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.NestingTemplate;
-using UiObjects.ControlObjects;
-using UiObjects.ControlObjects.Grid;
-using UiObjects.Utilities;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.NestingTemplate;
+using HomeZone.UiObjects.ControlObjects;
+using HomeZone.UiObjects.ControlObjects.Grid;
+using HomeZone.UiObjects.Utilities;
 
-
-namespace UiObjects.PageObjects.NestingTemplate
+namespace HomeZone.UiObjects.PageObjects.NestingTemplate
 {
     internal class TcNestingTemplatePartRow : TiNestingTemplatePart
     {

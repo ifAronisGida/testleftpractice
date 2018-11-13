@@ -2,10 +2,10 @@ using System;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
-using UiTests.Base;
-using UiTests.Utilities;
+using HomeZone.UiTests.Base;
+using HomeZone.UiTests.Utilities;
 
-namespace UiTests.Cut
+namespace HomeZone.UiTests.Cut
 {
     /// <summary>
     /// This test class contains Cut specific tests.

@@ -1,8 +1,8 @@
 using System;
-using UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Controls;
 
 
-namespace UiObjectInterfaces.PartOrder
+namespace HomeZone.UiObjectInterfaces.PartOrder
 {
     public interface TiPartOrderBaseInfo
     {

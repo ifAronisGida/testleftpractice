@@ -1,12 +1,11 @@
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.Material;
-using UiObjects.PageObjects.Shell;
-using UiObjects.Utilities;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Material;
+using HomeZone.UiObjects.PageObjects.Shell;
+using HomeZone.UiObjects.Utilities;
 
-
-namespace UiObjects.PageObjects.Material
+namespace HomeZone.UiObjects.PageObjects.Material
 {
     /// <summary>
     /// The detail area of the material category.

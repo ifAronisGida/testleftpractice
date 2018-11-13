@@ -1,7 +1,7 @@
-using UiObjectInterfaces.Common;
+using HomeZone.UiObjectInterfaces.Common;
 
 
-namespace UiObjectInterfaces.Part
+namespace HomeZone.UiObjectInterfaces.Part
 {
     public interface TiPartToolbar : TiVisibility
     {

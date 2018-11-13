@@ -1,10 +1,10 @@
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.Settings;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Settings;
 
 
-namespace UiObjects.PageObjects.Settings
+namespace HomeZone.UiObjects.PageObjects.Settings
 {
     /// <summary>
     /// PageObject for the bend settings..

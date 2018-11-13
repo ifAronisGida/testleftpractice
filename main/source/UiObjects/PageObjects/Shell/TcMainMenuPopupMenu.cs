@@ -4,7 +4,7 @@ using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 
 
-namespace UiObjects.PageObjects.Shell
+namespace HomeZone.UiObjects.PageObjects.Shell
 {
     public class TcMainMenuPopupMenu : PageObject, IChildOf<TcHomeZoneApp>
     {

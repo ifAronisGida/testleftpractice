@@ -1,9 +1,8 @@
 using Trumpf.Coparoo.Desktop;
-using UiObjectInterfaces.PartOrder;
-using UiObjects.PageObjects.Shell;
+using HomeZone.UiObjectInterfaces.PartOrder;
+using HomeZone.UiObjects.PageObjects.Shell;
 
-
-namespace UiObjects.PageObjects.PartOrder
+namespace HomeZone.UiObjects.PageObjects.PartOrder
 {
     public class TcPartOrders : TcDomain<TiPartOrderToolbar>, IChildOf<TcMainTabControl>, TiPartOrders
     {

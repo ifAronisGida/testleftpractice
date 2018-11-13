@@ -1,7 +1,6 @@
-using UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Controls;
 
-
-namespace UiObjectInterfaces.Material
+namespace HomeZone.UiObjectInterfaces.Material
 {
     public interface TiMaterialDetail
     {

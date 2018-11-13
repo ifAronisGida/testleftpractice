@@ -1,9 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
-using UiTests.Base;
-using UiTests.Utilities;
+using HomeZone.UiTests.Base;
+using HomeZone.UiTests.Utilities;
 
-namespace UiTests.Settings
+namespace HomeZone.UiTests.Settings
 {
     /// <summary>
     /// This test class contains settings specific tests.

@@ -1,7 +1,6 @@
-using UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Controls;
 
-
-namespace UiObjectInterfaces.NestingTemplate
+namespace HomeZone.UiObjectInterfaces.NestingTemplate
 {
     public interface TiNestingTemplatePart
     {

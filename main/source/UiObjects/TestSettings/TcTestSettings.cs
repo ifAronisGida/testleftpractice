@@ -1,7 +1,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace UiObjects.TestSettings
+namespace HomeZone.UiObjects.TestSettings
 {
     /// <summary>
     /// This class contains the settings used by the UI tests.

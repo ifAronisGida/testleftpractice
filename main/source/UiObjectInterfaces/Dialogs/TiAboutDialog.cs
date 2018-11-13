@@ -1,7 +1,6 @@
-using UiObjectInterfaces.Common;
+using HomeZone.UiObjectInterfaces.Common;
 
-
-namespace UiObjectInterfaces.Dialogs
+namespace HomeZone.UiObjectInterfaces.Dialogs
 {
     public interface TiAboutDialog : TiVisibility
     {

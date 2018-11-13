@@ -3,7 +3,7 @@ using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 
 
-namespace UiObjects.PageObjects.Machine
+namespace HomeZone.UiObjects.PageObjects.Machine
 {
     public class TcMachinePopupMenu : PageObject, IChildOf<TcHomeZoneApp>
     {

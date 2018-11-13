@@ -1,4 +1,4 @@
-namespace UiObjectInterfaces.Flux
+namespace HomeZone.UiObjectInterfaces.Flux
 {
     public interface TiFlux : TiApp
     {

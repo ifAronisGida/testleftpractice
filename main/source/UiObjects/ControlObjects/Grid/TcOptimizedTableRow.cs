@@ -2,10 +2,9 @@ using System;
 using DevExpress.Xpf.Editors;
 using DevExpress.Xpf.Grid;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjects.Utilities;
+using HomeZone.UiObjects.Utilities;
 
-
-namespace UiObjects.ControlObjects.Grid
+namespace HomeZone.UiObjects.ControlObjects.Grid
 {
     /// <summary>
     /// Represents a row in a grid table view running in optimized mode.

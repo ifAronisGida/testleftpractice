@@ -2,10 +2,10 @@ using System;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
-using UiTests.Base;
-using UiTests.Utilities;
+using HomeZone.UiTests.Base;
+using HomeZone.UiTests.Utilities;
 
-namespace UiTests.Customer
+namespace HomeZone.UiTests.Customer
 {
     /// <summary>
     /// This test class contains customer specific tests.

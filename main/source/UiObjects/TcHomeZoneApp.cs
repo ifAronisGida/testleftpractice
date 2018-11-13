@@ -2,25 +2,25 @@ using System;
 using SmartBear.TestLeft;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.Waiting;
-using UiObjectInterfaces;
-using UiObjectInterfaces.Customer;
-using UiObjectInterfaces.CutJob;
-using UiObjectInterfaces.Machine;
-using UiObjectInterfaces.Material;
-using UiObjectInterfaces.NestingTemplate;
-using UiObjectInterfaces.Part;
-using UiObjectInterfaces.PartOrder;
-using UiObjectInterfaces.Shell;
-using UiObjects.PageObjects.Customer;
-using UiObjects.PageObjects.CutJob;
-using UiObjects.PageObjects.Machine;
-using UiObjects.PageObjects.Material;
-using UiObjects.PageObjects.NestingTemplate;
-using UiObjects.PageObjects.Part;
-using UiObjects.PageObjects.PartOrder;
-using UiObjects.PageObjects.Shell;
+using HomeZone.UiObjectInterfaces;
+using HomeZone.UiObjectInterfaces.Customer;
+using HomeZone.UiObjectInterfaces.CutJob;
+using HomeZone.UiObjectInterfaces.Machine;
+using HomeZone.UiObjectInterfaces.Material;
+using HomeZone.UiObjectInterfaces.NestingTemplate;
+using HomeZone.UiObjectInterfaces.Part;
+using HomeZone.UiObjectInterfaces.PartOrder;
+using HomeZone.UiObjectInterfaces.Shell;
+using HomeZone.UiObjects.PageObjects.Customer;
+using HomeZone.UiObjects.PageObjects.CutJob;
+using HomeZone.UiObjects.PageObjects.Machine;
+using HomeZone.UiObjects.PageObjects.Material;
+using HomeZone.UiObjects.PageObjects.NestingTemplate;
+using HomeZone.UiObjects.PageObjects.Part;
+using HomeZone.UiObjects.PageObjects.PartOrder;
+using HomeZone.UiObjects.PageObjects.Shell;
 
-namespace UiObjects
+namespace HomeZone.UiObjects
 {
     /// <summary>
     /// The HomeZone ProcessObject.

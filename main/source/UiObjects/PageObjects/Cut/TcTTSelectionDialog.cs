@@ -2,10 +2,10 @@ using System;
 using System.Threading;
 using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
-using UiObjectInterfaces.Cut;
+using HomeZone.UiObjectInterfaces.Cut;
 
 
-namespace UiObjects.PageObjects.Cut
+namespace HomeZone.UiObjects.PageObjects.Cut
 {
     /// <summary>
     /// PageObject for the technology table selection dialog.

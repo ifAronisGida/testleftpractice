@@ -1,14 +1,14 @@
+using HomeZone.UiObjectInterfaces.Customer;
+using HomeZone.UiObjectInterfaces.CutJob;
+using HomeZone.UiObjectInterfaces.Machine;
+using HomeZone.UiObjectInterfaces.Material;
+using HomeZone.UiObjectInterfaces.NestingTemplate;
+using HomeZone.UiObjectInterfaces.Part;
+using HomeZone.UiObjectInterfaces.PartOrder;
+using HomeZone.UiObjectInterfaces.Shell;
 using Trumpf.Coparoo.Desktop.Waiting;
-using UiObjectInterfaces.Customer;
-using UiObjectInterfaces.CutJob;
-using UiObjectInterfaces.Machine;
-using UiObjectInterfaces.Material;
-using UiObjectInterfaces.NestingTemplate;
-using UiObjectInterfaces.Part;
-using UiObjectInterfaces.PartOrder;
-using UiObjectInterfaces.Shell;
 
-namespace UiObjectInterfaces
+namespace HomeZone.UiObjectInterfaces
 {
     public interface TiHomeZoneApp
     {

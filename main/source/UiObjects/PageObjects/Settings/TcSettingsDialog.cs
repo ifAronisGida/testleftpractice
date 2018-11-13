@@ -2,12 +2,11 @@ using System;
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.Settings;
-using UiObjects.PageObjects.Shell;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Settings;
+using HomeZone.UiObjects.PageObjects.Shell;
 
-
-namespace UiObjects.PageObjects.Settings
+namespace HomeZone.UiObjects.PageObjects.Settings
 {
     /// <summary>
     /// The settings dialog.

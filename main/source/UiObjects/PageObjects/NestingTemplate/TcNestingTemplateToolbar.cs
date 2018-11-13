@@ -1,12 +1,11 @@
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.NestingTemplate;
-using UiObjects.PageObjects.Dialogs;
-using UiObjects.PageObjects.Shell;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.NestingTemplate;
+using HomeZone.UiObjects.PageObjects.Dialogs;
+using HomeZone.UiObjects.PageObjects.Shell;
 
-
-namespace UiObjects.PageObjects.NestingTemplate
+namespace HomeZone.UiObjects.PageObjects.NestingTemplate
 {
     internal class TcNestingTemplateToolbar : TcPageObjectBase, IChildOf<TcToolbars>, TiNestingTemplateToolbar
     {

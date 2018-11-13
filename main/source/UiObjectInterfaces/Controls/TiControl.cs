@@ -1,7 +1,7 @@
 using Trumpf.Coparoo.Desktop.Waiting;
 
 
-namespace UiObjectInterfaces.Controls
+namespace HomeZone.UiObjectInterfaces.Controls
 {
     public interface TiControl
     {

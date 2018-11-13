@@ -8,7 +8,7 @@
     <ProjectGuid>{7C8D9CED-B73C-49A8-B168-5BBFE0FFED15}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UiObjects</RootNamespace>
+    <RootNamespace>HomeZone.UiObjects</RootNamespace>
     <AssemblyName>HomeZone.UiObjects</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

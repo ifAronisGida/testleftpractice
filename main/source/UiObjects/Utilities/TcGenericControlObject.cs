@@ -1,7 +1,7 @@
 using Trumpf.Coparoo.Desktop.WPF;
 
 
-namespace UiObjects.Utilities
+namespace HomeZone.UiObjects.Utilities
 {
     public class TcGenericControlObject : ControlObject
     {

@@ -1,8 +1,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
-using UiTests.Base;
+using HomeZone.UiTests.Base;
 
-namespace UiTests.FunctionalTests.DA07_Nesting
+namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
 {
     /// <summary>
     /// DA07 Nesting functional tests

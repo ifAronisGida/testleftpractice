@@ -2,15 +2,15 @@ using System;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.Waiting;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.CutJob;
-using UiObjectInterfaces.Dialogs;
-using UiObjects.ControlObjects;
-using UiObjects.PageObjects.Dialogs;
-using UiObjects.PageObjects.Shell;
-using UiObjects.Utilities;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.CutJob;
+using HomeZone.UiObjectInterfaces.Dialogs;
+using HomeZone.UiObjects.ControlObjects;
+using HomeZone.UiObjects.PageObjects.Dialogs;
+using HomeZone.UiObjects.PageObjects.Shell;
+using HomeZone.UiObjects.Utilities;
 
-namespace UiObjects.PageObjects.CutJob
+namespace HomeZone.UiObjects.PageObjects.CutJob
 {
     public class TcCutJobSolution : TcPageObjectBase, IChildOf<TcDetailContent>, TiCutJobSolution
     {

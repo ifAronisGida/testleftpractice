@@ -1,10 +1,10 @@
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Dialogs;
+using HomeZone.UiObjectInterfaces.Dialogs;
 
 
-namespace UiObjects.PageObjects.Dialogs
+namespace HomeZone.UiObjects.PageObjects.Dialogs
 {
     /// <summary>
     /// PageObject for the Help app.

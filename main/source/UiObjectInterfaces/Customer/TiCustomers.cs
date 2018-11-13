@@ -1,7 +1,6 @@
-using UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Controls;
 
-
-namespace UiObjectInterfaces.Customer
+namespace HomeZone.UiObjectInterfaces.Customer
 {
     public interface TiCustomers
     {

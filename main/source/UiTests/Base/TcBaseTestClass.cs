@@ -2,17 +2,17 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft;
 using Trumpf.AutoTest.Facts;
-using UiObjectInterfaces;
-using UiObjectInterfaces.Cut;
-using UiObjectInterfaces.Design;
-using UiObjectInterfaces.Flux;
-using UiObjects;
-using UiObjects.PageObjects.Cut;
-using UiObjects.PageObjects.Design;
-using UiObjects.PageObjects.Flux;
-using UiObjects.TestSettings;
+using HomeZone.UiObjectInterfaces;
+using HomeZone.UiObjectInterfaces.Cut;
+using HomeZone.UiObjectInterfaces.Design;
+using HomeZone.UiObjectInterfaces.Flux;
+using HomeZone.UiObjects;
+using HomeZone.UiObjects.PageObjects.Cut;
+using HomeZone.UiObjects.PageObjects.Design;
+using HomeZone.UiObjects.PageObjects.Flux;
+using HomeZone.UiObjects.TestSettings;
 
-namespace UiTests.Base
+namespace HomeZone.UiTests.Base
 {
     /// <summary>
     /// Base class for all test classes.

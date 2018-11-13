@@ -1,8 +1,7 @@
 using System;
 using Trumpf.Coparoo.Desktop.WPF;
 
-
-namespace UiObjects.ControlObjects.Grid
+namespace HomeZone.UiObjects.ControlObjects.Grid
 {
     public class TcOptimizedTableView<TRow> : TcTableView<TRow, TcOptimizedTableRow>
     {

@@ -2,9 +2,9 @@ using System;
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjects.Utilities;
+using HomeZone.UiObjects.Utilities;
 
-namespace UiObjects.PageObjects
+namespace HomeZone.UiObjects.PageObjects
 {
     public abstract class TcPageObjectBase : PageObject
     {

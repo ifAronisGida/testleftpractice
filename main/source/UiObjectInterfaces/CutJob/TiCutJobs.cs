@@ -1,7 +1,6 @@
-using UiObjectInterfaces.Common;
+using HomeZone.UiObjectInterfaces.Common;
 
-
-namespace UiObjectInterfaces.CutJob
+namespace HomeZone.UiObjectInterfaces.CutJob
 {
     public interface TiCutJobs : TiDomain
     {

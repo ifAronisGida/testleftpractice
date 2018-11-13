@@ -1,16 +1,15 @@
 using System;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Controls;
-using UiObjectInterfaces.Customer;
-using UiObjectInterfaces.Dialogs;
-using UiObjects.ControlObjects;
-using UiObjects.ControlObjects.Grid;
-using UiObjects.PageObjects.Dialogs;
-using UiObjects.PageObjects.Part;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Customer;
+using HomeZone.UiObjectInterfaces.Dialogs;
+using HomeZone.UiObjects.ControlObjects;
+using HomeZone.UiObjects.ControlObjects.Grid;
+using HomeZone.UiObjects.PageObjects.Dialogs;
+using HomeZone.UiObjects.PageObjects.Part;
 
-
-namespace UiObjects.PageObjects.Customer
+namespace HomeZone.UiObjects.PageObjects.Customer
 {
     /// <summary>
     /// Customers can be administrated here.

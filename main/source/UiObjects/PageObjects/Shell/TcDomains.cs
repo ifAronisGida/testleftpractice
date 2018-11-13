@@ -1,9 +1,8 @@
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjects.ControlObjects;
+using HomeZone.UiObjects.ControlObjects;
 
-
-namespace UiObjects.PageObjects.Shell
+namespace HomeZone.UiObjects.PageObjects.Shell
 {
     /// <summary>
     /// The domains / categories PageObject.

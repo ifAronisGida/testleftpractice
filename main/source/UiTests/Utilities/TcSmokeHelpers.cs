@@ -4,10 +4,10 @@ using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
 using Trumpf.Coparoo.Desktop.Waiting;
-using UiObjects.PageObjects.Part;
-using UiTests.Base;
+using HomeZone.UiObjects.PageObjects.Part;
+using HomeZone.UiTests.Base;
 
-namespace UiTests.Utilities
+namespace HomeZone.UiTests.Utilities
 {
     /// <summary>
     /// This test class contains supporting test methods for the smoke tests.

@@ -6,9 +6,9 @@ using FactsHub.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
 using Trumpf.AutoTest.Utilities;
-using UiObjects.TestSettings;
+using HomeZone.UiObjects.TestSettings;
 
-namespace UiTests.Base
+namespace HomeZone.UiTests.Base
 {
     /// <summary>
     /// Defining the test options.

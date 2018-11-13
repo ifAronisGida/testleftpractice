@@ -2,10 +2,10 @@ using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using UiObjectInterfaces.Dialogs;
+using HomeZone.UiObjectInterfaces.Dialogs;
 
 
-namespace UiObjects.PageObjects.Dialogs
+namespace HomeZone.UiObjects.PageObjects.Dialogs
 {
     /// <summary>
     /// This class handles the PartComputeAllConfirmation dialog box.

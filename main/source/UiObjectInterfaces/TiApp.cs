@@ -1,7 +1,7 @@
 using System;
 
 
-namespace UiObjectInterfaces
+namespace HomeZone.UiObjectInterfaces
 {
     public interface TiApp
     {

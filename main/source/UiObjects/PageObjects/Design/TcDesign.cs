@@ -3,10 +3,10 @@ using System.Threading;
 using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WinForms;
-using UiObjectInterfaces.Design;
+using HomeZone.UiObjectInterfaces.Design;
 
 
-namespace UiObjects.PageObjects.Design
+namespace HomeZone.UiObjects.PageObjects.Design
 {
     /// <summary>
     /// PageObject for the Design app.
