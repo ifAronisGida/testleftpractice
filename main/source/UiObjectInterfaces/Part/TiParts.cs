@@ -1,7 +1,6 @@
 using System;
 using HomeZone.UiObjectInterfaces.Common;
 
-
 namespace HomeZone.UiObjectInterfaces.Part
 {
     public interface TiParts : TiDomain

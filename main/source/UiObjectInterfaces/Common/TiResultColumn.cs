@@ -5,6 +5,22 @@ namespace HomeZone.UiObjectInterfaces.Common
     public interface TiResultColumn
     {
         /// <summary>
+        /// Gets the search text control.
+        /// </summary>
+        /// <value>
+        /// The search text control.
+        /// </value>
+        TiValueControl<string> SearchText { get; }
+
+        /// <summary>
+        /// Gets the amount of selected items.
+        /// </summary>
+        /// <value>
+        /// The amount of selected items.
+        /// </value>
+        int SelectedItemsCount { get; }
+
+        /// <summary>
         /// Gets the amount of items in the result list.
         /// </summary>
         /// <value>
@@ -21,14 +37,6 @@ namespace HomeZone.UiObjectInterfaces.Common
         /// Executes the search.
         /// </summary>
         void DoSearch();
-
-        /// <summary>
-        /// Gets the search text control.
-        /// </summary>
-        /// <value>
-        /// The search text control.
-        /// </value>
-        TiValueControl<string> SearchText { get; }
 
         /// <summary>
         /// Selects the item with the given id.
@@ -49,13 +57,5 @@ namespace HomeZone.UiObjectInterfaces.Common
         /// </summary>
         /// <returns>The amount of selected entries.</returns>
         int SelectAll();
-
-        /// <summary>
-        /// Gets the amount of selected items.
-        /// </summary>
-        /// <value>
-        /// The amount of selected items.
-        /// </value>
-        int SelectedItemsCount { get; }
     }
 }

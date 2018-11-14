@@ -2,7 +2,7 @@ using HomeZone.UiObjectInterfaces.Common;
 
 namespace HomeZone.UiObjectInterfaces.CutJob
 {
-    public interface TiCutJobs : TiDomain
+    public interface TiCutJobs : TiDomain<TiCutJobItem>
     {
         TiCutJobToolbar Toolbar { get; }
         TiCutJobBaseInfo BaseInfo { get; }
