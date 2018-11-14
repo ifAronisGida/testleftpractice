@@ -172,6 +172,26 @@ namespace HomeZone.UiTests.CutJob
             } );
         }
 
+        [TestMethod, UniqueName( "AC11FE8F-F716-4BB7-957A-5AF65AF8AB34" )]
+        [Tag( "CutJob" )]
+        public void ResultColumnTest()
+        {
+            Act( () =>
+            {
+                var cutJobs = HomeZone.GotoCutJobs();
+                cutJobs.Toolbar.New();
+
+                cutJobs.BaseInfo.Id.Value = "cutjoob";
+                cutJobs.Toolbar.Save();
+
+                cutJobs.Toolbar.New();
+                cutJobs.BaseInfo.Id.Value = "cutjoob2";
+
+                Assert.AreEqual( "cutjoob2", cutJobs.ResultColumn.GetItem( 0 ).Id );
+                Assert.AreEqual( "cutjoob", cutJobs.ResultColumn.GetItem( 1 ).Id );
+            } );
+        }
+
         private DateTime? StripTime( DateTime? date )
         {
             if( date == null )

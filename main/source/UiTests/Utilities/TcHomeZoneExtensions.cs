@@ -15,17 +15,17 @@ namespace HomeZone.UiTests.Utilities
     internal static class TcHomeZoneExtensions
     {
         // TODO: remove these totally and utterly unnecessary lambda expressions
-        public static TiMaterials GotoMaterials( this TiHomeZoneApp app ) => Goto( () => app.Materials );
+        public static TiMaterials GotoMaterials( this TiHomeZoneApp app ) => Goto( app.Materials );
 
-        public static TiMachines GotoMachines( this TiHomeZoneApp app ) => Goto( () => app.Machines );
+        public static TiMachines GotoMachines( this TiHomeZoneApp app ) => Goto( app.Machines );
 
-        public static TiParts GotoParts( this TiHomeZoneApp app ) => Goto( () => app.Parts );
+        public static TiParts GotoParts( this TiHomeZoneApp app ) => Goto( app.Parts );
 
-        public static TiPartOrders GotoPartOrders(this TiHomeZoneApp app) => Goto( () => app.PartOrders );
+        public static TiPartOrders GotoPartOrders(this TiHomeZoneApp app) => Goto( app.PartOrders );
 
-        public static TiCutJobs GotoCutJobs(this TiHomeZoneApp app) => Goto( () => app.CutJobs );
+        public static TiCutJobs GotoCutJobs(this TiHomeZoneApp app) => Goto( app.CutJobs );
 
-        public static TiNestingTemplates GotoNestingTemplates(this TiHomeZoneApp app) => Goto( () => app.NestingTemplates );
+        public static TiNestingTemplates GotoNestingTemplates(this TiHomeZoneApp app) => Goto( app.NestingTemplates );
 
         public static TiCustomers GotoCustomers( this TiHomeZoneApp app )
         {
@@ -43,9 +43,8 @@ namespace HomeZone.UiTests.Utilities
             return menu;
         }
 
-        private static T Goto<T>(Func<T> domain) where T : TiDomain
+        private static T Goto<T>(T obj) where T : TiGoto
         {
-            var obj = domain();
             obj.Goto();
 
             return obj;

@@ -49,3 +49,10 @@ steps:
   inputs:
     command: push
     publishVstsFeed: '454cf44c-25d5-409b-829f-ed18b710d664'
+
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: push
+    nuGetFeedType: external
+    publishFeedCredentials: Artifactory

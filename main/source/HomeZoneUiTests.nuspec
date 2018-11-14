@@ -6,7 +6,7 @@
     <title>HomeZone UI tests</title>
     <authors>TRUMPF Werkzeugmaschinen GmbH + Co. KG</authors>
     <owners>TRUMPF Werkzeugmaschinen GmbH + Co. KG</owners>
-    <projectUrl>https://dev.azure.com/ThiloSteinertexternal/HomeZoneUiTests</projectUrl>
+    <projectUrl>https://dev.azure.com/Trumpf-HomeZone/UiTests</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary></summary>
     <description>Smoke and UI tests for the HomeZone</description>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -83,7 +83,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\TiDomain.cs" />
+    <Compile Include="Common\TiDomain{T}.cs" />
+    <Compile Include="Common\TiGoto.cs" />
     <Compile Include="Common\TiResultColumn.cs" />
+    <Compile Include="Common\TiResultColumn{T}.cs" />
     <Compile Include="Common\TiVisibility.cs" />
     <Compile Include="Controls\TiButton.cs" />
     <Compile Include="Controls\TiControl.cs" />
@@ -91,6 +94,7 @@
     <Compile Include="Customer\TiCustomers.cs" />
     <Compile Include="CutJob\TiCutJobBaseInfo.cs" />
     <Compile Include="CutJob\TiCutJobContainedOrders.cs" />
+    <Compile Include="CutJob\TiCutJobItem.cs" />
     <Compile Include="CutJob\TiCutJobOrderRow.cs" />
     <Compile Include="CutJob\TiCutJobs.cs" />
     <Compile Include="CutJob\TiCutJobSolution.cs" />
