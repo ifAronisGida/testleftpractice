@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/ThiloSteinertexternal/HomeZoneUiTests/_apis/build/status/HomeZoneUiTests)](https://dev.azure.com/ThiloSteinertexternal/HomeZoneUiTests/_build/latest?definitionId=1)
+[![Build status](https://dev.azure.com/Trumpf-HomeZone/UiTests/_apis/build/status/HomeZoneUiTests-NightlyBuild)](https://dev.azure.com/Trumpf-HomeZone/UiTests/_build/latest?definitionId=2)
 # Introduction 
 This project contains the UI tests for the HomeZone.
 
