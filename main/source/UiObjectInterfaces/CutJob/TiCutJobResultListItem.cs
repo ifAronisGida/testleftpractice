@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HomeZone.UiObjectInterfaces.CutJob
 {
-    public interface TiCutJobItem
+    public interface TiCutJobResultListItem
     {
         string Id { get; }
     }

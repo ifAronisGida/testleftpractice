@@ -5,7 +5,7 @@ using Trumpf.Coparoo.Desktop.WPF;
 
 namespace HomeZone.UiObjects.PageObjects.CutJob
 {
-    public class TcCutJob : TiCutJobItem
+    public class TcCutJobResultListItem : TiCutJobResultListItem
     {
         //public long Id;
         //public string Name;
@@ -17,7 +17,7 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
 
         private readonly IControlObject mRoot;
 
-        public TcCutJob( IControlObject listViewItem )
+        public TcCutJobResultListItem( IControlObject listViewItem )
         {
             mRoot = listViewItem.FindGeneric( Search.ByControlName( "TemplateRoot" ), depth: 2 );
         }

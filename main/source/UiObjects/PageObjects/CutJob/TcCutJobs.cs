@@ -5,7 +5,7 @@ using Trumpf.Coparoo.Desktop.WPF;
 
 namespace HomeZone.UiObjects.PageObjects.CutJob
 {
-    public class TcCutJobs : TcDomain<TiCutJobToolbar, TiCutJobItem>, IChildOf<TcMainTabControl>, TiCutJobs
+    public class TcCutJobs : TcDomain<TiCutJobToolbar, TiCutJobResultListItem>, IChildOf<TcMainTabControl>, TiCutJobs
     {
         public override TiCutJobToolbar Toolbar => On<TcCutJobToolbar>( cache: true );
         public TiCutJobBaseInfo BaseInfo => On<TcCutJobDetail>( cache: true );
@@ -17,6 +17,6 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             On<TcDomains>().CutJob.Click();
         }
 
-        protected override TiCutJobItem MakeResultListItem( IControlObject listViewItem ) => new TcCutJob( listViewItem );
+        protected override TiCutJobResultListItem MakeResultListItem( IControlObject listViewItem ) => new TcCutJobResultListItem( listViewItem );
     }
 }
