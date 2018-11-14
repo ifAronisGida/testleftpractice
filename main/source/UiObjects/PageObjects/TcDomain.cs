@@ -1,62 +1,30 @@
 using System;
 using System.Collections.Generic;
-using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Common;
 using HomeZone.UiObjects.ControlObjects.Composite;
+using HomeZone.UiObjects.Utilities;
 
 namespace HomeZone.UiObjects.PageObjects
 {
-    // it would be nice to mark this as a child of the main tab control,
-    // but abstract classes are ignored when examining parent-child relationships
-    public abstract class TcDomain<TToolbar> : RepeaterObject, TiDomain where TToolbar : TiVisibility
+    public abstract class TcDomain<TToolbar> : TcDomainBase<TToolbar>, TiDomain
+        where TToolbar : TiVisibility
     {
-        private const string ResultColumnUid = "List.SearchAndResult";
-
         private readonly Lazy<TcResultColumn> mResultColumn;
         private readonly Dictionary<Type, object> mCache = new Dictionary<Type, object>();
 
         protected TcDomain()
         {
-            mResultColumn = new Lazy<TcResultColumn>( () => Find<TcResultColumn>( Search.ByUid( ResultColumnUid ) ) );
+            mResultColumn = new Lazy<TcResultColumn>( InitResultColumn );
         }
 
         public TiResultColumn ResultColumn => mResultColumn.Value;
 
-        public abstract TToolbar Toolbar { get; }
-
-        public bool IsVisible => Toolbar.IsVisible;
-
-        public sealed override void Goto()
+        private TcResultColumn InitResultColumn()
         {
-            if( Toolbar.IsVisible )
-            {
-                return;
-            }
+            var resultColumnRoot = this.FindGeneric( Search.ByUid( ResultColumnUid ) );
 
-            DoGoto();
+            return new TcResultColumn( resultColumnRoot );
         }
-
-        protected T On<T>( bool cache ) where T : IPageObject
-        {
-            if( !cache )
-            {
-                return On<T>();
-            }
-
-            if( mCache.TryGetValue( typeof( T ), out var obj ) )
-            {
-                return ( T )obj;
-            }
-            else
-            {
-                var pageObject = On<T>();
-                mCache.Add( typeof( T ), pageObject );
-
-                return pageObject;
-            }
-        }
-
-        protected abstract void DoGoto();
     }
 }

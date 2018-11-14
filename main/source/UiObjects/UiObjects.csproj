@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -98,9 +98,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlObjects\Composite\TcResultColumn.cs" />
     <Compile Include="ControlObjects\Grid\TcOptimizedTableView.cs" />
     <Compile Include="ControlObjects\Grid\TcRegularTableView.cs" />
-    <Compile Include="ControlObjects\Composite\TcResultColumn.cs" />
+    <Compile Include="ControlObjects\Composite\TcResultColumn{T}.cs" />
     <Compile Include="ControlObjects\Grid\TcPrivateIntermediates.cs" />
     <Compile Include="ControlObjects\Grid\TcTableRow.cs" />
     <Compile Include="ControlObjects\Grid\TcOptimizedTableRow.cs" />
@@ -157,6 +158,8 @@
     <Compile Include="PageObjects\NestingTemplate\TcNestingTemplateToolbar.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrderBaseInfo.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrderPartInfo.cs" />
+    <Compile Include="PageObjects\TcDomain{T}.cs" />
+    <Compile Include="PageObjects\TcDomainBase.cs" />
     <Compile Include="PageObjects\TcDomain.cs" />
     <Compile Include="PageObjects\TcExpandablePageObject.cs" />
     <Compile Include="PageObjects\TcPageObjectBase.cs" />

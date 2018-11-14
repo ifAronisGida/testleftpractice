@@ -4,6 +4,7 @@ using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Dialogs;
 using HomeZone.UiObjects.ControlObjects.Composite;
+using HomeZone.UiObjects.Utilities;
 
 namespace HomeZone.UiObjects.PageObjects.Dialogs
 {
@@ -16,7 +17,7 @@ namespace HomeZone.UiObjects.PageObjects.Dialogs
 
         private TiButton CancelButton => FindByControlName<TiButton>( "CancelButton" );
         private TiButton OkButton => FindByControlName<TiButton>( "OkButton" );
-        private TcResultColumn ResultColumn => Find<TcResultColumn>( Search.ByControlName( "ResultColumn" ) );
+        private TcResultColumn ResultColumn => new TcResultColumn( this.FindGeneric( Search.ByControlName( "ResultColumn" ) ) );
 
         public void Cancel()
         {

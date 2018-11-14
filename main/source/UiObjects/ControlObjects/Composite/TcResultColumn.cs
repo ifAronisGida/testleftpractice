@@ -8,20 +8,28 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
     /// <summary>
     /// The result column containing the search area with search text, clear and search buttons and the result list.
     /// </summary>
-    public class TcResultColumn : TcGenericControlObject, TiResultColumn
+    internal class TcResultColumn : TiResultColumn
     {
+        private readonly IControlObject mResultColumn;
+
+        public TcResultColumn( IControlObject resultColumn )
+        {
+            mResultColumn = resultColumn;
+        }
+
         /// <summary>
         /// Gets the search text control.
         /// </summary>
         /// <value>
         /// The search text control.
         /// </value>
-        public TiValueControl<string> SearchText => this.FindMapped<TiValueControl<string>>( "List.Search.Text" );
+        public TiValueControl<string> SearchText => mResultColumn.FindMapped<TiValueControl<string>>( "List.Search.Text" );
 
-        private TiButton ClearSearchTextButton => this.FindMapped<TiButton>( "List.Search.Clear" );
-        private TiButton ExecuteSearchButton => this.FindMapped<TiButton>( "List.Search.Execute" );
-        private TcListView ResultListView => Find<TcListView>( Search.ByUid( "List.ResultList" ) );
-        private TcOverlay Overlay => Find<TcOverlay>( Search.ByUid( "ResultList.Overlay" ) );
+        protected TcListView ResultListView => mResultColumn.Find<TcListView>( Search.ByUid( "List.ResultList" ) );
+
+        private TiButton ClearSearchTextButton => mResultColumn.FindMapped<TiButton>( "List.Search.Clear" );
+        private TiButton ExecuteSearchButton => mResultColumn.FindMapped<TiButton>( "List.Search.Execute" );
+        private TcOverlay Overlay => mResultColumn.Find<TcOverlay>( Search.ByUid( "ResultList.Overlay" ) );
 
         /// <summary>
         /// Gets the amount of items in the result list.
@@ -30,6 +38,14 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
         /// The amount of items in the result list.
         /// </value>
         public int Count => ResultListView.Count;
+
+        /// <summary>
+        /// Gets the amount of selected items.
+        /// </summary>
+        /// <value>
+        /// The amount of selected items.
+        /// </value>
+        public int SelectedItemsCount => ResultListView.SelectedItemsCount;
 
         /// <summary>
         /// Clears the search text if it is not empty.
@@ -91,13 +107,5 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
             ClearSearch();
             return ResultListView.SelectAll();
         }
-
-        /// <summary>
-        /// Gets the amount of selected items.
-        /// </summary>
-        /// <value>
-        /// The amount of selected items.
-        /// </value>
-        public int SelectedItemsCount => ResultListView.SelectedItemsCount;
     }
 }
