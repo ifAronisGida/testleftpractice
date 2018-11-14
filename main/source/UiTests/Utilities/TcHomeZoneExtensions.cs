@@ -14,7 +14,6 @@ namespace HomeZone.UiTests.Utilities
 {
     internal static class TcHomeZoneExtensions
     {
-        // TODO: remove these totally and utterly unnecessary lambda expressions
         public static TiMaterials GotoMaterials( this TiHomeZoneApp app ) => Goto( app.Materials );
 
         public static TiMachines GotoMachines( this TiHomeZoneApp app ) => Goto( app.Machines );
