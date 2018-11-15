@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>HomeZone.SmokeTests</id>
+    <id>HomeZone.UiTests</id>
     <version>1.0.0</version>
     <title>HomeZone UI tests</title>
     <authors>TRUMPF Werkzeugmaschinen GmbH + Co. KG</authors>

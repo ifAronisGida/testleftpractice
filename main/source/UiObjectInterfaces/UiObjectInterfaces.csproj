@@ -94,7 +94,7 @@
     <Compile Include="Customer\TiCustomers.cs" />
     <Compile Include="CutJob\TiCutJobBaseInfo.cs" />
     <Compile Include="CutJob\TiCutJobContainedOrders.cs" />
-    <Compile Include="CutJob\TiCutJobItem.cs" />
+    <Compile Include="CutJob\TiCutJobResultListItem.cs" />
     <Compile Include="CutJob\TiCutJobOrderRow.cs" />
     <Compile Include="CutJob\TiCutJobs.cs" />
     <Compile Include="CutJob\TiCutJobSolution.cs" />
