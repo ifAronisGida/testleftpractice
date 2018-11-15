@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HomeZone.UiObjectInterfaces.CutJob
 {
     public interface TiCutJobResultListItem
     {
         string Id { get; }
+
+        string RawMaterialMachine { get; }
+
+        DateTime? FinishDate { get; }
     }
 }
