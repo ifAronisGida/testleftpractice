@@ -1,3 +1,4 @@
+using System.Windows.Controls;
 using HomeZone.UiObjectInterfaces.CutJob;
 using HomeZone.UiObjects.ControlObjects;
 using HomeZone.UiObjects.Utilities;
@@ -29,8 +30,13 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
         // There are 2 textblocks containing the finish date, we want the textblock that is visible
         public string FinishDate =>
             mRoot.Find<TcReadOnlyText>(
-                Search.ByUid( "ResultList.Item.FinishDate*" ),
-                ctrl => ctrl.Visible,
+                Search.ByUid( "ResultList.Item.FinishDate*" ).AndIsVisible(),
                 depth: 1 ).Text;
+
+        public bool IsArchived =>
+            mRoot
+            .FindGeneric( Search.By<StackPanel>(), depth: 1 )
+            .FindGeneric( Search.By<Border>(), depth: 1 )
+            .Visible;
     }
 }
