@@ -1,4 +1,4 @@
-﻿namespace HomeZone.UiObjectInterfaces.CutJob
+namespace HomeZone.UiObjectInterfaces.CutJob
 {
     public interface TiCutJobResultListItem
     {

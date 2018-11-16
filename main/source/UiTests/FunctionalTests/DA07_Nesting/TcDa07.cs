@@ -33,6 +33,8 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             // An empty entry appears at the top of the result list.
             //TODO
             Assert.AreEqual( cutJobCount + 1, cutJobs.ResultColumn.Count );
+            var selectedItem = cutJobs.ResultColumn.SelectedItem();
+            Assert.AreNotEqual( null, selectedItem );
 
             // An empty Job appears in the detail area.
             //TODO

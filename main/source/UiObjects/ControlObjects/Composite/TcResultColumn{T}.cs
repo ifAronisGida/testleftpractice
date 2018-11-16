@@ -13,12 +13,12 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
     {
         private readonly Func<IControlObject, T> mItemFactory;
 
-        public TcResultColumn( IControlObject resultColumn, Func<IControlObject, T> itemFactory ) : base(resultColumn)
+        public TcResultColumn( IControlObject resultColumn, Func<IControlObject, T> itemFactory ) : base( resultColumn )
         {
             mItemFactory = itemFactory;
         }
 
-        public T GetItem(int index)
+        public T GetItem( int index )
         {
             var cnt = Count;
 
@@ -31,5 +31,7 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
 
             return mItemFactory( listItem );
         }
+
+        public T SelectedItem() => ResultListView.SelectedIndex != -1 ? GetItem( ResultListView.SelectedIndex ) : null;
     }
 }
