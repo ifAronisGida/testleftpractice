@@ -1,6 +1,5 @@
 using Trumpf.Coparoo.Desktop.WPF;
 
-
 namespace HomeZone.UiObjects.ControlObjects
 {
     /// <summary>
@@ -17,6 +16,6 @@ namespace HomeZone.UiObjects.ControlObjects
         /// <value>
         /// The text.
         /// </value>
-        public string Text => Node.GetProperty<string>( "Text" );
+        public string Text => Node.GetWpfControlText();
     }
 }

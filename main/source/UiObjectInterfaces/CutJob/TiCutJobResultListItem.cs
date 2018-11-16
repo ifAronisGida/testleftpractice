@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HomeZone.UiObjectInterfaces.CutJob
+﻿namespace HomeZone.UiObjectInterfaces.CutJob
 {
     public interface TiCutJobResultListItem
     {
@@ -8,6 +6,6 @@ namespace HomeZone.UiObjectInterfaces.CutJob
 
         string RawMaterialMachine { get; }
 
-        DateTime? FinishDate { get; }
+        string FinishDate { get; }
     }
 }

@@ -1,5 +1,3 @@
-using System;
-using System.Windows.Controls;
 using HomeZone.UiObjectInterfaces.CutJob;
 using HomeZone.UiObjects.ControlObjects;
 using HomeZone.UiObjects.Utilities;
@@ -28,14 +26,11 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
 
         public string RawMaterialMachine => mRoot.Find<TcReadOnlyText>( Search.ByUid( "ResultList.Item.MaterialMachine" ), depth: 1 ).Text;
 
-        public DateTime? FinishDate
-        {
-            get
-            {
-                var textBlock = mRoot.Find<TcReadOnlyText>( Search.ByUid( "ResultList.Item.FinishDateNormal" ), depth: 1 );
-
-                return textBlock.Text != string.Empty ? mRoot.Node.GetDataContextProperty<DateTime>( "FinishDate" ) : ( DateTime? )null;
-            }
-        }
+        // There are 2 textblocks containing the finish date, we want the textblock that is visible
+        public string FinishDate =>
+            mRoot.Find<TcReadOnlyText>(
+                Search.ByUid( "ResultList.Item.FinishDate*" ),
+                ctrl => ctrl.Visible,
+                depth: 1 ).Text;
     }
 }
