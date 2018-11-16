@@ -24,17 +24,17 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             mRoot = listViewItem.FindGeneric( Search.ByControlName( "TemplateRoot" ), depth: 2 );
         }
 
-        public string Id => mRoot.Find<TcReadOnlyText>( Search.ByControlName( "ColorSampleForIcon" ), depth: 2 ).Text;
+        public string Id => mRoot.Find<TcReadOnlyText>( Search.ByUid( "ResultList.Item.Name" ), depth: 2 ).Text;
 
-        public string RawMaterialMachine => mRoot.Find<TcReadOnlyText>( Search.By<TextBlock>().AndByIndex( 0 ), depth: 1 ).Text;
+        public string RawMaterialMachine => mRoot.Find<TcReadOnlyText>( Search.ByUid( "ResultList.Item.MaterialMachine" ), depth: 1 ).Text;
 
         public DateTime? FinishDate
         {
             get
             {
-                var textBlock = mRoot.Find<TcReadOnlyText>( Search.By<TextBlock>().AndByIndex( 1 ), depth: 1 );
+                var textBlock = mRoot.Find<TcReadOnlyText>( Search.ByUid( "ResultList.Item.FinishDateNormal" ), depth: 1 );
 
-                return textBlock.Text != string.Empty ? mRoot.Node.GetDataContextProperty<DateTime>( "FinishDate" ) : (DateTime?)null;
+                return textBlock.Text != string.Empty ? mRoot.Node.GetDataContextProperty<DateTime>( "FinishDate" ) : ( DateTime? )null;
             }
         }
     }
