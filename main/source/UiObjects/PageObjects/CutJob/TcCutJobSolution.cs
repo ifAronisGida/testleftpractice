@@ -51,6 +51,7 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             }
         }
 
+        public bool CanRelease => ReleaseButton.Enabled;
         public void Release()
         {
             if( ReleaseButton.Enabled )
@@ -59,6 +60,7 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             }
         }
 
+        public bool CanOpen => OpenButton.Enabled;
         public void Open()
         {
             if( OpenButton.Enabled )
