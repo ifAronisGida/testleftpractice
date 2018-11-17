@@ -35,10 +35,11 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             var selectedItem = cutJobs.ResultColumn.SelectedItem();
             Assert.AreNotEqual( null, selectedItem );
             Assert.IsTrue( string.IsNullOrEmpty( selectedItem.Id ) );
-            Assert.IsTrue(string.IsNullOrEmpty(selectedItem.FinishDate));
+            Assert.IsTrue( string.IsNullOrEmpty( selectedItem.FinishDate ) );
 
             // An empty Job appears in the detail area.
-            //TODO
+            Assert.IsTrue( string.IsNullOrEmpty( cutJobs.BaseInfo.Id.Value ) );
+            Assert.AreEqual( null, cutJobs.BaseInfo.FinishDate.Value );
 
             // Save button is enabled.
             Assert.IsTrue( cutJobs.Toolbar.CanSave );
@@ -48,6 +49,7 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
 
             // All Sheet Program fields are empty except Nesting Mode
             //TODO
+            //cutJobs.SheetProgram.
 
             // No machine is selected ( except if there is only 1 machine available, then this should be selected V2.0X)
             //TODO
@@ -57,8 +59,7 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             //Assert.IsTrue( cutJobs.BaseInfo.Id.IsFocused );
 
             // Sheet Program Open button is disabled
-            //TODO
-            //Assert.IsFalse( cutJobs.SheetProgram.CanOpen );
+            Assert.IsFalse( cutJobs.SheetProgram.CanOpen );
 
             // Sheet Program BOOST button is disabled
             Assert.IsFalse( cutJobs.SheetProgram.CanBoost );
@@ -69,6 +70,88 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             // Sheet Program state is MISSING
             //TODO
 
+
+            // Test step: Enter a unique job name (ID).
+            //TODO
+
+
+            // The name appears in the result list.
+            //TODO
+
+
+            // Save button is enabled.
+            Assert.IsTrue( cutJobs.Toolbar.CanSave );
+
+
+            // Test step: Add an order that has a material and machine assigned.
+            //TODO
+
+
+
+            // The selected order appears in the "Order List".
+            //TODO
+
+            // Column "Cutting program" contains the name of the cutting program assigned to the part order.
+            //TODO
+
+            // Save button still is enabled.
+            Assert.IsTrue( cutJobs.Toolbar.CanSave );
+
+            // Open button is enabled.
+            Assert.IsTrue( cutJobs.SheetProgram.CanOpen );
+
+            // "BOOST" is disabled.
+            Assert.IsFalse( cutJobs.SheetProgram.CanBoost );
+
+            // The part state (Order List column Status) shows the state of the cut solution
+
+            // Order List state is same as the state of the single part in the list
+
+            // "Pending" shows 0/n.
+
+            // "Min/Max quantity (job)"  both show the target quantity of the PO.
+
+            // "Current" shows 0.
+
+            // "ID" and tooltip shows the ID of the Order.
+
+            // "Customer" shows the customer of the Order.
+
+            // "Finish date" shows finish date of the Order.
+
+            // Earliest Finish date in "NESTING"  area shows the Finish date of the Order.
+
+            // "Raw Material" in "NESTING" area shows the data of the selected Part from the Order.
+
+            // "Machine" in "Sheet Program" area shows the data of the selected Part from the Order.
+
+            // State in result list is "Order List: Incomplete".
+
+            // Second state in stack is "Sheet Program: Incomplete".
+
+
+            // Test step: Save
+            cutJobs.Toolbar.Save();
+
+            // Job saved successfully.
+            Assert.IsFalse( cutJobs.Toolbar.CanSave );
+        }
+
+        /// <summary>
+        /// Edit quantities.
+        /// </summary>
+        [TestMethod, UniqueName( "0BCAB5A4-E734-4EFC-A4F9-33BE6E37A1B7" )]
+        [Tag( "Functional Test" )]
+        [Tag( "DA07" )]
+        public void DA7_02()
+        {
+            var cutJobs = HomeZone.CutJobs;
+
+            // Category "NESTING" is active.
+            cutJobs.Goto();
+
+            //Nesting from DA7.01 is selected.
+            //TODO
 
         }
     }

@@ -7,7 +7,7 @@ using HomeZone.UiObjects.PageObjects.Shell;
 
 namespace HomeZone.UiObjects.PageObjects.CutJob
 {
-    public class TcCutJobDetail : TcPageObjectBase, IChildOf<TcDetailContent>, TiCutJobBaseInfo
+    public class TcCutJobBaseInfo : TcPageObjectBase, IChildOf<TcDetailContent>, TiCutJobBaseInfo
     {
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail" );
 

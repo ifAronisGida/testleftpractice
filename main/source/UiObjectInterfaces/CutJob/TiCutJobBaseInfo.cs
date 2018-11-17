@@ -6,7 +6,7 @@ namespace HomeZone.UiObjectInterfaces.CutJob
     public interface TiCutJobBaseInfo
     {
         TiValueControl<string> Id { get; }
-        TiValueControl<DateTime?> FinishDate { get; }
         TiValueControl<string> RawMaterial { get; }
+        TiValueControl<DateTime?> FinishDate { get; }
     }
 }
