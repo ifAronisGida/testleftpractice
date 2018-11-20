@@ -12,6 +12,22 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
         public TiCutJobContainedOrders ContainedOrders => On<TcCutJobContainedOrders>( cache: true );
         public TiCutJobSolution SheetProgram => On<TcCutJobSolution>( cache: true );
 
+        /// <summary>
+        /// Deletes the given cut job.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>true if deleted</returns>
+        public bool DeleteCutJob( string id )
+        {
+            if( !ResultColumn.SelectItem( id ) )
+            {
+                return false;
+            }
+
+            Toolbar.Delete();
+            return true;
+        }
+
         protected override void DoGoto()
         {
             On<TcDomains>().CutJob.Click();

@@ -2,12 +2,8 @@ using HomeZone.UiObjectInterfaces.Common;
 
 namespace HomeZone.UiObjectInterfaces.Machine
 {
-    public interface TiMachineToolbar : TiVisibility
+    public interface TiMachineToolbar : TiToolbar
     {
-        bool CanSave { get; }
-        bool CanDelete { get; }
-        bool CanRevert { get; }
-
         /// <summary>
         /// Creates a new cut machine.
         /// </summary>
@@ -17,15 +13,5 @@ namespace HomeZone.UiObjectInterfaces.Machine
         /// Creates a new bend machine.
         /// </summary>
         void NewBendMachine();
-
-        /// <summary>
-        /// Saves the current machine.
-        /// </summary>
-        void Save();
-
-        /// <summary>
-        /// Deletes the current machine.
-        /// </summary>
-        void Delete();
     }
 }

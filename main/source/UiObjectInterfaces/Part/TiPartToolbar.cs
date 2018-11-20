@@ -1,13 +1,9 @@
 using HomeZone.UiObjectInterfaces.Common;
 
-
 namespace HomeZone.UiObjectInterfaces.Part
 {
-    public interface TiPartToolbar : TiVisibility
+    public interface TiPartToolbar : TiToolbar
     {
-        bool CanSave { get; }
-        bool CanDelete { get; }
-        bool CanRevert { get; }
         bool CanBoost { get; }
 
         /// <summary>
@@ -26,21 +22,6 @@ namespace HomeZone.UiObjectInterfaces.Part
         /// Boosts the part via toolbar.
         /// </summary>
         void Boost();
-
-        /// <summary>
-        /// Saves the part.
-        /// </summary>
-        void Save();
-
-        /// <summary>
-        /// Deletes the part.
-        /// </summary>
-        void Delete();
-
-        /// <summary>
-        /// Reverts a part.
-        /// </summary>
-        void Revert();
 
         /// <summary>
         /// Creates the part order.

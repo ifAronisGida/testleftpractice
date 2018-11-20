@@ -1,33 +1,28 @@
-using Trumpf.Coparoo.Desktop;
+using System;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Material;
-using HomeZone.UiObjects.PageObjects.Dialogs;
-using HomeZone.UiObjects.PageObjects.Shell;
 
 namespace HomeZone.UiObjects.PageObjects.Material
 {
     /// <summary>
     /// The material toolbar.
     /// </summary>
-    /// <seealso cref="PageObject" />
-    /// <seealso cref="Trumpf.PageObjects.IChildOf{TcToolbars}" />
-    public class TcMaterialToolbar : TcPageObjectBase, IChildOf<TcToolbars>, TiMaterialToolbar
+    public class TcMaterialToolbar : TcToolbar, TiMaterialToolbar
     {
-        public bool CanSave => SaveButton.Enabled;
-        public bool CanDelete => DeleteButton.Enabled;
-        public bool CanRevert => RevertButton.Enabled;
-
-
         protected override Search SearchPattern => Search.ByUid( "Material.Toolbar" );
 
         private TiButton NewButton => Find<TiButton>( "Material.Toolbar.New" );
         private TiButton DuplicateButton => Find<TiButton>( "Material.Toolbar.Duplicate" );
-        private TiButton SaveButton => Find<TiButton>( "Material.Toolbar.Save" );
-        private TiButton RevertButton => Find<TiButton>( "Material.Toolbar.Revert" );
-        private TiButton DeleteButton => Find<TiButton>( "Material.Toolbar.Delete" );
         private TiButton LockMaterialButton => Find<TiButton>( "Material.Toolbar.LockMaterial" );
         private TiButton UnlockMaterialButton => Find<TiButton>( "Material.Toolbar.UnlockMaterial" );
+
+        public TcMaterialToolbar()
+        {
+            SaveButton = new Lazy<TiButton>( () => Find<TiButton>( "Material.Toolbar.Save" ) );
+            RevertButton = new Lazy<TiButton>( () => Find<TiButton>( "Material.Toolbar.Revert" ) );
+            DeleteButton = new Lazy<TiButton>( () => Find<TiButton>( "Material.Toolbar.Delete" ) );
+        }
 
         /// <summary>
         /// Creates a new material.
@@ -46,27 +41,27 @@ namespace HomeZone.UiObjects.PageObjects.Material
             DuplicateButton.Click();
         }
 
-        /// <summary>
-        /// Saves the current material.
-        /// </summary>
-        public void Save()
-        {
-            SaveButton.Click();
-        }
+        ///// <summary>
+        ///// Saves the current material.
+        ///// </summary>
+        //public void Save()
+        //{
+        //    SaveButton.Click();
+        //}
 
-        /// <summary>
-        /// Deletes the current material.
-        /// </summary>
-        /// <returns>true if successful</returns>
-        public void Delete()
-        {
-            DeleteButton.Click();
+        ///// <summary>
+        ///// Deletes the current material.
+        ///// </summary>
+        ///// <returns>true if successful</returns>
+        //public void Delete()
+        //{
+        //    DeleteButton.Click();
 
-            var dialog = On<TcMessageBox>();
-            if( dialog.MessageBoxExists() )
-            {
-                dialog.Yes();
-            }
-        }
+        //    var dialog = On<TcMessageBox>();
+        //    if( dialog.MessageBoxExists() )
+        //    {
+        //        dialog.Yes();
+        //    }
+        //}
     }
 }

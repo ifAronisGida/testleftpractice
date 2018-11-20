@@ -1,25 +1,17 @@
+using System;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
-using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Machine;
-using HomeZone.UiObjects.PageObjects.Dialogs;
-using HomeZone.UiObjects.PageObjects.Shell;
 
 namespace HomeZone.UiObjects.PageObjects.Machine
 {
     /// <summary>
     /// The machine toolbar.
     /// </summary>
-    /// <seealso cref="PageObject" />
-    /// <seealso cref="Trumpf.PageObjects.IChildOf{TcToolbars}" />
-    public class TcMachineToolbar : TcPageObjectBase, IChildOf<TcToolbars>, TiMachineToolbar
+    public class TcMachineToolbar : TcToolbar, TiMachineToolbar
     {
-        public bool CanSave => SaveButton.Enabled;
-        public bool CanDelete => DeleteButton.Enabled;
-        public bool CanRevert => RevertButton.Enabled;
-
         protected override Search SearchPattern => Search.ByUid( "Machine.Toolbar" );
 
         private IObjectTreeNode NewMachineButton => Node.Find<IObjectTreeNode>( new WPFPattern()
@@ -27,9 +19,13 @@ namespace HomeZone.UiObjects.PageObjects.Machine
             ClrFullClassName = "System.Windows.Controls.MenuItem",
             Uid = "Machine.Toolbar.New"
         } );
-        private TiButton SaveButton => Find<TiButton>( "Machine.Toolbar.Save" );
-        private TiButton RevertButton => Find<TiButton>( "Machine.Toolbar.Revert" );
-        private TiButton DeleteButton => Find<TiButton>( "Machine.Toolbar.Delete" );
+
+        public TcMachineToolbar()
+        {
+            SaveButton = new Lazy<TiButton>( () => Find<TiButton>( "Machine.Toolbar.Save" ) );
+            RevertButton = new Lazy<TiButton>( () => Find<TiButton>( "Machine.Toolbar.Revert" ) );
+            DeleteButton = new Lazy<TiButton>( () => Find<TiButton>( "Machine.Toolbar.Delete" ) );
+        }
 
         /// <summary>
         /// Creates a new cut machine.
@@ -47,26 +43,26 @@ namespace HomeZone.UiObjects.PageObjects.Machine
             NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click( "|[1]" );
         }
 
-        /// <summary>
-        /// Saves the current machine.
-        /// </summary>
-        public void Save()
-        {
-            SaveButton.Click();
-        }
+        ///// <summary>
+        ///// Saves the current machine.
+        ///// </summary>
+        //public void Save()
+        //{
+        //    SaveButton.Click();
+        //}
 
-        /// <summary>
-        /// Deletes the current machine.
-        /// </summary>
-        public void Delete()
-        {
-            DeleteButton.Click();
+        ///// <summary>
+        ///// Deletes the current machine.
+        ///// </summary>
+        //public void Delete()
+        //{
+        //    DeleteButton.Click();
 
-            var dialog = On<TcMessageBox>();
-            if( dialog.MessageBoxExists() )
-            {
-                dialog.Yes();
-            }
-        }
+        //    var dialog = On<TcMessageBox>();
+        //    if( dialog.MessageBoxExists() )
+        //    {
+        //        dialog.Yes();
+        //    }
+        //}
     }
 }

@@ -7,6 +7,6 @@ namespace HomeZone.UiObjectInterfaces.CutJob
     {
         TiValueControl<string> Id { get; }
         TiValueControl<string> RawMaterial { get; }
-        TiValueControl<DateTime?> FinishDate { get; }
+        DateTime? FinishDate { get; }
     }
 }

@@ -2,12 +2,8 @@ using HomeZone.UiObjectInterfaces.Common;
 
 namespace HomeZone.UiObjectInterfaces.Material
 {
-    public interface TiMaterialToolbar : TiVisibility
+    public interface TiMaterialToolbar : TiToolbar
     {
-        bool CanSave { get; }
-        bool CanDelete { get; }
-        bool CanRevert { get; }
-
         /// <summary>
         /// Creates a new material.
         /// </summary>
@@ -17,16 +13,5 @@ namespace HomeZone.UiObjectInterfaces.Material
         /// Duplicates the current material.
         /// </summary>
         void Duplicate();
-
-        /// <summary>
-        /// Saves the current material.
-        /// </summary>
-        void Save();
-
-        /// <summary>
-        /// Deletes the current material.
-        /// </summary>
-        /// <returns>true if successful</returns>
-        void Delete();
     }
 }

@@ -74,6 +74,7 @@ namespace HomeZone.UiObjects.PageObjects.Machine
         /// <param name="laserPowerValue">The laser power value.</param>
         public void NewCutMachine( string machineType, string name, string laserPowerValue )
         {
+            Goto();
             Toolbar.NewCutMachine();
             Detail.CutMachineType = machineType;
             Detail.Name.Value = name;
@@ -87,6 +88,7 @@ namespace HomeZone.UiObjects.PageObjects.Machine
         /// <param name="name">The name.</param>
         public void NewBendMachine( string machineType, string name )
         {
+            Goto();
             Toolbar.NewBendMachine();
             Detail.BendMachineType = machineType;
             Detail.Name.Value = name;

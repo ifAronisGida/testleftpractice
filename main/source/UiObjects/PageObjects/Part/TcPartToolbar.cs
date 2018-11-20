@@ -1,23 +1,17 @@
-using Trumpf.Coparoo.Desktop;
+using System;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Dialogs;
 using HomeZone.UiObjectInterfaces.Part;
 using HomeZone.UiObjects.PageObjects.Dialogs;
-using HomeZone.UiObjects.PageObjects.Shell;
 
 namespace HomeZone.UiObjects.PageObjects.Part
 {
     /// <summary>
     /// The part toolbar.
     /// </summary>
-    /// <seealso cref="PageObject" />
-    /// <seealso cref="Trumpf.PageObjects.IChildOf{TcToolbars}" />
-    public class TcPartToolbar : TcPageObjectBase, IChildOf<TcToolbars>, TiPartToolbar
+    public class TcPartToolbar : TcToolbar, TiPartToolbar
     {
-        public bool CanSave => SaveButton.Enabled;
-        public bool CanDelete => DeleteButton.Enabled;
-        public bool CanRevert => RevertButton.Enabled;
         public bool CanBoost => BoostButton.Enabled;
 
         protected override Search SearchPattern => Search.ByUid( "Part.Toolbar" );
@@ -29,13 +23,17 @@ namespace HomeZone.UiObjects.PageObjects.Part
         private TiButton BoostButton => Find<TiButton>( "Part.Toolbar.CalculateAll" );
         private TiButton CreatePartOrderButton => Find<TiButton>( "Part.Toolbar.CreatePartOrder" );
         private TiButton CreateCutJobButton => Find<TiButton>( "Part.Toolbar.CreateCutJob" );
-        private TiButton SaveButton => Find<TiButton>( "Part.Toolbar.Save" );
-        private TiButton RevertButton => Find<TiButton>( "Part.Toolbar.Revert" );
-        private TiButton DeleteButton => Find<TiButton>( "Part.Toolbar.Delete" );
         private TiButton MoveToArchiveButton => Find<TiButton>( "Part.Toolbar.MoveToArchive" );
         private TiButton RemoveFromArchiveButton => Find<TiButton>( "Part.Toolbar.RemoveFromArchive" );
         private TiButton LockPartButton => Find<TiButton>( "Part.Toolbar.LockPart" );
         private TiButton UnlockPartButton => Find<TiButton>( "Part.Toolbar.UnlockPart" );
+
+        public TcPartToolbar()
+        {
+            SaveButton = new Lazy<TiButton>( () => Find<TiButton>( "Part.Toolbar.Save" ) );
+            RevertButton = new Lazy<TiButton>( () => Find<TiButton>( "Part.Toolbar.Revert" ) );
+            DeleteButton = new Lazy<TiButton>( () => Find<TiButton>( "Part.Toolbar.Delete" ) );
+        }
 
         /// <summary>
         /// Creates a new part.
@@ -69,36 +67,6 @@ namespace HomeZone.UiObjects.PageObjects.Part
             if( dialog.DialogBoxExists() )
             {
                 dialog.Ok();
-            }
-        }
-
-        /// <summary>
-        /// Saves the part.
-        /// </summary>
-        public void Save()
-        {
-            SaveButton.Click();
-        }
-
-        /// <summary>
-        /// Reverts the part.
-        /// </summary>
-        public void Revert()
-        {
-            RevertButton.Click();
-        }
-
-        /// <summary>
-        /// Deletes the part.
-        /// </summary>
-        public void Delete()
-        {
-            DeleteButton.Click();
-
-            var dialog = On<TiMessageBox, TcMessageBox>();
-            if( dialog.MessageBoxExists() )
-            {
-                dialog.Yes();
             }
         }
 

@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
 using HomeZone.UiTests.Base;
@@ -11,6 +12,16 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
     [TestClass]
     public class TcDa07 : TcBaseTestClass
     {
+        // cut machines
+        private const string CUT_JOB1_TYPE = @"TruLaser 3030 (L20)";
+        private const string CUT_JOB2_TYPE = @"TruLaser Center 7030 (L26)";
+
+        // part
+        private const string PART = @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc";
+        private const string CUTTING_PROGRAM_NAME = @"Cut1";
+
+        private readonly string mCutJobId = @"DA7_01";
+
         /// <summary>
         /// Create a new job.
         /// </summary>
@@ -19,6 +30,8 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
         [Tag( "DA07" )]
         public void DA7_01()
         {
+            //CreatePreConditions();
+
             var cutJobs = HomeZone.CutJobs;
 
             // Category "Nesting" is active.
@@ -39,7 +52,7 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
 
             // An empty Job appears in the detail area.
             Assert.IsTrue( string.IsNullOrEmpty( cutJobs.BaseInfo.Id.Value ) );
-            Assert.AreEqual( null, cutJobs.BaseInfo.FinishDate.Value );
+            Assert.AreEqual( null, cutJobs.BaseInfo.FinishDate );
 
             // Save button is enabled.
             Assert.IsTrue( cutJobs.Toolbar.CanSave );
@@ -52,11 +65,10 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             //cutJobs.SheetProgram.
 
             // No machine is selected ( except if there is only 1 machine available, then this should be selected V2.0X)
-            //TODO
+            Assert.IsTrue( string.IsNullOrEmpty( cutJobs.SheetProgram.Machine.Value ) );
 
             // ID field is focused
-            //TODO
-            //Assert.IsTrue( cutJobs.BaseInfo.Id.IsFocused );
+            Assert.IsTrue( cutJobs.BaseInfo.Id.IsFocused );
 
             // Sheet Program Open button is disabled
             Assert.IsFalse( cutJobs.SheetProgram.CanOpen );
@@ -72,11 +84,11 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
 
 
             // Test step: Enter a unique job name (ID).
-            //TODO
+            cutJobs.BaseInfo.Id.Value = Name2UIT_Name( mCutJobId );
 
 
             // The name appears in the result list.
-            //TODO
+            Assert.AreEqual( Name2UIT_Name( mCutJobId ), cutJobs.ResultColumn.SelectedItem().Id );
 
 
             // Save button is enabled.
@@ -135,24 +147,77 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
 
             // Job saved successfully.
             Assert.IsFalse( cutJobs.Toolbar.CanSave );
+
+            CleanUp();
         }
+
+        ///// <summary>
+        ///// Edit quantities.
+        ///// </summary>
+        //[TestMethod, UniqueName( "0BCAB5A4-E734-4EFC-A4F9-33BE6E37A1B7" )]
+        //[Tag( "Functional Test" )]
+        //[Tag( "DA07" )]
+        //public void DA7_02()
+        //{
+        //    var cutJobs = HomeZone.CutJobs;
+
+        //    // Category "NESTING" is active.
+        //    cutJobs.Goto();
+
+        //    //Nesting from DA7.01 is selected.
+        //    //TODO
+
+        //}
 
         /// <summary>
-        /// Edit quantities.
+        /// Creates the pre conditions for DA07.01:
+        ///     - min 2 cut machines
+        ///     - order that has a material and machine assigned
         /// </summary>
-        [TestMethod, UniqueName( "0BCAB5A4-E734-4EFC-A4F9-33BE6E37A1B7" )]
-        [Tag( "Functional Test" )]
-        [Tag( "DA07" )]
-        public void DA7_02()
+        private void CreatePreConditions()
+        {
+            // create cut machines
+            var machines = HomeZone.Machines;
+
+            machines.NewCutMachine( CUT_JOB1_TYPE, Name2UIT_Name( CUT_JOB1_TYPE ), @"6000" );
+            machines.Toolbar.Save();
+            machines.WaitForDetailOverlayAppear( TestSettings.SavingTimeout );
+            machines.WaitForDetailOverlayDisappear( TestSettings.SavingTimeout );
+            machines.NewCutMachine( CUT_JOB2_TYPE, Name2UIT_Name( CUT_JOB2_TYPE ), @"6000" );
+            machines.Toolbar.Save();
+
+            // create part and part order
+            var parts = HomeZone.Parts;
+            parts.Goto();
+
+            parts.Toolbar.Import( PART );
+
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
+
+            parts.SingleDetail.Name.Value = Name2UIT_Name( parts.SingleDetail.Name.Value );
+            parts.SingleDetail.Id = parts.SingleDetail.Name.Value;
+            parts.SingleDetailCutSolutions.New();
+
+            parts.Toolbar.CreatePartOrder();
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+        }
+
+        private void CleanUp()
         {
             var cutJobs = HomeZone.CutJobs;
+            cutJobs.DeleteCutJob( Name2UIT_Name( mCutJobId ) );
 
-            // Category "NESTING" is active.
-            cutJobs.Goto();
-
-            //Nesting from DA7.01 is selected.
-            //TODO
-
+            var partOrders = HomeZone.PartOrders;
+            //partOrders.d
         }
+
+        private string Name2UIT_Name( string name )
+        {
+            return TestSettings.NamePrefix + name;
+        }
+
     }
 }

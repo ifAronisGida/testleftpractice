@@ -1,6 +1,5 @@
 using Trumpf.Coparoo.Desktop.Waiting;
 
-
 namespace HomeZone.UiObjectInterfaces.Controls
 {
     public interface TiControl
@@ -8,5 +7,7 @@ namespace HomeZone.UiObjectInterfaces.Controls
         Wool Enabled { get; }
 
         Wool Visible { get; }
+
+        bool IsFocused { get; }
     }
 }
