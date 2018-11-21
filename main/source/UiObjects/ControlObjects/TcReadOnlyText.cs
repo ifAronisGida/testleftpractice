@@ -16,6 +16,6 @@ namespace HomeZone.UiObjects.ControlObjects
         /// <value>
         /// The text.
         /// </value>
-        public string Text => Node.GetWpfControlText();
+        public string Text => Node.GetText();
     }
 }

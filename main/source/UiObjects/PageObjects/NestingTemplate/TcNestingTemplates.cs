@@ -20,6 +20,24 @@ namespace HomeZone.UiObjects.PageObjects.NestingTemplate
             DetailOverlay.Visible.WaitForFalse( timeout );
         }
 
+        /// <summary>
+        /// Deletes the given nesting template.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>true if successful</returns>
+        public bool DeleteNestingTemplate( string id )
+        {
+            if( !ResultColumn.SelectItem( id ) )
+            {
+                ResultColumn.ClearSearch();
+                return false;
+            }
+
+            Toolbar.Delete();
+            ResultColumn.ClearSearch();
+            return true;
+        }
+
         protected override void DoGoto()
         {
             Goto<TcDomainsMore>().GotoCutJobTemplate();

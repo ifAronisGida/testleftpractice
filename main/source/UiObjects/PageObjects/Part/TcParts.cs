@@ -83,17 +83,19 @@ namespace HomeZone.UiObjects.PageObjects.Part
         }
 
         /// <summary>
-        /// Deletes the given part.
+        /// Deletes the given part. The part should not be used in part orders or nestings.
         /// </summary>
         /// <param name="id">The identifier.</param>
         public bool DeletePart( string id )
         {
             if( !ResultColumn.SelectItem( id ) )
             {
+                ResultColumn.ClearSearch();
                 return false;
             }
 
             Toolbar.Delete();
+            ResultColumn.ClearSearch();
             return true;
         }
 

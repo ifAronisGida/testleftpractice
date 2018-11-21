@@ -21,10 +21,12 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
         {
             if( !ResultColumn.SelectItem( id ) )
             {
+                ResultColumn.ClearSearch();
                 return false;
             }
 
             Toolbar.Delete();
+            ResultColumn.ClearSearch();
             return true;
         }
 

@@ -67,10 +67,12 @@ namespace HomeZone.UiObjects.PageObjects.Material
         {
             if( !ResultColumn.SelectItem( id ) )
             {
+                ResultColumn.ClearSearch();
                 return false;
             }
 
             Toolbar.Delete();
+            ResultColumn.ClearSearch();
             return true;
         }
 

@@ -103,10 +103,12 @@ namespace HomeZone.UiObjects.PageObjects.Machine
         {
             if( !ResultColumn.SelectItem( id ) )
             {
+                ResultColumn.ClearSearch();
                 return false;
             }
 
             Toolbar.Delete();
+            ResultColumn.ClearSearch();
             return true;
         }
 

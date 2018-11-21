@@ -11,6 +11,7 @@ namespace HomeZone.UiObjects.Utilities
         {
             ["DevExpress.Xpf.Core.DXTabItem"] = controlObject => new TcButton( controlObject ),
             ["DevExpress.Xpf.Editors.CheckEdit"] = controlObject => new TcCheckBox( controlObject ),
+            ["DevExpress.Xpf.Editors.ComboBoxEdit"] = controlObject => new TcTextEdit( controlObject ),
             ["DevExpress.Xpf.Editors.SpinEdit"] = controlObject => new TcSpinEdit( controlObject ),
             ["DevExpress.Xpf.Editors.TextEdit"] = controlObject => new TcTextEdit( controlObject ),
             ["DevExpress.Xpf.Grid.LookUp.LookUpEdit"] = controlObject => new TcTextEdit( controlObject ),
