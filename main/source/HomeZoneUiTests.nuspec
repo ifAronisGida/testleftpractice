@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>$id$</id>
+    <id>HomeZone.UiTests</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$authors$</authors>
-    <owners>$authors$</owners>
+    <authors>TRUMPF Werkzeugmaschinen GmbH + Co. KG</authors>
+    <owners>TRUMPF Werkzeugmaschinen GmbH + Co. KG</owners>
     <projectUrl>https://dev.azure.com/Trumpf-HomeZone/UiTests</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary></summary>
