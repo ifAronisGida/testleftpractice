@@ -4,12 +4,12 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <authors>$authors$</authors>
+    <owners>$authors$</owners>
     <projectUrl>https://dev.azure.com/Trumpf-HomeZone/UiTests</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary></summary>
-    <description>$description$</description>
+    <description>Smoke and UI tests for the HomeZone</description>
     <releaseNotes></releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>Testing UI TestLeft HomeZone</tags>
