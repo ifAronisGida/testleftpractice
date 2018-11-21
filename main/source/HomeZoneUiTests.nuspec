@@ -2,8 +2,8 @@
 <package>
   <metadata>
     <id>HomeZone.UiTests</id>
-    <version>1.0.0</version>
-    <title>HomeZone UI tests</title>
+    <version>$version$</version>
+    <title>$title$</title>
     <authors>TRUMPF Werkzeugmaschinen GmbH + Co. KG</authors>
     <owners>TRUMPF Werkzeugmaschinen GmbH + Co. KG</owners>
     <projectUrl>https://dev.azure.com/Trumpf-HomeZone/UiTests</projectUrl>
@@ -11,7 +11,7 @@
     <summary></summary>
     <description>Smoke and UI tests for the HomeZone</description>
     <releaseNotes></releaseNotes>
-    <copyright>2018 TRUMPF Werkzeugmaschinen GmbH + Co. KG</copyright>
+    <copyright>$copyright$</copyright>
     <tags>Testing UI TestLeft HomeZone</tags>
   </metadata>
   <files>
