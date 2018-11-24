@@ -90,56 +90,69 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             // The name appears in the result list.
             Assert.AreEqual( Name2UIT_Name( mId ), cutJobs.ResultColumn.SelectedItem().Id );
 
-
             // Save button is enabled.
             Assert.IsTrue( cutJobs.Toolbar.CanSave );
 
 
             // Test step: Add an order that has a material and machine assigned.
-            //TODO
-
+            var orderCount = cutJobs.ContainedOrders.PartOrdersCount;
+            cutJobs.ContainedOrders.AddPartOrder( Name2UIT_Name( mId ) );
 
 
             // The selected order appears in the "Order List".
-            //TODO
+            Assert.AreEqual( orderCount + 1, cutJobs.ContainedOrders.PartOrdersCount );
 
             // Column "Cutting program" contains the name of the cutting program assigned to the part order.
-            //TODO
+            var orderRow = cutJobs.ContainedOrders.GetRow( 0 );
+            Assert.AreEqual( CUTTING_PROGRAM_NAME, orderRow.CuttingProgram );
 
             // Save button still is enabled.
             Assert.IsTrue( cutJobs.Toolbar.CanSave );
 
             // Open button is enabled.
-            //TODO Assert.IsTrue( cutJobs.SheetProgram.CanOpen );
+            Assert.IsTrue( cutJobs.SheetProgram.CanOpen );
 
             // "BOOST" is disabled.
             Assert.IsFalse( cutJobs.SheetProgram.CanBoost );
 
             // The part state (Order List column Status) shows the state of the cut solution
+            //TODO
 
             // Order List state is same as the state of the single part in the list
+            //TODO
 
             // "Pending" shows 0/n.
+            //TODO
 
             // "Min/Max quantity (job)"  both show the target quantity of the PO.
+            //TODO
 
             // "Current" shows 0.
+            //TODO
 
             // "ID" and tooltip shows the ID of the Order.
+            //TODO
 
             // "Customer" shows the customer of the Order.
+            //TODO
 
             // "Finish date" shows finish date of the Order.
+            //TODO
 
             // Earliest Finish date in "NESTING"  area shows the Finish date of the Order.
+            //TODO
 
             // "Raw Material" in "NESTING" area shows the data of the selected Part from the Order.
+            //TODO
 
             // "Machine" in "Sheet Program" area shows the data of the selected Part from the Order.
+            //TODO
 
             // State in result list is "Order List: Incomplete".
+            //TODO
 
             // Second state in stack is "Sheet Program: Incomplete".
+            //TODO
 
 
             // Test step: Save

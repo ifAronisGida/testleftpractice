@@ -68,9 +68,9 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             }
         }
 
-        public string CuttingProgram => mRow.GetCell( 12 )
-                    .Find<TcReadOnlyText>( Search.By<TextEdit>(), depth: 1 )
-                    .Text;
+        public string CuttingProgram => mRow
+            .Find<TcReadOnlyText>( Search.ByUid( "CuttingProgram" ) )
+            .Text;
 
         // maybe do something about the degree symbol?
         public string AngularPositions => mRow
@@ -81,7 +81,7 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             .Find<TcReadOnlyText>( Search.ByUid( "PartDistanceMode" ) )
             .Text;
 
-        public TiValueControl<bool> IgnoreProcessings => mRow.GetCell( 15 ).FindMapped<TiValueControl<bool>>( Search.Any, depth: 1 );
+        public TiValueControl<bool> IgnoreProcessings => mRow.FindMapped<TiValueControl<bool>>( "IgnoreProcessings" );
 
         // TODO: do something about the editability of these cells
         public int NestingPriority
