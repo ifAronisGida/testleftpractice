@@ -1,6 +1,8 @@
+using HomeZone.UiObjectInterfaces.Common;
+
 namespace HomeZone.UiObjectInterfaces.CutJob
 {
-    public interface TiCutJobResultListItem
+    public interface TiCutJobResultListItem : TiHasStateStack
     {
         string Id { get; }
 
