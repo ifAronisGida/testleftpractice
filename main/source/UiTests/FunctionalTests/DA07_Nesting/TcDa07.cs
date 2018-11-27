@@ -127,13 +127,13 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
 
             // "Min/Max quantity (job)"  both show the target quantity of the PO.
             //TODO
-            //Assert.AreEqual( 1, orderRow.Min );
-            //Assert.AreEqual( 1, orderRow.Max );
+            Assert.AreEqual( 1, orderRow.Min );
+            Assert.AreEqual( 1, orderRow.Max );
 
 
             // "Current" shows 0.
             //TODO
-            //Assert.AreEqual( 1, orderRow.Current );
+            Assert.AreEqual( 0, orderRow.Current );
 
             // "ID" and tooltip shows the ID of the Order.
             //TODO
