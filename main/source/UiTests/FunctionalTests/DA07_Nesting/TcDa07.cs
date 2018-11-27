@@ -64,7 +64,8 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             //TODO
             //cutJobs.SheetProgram.
 
-            // No machine is selected ( except if there is only 1 machine available, then this should be selected V2.0X)
+            // No machine is selected ( except if there is only 1 machine available, then this should be selected V2.0X).
+            // We have created 2 machines.
             Assert.IsTrue( string.IsNullOrEmpty( cutJobs.SheetProgram.Machine.Value ) );
 
             // ID field is focused
@@ -122,31 +123,35 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             //TODO
 
             // "Pending" shows 0/n.
-            //TODO
+            Assert.AreEqual( 0, orderRow.Pending );
 
             // "Min/Max quantity (job)"  both show the target quantity of the PO.
             //TODO
+            //Assert.AreEqual( 1, orderRow.Min );
+            //Assert.AreEqual( 1, orderRow.Max );
+
 
             // "Current" shows 0.
             //TODO
+            //Assert.AreEqual( 1, orderRow.Current );
 
             // "ID" and tooltip shows the ID of the Order.
             //TODO
 
             // "Customer" shows the customer of the Order.
-            //TODO
+            Assert.IsTrue( string.IsNullOrEmpty( orderRow.Customer ) );
 
             // "Finish date" shows finish date of the Order.
-            //TODO
+            Assert.AreEqual( null, orderRow.TargetDate );
 
             // Earliest Finish date in "NESTING"  area shows the Finish date of the Order.
-            //TODO
+            Assert.AreEqual( null, cutJobs.BaseInfo.FinishDate );
 
             // "Raw Material" in "NESTING" area shows the data of the selected Part from the Order.
-            //TODO
+            Assert.AreEqual( @"ST0M0200---", cutJobs.BaseInfo.RawMaterial.Value );
 
             // "Machine" in "Sheet Program" area shows the data of the selected Part from the Order.
-            //TODO
+            Assert.AreEqual( @"UIT_TruLaser 3030 (L20)", cutJobs.SheetProgram.Machine.Value );
 
             // State in result list is "Order List: Incomplete".
             //TODO

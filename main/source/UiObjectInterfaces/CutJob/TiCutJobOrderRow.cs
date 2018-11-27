@@ -19,5 +19,9 @@ namespace HomeZone.UiObjectInterfaces.CutJob
         int SamplePartsCount { get; }
         DateTime? TargetDate { get; }
         int Total { get; }
+        //string Min { get; }
+        //string Current { get; }
+        //string Max { get; }
+
     }
 }
