@@ -46,6 +46,8 @@ namespace HomeZone.UiTests.Machine
                 machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
 
                 Assert.IsFalse( machines.Toolbar.CanDelete );
+
+                machines.ResultColumn.ClearSearch();
                 Assert.AreEqual( machineCount, machines.ResultColumn.Count );
             } );
         }
