@@ -21,33 +21,63 @@ namespace HomeZone.UiTests.Machine
         public void NewCutMachineAndDeleteTest()
         {
             Act( () =>
-                {
-                    var testMachineName = TestSettings.NamePrefix + Guid.NewGuid();
-                    var machines = HomeZone.GotoMachines();
+            {
+                var testMachineName = TestSettings.NamePrefix + Guid.NewGuid();
+                var machines = HomeZone.GotoMachines();
 
-                    var machineCount = machines.ResultColumn.Count;
+                var machineCount = machines.ResultColumn.Count;
 
-                    machines.NewCutMachine( "TruLaser 3030 (L20)", testMachineName, "6000" );
+                machines.NewCutMachine( "TruLaser 3030 (L20)", testMachineName, "6000" );
 
-                    Assert.IsTrue( machines.Toolbar.CanSave );
-                    machines.Toolbar.Save();
-                    Assert.IsFalse( machines.Toolbar.CanSave );
-                    Assert.AreEqual( machineCount + 1, machines.ResultColumn.Count );
+                Assert.IsTrue( machines.Toolbar.CanSave );
+                machines.Toolbar.Save();
+                Assert.IsFalse( machines.Toolbar.CanSave );
+                Assert.AreEqual( machineCount + 1, machines.ResultColumn.Count );
 
-                    machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
-                    machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
+                machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
+                machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
 
-                    machines.ResultColumn.SelectItem( testMachineName );
+                machines.ResultColumn.SelectItem( testMachineName );
 
-                    Assert.IsTrue( machines.Toolbar.CanDelete );
-                    machines.Toolbar.Delete();
+                Assert.IsTrue( machines.Toolbar.CanDelete );
+                machines.Toolbar.Delete();
 
-                    machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
-                    machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
+                machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
+                machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
 
-                    Assert.IsFalse( machines.Toolbar.CanDelete );
-                    Assert.AreEqual( machineCount, machines.ResultColumn.Count );
-                } );
+                Assert.IsFalse( machines.Toolbar.CanDelete );
+                Assert.AreEqual( machineCount, machines.ResultColumn.Count );
+            } );
+        }
+
+        [TestMethod, UniqueName( "831D7DCB-90EE-4A57-BE22-B9DE1EA45B85" )]
+        [Tag( "Machine" )]
+        public void NewPunchMachineAndDeleteTest()
+        {
+            Act( () =>
+            {
+                var testMachineName = TestSettings.NamePrefix + Guid.NewGuid();
+                var machines = HomeZone.GotoMachines();
+
+                machines.NewCutMachine( "TruPunch 1000 (S05)", testMachineName );
+
+                Assert.IsTrue( machines.Toolbar.CanSave );
+                machines.Toolbar.Save();
+                Assert.IsFalse( machines.Toolbar.CanSave );
+
+                machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
+                machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
+
+                machines.ResultColumn.SelectItem( testMachineName );
+
+                Assert.IsTrue( machines.Toolbar.CanDelete );
+                machines.Toolbar.Delete();
+
+                machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
+                machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
+
+                Assert.IsFalse( machines.Toolbar.CanDelete );
+            } );
         }
 
         /// <summary>
@@ -58,31 +88,31 @@ namespace HomeZone.UiTests.Machine
         public void NewBendMachineAndDeleteTest()
         {
             Act( () =>
-                {
-                    var testMachineName = TestSettings.NamePrefix + Guid.NewGuid();
-                    var machines = HomeZone.GotoMachines();
+            {
+                var testMachineName = TestSettings.NamePrefix + Guid.NewGuid();
+                var machines = HomeZone.GotoMachines();
 
-                    var machineCount = machines.ResultColumn.Count;
+                var machineCount = machines.ResultColumn.Count;
 
-                    machines.NewBendMachine( "TruBend 5320 (6-axes) B23", testMachineName );
-                    machines.Detail.TransferDirectory.Value = @"\\LAPxxxxxx\mmc\Arbeitsplatz 1";
-                    machines.Detail.CreateSubDirectory.Value = true;
+                machines.NewBendMachine( "TruBend 5320 (6-axes) B23", testMachineName );
+                machines.Detail.TransferDirectory.Value = @"\\LAPxxxxxx\mmc\Arbeitsplatz 1";
+                machines.Detail.CreateSubDirectory.Value = true;
 
-                    Assert.IsTrue( machines.Toolbar.CanSave );
-                    machines.Toolbar.Save();
-                    Assert.IsFalse( machines.Toolbar.CanSave );
-                    Assert.AreEqual( machineCount + 1, machines.ResultColumn.Count );
+                Assert.IsTrue( machines.Toolbar.CanSave );
+                machines.Toolbar.Save();
+                Assert.IsFalse( machines.Toolbar.CanSave );
+                Assert.AreEqual( machineCount + 1, machines.ResultColumn.Count );
 
-                    machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
-                    machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
+                machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
+                machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
 
-                    machines.ResultColumn.SelectItem( testMachineName );
+                machines.ResultColumn.SelectItem( testMachineName );
 
-                    Assert.IsTrue( machines.Toolbar.CanDelete );
-                    machines.Toolbar.Delete();
-                    Assert.IsFalse( machines.Toolbar.CanDelete );
-                    Assert.AreEqual( machineCount, machines.ResultColumn.Count );
-                } );
+                Assert.IsTrue( machines.Toolbar.CanDelete );
+                machines.Toolbar.Delete();
+                Assert.IsFalse( machines.Toolbar.CanDelete );
+                Assert.AreEqual( machineCount, machines.ResultColumn.Count );
+            } );
         }
     }
 }

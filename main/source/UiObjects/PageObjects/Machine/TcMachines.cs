@@ -71,14 +71,18 @@ namespace HomeZone.UiObjects.PageObjects.Machine
         /// </summary>
         /// <param name="machineType">Type of the machine.</param>
         /// <param name="name">The name.</param>
-        /// <param name="laserPowerValue">The laser power value.</param>
-        public void NewCutMachine( string machineType, string name, string laserPowerValue )
+        /// <param name="laserPowerValue">The laser power value. Relevant only for laser and kombi machines.</param>
+        public void NewCutMachine( string machineType, string name, string laserPowerValue = null )
         {
             Goto();
             Toolbar.NewCutMachine();
             Detail.CutMachineType = machineType;
             Detail.Name.Value = name;
-            Detail.LaserPower.Value = laserPowerValue;
+
+            if( !string.IsNullOrEmpty( laserPowerValue ) )
+            {
+                Detail.LaserPower.Value = laserPowerValue;
+            }
         }
 
         /// <summary>
