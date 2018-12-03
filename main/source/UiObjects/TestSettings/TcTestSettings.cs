@@ -33,6 +33,29 @@ namespace HomeZone.UiObjects.TestSettings
         public string TestedAppName => GetString( "TestedAppName", "Trumpf.TruTops.Control.Shell" );
         public string TestedAppPath => GetString( "TestedAppPath", @"C:\Program Files\TRUMPF\TruTops\Client\Control" );
 
+        public TeAppLanguage ApplicationLanguage
+        {
+            get
+            {
+                if( Enum.TryParse( GetString( "ApplicationLanguage", "English" ), true, out TeAppLanguage language ) )
+                {
+                    switch( language )
+                    {
+                        case TeAppLanguage.English:
+                            return TeAppLanguage.English;
+
+                        case TeAppLanguage.German:
+                            return TeAppLanguage.German;
+
+                        case TeAppLanguage.Hungarian:
+                            return TeAppLanguage.Hungarian;
+                    }
+                }
+
+                return TeAppLanguage.English;
+            }
+        }
+
         /// <summary>
         /// Gets the name prefix. This can be used to identify test items for example.
         /// </summary>

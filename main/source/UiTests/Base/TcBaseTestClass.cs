@@ -37,6 +37,8 @@ namespace HomeZone.UiTests.Base
             DesignApp = new TcDesign( Driver );
             CutApp = new TcCut( Driver );
             FluxApp = new TcFlux( TestSettings.FluxProcessName, Driver );
+
+            TcAppLangDependentStrings.CurrentLanguage = TestSettings.ApplicationLanguage;
         }
 
         /// <summary>

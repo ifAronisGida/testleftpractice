@@ -13,6 +13,8 @@
    <!-- Parameters used by tests at runtime -->
    <TestRunParameters>
 
+      <Parameter name="ApplicationLanguage" value="German" />     <!--English, German, Hungarian-->
+
       <Parameter name="TestedAppName" value="Trumpf.TruTops.Control.Shell" />
       <Parameter name="TestedAppPath" value="C:\\Program Files\\TRUMPF\\TruTops\\Client\\Control" />
 

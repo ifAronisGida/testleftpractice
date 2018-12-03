@@ -1,4 +1,3 @@
-﻿using System;
 using Trumpf.Coparoo.Desktop.WPF;
 
 namespace HomeZone.UiObjects.ControlObjects

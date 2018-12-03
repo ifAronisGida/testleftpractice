@@ -21,8 +21,6 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
         private const string PART = @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc";
         private const string CUTTING_PROGRAM_NAME = @"Cut1";
 
-        private static readonly string MISSING = TcAppLangDependentStrings.Get( TeStringKey.Missing );
-
         private readonly string mId = @"DA7_01";
 
         /// <summary>
@@ -34,6 +32,8 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
         public void DA7_01()
         {
             CreatePreConditions();
+
+            var missing = TcAppLangDependentStrings.Get( TeStringKey.Missing );
 
             var cutJobs = HomeZone.CutJobs;
 
@@ -81,10 +81,10 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             Assert.IsFalse( cutJobs.SheetProgram.CanBoost );
 
             // Order List state is MISSING
-            Assert.AreEqual( MISSING, cutJobs.ContainedOrders.StateToolTip );
+            Assert.AreEqual( missing, cutJobs.ContainedOrders.StateToolTip );
 
             // Sheet Program state is MISSING
-            Assert.AreEqual( MISSING, cutJobs.SheetProgram.StateToolTip );
+            Assert.AreEqual( missing, cutJobs.SheetProgram.StateToolTip );
 
             // Test step: Enter a unique job name (ID).
             cutJobs.BaseInfo.Id.Value = Name2UIT_Name( mId );
