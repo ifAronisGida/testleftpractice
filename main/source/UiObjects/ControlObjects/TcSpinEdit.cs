@@ -1,7 +1,6 @@
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 
-
 namespace HomeZone.UiObjects.ControlObjects
 {
     internal class TcSpinEdit : TcControl, TiValueControl<int>

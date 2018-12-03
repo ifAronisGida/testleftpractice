@@ -47,17 +47,19 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             }
         }
 
-        public int Min => int.Parse( mRow
-            .Find<TcReadOnlyText>( Search.ByUid( "TargetQuantityMinDisplay" ) )
-            .Text );
+        public int Min => int.Parse( mRow.GetCell( 5 ).Find<TcReadOnlyText>( Search.By<SpinEdit>(), depth: 1 ).Node.GetProperty<string>( "DisplayText" ) );
+        //int.Parse( mRow
+        //.Find<TcReadOnlyText>( Search.ByUid( "TargetQuantityMinDisplay" ) )
+        //.Text );
 
         public int Current => int.Parse( mRow
             .Find<TcReadOnlyText>( Search.ByUid( "ActualQuantity" ) )
             .Text );
 
-        public int Max => int.Parse( mRow
-            .Find<TcReadOnlyText>( Search.ByUid( "TargetQuantityMaxDisplay" ) )
-            .Text );
+        public int Max => int.Parse( mRow.GetCell( 7 ).Find<TcReadOnlyText>( Search.By<TextEdit>(), depth: 1 ).Node.GetProperty<string>( "DisplayText" ) );
+        //int.Parse( mRow
+        //    .Find<TcReadOnlyText>( Search.ByUid( "TargetQuantityMaxDisplay" ) )
+        //    .Text );
 
         public TiButton OrderLink => mRow.FindMapped<TiButton>( "PartOrderLinkButton" );
 
