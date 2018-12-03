@@ -5,6 +5,8 @@ namespace HomeZone.UiObjectInterfaces.CutJob
 {
     public interface TiCutJobSolution
     {
+        string StateToolTip { get; }
+
         bool CanBoost { get; }
         void Boost();
 

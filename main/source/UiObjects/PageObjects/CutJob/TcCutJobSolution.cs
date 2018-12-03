@@ -9,6 +9,7 @@ using HomeZone.UiObjects.ControlObjects;
 using HomeZone.UiObjects.PageObjects.Dialogs;
 using HomeZone.UiObjects.PageObjects.Shell;
 using HomeZone.UiObjects.Utilities;
+using System.Windows.Controls;
 
 namespace HomeZone.UiObjects.PageObjects.CutJob
 {
@@ -16,7 +17,10 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
     {
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.JobSolution" );
 
+        public string StateToolTip => StateIcon.ToolTip;
+
         // button bar
+        private TcTooltipAccessor StateIcon => Find<TcTooltipAccessor>( Search.By<Border>().AndByIndex( 1 ) ); // missing uid
         private TiButton BoostButton => Find<TiButton>( "Part.Detail.JobSolution.ButtonBar.Calculate" );
         private TiButton ReleaseButton => Find<TiButton>( "Part.Detail.JobSolution.ButtonBar.Release" );
         private TiButton OpenButton => Find<TiButton>( "CutJob.Detail.JobSolution.Open" );

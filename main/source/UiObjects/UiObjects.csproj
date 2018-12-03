@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -119,6 +119,7 @@
     <Compile Include="ControlObjects\TcSpinEdit.cs" />
     <Compile Include="ControlObjects\TcTextBlock.cs" />
     <Compile Include="ControlObjects\TcTextEdit.cs" />
+    <Compile Include="ControlObjects\TcTooltipAccessor.cs" />
     <Compile Include="ControlObjects\TcTruComboBox.cs" />
     <Compile Include="PageObjects\Customer\TcCustomerRow.cs" />
     <Compile Include="PageObjects\Customer\TcCustomers.cs" />
@@ -191,6 +192,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="TcAppLangDependentStrings.cs" />
     <Compile Include="TestSettings\TcTestSettings.cs" />
     <Compile Include="TestSettings\TcSystemLanguageSpecific.cs" />
     <Compile Include="TcApp.cs" />

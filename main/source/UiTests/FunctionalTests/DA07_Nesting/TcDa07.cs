@@ -2,6 +2,7 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
 using HomeZone.UiTests.Base;
+using HomeZone.UiObjects;
 
 namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
 {
@@ -19,6 +20,8 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
         // part
         private const string PART = @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc";
         private const string CUTTING_PROGRAM_NAME = @"Cut1";
+
+        private static readonly string MISSING = TcAppLangDependentStrings.Get( TeStringKey.Missing );
 
         private readonly string mId = @"DA7_01";
 
@@ -78,11 +81,10 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             Assert.IsFalse( cutJobs.SheetProgram.CanBoost );
 
             // Order List state is MISSING
-            //TODO
+            Assert.AreEqual( MISSING, cutJobs.ContainedOrders.StateToolTip );
 
             // Sheet Program state is MISSING
-            //TODO
-
+            Assert.AreEqual( MISSING, cutJobs.SheetProgram.StateToolTip );
 
             // Test step: Enter a unique job name (ID).
             cutJobs.BaseInfo.Id.Value = Name2UIT_Name( mId );

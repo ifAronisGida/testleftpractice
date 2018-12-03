@@ -20,9 +20,11 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
         }
 
         public int PartOrdersCount => PartOrdersGrid.RowCount;
+        public string StateToolTip => StateIcon.ToolTip;
 
         protected override Search SearchPattern => Search.ByUid( "CutJob.Detail.ContainedOrders" );
 
+        private TcTooltipAccessor StateIcon => Find<TcTooltipAccessor>( Search.ByUid( "CutJob.Detail.ContainedOrders.State" ) );
         private TiButton AddOrderButton => Find<TiButton>( "CutJob.Detail.ContainedOrders.Select" );
         private TiButton RemoveButton => Find<TiButton>( "CutJob.Detail.ContainedOrders.Remove" );
         private TcGridControl PartOrdersGrid => Find<TcGridControl>( Search.ByUid( "CutJob.Detail.ContainedOrders.PartOrders" ) );
