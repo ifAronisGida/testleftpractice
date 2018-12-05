@@ -22,6 +22,7 @@ namespace HomeZone.UiObjectInterfaces.CutJob
         int Min { get; }
         int Current { get; }
         int Max { get; }
-
+        string PartStateComponentToolTip { get; }
+        string PartStateToolTip { get; }
     }
 }

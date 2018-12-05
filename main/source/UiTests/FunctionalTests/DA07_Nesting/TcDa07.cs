@@ -34,6 +34,8 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             CreatePreConditions();
 
             var missing = TcAppLangDependentStrings.Get( TeStringKey.Missing );
+            var cuttingProgram = TcAppLangDependentStrings.Get( TeStringKey.CuttingProgram );
+            var incomplete = TcAppLangDependentStrings.Get( TeStringKey.Incomplete );
 
             var cutJobs = HomeZone.CutJobs;
 
@@ -119,10 +121,10 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             Assert.IsFalse( cutJobs.SheetProgram.CanBoost );
 
             // The part state (Order List column Status) shows the state of the cut solution
-            //TODO
+            Assert.AreEqual( cuttingProgram, orderRow.PartStateComponentToolTip );
 
             // Order List state is same as the state of the single part in the list
-            //TODO
+            Assert.AreEqual( orderRow.PartStateToolTip, cutJobs.ContainedOrders.StateToolTip );
 
             // "Pending" shows 0/n.
             Assert.AreEqual( 0, orderRow.Pending );

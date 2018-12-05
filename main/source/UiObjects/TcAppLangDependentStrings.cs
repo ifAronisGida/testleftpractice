@@ -10,14 +10,16 @@ namespace HomeZone.UiObjects
     public enum TeStringKey
     {
         Missing,
+        Incomplete,
         CuttingProgram
     }
 
     public static class TcAppLangDependentStrings
     {
-        private static IReadOnlyDictionary<TeStringKey, Label> labels = new Dictionary<TeStringKey, Label>()
+        private static readonly IReadOnlyDictionary<TeStringKey, Label> labels = new Dictionary<TeStringKey, Label>()
         {
             [TeStringKey.Missing] = new Label( "Missing", "Fehlt", null ),
+            [TeStringKey.Incomplete] = new Label( "Incomplete", null, null ),
             [TeStringKey.CuttingProgram] = new Label( "Cutting Program", null, null )
         };
 

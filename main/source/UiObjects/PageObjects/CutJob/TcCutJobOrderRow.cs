@@ -7,6 +7,7 @@ using HomeZone.UiObjectInterfaces.CutJob;
 using HomeZone.UiObjects.ControlObjects;
 using HomeZone.UiObjects.ControlObjects.Grid;
 using HomeZone.UiObjects.Utilities;
+using System.Windows.Controls;
 
 namespace HomeZone.UiObjects.PageObjects.CutJob
 {
@@ -47,7 +48,7 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             }
         }
 
-        public int Min => int.Parse( mRow.GetCell( 5 ).Find<TcReadOnlyText>( Search.By<SpinEdit>(), depth: 1 ).Node.GetProperty<string>( "DisplayText" ) );
+        public int Min => int.Parse( mRow.GetCell( 5 ).FindGeneric( Search.By<SpinEdit>(), depth: 1 ).Node.GetProperty<string>( "DisplayText" ) );
         //int.Parse( mRow
         //.Find<TcReadOnlyText>( Search.ByUid( "TargetQuantityMinDisplay" ) )
         //.Text );
@@ -56,7 +57,7 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             .Find<TcReadOnlyText>( Search.ByUid( "ActualQuantity" ) )
             .Text );
 
-        public int Max => int.Parse( mRow.GetCell( 7 ).Find<TcReadOnlyText>( Search.By<TextEdit>(), depth: 1 ).Node.GetProperty<string>( "DisplayText" ) );
+        public int Max => int.Parse( mRow.GetCell( 7 ).FindGeneric( Search.By<TextEdit>(), depth: 1 ).Node.GetProperty<string>( "DisplayText" ) );
         //int.Parse( mRow
         //    .Find<TcReadOnlyText>( Search.ByUid( "TargetQuantityMaxDisplay" ) )
         //    .Text );
@@ -122,5 +123,20 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
         public string Note => mRow
             .Find<TcReadOnlyText>( Search.ByUid( "Comment" ) )
             .Text;
+
+        public string PartStateComponentToolTip => mRow.FindGeneric( Search.ByUid( "Status" ) ).Find<TcTooltipAccessor>( Search.By<Border>(), depth: 1 ).ToolTip;
+
+        public string PartStateToolTip
+        {
+            get
+            {
+                var container = mRow.FindGeneric( Search.ByUid( "Status" ) ).Parent;
+
+                return container
+                    .FindGeneric( Search.By<Border>().AndByIndex( 1 ) )
+                    .Find<TcTooltipAccessor>( Search.By<Border>(), depth: 2 )
+                    .ToolTip;
+            }
+        }
     }
 }
