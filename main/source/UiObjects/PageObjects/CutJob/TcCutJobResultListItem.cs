@@ -42,7 +42,7 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
 
         public IReadOnlyDictionary<string, string> GetStates()
         {
-            return TcResultListItemUtils.GetStates( mRoot );
+            return TcResultListItemUtils.GetSingleStackStates( mRoot );
         }
     }
 }

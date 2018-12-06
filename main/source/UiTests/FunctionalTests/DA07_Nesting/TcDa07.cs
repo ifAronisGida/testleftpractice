@@ -4,6 +4,8 @@ using Trumpf.AutoTest.Facts;
 using HomeZone.UiTests.Base;
 using HomeZone.UiObjects;
 
+using static HomeZone.UiTests.Utilities.TcResultListItems;
+
 namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
 {
     /// <summary>
@@ -156,10 +158,11 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             Assert.AreEqual( @"UIT_TruLaser 3030 (L20)", cutJobs.SheetProgram.Machine.Value );
 
             // State in result list is "Order List: Incomplete".
-            //TODO
+            var resultListItemStates = selectedItem.GetStates();
+            Assert.AreEqual( IncompleteState, resultListItemStates[OrderListComponent] );
 
             // Second state in stack is "Sheet Program: Incomplete".
-            //TODO
+            Assert.AreEqual( IncompleteState, resultListItemStates[SheetProgramComponent] );
 
 
             // Test step: Save
