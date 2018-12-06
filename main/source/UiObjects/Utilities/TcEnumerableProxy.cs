@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using SmartBear.TestLeft.TestObjects;
 
-
 namespace HomeZone.UiObjects.Utilities
 {
     internal class TcEnumerableProxy<T> : IEnumerable<T>
