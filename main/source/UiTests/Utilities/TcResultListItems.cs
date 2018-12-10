@@ -1,4 +1,4 @@
-﻿namespace HomeZone.UiTests.Utilities
+namespace HomeZone.UiTests.Utilities
 {
     internal static class TcResultListItems
     {

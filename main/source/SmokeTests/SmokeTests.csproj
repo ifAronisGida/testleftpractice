@@ -79,8 +79,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FunctionalTests\TcDa07_Nesting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Smoke\TcMiniSmokeTest.cs" />
+    <Compile Include="Smoke\TcSmokeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
