@@ -192,6 +192,22 @@ namespace HomeZone.UiTests.CutJob
             } );
         }
 
+        [TestMethod, UniqueName( "21863A95-50A1-4DF8-BC75-54E355773E07" )]
+        [Tag( "CutJob" )]
+        public void ComponentStatesTest()
+        {
+            Act( () =>
+            {
+                var cutJobs = HomeZone.CutJobs;
+                var item = cutJobs.ResultColumn.GetItem( 1 );
+
+                foreach( var x in item.GetStates() )
+                {
+                    Console.WriteLine( x );
+                }
+            } );
+        }
+
         private DateTime? StripTime( DateTime? date )
         {
             if( date == null )

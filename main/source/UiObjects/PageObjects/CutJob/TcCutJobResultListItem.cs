@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Windows.Controls;
 using HomeZone.UiObjectInterfaces.CutJob;
 using HomeZone.UiObjects.ControlObjects;
@@ -6,7 +7,7 @@ using Trumpf.Coparoo.Desktop.WPF;
 
 namespace HomeZone.UiObjects.PageObjects.CutJob
 {
-    public class TcCutJobResultListItem : TiCutJobResultListItem
+    internal class TcCutJobResultListItem : TiCutJobResultListItem
     {
         //public long Id;
         //public string Name;
@@ -38,5 +39,10 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             .FindGeneric( Search.By<StackPanel>(), depth: 1 )
             .FindGeneric( Search.By<Border>(), depth: 1 )
             .Visible;
+
+        public IReadOnlyDictionary<string, string> GetStates()
+        {
+            return TcResultListItemUtils.GetSingleStackStates( mRoot );
+        }
     }
 }
