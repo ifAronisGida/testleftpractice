@@ -331,3 +331,4 @@ ASALocalRun/
 /download_test
 /main/source/Doxygen/HomeZone UI test documentation/html
 /PackageDownload/HomeZone.SmokeTests
+/PackageDownload/HomeZone.UiTests.9.0.3
