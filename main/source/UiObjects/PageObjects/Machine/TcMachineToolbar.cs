@@ -1,9 +1,13 @@
 using System;
+using System.Windows.Forms;
+using System.Windows.Navigation;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Machine;
+using SmartBear.TestLeft;
+
 
 namespace HomeZone.UiObjects.PageObjects.Machine
 {
@@ -43,26 +47,14 @@ namespace HomeZone.UiObjects.PageObjects.Machine
             NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click( "|[1]" );
         }
 
-        ///// <summary>
-        ///// Saves the current machine.
-        ///// </summary>
-        //public void Save()
-        //{
-        //    SaveButton.Click();
-        //}
+        public bool IsNewBendMachineEnabled
+        {
+            get
+            {
+                var disableReasonCount = NewMachineButton.GetDataContextProperty<int>( "NewBendWorkplaceCommand.DisableReasons.Count" );
 
-        ///// <summary>
-        ///// Deletes the current machine.
-        ///// </summary>
-        //public void Delete()
-        //{
-        //    DeleteButton.Click();
-
-        //    var dialog = On<TcMessageBox>();
-        //    if( dialog.MessageBoxExists() )
-        //    {
-        //        dialog.Yes();
-        //    }
-        //}
+                return disableReasonCount == 0;
+            }
+        }
     }
 }
