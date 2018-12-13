@@ -4,6 +4,6 @@ namespace HomeZone.UiObjectInterfaces.Common
 {
     public interface TiHasStateStack
     {
-        IReadOnlyDictionary<string, string> GetStates();
+        IReadOnlyDictionary<string, string> GetRawStates();
     }
 }

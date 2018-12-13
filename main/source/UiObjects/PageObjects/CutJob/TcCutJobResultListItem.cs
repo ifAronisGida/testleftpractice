@@ -40,7 +40,7 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             .FindGeneric( Search.By<Border>(), depth: 1 )
             .Visible;
 
-        public IReadOnlyDictionary<string, string> GetStates()
+        public IReadOnlyDictionary<string, string> GetRawStates()
         {
             return TcResultListItemUtils.GetSingleStackStates( mRoot );
         }

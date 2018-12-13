@@ -158,7 +158,7 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             Assert.AreEqual( @"UIT_TruLaser 3030 (L20)", cutJobs.SheetProgram.Machine.Value );
 
             // State in result list is "Order List: Incomplete".
-            var resultListItemStates = selectedItem.GetStates();
+            var resultListItemStates = selectedItem.GetRawStates();
             Assert.AreEqual( IncompleteState, resultListItemStates[OrderListComponent] );
 
             // Second state in stack is "Sheet Program: Incomplete".
