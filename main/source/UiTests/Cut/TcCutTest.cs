@@ -16,6 +16,7 @@ namespace HomeZone.UiTests.Cut
     {
         /// <summary>
         /// Creates a new part with cut solution, opens it and closes Cut.
+        /// A cut machine should be available.
         /// </summary>
         [TestMethod, UniqueName( "5F3AF1BB-5308-440E-8E46-9268518E0FF1" )]
         [Tag( "Cut" )]
