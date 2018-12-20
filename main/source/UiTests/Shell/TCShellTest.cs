@@ -5,6 +5,8 @@ using HomeZone.UiTests.Utilities;
 
 namespace HomeZone.UiTests.Shell
 {
+    //TEST
+    
     /// <summary>
     /// Test class for common shell tests.
     /// </summary>
