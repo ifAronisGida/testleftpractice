@@ -21,9 +21,9 @@ namespace HomeZone.UiTests.Utilities
         [Tag( "SmokeTestsPart" )]
         public void ExecutePartSmokeTests()
         {
-            new TcDesignTest().DoDesignOpenClose();
-            new TcCutTest().DoCutOpenClose();
-            new TcFluxTest().DoFluxOpenClose();
+            //new TcDesignTest().DoDesignOpenClose();
+            //new TcCutTest().DoCutOpenClose();
+            //new TcFluxTest().DoFluxOpenClose();
 
         }
     }
