@@ -110,7 +110,7 @@ namespace HomeZone.UiObjects.TestSettings
         /// <value>
         /// The material overlay appear timeout.
         /// </value>
-        public TimeSpan MaterialOverlayAppearTimeout => TimeSpan.FromSeconds( GetInt( "MaterialOverlayAppearTimeout", 10 ) );
+        public TimeSpan MaterialOverlayAppearTimeout => TimeSpan.FromSeconds( GetInt( "MaterialOverlayAppearTimeout", 20 ) );
 
         /// <summary>
         /// Gets the timeout for the material overlay disappearance.
@@ -118,7 +118,7 @@ namespace HomeZone.UiObjects.TestSettings
         /// <value>
         /// The material overlay disappear timeout.
         /// </value>
-        public TimeSpan MaterialOverlayDisappearTimeout => TimeSpan.FromSeconds( GetInt( "MaterialOverlayDisappearTimeout", 30 ) );
+        public TimeSpan MaterialOverlayDisappearTimeout => TimeSpan.FromSeconds( GetInt( "MaterialOverlayDisappearTimeout", 60 ) );
 
         /// <summary>
         /// Gets the timeout for the machine overlay appearance.
@@ -126,7 +126,7 @@ namespace HomeZone.UiObjects.TestSettings
         /// <value>
         /// The machine overlay appear timeout.
         /// </value>
-        public TimeSpan MachineOverlayAppearTimeout => TimeSpan.FromSeconds( GetInt( "MachineOverlayAppearTimeout", 10 ) );
+        public TimeSpan MachineOverlayAppearTimeout => TimeSpan.FromSeconds( GetInt( "MachineOverlayAppearTimeout", 20 ) );
 
         /// <summary>
         /// Gets the timeout for the machine overlay disappearance.
@@ -134,7 +134,7 @@ namespace HomeZone.UiObjects.TestSettings
         /// <value>
         /// The machine overlay disappear timeout.
         /// </value>
-        public TimeSpan MachineOverlayDisappearTimeout => TimeSpan.FromSeconds( GetInt( "MachineOverlayDisappearTimeout", 30 ) );
+        public TimeSpan MachineOverlayDisappearTimeout => TimeSpan.FromSeconds( GetInt( "MachineOverlayDisappearTimeout", 60 ) );
 
         /// <summary>
         /// Gets the timeout for the part overlay appearance.
@@ -142,7 +142,7 @@ namespace HomeZone.UiObjects.TestSettings
         /// <value>
         /// The part overlay appear timeout.
         /// </value>
-        public TimeSpan PartOverlayAppearTimeout => TimeSpan.FromSeconds( GetInt( "PartOverlayAppearTimeout", 5 ) );
+        public TimeSpan PartOverlayAppearTimeout => TimeSpan.FromSeconds( GetInt( "PartOverlayAppearTimeout", 10 ) );
 
         /// <summary>
         /// Gets the timeout for the part overlay disappearance.
