@@ -60,5 +60,7 @@ namespace HomeZone.UiObjects
         public TiCutJobs CutJobs => On<TcCutJobs>();
 
         public TiNestingTemplates NestingTemplates => On<TcNestingTemplates>();
+
+        public TiWelcomeScreen WelcomeScreen => On<TcWelcomeScreen>();
     }
 }

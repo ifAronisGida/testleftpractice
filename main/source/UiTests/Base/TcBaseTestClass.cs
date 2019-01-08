@@ -66,6 +66,13 @@ namespace HomeZone.UiTests.Base
 
             HomeZone.MainWindowExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
 
+            // close WelcomeScreen if visible
+            var welcomeScreen = HomeZone.WelcomeScreen;
+            if( welcomeScreen.IsVisible )
+            {
+                HomeZone.MainTabControl.CloseCurrentTab();
+            }
+
             //TODO wait for machine templates
             //var machines = HomeZone.Machines;
             //machines.Goto();

@@ -31,5 +31,7 @@ namespace HomeZone.UiObjectInterfaces
         TiCutJobs CutJobs { get; }
 
         TiNestingTemplates NestingTemplates { get; }
+
+        TiWelcomeScreen WelcomeScreen { get; }
     }
 }
