@@ -62,5 +62,11 @@ namespace HomeZone.UiObjects
         public TiNestingTemplates NestingTemplates => On<TcNestingTemplates>();
 
         public TiWelcomeScreen WelcomeScreen => On<TcWelcomeScreen>();
+
+        public bool BendMachineTemplatesLoaded( TimeSpan machineFirstImportTimeout )
+        {
+            Machines.Goto();
+            return Machines.Toolbar.WaitNewBendMachineEnabled( machineFirstImportTimeout );
+        }
     }
 }

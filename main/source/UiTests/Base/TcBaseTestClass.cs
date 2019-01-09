@@ -12,7 +12,6 @@ using HomeZone.UiObjects;
 using HomeZone.UiObjects.PageObjects.Cut;
 using HomeZone.UiObjects.PageObjects.Design;
 using HomeZone.UiObjects.PageObjects.Flux;
-using HomeZone.UiObjects.PageObjects.Shell;
 using HomeZone.UiObjects.TestSettings;
 
 namespace HomeZone.UiTests.Base
@@ -73,10 +72,8 @@ namespace HomeZone.UiTests.Base
                 HomeZone.MainTabControl.CloseCurrentTab();
             }
 
-            //TODO wait for machine templates
-            //var machines = HomeZone.Machines;
-            //machines.Goto();
-            //var rc = machines.Toolbar.IsNewBendMachineEnabled;
+            // wait until machine templates are loaded
+            Assert.IsTrue( HomeZone.BendMachineTemplatesLoaded( TestSettings.MachineFirstImportTimeout ) );
         }
 
         /// <summary>

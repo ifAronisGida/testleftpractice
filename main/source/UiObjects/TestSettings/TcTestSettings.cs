@@ -23,7 +23,7 @@ namespace HomeZone.UiObjects.TestSettings
 
         public string Process => GetString( "Process", "Developer test" );
 
-        public string Remarks => GetString( "Remarks", "(no test settings defined)" );
+        public string Remarks => GetString( "Remarks", "(none)" );
 
         public bool FactsHubEnabled => GetBool( "FactsHubEnabled", true );
         public string FactsHubAddress => GetString( "FactsHubAddress", $"http://{Context}:5000" );
@@ -71,6 +71,14 @@ namespace HomeZone.UiObjects.TestSettings
         /// The name of the process.
         /// </value>
         public string FluxProcessName => GetString( "FluxProcessName", "Flux" );
+
+        /// <summary>
+        /// Gets timeout for the first import of the machine templates.
+        /// </summary>
+        /// <value>
+        /// The machine first import timeout.
+        /// </value>
+        public TimeSpan MachineFirstImportTimeout => TimeSpan.FromSeconds( GetInt( "MachineFirstImportTimeout", 120 ) );
 
         /// <summary>
         /// Gets timeout for starting Design.

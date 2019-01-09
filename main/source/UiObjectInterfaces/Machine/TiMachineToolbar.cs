@@ -1,3 +1,4 @@
+using System;
 using HomeZone.UiObjectInterfaces.Common;
 
 namespace HomeZone.UiObjectInterfaces.Machine
@@ -20,6 +21,6 @@ namespace HomeZone.UiObjectInterfaces.Machine
         /// <value>
         ///   <c>true</c> if new bend machine is enabled; otherwise, <c>false</c>.
         /// </value>
-        bool IsNewBendMachineEnabled { get; }
+        bool WaitNewBendMachineEnabled( TimeSpan machineFirstImportTimeout );
     }
 }

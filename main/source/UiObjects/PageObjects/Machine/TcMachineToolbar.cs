@@ -1,13 +1,10 @@
 using System;
-using System.Windows.Forms;
-using System.Windows.Navigation;
+using System.Threading;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Machine;
-using SmartBear.TestLeft;
-
 
 namespace HomeZone.UiObjects.PageObjects.Machine
 {
@@ -47,14 +44,18 @@ namespace HomeZone.UiObjects.PageObjects.Machine
             NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click( "|[1]" );
         }
 
-        public bool IsNewBendMachineEnabled
+        public bool WaitNewBendMachineEnabled( TimeSpan machineFirstImportTimeout )
         {
-            get
-            {
-                var disableReasonCount = NewMachineButton.GetDataContextProperty<int>( "NewBendWorkplaceCommand.DisableReasons.Count" );
+            var menuItem = NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Items[ 0 ].SubMenu.Items[ 1 ];
+            var startTime = DateTime.Now;
+            NewMachineButton.Parent.Cast<IWPFMenu>().Click();
 
-                return disableReasonCount == 0;
+            while( !menuItem.Enabled && DateTime.Now - startTime < machineFirstImportTimeout )
+            {
+                Thread.Sleep( 1000 );
             }
+
+            return menuItem.Enabled;
         }
     }
 }
