@@ -26,7 +26,7 @@ namespace HomeZone.UiObjects.TestSettings
         public string Remarks => GetString( "Remarks", "(none)" );
 
         public bool FactsHubEnabled => GetBool( "FactsHubEnabled", true );
-        public string FactsHubAddress => GetString( "FactsHubAddress", $"http://{Context}:5000" );
+        public string FactsHubAddress => GetString( "FactsHubAddress", "http://srv01facts111:5000" );       //$"http://{Context}:5000"
 
         public bool ScreenRecorderEnabled => GetBool( "ScreenRecorderEnabled", false );
 
