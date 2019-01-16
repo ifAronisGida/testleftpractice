@@ -70,7 +70,7 @@ namespace HomeZone.UiTests.Base
 
         public ISendToFactsHubOptions SendToFactsHubConfigurator( ISendToFactsHubOptions options )
         {
-            var o = options.ThrowOnErrors.Disable();
+            var o = options.ThrowOnErrors.Enable();
             return mSettings.FactsHubEnabled
                 ? o.Enable( new Uri( mSettings.FactsHubAddress ) )
                 : o.Disable();
