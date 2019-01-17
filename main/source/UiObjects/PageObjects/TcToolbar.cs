@@ -1,10 +1,10 @@
 using System;
 using HomeZone.UiObjectInterfaces.Common;
 using HomeZone.UiObjectInterfaces.Controls;
-using HomeZone.UiObjectInterfaces.Dialogs;
 using HomeZone.UiObjects.PageObjects.Dialogs;
 using HomeZone.UiObjects.PageObjects.Shell;
 using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.Waiting;
 
 namespace HomeZone.UiObjects.PageObjects
 {
@@ -14,7 +14,7 @@ namespace HomeZone.UiObjects.PageObjects
         public bool CanDelete => DeleteButton.Value.Enabled;
         public bool CanRevert => RevertButton.Value.Enabled;
 
-        protected Lazy<TiButton> SaveButton ;
+        protected Lazy<TiButton> SaveButton;
         protected Lazy<TiButton> RevertButton;
         protected Lazy<TiButton> DeleteButton;
 
@@ -41,11 +41,10 @@ namespace HomeZone.UiObjects.PageObjects
         {
             DeleteButton.Value.Click();
 
-            var dialog = On<TiMessageBox, TcMessageBox>();
-            if( dialog.MessageBoxExists() )
-            {
-                dialog.Yes();
-            }
+            var dialog = On<TcMessageBox>();
+
+            Wait.For( dialog.MessageBoxExists, TimeSpan.FromSeconds( 5 ) );
+            dialog.Yes();
         }
     }
 }
