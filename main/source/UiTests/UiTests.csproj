@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -65,13 +65,16 @@
       <HintPath>..\_external\packages\Trumpf.AutoTest.Artifacts.1.4.0\lib\net40\Trumpf.AutoTest.Artifacts.dll</HintPath>
     </Reference>
     <Reference Include="Trumpf.AutoTest.Facts, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\_external\packages\Trumpf.AutoTest.Facts.4.5.0\lib\net40\Trumpf.AutoTest.Facts.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_external\packages\Trumpf.AutoTest.Facts.4.6.0\lib\net40\Trumpf.AutoTest.Facts.dll</HintPath>
     </Reference>
     <Reference Include="Trumpf.AutoTest.Facts.Interfaces, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\_external\packages\Trumpf.AutoTest.Facts.Interfaces.1.1.0\lib\net40\Trumpf.AutoTest.Facts.Interfaces.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_external\packages\Trumpf.AutoTest.Facts.Interfaces.1.2.0\lib\net40\Trumpf.AutoTest.Facts.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="Trumpf.AutoTest.Utilities, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\_external\packages\Trumpf.AutoTest.Utilities.1.5.0\lib\net40\Trumpf.AutoTest.Utilities.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_external\packages\Trumpf.AutoTest.Utilities.1.6.0\lib\net40\Trumpf.AutoTest.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Trumpf.Coparoo.Desktop, Version=4.0.1.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e, processorArchitecture=MSIL">
       <HintPath>..\_external\packages\Trumpf.Coparoo.Desktop.4.0.1\lib\net451\Trumpf.Coparoo.Desktop.dll</HintPath>
