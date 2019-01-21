@@ -1,0 +1,623 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Trumpf.AutoTest.Facts.Interfaces</name>
+    </assembly>
+    <members>
+        <member name="T:Trumpf.AutoTest.Facts.ISendAssetsOption">
+            <summary>
+            Send assets options.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Facts.ISendAssetsOption.Enable(System.Boolean)">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="enable">Whether to enable the options.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Facts.ISendToFactsHubOptions">
+            <summary>
+            Send to facts hub options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.ISendToFactsHubOptions.SendAssets">
+            <summary>
+            Gets the throw on errors options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Facts.ISendToFactsHubOptions.ThrowOnErrors">
+            <summary>
+            Gets the send assets options.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Facts.ISendToFactsHubOptions.Enable(System.String,System.Int32)">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="address">The host.</param>
+            <param name="port">The port.</param>
+            <returns>The FactsHub service URI.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Facts.ISendToFactsHubOptions.Enable(System.Uri)">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="address">The address.</param>
+            <returns>The FactsHub service URI.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Facts.IThrowOnErrorsOption">
+            <summary>
+            Throw on error options.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Facts.IThrowOnErrorsOption.Enable(System.Boolean)">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="enable">Whether to enable the options.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IBooleanCollectorOption`1">
+            <summary>
+            Boolean collector option.
+            </summary>
+            <typeparam name="TParentOption">The parent option type.</typeparam>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IOption`1">
+            <summary>
+            Option.
+            </summary>
+            <typeparam name="TParentOption">The parent option type.</typeparam>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IOption`1.Disable">
+            <summary>
+            Disable the option.
+            </summary>
+            <returns>The parent option.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IFileOptions`1">
+            <summary>
+            File option.
+            </summary>
+            <typeparam name="TParentOption">The parent option type.</typeparam>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IFileOptions`1.DefaultExtension">
+            <summary>
+            Gets the defaul extension.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IFileOptions`1.DefaultFilename">
+            <summary>
+            Gets the default file name without extension.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IFileOptions`1.Extension">
+            <summary>
+            Gets the extension.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IFileOptions`1.FileNameWithExtension">
+            <summary>
+            Gets the file name with extension.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IFileOptions`1.FileNameWithoutExtension">
+            <summary>
+            Gets the filename without extension.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IFileOptions`1.Enable">
+            <summary>
+            Enable the option.
+            </summary>
+            <returns>The parent option.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IFileOptions`1.Enable(System.String)">
+            <summary>
+            Enable the option.
+            </summary>
+            <param name="fileNameWithoutExtension">The file name without extension.</param>
+            <returns>The parent option.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IFileOptions`1.Enable(System.String,System.String)">
+            <summary>
+            Enable the option.
+            </summary>
+            <param name="fileNameWithoutExtension">The file name without extension.</param>
+            <param name="extension">The file extension.</param>
+            <returns>The parent option.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IHasParentOption`1">
+            <summary>
+            Has parent option interface.
+            </summary>
+            <typeparam name="TParentOption"></typeparam>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IHasParentOption`1.Parent">
+            <summary>
+            Gets the parent option.
+            </summary>
+            <returns>The parent option.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IIsEnabledOption">
+            <summary>
+            Is enabled option.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IIsEnabledOption.IsEnabled">
+            <summary>
+            Gets a value indicating whether the option is enabled.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IDoCleanupPair">
+            <summary>
+            Do clean up pair interface.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IDoCleanupPair.Cleanup">
+            <summary>
+            Cleanup action.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IDoCleanupQuad">
+            <summary>
+            Do clean up triple interface
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IDoCleanupQuad.CleanupOnNoThrow">
+            <summary>
+            Cleanup action on no throw
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IDoSequence">
+            <summary>
+            Do sequence interface.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IDoSequence.Do(System.Action,System.String)">
+            <summary>
+            Perform an action with no cleanup action.
+            </summary>
+            <param name="action">The action.</param>
+            <param name="caption">The caption.</param>
+            <returns>The do cleanup sequence.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IDoSequence.Do(System.Action,System.Action,System.String)">
+            <summary>
+            Perform an action.
+            </summary>
+            <param name="action">The action to execute immediately.</param>
+            <param name="cleanupActionAlways">The clean up action to execute during clean up phase.</param>
+            <param name="caption">The caption.</param>
+            <returns>The clean up sequence.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IDoSequence.Do(System.Action,System.Action,System.Action,System.String)">
+            <summary>
+            Perform an action.
+            </summary>
+            <param name="action">The action to execute immediately.</param>
+            <param name="cleanupActionAlways">The clean up action to execute during clean up phase.</param>
+            <param name="cleanupActionOnThrow">The clean up action to execute during clean up phase if a non-cleanup action has thrown.</param>
+            <param name="caption">The caption.</param>
+            <returns>The clean up sequence.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IDoSequence.Do(System.Action,System.Action,System.Action,System.Action,System.String)">
+            <summary>
+            Perform an action.
+            </summary>
+            If A does not throw an InvalidCleanupStateException exception, Do(A,A',A'',A''') is equivalent to Do(A,{},{A';A''},{A';A'''})
+            Example 1
+                Do(A, A').Do(B,B').Do(T).Cleanup();
+                Good-case: (A B..T..B' A')
+                Bad case (B throws): (A B A')
+                Bad case (T throws): (A B T B' A')
+                Bad case (B' throws an InvalidCleanupStateException exception): (A B T B' A'); Cleanup throws at after the clean up processes has finished
+                Bad case (B' throws an <see cref="T:System.Exception"/> exception): (A B T B'); Cleanup process termines abnormally, Cleanup throws.
+                Note:
+                    If B' throws an InvalidCleanupStateException exception all further clean up action will be executed but the final Cleanup call will throw all collected exceptions of this type
+                    All other exception during B' are not catched and hence terminate the clean up process abnormally
+            Example 2
+                Do(A, A',A'').Do(B,B', B'').Do(T).Cleanup();
+                Good-case: (A B..T..B' A')
+                Bad-case (B throws)> (A B A'' A')
+                Bad-case (T throws)> (A B T B'' A'' B' A')
+            Example 3
+                Do(A, A').Do(new Seq().Do(C,C').Do(T1).Cleanup()) Do(B, B').Do(T2).Cleanup();
+                Good-case: (A B (C..T1..C') .. T2 .. B' A')
+            <param name="action">The action to execute</param>
+            <param name="cleanupActionAlways">Action to execute during clean up phase; the action is ignored if the the previous action throw.</param>
+            <param name="cleanupActionOnThrow">Action to execute during clean up phase if a non-cleanup action has thrown.</param>
+            <param name="cleanupActionOnNoThrow">Action to execute during clean up phase if no non-cleanup action has thrown.</param>
+            <param name="caption">The caption.</param>
+            <returns>The clean up sequence.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IDoCleanupTriple">
+            <summary>
+            Do clean up triple interface.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IDoCleanupTriple.CleanupOnThrow">
+            <summary>
+            Cleanup action on throw.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IDoSequenceExtensions">
+            <summary>
+            Do cleanup sequence extensions.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IDoSequenceExtensions.Do(Trumpf.AutoTest.Utilities.IDoSequence,Trumpf.AutoTest.Utilities.IDoSingle)">
+            <summary>
+            Perform an action with no cleanup action.
+            </summary>
+            <param name="source">The source sequence.</param>
+            <param name="action">The do action.</param>
+            <returns>The do cleanup sequence.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IDoSequenceExtensions.Do(Trumpf.AutoTest.Utilities.IDoSequence,Trumpf.AutoTest.Utilities.IDoCleanupPair)">
+            <summary>
+            Perform an action with no cleanup action.
+            </summary>
+            <param name="source">The source sequence.</param>
+            <param name="actionPair">The do clean up pair.</param>
+            <returns>The do cleanup sequence.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IDoSequenceExtensions.Do(Trumpf.AutoTest.Utilities.IDoSequence,Trumpf.AutoTest.Utilities.IDoCleanupTriple)">
+            <summary>
+            Perform an action with no cleanup action.
+            </summary>
+            <param name="source">The source sequence.</param>
+            <param name="actionTriple">The do clean up triple.</param>
+            <returns>The do cleanup sequence.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IDoSingle">
+            <summary>
+            Do clean up pair interface.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IDoSingle.Do">
+            <summary>
+            Do action.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.ICollectorsOptions">
+            <summary>
+            Collector options interface.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ICollectorsOptions.AssemblyDetailsPrinter">
+            <summary>
+            Gets the assembly details printer options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ICollectorsOptions.EnvironmentDetailsPrinter">
+            <summary>
+            Gets the environment details printer options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ICollectorsOptions.OptionsPrinter">
+            <summary>
+            Gets the options printer options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ICollectorsOptions.ExceptionPrinter">
+            <summary>
+            Gets the exception printer options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ICollectorsOptions.ScreenRecorder">
+            <summary>
+            Gets the screen recorder options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ICollectorsOptions.ScreenShooter">
+            <summary>
+            Gets the screen shooter options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ICollectorsOptions.TestReport">
+            <summary>
+            Gets the test report options options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ICollectorsOptions.SystemMonitor">
+            <summary>
+            Gets the system monitor options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ICollectorsOptions.TestSkipper">
+            <summary>
+            Gets the test skipper options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ICollectorsOptions.TraceRedirector">
+            <summary>
+            Gets the trace redirector options.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IAssemblyDetailsPrinterOptions">
+            <summary>
+            Assembly details printer options.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IAssemblyDetailsPrinterOptions.Enable(System.Boolean)">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="enable">Whether to enable the options.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IAssetCleanerOptions">
+            <summary>
+            Asset cleaner options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IAssetCleanerOptions.KeepCount">
+            <summary>
+            Gets the number of asset directories to keep.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IAssetCleanerOptions.Enable(System.Int32)">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="keepCount">The number of old asset directories to keep.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IEnvironmentDetailsPrinterOptions">
+            <summary>
+            Environment details printer options.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IEnvironmentDetailsPrinterOptions.Enable(System.Boolean)">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="enable">Whether to enable the options.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IExceptionPrinterOptions">
+            <summary>
+            Exception printer options.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IExceptionPrinterOptions.Enable(System.Boolean)">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="enable">Whether to enable the options.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IExceptionPrinterOptions.Enable(System.Func{System.Exception,System.String})">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="exceptionFormatter">The exception formatter.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IOptionsPrinterOptions">
+            <summary>
+            Print options.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IOptionsPrinterOptions.Enable(System.Boolean)">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="enable">Whether to enable the options.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IScreenRecorderOptions">
+            <summary>
+            Screen recorder options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IScreenRecorderOptions.VideoSubtitles">
+            <summary>
+            Gets the video subtitles options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IScreenRecorderOptions.QualityOptions">
+            <summary>
+            Gets the quality options.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IScreenRecorderQualityOptions">
+            <summary>
+            Video recorder options.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IScreenRecorderQualityOptions.SetScale(System.Int32)">
+            <summary>
+            Sets the scale (keeping the aspect ratio).
+            </summary>
+            <param name="scaleInPercent">The scale rate in percent: 100 => 1:1, 1 => 1:100.</param>
+            <returns>The screen recorder options.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IScreenRecorderQualityOptions.SetBitRate(System.Int32)">
+            <summary>
+            Sets the bitrate.
+            </summary>
+            <param name="bitRate">The bitrate, i.e, the amount of data that is processed over a given period of time.</param>
+            <returns>The screen recorder options.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IScreenRecorderQualityOptions.SetFrameRate(System.Int32)">
+            <summary>
+            Sets the frame rate, i.e. the frequency at which consecutive images are taken.
+            </summary>
+            <param name="framesPerSecond">The frame rate per second (fps).</param>
+            <returns>The screen recorder options.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IScreenRecorderQualityOptions.SetPreset(Trumpf.AutoTest.Utilities.ScreenRecorderPreset)">
+            <summary>
+            Sets the preset.
+            The preset determines how fast the encoding process will be – at the expense of compression efficiency.
+            </summary>
+            <param name="preset">The preset.</param>
+            <returns>The screen recorder options.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IScreenRecorderQualityOptions.SetConstantRateFactor(System.Int32)">
+            <summary>
+            Sets the constant rate factor.
+            </summary>
+            <param name="constantRateFactor">The constant rate factor. See https://trac.ffmpeg.org/wiki/Encode/H.264#crf.</param>
+            <returns>The screen recorder options.</returns>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IScreenRecorderQualityOptions.Scale">
+            <summary>
+            Gets the scale (keeping the aspect ratio).
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IScreenRecorderQualityOptions.BitRate">
+            <summary>
+            Gets the bitrate.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IScreenRecorderQualityOptions.FrameRate">
+            <summary>
+            Gets the frame rate.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IScreenRecorderQualityOptions.Preset">
+            <summary>
+            Gets the preset.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.IScreenRecorderQualityOptions.ConstantRateFactor">
+            <summary>
+            Gets the constant rate factor.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IScreenRecorderQualityOptions.IsConsistent(System.String@)">
+            <summary>
+            Get a value indicating whether the options are consistent.
+            </summary>
+            <param name="whyNot">If not, the reason why not.</param>
+            <returns>A value indicating whether the options are consistent.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IScreenShooterOptions">
+            <summary>
+            Screen shooter options.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.ISystemMonitorOptions">
+            <summary>
+            System monitor options.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ISystemMonitorOptions.Enable(System.String[])">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="processesToMonitor">The processes to monitor.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ISystemMonitorOptions.Enable(System.String,System.String[])">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="fileNameWithoutExtension">The file name without extension.</param>
+            <param name="processesToMonitor">The processes to monitor.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ISystemMonitorOptions.Enable(System.String,System.String,System.String[])">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="fileNameWithoutExtension">The file name without extension.</param>
+            <param name="extension">The extension.</param>
+            <param name="processesToMonitor">The processes to monitor.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.ITestReportOptions">
+            <summary>
+            Trx Test report options.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.ITestSkipperOptions">
+            <summary>
+            Test skipper options.
+            </summary>
+        </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ITestSkipperOptions.Bound">
+            <summary>
+            Gets the skipping bound.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.ITestSkipperOptions.Enable(System.Int32,System.Action,System.Func{System.Int32})">
+            <summary>
+            Enable the collector with the default file name.
+            </summary>
+            <param name="bound">The bound.</param>
+            <param name="increment">The get counter function.</param>
+            <param name="get">The increment counter action.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.ITraceRedirectorOptions">
+            <summary>
+            Redirector options.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IVideoSubtitlesOptions">
+            <summary>
+            Screen recorder options.
+            </summary>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.ScreenRecorderPreset">
+            <summary>
+            A preset is a collection of options that will provide a certain encoding speed to compression ratio.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.ScreenRecorderPreset.ultrafast">
+            <summary>
+            Speed 1.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.ScreenRecorderPreset.superfast">
+            <summary>
+            Speed 2.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.ScreenRecorderPreset.veryfast">
+            <summary>
+            Speed 3.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.ScreenRecorderPreset.faster">
+            <summary>
+            Speed 4.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.ScreenRecorderPreset.fast">
+            <summary>
+            Speed 5.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.ScreenRecorderPreset.medium">
+            <summary>
+            Speed 6.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.ScreenRecorderPreset.slow">
+            <summary>
+            Speed 7.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.ScreenRecorderPreset.slower">
+            <summary>
+            Speed 8.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.ScreenRecorderPreset.veryslow">
+            <summary>
+            Speed 9.
+            </summary>
+        </member>
+        <member name="F:Trumpf.AutoTest.Utilities.ScreenRecorderPreset.placebo">
+            <summary>
+            Speed 10.
+            </summary>
+        </member>
+    </members>
+</doc>
