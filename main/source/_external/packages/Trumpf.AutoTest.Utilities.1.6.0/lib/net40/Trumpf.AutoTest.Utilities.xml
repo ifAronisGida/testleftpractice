@@ -274,6 +274,11 @@
             Gets the options printer options.
             </summary>
         </member>
+        <member name="P:Trumpf.AutoTest.Utilities.CollectorsOptions.ExceptionPrinter">
+            <summary>
+            Gets the exception printer options.
+            </summary>
+        </member>
         <member name="P:Trumpf.AutoTest.Utilities.CollectorsOptions.SystemMonitor">
             <summary>
             Gets the system monitor options.
@@ -1393,15 +1398,16 @@
             Test skipper.
             </summary>
         </member>
-        <member name="M:Trumpf.AutoTest.Utilities.TestSkipper.#ctor(System.Int32,System.Func{System.Int32},System.Action{System.String})">
+        <member name="M:Trumpf.AutoTest.Utilities.TestSkipper.#ctor(System.Int32,System.Action,System.Func{System.Int32},System.Action{System.String})">
             <summary>
             Initializes a new instance of the <see cref="T:Trumpf.AutoTest.Utilities.TestSkipper"/> class.
             </summary>
             <param name="maxFailedTests">Maximum number of failing tests before further tests are skipped</param>
-            <param name="incrementAndGetUpdated">The increment function.</param>
+            <param name="increment">The increment counter action.</param>
+            <param name="get">The get counter function.</param>
             <param name="logger">The logger.</param>
         </member>
-        <member name="P:Trumpf.AutoTest.Utilities.TestSkipper.FailedTests">
+        <member name="M:Trumpf.AutoTest.Utilities.TestSkipper.FailedTests">
             <summary>
             Gets the number of failed tests.
             </summary>

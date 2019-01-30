@@ -77,6 +77,10 @@ namespace HomeZone.UiObjects.PageObjects.Machine
             Goto();
             Toolbar.NewCutMachine();
             Detail.CutMachineType = machineType;
+
+            DetailOverlay.Visible.TryWaitFor( TimeSpan.FromSeconds( 5 ) );
+            DetailOverlay.Visible.WaitForFalse( TimeSpan.FromSeconds( 10 ) );
+
             Detail.Name.Value = name;
 
             if( !string.IsNullOrEmpty( laserPowerValue ) )
