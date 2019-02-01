@@ -220,6 +220,11 @@ namespace HomeZone.UiTests.Settings
                 WPFControlText = toolListName
             }, 12, out control );
 
+            // DropDown has to be closed. Otherwise the first following Click Event will close the window instead of executing 
+            // the desired click event.
+
+            Driver.Desktop.Keys( "[Enter]" ); //Close Dropdown. 
+
             return found;
         }
     }
