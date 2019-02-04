@@ -51,13 +51,7 @@ namespace FluxTests.Settings
                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
-
-                bool found = CheckToolListDropdown( toollistName, out var toolList );
-                if( found )
-                {
-                    toolList.Click();
-                }
-                Assert.IsTrue( found );
+                Assert.IsTrue( CheckToolListDropdown( toollistName, out var toolList ) );
 
                 parts.Toolbar.Delete();
             } );
