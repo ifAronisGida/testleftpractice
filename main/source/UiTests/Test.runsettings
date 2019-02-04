@@ -38,7 +38,8 @@
 
       <Parameter name="DesignStartTimeout" value="80" />
       <Parameter name="CutStartTimeout" value="40" />
-      <Parameter name="FluxStartTimeout" value="60" />
+      <Parameter name="FluxStartTimeout" value="15" />
+      <Parameter name="FluxBoostAndStartTimeout" value="60" />
 
       <Parameter name="SavingTimeout" value="60" />
 

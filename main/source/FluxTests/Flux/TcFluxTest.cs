@@ -57,7 +57,7 @@ namespace FluxTests.Flux
 
             var flux = FluxApp;
 
-            var visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            var visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
             if( visible )
             {
                 flux.CloseApp();
@@ -80,7 +80,7 @@ namespace FluxTests.Flux
 
             flux = FluxApp;
 
-            visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
             if( visible )
             {
                 flux.CloseApp();
@@ -122,7 +122,7 @@ namespace FluxTests.Flux
                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
 
                 var flux = FluxApp;
-                bool visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                bool visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                 if( visible )
                 {
                     flux.SaveAndClosePartInFlux();
@@ -306,7 +306,7 @@ namespace FluxTests.Flux
                  parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
 
                  var flux = FluxApp;
-                 bool visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                 bool visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                  if( visible )
                  {
                      flux.ChangeSolution();

@@ -319,7 +319,7 @@ namespace HomeZone.UiTests.Utilities
             parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
 
             var flux = FluxApp;
-            var visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            var visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
 
             if( visible )
             {
