@@ -87,9 +87,15 @@
     <Compile Include="Smoke\TcSmokeTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UiCommonFunctions\UiCommonFunctions.csproj">
+      <Project>{4A55323B-97AF-4CC6-9266-DB1545BAE897}</Project>
+      <Name>UiCommonFunctions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UiObjectInterfaces\UiObjectInterfaces.csproj">
       <Project>{FBDAA579-B218-4D39-8F5B-838DEF1890F3}</Project>
       <Name>UiObjectInterfaces</Name>

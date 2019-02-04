@@ -85,13 +85,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\TcBaseTestClass.cs" />
-    <Compile Include="Base\TcTestOptions.cs" />
     <Compile Include="Customer\TcCustomerTest.cs" />
     <Compile Include="CutJob\TcCutJobTest.cs" />
     <Compile Include="Cut\TcCutTest.cs" />
     <Compile Include="Design\TcDesignTest.cs" />
-    <Compile Include="Flux\TcFluxTest.cs" />
     <Compile Include="FunctionalTests\DA07_Nesting\TcDa07.cs" />
     <Compile Include="Machine\TcWorkplaceTest.cs" />
     <Compile Include="Material\TcMaterialTest.cs" />
@@ -99,13 +96,9 @@
     <Compile Include="PartOrder\TcPartOrderTest.cs" />
     <Compile Include="Part\TcPartTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\TcBendSettingsTest.cs" />
-    <Compile Include="Settings\TcBendToolListsTest.cs" />
-    <Compile Include="Settings\TcSettingsDialogTest.cs" />
     <Compile Include="Shell\TcMainMenuTest.cs" />
     <Compile Include="Shell\TcShellTest.cs" />
     <Compile Include="Shell\TcWelcomeScreenTest.cs" />
-    <Compile Include="Utilities\TcHomeZoneExtensions.cs" />
     <Compile Include="Utilities\TcResultListItems.cs" />
     <Compile Include="Utilities\TcSmokeHelpers.cs" />
     <Compile Include="Utilities\TcSmokeTestsPart.cs" />
@@ -120,6 +113,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UiCommonFunctions\UiCommonFunctions.csproj">
+      <Project>{4A55323B-97AF-4CC6-9266-DB1545BAE897}</Project>
+      <Name>UiCommonFunctions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UiObjectInterfaces\UiObjectInterfaces.csproj">
       <Project>{FBDAA579-B218-4D39-8F5B-838DEF1890F3}</Project>
       <Name>UiObjectInterfaces</Name>

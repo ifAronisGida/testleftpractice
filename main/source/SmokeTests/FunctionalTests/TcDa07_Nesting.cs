@@ -1,7 +1,5 @@
-using HomeZone.UiTests.Base;
 using HomeZone.UiTests.FunctionalTests.DA07_Nesting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Trumpf.AutoTest.Facts;
+using UiCommonFunctions.Base;
 
 namespace HomeZone.SmokeTests.FunctionalTests
 {

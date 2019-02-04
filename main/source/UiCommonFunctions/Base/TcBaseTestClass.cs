@@ -14,7 +14,7 @@ using HomeZone.UiObjects.PageObjects.Design;
 using HomeZone.UiObjects.PageObjects.Flux;
 using HomeZone.UiObjects.TestSettings;
 
-namespace HomeZone.UiTests.Base
+namespace UiCommonFunctions.Base
 {
     /// <summary>
     /// Base class for all test classes.

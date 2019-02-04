@@ -8,7 +8,7 @@ using Trumpf.AutoTest.Facts;
 using Trumpf.AutoTest.Utilities;
 using HomeZone.UiObjects.TestSettings;
 
-namespace HomeZone.UiTests.Base
+namespace UiCommonFunctions.Base
 {
     /// <summary>
     /// Defining the test options.

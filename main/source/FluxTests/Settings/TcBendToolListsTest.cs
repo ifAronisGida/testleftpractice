@@ -1,14 +1,14 @@
-using System;
-using System.Threading;
+using HomeZone.UiObjects.PageObjects.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
+using System;
+using System.Threading;
 using Trumpf.AutoTest.Facts;
-using HomeZone.UiObjects.PageObjects.Flux;
-using HomeZone.UiTests.Base;
-using HomeZone.UiTests.Utilities;
+using UiCommonFunctions.Base;
+using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.Settings
+namespace FluxTests.Settings
 {
     /// <summary>
     /// This test class contains bend settings specific tests.

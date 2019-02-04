@@ -1,8 +1,8 @@
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using Trumpf.AutoTest.Facts;
-using HomeZone.UiTests.Base;
-using HomeZone.UiTests.Utilities;
+using UiCommonFunctions.Base;
+using UiCommonFunctions.Utilities;
 
 namespace HomeZone.UiTests.Material
 {
