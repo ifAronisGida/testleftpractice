@@ -3,7 +3,6 @@ using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Dialogs;
 
-
 namespace HomeZone.UiObjects.PageObjects.Dialogs
 {
     /// <summary>

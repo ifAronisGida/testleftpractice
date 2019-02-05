@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -120,6 +120,8 @@
     <Compile Include="PageObjects\Cut\TcTTSelectionDialog.cs" />
     <Compile Include="PageObjects\Design\TcDesign.cs" />
     <Compile Include="PageObjects\Design\TcDesignMessageBox.cs" />
+    <Compile Include="PageObjects\Dialogs\Tc3rdPartyComponentLicenseTextDialog.cs" />
+    <Compile Include="PageObjects\Dialogs\Tc3rdPartyComponentsDialog.cs" />
     <Compile Include="PageObjects\Dialogs\TcAboutDialog.cs" />
     <Compile Include="PageObjects\Dialogs\TcEntitySelectionDialog.cs" />
     <Compile Include="PageObjects\Dialogs\TcMessageBox.cs" />
