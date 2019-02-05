@@ -53,7 +53,7 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             // An empty entry appears at the top of the result list.
             Assert.AreEqual( cutJobCount + 1, cutJobs.ResultColumn.Count );
             var selectedItem = cutJobs.ResultColumn.SelectedItem();
-            Assert.AreNotEqual( null, selectedItem );
+            Assert.IsNotNull( selectedItem );
             Assert.IsTrue( string.IsNullOrEmpty( selectedItem.Id ) );
             Assert.IsTrue( string.IsNullOrEmpty( selectedItem.FinishDate ) );
 
