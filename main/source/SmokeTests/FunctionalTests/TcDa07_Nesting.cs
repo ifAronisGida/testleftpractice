@@ -18,7 +18,7 @@ namespace HomeZone.SmokeTests.FunctionalTests
         /// Functional tests DA07 Nesting.
         /// </summary>
         [ TestMethod, UniqueName( "DEE02D2D-F772-438E-9A2B-1567BFCE2BE4" ) ]
-        [Tag( "Functional tests" )]
+        //[Tag( "Functional tests" )]
         public void Da07_Nesting()
         {
             Act( mDa07.DA7_01 );
