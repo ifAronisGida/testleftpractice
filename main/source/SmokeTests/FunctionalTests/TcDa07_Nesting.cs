@@ -9,7 +9,7 @@ namespace HomeZone.SmokeTests.FunctionalTests
     /// This test class contains functional tests for nesting (DA07).
     /// </summary>
     /// <seealso cref="TcBaseTestClass" />
-    //[TestClass]
+    [TestClass]
     public class TcDa07_Nesting : TcBaseTestClass
     {
         private readonly TcDa07 mDa07 = new TcDa07();
