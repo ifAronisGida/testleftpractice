@@ -301,6 +301,11 @@
             Gets the options printer options.
             </summary>
         </member>
+        <member name="P:Trumpf.AutoTest.Utilities.ICollectorsOptions.ExceptionPrinter">
+            <summary>
+            Gets the exception printer options.
+            </summary>
+        </member>
         <member name="P:Trumpf.AutoTest.Utilities.ICollectorsOptions.ScreenRecorder">
             <summary>
             Gets the screen recorder options.
@@ -370,6 +375,25 @@
             Enable the collector.
             </summary>
             <param name="enable">Whether to enable the options.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="T:Trumpf.AutoTest.Utilities.IExceptionPrinterOptions">
+            <summary>
+            Exception printer options.
+            </summary>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IExceptionPrinterOptions.Enable(System.Boolean)">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="enable">Whether to enable the options.</param>
+            <returns>The collectors options.</returns>
+        </member>
+        <member name="M:Trumpf.AutoTest.Utilities.IExceptionPrinterOptions.Enable(System.Func{System.Exception,System.String})">
+            <summary>
+            Enable the collector.
+            </summary>
+            <param name="exceptionFormatter">The exception formatter.</param>
             <returns>The collectors options.</returns>
         </member>
         <member name="T:Trumpf.AutoTest.Utilities.IOptionsPrinterOptions">
@@ -521,12 +545,13 @@
             Gets the skipping bound.
             </summary>
         </member>
-        <member name="M:Trumpf.AutoTest.Utilities.ITestSkipperOptions.Enable(System.Int32,System.Func{System.Int32})">
+        <member name="M:Trumpf.AutoTest.Utilities.ITestSkipperOptions.Enable(System.Int32,System.Action,System.Func{System.Int32})">
             <summary>
             Enable the collector with the default file name.
             </summary>
             <param name="bound">The bound.</param>
-            <param name="incrementAndGetUpdated">The increment-get action.</param>
+            <param name="increment">The get counter function.</param>
+            <param name="get">The increment counter action.</param>
             <returns>The collectors options.</returns>
         </member>
         <member name="T:Trumpf.AutoTest.Utilities.ITraceRedirectorOptions">

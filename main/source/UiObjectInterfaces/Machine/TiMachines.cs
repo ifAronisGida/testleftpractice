@@ -41,7 +41,7 @@ namespace HomeZone.UiObjectInterfaces.Machine
         /// <param name="machineType">Type of the machine.</param>
         /// <param name="name">The name.</param>
         /// <param name="laserPowerValue">The laser power value.</param>
-        void NewCutMachine( string machineType, string name, string laserPowerValue );
+        void NewCutMachine( string machineType, string name, string laserPowerValue = null );
 
         /// <summary>
         /// Creates a new bend machine with the given properties.

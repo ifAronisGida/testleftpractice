@@ -37,6 +37,8 @@ namespace HomeZone.UiObjects.PageObjects.Cut
         {
             mApp = null;
             mWindow = null;
+
+            var tts = TcAppLangDependentStrings.Get( TeStringKey.TechnologyTableSelection );
             var startTime = DateTime.Now;
 
             while( DateTime.Now - startTime < timeout )
@@ -60,7 +62,7 @@ namespace HomeZone.UiObjects.PageObjects.Cut
                         if( mApp.Node.TryFind<ITopLevelWindow>( new WindowPattern()
                                                                     {
                                                                         WndClass = "GritDialogWindow",
-                                                                        WndCaption = "Technologietabellen Auswahl"       //TODO should be language independant
+                                                                        WndCaption = tts
                                                                     }, out var window, 1 ) )
 
                         {

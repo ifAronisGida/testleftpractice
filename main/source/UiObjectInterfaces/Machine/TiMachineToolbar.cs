@@ -1,3 +1,4 @@
+using System;
 using HomeZone.UiObjectInterfaces.Common;
 
 namespace HomeZone.UiObjectInterfaces.Machine
@@ -13,5 +14,13 @@ namespace HomeZone.UiObjectInterfaces.Machine
         /// Creates a new bend machine.
         /// </summary>
         void NewBendMachine();
+
+        /// <summary>
+        /// Gets a value indicating whether menuitem new bend machine is enabled.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if new bend machine is enabled; otherwise, <c>false</c>.
+        /// </value>
+        bool WaitNewBendMachineEnabled( TimeSpan machineFirstImportTimeout );
     }
 }

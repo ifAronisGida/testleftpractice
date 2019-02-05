@@ -1,3 +1,4 @@
+using System;
 using HomeZone.UiObjectInterfaces.Customer;
 using HomeZone.UiObjectInterfaces.CutJob;
 using HomeZone.UiObjectInterfaces.Machine;
@@ -31,5 +32,9 @@ namespace HomeZone.UiObjectInterfaces
         TiCutJobs CutJobs { get; }
 
         TiNestingTemplates NestingTemplates { get; }
+
+        TiWelcomeScreen WelcomeScreen { get; }
+
+        bool BendMachineTemplatesLoaded( TimeSpan machineFirstImportTimeout );
     }
 }

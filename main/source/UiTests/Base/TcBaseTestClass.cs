@@ -1,4 +1,6 @@
 using System;
+using System.Diagnostics;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft;
 using Trumpf.AutoTest.Facts;
@@ -33,12 +35,45 @@ namespace HomeZone.UiTests.Base
             TestSettings = new TcTestSettings( TestContext );
             mAutoFact = new AutoFact( new TcTestOptions( GetType(), TestContext, TestSettings ) );
 
-            HomeZone = new TcHomeZoneApp( TestSettings.TestedAppName, Driver );
             DesignApp = new TcDesign( Driver );
             CutApp = new TcCut( Driver );
             FluxApp = new TcFlux( TestSettings.FluxProcessName, Driver );
 
             TcAppLangDependentStrings.CurrentLanguage = TestSettings.ApplicationLanguage;
+
+            // check if HomeZone is already running
+            var runningHomeZone = Process.GetProcessesByName( TestSettings.TestedAppName );
+
+            if( runningHomeZone.Length == 0 )               // not running => start HomeZone
+            {
+                if( !Directory.Exists( TestSettings.TestedAppPath ) )
+                {
+                    throw new Exception( "Path not found to start process!" );
+                }
+
+                var filename = Path.Combine( TestSettings.TestedAppPath, TestSettings.TestedAppName + ".exe" );
+                var startInfo = new ProcessStartInfo
+                {
+                    FileName = filename,
+                    WorkingDirectory = TestSettings.TestedAppPath
+                };
+                var process = Process.Start( startInfo );
+            }
+
+            // connect to HomeZone process and wait until visible
+            HomeZone = new TcHomeZoneApp( TestSettings.TestedAppName, Driver );
+
+            HomeZone.MainWindowExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+
+            // close WelcomeScreen if visible
+            var welcomeScreen = HomeZone.WelcomeScreen;
+            if( welcomeScreen.IsVisible )
+            {
+                HomeZone.MainTabControl.CloseCurrentTab();
+            }
+
+            // wait until machine templates are loaded
+            Assert.IsTrue( HomeZone.BendMachineTemplatesLoaded( TestSettings.MachineFirstImportTimeout ) );
         }
 
         /// <summary>
@@ -57,7 +92,7 @@ namespace HomeZone.UiTests.Base
         /// <value>
         /// The HomeZone ProcessObject.
         /// </value>
-        public static TiHomeZoneApp HomeZone { get;private set; }
+        public static TiHomeZoneApp HomeZone { get; private set; }
 
         /// <summary>
         /// Manages access to the Design application.

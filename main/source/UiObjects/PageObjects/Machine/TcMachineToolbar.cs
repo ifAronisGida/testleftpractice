@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop.WPF;
@@ -43,26 +44,18 @@ namespace HomeZone.UiObjects.PageObjects.Machine
             NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Click( "|[1]" );
         }
 
-        ///// <summary>
-        ///// Saves the current machine.
-        ///// </summary>
-        //public void Save()
-        //{
-        //    SaveButton.Click();
-        //}
+        public bool WaitNewBendMachineEnabled( TimeSpan machineFirstImportTimeout )
+        {
+            var menuItem = NewMachineButton.Parent.Cast<IWPFMenu>().WPFMenu.Items[ 0 ].SubMenu.Items[ 1 ];
+            var startTime = DateTime.Now;
+            NewMachineButton.Parent.Cast<IWPFMenu>().Click();
 
-        ///// <summary>
-        ///// Deletes the current machine.
-        ///// </summary>
-        //public void Delete()
-        //{
-        //    DeleteButton.Click();
+            while( !menuItem.Enabled && DateTime.Now - startTime < machineFirstImportTimeout )
+            {
+                Thread.Sleep( 1000 );
+            }
 
-        //    var dialog = On<TcMessageBox>();
-        //    if( dialog.MessageBoxExists() )
-        //    {
-        //        dialog.Yes();
-        //    }
-        //}
+            return menuItem.Enabled;
+        }
     }
 }
