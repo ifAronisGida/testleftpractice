@@ -40,28 +40,5 @@ namespace HomeZone.UiObjects.PageObjects.Material
             DuplicateButton.Enabled.WaitFor();
             DuplicateButton.Click();
         }
-
-        ///// <summary>
-        ///// Saves the current material.
-        ///// </summary>
-        //public void Save()
-        //{
-        //    SaveButton.Click();
-        //}
-
-        ///// <summary>
-        ///// Deletes the current material.
-        ///// </summary>
-        ///// <returns>true if successful</returns>
-        //public void Delete()
-        //{
-        //    DeleteButton.Click();
-
-        //    var dialog = On<TcMessageBox>();
-        //    if( dialog.MessageBoxExists() )
-        //    {
-        //        dialog.Yes();
-        //    }
-        //}
     }
 }

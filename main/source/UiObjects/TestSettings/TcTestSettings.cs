@@ -37,7 +37,7 @@ namespace HomeZone.UiObjects.TestSettings
         {
             get
             {
-                if( Enum.TryParse( GetString( "ApplicationLanguage", "English" ), true, out TeAppLanguage language ) )
+                if( Enum.TryParse( GetString( "ApplicationLanguage", "German" ), true, out TeAppLanguage language ) )
                 {
                     switch( language )
                     {
