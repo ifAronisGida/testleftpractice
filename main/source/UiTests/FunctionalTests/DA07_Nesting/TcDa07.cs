@@ -1,9 +1,8 @@
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Trumpf.AutoTest.Facts;
-using HomeZone.UiTests.Base;
+using HomeZone.UiCommonFunctions.Base;
 using HomeZone.UiObjects;
-
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using Trumpf.AutoTest.Facts;
 using static HomeZone.UiTests.Utilities.TcResultListItems;
 
 namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
@@ -37,7 +36,7 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
 
             var missing = TcAppLangDependentStrings.Get( TeStringKey.Missing );
             var cuttingProgram = TcAppLangDependentStrings.Get( TeStringKey.CuttingProgram );
-            var incomplete = TcAppLangDependentStrings.Get( TeStringKey.Incomplete );
+            //var incomplete = TcAppLangDependentStrings.Get( TeStringKey.Incomplete );
 
             var cutJobs = HomeZone.CutJobs;
 

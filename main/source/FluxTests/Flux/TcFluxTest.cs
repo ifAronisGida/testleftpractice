@@ -1,13 +1,13 @@
+using HomeZone.UiCommonFunctions.Base;
+using HomeZone.UiObjects.PageObjects.Flux;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
-using HomeZone.UiObjects.PageObjects.Flux;
-using HomeZone.UiTests.Base;
-using HomeZone.UiTests.Utilities;
+using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.Flux
+namespace HomeZone.FluxTests.Flux
 {
     /// <summary>
     /// This test class contains Flux specific tests.
@@ -57,7 +57,7 @@ namespace HomeZone.UiTests.Flux
 
             var flux = FluxApp;
 
-            var visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            var visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
             if( visible )
             {
                 flux.CloseApp();
@@ -80,7 +80,7 @@ namespace HomeZone.UiTests.Flux
 
             flux = FluxApp;
 
-            visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
             if( visible )
             {
                 flux.CloseApp();
@@ -122,7 +122,7 @@ namespace HomeZone.UiTests.Flux
                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
 
                 var flux = FluxApp;
-                bool visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                bool visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                 if( visible )
                 {
                     flux.SaveAndClosePartInFlux();
@@ -306,7 +306,7 @@ namespace HomeZone.UiTests.Flux
                  parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
 
                  var flux = FluxApp;
-                 bool visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+                 bool visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
                  if( visible )
                  {
                      flux.ChangeSolution();

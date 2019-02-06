@@ -1,7 +1,7 @@
+using HomeZone.UiCommonFunctions.Base;
+using HomeZone.UiTests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
-using HomeZone.UiTests.Base;
-using HomeZone.UiTests.Utilities;
 
 namespace HomeZone.SmokeTests.Smoke
 {

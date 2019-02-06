@@ -1,9 +1,3 @@
-using System;
-using System.Diagnostics;
-using System.IO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SmartBear.TestLeft;
-using Trumpf.AutoTest.Facts;
 using HomeZone.UiObjectInterfaces;
 using HomeZone.UiObjectInterfaces.Cut;
 using HomeZone.UiObjectInterfaces.Design;
@@ -13,8 +7,14 @@ using HomeZone.UiObjects.PageObjects.Cut;
 using HomeZone.UiObjects.PageObjects.Design;
 using HomeZone.UiObjects.PageObjects.Flux;
 using HomeZone.UiObjects.TestSettings;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SmartBear.TestLeft;
+using System;
+using System.Diagnostics;
+using System.IO;
+using Trumpf.AutoTest.Facts;
 
-namespace HomeZone.UiTests.Base
+namespace HomeZone.UiCommonFunctions.Base
 {
     /// <summary>
     /// Base class for all test classes.

@@ -1,9 +1,9 @@
+using HomeZone.UiCommonFunctions.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
-using HomeZone.UiTests.Base;
-using HomeZone.UiTests.Utilities;
+using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.Settings
+namespace HomeZone.FluxTests.Settings
 {
     /// <summary>
     /// This test class contains settings specific tests.

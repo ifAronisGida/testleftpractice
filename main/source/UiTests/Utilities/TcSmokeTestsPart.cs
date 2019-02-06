@@ -1,9 +1,6 @@
+using HomeZone.UiCommonFunctions.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
-using HomeZone.UiTests.Base;
-using HomeZone.UiTests.Cut;
-using HomeZone.UiTests.Design;
-using HomeZone.UiTests.Flux;
 
 namespace HomeZone.UiTests.Utilities
 {

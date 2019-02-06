@@ -1,12 +1,12 @@
+using HomeZone.UiCommonFunctions.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
-using HomeZone.UiTests.Base;
-using HomeZone.UiTests.Utilities;
+using UiCommonFunctions.Utilities;
 
 namespace HomeZone.UiTests.Shell
 {
     //TEST
-    
+
     /// <summary>
     /// Test class for common shell tests.
     /// </summary>

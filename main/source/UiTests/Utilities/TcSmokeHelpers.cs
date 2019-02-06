@@ -1,11 +1,12 @@
+using HomeZone.UiCommonFunctions.Base;
+using HomeZone.UiObjects.PageObjects.Part;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
 using Trumpf.Coparoo.Desktop.Waiting;
-using HomeZone.UiObjects.PageObjects.Part;
-using HomeZone.UiTests.Base;
+using UiCommonFunctions.Utilities;
 
 namespace HomeZone.UiTests.Utilities
 {
@@ -318,7 +319,7 @@ namespace HomeZone.UiTests.Utilities
             parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
 
             var flux = FluxApp;
-            var visible = flux.IsMainWindowVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            var visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
 
             if( visible )
             {

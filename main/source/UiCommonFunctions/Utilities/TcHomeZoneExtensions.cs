@@ -1,4 +1,3 @@
-using System;
 using HomeZone.UiObjectInterfaces;
 using HomeZone.UiObjectInterfaces.Common;
 using HomeZone.UiObjectInterfaces.Customer;
@@ -10,9 +9,9 @@ using HomeZone.UiObjectInterfaces.Part;
 using HomeZone.UiObjectInterfaces.PartOrder;
 using HomeZone.UiObjectInterfaces.Shell;
 
-namespace HomeZone.UiTests.Utilities
+namespace UiCommonFunctions.Utilities
 {
-    internal static class TcHomeZoneExtensions
+    public static class TcHomeZoneExtensions
     {
         public static TiMaterials GotoMaterials( this TiHomeZoneApp app ) => Goto( app.Materials );
 

@@ -1,14 +1,14 @@
-using System;
-using System.Threading;
+using HomeZone.UiCommonFunctions.Base;
+using HomeZone.UiObjects.PageObjects.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
+using System;
+using System.Threading;
 using Trumpf.AutoTest.Facts;
-using HomeZone.UiObjects.PageObjects.Flux;
-using HomeZone.UiTests.Base;
-using HomeZone.UiTests.Utilities;
+using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.Settings
+namespace HomeZone.FluxTests.Settings
 {
     /// <summary>
     /// This test class contains bend settings specific tests.
@@ -51,13 +51,7 @@ namespace HomeZone.UiTests.Settings
                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
-
-                bool found = CheckToolListDropdown( toollistName, out var toolList );
-                if( found )
-                {
-                    toolList.Click();
-                }
-                Assert.IsTrue( found );
+                Assert.IsTrue( CheckToolListDropdown( toollistName, out var toolList ) );
 
                 parts.Toolbar.Delete();
             } );
@@ -219,6 +213,11 @@ namespace HomeZone.UiTests.Settings
                 ClrFullClassName = "System.Windows.Controls.TextBlock",
                 WPFControlText = toolListName
             }, 12, out control );
+
+            // DropDown has to be closed. Otherwise the first following Click Event will close the window instead of executing 
+            // the desired click event.
+
+            Driver.Desktop.Keys( "[Enter]" ); //Close Dropdown. 
 
             return found;
         }

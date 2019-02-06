@@ -1,11 +1,11 @@
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Trumpf.AutoTest.Facts;
+using HomeZone.UiCommonFunctions.Base;
 using HomeZone.UiObjects.PageObjects.Flux;
-using HomeZone.UiTests.Base;
-using HomeZone.UiTests.Utilities;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using Trumpf.AutoTest.Facts;
+using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.Settings
+namespace HomeZone.FluxTests.Settings
 {
     /// <summary>
     /// This test class contains bend settings specific tests.
