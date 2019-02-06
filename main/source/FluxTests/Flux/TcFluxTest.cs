@@ -1,13 +1,13 @@
+using HomeZone.UiCommonFunctions.Base;
 using HomeZone.UiObjects.PageObjects.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics;
 using System.Threading;
 using Trumpf.AutoTest.Facts;
-using UiCommonFunctions.Base;
 using UiCommonFunctions.Utilities;
 
-namespace FluxTests.Flux
+namespace HomeZone.FluxTests.Flux
 {
     /// <summary>
     /// This test class contains Flux specific tests.

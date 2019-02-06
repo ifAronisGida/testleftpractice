@@ -7,8 +7,8 @@
     <ProjectGuid>{4A55323B-97AF-4CC6-9266-DB1545BAE897}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UiCommonFunctions</RootNamespace>
-    <AssemblyName>UiCommonFunctions</AssemblyName>
+    <RootNamespace>HomeZone.UiCommonFunctions</RootNamespace>
+    <AssemblyName>HomeZone.UiCommonFunctions</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

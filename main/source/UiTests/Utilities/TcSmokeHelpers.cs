@@ -1,3 +1,4 @@
+using HomeZone.UiCommonFunctions.Base;
 using HomeZone.UiObjects.PageObjects.Part;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -5,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using Trumpf.AutoTest.Facts;
 using Trumpf.Coparoo.Desktop.Waiting;
-using UiCommonFunctions.Base;
 using UiCommonFunctions.Utilities;
 
 namespace HomeZone.UiTests.Utilities
