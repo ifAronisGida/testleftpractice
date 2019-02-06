@@ -20,7 +20,7 @@ namespace HomeZone.UiObjects
         private static readonly IReadOnlyDictionary<TeStringKey, Label> labels = new Dictionary<TeStringKey, Label>()
         {
             [TeStringKey.Missing] = new Label( "Missing", "Fehlt", null ),
-            [TeStringKey.Incomplete] = new Label( "Incomplete", null, null ),
+            [TeStringKey.Incomplete] = new Label( "Incomplete", "Unvollständig", null ),
             [TeStringKey.CuttingProgram] = new Label( "Cutting Program", "Schneidprogramm", null ),
             [TeStringKey.TechnologyTableSelection] = new Label( "Technology table selection", "Technologietabellen Auswahl", "Technológiatáblázatok kiválasztása" )
         };

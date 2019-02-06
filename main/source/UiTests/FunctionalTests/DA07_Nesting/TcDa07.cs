@@ -52,7 +52,7 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             // An empty entry appears at the top of the result list.
             Assert.AreEqual( cutJobCount + 1, cutJobs.ResultColumn.Count );
             var selectedItem = cutJobs.ResultColumn.SelectedItem();
-            Assert.AreNotEqual( null, selectedItem );
+            Assert.IsNotNull( selectedItem );
             Assert.IsTrue( string.IsNullOrEmpty( selectedItem.Id ) );
             Assert.IsTrue( string.IsNullOrEmpty( selectedItem.FinishDate ) );
 
@@ -157,7 +157,7 @@ namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
             Assert.AreEqual( @"UIT_TruLaser 3030 (L20)", cutJobs.SheetProgram.Machine.Value );
 
             // State in result list is "Order List: Incomplete".
-            var resultListItemStates = selectedItem.GetStates();
+            var resultListItemStates = selectedItem.GetRawStates();
             Assert.AreEqual( IncompleteState, resultListItemStates[OrderListComponent] );
 
             // Second state in stack is "Sheet Program: Incomplete".

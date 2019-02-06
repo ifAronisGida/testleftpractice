@@ -201,7 +201,7 @@ namespace HomeZone.UiTests.CutJob
                 var cutJobs = HomeZone.CutJobs;
                 var item = cutJobs.ResultColumn.GetItem( 1 );
 
-                foreach( var x in item.GetStates() )
+                foreach( var x in item.GetRawStates() )
                 {
                     Console.WriteLine( x );
                 }
