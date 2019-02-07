@@ -16,6 +16,8 @@ namespace HomeZone.FluxTests.Flux
     [TestClass]
     public class TcFluxTest : TcBaseTestClass
     {
+        private const string S_FLUX_MACHINE_5320 = "TruBend 5320 (6-axes) B23";
+
         private string mTestMachineName;
 
         private readonly TimeSpan mConfigureMachineOverlay = TimeSpan.FromSeconds( 20 );
@@ -319,44 +321,41 @@ namespace HomeZone.FluxTests.Flux
 
         private void CreateTestMachine( string machineName = null )
         {
-            mTestMachineName = TestSettings.NamePrefix + Guid.NewGuid();
-
-            var machines = HomeZone.GotoMachines();
-
+            Trace.WriteLine( "Start Creating Test Machine" );
+            var machines = HomeZone.Machines;
             if( machineName == null )
             {
-                machines.NewBendMachine( "TruBend 5320 (6-axes) B23", mTestMachineName );
+                mTestMachineName = TestSettings.NamePrefix + S_FLUX_MACHINE_5320;
+                machines.NewBendMachine( S_FLUX_MACHINE_5320, mTestMachineName );
             }
             else
             {
+                mTestMachineName = TestSettings.NamePrefix + machineName;
                 machines.NewBendMachine( machineName, machineName );
             }
-
             Assert.IsTrue( machines.Toolbar.CanSave );
             machines.Toolbar.Save();
             Assert.IsFalse( machines.Toolbar.CanSave );
 
             machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
             machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
+            Trace.WriteLine( "Test Machine Created" );
         }
 
         private void DeleteTestMachine( string machineName = null )
         {
-            var machines = HomeZone.GotoMachines();
-
+            Trace.WriteLine( "Start Deleting Test Machine" );
+            var machines = HomeZone.Machines;
+            machines.Goto();
             if( machineName == null )
             {
-                machines.ResultColumn.SelectItem( mTestMachineName );
+                machines.DeleteMachine( mTestMachineName );
             }
             else
             {
-                machines.ResultColumn.SelectItem( machineName );
+                machines.DeleteMachine( machineName );
             }
-
-            Assert.IsTrue( machines.Toolbar.CanDelete );
-            machines.Toolbar.Delete();
-            machines.ResultColumn.ClearSearch();
-            Assert.IsFalse( machines.Toolbar.CanDelete );
+            Trace.WriteLine( "Test Machine Deleted" );
         }
 
         private void OpenMachineConfiguration( string machineName )
