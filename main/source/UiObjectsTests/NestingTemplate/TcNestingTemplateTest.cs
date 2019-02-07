@@ -4,7 +4,7 @@ using System;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.NestingTemplate
+namespace HomeZone.UiObjectsTests.NestingTemplate
 {
     [TestClass]
     public class TcNestingTemplateTest : TcBaseTestClass

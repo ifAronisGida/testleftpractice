@@ -4,7 +4,7 @@ using System;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.Machine
+namespace HomeZone.UiObjectsTests.Machine
 {
     /// <summary>
     /// This test class contains workplace specific tests.

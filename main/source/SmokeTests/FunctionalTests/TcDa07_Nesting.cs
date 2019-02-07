@@ -1,5 +1,5 @@
 using HomeZone.UiCommonFunctions.Base;
-using HomeZone.UiTests.FunctionalTests.DA07_Nesting;
+using HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
 

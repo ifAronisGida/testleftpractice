@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.Shell
+namespace HomeZone.UiObjectsTests.Shell
 {
     //TEST
 

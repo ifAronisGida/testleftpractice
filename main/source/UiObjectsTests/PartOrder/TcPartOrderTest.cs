@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.PartOrder
+namespace HomeZone.UiObjectsTests.PartOrder
 {
     [TestClass]
     public class TcPartOrderTest : TcBaseTestClass

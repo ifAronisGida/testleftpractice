@@ -3,9 +3,9 @@ using HomeZone.UiObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Trumpf.AutoTest.Facts;
-using static HomeZone.UiTests.Utilities.TcResultListItems;
+using static HomeZone.UiObjectsTests.Utilities.TcResultListItems;
 
-namespace HomeZone.UiTests.FunctionalTests.DA07_Nesting
+namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
 {
     /// <summary>
     /// DA07 Nesting functional tests

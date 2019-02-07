@@ -8,7 +8,7 @@ using Trumpf.AutoTest.Facts;
 using Trumpf.Coparoo.Desktop.Waiting;
 using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.Utilities
+namespace HomeZone.UiObjectsTests.Utilities
 {
     /// <summary>
     /// This test class contains supporting test methods for the smoke tests.

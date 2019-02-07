@@ -2,7 +2,7 @@ using HomeZone.UiCommonFunctions.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
 
-namespace HomeZone.UiTests.Utilities
+namespace HomeZone.UiObjectsTests.Utilities
 {
     /// <summary>
     /// This test class contains smoke tests for parts.

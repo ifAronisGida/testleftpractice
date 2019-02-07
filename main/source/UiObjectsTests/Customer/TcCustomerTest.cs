@@ -5,7 +5,7 @@ using System.Diagnostics;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.Customer
+namespace HomeZone.UiObjectsTests.Customer
 {
     /// <summary>
     /// This test class contains customer specific tests.

@@ -5,7 +5,7 @@ using System.Threading;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.CutJob
+namespace HomeZone.UiObjectsTests.CutJob
 {
     /// <summary>
     /// This test class contains cut job specific tests.

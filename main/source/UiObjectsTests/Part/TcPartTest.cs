@@ -4,7 +4,7 @@ using System;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.Part
+namespace HomeZone.UiObjectsTests.Part
 {
     /// <summary>
     /// This test class contains part specific tests.

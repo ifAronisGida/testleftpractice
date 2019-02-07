@@ -100,9 +100,9 @@
       <Project>{FBDAA579-B218-4D39-8F5B-838DEF1890F3}</Project>
       <Name>UiObjectInterfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UiTests\UiTests.csproj">
+    <ProjectReference Include="..\UiObjectsTests\UiObjectsTests.csproj">
       <Project>{8BF76EB4-CC36-49EA-931C-C6C3F1689EBB}</Project>
-      <Name>UiTests</Name>
+      <Name>UiObjectsTests</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

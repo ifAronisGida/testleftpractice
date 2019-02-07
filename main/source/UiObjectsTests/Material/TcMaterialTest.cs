@@ -4,7 +4,7 @@ using System;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.Material
+namespace HomeZone.UiObjectsTests.Material
 {
     /// <summary>
     /// This test class contains material specific tests.

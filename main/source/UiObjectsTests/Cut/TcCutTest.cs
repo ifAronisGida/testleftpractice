@@ -5,7 +5,7 @@ using System.Diagnostics;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.Cut
+namespace HomeZone.UiObjectsTests.Cut
 {
     /// <summary>
     /// This test class contains Cut specific tests.

@@ -5,7 +5,7 @@ using System.Diagnostics;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
-namespace HomeZone.UiTests.Design
+namespace HomeZone.UiObjectsTests.Design
 {
     /// <summary>
     /// This test class contains Design specific tests.
