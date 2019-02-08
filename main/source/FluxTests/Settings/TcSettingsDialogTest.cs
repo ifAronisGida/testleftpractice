@@ -10,7 +10,7 @@ namespace HomeZone.FluxTests.Settings
     /// </summary>
     /// <seealso cref="TcBaseTestClass" />
     [TestClass]
-    public class TcSettingsDialogTest : TcBaseTestClass
+    public sealed class TcSettingsDialogTest : TcBaseTestClass
     {
         /// <summary>
         /// Opens and closes the settings dialog.
@@ -19,14 +19,19 @@ namespace HomeZone.FluxTests.Settings
         [Tag( "SettingsDialog" )]
         public void OpenAndCloseSettingsTest()
         {
-            Act( () =>
-            {
-                var settings = HomeZone.GotoMainMenu().OpenSettingsDialog();
+            ExecuteUITest(DoOpenAndCloseSettingsTest, "Open And Close Settings" );
+        }
 
-                Assert.IsTrue( settings.IsVisible );
+        /// <summary>
+        /// Implementation of the open and close settings test
+        /// </summary>
+        private void DoOpenAndCloseSettingsTest()
+        {
+            var settings = HomeZone.GotoMainMenu().OpenSettingsDialog();
 
-                settings.Cancel();
-            } );
+            Assert.IsTrue( settings.IsVisible );
+
+            settings.Cancel();
         }
     }
 }

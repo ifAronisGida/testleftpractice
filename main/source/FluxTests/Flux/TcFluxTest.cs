@@ -2,7 +2,6 @@ using HomeZone.UiCommonFunctions.Base;
 using HomeZone.UiObjects.PageObjects.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Diagnostics;
 using System.Threading;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
@@ -14,18 +13,11 @@ namespace HomeZone.FluxTests.Flux
     /// </summary>
     /// <seealso cref="TcBaseTestClass" />
     [TestClass]
-    public class TcFluxTest : TcBaseTestClass
+    public sealed class TcFluxTest : TcBaseTestClass
     {
         private string mTestMachineName;
 
         private readonly TimeSpan mConfigureMachineOverlay = TimeSpan.FromSeconds( 20 );
-
-        ///// <summary>
-        ///// Gets the extended test environment.
-        ///// Creates / deletes the test machine used by the test methods
-        ///// </summary>
-        //public override IDoSequence TestEnvironment => base.TestEnvironment
-        //.Do( CreateTestMachine, DeleteTestMachine, "TestMachine" );
 
         /// <summary>
         /// Creates a new part with bend solution, opens it and closes Flux.
@@ -34,10 +26,73 @@ namespace HomeZone.FluxTests.Flux
         [Tag( "Flux" )]
         public void FluxOpenCloseTest()
         {
-            Act( DoFluxOpenClose );
+            ExecuteUITest( DoFluxOpenClose, "Flux Open and Close Test" );
         }
 
-        public void DoFluxOpenClose()
+        /// <summary>
+        /// Creates a new part with bend solution, opens it, saves and closes Flux.
+        /// </summary>
+        [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319C" )]
+        [Tag( "Flux" )]
+        public void FluxSaveAndCloseTest()
+        {
+            ExecuteUITest( DoFluxSaveAndCloseTest, "Flux Save and Close Test" );
+        }
+
+        /// <summary>
+        /// Boost part with Flux
+        /// </summary>
+        [ TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319D" )]
+        [Tag( "Flux" )]
+        public void BoostPartSucessTest()
+        {
+            ExecuteUITest( DoBoostPartSucessTest, "Flux Boost Part Test" );
+        }
+
+        /// <summary>
+        /// Boosts a part with error (missing clampings)
+        /// </summary>
+        [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319E" )]
+        [Tag( "Flux" )]
+        public void BoostSolutionWithErrorTest()
+        {
+            ExecuteUITest( DoBoostSolutionWithErrorTest, "Boost Solution with Errors");
+        }
+
+        /// <summary>
+        /// checks if part can be released
+        /// </summary>
+        [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319F" )]
+        [Tag( "Flux" )]
+        public void ReleaseBoostedPart()
+        {
+            ExecuteUITest(DoReleaseBoostedPart, "Release Boosted Part");
+        }
+
+        /// <summary>
+        /// Opens/Closes configure machine dialog
+        /// </summary>
+        [TestMethod, UniqueName( "511d5620-52c1-4735-9fc4-370a62552eca" )]
+        [Tag( "Flux" )]
+        public void ConfigureMachineTest()
+        {
+            ExecuteUITest( DoConfigureMachineTest, "Configure Machine" );
+        }
+
+        /// <summary>
+        /// Closes a changed part without saving
+        /// </summary>
+        [ TestMethod, UniqueName( "511d5620-52c1-4735-9fc4-370a62552eca" )]
+        [Tag( "Flux" )]
+        public void CloseWithoutSave()
+        {
+            ExecuteUITest( DoCloseWithoutSave, "Close Flux without Saving" );
+        }
+
+        /// <summary>
+        /// Implementation of the Flux open and close test
+        /// </summary>
+        private void DoFluxOpenClose()
         {
             CreateTestMachine();
 
@@ -96,227 +151,199 @@ namespace HomeZone.FluxTests.Flux
             parts.ResultColumn.ClearSearch();
 
             DeleteTestMachine();
+
         }
 
         /// <summary>
-        /// Creates a new part with bend solution, opens it, saves and closes Flux.
+        /// Implementation of the Flux save and close test
         /// </summary>
-        [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319C" )]
-        [Tag( "Flux" )]
-        public void FluxSaveAndCloseTest()
+        private void DoFluxSaveAndCloseTest()
         {
-            Act( () =>
+            CreateTestMachine();
+
+            var parts = HomeZone.GotoParts();
+            string solutionName = "Bend1";
+
+            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+
+            parts.SingleDetailBendSolutions.New();
+            parts.SingleDetailBendSolutions.OpenBendSolution( solutionName );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+
+            var flux = FluxApp;
+            bool visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            if( visible )
             {
-                CreateTestMachine();
-
-                Trace.WriteLine( @"Starting Flux open / close test." );
-                var parts = HomeZone.GotoParts();
-                string solutionName = "Bend1";
-
-                parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                flux.SaveAndClosePartInFlux();
                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            }
 
-                parts.SingleDetailBendSolutions.New();
-                parts.SingleDetailBendSolutions.OpenBendSolution( solutionName );
-                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            var isManual = parts.SingleDetailBendSolutions.IsManuallyChanged( solutionName );
+            Assert.IsTrue( isManual );
 
-                var flux = FluxApp;
-                bool visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-                if( visible )
-                {
-                    flux.SaveAndClosePartInFlux();
-                    parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
-                }
-
-                var isManual = parts.SingleDetailBendSolutions.IsManuallyChanged( solutionName );
-                Assert.IsTrue( isManual );
-
-                parts.Toolbar.Delete();
-                DeleteTestMachine();
-            } );
+            parts.Toolbar.Delete();
+            DeleteTestMachine();
         }
 
         /// <summary>
-        /// Boost part with Flux
+        /// Implementation of the Boost part success test
         /// </summary>
-        [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319D" )]
-        [Tag( "Flux" )]
-        public void BoostPartSucessTest()
+        private void DoBoostPartSucessTest()
         {
-            Act( () =>
-             {
-                 CreateTestMachine();
-                 Trace.WriteLine( @"Starting Flux boost test." );
-                 var parts = HomeZone.GotoParts();
-                 string solutionName = "Bend1";
+            CreateTestMachine();
+            var parts = HomeZone.GotoParts();
+            string solutionName = "Bend1";
 
-                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
-                 parts.SingleDetailBendSolutions.New();
-                 parts.SingleDetailBendSolutions.BoostSolution( solutionName );
-                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            parts.SingleDetailBendSolutions.New();
+            parts.SingleDetailBendSolutions.BoostSolution( solutionName );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
-                 parts.SingleDetailBendSolutions.OpenSolutionDetail( solutionName );
+            parts.SingleDetailBendSolutions.OpenSolutionDetail( solutionName );
 
-                 Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
-                 Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
-                 Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
+            Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
+            Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
+            Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
 
-                 parts.Toolbar.Delete();
-                 DeleteTestMachine();
-             } );
+            parts.Toolbar.Delete();
+            DeleteTestMachine();
         }
 
         /// <summary>
-        /// Boosts a part with error (missing clampings)
+        /// Implementation of the Boost solution with error test
         /// </summary>
-        [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319E" )]
-        [Tag( "Flux" )]
-        public void BoostSolutionWithErrorTest()
+        private void DoBoostSolutionWithErrorTest()
         {
-            Act( () =>
-             {
-                 string testMachine = "TruBend 3066 (2-axes, Asia) B26";
-                 CreateTestMachine( testMachine );
+            string testMachine = "TruBend 3066 (2-axes, Asia) B26";
+            CreateTestMachine( testMachine );
 
-                 Trace.WriteLine( @"Starting Flux boost with errors test." );
-                 var parts = HomeZone.GotoParts();
-                 string solutionName = "Bend1";
+            var parts = HomeZone.GotoParts();
+            string solutionName = "Bend1";
 
-                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
-                 parts.SingleDetailBendSolutions.New();
-                 parts.SingleDetailBendSolutions.BoostSolution( solutionName );
-                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            parts.SingleDetailBendSolutions.New();
+            parts.SingleDetailBendSolutions.BoostSolution( solutionName );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
-                 parts.SingleDetailBendSolutions.OpenSolutionDetail( solutionName );
+            parts.SingleDetailBendSolutions.OpenSolutionDetail( solutionName );
 
-                 Assert.IsFalse( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
-                 Assert.IsFalse( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
-                 Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
+            Assert.IsFalse( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
+            Assert.IsFalse( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
+            Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
 
-                 parts.Toolbar.Delete();
-                 DeleteTestMachine( testMachine );
-             } );
+            parts.Toolbar.Delete();
+            DeleteTestMachine( testMachine );
         }
 
         /// <summary>
-        /// checks if part can be released
+        /// Implemenation of the release boosted part test
         /// </summary>
-        [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319F" )]
-        [Tag( "Flux" )]
-        public void ReleaseBoostedPart()
+        private void DoReleaseBoostedPart()
         {
-            Act( () =>
+            CreateTestMachine();
+
+            var parts = HomeZone.GotoParts();
+            string solutionName = "Bend1";
+
+            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+
+            parts.SingleDetailBendSolutions.New();
+            parts.SingleDetailBendSolutions.BoostSolution( solutionName );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+
+            // freigeben
+            parts.SingleDetailBendSolutions.ToggleReleaseButton( solutionName );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+
+            parts.SingleDetailBendSolutions.OpenSolutionDetail( solutionName );
+
+            Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
+            Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
+            Assert.IsTrue( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
+
+            // widerrufen
+            parts.SingleDetailBendSolutions.ToggleReleaseButton( solutionName );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+
+            Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
+            Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
+            Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
+
+            parts.Toolbar.Delete();
+            DeleteTestMachine();
+        }
+
+        /// <summary>
+        /// Implementation of the confugre machine test
+        /// </summary>
+        private void DoConfigureMachineTest()
+        {
+
+            string machineName = "TruBend 5320 (6-axes) B23";
+            CreateTestMachine( machineName );
+
+            // open dialog
+            OpenMachineConfiguration( machineName );
+            Thread.Sleep( mConfigureMachineOverlay );
+            TcFluxConfigureMachine flux = new TcFluxConfigureMachine( Driver );
+            bool visible = flux.MachineDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            if( visible )
             {
-                CreateTestMachine();
-                Trace.WriteLine( @"Starting Flux release solution after boost test." );
-                var parts = HomeZone.GotoParts();
-                string solutionName = "Bend1";
+                flux.CloseMachienDialog();
+                Thread.Sleep( mConfigureMachineOverlay );
+            }
 
-                parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
-
-                parts.SingleDetailBendSolutions.New();
-                parts.SingleDetailBendSolutions.BoostSolution( solutionName );
-                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
-
-                // freigeben
-                parts.SingleDetailBendSolutions.ToggleReleaseButton( solutionName );
-                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
-
-                parts.SingleDetailBendSolutions.OpenSolutionDetail( solutionName );
-
-                Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
-                Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
-                Assert.IsTrue( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
-
-                // widerrufen
-                parts.SingleDetailBendSolutions.ToggleReleaseButton( solutionName );
-                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
-
-                Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
-                Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
-                Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
-
-                parts.Toolbar.Delete();
-                DeleteTestMachine();
-            } );
+            DeleteTestMachine( machineName );
         }
 
         /// <summary>
-        /// Opens/Closes configure machine dialog
+        /// Implementation of the close without save test
         /// </summary>
-        [TestMethod, UniqueName( "511d5620-52c1-4735-9fc4-370a62552eca" )]
-        [Tag( "Flux" )]
-        public void ConfigureMachineTest()
+        private void DoCloseWithoutSave()
         {
-            Act( () =>
-             {
-                 Trace.WriteLine( @"Starting configure machine test." );
-                 string machineName = "TruBend 5320 (6-axes) B23";
-                 CreateTestMachine( machineName );
+            CreateTestMachine();
 
-                 // open dialog
-                 OpenMachineConfiguration( machineName );
-                 Thread.Sleep( mConfigureMachineOverlay );
-                 TcFluxConfigureMachine flux = new TcFluxConfigureMachine( Driver );
-                 bool visible = flux.MachineDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-                 if( visible )
-                 {
-                     flux.CloseMachienDialog();
-                     Thread.Sleep( mConfigureMachineOverlay );
-                 }
+            var parts = HomeZone.GotoParts();
+            string solutionName = "Bend1";
 
-                 DeleteTestMachine( machineName );
-             } );
+            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+
+            parts.SingleDetailBendSolutions.New();
+            parts.SingleDetailBendSolutions.OpenBendSolution( solutionName );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+
+            var flux = FluxApp;
+            bool visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
+            if( visible )
+            {
+                flux.ChangeSolution();
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            }
+            parts.Toolbar.Delete();
+            DeleteTestMachine();
         }
 
         /// <summary>
-        /// Closes a changed part without saving
+        /// create a test machine
         /// </summary>
-        [TestMethod, UniqueName( "511d5620-52c1-4735-9fc4-370a62552eca" )]
-        [Tag( "Flux" )]
-        public void CloseWithoutSave()
-        {
-            Act( () =>
-             {
-                 CreateTestMachine();
-                 Trace.WriteLine( @"Starting Flux close without save test." );
-                 var parts = HomeZone.GotoParts();
-                 string solutionName = "Bend1";
-
-                 parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
-
-                 parts.SingleDetailBendSolutions.New();
-                 parts.SingleDetailBendSolutions.OpenBendSolution( solutionName );
-                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-
-                 var flux = FluxApp;
-                 bool visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-                 if( visible )
-                 {
-                     flux.ChangeSolution();
-                     parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
-                 }
-                 parts.Toolbar.Delete();
-                 DeleteTestMachine();
-             } );
-        }
-
+        /// <param name="machineName">machine name</param>
         private void CreateTestMachine( string machineName = null )
         {
             mTestMachineName = TestSettings.NamePrefix + Guid.NewGuid();
@@ -340,6 +367,11 @@ namespace HomeZone.FluxTests.Flux
             machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
         }
 
+        
+        /// <summary>
+        /// Delete the test machine
+        /// </summary>
+        /// <param name="machineName"></param>
         private void DeleteTestMachine( string machineName = null )
         {
             var machines = HomeZone.GotoMachines();
@@ -359,6 +391,10 @@ namespace HomeZone.FluxTests.Flux
             Assert.IsFalse( machines.Toolbar.CanDelete );
         }
 
+        /// <summary>
+        /// Open the machine configuration
+        /// </summary>
+        /// <param name="machineName"></param>
         private void OpenMachineConfiguration( string machineName )
         {
             var machines = HomeZone.GotoMachines();

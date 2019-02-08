@@ -8,6 +8,9 @@ namespace HomeZone.FluxTests.Logging
     [TestClass]
     class TcFluxTestsLogging : TcBaseTestClass
     {
+        /// <summary>
+        /// Save Log File after finishing all tests in Assembly
+        /// </summary>
         [AssemblyCleanup]
         public static void AssemblyCleanup()
         {
