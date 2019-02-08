@@ -119,6 +119,39 @@ namespace HomeZone.UiCommonFunctions.Base
         /// </value>
         public static TiFlux FluxApp { get; private set; }
 
+        /// <summary>
+        /// Execute a UI  Test
+        /// Function encapsulates the UI test with logging
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="caption"></param>
+        protected void ExecuteUITest( Action action, string caption )
+        {
+            try
+            {
+                Driver.Log.OpenFolder( caption );
+                Act( action, caption );
+                Driver.Log.CloseFolder();
+            }
+            catch( Exception ex )
+            {
+                Driver.Log.Error( ex.Message, ex.StackTrace  ); //automatically creates a screenshot
+                Driver.Log.CloseFolder();
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Returns the logging folder name
+        /// </summary>
+        /// <param name="assemblyName"></param>
+        /// <returns>logging folder name</returns>
+        protected static string GetLoggingFolder(string assemblyName)
+        {
+            string testResultFolder = Path.GetFullPath( Path.Combine( AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..", "TestResults" ));
+            return Path.Combine( testResultFolder, assemblyName );
+        }
+
         protected void Act( Action action, string caption = null )
             => mAutoFact.Act( action, caption );
     }
