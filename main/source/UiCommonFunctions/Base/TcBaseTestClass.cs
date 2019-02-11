@@ -12,6 +12,7 @@ using SmartBear.TestLeft;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using Trumpf.AutoTest.Facts;
 
 namespace HomeZone.UiCommonFunctions.Base
@@ -154,5 +155,14 @@ namespace HomeZone.UiCommonFunctions.Base
 
         protected void Act( Action action, string caption = null )
             => mAutoFact.Act( action, caption );
+
+        /// <summary>
+        /// Save Log File after finishing all tests in Assembly
+        /// </summary>
+        protected static void AssemblyCleanup( Assembly assembly )
+        {
+            string testResultPath = GetLoggingFolder( AssemblyName.GetAssemblyName( assembly.ManifestModule.Name ).Name );
+            Driver.Log.Save( testResultPath, Log.Format.Html );
+        }
     }
 }
