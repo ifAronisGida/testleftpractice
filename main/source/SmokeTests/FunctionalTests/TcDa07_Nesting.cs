@@ -1,5 +1,5 @@
 using HomeZone.UiCommonFunctions.Base;
-using HomeZone.UiTests.FunctionalTests.DA07_Nesting;
+using HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
 
@@ -21,7 +21,7 @@ namespace HomeZone.SmokeTests.FunctionalTests
         //[Tag( "Functional tests" )]
         public void Da07_Nesting()
         {
-            Act( mDa07.DA7_01 );
+            ExecuteUITest( mDa07.DA7_01, "Da07 Nesting" );
         }
     }
 }

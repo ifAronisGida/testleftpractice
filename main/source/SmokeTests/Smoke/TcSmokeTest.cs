@@ -1,5 +1,5 @@
 using HomeZone.UiCommonFunctions.Base;
-using HomeZone.UiTests.Utilities;
+using HomeZone.UiObjectsTests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
 
@@ -22,7 +22,7 @@ namespace HomeZone.SmokeTests.Smoke
         //[Tag( "Smoke" )]
         public void SmokeTest()
         {
-            Act( DoSmokeTest );
+            ExecuteUITest( DoSmokeTest, "HomeZone Smoke Test" );
         }
 
         /// <summary>
