@@ -40,6 +40,7 @@
       <Parameter name="CutStartTimeout" value="40" />
       <Parameter name="FluxStartTimeout" value="15" />
       <Parameter name="FluxBoostAndStartTimeout" value="60" />
+      <Parameter name="FluxSyncTimeout" value="30" />
 
       <Parameter name="SavingTimeout" value="60" />
 
