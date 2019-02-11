@@ -1,4 +1,5 @@
 using HomeZone.UiCommonFunctions.Base;
+using HomeZone.UiObjectInterfaces.Flux;
 using HomeZone.UiObjects.PageObjects.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft.TestObjects;
@@ -27,7 +28,7 @@ namespace HomeZone.FluxTests.Settings
         [Tag( "ToolListSettings" )]
         public void ToolListsConfigurationTest()
         {
-            ExecuteUITest( DoToolListsConfigurationTest , "Tool List Configuration Test" );
+            ExecuteUITest( DoToolListsConfigurationTest, "Tool List Configuration Test" );
         }
 
         /// <summary>
@@ -47,7 +48,7 @@ namespace HomeZone.FluxTests.Settings
         [Tag( "ToolListSettings" )]
         public void RenameToolList()
         {
-            ExecuteUITest(DoRenameToolList, "Rename Tool List" );
+            ExecuteUITest( DoRenameToolList, "Rename Tool List" );
         }
 
         /// <summary>
@@ -74,14 +75,12 @@ namespace HomeZone.FluxTests.Settings
 
             bendSettings.OpenToolListsConfiguration();
 
+            TiFluxApp Flux = new TcFluxApp( TestSettings.FluxProcessName, Driver );
+            Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
             string toollistName = "superTools";
-            TcLandingPages flux = new TcLandingPages( Driver );
-            bool visible = flux.ToolsListsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            if( visible )
-            {
-                flux.CreateNewToolList( toollistName );
-                Thread.Sleep( TcLandingPages.SYNC_TIMEOUT );
-            }
+            Flux.ToolManagement.NewToolList( toollistName );
+            Flux.ToolManagement.Close();
+            Flux.WaitForSynchronization( TestSettings.FluxSyncTimeout );
 
             settingsDialog.Cancel();
 
@@ -110,10 +109,7 @@ namespace HomeZone.FluxTests.Settings
             string toollistName = "rubbishTools";
             TcLandingPages flux = new TcLandingPages( Driver );
             bool visible = flux.ToolsListsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            if( visible )
-            {
-                flux.CreateNewToolList( toollistName );
-            }
+            flux.CreateNewToolList( toollistName );
             settingsDialog.Save();
 
             // Delete the  toollist
@@ -125,10 +121,7 @@ namespace HomeZone.FluxTests.Settings
 
             flux = new TcLandingPages( Driver );
             visible = flux.ToolsListsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            if( visible )
-            {
-                flux.DeleteToollist( toollistName );
-            }
+            flux.DeleteToollist( toollistName );
 
             settingsDialog.Save();
 
@@ -161,10 +154,7 @@ namespace HomeZone.FluxTests.Settings
             string toollistName = "oldName";
             TcLandingPages flux = new TcLandingPages( Driver );
             bool visible = flux.ToolsListsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            if( visible )
-            {
-                flux.CreateNewToolList( toollistName );
-            }
+            flux.CreateNewToolList( toollistName );
             settingsDialog.Save();
 
             // rename toollist
@@ -177,11 +167,8 @@ namespace HomeZone.FluxTests.Settings
 
             flux = new TcLandingPages( Driver );
             visible = flux.ToolsListsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            if( visible )
-            {
-                flux.RenameToollist( toollistName, newName );
-                Thread.Sleep( TcLandingPages.SYNC_TIMEOUT );
-            }
+            flux.RenameToollist( toollistName, newName );
+            Thread.Sleep( TcLandingPages.SYNC_TIMEOUT );
 
             settingsDialog.Save();
 
@@ -211,10 +198,7 @@ namespace HomeZone.FluxTests.Settings
 
             TcLandingPages flux = new TcLandingPages( Driver );
             bool visible = flux.ToolsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            if( visible )
-            {
-                flux.CloseToolsDialog();
-            }
+            flux.CloseToolsDialog();
 
             settingsDialog.Cancel();
         }
