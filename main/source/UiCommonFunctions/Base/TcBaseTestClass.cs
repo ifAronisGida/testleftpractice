@@ -142,6 +142,9 @@ namespace HomeZone.UiCommonFunctions.Base
             }
         }
 
+        protected void Act( Action action, string caption = null )
+            => mAutoFact.Act( action, caption );
+
         /// <summary>
         /// Returns the logging folder name
         /// </summary>
@@ -152,9 +155,6 @@ namespace HomeZone.UiCommonFunctions.Base
             string testResultFolder = Path.GetFullPath( Path.Combine( AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..", "TestResults" ));
             return Path.Combine( testResultFolder, assemblyName );
         }
-
-        protected void Act( Action action, string caption = null )
-            => mAutoFact.Act( action, caption );
 
         /// <summary>
         /// Save Log File after finishing all tests in Assembly
