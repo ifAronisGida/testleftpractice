@@ -36,10 +36,7 @@ namespace HomeZone.FluxTests.Settings
 
             TcLandingPages flux = new TcLandingPages( Driver );
             bool visible = flux.BendFactorsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            if( visible )
-            {
-                flux.CloseBendFactorDialog();
-            }
+            flux.CloseBendFactorDialog();
 
             settingsDialog.Cancel();
         }
