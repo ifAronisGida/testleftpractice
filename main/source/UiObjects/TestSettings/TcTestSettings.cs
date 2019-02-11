@@ -1,5 +1,5 @@
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace HomeZone.UiObjects.TestSettings
 {
@@ -37,7 +37,7 @@ namespace HomeZone.UiObjects.TestSettings
         {
             get
             {
-                if( Enum.TryParse( GetString( "ApplicationLanguage", "English" ), true, out TeAppLanguage language ) )
+                if( Enum.TryParse( GetString( "ApplicationLanguage", "German" ), true, out TeAppLanguage language ) )
                 {
                     switch( language )
                     {
@@ -102,7 +102,15 @@ namespace HomeZone.UiObjects.TestSettings
         /// <value>
         /// The Flux starting timeout.
         /// </value>
-        public TimeSpan FluxStartTimeout => TimeSpan.FromSeconds( GetInt( "FluxStartTimeout", 60 ) );
+        public TimeSpan FluxStartTimeout => TimeSpan.FromSeconds( GetInt( "FluxStartTimeout", 15 ) );
+
+        /// <summary>
+        /// Gets timeout for starting Flux with a geometry which has not been boostet previously
+        /// </summary>
+        /// <value>
+        /// The Flux boost and starting timeout
+        /// </value>
+        public TimeSpan FluxBoostAndStartTimeout => TimeSpan.FromSeconds( GetInt( "FluxBoostAndStartTimeout", 60 ) );
 
         /// <summary>
         /// Gets timeout for saving items.

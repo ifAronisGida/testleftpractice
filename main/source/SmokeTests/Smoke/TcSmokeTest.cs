@@ -1,7 +1,7 @@
+using HomeZone.UiCommonFunctions.Base;
+using HomeZone.UiObjectsTests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
-using HomeZone.UiTests.Base;
-using HomeZone.UiTests.Utilities;
 
 namespace HomeZone.SmokeTests.Smoke
 {
@@ -19,7 +19,7 @@ namespace HomeZone.SmokeTests.Smoke
         /// Smoke test: creating test items, adding bend and cut solutions to parts, testing..., deleting the test items.
         /// </summary>
         [TestMethod, UniqueName( "524A05EA-D25E-423E-8974-EF4CC6B7F8F0" )]
-        [Tag( "Smoke" )]
+        //[Tag( "Smoke" )]
         public void SmokeTest()
         {
             Act( DoSmokeTest );
