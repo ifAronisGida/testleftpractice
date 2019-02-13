@@ -12,7 +12,6 @@ using SmartBear.TestLeft;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using Trumpf.AutoTest.Facts;
 
 namespace HomeZone.UiCommonFunctions.Base
@@ -136,7 +135,7 @@ namespace HomeZone.UiCommonFunctions.Base
             }
             catch( Exception ex )
             {
-                Driver.Log.Error( ex.Message, ex.StackTrace  ); //automatically creates a screenshot
+                Driver.Log.Error( ex.Message, ex.StackTrace ); //automatically creates a screenshot
                 Driver.Log.CloseFolder();
                 throw;
             }
@@ -146,23 +145,11 @@ namespace HomeZone.UiCommonFunctions.Base
             => mAutoFact.Act( action, caption );
 
         /// <summary>
-        /// Returns the logging folder name
-        /// </summary>
-        /// <param name="assemblyName"></param>
-        /// <returns>logging folder name</returns>
-        protected static string GetLoggingFolder(string assemblyName)
-        {
-            string testResultFolder = Path.GetFullPath( Path.Combine( AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..", "TestResults" ));
-            return Path.Combine( testResultFolder, assemblyName );
-        }
-
-        /// <summary>
         /// Save Log File after finishing all tests in Assembly
         /// </summary>
-        protected static void AssemblyCleanup( Assembly assembly )
+        protected static void AssemblyCleanup()
         {
-            string testResultPath = GetLoggingFolder( AssemblyName.GetAssemblyName( assembly.ManifestModule.Name ).Name );
-            Driver.Log.Save( testResultPath, Log.Format.Html );
+            Driver.Log.Save( TestSettings.ResultsDirectory, Log.Format.Html );
         }
     }
 }
