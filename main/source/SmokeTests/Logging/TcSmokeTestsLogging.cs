@@ -1,6 +1,5 @@
 ﻿using HomeZone.UiCommonFunctions.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Reflection;
 
 namespace HomeZone.SmokeTests.Logging
 {
@@ -11,9 +10,9 @@ namespace HomeZone.SmokeTests.Logging
         /// Save Log File after finishing all tests in Assembly
         /// </summary>
         [AssemblyCleanup]
-        public static void AssemblyCleanup()
+        public static new void AssemblyCleanup()
         {
-            AssemblyCleanup( Assembly.GetExecutingAssembly() );
+            TcBaseTestClass.AssemblyCleanup();
         }
     }
 }

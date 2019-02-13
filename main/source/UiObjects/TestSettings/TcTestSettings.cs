@@ -168,6 +168,14 @@ namespace HomeZone.UiObjects.TestSettings
         /// </value>
         public TimeSpan PartOverlayDisappearTimeout => TimeSpan.FromSeconds( GetInt( "PartOverlayDisappearTimeout", 90 ) );
 
+        /// <summary>
+        /// Gets the test results directory
+        /// </summary>
+        /// <value>
+        /// The thest results directory
+        /// </value>
+        public string ResultsDirectory => mTestContext.ResultsDirectory;
+
         private string GetString( string key, string defaultValue )
         {
             var value = ( string )mTestContext.Properties[ key ];
