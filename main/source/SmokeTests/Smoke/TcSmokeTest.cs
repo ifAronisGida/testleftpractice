@@ -22,7 +22,7 @@ namespace HomeZone.SmokeTests.Smoke
         //[Tag( "Smoke" )]
         public void SmokeTest()
         {
-            Act( DoSmokeTest );
+            ExecuteUITest( DoSmokeTest, "HomeZone Smoke Test" );
         }
 
         /// <summary>

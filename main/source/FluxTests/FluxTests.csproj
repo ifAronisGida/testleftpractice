@@ -67,10 +67,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataMigration\TcDataManagerTest.cs" />
     <Compile Include="Flux\TcFluxTest.cs" />
+    <Compile Include="Logging\TcFluxTestsLogging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\TcBendSettingsTest.cs" />
-    <Compile Include="Settings\TcBendToolListsTest.cs" />
+    <Compile Include="Settings\TcAppSettingsTest.cs" />
+    <Compile Include="Settings\TcBendDeductionTest.cs" />
+    <Compile Include="Settings\TcBendToolManagementTest.cs" />
     <Compile Include="Settings\TcSettingsDialogTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -90,5 +93,6 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
