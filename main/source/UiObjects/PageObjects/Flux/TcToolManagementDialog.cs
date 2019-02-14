@@ -1,14 +1,91 @@
-﻿using HomeZone.UiObjectInterfaces.Controls;
+﻿#region HEADER
+//--------------------------------------------------------------------------------------------------
+// All rights reserved to TRUMPF GmbH + Co. KG, Germany
+// -------------------------------------------------------------------------------------------------
+//
+//$File: //SW08/HomeZone_Testing/main/source/UiObjects/PageObjects/Flux/TcLandingPages.cs $
+//$Author: steinertth $
+//$Revision: #1 $ - $Date: 2018/10/24 $ 
+// -------------------------------------------------------------------------------------------------
+#endregion
+
+#region USING
+
+using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Flux;
 using HomeZone.UiObjects.Utilities;
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
+#endregion
+
 
 namespace HomeZone.UiObjects.PageObjects.Flux
 {
+    /// <summary>
+    /// Tool Management Dialog
+    /// </summary>
     internal class TcToolManagementDialog : TcPageObjectBase, IChildOf<TcFluxApp>, TiToolManagementDialog
     {
+        #region private constants
+        #endregion
+
+        #region constructor
+        #endregion
+
+        #region public static methods
+        #endregion
+
+        #region public methods
+
+        /// <summary>
+        /// Create a new tool list
+        /// </summary>
+        /// <param name="toolListName">tool list name</param>
+        public void NewToolList( string toolListName )
+        {
+            ActionsButton.Click();
+            AddNewToolList();
+            EditToolListNameButton.Click();
+            ToolListText.Value = toolListName;
+            SaveToolListNameButton.Click();
+        }
+
+        /// <summary>
+        /// Close the tool managment dialog
+        /// </summary>
+        public void Close()
+        {
+            CloseToolManagementDialogButton.Click();
+        }
+
+        /// <summary>
+        /// Delete a given tool list
+        /// </summary>
+        /// <param name="toolListName">tool list name of the tool list to be deleted</param>
+        public void DeleteToolList( string toolListName )
+        {
+            OpenToolListsDropdown.Click();
+            SelectToolList( toolListName );
+            DeleteToolListButton();
+            SaveChanges();
+        }
+
+        /// <summary>
+        /// Renmae a given tool list
+        /// </summary>
+        /// <param name="toolListName"></param>
+        public void RenameToolList( string oldToolListName, string newToolListName )
+        {
+            OpenToolListsDropdown.Click();
+            SelectToolList( oldToolListName );
+            EditToolListNameButton.Click();
+            ToolListText.Value = newToolListName;
+            SaveToolListNameButton.Click();
+        }
+        #endregion
+
+        #region private methods
 
         protected override Search SearchPattern => Search.By( new WPFPattern { ClrFullClassName = "Flux.App.BToolsDlg" } );
 
@@ -54,7 +131,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 
         private void SaveChanges()
         {
-
+            //TODO
         }
 
         private IControlObject SelectToolList( string toolListName )
@@ -65,36 +142,19 @@ namespace HomeZone.UiObjects.PageObjects.Flux
                 WPFControlText = toolListName
             } );
         }
+        #endregion
 
-        public void NewToolList( string toolListName )
-        {
-            ActionsButton.Click();
-            AddNewToolList();
-            EditToolListNameButton.Click();
-            ToolListText.Value = toolListName;
-            SaveToolListNameButton.Click();
-        }
+        #region public static members
+        #endregion
 
-        public void Close()
-        {
-            CloseToolManagementDialogButton.Click();
-        }
+        #region private static members
+        #endregion
 
-        public void DeleteToolList( string toolListName )
-        {
-            OpenToolListsDropdown.Click();
-            SelectToolList( toolListName );
-            DeleteToolListButton();
-            SaveChanges();
-        }
+        #region private members
+        #endregion
 
-        public void RenameToolList( string toolListName )
-        {
+        #region properties
 
-            EditToolListNameButton.Click();
-            ToolListText.Value = toolListName;
-            SaveToolListNameButton.Click();
-            throw new System.NotImplementedException();
-        }
+        #endregion
     }
 }

@@ -8,6 +8,6 @@
 
         void DeleteToolList( string toolListName );
 
-        void RenameToolList( string toolListName );
+        void RenameToolList( string oldToolListName, string newToolListName );
     }
 }

@@ -163,7 +163,7 @@ namespace HomeZone.FluxTests.Settings
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
             bendSettings.OpenToolListsConfiguration();
             Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
-            Flux.ToolManagement.RenameToolList( toollistName );
+            Flux.ToolManagement.RenameToolList( toollistName, newName );
             Flux.ToolManagement.Close();
             Flux.WaitForSynchronization( TestSettings.FluxSyncTimeout );
             settingsDialog.Save();
