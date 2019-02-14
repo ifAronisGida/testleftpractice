@@ -1,8 +1,7 @@
 ﻿using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Flux;
+using HomeZone.UiObjects.Utilities;
 using SmartBear.TestLeft.TestObjects.WPF;
-using System.Collections.Generic;
-using System.Linq;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 
@@ -22,14 +21,25 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 
         private TiButton CloseToolManagementDialogButton => FindByControlName<TiButton>( "cCloseBtn" );
 
-        private IList<IControlObject> CreateToolListControl => FindAll<IControlObject>( new WPFPattern { ClrFullClassName = "System.Windows.Controls.MenuItem" } ).ToList();
+        private void AddNewToolList()
+        {
+            System.Threading.Thread.Sleep( 1000 );
+            IControlObject newToolListButton= Parent.Find<TcGenericControlObject>( new WPFPattern()
+            {
+                ClrFullClassName = "System.Windows.Controls.MenuItem",
+                WPFControlText = "_A  Werkzeugliste anlegen"
+            } );
+            newToolListButton.Click();
+            System.Threading.Thread.Sleep( 1000 );
+        }
 
-        public void NewToolList( string name )
+
+        public void NewToolList( string toolListName )
         {
             ActionsButton.Click();
-            CreateToolListControl[ 0 ].Click();
+            AddNewToolList();
             EditToolListNameButton.Click();
-            ToolListText.Value = name;
+            ToolListText.Value = toolListName;
             SaveToolListNameButton.Click();
         }
 
@@ -37,5 +47,6 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         {
             CloseToolManagementDialogButton.Click();
         }
+
     }
 }
