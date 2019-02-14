@@ -38,6 +38,7 @@ namespace HomeZone.UiCommonFunctions.Base
             DesignApp = new TcDesign( Driver );
             CutApp = new TcCut( Driver );
             FluxApp = new TcFlux( TestSettings.FluxProcessName, Driver );
+            Flux = new TcFluxApp( TestSettings.FluxProcessName, Driver );
 
             TcAppLangDependentStrings.CurrentLanguage = TestSettings.ApplicationLanguage;
 
@@ -118,6 +119,8 @@ namespace HomeZone.UiCommonFunctions.Base
         /// The Flux application.
         /// </value>
         public static TiFlux FluxApp { get; private set; }
+
+        public static TiFluxApp Flux { get; private set; }
 
         /// <summary>
         /// Execute a UI  Test

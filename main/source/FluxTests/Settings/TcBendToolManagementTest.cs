@@ -1,6 +1,4 @@
 using HomeZone.UiCommonFunctions.Base;
-using HomeZone.UiObjectInterfaces.Flux;
-using HomeZone.UiObjects.PageObjects.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
@@ -75,9 +73,8 @@ namespace HomeZone.FluxTests.Settings
 
             bendSettings.OpenToolListsConfiguration();
 
-            TiFluxApp Flux = new TcFluxApp( TestSettings.FluxProcessName, Driver );
-            Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
             string toollistName = "superTools";
+            Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
             Flux.ToolManagement.NewToolList( toollistName );
             Flux.ToolManagement.Close();
             Flux.WaitForSynchronization( TestSettings.FluxSyncTimeout );
@@ -107,9 +104,11 @@ namespace HomeZone.FluxTests.Settings
             bendSettings.OpenToolListsConfiguration();
 
             string toollistName = "rubbishTools";
-            TcLandingPages flux = new TcLandingPages( Driver );
-            bool visible = flux.ToolsListsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            flux.CreateNewToolList( toollistName );
+
+            Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            Flux.ToolManagement.NewToolList( toollistName );
+            Flux.ToolManagement.Close();
+            Flux.WaitForSynchronization( TestSettings.FluxSyncTimeout );
             settingsDialog.Save();
 
             // Delete the  toollist
@@ -117,12 +116,11 @@ namespace HomeZone.FluxTests.Settings
             bendSettings.Goto();
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
             bendSettings.OpenToolListsConfiguration();
-            Thread.Sleep( TestSettings.FluxStartTimeout );
 
-            flux = new TcLandingPages( Driver );
-            visible = flux.ToolsListsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            flux.DeleteToollist( toollistName );
-
+            Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            Flux.ToolManagement.DeleteToolList( toollistName );
+            Flux.ToolManagement.Close();
+            Flux.WaitForSynchronization( TestSettings.FluxSyncTimeout );
             settingsDialog.Save();
 
             // wait for sync
@@ -152,9 +150,10 @@ namespace HomeZone.FluxTests.Settings
             bendSettings.OpenToolListsConfiguration();
 
             string toollistName = "oldName";
-            TcLandingPages flux = new TcLandingPages( Driver );
-            bool visible = flux.ToolsListsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            flux.CreateNewToolList( toollistName );
+            Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            Flux.ToolManagement.DeleteToolList( toollistName );
+            Flux.ToolManagement.Close();
+            Flux.WaitForSynchronization( TestSettings.FluxSyncTimeout );
             settingsDialog.Save();
 
             // rename toollist
@@ -163,13 +162,10 @@ namespace HomeZone.FluxTests.Settings
             bendSettings.Goto();
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
             bendSettings.OpenToolListsConfiguration();
-            Thread.Sleep( TestSettings.FluxStartTimeout );
-
-            flux = new TcLandingPages( Driver );
-            visible = flux.ToolsListsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            flux.RenameToollist( toollistName, newName );
-            Thread.Sleep( TcLandingPages.SYNC_TIMEOUT );
-
+            Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            Flux.ToolManagement.RenameToolList( toollistName );
+            Flux.ToolManagement.Close();
+            Flux.WaitForSynchronization( TestSettings.FluxSyncTimeout );
             settingsDialog.Save();
 
             // import part and use toollist
@@ -196,9 +192,9 @@ namespace HomeZone.FluxTests.Settings
 
             bendSettings.OpenToolsConfiguration();
 
-            TcLandingPages flux = new TcLandingPages( Driver );
-            bool visible = flux.ToolsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            flux.CloseToolsDialog();
+            Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            //TODO: implement tests (like editing tools)
+            Flux.ToolManagement.Close();
 
             settingsDialog.Cancel();
         }
