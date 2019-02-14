@@ -9,6 +9,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 {
     internal class TcToolManagementDialog : TcPageObjectBase, IChildOf<TcFluxApp>, TiToolManagementDialog
     {
+
         protected override Search SearchPattern => Search.By( new WPFPattern { ClrFullClassName = "Flux.App.BToolsDlg" } );
 
         private TiButton ActionsButton => FindByControlName<TiButton>( "btnActions" );
@@ -21,6 +22,12 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 
         private TiButton CloseToolManagementDialogButton => FindByControlName<TiButton>( "cCloseBtn" );
 
+        private TiButton OpenToolListsDropdown => FindByControlName<TiButton>( "cbCollection" );
+
+        /// <summary>
+        /// Add a new tool list
+        /// IMPORTANT: This function is language dependent!
+        /// </summary>
         private void AddNewToolList()
         {
             System.Threading.Thread.Sleep( 1000 );
@@ -33,6 +40,31 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             System.Threading.Thread.Sleep( 1000 );
         }
 
+        private void DeleteToolListButton()
+        {
+            System.Threading.Thread.Sleep( 1000 );
+            IControlObject newToolListButton= Parent.Find<TcGenericControlObject>( new WPFPattern()
+            {
+                ClrFullClassName = "System.Windows.Controls.MenuItem",
+                WPFControlOrdinalNo = 4
+            } );
+            newToolListButton.Click();
+            System.Threading.Thread.Sleep( 1000 );
+        }
+
+        private void SaveChanges()
+        {
+
+        }
+
+        private IControlObject SelectToolList( string toolListName )
+        {
+            return Parent.Find<TcGenericControlObject>( new WPFPattern()
+            {
+                ClrFullClassName = "System.Windows.Controls.MenuItem",
+                WPFControlText = toolListName
+            } );
+        }
 
         public void NewToolList( string toolListName )
         {
@@ -48,5 +80,21 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             CloseToolManagementDialogButton.Click();
         }
 
+        public void DeleteToolList( string toolListName )
+        {
+            OpenToolListsDropdown.Click();
+            SelectToolList( toolListName );
+            DeleteToolListButton();
+            SaveChanges();
+        }
+
+        public void RenameToolList( string toolListName )
+        {
+
+            EditToolListNameButton.Click();
+            ToolListText.Value = toolListName;
+            SaveToolListNameButton.Click();
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -2,8 +2,12 @@
 {
     public interface TiToolManagementDialog
     {
-        void NewToolList( string name );
+        void NewToolList( string toolListName );
 
         void Close();
+
+        void DeleteToolList( string toolListName );
+
+        void RenameToolList( string toolListName );
     }
 }
