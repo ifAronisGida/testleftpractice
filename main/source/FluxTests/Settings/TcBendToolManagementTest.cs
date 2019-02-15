@@ -3,7 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using System;
-using System.Threading;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
@@ -124,9 +123,6 @@ namespace HomeZone.FluxTests.Settings
             Flux.ToolManagement.Close();
             Flux.WaitForSynchronization( TestSettings.FluxSyncTimeout );
             settingsDialog.Save();
-
-            // wait for sync
-            Thread.Sleep( 20000 );
 
             // import part and use toollist
             var parts = HomeZone.GotoParts();
