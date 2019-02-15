@@ -96,6 +96,7 @@
     <Compile Include="Dialogs\TiPartComputeAllConfirmation.cs" />
     <Compile Include="Flux\TiFlux.cs" />
     <Compile Include="Flux\TiFluxApp.cs" />
+    <Compile Include="Flux\TiFluxMessageBox.cs" />
     <Compile Include="Flux\TiToolManagementDialog.cs" />
     <Compile Include="Machine\TiMachineDetail.cs" />
     <Compile Include="Machine\TiMachines.cs" />

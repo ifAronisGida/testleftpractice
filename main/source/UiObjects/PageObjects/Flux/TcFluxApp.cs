@@ -29,7 +29,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         #region private constants
 
         private readonly Lazy<TcToolManagementDialog> mToolManagementDialog;
-
+        private readonly Lazy<TcFluxMessageBox> mMessageBox;
         #endregion
 
         #region constructor
@@ -43,6 +43,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         {
             Driver = driver;
             mToolManagementDialog = new Lazy<TcToolManagementDialog>( On<TcToolManagementDialog> );
+            mMessageBox = new Lazy<TcFluxMessageBox>( On<TcFluxMessageBox> );
         }
 
         #endregion
@@ -71,9 +72,18 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             Thread.Sleep( timeout );
         }
 
+        public void SaveChanges()
+        {
+            MessageBoxExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            mMessageBox.Value.Save();
+        }
+
         #endregion
 
         #region private methods
+
+        private Wool MessageBoxExists => mMessageBox.Value.Exists;
+
         #endregion
 
         #region public static members

@@ -129,6 +129,7 @@
     <Compile Include="PageObjects\Flux\TcFluxApp.cs" />
     <Compile Include="PageObjects\Flux\TcFluxConfigureMachine.cs" />
     <Compile Include="PageObjects\Flux\TcLandingPages.cs" />
+    <Compile Include="PageObjects\Flux\TcFluxMessageBox.cs" />
     <Compile Include="PageObjects\Flux\TcToolManagementDialog.cs" />
     <Compile Include="PageObjects\Machine\TcMachineDetail.cs" />
     <Compile Include="PageObjects\Machine\TcMachinePopupMenu.cs" />

@@ -77,6 +77,7 @@ namespace HomeZone.FluxTests.Settings
             Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
             Flux.ToolManagement.NewToolList( toollistName );
             Flux.ToolManagement.Close();
+            Flux.SaveChanges();
             Flux.WaitForSynchronization( TestSettings.FluxSyncTimeout );
 
             settingsDialog.Cancel();

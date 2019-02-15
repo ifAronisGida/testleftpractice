@@ -28,6 +28,9 @@ namespace HomeZone.UiObjects.PageObjects.Flux
     internal class TcToolManagementDialog : TcPageObjectBase, IChildOf<TcFluxApp>, TiToolManagementDialog
     {
         #region private constants
+
+
+
         #endregion
 
         #region constructor
@@ -68,7 +71,6 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             OpenToolListsDropdown.Click();
             SelectToolList( toolListName );
             DeleteToolListButton();
-            SaveChanges();
         }
 
         /// <summary>
@@ -83,6 +85,8 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             ToolListText.Value = newToolListName;
             SaveToolListNameButton.Click();
         }
+
+
         #endregion
 
         #region private methods
@@ -115,6 +119,8 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             } );
             newToolListButton.Click();
             System.Threading.Thread.Sleep( 1000 );
+
+            //Node.Find<IControl>
         }
 
         private void DeleteToolListButton()
@@ -129,10 +135,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             System.Threading.Thread.Sleep( 1000 );
         }
 
-        private void SaveChanges()
-        {
-            //TODO
-        }
+
 
         private IControlObject SelectToolList( string toolListName )
         {

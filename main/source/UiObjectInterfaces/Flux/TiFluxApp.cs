@@ -10,5 +10,6 @@ namespace HomeZone.UiObjectInterfaces.Flux
         TiToolManagementDialog ToolManagement { get; }
 
         void WaitForSynchronization( TimeSpan timeout );
+        void SaveChanges();
     }
 }
