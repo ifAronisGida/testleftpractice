@@ -21,6 +21,7 @@ namespace HomeZone.UiObjects.Utilities
             ["System.Windows.Controls.TextBox"] = controlObject => new TcTextEdit( controlObject ),
             ["System.Windows.Controls.Image"] = controlObject => new TcButton( controlObject ),
             ["System.Windows.Controls.Border"] = controlObject => new TcButton( controlObject ),
+            ["System.Windows.Controls.ComboBox"] = controlObject => new TcButton( controlObject ),
             ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruComboBox"] = controlObject => new TcTruComboBox( controlObject ),
             ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruIconButton"] = controlObject => new TcButton( controlObject ),
             ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruTextBlock"] = controlObject => new TcTextBlock(controlObject),

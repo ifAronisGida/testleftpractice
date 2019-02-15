@@ -109,6 +109,7 @@ namespace HomeZone.FluxTests.Settings
             Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
             Flux.ToolManagement.NewToolList( toollistName );
             Flux.ToolManagement.Close();
+            Flux.SaveChanges();
             Flux.WaitForSynchronization( TestSettings.FluxSyncTimeout );
             settingsDialog.Save();
 
@@ -152,8 +153,9 @@ namespace HomeZone.FluxTests.Settings
 
             string toollistName = "oldName";
             Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
-            Flux.ToolManagement.DeleteToolList( toollistName );
+            Flux.ToolManagement.NewToolList( toollistName );
             Flux.ToolManagement.Close();
+            Flux.SaveChanges();
             Flux.WaitForSynchronization( TestSettings.FluxSyncTimeout );
             settingsDialog.Save();
 
@@ -166,6 +168,7 @@ namespace HomeZone.FluxTests.Settings
             Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
             Flux.ToolManagement.RenameToolList( toollistName, newName );
             Flux.ToolManagement.Close();
+            Flux.SaveChanges();
             Flux.WaitForSynchronization( TestSettings.FluxSyncTimeout );
             settingsDialog.Save();
 

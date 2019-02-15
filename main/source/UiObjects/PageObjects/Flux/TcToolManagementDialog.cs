@@ -15,7 +15,9 @@ using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Flux;
 using HomeZone.UiObjects.Utilities;
 using SmartBear.TestLeft.TestObjects.WPF;
+using System;
 using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.Waiting;
 using Trumpf.Coparoo.Desktop.WPF;
 #endregion
 
@@ -29,11 +31,19 @@ namespace HomeZone.UiObjects.PageObjects.Flux
     {
         #region private constants
 
-
+        private readonly Lazy<TcToolManagementDropdown> mDropDown;
+        private readonly Lazy<TcFluxMessageBox> mMessageBox;
 
         #endregion
 
         #region constructor
+
+        public TcToolManagementDialog()
+        {
+            mDropDown = new Lazy<TcToolManagementDropdown>( On<TcToolManagementDropdown> );
+            mMessageBox = new Lazy<TcFluxMessageBox>( On<TcFluxMessageBox> );
+        }
+
         #endregion
 
         #region public static methods
@@ -70,7 +80,10 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         {
             OpenToolListsDropdown.Click();
             SelectToolList( toolListName );
+            ActionsButton.Click();
             DeleteToolListButton();
+            mMessageBox.Value.Exists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            mMessageBox.Value.Save();
         }
 
         /// <summary>
@@ -111,39 +124,27 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         /// </summary>
         private void AddNewToolList()
         {
-            System.Threading.Thread.Sleep( 1000 );
-            IControlObject newToolListButton= Parent.Find<TcGenericControlObject>( new WPFPattern()
-            {
-                ClrFullClassName = "System.Windows.Controls.MenuItem",
-                WPFControlText = "_A  Werkzeugliste anlegen"
-            } );
-            newToolListButton.Click();
-            System.Threading.Thread.Sleep( 1000 );
-
-            //Node.Find<IControl>
+            DrowDownExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            mDropDown.Value.NewToolList();
         }
+
+        private Wool DrowDownExists => mDropDown.Value.Exists;
 
         private void DeleteToolListButton()
         {
-            System.Threading.Thread.Sleep( 1000 );
-            IControlObject newToolListButton= Parent.Find<TcGenericControlObject>( new WPFPattern()
-            {
-                ClrFullClassName = "System.Windows.Controls.MenuItem",
-                WPFControlOrdinalNo = 4
-            } );
-            newToolListButton.Click();
-            System.Threading.Thread.Sleep( 1000 );
+            DrowDownExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            mDropDown.Value.DeleteToolList();
         }
 
-
-
-        private IControlObject SelectToolList( string toolListName )
+        private void SelectToolList( string toolListName )
         {
-            return Parent.Find<TcGenericControlObject>( new WPFPattern()
+            System.Threading.Thread.Sleep( 500 );
+            IControlObject dropDownEntry =  Parent.Find<TcGenericControlObject>( new WPFPattern()
             {
-                ClrFullClassName = "System.Windows.Controls.MenuItem",
+                ClrFullClassName = "System.Windows.Controls.ComboBoxItem",
                 WPFControlText = toolListName
             } );
+            dropDownEntry.Click();
         }
         #endregion
 

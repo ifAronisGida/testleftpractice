@@ -21,7 +21,10 @@ using Trumpf.Coparoo.Desktop.WPF;
 
 namespace HomeZone.UiObjects.PageObjects.Flux
 {
-    internal class TcFluxMessageBox : TcPageObjectBase, IChildOf<TcFluxApp>, TiFluxMessageBox
+    /// <summary>
+    /// Dropdown of the tool management dialog. Appears after pression the action button
+    /// </summary>
+    public class TcToolManagementDropdown : TcPageObjectBase, IChildOf<TcFluxApp>, TiToolManagementDropdown
     {
         #region private constants
         #endregion
@@ -35,26 +38,40 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         #region public methods
 
         /// <summary>
-        /// Press Save or Yes. Is mapped to ordinal number 1
+        /// Click the new tool list entry
         /// </summary>
-        public void Save()
+        public void NewToolList()
         {
-            IControlObject saveButton = Find<TcGenericControlObject>( new WPFPattern
+            IControlObject newToolListButton= Parent.Find<TcGenericControlObject>( new WPFPattern()
             {
-                ClrFullClassName = "System.Windows.Controls.Button",
+                ClrFullClassName = "System.Windows.Controls.MenuItem",
                 WPFControlOrdinalNo = 1
             } );
-            saveButton.Click();
+            newToolListButton.Click();
         }
+
+        /// <summary>
+        /// Clilck the delete tool list entry
+        /// </summary>
+        public void DeleteToolList()
+        {
+            IControlObject deleteToolListButton= Parent.Find<TcGenericControlObject>( new WPFPattern()
+            {
+                ClrFullClassName = "System.Windows.Controls.MenuItem",
+                WPFControlOrdinalNo = 4
+            } );
+            deleteToolListButton.Click();
+        }
+
         #endregion
 
         #region private methods
-        protected override Search SearchPattern => Search.By( new WPFPattern { ClrFullClassName = "Flux.MsgBox" } );
+
+        protected override Search SearchPattern => Search.By( new WPFPattern { ClrFullClassName = "System.Windows.Window", Visible = true } );
 
         #endregion
 
         #region public static members
-
         #endregion
 
         #region private static members
