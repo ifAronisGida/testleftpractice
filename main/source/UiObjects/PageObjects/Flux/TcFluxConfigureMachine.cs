@@ -19,7 +19,7 @@ using System.Threading;
 
 namespace HomeZone.UiObjects.PageObjects.Flux
 {
-    internal class TcFluxConfigureMachine
+    public class TcFluxConfigureMachine
     {
         #region private constants
         #endregion
