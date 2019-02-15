@@ -24,7 +24,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
     /// <summary>
     /// Dropdown of the tool management dialog. Appears after pression the action button
     /// </summary>
-    public class TcToolManagementDropdown : TcPageObjectBase, IChildOf<TcFluxApp>, TiToolManagementDropdown
+    internal class TcToolManagementDropdown : TcPageObjectBase, IChildOf<TcFluxApp>, TiToolManagementDropdown
     {
         #region private constants
         #endregion

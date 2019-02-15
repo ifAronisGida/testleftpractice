@@ -38,6 +38,9 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 
         #region constructor
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public TcToolManagementDialog()
         {
             mDropDown = new Lazy<TcToolManagementDropdown>( On<TcToolManagementDropdown> );
@@ -118,10 +121,6 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 
         private TiButton OpenToolListsDropdown => FindByControlName<TiButton>( "cbCollection" );
 
-        /// <summary>
-        /// Add a new tool list
-        /// IMPORTANT: This function is language dependent!
-        /// </summary>
         private void AddNewToolList()
         {
             DrowDownExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
@@ -146,6 +145,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             } );
             dropDownEntry.Click();
         }
+
         #endregion
 
         #region public static members

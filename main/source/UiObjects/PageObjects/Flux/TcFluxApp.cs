@@ -54,16 +54,6 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         #region public methods
 
         /// <summary>
-        /// ToolManagement Dialog
-        /// </summary>
-        public TiToolManagementDialog ToolManagement => On<TcToolManagementDialog>();
-
-        /// <summary>
-        /// Check if the ToolManagmeent Dialog Exists
-        /// </summary>
-        public Wool ToolManamgementDialogExists => mToolManagementDialog.Value.Exists;
-
-        /// <summary>
         /// Wait until Flux and Boost ist synchronized
         /// </summary>
         /// <param name="timeout">Synchronisation timeout</param>
@@ -72,6 +62,9 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             Thread.Sleep( timeout );
         }
 
+        /// <summary>
+        /// Save Changes when asked in a message box
+        /// </summary>
         public void SaveChanges()
         {
             MessageBoxExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
@@ -96,6 +89,17 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         #endregion
 
         #region properties
+
+        /// <summary>
+        /// Check if the ToolManagmeent Dialog Exists
+        /// </summary>
+        public Wool ToolManamgementDialogExists => mToolManagementDialog.Value.Exists;
+
+        /// <summary>
+        /// ToolManagement Dialog
+        /// </summary>
+        public TiToolManagementDialog ToolManagement => On<TcToolManagementDialog>();
+
         #endregion
     }
 }

@@ -113,13 +113,16 @@ namespace HomeZone.UiCommonFunctions.Base
 
 
         /// <summary>
-        /// Manages access to the Flux application.
+        /// Manages access to the Flux application. TODO: Has to be refactored into TiFluxApp. Do not use this Class for new functionality
         /// </summary>
         /// <value>
         /// The Flux application.
         /// </value>
         public static TiFlux FluxApp { get; private set; }
 
+        /// <summary>
+        /// Manages access to the Flux application
+        /// </summary>
         public static TiFluxApp Flux { get; private set; }
 
         /// <summary>

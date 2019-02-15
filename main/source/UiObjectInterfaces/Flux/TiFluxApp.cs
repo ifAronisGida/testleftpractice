@@ -1,15 +1,52 @@
-﻿using System;
+﻿#region HEADER
+//--------------------------------------------------------------------------------------------------
+// All rights reserved to TRUMPF GmbH + Co. KG, Germany
+// -------------------------------------------------------------------------------------------------
+//
+//$File: $
+//$Author: $
+//$Revision: $ - $Date: $ 
+// -------------------------------------------------------------------------------------------------
+#endregion
+
+#region USING
+
+using System;
 using Trumpf.Coparoo.Desktop.Waiting;
+
+#endregion
 
 namespace HomeZone.UiObjectInterfaces.Flux
 {
     public interface TiFluxApp
     {
+        #region public methods
+
+        /// <summary>
+        /// Wait until Flux and Boost ist synchronized
+        /// </summary>
+        /// <param name="timeout">Synchronisation timeout</param>
+        void WaitForSynchronization( TimeSpan timeout );
+
+        /// <summary>
+        /// Save Changes when asked in a message box
+        /// </summary>
+        void SaveChanges();
+
+        #endregion
+
+        #region properties
+
+        /// <summary>
+        /// Check if the ToolManagmeent Dialog Exists
+        /// </summary>
         Wool ToolManamgementDialogExists { get; }
 
+        /// <summary>
+        /// ToolManagement Dialog
+        /// </summary>
         TiToolManagementDialog ToolManagement { get; }
 
-        void WaitForSynchronization( TimeSpan timeout );
-        void SaveChanges();
+        #endregion
     }
 }
