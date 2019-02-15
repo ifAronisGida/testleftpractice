@@ -1,24 +1,40 @@
-using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Dialogs;
+using HomeZone.UiObjectInterfaces.Dialogs.ThirdPartyComponents;
+using HomeZone.UiObjects.ControlObjects;
+using HomeZone.UiObjects.PageObjects.Dialogs.ThirdPartyComponents;
+
 
 namespace HomeZone.UiObjects.PageObjects.Dialogs
 {
     /// <summary>
     /// PageObject for the Help app.
     /// </summary>
-    /// <seealso cref="PageObject" />
-    /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    public class TcAboutDialog : PageObject, IChildOf<TcHomeZoneApp>, TiAboutDialog
+    /// <seealso cref="TcPageObjectBase" />
+    /// <seealso cref="IChildOf{T}" />
+    public class TcAboutDialog : TcPageObjectBase, IChildOf<TcHomeZoneApp>, TiAboutDialog
     {
         protected override Search SearchPattern => Search.ByUid( "AboutDialog" );
 
-        internal IButton CopyToClipboardButton => Node.Find<IButton>( Search.ByUid( "CopyToClipboardButton" ), 2 );
-        internal IButton OkButton => Node.Find<IButton>( Search.ByUid( "OkButton" ), 3 );
+        internal TcButton ShowVersionInfoButton => Find<TcButton>( "ShowVersionInfoButton", depth: 6 );
+        internal TcButton ShowThirdPartyButton => Find<TcButton>( "ShowThirdPartyButton", depth: 6 );
+        internal TcButton CopyToClipboardButton => Find<TcButton>( "CopyToClipboardButton", depth: 2 );
+        internal TcButton OkButton => Find<TcButton>( "OkButton", depth: 3 );
+
+        public void ShowVersionInfo()
+        {
+            ShowVersionInfoButton.Click();
+        }
+
+        public Ti3rdPartyComponentsDialog ShowThirdPartyComponents()
+        {
+            ShowThirdPartyButton.Click();
+            return On<Tc3rdPartyComponentsDialog>();
+        }
 
         /// <summary>
-        /// Closes the about dialog.
+        /// Copy info to clipboard.
         /// </summary>
         public void CopyToClipboard()
         {
@@ -32,13 +48,5 @@ namespace HomeZone.UiObjects.PageObjects.Dialogs
         {
             OkButton.Click();
         }
-
-        /// <summary>
-        /// PageObject is visible or not.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is visible; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsVisible => VisibleOnScreen.Value;
     }
 }

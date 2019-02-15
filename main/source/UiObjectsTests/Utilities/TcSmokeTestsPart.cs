@@ -15,7 +15,7 @@ namespace HomeZone.UiObjectsTests.Utilities
         /// Executes the part smoke tests.
         /// </summary>
         [TestMethod, UniqueName( "C04679F1-DD36-4F15-9490-9F87DA3C15F5" )]
-        [Tag( "SmokeTestsPart" )]
+        //[Tag( "SmokeTestsPart" )]
         public void ExecutePartSmokeTests()
         {
             //new TcDesignTest().DoDesignOpenClose();

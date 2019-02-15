@@ -120,8 +120,9 @@
     <Compile Include="PageObjects\Cut\TcTTSelectionDialog.cs" />
     <Compile Include="PageObjects\Design\TcDesign.cs" />
     <Compile Include="PageObjects\Design\TcDesignMessageBox.cs" />
-    <Compile Include="PageObjects\Dialogs\Tc3rdPartyComponentLicenseTextDialog.cs" />
-    <Compile Include="PageObjects\Dialogs\Tc3rdPartyComponentsDialog.cs" />
+    <Compile Include="PageObjects\Dialogs\ThirdPartyComponents\Tc3rdPartyComponentLicenseTextDialog.cs" />
+    <Compile Include="PageObjects\Dialogs\ThirdPartyComponents\Tc3rdPartyComponentRow.cs" />
+    <Compile Include="PageObjects\Dialogs\ThirdPartyComponents\Tc3rdPartyComponentsDialog.cs" />
     <Compile Include="PageObjects\Dialogs\TcAboutDialog.cs" />
     <Compile Include="PageObjects\Dialogs\TcEntitySelectionDialog.cs" />
     <Compile Include="PageObjects\Dialogs\TcMessageBox.cs" />
