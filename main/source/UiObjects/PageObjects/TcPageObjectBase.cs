@@ -1,8 +1,8 @@
-using System;
+using HomeZone.UiObjects.Utilities;
 using SmartBear.TestLeft.TestObjects;
+using System;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using HomeZone.UiObjects.Utilities;
 
 namespace HomeZone.UiObjects.PageObjects
 {

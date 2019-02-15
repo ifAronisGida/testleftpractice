@@ -113,6 +113,14 @@ namespace HomeZone.UiObjects.TestSettings
         public TimeSpan FluxBoostAndStartTimeout => TimeSpan.FromSeconds( GetInt( "FluxBoostAndStartTimeout", 60 ) );
 
         /// <summary>
+        /// Gets timeout for syncing data between Flux and Boost
+        /// </summary>
+        /// <value>
+        /// The Sync timeout
+        /// </value>
+        public TimeSpan FluxSyncTimeout => TimeSpan.FromSeconds( GetInt( "FluxSyncTimeout", 30 ) );
+
+        /// <summary>
         /// Gets timeout for saving items.
         /// </summary>
         /// <value>

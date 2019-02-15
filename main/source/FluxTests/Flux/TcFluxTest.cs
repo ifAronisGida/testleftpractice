@@ -15,6 +15,8 @@ namespace HomeZone.FluxTests.Flux
     [TestClass]
     public sealed class TcFluxTest : TcBaseTestClass
     {
+        private const string S_FLUX_MACHINE_5320 = "TruBend 5320 (6-axes) B23";
+
         private string mTestMachineName;
 
         private readonly TimeSpan mConfigureMachineOverlay = TimeSpan.FromSeconds( 20 );
@@ -42,7 +44,7 @@ namespace HomeZone.FluxTests.Flux
         /// <summary>
         /// Boost part with Flux
         /// </summary>
-        [ TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319D" )]
+        [TestMethod, UniqueName( "572477DE-8303-4579-AB5A-4CD33905319D" )]
         [Tag( "Flux" )]
         public void BoostPartSucessTest()
         {
@@ -56,7 +58,7 @@ namespace HomeZone.FluxTests.Flux
         [Tag( "Flux" )]
         public void BoostSolutionWithErrorTest()
         {
-            ExecuteUITest( DoBoostSolutionWithErrorTest, "Boost Solution with Errors");
+            ExecuteUITest( DoBoostSolutionWithErrorTest, "Boost Solution with Errors" );
         }
 
         /// <summary>
@@ -66,7 +68,7 @@ namespace HomeZone.FluxTests.Flux
         [Tag( "Flux" )]
         public void ReleaseBoostedPart()
         {
-            ExecuteUITest(DoReleaseBoostedPart, "Release Boosted Part");
+            ExecuteUITest( DoReleaseBoostedPart, "Release Boosted Part" );
         }
 
         /// <summary>
@@ -82,7 +84,7 @@ namespace HomeZone.FluxTests.Flux
         /// <summary>
         /// Closes a changed part without saving
         /// </summary>
-        [ TestMethod, UniqueName( "511d5620-52c1-4735-9fc4-370a62552eca" )]
+        [TestMethod, UniqueName( "511d5620-52c1-4735-9fc4-370a62552eca" )]
         [Tag( "Flux" )]
         public void CloseWithoutSave()
         {
@@ -113,12 +115,8 @@ namespace HomeZone.FluxTests.Flux
             var flux = FluxApp;
 
             var visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            if( visible )
-            {
-                flux.CloseApp();
-
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
-            }
+            flux.CloseApp();
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
             Assert.IsTrue( visible );
 
@@ -136,12 +134,8 @@ namespace HomeZone.FluxTests.Flux
             flux = FluxApp;
 
             visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            if( visible )
-            {
-                flux.CloseApp();
-
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
-            }
+            flux.CloseApp();
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
             Assert.IsTrue( visible, "Flux window was not visible." );
 
@@ -174,11 +168,8 @@ namespace HomeZone.FluxTests.Flux
 
             var flux = FluxApp;
             bool visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            if( visible )
-            {
-                flux.SaveAndClosePartInFlux();
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
-            }
+            flux.SaveAndClosePartInFlux();
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
 
             var isManual = parts.SingleDetailBendSolutions.IsManuallyChanged( solutionName );
             Assert.IsTrue( isManual );
@@ -302,11 +293,8 @@ namespace HomeZone.FluxTests.Flux
             Thread.Sleep( mConfigureMachineOverlay );
             TcFluxConfigureMachine flux = new TcFluxConfigureMachine( Driver );
             bool visible = flux.MachineDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            if( visible )
-            {
-                flux.CloseMachienDialog();
-                Thread.Sleep( mConfigureMachineOverlay );
-            }
+            flux.CloseMachienDialog();
+            Thread.Sleep( mConfigureMachineOverlay );
 
             DeleteTestMachine( machineName );
         }
@@ -331,11 +319,8 @@ namespace HomeZone.FluxTests.Flux
 
             var flux = FluxApp;
             bool visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            if( visible )
-            {
-                flux.ChangeSolution();
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
-            }
+            flux.ChangeSolution();
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
             parts.Toolbar.Delete();
             DeleteTestMachine();
         }
@@ -346,19 +331,17 @@ namespace HomeZone.FluxTests.Flux
         /// <param name="machineName">machine name</param>
         private void CreateTestMachine( string machineName = null )
         {
-            mTestMachineName = TestSettings.NamePrefix + Guid.NewGuid();
-
-            var machines = HomeZone.GotoMachines();
-
+            var machines = HomeZone.Machines;
             if( machineName == null )
             {
-                machines.NewBendMachine( "TruBend 5320 (6-axes) B23", mTestMachineName );
+                mTestMachineName = TestSettings.NamePrefix + S_FLUX_MACHINE_5320;
+                machines.NewBendMachine( S_FLUX_MACHINE_5320, mTestMachineName );
             }
             else
             {
+                mTestMachineName = TestSettings.NamePrefix + machineName;
                 machines.NewBendMachine( machineName, machineName );
             }
-
             Assert.IsTrue( machines.Toolbar.CanSave );
             machines.Toolbar.Save();
             Assert.IsFalse( machines.Toolbar.CanSave );
@@ -367,28 +350,23 @@ namespace HomeZone.FluxTests.Flux
             machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
         }
 
-        
+
         /// <summary>
         /// Delete the test machine
         /// </summary>
         /// <param name="machineName"></param>
         private void DeleteTestMachine( string machineName = null )
         {
-            var machines = HomeZone.GotoMachines();
-
+            var machines = HomeZone.Machines;
+            machines.Goto();
             if( machineName == null )
             {
-                machines.ResultColumn.SelectItem( mTestMachineName );
+                machines.DeleteMachine( mTestMachineName );
             }
             else
             {
-                machines.ResultColumn.SelectItem( machineName );
+                machines.DeleteMachine( machineName );
             }
-
-            Assert.IsTrue( machines.Toolbar.CanDelete );
-            machines.Toolbar.Delete();
-            machines.ResultColumn.ClearSearch();
-            Assert.IsFalse( machines.Toolbar.CanDelete );
         }
 
         /// <summary>

@@ -1,9 +1,9 @@
-using SmartBear.TestLeft.TestObjects;
-using Trumpf.Coparoo.Desktop;
-using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Machine;
 using HomeZone.UiObjects.PageObjects.Shell;
+using SmartBear.TestLeft.TestObjects;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace HomeZone.UiObjects.PageObjects.Machine
 {

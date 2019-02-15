@@ -65,6 +65,7 @@
     <Reference Include="Trumpf.AutoTest.Facts">
       <HintPath>..\_external\packages\Trumpf.AutoTest.Facts.4.6.0\lib\net40\Trumpf.AutoTest.Facts.dll</HintPath>
     </Reference>
+    <Reference Include="Trumpf.Coparoo.Desktop, Version=4.0.1.0, Culture=neutral, PublicKeyToken=69e14969fe853c2e" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataMigration\TcDataManagerTest.cs" />

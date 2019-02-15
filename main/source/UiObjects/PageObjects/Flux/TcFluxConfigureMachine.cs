@@ -10,11 +10,11 @@
 #endregion
 
 #region USING
-using System;
-using System.Threading;
 using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
+using System;
+using System.Threading;
 #endregion
 
 namespace HomeZone.UiObjects.PageObjects.Flux
