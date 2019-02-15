@@ -38,6 +38,7 @@ namespace HomeZone.UiCommonFunctions.Base
             DesignApp = new TcDesign( Driver );
             CutApp = new TcCut( Driver );
             FluxApp = new TcFlux( TestSettings.FluxProcessName, Driver );
+            Flux = new TcFluxApp( TestSettings.FluxProcessName, Driver );
 
             TcAppLangDependentStrings.CurrentLanguage = TestSettings.ApplicationLanguage;
 
@@ -112,14 +113,49 @@ namespace HomeZone.UiCommonFunctions.Base
 
 
         /// <summary>
-        /// Manages access to the Flux application.
+        /// Manages access to the Flux application. TODO: Has to be refactored into TiFluxApp. Do not use this Class for new functionality
         /// </summary>
         /// <value>
         /// The Flux application.
         /// </value>
         public static TiFlux FluxApp { get; private set; }
 
+        /// <summary>
+        /// Manages access to the Flux application
+        /// </summary>
+        public static TiFluxApp Flux { get; private set; }
+
+        /// <summary>
+        /// Execute a UI  Test
+        /// Function encapsulates the UI test with logging
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="caption"></param>
+        protected void ExecuteUITest( Action action, string caption )
+        {
+            try
+            {
+                Driver.Log.OpenFolder( caption );
+                Act( action, caption );
+                Driver.Log.CloseFolder();
+            }
+            catch( Exception ex )
+            {
+                Driver.Log.Error( ex.Message, ex.StackTrace ); //automatically creates a screenshot
+                Driver.Log.CloseFolder();
+                throw;
+            }
+        }
+
         protected void Act( Action action, string caption = null )
             => mAutoFact.Act( action, caption );
+
+        /// <summary>
+        /// Save Log File after finishing all tests in Assembly
+        /// </summary>
+        protected static void AssemblyCleanup()
+        {
+            Driver.Log.Save( TestSettings.ResultsDirectory, Log.Format.Html );
+        }
     }
 }
