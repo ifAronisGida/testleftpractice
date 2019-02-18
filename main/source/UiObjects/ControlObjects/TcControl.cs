@@ -1,6 +1,6 @@
+using HomeZone.UiObjectInterfaces.Controls;
 using Trumpf.Coparoo.Desktop.Waiting;
 using Trumpf.Coparoo.Desktop.WPF;
-using HomeZone.UiObjectInterfaces.Controls;
 
 
 namespace HomeZone.UiObjects.ControlObjects

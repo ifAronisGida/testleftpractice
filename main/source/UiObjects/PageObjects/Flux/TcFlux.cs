@@ -1,15 +1,16 @@
-using System;
-using System.Threading;
+using HomeZone.UiObjectInterfaces.Flux;
 using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
-using HomeZone.UiObjectInterfaces.Flux;
+using System;
+using System.Threading;
 
 
 namespace HomeZone.UiObjects.PageObjects.Flux
 {
     /// <summary>
     /// PageObject for the Flux app.
+    /// TODO: refactor class and move functionality to TcFluxApp
     /// </summary>
     public class TcFlux : TcApp, TiFlux
     {

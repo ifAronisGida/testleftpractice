@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FunctionalTests\TcDa07_Nesting.cs" />
+    <Compile Include="Logging\TcSmokeTestsLogging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Smoke\TcSmokeTest.cs" />
   </ItemGroup>

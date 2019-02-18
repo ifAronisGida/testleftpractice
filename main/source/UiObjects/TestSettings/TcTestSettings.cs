@@ -113,6 +113,14 @@ namespace HomeZone.UiObjects.TestSettings
         public TimeSpan FluxBoostAndStartTimeout => TimeSpan.FromSeconds( GetInt( "FluxBoostAndStartTimeout", 60 ) );
 
         /// <summary>
+        /// Gets timeout for syncing data between Flux and Boost
+        /// </summary>
+        /// <value>
+        /// The Sync timeout
+        /// </value>
+        public TimeSpan FluxSyncTimeout => TimeSpan.FromSeconds( GetInt( "FluxSyncTimeout", 30 ) );
+
+        /// <summary>
         /// Gets timeout for saving items.
         /// </summary>
         /// <value>
@@ -167,6 +175,14 @@ namespace HomeZone.UiObjects.TestSettings
         /// The part overlay disappear timeout.
         /// </value>
         public TimeSpan PartOverlayDisappearTimeout => TimeSpan.FromSeconds( GetInt( "PartOverlayDisappearTimeout", 90 ) );
+
+        /// <summary>
+        /// Gets the test results directory
+        /// </summary>
+        /// <value>
+        /// The thest results directory
+        /// </value>
+        public string ResultsDirectory => mTestContext.ResultsDirectory;
 
         private string GetString( string key, string defaultValue )
         {
