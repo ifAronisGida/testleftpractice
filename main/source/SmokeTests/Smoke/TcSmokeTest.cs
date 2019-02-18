@@ -24,7 +24,8 @@ namespace HomeZone.SmokeTests.Smoke
         [Tag( "Smoke" )]
         public void SmokeTest()
         {
-            ExecuteUITest( DoSmokeTest, "HomeZone Smoke Test" );
+            ExecuteUITest( DoThirdPartyLicenseTest, "Checking third party licenses" );
+            ExecuteUITest( DoSmokeTest, "Running HomeZone Smoke Test" );
         }
 
         /// <summary>
