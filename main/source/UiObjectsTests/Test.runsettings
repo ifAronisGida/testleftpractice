@@ -26,7 +26,7 @@
       <Parameter name="Remarks" value="" />           <!--default: "(none)"-->
 
       <Parameter name="FactsHubEnabled" value="true" />
-      <Parameter name="FactsHubAddress" value="http://{Context}:5000" />
+      <Parameter name="FactsHubAddress" value="" />
 
       <Parameter name="ScreenRecorderEnabled" value="true" />
 
