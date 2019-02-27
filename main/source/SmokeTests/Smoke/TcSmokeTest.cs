@@ -1,4 +1,4 @@
-using HomeZone.UiCommonFunctions.Base;
+﻿using HomeZone.UiCommonFunctions.Base;
 using HomeZone.UiObjectsTests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
@@ -24,7 +24,7 @@ namespace HomeZone.SmokeTests.Smoke
         [Tag( "Smoke" )]
         public void SmokeTest()
         {
-            ExecuteUITest( DoThirdPartyLicenseTest, "Checking third party licenses" );
+            //ExecuteUITest( DoThirdPartyLicenseTest, "Checking third party licenses" );
             ExecuteUITest( DoSmokeTest, "Running HomeZone Smoke Test" );
         }
 
