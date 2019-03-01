@@ -40,7 +40,7 @@ namespace HomeZone.UiCommonFunctions
             }
             machineName = testSettings.NamePrefix + machineName;
             mCreatedMachineList.Add( machineName );
-            machines.NewBendMachine( machineName, machineName );
+            machines.NewBendMachine( machineType, machineName );
             machines.Toolbar.Save();
             machines.WaitForDetailOverlayAppear( testSettings.MachineOverlayAppearTimeout );
             machines.WaitForDetailOverlayDisappear( testSettings.MachineOverlayDisappearTimeout );
@@ -48,6 +48,7 @@ namespace HomeZone.UiCommonFunctions
 
         public void DeleteCreatedMachines( TiMachines machines )
         {
+            machines.Goto();
             foreach( var machine in mCreatedMachineList )
             {
                 machines.DeleteMachine( machine );

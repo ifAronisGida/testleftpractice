@@ -1,5 +1,6 @@
 using HomeZone.UiCommonFunctions;
 using HomeZone.UiCommonFunctions.Base;
+using HomeZone.UiObjectInterfaces.Part;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Trumpf.AutoTest.Facts;
@@ -16,9 +17,7 @@ namespace HomeZone.FluxTests.Flux
     {
         private const string S_FLUX_MACHINE_5320 = "TruBend 5320 (6-axes) B23";
 
-        private string mTestMachineName;
-
-        private TcMachinePageObjectHelper mMachineHelper;
+        private TcMachinePageObjectHelper mMachineHelper = new TcMachinePageObjectHelper();
 
         /// <summary>
         /// Creates a new part with bend solution, opens it and closes Flux.
@@ -78,6 +77,13 @@ namespace HomeZone.FluxTests.Flux
         public void CloseWithoutSave()
         {
             ExecuteUITest( DoCloseWithoutSave, "Close Flux without Saving" );
+        }
+
+        [TestMethod, UniqueName( "B02AAB6B-6B37-471D-9023-8985CE43A0A3" )]
+        [Tag( "Flux" )]
+        public void BoostAllShowcaseParts()
+        {
+            ExecuteUITest( DoBoostAllShowcaseParts, "Boost All Showcase Parts" );
         }
 
         /// <summary>
@@ -292,6 +298,25 @@ namespace HomeZone.FluxTests.Flux
             parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
             parts.Toolbar.Delete();
             mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
+        }
+
+        private void DoBoostAllShowcaseParts()
+        {
+            mMachineHelper.CreateAndSaveBendMachine( TestSettings, HomeZone.Machines, S_FLUX_MACHINE_5320 );
+
+            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
+            var bendSettings = settingsDialog.BendSettings;
+            bendSettings.Goto();
+            bendSettings.AddDefaultBendProgram();
+            settingsDialog.Save();
+
+            TiParts parts = HomeZone.Parts;
+            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase" );
+            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            parts.ResultColumn.SelectAll();
+            parts.Toolbar.Boost();
+            //TODO: count parts
         }
     }
 }
