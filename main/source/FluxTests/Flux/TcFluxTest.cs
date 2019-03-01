@@ -310,7 +310,7 @@ namespace HomeZone.FluxTests.Flux
             bendSettings.AddDefaultBendProgram();
             settingsDialog.Save();
 
-            TiParts parts = HomeZone.Parts;
+            TiParts parts = HomeZone.GotoParts();
             parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase" );
             parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
             parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
