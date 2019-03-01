@@ -3,6 +3,7 @@ using HomeZone.UiCommonFunctions.Base;
 using HomeZone.UiObjectInterfaces.Part;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
@@ -302,6 +303,29 @@ namespace HomeZone.FluxTests.Flux
 
         private void DoBoostAllShowcaseParts()
         {
+            List<string> showcasePartList = new List<string>()
+            {
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Halter_rechts.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Lochgitter.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Lueftergehauese.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Motorhalter.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Pumpenhalter.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Rueckwand.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Traeger.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Umlenker.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Wanne.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Zugwinkel.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Abdeckblech.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Abdeckung_mitExtAttributen.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Aufnahmegehaeuse.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Bruecke.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Distanzblech.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Entluefterwinkel.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Halteplatte.scdoc"
+            };
+
             mMachineHelper.CreateAndSaveBendMachine( TestSettings, HomeZone.Machines, S_FLUX_MACHINE_5320 );
 
             var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
@@ -311,9 +335,12 @@ namespace HomeZone.FluxTests.Flux
             settingsDialog.Save();
 
             TiParts parts = HomeZone.GotoParts();
-            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase" );
-            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            foreach( var item in showcasePartList )
+            {
+                parts.Toolbar.Import( item );
+                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            }
             parts.ResultColumn.SelectAll();
             parts.Toolbar.Boost();
             //TODO: count parts
