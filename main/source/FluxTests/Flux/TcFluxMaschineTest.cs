@@ -1,5 +1,6 @@
 ﻿using HomeZone.UiCommonFunctions;
 using HomeZone.UiCommonFunctions.Base;
+using HomeZone.UiObjectInterfaces.Machine;
 using HomeZone.UiObjects.PageObjects.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -15,7 +16,7 @@ namespace HomeZone.FluxTests.Flux
     [TestClass]
     public sealed class TcFluxMaschineTest : TcBaseTestClass
     {
-        private TcMachinePageObjectHelper mMachineHelper;
+        private TcMachinePageObjectHelper mMachineHelper = new TcMachinePageObjectHelper();
 
         private readonly TimeSpan mConfigureMachineOverlay = TimeSpan.FromSeconds( 20 );
 
@@ -64,8 +65,13 @@ namespace HomeZone.FluxTests.Flux
 
         private void DoCreateWorkplacesForAllBendMachines()
         {
-            HomeZone.Machines.Goto();
-
+            TiMachines machines = HomeZone.GotoMachines();
+            foreach( var machineName in machines.Detail.GetAvailableBendMachineTemplates() )
+            {
+                mMachineHelper.CreateAndSaveBendMachine( TestSettings, machines, machineName );
+                Assert.IsTrue( machines.Detail.IsPreviewImageAvailable(), "No preview image is available for this machine template" );
+            }
+            mMachineHelper.DeleteCreatedMachines( machines );
         }
     }
 }

@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using System.Linq;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Machine;
 using HomeZone.UiObjects.PageObjects.Shell;
 using HomeZone.UiObjects.Utilities;
 using SmartBear.TestLeft.TestObjects;
+using System.Collections.Generic;
+using System.Linq;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 
@@ -23,11 +23,13 @@ namespace HomeZone.UiObjects.PageObjects.Machine
 
         private TiValueControl<string> CutMachineTypeLookUpEdit => Find<TiValueControl<string>>( "Machine.Detail.Base.TemplateSelection" );
         private TiValueControl<string> BendMachineTypeLookUpEdit => Find<TiValueControl<string>>( BendMachineTypeLookupUid );
+        private TiControl PreviewImage => Find<TiControl>( "Workplace.Detail.PreviewImage" );
         public TiValueControl<string> Name => Find<TiValueControl<string>>( "Machine.Detail.Base.Name" );
         public TiValueControl<string> MachineNumber => Find<TiValueControl<string>>( "Machine.Detail.Base.MachineEquipmentNr" );
         public TiValueControl<string> LaserPower => Find<TiValueControl<string>>( "Machine.Detail.Base.LaserPowers" );
         public TiValueControl<string> TransferDirectory => Find<TiValueControl<string>>( "Machine.Detail.Base.TransferDirectory" );
         public TiValueControl<bool> CreateSubDirectory => Find<TiValueControl<bool>>( "Machine.Detail.Base.CreateSubDirectory" );
+
 
         /// <summary>
         /// Gets or sets the type of the cut machine.
@@ -73,6 +75,15 @@ namespace HomeZone.UiObjects.PageObjects.Machine
                 .AsEnumerable<IObject>()
                 .Select( machineData => machineData.GetProperty<string>( "DisplayName" ) )
                 .ToList();
+        }
+
+        /// <summary>
+        /// Checks if a preview Image is available
+        /// </summary>
+        /// <returns>true if a preview image is available</returns>
+        public bool IsPreviewImageAvailable()
+        {
+            return PreviewImage.VisibleOnScreen;
         }
     }
 }

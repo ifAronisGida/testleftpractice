@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using HomeZone.UiObjectInterfaces.Controls;
+using System.Collections.Generic;
 
 namespace HomeZone.UiObjectInterfaces.Machine
 {
@@ -9,7 +9,7 @@ namespace HomeZone.UiObjectInterfaces.Machine
         TiValueControl<string> MachineNumber { get; }
         TiValueControl<string> LaserPower { get; }
         TiValueControl<string> TransferDirectory { get; }
-        TiValueControl<bool> CreateSubDirectory { get; } 
+        TiValueControl<bool> CreateSubDirectory { get; }
 
         /// <summary>
         /// Gets or sets the type of the cut machine.
@@ -33,5 +33,11 @@ namespace HomeZone.UiObjectInterfaces.Machine
         void OpenMachineConfigurationBend();
 
         ICollection<string> GetAvailableBendMachineTemplates();
+
+        /// <summary>
+        /// Checks if a preview Image is available
+        /// </summary>
+        /// <returns>true if a preview image is available</returns>
+        bool IsPreviewImageAvailable();
     }
 }
