@@ -1,4 +1,4 @@
-using HomeZone.UiCommonFunctions.Base;
+﻿using HomeZone.UiCommonFunctions.Base;
 using HomeZone.UiObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -72,16 +72,16 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
 
             // No machine is selected ( except if there is only 1 machine available, then this should be selected V2.0X).
             // We have created 2 machines.
-            Assert.IsTrue( string.IsNullOrEmpty( cutJobs.SheetProgram.Machine.Value ) );
+            Assert.IsTrue( string.IsNullOrEmpty( cutJobs.SheetProgram.Machine.Value ), "string.IsNullOrEmpty( cutJobs.SheetProgram.Machine.Value ) should be true"  );
 
             // ID field is focused
-            Assert.IsTrue( cutJobs.BaseInfo.Id.IsFocused );
+            Assert.IsTrue( cutJobs.BaseInfo.Id.IsFocused,"ID field is not focused" );
 
             // Sheet Program Open button is disabled
-            Assert.IsFalse( cutJobs.SheetProgram.CanOpen );
+            Assert.IsFalse( cutJobs.SheetProgram.CanOpen, "Sheet Program Open button is not disabled" );
 
             // Sheet Program BOOST button is disabled
-            Assert.IsFalse( cutJobs.SheetProgram.CanBoost );
+            Assert.IsFalse( cutJobs.SheetProgram.CanBoost, "Sheet Program BOOST button is not disabled" );
 
             // Order List state is MISSING
             Assert.AreEqual( missing, cutJobs.ContainedOrders.StateToolTip );

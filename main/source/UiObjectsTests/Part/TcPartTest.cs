@@ -1,4 +1,4 @@
-using HomeZone.UiCommonFunctions.Base;
+﻿using HomeZone.UiCommonFunctions.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Trumpf.AutoTest.Facts;
