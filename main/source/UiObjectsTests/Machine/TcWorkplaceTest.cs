@@ -116,5 +116,13 @@ namespace HomeZone.UiObjectsTests.Machine
                 Assert.AreEqual( machineCount, machines.ResultColumn.Count );
             } );
         }
+
+        [TestMethod]
+        public void GetAvailableBendMachinesTest()
+        {
+            var machines = HomeZone.Machines.Detail.GetAvailableBendMachineTemplates();
+
+            Assert.AreNotEqual( 0, machines.Count );
+        }
     }
 }

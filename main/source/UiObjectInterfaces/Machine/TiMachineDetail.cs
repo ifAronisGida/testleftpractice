@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HomeZone.UiObjectInterfaces.Controls;
 
 namespace HomeZone.UiObjectInterfaces.Machine
@@ -30,5 +31,7 @@ namespace HomeZone.UiObjectInterfaces.Machine
         /// Opens the machine configuration for bend.
         /// </summary>
         void OpenMachineConfigurationBend();
+
+        ICollection<string> GetAvailableBendMachineTemplates();
     }
 }
