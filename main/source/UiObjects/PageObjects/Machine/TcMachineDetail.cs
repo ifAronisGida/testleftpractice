@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+using System.Linq;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Machine;
 using HomeZone.UiObjects.PageObjects.Shell;
+using HomeZone.UiObjects.Utilities;
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
@@ -14,10 +17,12 @@ namespace HomeZone.UiObjects.PageObjects.Machine
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcDetailContent}" />
     public class TcMachineDetail : TcPageObjectBase, IChildOf<TcDetailContent>, TiMachineDetail
     {
+        private const string BendMachineTypeLookupUid = "Machine.Detail.Base.BendTemplateSelection";
+
         protected override Search SearchPattern => Search.ByUid( "Machine.Details" );
 
         private TiValueControl<string> CutMachineTypeLookUpEdit => Find<TiValueControl<string>>( "Machine.Detail.Base.TemplateSelection" );
-        private TiValueControl<string> BendMachineTypeLookUpEdit => Find<TiValueControl<string>>( "Machine.Detail.Base.BendTemplateSelection" );
+        private TiValueControl<string> BendMachineTypeLookUpEdit => Find<TiValueControl<string>>( BendMachineTypeLookupUid );
         public TiValueControl<string> Name => Find<TiValueControl<string>>( "Machine.Detail.Base.Name" );
         public TiValueControl<string> MachineNumber => Find<TiValueControl<string>>( "Machine.Detail.Base.MachineEquipmentNr" );
         public TiValueControl<string> LaserPower => Find<TiValueControl<string>>( "Machine.Detail.Base.LaserPowers" );
@@ -57,6 +62,17 @@ namespace HomeZone.UiObjects.PageObjects.Machine
         {
             var button = Node.Find<IControl>( Search.ByUid( "Machine.Detail.Base.OpenConfigurationDialog" ) );
             button.Click();
+        }
+
+        public ICollection<string> GetAvailableBendMachineTemplates()
+        {
+            var control = Node.Find<IControl>( Search.ByUid( BendMachineTypeLookupUid ) );
+
+            return control
+                .GetProperty<IObject>( "ItemsSource.SourceCollection" )
+                .AsEnumerable<IObject>()
+                .Select( machineData => machineData.GetProperty<string>( "DisplayName" ) )
+                .ToList();
         }
     }
 }
