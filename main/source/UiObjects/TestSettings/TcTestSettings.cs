@@ -15,6 +15,8 @@ namespace HomeZone.UiObjects.TestSettings
             mTestContext = testContext;
         }
 
+        public string HtmlReportPath => GetString( "HtmlReportPath", null );
+
         public string Product => GetString( "Product", "HomeZone" );
 
         public string Version => GetString( "Version", "x.x.x.x" );

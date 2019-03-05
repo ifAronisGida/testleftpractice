@@ -155,7 +155,7 @@ namespace HomeZone.UiCommonFunctions.Base
         /// </summary>
         protected static void AssemblyCleanup()
         {
-            Driver.Log.Save( TestSettings.ResultsDirectory, Log.Format.Html );
+            Driver.Log.Save( TestSettings.HtmlReportPath ?? TestSettings.ResultsDirectory, Log.Format.Html );
         }
     }
 }
