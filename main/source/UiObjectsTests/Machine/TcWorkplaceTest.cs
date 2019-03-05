@@ -34,16 +34,16 @@ namespace HomeZone.UiObjectsTests.Machine
                 Assert.IsFalse( machines.Toolbar.CanSave );
                 Assert.AreEqual( machineCount + 1, machines.ResultColumn.Count );
 
-                machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
-                machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
+                machines.WaitForDetailOverlayAppear();
+                machines.WaitForDetailOverlayDisappear();
 
                 machines.ResultColumn.SelectItem( testMachineName );
 
                 Assert.IsTrue( machines.Toolbar.CanDelete );
                 machines.Toolbar.Delete();
 
-                machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
-                machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
+                machines.WaitForDetailOverlayAppear();
+                machines.WaitForDetailOverlayDisappear();
 
                 Assert.IsFalse( machines.Toolbar.CanDelete );
 
@@ -67,16 +67,16 @@ namespace HomeZone.UiObjectsTests.Machine
                 machines.Toolbar.Save();
                 Assert.IsFalse( machines.Toolbar.CanSave );
 
-                machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
-                machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
+                machines.WaitForDetailOverlayAppear();
+                machines.WaitForDetailOverlayDisappear();
 
                 machines.ResultColumn.SelectItem( testMachineName );
 
                 Assert.IsTrue( machines.Toolbar.CanDelete );
                 machines.Toolbar.Delete();
 
-                machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
-                machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
+                machines.WaitForDetailOverlayAppear();
+                machines.WaitForDetailOverlayDisappear();
 
                 Assert.IsFalse( machines.Toolbar.CanDelete );
             } );
@@ -105,8 +105,8 @@ namespace HomeZone.UiObjectsTests.Machine
                 Assert.IsFalse( machines.Toolbar.CanSave );
                 Assert.AreEqual( machineCount + 1, machines.ResultColumn.Count );
 
-                machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
-                machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
+                machines.WaitForDetailOverlayAppear();
+                machines.WaitForDetailOverlayDisappear();
 
                 machines.ResultColumn.SelectItem( testMachineName );
 

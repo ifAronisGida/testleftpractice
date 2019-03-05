@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Reflection;
 
 namespace HomeZone.UiObjects.TestSettings
 {
@@ -184,23 +185,55 @@ namespace HomeZone.UiObjects.TestSettings
         /// </value>
         public string ResultsDirectory => mTestContext.ResultsDirectory;
 
+        public void Fill( object obj )
+        {
+            if( obj is null )
+            {
+                throw new ArgumentNullException( nameof( obj ) );
+            }
+
+            foreach( var property in obj.GetType().GetProperties( BindingFlags.Public | BindingFlags.Instance ) )
+            {
+                if( property.GetSetMethod( nonPublic: false ) is null || !mTestContext.Properties.Contains( property.Name ) )
+                {
+                    continue;
+                }
+
+                var value = ( string )mTestContext.Properties[property.Name];
+
+                if( property.PropertyType == typeof( TimeSpan ) )
+                {
+                    property.SetValue( obj, TimeSpan.FromSeconds( int.Parse( value ) ) );
+                }
+                else
+                {
+                    throw new Exception( "Unsupported type." );
+                }
+            }
+        }
+
+        private bool HasKey( string key )
+        {
+            return mTestContext.Properties.Contains( key );
+        }
+
         private string GetString( string key, string defaultValue )
         {
-            var value = ( string )mTestContext.Properties[ key ];
+            var value = ( string )mTestContext.Properties[key];
 
             return string.IsNullOrEmpty( value ) ? defaultValue : value;
         }
 
         private int GetInt( string key, int defaultValue )
         {
-            var value = ( string )mTestContext.Properties[ key ];
+            var value = ( string )mTestContext.Properties[key];
 
             return string.IsNullOrEmpty( value ) ? defaultValue : Convert.ToInt32( value );
         }
 
         private bool GetBool( string key, bool defaultValue )
         {
-            var value = ( string )mTestContext.Properties[ key ];
+            var value = ( string )mTestContext.Properties[key];
 
             return string.IsNullOrEmpty( value ) ? defaultValue : Convert.ToBoolean( value );
         }
