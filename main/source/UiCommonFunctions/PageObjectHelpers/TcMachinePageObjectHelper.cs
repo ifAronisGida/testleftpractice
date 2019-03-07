@@ -36,7 +36,7 @@ namespace HomeZone.UiCommonFunctions
         {
             if( machineName == null )
             {
-                machineName = machineType;
+                machineName = machineType.Replace( "/", "_" ); //Replace not allowed characters
             }
             machineName = testSettings.NamePrefix + machineName;
             mCreatedMachineList.Add( machineName );
