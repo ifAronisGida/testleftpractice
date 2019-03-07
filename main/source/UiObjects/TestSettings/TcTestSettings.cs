@@ -74,14 +74,6 @@ namespace HomeZone.UiObjects.TestSettings
         public string FluxProcessName => GetString( "FluxProcessName", "Flux" );
 
         /// <summary>
-        /// Gets timeout for the first import of the machine templates.
-        /// </summary>
-        /// <value>
-        /// The machine first import timeout.
-        /// </value>
-        public TimeSpan MachineFirstImportTimeout => TimeSpan.FromSeconds( GetInt( "MachineFirstImportTimeout", 120 ) );
-
-        /// <summary>
         /// Gets timeout for starting Design.
         /// </summary>
         /// <value>
