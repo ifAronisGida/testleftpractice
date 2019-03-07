@@ -214,8 +214,8 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
 
             parts.Toolbar.Import( PART );
 
-            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear();
+            parts.WaitForDetailOverlayDisappear();
             parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
             parts.SingleDetail.Name.Value = Name2UIT_Name( mId );
@@ -223,14 +223,14 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
             parts.SingleDetailCutSolutions.New();
 
             parts.Toolbar.CreatePartOrder();
-            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear();
+            parts.WaitForDetailOverlayDisappear();
 
             var partOrders = HomeZone.PartOrders;
             partOrders.BaseInfo.ID.Value = Name2UIT_Name( mId );
             partOrders.Toolbar.Save();
-            partOrders.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-            partOrders.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            partOrders.WaitForDetailOverlayAppear();
+            partOrders.WaitForDetailOverlayDisappear();
         }
 
         private void CleanUp()

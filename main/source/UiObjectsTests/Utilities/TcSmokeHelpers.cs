@@ -290,8 +290,8 @@ namespace HomeZone.UiObjectsTests.Utilities
                 }
 
                 parts.Toolbar.Import( mPartNames[ i ].FullName );
-                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear();
+                parts.WaitForDetailOverlayDisappear();
                 parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
                 parts.SingleDetail.Name.Value = TestSettings.NamePrefix + parts.SingleDetail.Name.Value;
                 parts.SingleDetail.Id = parts.SingleDetail.Name.Value;
@@ -316,7 +316,7 @@ namespace HomeZone.UiObjectsTests.Utilities
         private bool OpenFluxBendSolutionAndCloseFlux( TcParts parts )
         {
             parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
-            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayAppear();
 
             var flux = FluxApp;
             var visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
@@ -325,7 +325,7 @@ namespace HomeZone.UiObjectsTests.Utilities
             {
                 flux.CloseApp();
 
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayDisappear();
             }
 
             Assert.IsTrue( visible );
