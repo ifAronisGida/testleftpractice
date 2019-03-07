@@ -361,11 +361,11 @@ namespace HomeZone.FluxTests.Flux
                 } while( !waitSuccess && timeoutCount < showcasePartList.Count ); //wait max: number of parts * timeout
 
                 var missing = TcAppLangDependentStrings.Get( TeStringKey.ReleaseMissing );
-                Assert.AreEqual( missing, parts.SingleDetailBendSolutions.SingleBendSolutionStateToolTip( bendSolutionName ) );
-                Assert.IsFalse( parts.SingleDetailBendSolutions.IsManuallyChanged( bendSolutionName ) );
+                Assert.AreEqual( missing, parts.SingleDetailBendSolutions.SingleBendSolutionStateToolTip( bendSolutionName ), "Bend solution has wrong state" );
+                Assert.IsFalse( parts.SingleDetailBendSolutions.IsManuallyChanged( bendSolutionName ), "Bend solution indicates manual change but there is none" );
                 parts.SingleDetailBendSolutions.OpenSolutionDetail( bendSolutionName );
-                Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( bendSolutionName ) );
-                Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( bendSolutionName ) );
+                Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( bendSolutionName ), "Setup plan is missing for boosted solution" );
+                Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( bendSolutionName ), "NC code is missing for boosted solution" );
             }
 
             mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
