@@ -122,22 +122,6 @@ namespace HomeZone.UiObjects.TestSettings
         public TimeSpan SavingTimeout => TimeSpan.FromSeconds( GetInt( "SavingTimeout", 60 ) );
 
         /// <summary>
-        /// Gets the timeout for the machine overlay appearance.
-        /// </summary>
-        /// <value>
-        /// The machine overlay appear timeout.
-        /// </value>
-        public TimeSpan MachineOverlayAppearTimeout => TimeSpan.FromSeconds( GetInt( "MachineOverlayAppearTimeout", 20 ) );
-
-        /// <summary>
-        /// Gets the timeout for the machine overlay disappearance.
-        /// </summary>
-        /// <value>
-        /// The machine overlay disappear timeout.
-        /// </value>
-        public TimeSpan MachineOverlayDisappearTimeout => TimeSpan.FromSeconds( GetInt( "MachineOverlayDisappearTimeout", 60 ) );
-
-        /// <summary>
         /// Gets the timeout for the part overlay appearance.
         /// </summary>
         /// <value>

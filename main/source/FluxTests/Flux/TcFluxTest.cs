@@ -346,8 +346,8 @@ namespace HomeZone.FluxTests.Flux
             machines.Toolbar.Save();
             Assert.IsFalse( machines.Toolbar.CanSave );
 
-            machines.WaitForDetailOverlayAppear( TestSettings.MachineOverlayAppearTimeout );
-            machines.WaitForDetailOverlayDisappear( TestSettings.MachineOverlayDisappearTimeout );
+            machines.WaitForDetailOverlayAppear();
+            machines.WaitForDetailOverlayDisappear();
         }
 
 
