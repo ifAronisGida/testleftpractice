@@ -52,6 +52,7 @@
 
       <Parameter name="PartOverlayAppearTimeout" value="5" />
       <Parameter name="PartOverlayDisappearTimeout" value="90" />
+      <Parameter name="PartSelectAllTimeout" value="5" />
 
    </TestRunParameters>
 

@@ -12,7 +12,8 @@ namespace HomeZone.UiObjects
         Missing,
         Incomplete,
         CuttingProgram,
-        TechnologyTableSelection
+        TechnologyTableSelection,
+        ReleaseMissing
     }
 
     public static class TcAppLangDependentStrings
@@ -22,7 +23,8 @@ namespace HomeZone.UiObjects
             [TeStringKey.Missing] = new Label( "Missing", "Fehlt", null ),
             [TeStringKey.Incomplete] = new Label( "Incomplete", "Unvollständig", null ),
             [TeStringKey.CuttingProgram] = new Label( "Cutting Program", "Schneidprogramm", null ),
-            [TeStringKey.TechnologyTableSelection] = new Label( "Technology table selection", "Technologietabellen Auswahl", "Technológiatáblázatok kiválasztása" )
+            [TeStringKey.TechnologyTableSelection] = new Label( "Technology table selection", "Technologietabellen Auswahl", "Technológiatáblázatok kiválasztása" ),
+            [TeStringKey.ReleaseMissing] = new Label( "Release missing", "Freigabe fehlt", null )
         };
 
         public static TeAppLanguage CurrentLanguage { get; set; } = TeAppLanguage.German;

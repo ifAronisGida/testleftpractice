@@ -1,9 +1,11 @@
 using HomeZone.UiCommonFunctions;
 using HomeZone.UiCommonFunctions.Base;
 using HomeZone.UiObjectInterfaces.Part;
+using HomeZone.UiObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
@@ -303,27 +305,29 @@ namespace HomeZone.FluxTests.Flux
 
         private void DoBoostAllShowcaseParts()
         {
+            string bendSolutionName = "Bend1";
+            string samplesPath = @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase";
             List<string> showcasePartList = new List<string>()
             {
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Halter_rechts.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Lochgitter.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Lueftergehauese.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Motorhalter.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Pumpenhalter.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Rueckwand.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Traeger.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Umlenker.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Wanne.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Zugwinkel.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Abdeckblech.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Abdeckung_mitExtAttributen.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Aufnahmegehaeuse.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Bruecke.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Distanzblech.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Entluefterwinkel.scdoc",
-                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Halteplatte.scdoc"
+                "Halter_rechts.scdoc",
+                "Lochgitter.scdoc",
+                "Lueftergehauese.scdoc",
+                "Motorhalter.scdoc",
+                "Pumpenhalter.scdoc",
+                "Rueckwand.scdoc",
+                "Traeger.scdoc",
+                "Umlenker.scdoc",
+                "Wanne.scdoc",
+                "Zugwinkel.scdoc",
+                "Abdeckblech.scdoc",
+                "Abdeckung_mitExtAttributen.scdoc",
+                "Aufnahmegehaeuse.scdoc",
+                "Bruecke.scdoc",
+                "Demoteil.geo",
+                "Distanzblech.scdoc",
+                "Eckwinkel.scdoc",
+                "Entluefterwinkel.scdoc",
+                "Halteplatte.scdoc"
             };
 
             mMachineHelper.CreateAndSaveBendMachine( TestSettings, HomeZone.Machines, S_FLUX_MACHINE_5320 );
@@ -337,13 +341,34 @@ namespace HomeZone.FluxTests.Flux
             TiParts parts = HomeZone.GotoParts();
             foreach( var item in showcasePartList )
             {
-                parts.Toolbar.Import( item );
+                parts.Toolbar.Import( Path.Combine( samplesPath, item ) );
                 parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
                 parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
             }
             parts.ResultColumn.SelectAll();
+            parts.Toolbar.WaitForBoostButtonEnabled( TestSettings.PartSelectAllTimeout );
             parts.Toolbar.Boost();
-            //TODO: count parts
+
+            int timeoutCount = 0;
+            foreach( var item in showcasePartList )
+            {
+                parts.ResultColumn.SelectItems( Path.GetFileNameWithoutExtension( item ) );
+                bool waitSuccess = false;
+                do
+                {
+                    waitSuccess = parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+                    timeoutCount++;
+                } while( !waitSuccess && timeoutCount < showcasePartList.Count ); //wait max: number of parts * timeout
+
+                var missing = TcAppLangDependentStrings.Get( TeStringKey.ReleaseMissing );
+                Assert.AreEqual( missing, parts.SingleDetailBendSolutions.SingleBendSolutionStateToolTip( bendSolutionName ) );
+                Assert.IsFalse( parts.SingleDetailBendSolutions.IsManuallyChanged( bendSolutionName ) );
+                parts.SingleDetailBendSolutions.OpenSolutionDetail( bendSolutionName );
+                Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( bendSolutionName ) );
+                Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( bendSolutionName ) );
+            }
+
+            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
     }
 }

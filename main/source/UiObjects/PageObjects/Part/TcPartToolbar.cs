@@ -1,9 +1,10 @@
-using System;
-using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Dialogs;
 using HomeZone.UiObjectInterfaces.Part;
 using HomeZone.UiObjects.PageObjects.Dialogs;
+using System;
+using Trumpf.Coparoo.Desktop.Waiting;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace HomeZone.UiObjects.PageObjects.Part
 {
@@ -84,6 +85,16 @@ namespace HomeZone.UiObjects.PageObjects.Part
         public void CreateCutJob()
         {
             CreateCutJobButton.Click();
+        }
+
+        /// <summary>
+        /// Wait until Boost Button is Enabled
+        /// </summary>
+        /// <param name="timeout">timeout</param>
+        /// <returns>true</returns>
+        public bool WaitForBoostButtonEnabled( TimeSpan timeout )
+        {
+            return TryWait.For( () => BoostButton.Enabled, timeout );
         }
     }
 }
