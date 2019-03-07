@@ -32,6 +32,10 @@ namespace HomeZone.UiObjectInterfaces.Machine
         /// </summary>
         void OpenMachineConfigurationBend();
 
+        /// <summary>
+        /// Get all available bend machine templates
+        /// </summary>
+        /// <returns>collection with the bend machine template names</returns>
         ICollection<string> GetAvailableBendMachineTemplates();
 
         /// <summary>

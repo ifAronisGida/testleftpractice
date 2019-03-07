@@ -32,6 +32,13 @@ namespace HomeZone.UiCommonFunctions
 
         #region public methods
 
+        /// <summary>
+        /// Create and save a bend machine
+        /// </summary>
+        /// <param name="testSettings">test settings</param>
+        /// <param name="machines">machine page</param>
+        /// <param name="machineType">name of the machine type</param>
+        /// <param name="machineName">machine name; defaults to the machine type name</param>
         public void CreateAndSaveBendMachine( TcTestSettings testSettings, TiMachines machines, string machineType, string machineName = null )
         {
             if( machineName == null )
@@ -46,6 +53,10 @@ namespace HomeZone.UiCommonFunctions
             machines.WaitForDetailOverlayDisappear( testSettings.MachineOverlayDisappearTimeout );
         }
 
+        /// <summary>
+        /// Delete all machines which were created with the function <see cref="CreateAndSaveBendMachine(TcTestSettings, TiMachines, string, string)"/>
+        /// </summary>
+        /// <param name="machines">machine page</param>
         public void DeleteCreatedMachines( TiMachines machines )
         {
             machines.Goto();
@@ -69,6 +80,9 @@ namespace HomeZone.UiCommonFunctions
 
         #region private members
 
+        /// <summary>
+        /// list with the created machines
+        /// </summary>
         List<string> mCreatedMachineList = new List<string>();
 
         #endregion

@@ -303,6 +303,9 @@ namespace HomeZone.FluxTests.Flux
             mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
+        /// <summary>
+        /// Implementation of the Boost all showcase parts test
+        /// </summary>
         private void DoBoostAllShowcaseParts()
         {
             string bendSolutionName = "Bend1";

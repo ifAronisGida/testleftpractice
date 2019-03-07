@@ -14,10 +14,16 @@ namespace HomeZone.FluxTests.Flux
     /// This test class contains Flux machine specific tests.
     /// </summary>
     [TestClass]
-    public sealed class TcFluxMaschineTest : TcBaseTestClass
+    public sealed class TcFluxMachineTest : TcBaseTestClass
     {
+        /// <summary>
+        /// machine helper
+        /// </summary>
         private TcMachinePageObjectHelper mMachineHelper = new TcMachinePageObjectHelper();
 
+        /// <summary>
+        /// timeout to open the configure machine dialog. TODO: has to be refactored to a dynamic timout
+        /// </summary>
         private readonly TimeSpan mConfigureMachineOverlay = TimeSpan.FromSeconds( 20 );
 
         /// <summary>
@@ -63,6 +69,9 @@ namespace HomeZone.FluxTests.Flux
             mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
+        /// <summary>
+        /// Implementation of the create workplaces for all bend machines test
+        /// </summary>
         private void DoCreateWorkplacesForAllBendMachines()
         {
             TiMachines machines = HomeZone.GotoMachines();

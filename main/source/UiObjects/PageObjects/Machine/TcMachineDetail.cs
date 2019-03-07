@@ -66,6 +66,10 @@ namespace HomeZone.UiObjects.PageObjects.Machine
             button.Click();
         }
 
+        /// <summary>
+        /// Get all available bend machine templates
+        /// </summary>
+        /// <returns>collection with the bend machine template names</returns>
         public ICollection<string> GetAvailableBendMachineTemplates()
         {
             var control = Node.Find<IControl>( Search.ByUid( BendMachineTypeLookupUid ) );
