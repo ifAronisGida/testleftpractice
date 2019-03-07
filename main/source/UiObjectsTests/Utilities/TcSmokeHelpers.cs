@@ -81,8 +81,8 @@ namespace HomeZone.UiObjectsTests.Utilities
 
                 Assert.IsTrue( materials.Toolbar.CanSave );
                 materials.Toolbar.Save();
-                materials.WaitForDetailOverlayAppear( TestSettings.MaterialOverlayAppearTimeout );
-                materials.WaitForDetailOverlayDisappear( TestSettings.MaterialOverlayDisappearTimeout );
+                materials.WaitForDetailOverlayAppear();
+                materials.WaitForDetailOverlayDisappear();
                 Assert.IsFalse( materials.Toolbar.CanSave );
                 return true;
             }
@@ -102,8 +102,8 @@ namespace HomeZone.UiObjectsTests.Utilities
             {
                 if( materials.DeleteMaterial( Name2UIT_Name( material ) ) )
                 {
-                    materials.WaitForDetailOverlayAppear( TestSettings.MaterialOverlayAppearTimeout );
-                    materials.WaitForDetailOverlayDisappear( TestSettings.MaterialOverlayDisappearTimeout );
+                    materials.WaitForDetailOverlayAppear();
+                    materials.WaitForDetailOverlayDisappear();
                     deletedMaterialsCount++;
                 }
             }

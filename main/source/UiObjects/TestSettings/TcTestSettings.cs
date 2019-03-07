@@ -122,22 +122,6 @@ namespace HomeZone.UiObjects.TestSettings
         public TimeSpan SavingTimeout => TimeSpan.FromSeconds( GetInt( "SavingTimeout", 60 ) );
 
         /// <summary>
-        /// Gets the timeout for the material overlay appearance.
-        /// </summary>
-        /// <value>
-        /// The material overlay appear timeout.
-        /// </value>
-        public TimeSpan MaterialOverlayAppearTimeout => TimeSpan.FromSeconds( GetInt( "MaterialOverlayAppearTimeout", 20 ) );
-
-        /// <summary>
-        /// Gets the timeout for the material overlay disappearance.
-        /// </summary>
-        /// <value>
-        /// The material overlay disappear timeout.
-        /// </value>
-        public TimeSpan MaterialOverlayDisappearTimeout => TimeSpan.FromSeconds( GetInt( "MaterialOverlayDisappearTimeout", 60 ) );
-
-        /// <summary>
         /// Gets the timeout for the machine overlay appearance.
         /// </summary>
         /// <value>

@@ -39,8 +39,8 @@ namespace HomeZone.UiObjectsTests.Material
                     Assert.IsTrue( materials.Toolbar.CanSave );
                     materials.Toolbar.Save();
 
-                    materials.WaitForDetailOverlayAppear( TestSettings.MaterialOverlayAppearTimeout );
-                    materials.WaitForDetailOverlayDisappear( TestSettings.MaterialOverlayDisappearTimeout );
+                    materials.WaitForDetailOverlayAppear();
+                    materials.WaitForDetailOverlayDisappear();
 
                     Assert.IsFalse( materials.Toolbar.CanSave );
 
@@ -74,8 +74,8 @@ namespace HomeZone.UiObjectsTests.Material
                 Assert.IsTrue( materials.Toolbar.CanSave );
                 materials.Toolbar.Save();
 
-                materials.WaitForDetailOverlayAppear( TestSettings.MaterialOverlayAppearTimeout );
-                materials.WaitForDetailOverlayDisappear( TestSettings.MaterialOverlayDisappearTimeout );
+                materials.WaitForDetailOverlayAppear();
+                materials.WaitForDetailOverlayDisappear();
 
                 Assert.IsFalse( materials.Toolbar.CanSave );
 
