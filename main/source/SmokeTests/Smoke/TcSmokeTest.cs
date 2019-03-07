@@ -21,7 +21,7 @@ namespace HomeZone.SmokeTests.Smoke
         /// Smoke test: creating test items, adding bend and cut solutions to parts, testing..., deleting the test items.
         /// </summary>
         [TestMethod, UniqueName( "524A05EA-D25E-423E-8974-EF4CC6B7F8F0" )]
-        [Tag( "Smoke" )]
+        //[Tag( "Smoke" )]
         public void SmokeTest()
         {
             //ExecuteUITest( DoThirdPartyLicenseTest, "Checking third party licenses" );
@@ -32,7 +32,7 @@ namespace HomeZone.SmokeTests.Smoke
         /// Checking third party licenses.
         /// </summary>
         [TestMethod, UniqueName( "273476C1-F42B-4A87-A71A-31389D54771F" )]
-        [Tag( "Smoke" )]
+        //[Tag( "Smoke" )]
         public void ThirdPartyLicenseTest()
         {
             ExecuteUITest( DoThirdPartyLicenseTest, "Checking third party licenses" );

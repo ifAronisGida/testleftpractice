@@ -64,7 +64,7 @@ namespace HomeZone.UiCommonFunctions.Base
             // connect to HomeZone process and wait until visible
             HomeZone = new TcHomeZoneApp( TestSettings.TestedAppName, Driver );
 
-            HomeZone.MainWindowExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            HomeZone.MainWindowExists.WaitFor( TimeSpan.FromSeconds( 90 ) );
 
             // close WelcomeScreen if visible
             var welcomeScreen = HomeZone.WelcomeScreen;
@@ -155,7 +155,7 @@ namespace HomeZone.UiCommonFunctions.Base
         /// </summary>
         protected static void AssemblyCleanup()
         {
-            Driver.Log.Save( TestSettings.ResultsDirectory, Log.Format.Html );
+            Driver.Log.Save( TestSettings.HtmlReportPath ?? TestSettings.ResultsDirectory, Log.Format.Html );
         }
     }
 }
