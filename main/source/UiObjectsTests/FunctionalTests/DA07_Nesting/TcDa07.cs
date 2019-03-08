@@ -34,9 +34,9 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
         {
             CreatePreConditions();
 
-            var missing = TcAppLangDependentStrings.Get( TeStringKey.Missing );
-            var cuttingProgram = TcAppLangDependentStrings.Get( TeStringKey.CuttingProgram );
-            //var incomplete = TcAppLangDependentStrings.Get( TeStringKey.Incomplete );
+            var missing = TcAppLangDependentStrings.Missing;
+            var cuttingProgram = TcAppLangDependentStrings.CuttingProgram;
+            //var incomplete = TcAppLangDependentStrings.Incomplete;
 
             var cutJobs = HomeZone.CutJobs;
 
