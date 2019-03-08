@@ -129,6 +129,13 @@ namespace HomeZone.UiObjects.TestSettings
         /// </value>
         public string ResultsDirectory => mTestContext.ResultsDirectory;
 
+        /// <summary>
+        /// Initializes the public settable properties of an object from the test context properties. Only instance properties are set.
+        /// </summary>
+        /// <param name="obj">
+        /// The object whose properties will be set from the test context properties.
+        /// This method only considers properties that are public and have a public setter.
+        /// </param>
         public void Fill( object obj )
         {
             if( obj is null )
@@ -154,11 +161,6 @@ namespace HomeZone.UiObjects.TestSettings
                     throw new Exception( "Unsupported type." );
                 }
             }
-        }
-
-        private bool HasKey( string key )
-        {
-            return mTestContext.Properties.Contains( key );
         }
 
         private string GetString( string key, string defaultValue )

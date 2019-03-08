@@ -2,6 +2,9 @@
 
 namespace HomeZone.UiObjects
 {
+    /// <summary>
+    /// Contains default timeout values for certain wait operations.
+    /// </summary>
     public class TcPageObjectSettings
     {
         private TcPageObjectSettings()
@@ -11,8 +14,6 @@ namespace HomeZone.UiObjects
         public static TcPageObjectSettings Instance { get; } = new TcPageObjectSettings();
 
         public TimeSpan MachineFirstImportTimeout { get; set; } = TimeSpan.FromSeconds( 120 );
-
-        public TimeSpan SavingTimeout { get; set; } = TimeSpan.FromSeconds( 60 );
 
         public TimeSpan MaterialOverlayAppearTimeout { get; set; } = TimeSpan.FromSeconds( 20 );
 
