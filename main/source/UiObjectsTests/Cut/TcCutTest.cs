@@ -31,12 +31,12 @@ namespace HomeZone.UiObjectsTests.Cut
             var parts = HomeZone.GotoParts();
 
             parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear();
+            parts.WaitForDetailOverlayDisappear();
 
             parts.SingleDetailCutSolutions.New();
             parts.SingleDetailCutSolutions.OpenCutSolution( "Cut1" );
-            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
+            parts.WaitForDetailOverlayAppear();
 
             var cut = CutApp;
 
@@ -50,7 +50,7 @@ namespace HomeZone.UiObjectsTests.Cut
             {
                 cut.CloseApp();
 
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayDisappear();
             }
 
             parts.Toolbar.Delete();

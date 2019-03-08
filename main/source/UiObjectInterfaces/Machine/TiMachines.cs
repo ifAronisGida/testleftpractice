@@ -26,14 +26,14 @@ namespace HomeZone.UiObjectInterfaces.Machine
         /// </summary>
         /// <param name="timeout">The timeout.</param>
         /// <returns></returns>
-        bool WaitForDetailOverlayAppear( TimeSpan timeout );
+        bool WaitForDetailOverlayAppear( TimeSpan? timeout = null );
 
         /// <summary>
         /// Waits for detail overlay disappear.
         /// </summary>
         /// <param name="timeout">The timeout.</param>
         /// <returns></returns>
-        bool WaitForDetailOverlayDisappear( TimeSpan timeout );
+        bool WaitForDetailOverlayDisappear( TimeSpan? timeout = null );
 
         /// <summary>
         /// Creates a new cut machine with the given properties.

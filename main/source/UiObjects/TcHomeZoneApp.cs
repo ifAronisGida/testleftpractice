@@ -63,10 +63,11 @@ namespace HomeZone.UiObjects
 
         public TiWelcomeScreen WelcomeScreen => On<TcWelcomeScreen>();
 
-        public bool BendMachineTemplatesLoaded( TimeSpan machineFirstImportTimeout )
+        public bool BendMachineTemplatesLoaded( TimeSpan? machineFirstImportTimeout = null )
         {
             Machines.Goto();
-            return Machines.Toolbar.WaitNewBendMachineEnabled( machineFirstImportTimeout );
+            return Machines.Toolbar.WaitNewBendMachineEnabled(
+                machineFirstImportTimeout ?? TcPageObjectSettings.Instance.MachineFirstImportTimeout );
         }
     }
 }

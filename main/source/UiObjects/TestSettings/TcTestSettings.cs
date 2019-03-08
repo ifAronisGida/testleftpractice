@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Reflection;
 
 namespace HomeZone.UiObjects.TestSettings
 {
@@ -75,14 +76,6 @@ namespace HomeZone.UiObjects.TestSettings
         public string FluxProcessName => GetString( "FluxProcessName", "Flux" );
 
         /// <summary>
-        /// Gets timeout for the first import of the machine templates.
-        /// </summary>
-        /// <value>
-        /// The machine first import timeout.
-        /// </value>
-        public TimeSpan MachineFirstImportTimeout => TimeSpan.FromSeconds( GetInt( "MachineFirstImportTimeout", 120 ) );
-
-        /// <summary>
         /// Gets timeout for starting Design.
         /// </summary>
         /// <value>
@@ -131,54 +124,6 @@ namespace HomeZone.UiObjects.TestSettings
         public TimeSpan SavingTimeout => TimeSpan.FromSeconds( GetInt( "SavingTimeout", 60 ) );
 
         /// <summary>
-        /// Gets the timeout for the material overlay appearance.
-        /// </summary>
-        /// <value>
-        /// The material overlay appear timeout.
-        /// </value>
-        public TimeSpan MaterialOverlayAppearTimeout => TimeSpan.FromSeconds( GetInt( "MaterialOverlayAppearTimeout", 20 ) );
-
-        /// <summary>
-        /// Gets the timeout for the material overlay disappearance.
-        /// </summary>
-        /// <value>
-        /// The material overlay disappear timeout.
-        /// </value>
-        public TimeSpan MaterialOverlayDisappearTimeout => TimeSpan.FromSeconds( GetInt( "MaterialOverlayDisappearTimeout", 60 ) );
-
-        /// <summary>
-        /// Gets the timeout for the machine overlay appearance.
-        /// </summary>
-        /// <value>
-        /// The machine overlay appear timeout.
-        /// </value>
-        public TimeSpan MachineOverlayAppearTimeout => TimeSpan.FromSeconds( GetInt( "MachineOverlayAppearTimeout", 20 ) );
-
-        /// <summary>
-        /// Gets the timeout for the machine overlay disappearance.
-        /// </summary>
-        /// <value>
-        /// The machine overlay disappear timeout.
-        /// </value>
-        public TimeSpan MachineOverlayDisappearTimeout => TimeSpan.FromSeconds( GetInt( "MachineOverlayDisappearTimeout", 60 ) );
-
-        /// <summary>
-        /// Gets the timeout for the part overlay appearance.
-        /// </summary>
-        /// <value>
-        /// The part overlay appear timeout.
-        /// </value>
-        public TimeSpan PartOverlayAppearTimeout => TimeSpan.FromSeconds( GetInt( "PartOverlayAppearTimeout", 10 ) );
-
-        /// <summary>
-        /// Gets the timeout for the part overlay disappearance.
-        /// </summary>
-        /// <value>
-        /// The part overlay disappear timeout.
-        /// </value>
-        public TimeSpan PartOverlayDisappearTimeout => TimeSpan.FromSeconds( GetInt( "PartOverlayDisappearTimeout", 90 ) );
-
-        /// <summary>
         /// Gets the test results directory
         /// </summary>
         /// <value>
@@ -186,23 +131,57 @@ namespace HomeZone.UiObjects.TestSettings
         /// </value>
         public string ResultsDirectory => mTestContext.ResultsDirectory;
 
+        /// <summary>
+        /// Initializes the public settable properties of an object from the test context properties. Only instance properties are set.
+        /// </summary>
+        /// <param name="obj">
+        /// The object whose properties will be set from the test context properties.
+        /// This method only considers properties that are public and have a public setter.
+        /// </param>
+        public void Fill( object obj )
+        {
+            if( obj is null )
+            {
+                throw new ArgumentNullException( nameof( obj ) );
+            }
+
+            foreach( var property in obj.GetType().GetProperties( BindingFlags.Public | BindingFlags.Instance ) )
+            {
+                if( property.GetSetMethod( nonPublic: false ) is null || !mTestContext.Properties.Contains( property.Name ) )
+                {
+                    continue;
+                }
+
+                var value = ( string )mTestContext.Properties[property.Name];
+
+                if( property.PropertyType == typeof( TimeSpan ) )
+                {
+                    property.SetValue( obj, TimeSpan.FromSeconds( int.Parse( value ) ) );
+                }
+                else
+                {
+                    throw new Exception( "Unsupported type." );
+                }
+            }
+        }
+
         private string GetString( string key, string defaultValue )
         {
-            var value = ( string )mTestContext.Properties[ key ];
+            var value = ( string )mTestContext.Properties[key];
 
             return string.IsNullOrEmpty( value ) ? defaultValue : value;
         }
 
         private int GetInt( string key, int defaultValue )
         {
-            var value = ( string )mTestContext.Properties[ key ];
+            var value = ( string )mTestContext.Properties[key];
 
             return string.IsNullOrEmpty( value ) ? defaultValue : Convert.ToInt32( value );
         }
 
         private bool GetBool( string key, bool defaultValue )
         {
-            var value = ( string )mTestContext.Properties[ key ];
+            var value = ( string )mTestContext.Properties[key];
 
             return string.IsNullOrEmpty( value ) ? defaultValue : Convert.ToBoolean( value );
         }

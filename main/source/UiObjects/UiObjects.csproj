@@ -183,6 +183,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="TcPageObjectSettings.cs" />
     <Compile Include="TcAppLangDependentStrings.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
