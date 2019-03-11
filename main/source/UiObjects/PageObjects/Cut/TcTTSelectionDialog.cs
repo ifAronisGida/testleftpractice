@@ -1,9 +1,8 @@
-using System;
+﻿using System;
 using System.Threading;
 using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
 using HomeZone.UiObjectInterfaces.Cut;
-
 
 namespace HomeZone.UiObjects.PageObjects.Cut
 {
@@ -38,7 +37,7 @@ namespace HomeZone.UiObjects.PageObjects.Cut
             mApp = null;
             mWindow = null;
 
-            var tts = TcAppLangDependentStrings.Get( TeStringKey.TechnologyTableSelection );
+            var tts = TcAppLangDependentStrings.TechnologyTableSelection;
             var startTime = DateTime.Now;
 
             while( DateTime.Now - startTime < timeout )

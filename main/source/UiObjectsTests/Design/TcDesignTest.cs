@@ -30,8 +30,8 @@ namespace HomeZone.UiObjectsTests.Design
             var parts = HomeZone.GotoParts();
 
             parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear();
+            parts.WaitForDetailOverlayDisappear();
 
             parts.SingleDetailDesign.Open();
 
@@ -40,7 +40,7 @@ namespace HomeZone.UiObjectsTests.Design
             {
                 DesignApp.CloseApp();
 
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayDisappear();
             }
 
             parts.Toolbar.Delete();

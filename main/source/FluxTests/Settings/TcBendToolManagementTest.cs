@@ -84,8 +84,8 @@ namespace HomeZone.FluxTests.Settings
             // import part and use toollist
             var parts = HomeZone.GotoParts();
             parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear();
+            parts.WaitForDetailOverlayDisappear();
             Assert.IsTrue( CheckToolListDropdown( toollistName, out var toolList ), S_MISSING_FLUX_TOOL_LIST_IN_BOOST );
 
             parts.Toolbar.Delete();
@@ -127,8 +127,8 @@ namespace HomeZone.FluxTests.Settings
             // import part and use toollist
             var parts = HomeZone.GotoParts();
             parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear();
+            parts.WaitForDetailOverlayDisappear();
 
             Assert.IsFalse( CheckToolListDropdown( toollistName, out var control ), S_MISSING_FLUX_TOOL_LIST_IN_BOOST );
 
@@ -171,8 +171,8 @@ namespace HomeZone.FluxTests.Settings
             // import part and use toollist
             var parts = HomeZone.GotoParts();
             parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-            parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+            parts.WaitForDetailOverlayAppear();
+            parts.WaitForDetailOverlayDisappear();
 
             Assert.IsTrue( CheckToolListDropdown( newName, out var control ), "Newly created tool list is not available in HomeZone UI" );
 

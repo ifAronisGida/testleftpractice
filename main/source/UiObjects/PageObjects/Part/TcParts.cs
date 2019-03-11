@@ -67,9 +67,9 @@ namespace HomeZone.UiObjects.PageObjects.Part
         /// </summary>
         /// <param name="timeout">The timeout.</param>
         /// <returns></returns>
-        public bool WaitForDetailOverlayAppear( TimeSpan timeout )
+        public bool WaitForDetailOverlayAppear( TimeSpan? timeout = null )
         {
-            return TryWait.For( () => DetailOverlay.VisibleOnScreen, timeout );
+            return DetailOverlay.Visible.TryWaitFor( timeout ?? TcPageObjectSettings.Instance.PartOverlayAppearTimeout );
         }
 
         /// <summary>
@@ -77,9 +77,9 @@ namespace HomeZone.UiObjects.PageObjects.Part
         /// </summary>
         /// <param name="timeout">The timeout.</param>
         /// <returns></returns>
-        public bool WaitForDetailOverlayDisappear( TimeSpan timeout )
+        public bool WaitForDetailOverlayDisappear( TimeSpan? timeout = null )
         {
-            return TryWait.For( () => !DetailOverlay.VisibleOnScreen, timeout );
+            return DetailOverlay.Visible.TryWaitForFalse( timeout ?? TcPageObjectSettings.Instance.PartOverlayDisappearTimeout );
         }
 
         /// <summary>

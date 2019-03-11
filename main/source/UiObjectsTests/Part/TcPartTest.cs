@@ -63,8 +63,8 @@ namespace HomeZone.UiObjectsTests.Part
 
                     parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
 
-                    parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                    parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+                    parts.WaitForDetailOverlayAppear();
+                    parts.WaitForDetailOverlayDisappear();
                     parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
                     parts.SingleDetail.Name.Value = TestSettings.NamePrefix + "ImportPartTest";
@@ -83,14 +83,14 @@ namespace HomeZone.UiObjectsTests.Part
 
                     Assert.IsTrue( parts.Toolbar.CanBoost );
                     parts.Toolbar.Boost();
-                    parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                    parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+                    parts.WaitForDetailOverlayAppear();
+                    parts.WaitForDetailOverlayDisappear();
 
                     // boost again to check dialog box handling
                     Assert.IsTrue( parts.Toolbar.CanBoost );
                     parts.Toolbar.Boost();
-                    parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                    parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+                    parts.WaitForDetailOverlayAppear();
+                    parts.WaitForDetailOverlayDisappear();
 
                     Assert.IsTrue( parts.Toolbar.CanDelete );
                     parts.Toolbar.Delete();
@@ -113,8 +113,8 @@ namespace HomeZone.UiObjectsTests.Part
 
                 parts.SingleDetailDesign.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
 
-                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear();
+                parts.WaitForDetailOverlayDisappear();
                 parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
 
                 parts.SingleDetail.Name.Value = TestSettings.NamePrefix + "ImportDesignTest";
@@ -134,8 +134,8 @@ namespace HomeZone.UiObjectsTests.Part
 
                 Assert.IsTrue( parts.Toolbar.CanBoost );
                 parts.Toolbar.Boost();
-                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear();
+                parts.WaitForDetailOverlayDisappear();
 
                 Assert.IsTrue( parts.Toolbar.CanDelete );
                 parts.Toolbar.Delete();

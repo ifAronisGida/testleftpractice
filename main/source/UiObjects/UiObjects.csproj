@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -183,7 +183,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="TcAppLangDependentStrings.cs" />
+    <Compile Include="TcPageObjectSettings.cs" />
+    <Compile Include="TcAppLangDependentStrings.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TcAppLangDependentStrings.tt</DependentUpon>
+    </Compile>
     <Compile Include="TestSettings\TcTestSettings.cs" />
     <Compile Include="TestSettings\TcSystemLanguageSpecific.cs" />
     <Compile Include="TcApp.cs" />
@@ -198,6 +203,7 @@
     <Compile Include="Utilities\TcUIObjectExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
@@ -212,6 +218,12 @@
       <Project>{FBDAA579-B218-4D39-8F5B-838DEF1890F3}</Project>
       <Name>UiObjectInterfaces</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TcAppLangDependentStrings.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TcAppLangDependentStrings.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

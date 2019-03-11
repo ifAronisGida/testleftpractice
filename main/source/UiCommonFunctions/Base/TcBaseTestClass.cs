@@ -33,6 +33,8 @@ namespace HomeZone.UiCommonFunctions.Base
         public void Init()
         {
             TestSettings = new TcTestSettings( TestContext );
+            TestSettings.Fill( TcPageObjectSettings.Instance );
+
             mAutoFact = new AutoFact( new TcTestOptions( GetType(), TestContext, TestSettings ) );
 
             DesignApp = new TcDesign( Driver );
@@ -74,7 +76,7 @@ namespace HomeZone.UiCommonFunctions.Base
             }
 
             // wait until machine templates are loaded
-            Assert.IsTrue( HomeZone.BendMachineTemplatesLoaded( TestSettings.MachineFirstImportTimeout ) );
+            Assert.IsTrue( HomeZone.BendMachineTemplatesLoaded() );
         }
 
         /// <summary>
