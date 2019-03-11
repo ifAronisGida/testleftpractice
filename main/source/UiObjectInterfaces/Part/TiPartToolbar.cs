@@ -39,6 +39,6 @@ namespace HomeZone.UiObjectInterfaces.Part
         /// </summary>
         /// <param name="timeout">timeout</param>
         /// <returns>bool</returns>
-        bool WaitForBoostButtonEnabled( TimeSpan timeout );
+        bool WaitForBoostButtonEnabled( TimeSpan? timeout = null );
     }
 }

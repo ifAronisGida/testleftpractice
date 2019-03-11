@@ -164,21 +164,6 @@ namespace HomeZone.UiObjects.TestSettings
                 }
             }
         }
-        /// <summary>
-        /// Get the timeout for selecting all parts until one can use the selection
-        /// </summary>
-        /// <value>
-        /// The part select all timeout.
-        /// </value>
-        public TimeSpan PartSelectAllTimeout => TimeSpan.FromSeconds( GetInt( "PartSelectAllTimeout", 5 ) );
-
-        /// <summary>
-        /// Gets the test results directory
-        /// </summary>
-        /// <value>
-        /// The thest results directory
-        /// </value>
-        public string ResultsDirectory => mTestContext.ResultsDirectory;
 
         private string GetString( string key, string defaultValue )
         {

@@ -345,11 +345,11 @@ namespace HomeZone.FluxTests.Flux
             foreach( var item in showcasePartList )
             {
                 parts.Toolbar.Import( Path.Combine( samplesPath, item ) );
-                parts.WaitForDetailOverlayAppear( TestSettings.PartOverlayAppearTimeout );
-                parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+                parts.WaitForDetailOverlayAppear();
+                parts.WaitForDetailOverlayDisappear();
             }
             parts.ResultColumn.SelectAll();
-            parts.Toolbar.WaitForBoostButtonEnabled( TestSettings.PartSelectAllTimeout );
+            parts.Toolbar.WaitForBoostButtonEnabled();
             parts.Toolbar.Boost();
 
             int timeoutCount = 0;
@@ -359,12 +359,11 @@ namespace HomeZone.FluxTests.Flux
                 bool waitSuccess = false;
                 do
                 {
-                    waitSuccess = parts.WaitForDetailOverlayDisappear( TestSettings.PartOverlayDisappearTimeout );
+                    waitSuccess = parts.WaitForDetailOverlayDisappear();
                     timeoutCount++;
                 } while( !waitSuccess && timeoutCount < showcasePartList.Count ); //wait max: number of parts * timeout
 
-                var missing = TcAppLangDependentStrings.Get( TeStringKey.ReleaseMissing );
-                Assert.AreEqual( missing, parts.SingleDetailBendSolutions.SingleBendSolutionStateToolTip( bendSolutionName ), "Bend solution has wrong state" );
+                Assert.AreEqual( TcAppLangDependentStrings.ReleaseMissing, parts.SingleDetailBendSolutions.SingleBendSolutionStateToolTip( bendSolutionName ), "Bend solution has wrong state" );
                 Assert.IsFalse( parts.SingleDetailBendSolutions.IsManuallyChanged( bendSolutionName ), "Bend solution indicates manual change but there is none" );
                 parts.SingleDetailBendSolutions.OpenSolutionDetail( bendSolutionName );
                 Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( bendSolutionName ), "Setup plan is missing for boosted solution" );

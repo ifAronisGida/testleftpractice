@@ -3,7 +3,6 @@ using HomeZone.UiObjectInterfaces.Dialogs;
 using HomeZone.UiObjectInterfaces.Part;
 using HomeZone.UiObjects.PageObjects.Dialogs;
 using System;
-using Trumpf.Coparoo.Desktop.Waiting;
 using Trumpf.Coparoo.Desktop.WPF;
 
 namespace HomeZone.UiObjects.PageObjects.Part
@@ -92,9 +91,9 @@ namespace HomeZone.UiObjects.PageObjects.Part
         /// </summary>
         /// <param name="timeout">timeout</param>
         /// <returns>true</returns>
-        public bool WaitForBoostButtonEnabled( TimeSpan timeout )
+        public bool WaitForBoostButtonEnabled( TimeSpan? timeout = null )
         {
-            return TryWait.For( () => BoostButton.Enabled, timeout );
+            return BoostButton.Enabled.TryWaitFor( timeout ?? TcPageObjectSettings.Instance.PartSelectAllTimeout );
         }
     }
 }

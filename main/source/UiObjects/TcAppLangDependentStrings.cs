@@ -82,6 +82,23 @@ namespace HomeZone.UiObjects
                 }
             }
         }
+
+        public static string ReleaseMissing
+        {
+            get {
+                switch (CurrentLanguage)
+                {
+                    case TeAppLanguage.English:
+                        return "Release missing";
+                    case TeAppLanguage.German:
+                        return "Freigabe fehlt";
+                    case TeAppLanguage.Hungarian:
+                        return "";
+                    default:
+                        throw new System.Exception("Unsupported language");
+                }
+            }
+        }
    
     }
 }

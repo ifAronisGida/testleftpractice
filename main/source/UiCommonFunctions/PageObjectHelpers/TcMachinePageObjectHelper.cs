@@ -49,8 +49,8 @@ namespace HomeZone.UiCommonFunctions
             mCreatedMachineList.Add( machineName );
             machines.NewBendMachine( machineType, machineName );
             machines.Toolbar.Save();
-            machines.WaitForDetailOverlayAppear( testSettings.MachineOverlayAppearTimeout );
-            machines.WaitForDetailOverlayDisappear( testSettings.MachineOverlayDisappearTimeout );
+            machines.WaitForDetailOverlayAppear();
+            machines.WaitForDetailOverlayDisappear();
         }
 
         /// <summary>
