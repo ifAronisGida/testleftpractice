@@ -16,6 +16,9 @@ namespace HomeZone.UiObjects.ControlObjects
 
         public virtual Wool Visible => ControlObject.Visible;
 
+        public virtual Wool VisibleOnScreen => ControlObject.VisibleOnScreen;
+
+
         public virtual bool IsFocused => ControlObject.Node.GetProperty<bool>( "IsKeyboardFocusWithin" );
 
         protected IControlObject ControlObject { get; }

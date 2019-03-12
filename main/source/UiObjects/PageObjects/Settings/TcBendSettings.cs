@@ -1,7 +1,7 @@
-using Trumpf.Coparoo.Desktop;
-using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Settings;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 
 
 namespace HomeZone.UiObjects.PageObjects.Settings
@@ -20,6 +20,7 @@ namespace HomeZone.UiObjects.PageObjects.Settings
         private TiButton BendDeductionOpenButton => Find<TiButton>( "Settings.Bend.BendDeduction.Open" );
         private TiButton AppSettingsOpenButton => Find<TiButton>( "Settings.Bend.AppSettings.Open" );
         private TiButton DataManagerBendOpenButton => Find<TiButton>( "Settings.Bend.DataManagerBend.Open" );
+        private TiButton NewLocalDefaultBendProgram => Find<TiButton>( "Settings.Bend.User.BendSolutions.Solutions.AddSolution" );
 
         /// <summary>
         /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
@@ -29,7 +30,7 @@ namespace HomeZone.UiObjects.PageObjects.Settings
             if( !IsVisibleOnScreen )
             {
                 Parent.Goto();
-                ( ( TcSettingsDialog )Parent ).BendTab.Click();
+                ( ( TcSettingsDialog ) Parent ).BendTab.Click();
             }
         }
 
@@ -71,6 +72,14 @@ namespace HomeZone.UiObjects.PageObjects.Settings
         public void OpenDataManagerBend()
         {
             DataManagerBendOpenButton.Click();
+        }
+
+        /// <summary>
+        /// Add a default Bend Program (take first which appears in dropdown)
+        /// </summary>
+        public void AddDefaultBendProgram()
+        {
+            NewLocalDefaultBendProgram.Click();
         }
     }
 }

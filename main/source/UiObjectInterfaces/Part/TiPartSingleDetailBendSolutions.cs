@@ -53,5 +53,12 @@ namespace HomeZone.UiObjectInterfaces.Part
         /// <param name="name">The name.</param>
         /// <returns> true if manually changed </returns>
         bool IsManuallyChanged( string name );
+
+        /// <summary>
+        /// Tool Tip of a bend solution
+        /// </summary>
+        /// <param name="bendSolutionName">bend solution name</param>
+        /// <returns></returns>
+        string SingleBendSolutionStateToolTip( string bendSolutionName );
     }
 }

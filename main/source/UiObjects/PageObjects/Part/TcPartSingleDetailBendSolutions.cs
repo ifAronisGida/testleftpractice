@@ -1,9 +1,10 @@
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Part;
+using HomeZone.UiObjects.ControlObjects;
+using HomeZone.UiObjects.PageObjects.Shell;
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
-using HomeZone.UiObjectInterfaces.Controls;
-using HomeZone.UiObjectInterfaces.Part;
-using HomeZone.UiObjects.PageObjects.Shell;
 
 namespace HomeZone.UiObjects.PageObjects.Part
 {
@@ -18,6 +19,11 @@ namespace HomeZone.UiObjects.PageObjects.Part
 
         private IListBox BendSolutionList => Node.Find<IListBox>( Search.ByUid( "Part.Detail.BendSolutions.List" ) );
         private TiButton NewButton => Find<TiButton>( "Part.Detail.BendSolutions.AddSolution" );
+        private TcTooltipAccessor BendSolutionState => Find<TcTooltipAccessor>( "Part.Detail.BendSolutions.State" );
+        private TcTooltipAccessor SingleBendSolutionState( string bendSolutionName )
+        {
+            return Find<TcTooltipAccessor>( Search.ByUid( string.Format( "Part.Detail.BendSolutions.List.{0}.State", bendSolutionName ) ) );
+        }
 
         /// <summary>
         /// Creates a new bend solution.
@@ -115,6 +121,16 @@ namespace HomeZone.UiObjects.PageObjects.Part
         {
             var homunculus = BendSolutionList.Find<IControl>( Search.ByUid( "Part.Detail.BendSolutions.List." + name + ".ManuallyChanged" ), 3 );
             return homunculus.VisibleOnScreen;
+        }
+
+        /// <summary>
+        /// Tool Tip of a bend solution
+        /// </summary>
+        /// <param name="bendSolutionName">bend solution name</param>
+        /// <returns></returns>
+        public string SingleBendSolutionStateToolTip( string bendSolutionName )
+        {
+            return SingleBendSolutionState( bendSolutionName ).ToolTip;
         }
     }
 }

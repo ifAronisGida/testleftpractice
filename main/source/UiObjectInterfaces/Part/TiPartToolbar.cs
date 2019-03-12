@@ -1,4 +1,5 @@
 using HomeZone.UiObjectInterfaces.Common;
+using System;
 
 namespace HomeZone.UiObjectInterfaces.Part
 {
@@ -32,5 +33,12 @@ namespace HomeZone.UiObjectInterfaces.Part
         /// Creates the cut job.
         /// </summary>
         void CreateCutJob();
+
+        /// <summary>
+        /// Wait until Boost Button is Enabled
+        /// </summary>
+        /// <param name="timeout">timeout</param>
+        /// <returns>bool</returns>
+        bool WaitForBoostButtonEnabled( TimeSpan? timeout = null );
     }
 }

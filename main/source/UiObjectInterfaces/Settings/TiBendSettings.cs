@@ -34,5 +34,10 @@ namespace HomeZone.UiObjectInterfaces.Settings
         /// Opens the data manager bend.
         /// </summary>
         void OpenDataManagerBend();
+
+        /// <summary>
+        /// Add a default Bend Program (take first which appears in dropdown)
+        /// </summary>
+        void AddDefaultBendProgram();
     }
 }

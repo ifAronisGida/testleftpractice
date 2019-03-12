@@ -75,6 +75,7 @@
     <Compile Include="Base\TcBaseTestClass.cs" />
     <Compile Include="Base\TcTestOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PageObjectHelpers\TcMachinePageObjectHelper.cs" />
     <Compile Include="Utilities\TcHomeZoneExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
