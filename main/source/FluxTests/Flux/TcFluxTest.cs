@@ -323,7 +323,7 @@ namespace HomeZone.FluxTests.Flux
                 "Wanne.scdoc",
                 "Zugwinkel.scdoc",
                 "Abdeckblech.scdoc",
-                "Abdeckung_mitExtAttributen.scdoc",
+                //"Abdeckung_mitExtAttributen.scdoc", //no material assigned automatically -> no boosted design per default
                 "Aufnahmegehaeuse.scdoc",
                 "Bruecke.scdoc",
                 "Demoteil.geo",
@@ -368,6 +368,8 @@ namespace HomeZone.FluxTests.Flux
                 parts.SingleDetailBendSolutions.OpenSolutionDetail( bendSolutionName );
                 Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( bendSolutionName ), "Setup plan is missing for boosted solution" );
                 Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( bendSolutionName ), "NC code is missing for boosted solution" );
+
+                parts.Toolbar.Delete();
             }
 
             mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
