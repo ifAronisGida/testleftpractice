@@ -1,8 +1,11 @@
+using HomeZone.UiCommonFunctions;
 using HomeZone.UiCommonFunctions.Base;
-using HomeZone.UiObjects.PageObjects.Flux;
+using HomeZone.UiObjectInterfaces.Part;
+using HomeZone.UiObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Threading;
+using System.Collections.Generic;
+using System.IO;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
@@ -17,9 +20,7 @@ namespace HomeZone.FluxTests.Flux
     {
         private const string S_FLUX_MACHINE_5320 = "TruBend 5320 (6-axes) B23";
 
-        private string mTestMachineName;
-
-        private readonly TimeSpan mConfigureMachineOverlay = TimeSpan.FromSeconds( 20 );
+        private TcMachinePageObjectHelper mMachineHelper = new TcMachinePageObjectHelper();
 
         /// <summary>
         /// Creates a new part with bend solution, opens it and closes Flux.
@@ -72,16 +73,6 @@ namespace HomeZone.FluxTests.Flux
         }
 
         /// <summary>
-        /// Opens/Closes configure machine dialog
-        /// </summary>
-        [TestMethod, UniqueName( "511d5620-52c1-4735-9fc4-370a62552eca" )]
-        [Tag( "Flux" )]
-        public void ConfigureMachineTest()
-        {
-            ExecuteUITest( DoConfigureMachineTest, "Configure Machine" );
-        }
-
-        /// <summary>
         /// Closes a changed part without saving
         /// </summary>
         [TestMethod, UniqueName( "511d5620-52c1-4735-9fc4-370a62552eca" )]
@@ -91,12 +82,20 @@ namespace HomeZone.FluxTests.Flux
             ExecuteUITest( DoCloseWithoutSave, "Close Flux without Saving" );
         }
 
+        [TestMethod, UniqueName( "B02AAB6B-6B37-471D-9023-8985CE43A0A3" )]
+        [Tag( "Flux" )]
+        public void BoostAllShowcaseParts()
+        {
+            ExecuteUITest( DoBoostAllShowcaseParts, "Boost All Showcase Parts" );
+        }
+
         /// <summary>
         /// Implementation of the Flux open and close test
         /// </summary>
         private void DoFluxOpenClose()
         {
-            CreateTestMachine();
+            mMachineHelper.CreateAndSaveBendMachine( TestSettings, HomeZone.Machines, S_FLUX_MACHINE_5320 );
+
 
             var namePrefix = TestSettings.NamePrefix + Guid.NewGuid();
             var parts = HomeZone.GotoParts();
@@ -144,8 +143,7 @@ namespace HomeZone.FluxTests.Flux
             parts.Toolbar.Delete();
             parts.ResultColumn.ClearSearch();
 
-            DeleteTestMachine();
-
+            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
         /// <summary>
@@ -153,7 +151,7 @@ namespace HomeZone.FluxTests.Flux
         /// </summary>
         private void DoFluxSaveAndCloseTest()
         {
-            CreateTestMachine();
+            mMachineHelper.CreateAndSaveBendMachine( TestSettings, HomeZone.Machines, S_FLUX_MACHINE_5320 );
 
             var parts = HomeZone.GotoParts();
             string solutionName = "Bend1";
@@ -175,7 +173,7 @@ namespace HomeZone.FluxTests.Flux
             Assert.IsTrue( isManual );
 
             parts.Toolbar.Delete();
-            DeleteTestMachine();
+            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
         /// <summary>
@@ -183,7 +181,7 @@ namespace HomeZone.FluxTests.Flux
         /// </summary>
         private void DoBoostPartSucessTest()
         {
-            CreateTestMachine();
+            mMachineHelper.CreateAndSaveBendMachine( TestSettings, HomeZone.Machines, S_FLUX_MACHINE_5320 );
             var parts = HomeZone.GotoParts();
             string solutionName = "Bend1";
 
@@ -203,7 +201,7 @@ namespace HomeZone.FluxTests.Flux
             Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
 
             parts.Toolbar.Delete();
-            DeleteTestMachine();
+            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
         /// <summary>
@@ -212,7 +210,7 @@ namespace HomeZone.FluxTests.Flux
         private void DoBoostSolutionWithErrorTest()
         {
             string testMachine = "TruBend 3066 (2-axes, Asia) B26";
-            CreateTestMachine( testMachine );
+            mMachineHelper.CreateAndSaveBendMachine( TestSettings, HomeZone.Machines, testMachine );
 
             var parts = HomeZone.GotoParts();
             string solutionName = "Bend1";
@@ -233,7 +231,7 @@ namespace HomeZone.FluxTests.Flux
             Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
 
             parts.Toolbar.Delete();
-            DeleteTestMachine( testMachine );
+            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
         /// <summary>
@@ -241,7 +239,7 @@ namespace HomeZone.FluxTests.Flux
         /// </summary>
         private void DoReleaseBoostedPart()
         {
-            CreateTestMachine();
+            mMachineHelper.CreateAndSaveBendMachine( TestSettings, HomeZone.Machines, S_FLUX_MACHINE_5320 );
 
             var parts = HomeZone.GotoParts();
             string solutionName = "Bend1";
@@ -276,27 +274,7 @@ namespace HomeZone.FluxTests.Flux
             Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
 
             parts.Toolbar.Delete();
-            DeleteTestMachine();
-        }
-
-        /// <summary>
-        /// Implementation of the confugre machine test
-        /// </summary>
-        private void DoConfigureMachineTest()
-        {
-
-            string machineName = "TruBend 5320 (6-axes) B23";
-            CreateTestMachine( machineName );
-
-            // open dialog
-            OpenMachineConfiguration( machineName );
-            Thread.Sleep( mConfigureMachineOverlay );
-            TcFluxConfigureMachine flux = new TcFluxConfigureMachine( Driver );
-            bool visible = flux.MachineDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            flux.CloseMachienDialog();
-            Thread.Sleep( mConfigureMachineOverlay );
-
-            DeleteTestMachine( machineName );
+            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
         /// <summary>
@@ -304,7 +282,7 @@ namespace HomeZone.FluxTests.Flux
         /// </summary>
         private void DoCloseWithoutSave()
         {
-            CreateTestMachine();
+            mMachineHelper.CreateAndSaveBendMachine( TestSettings, HomeZone.Machines, S_FLUX_MACHINE_5320 );
 
             var parts = HomeZone.GotoParts();
             string solutionName = "Bend1";
@@ -322,62 +300,79 @@ namespace HomeZone.FluxTests.Flux
             flux.ChangeSolution();
             parts.WaitForDetailOverlayDisappear();
             parts.Toolbar.Delete();
-            DeleteTestMachine();
+            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
         /// <summary>
-        /// create a test machine
+        /// Implementation of the Boost all showcase parts test
         /// </summary>
-        /// <param name="machineName">machine name</param>
-        private void CreateTestMachine( string machineName = null )
+        private void DoBoostAllShowcaseParts()
         {
-            var machines = HomeZone.Machines;
-            if( machineName == null )
+            string bendSolutionName = "Bend1";
+            string samplesPath = @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase";
+            List<string> showcasePartList = new List<string>()
             {
-                mTestMachineName = TestSettings.NamePrefix + S_FLUX_MACHINE_5320;
-                machines.NewBendMachine( S_FLUX_MACHINE_5320, mTestMachineName );
-            }
-            else
+                "Halter_rechts.scdoc",
+                "Lochgitter.scdoc",
+                "Lueftergehauese.scdoc",
+                "Motorhalter.scdoc",
+                "Pumpenhalter.scdoc",
+                "Rueckwand.scdoc",
+                "Traeger.scdoc",
+                "Umlenker.scdoc",
+                "Wanne.scdoc",
+                "Zugwinkel.scdoc",
+                "Abdeckblech.scdoc",
+                //"Abdeckung_mitExtAttributen.scdoc", //no material assigned automatically -> no boosted design per default
+                "Aufnahmegehaeuse.scdoc",
+                "Bruecke.scdoc",
+                "Demoteil.geo",
+                "Distanzblech.scdoc",
+                "Eckwinkel.scdoc",
+                "Entluefterwinkel.scdoc",
+                "Halteplatte.scdoc"
+            };
+
+            mMachineHelper.CreateAndSaveBendMachine( TestSettings, HomeZone.Machines, S_FLUX_MACHINE_5320 );
+
+            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
+            var bendSettings = settingsDialog.BendSettings;
+            bendSettings.Goto();
+            bendSettings.AddDefaultBendProgram();
+            settingsDialog.Save();
+
+            TiParts parts = HomeZone.GotoParts();
+            foreach( var item in showcasePartList )
             {
-                mTestMachineName = TestSettings.NamePrefix + machineName;
-                machines.NewBendMachine( machineName, machineName );
+                parts.Toolbar.Import( Path.Combine( samplesPath, item ) );
+                parts.WaitForDetailOverlayAppear();
+                parts.WaitForDetailOverlayDisappear();
             }
-            Assert.IsTrue( machines.Toolbar.CanSave );
-            machines.Toolbar.Save();
-            Assert.IsFalse( machines.Toolbar.CanSave );
+            parts.ResultColumn.SelectAll();
+            parts.Toolbar.WaitForBoostButtonEnabled();
+            parts.Toolbar.Boost();
 
-            machines.WaitForDetailOverlayAppear();
-            machines.WaitForDetailOverlayDisappear();
-        }
-
-
-        /// <summary>
-        /// Delete the test machine
-        /// </summary>
-        /// <param name="machineName"></param>
-        private void DeleteTestMachine( string machineName = null )
-        {
-            var machines = HomeZone.Machines;
-            machines.Goto();
-            if( machineName == null )
+            int timeoutCount = 0;
+            foreach( var item in showcasePartList )
             {
-                machines.DeleteMachine( mTestMachineName );
-            }
-            else
-            {
-                machines.DeleteMachine( machineName );
-            }
-        }
+                parts.ResultColumn.SelectItems( Path.GetFileNameWithoutExtension( item ) );
+                bool waitSuccess = false;
+                do
+                {
+                    waitSuccess = parts.WaitForDetailOverlayDisappear();
+                    timeoutCount++;
+                } while( !waitSuccess && timeoutCount < showcasePartList.Count ); //wait max: number of parts * timeout
 
-        /// <summary>
-        /// Open the machine configuration
-        /// </summary>
-        /// <param name="machineName"></param>
-        private void OpenMachineConfiguration( string machineName )
-        {
-            var machines = HomeZone.GotoMachines();
-            machines.ResultColumn.SelectItem( machineName );
-            machines.Detail.OpenMachineConfigurationBend();
+                Assert.AreEqual( TcAppLangDependentStrings.ReleaseMissing, parts.SingleDetailBendSolutions.SingleBendSolutionStateToolTip( bendSolutionName ), "Bend solution has wrong state" );
+                Assert.IsFalse( parts.SingleDetailBendSolutions.IsManuallyChanged( bendSolutionName ), "Bend solution indicates manual change but there is none" );
+                parts.SingleDetailBendSolutions.OpenSolutionDetail( bendSolutionName );
+                Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( bendSolutionName ), "Setup plan is missing for boosted solution" );
+                Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( bendSolutionName ), "NC code is missing for boosted solution" );
+
+                parts.Toolbar.Delete();
+            }
+
+            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
     }
 }

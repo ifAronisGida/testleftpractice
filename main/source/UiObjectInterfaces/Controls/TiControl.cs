@@ -8,6 +8,10 @@ namespace HomeZone.UiObjectInterfaces.Controls
 
         Wool Visible { get; }
 
+        Wool VisibleOnScreen { get; }
+
         bool IsFocused { get; }
+
+
     }
 }
