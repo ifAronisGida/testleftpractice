@@ -73,7 +73,7 @@ namespace HomeZone.FluxTests.Settings
             bendSettings.OpenToolListsConfiguration();
 
             string toollistName = "superTools";
-            Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
             Flux.ToolManagement.NewToolList( toollistName );
             Flux.ToolManagement.Close();
             Flux.SaveChanges();
@@ -105,7 +105,7 @@ namespace HomeZone.FluxTests.Settings
 
             string toollistName = "rubbishTools";
 
-            Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
             Flux.ToolManagement.NewToolList( toollistName );
             Flux.ToolManagement.Close();
             Flux.SaveChanges();
@@ -118,7 +118,7 @@ namespace HomeZone.FluxTests.Settings
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
             bendSettings.OpenToolListsConfiguration();
 
-            Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
             Flux.ToolManagement.DeleteToolList( toollistName );
             Flux.ToolManagement.Close();
             Flux.WaitForSynchronization( TestSettings.FluxSyncTimeout );
@@ -148,7 +148,7 @@ namespace HomeZone.FluxTests.Settings
             bendSettings.OpenToolListsConfiguration();
 
             string toollistName = "oldName";
-            Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
             Flux.ToolManagement.NewToolList( toollistName );
             Flux.ToolManagement.Close();
             Flux.SaveChanges();
@@ -192,7 +192,7 @@ namespace HomeZone.FluxTests.Settings
 
             bendSettings.OpenToolsConfiguration();
 
-            Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
             //TODO: implement tests (like editing tools)
             Flux.ToolManagement.Close();
 
