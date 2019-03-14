@@ -15,6 +15,13 @@ TODO: Guide users through getting your code up and running on their own system. 
 # Build and Test
 TODO: Describe and show how to build your code and run the tests. 
 
+# Deployment
+Each night the master branch is deployed. If an earlier deployement is need for example to test a specific checkin in the autotest environment, following steps are required:
+1. Select Build -> Pipelines -> Nightly -> Queue
+2. Wait until build has finished
+3. Select Build -> Pipelines -> Releases -> UiTests Beta -> Create a release
+-> The new build is now available inside the artifactory and a new QB can be triggered
+
 # Contribute
 TODO: Explain how other users and developers can contribute to make your code better. 
 
