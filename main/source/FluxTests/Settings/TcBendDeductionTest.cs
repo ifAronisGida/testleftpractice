@@ -1,7 +1,5 @@
 ﻿using HomeZone.UiCommonFunctions.Base;
-using HomeZone.UiObjects.PageObjects.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
@@ -33,10 +31,8 @@ namespace HomeZone.FluxTests.Settings
 
             bendSettings.OpenBendDeductionConfiguration();
 
-
-            TcLandingPages flux = new TcLandingPages( Driver );
-            bool visible = flux.BendFactorsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            flux.CloseBendFactorDialog();
+            Flux.DeductionValueDialogExists.WaitFor( TestSettings.FluxStartTimeout );
+            Flux.DeductionValueDialog.Close();
 
             settingsDialog.Cancel();
         }

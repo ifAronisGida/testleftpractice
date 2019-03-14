@@ -98,6 +98,7 @@
     <Compile Include="Dialogs\TiOpenFileDialog.cs" />
     <Compile Include="Dialogs\TiPartComputeAllConfirmation.cs" />
     <Compile Include="Flux\TiAppSettingsDialog.cs" />
+    <Compile Include="Flux\TiDeductionValueDialog.cs" />
     <Compile Include="Flux\TiFlux.cs" />
     <Compile Include="Flux\TiFluxApp.cs" />
     <Compile Include="Flux\TiFluxMessageBox.cs" />
