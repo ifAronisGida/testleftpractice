@@ -1,7 +1,5 @@
 ﻿using HomeZone.UiCommonFunctions.Base;
-using HomeZone.UiObjects.PageObjects.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
@@ -33,13 +31,8 @@ namespace HomeZone.FluxTests.Settings
 
             bendSettings.OpenAppSettingsConfiguration();
 
-
-            TcLandingPages flux = new TcLandingPages( Driver );
-            bool visible = flux.SettingsDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            if( visible )
-            {
-                flux.CloseSettingsDialog();
-            }
+            Flux.AppSettingsDialogExists.WaitFor( TestSettings.FluxStartTimeout );
+            Flux.AppSettings.Close();
 
             settingsDialog.Cancel();
         }
