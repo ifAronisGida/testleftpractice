@@ -30,6 +30,8 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 
         private readonly Lazy<TcToolManagementDialog> mToolManagementDialog;
         private readonly Lazy<TcFluxMessageBox> mMessageBox;
+        private readonly Lazy<TcAppSettingsDialog> mAppSettings;
+
         #endregion
 
         #region constructor
@@ -44,6 +46,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             Driver = driver;
             mToolManagementDialog = new Lazy<TcToolManagementDialog>( On<TcToolManagementDialog> );
             mMessageBox = new Lazy<TcFluxMessageBox>( On<TcFluxMessageBox> );
+            mAppSettings = new Lazy<TcAppSettingsDialog>( On<TcAppSettingsDialog> );
         }
 
         #endregion
@@ -100,6 +103,15 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         /// </summary>
         public TiToolManagementDialog ToolManagement => On<TcToolManagementDialog>();
 
+        /// <summary>
+        /// Check if the AppSettings Dialog Exists
+        /// </summary>
+        public Wool AppSettingsDialogExists => mAppSettings.Value.Exists;
+
+        /// <summary>
+        /// AppSettings Dialog
+        /// </summary>
+        public TiAppSettingsDialog AppSettings => On<TcAppSettingsDialog>();
         #endregion
     }
 }

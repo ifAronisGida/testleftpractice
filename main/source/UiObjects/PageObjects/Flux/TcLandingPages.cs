@@ -100,64 +100,6 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             return visible;
         }
 
-        /// <summary>
-        /// Is the settings dialog visible?
-        /// </summary>
-        /// <param name="timeout">The timeout.</param>
-        /// <param name="retryWaitTime">The retry wait time.</param>
-        /// <returns>true if visible</returns>
-        public bool SettingsDialogVisible( TimeSpan timeout, TimeSpan retryWaitTime )
-        {
-            mApp = null;
-            mSettingsDialog = null;
-            DateTime startTime = DateTime.Now;
-            bool visible = false;
-
-            while( DateTime.Now - startTime < timeout )
-            {
-                bool processFound;
-                var index = 1;          // first index is 1
-
-                do
-                {
-                    // search process
-                    processFound = mDriver.TryFind<IProcess>( new ProcessPattern()
-                    {
-                        ProcessName = "Flux",
-                        Index = index
-                    }, 1, out var flux );
-
-                    if( processFound )       // search MainWindow
-                    {
-                        mApp = new TcAppProcess( flux, mDriver );
-
-                        try
-                        {
-                            if( mApp.Node.TryFind<IControl>( new WPFPattern { ClrFullClassName = "Flux.SheafEdit" }, out var window, 2 ) )
-                            {
-                                if( window.VisibleOnScreen )
-                                {
-                                    mSettingsDialog = window;
-                                    visible = true;
-                                }
-                            }
-                        }
-                        catch( Exception )
-                        {
-                            break;
-                        }
-                    }
-
-                    index++;    // -> not found, search next process
-
-                } while( processFound );
-
-                Thread.Sleep( retryWaitTime );        // nothing found, wait and retry until timeout
-            }
-
-            return visible;
-        }
-
 
         public void CloseBendFactorDialog()
         {
@@ -165,26 +107,6 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             {
                 WPFControlName = "cCloseBtn"
             }, 4 );
-            closeButton.Click();
-        }
-
-        public void CloseSettingsDialog()
-        {
-            var closeButton = mSettingsDialog.Find<IControl>( new WPFPattern()
-            {
-                ClrFullClassName = "System.Windows.Controls.Border"
-            } ).Find<IControl>( new WPFPattern()
-            {
-                ClrFullClassName = "System.Windows.Controls.DockPanel",
-                WPFControlOrdinalNo = 1
-            } ).Find<IControl>( new WPFPattern()
-            {
-                ClrFullClassName = "System.Windows.Controls.DockPanel",
-                WPFControlOrdinalNo = 1
-            } ).Find<IControl>( new WPFPattern()
-            {
-                ClrFullClassName = "System.Windows.Controls.Image"
-            }, 2 );
             closeButton.Click();
         }
 

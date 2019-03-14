@@ -47,6 +47,16 @@ namespace HomeZone.UiObjectInterfaces.Flux
         /// </summary>
         TiToolManagementDialog ToolManagement { get; }
 
+        /// <summary>
+        /// Check if the AppSettings Dialog Exists
+        /// </summary>
+        Wool AppSettingsDialogExists { get; }
+
+        /// <summary>
+        /// AppSettings Dialog
+        /// </summary>
+        TiAppSettingsDialog AppSettings { get; }
+
         #endregion
     }
 }

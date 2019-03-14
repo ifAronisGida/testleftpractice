@@ -97,7 +97,7 @@ namespace HomeZone.UiObjects.TestSettings
         /// <value>
         /// The Flux starting timeout.
         /// </value>
-        public TimeSpan FluxStartTimeout => TimeSpan.FromSeconds( GetInt( "FluxStartTimeout", 15 ) );
+        public TimeSpan FluxStartTimeout => TimeSpan.FromSeconds( GetInt( "FluxStartTimeout", 60 ) );
 
         /// <summary>
         /// Gets timeout for starting Flux with a geometry which has not been boostet previously
