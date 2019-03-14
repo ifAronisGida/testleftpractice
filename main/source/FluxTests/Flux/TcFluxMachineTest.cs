@@ -52,13 +52,10 @@ namespace HomeZone.FluxTests.Flux
         private void DoConfigureMachineTest()
         {
 
-            string machineName = "TruBend 5320 (6-axes) B23";
-            mMachineHelper.CreateAndSaveBendMachine( TestSettings, HomeZone.Machines, machineName );
+            string machineType = "TruBend 5320 (6-axes) B23";
+            mMachineHelper.CreateAndSaveBendMachine( TestSettings, HomeZone.Machines, machineType );
 
-            // open dialog
-            var machines = HomeZone.GotoMachines();
-            machines.ResultColumn.SelectItem( machineName );
-            machines.Detail.OpenMachineConfigurationBend();
+            HomeZone.Machines.Detail.OpenMachineConfigurationBend();
 
             Thread.Sleep( mConfigureMachineOverlay ); //TODO: can be refactored so that Window is captured as soon as it appears -> no Sleep required
             TcFluxConfigureMachine flux = new TcFluxConfigureMachine( Driver );
