@@ -31,6 +31,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         private readonly Lazy<TcToolManagementDialog> mToolManagementDialog;
         private readonly Lazy<TcFluxMessageBox> mMessageBox;
         private readonly Lazy<TcAppSettingsDialog> mAppSettings;
+        private readonly Lazy<TcDeductionValueDialog> mDeductionValues;
 
         #endregion
 
@@ -47,6 +48,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             mToolManagementDialog = new Lazy<TcToolManagementDialog>( On<TcToolManagementDialog> );
             mMessageBox = new Lazy<TcFluxMessageBox>( On<TcFluxMessageBox> );
             mAppSettings = new Lazy<TcAppSettingsDialog>( On<TcAppSettingsDialog> );
+            mDeductionValues = new Lazy<TcDeductionValueDialog>( On<TcDeductionValueDialog> );
         }
 
         #endregion
@@ -112,6 +114,16 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         /// AppSettings Dialog
         /// </summary>
         public TiAppSettingsDialog AppSettings => On<TcAppSettingsDialog>();
+
+        /// <summary>
+        /// Check if the deduction value dialog exists
+        /// </summary>
+        public Wool DeductionValueDialogExists => mDeductionValues.Value.Exists;
+
+        /// <summary>
+        /// Deduction value dialog
+        /// </summary>
+        public TiDeductionValueDialog DeductionValueDialog => On<TcDeductionValueDialog>();
         #endregion
     }
 }

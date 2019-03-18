@@ -57,6 +57,16 @@ namespace HomeZone.UiObjectInterfaces.Flux
         /// </summary>
         TiAppSettingsDialog AppSettings { get; }
 
+        /// <summary>
+        /// Check if the deduction value dialog exists
+        /// </summary>
+        Wool DeductionValueDialogExists { get; }
+
+        /// <summary>
+        /// Deduction value dialog
+        /// </summary>
+        TiDeductionValueDialog DeductionValueDialog { get; }
+
         #endregion
     }
 }
