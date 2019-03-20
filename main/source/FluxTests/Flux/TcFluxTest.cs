@@ -190,9 +190,9 @@ namespace HomeZone.FluxTests.Flux
 
             parts.SingleDetailBendSolutions.OpenSolutionDetail( solutionName );
 
-            Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
-            Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
-            Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
+            Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ), "NC Button is disabled" );
+            Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ), "Setup Plan Button is disabled" );
+            Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ), "Release Button is disabled" );
 
             parts.Toolbar.Delete();
         }
