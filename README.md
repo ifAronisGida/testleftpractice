@@ -22,6 +22,9 @@ Each night the master branch is deployed. If an earlier deployement is need for 
 3. Select Build -> Pipelines -> Releases -> UiTests Beta -> Create a release
 -> The new build is now available inside the artifactory and a new QB can be triggered
 
+# Debug
+Use the vnc viewer to connect to the machine which executes the tests. If you use remote desktop the client gets locked.
+
 # Contribute
 TODO: Explain how other users and developers can contribute to make your code better. 
 
