@@ -1,4 +1,3 @@
-using HomeZone.UiCommonFunctions;
 using HomeZone.UiCommonFunctions.Base;
 using HomeZone.UiObjectInterfaces.Part;
 using HomeZone.UiObjects;
@@ -16,11 +15,9 @@ namespace HomeZone.FluxTests.Flux
     /// </summary>
     /// <seealso cref="TcBaseTestClass" />
     [TestClass]
-    public sealed class TcFluxTest : TcBaseTestClass
+    public sealed class TcFluxTest : TcBaseTestClassFlux
     {
         private const string S_FLUX_MACHINE_5320 = "TruBend 5320 (6-axes) B23";
-
-        private TcMachinePageObjectHelper mMachineHelper = new TcMachinePageObjectHelper();
 
         /// <summary>
         /// Creates a new part with bend solution, opens it and closes Flux.
@@ -142,8 +139,6 @@ namespace HomeZone.FluxTests.Flux
             parts.ResultColumn.SelectItems( namePrefix );
             parts.Toolbar.Delete();
             parts.ResultColumn.ClearSearch();
-
-            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
         /// <summary>
@@ -173,7 +168,6 @@ namespace HomeZone.FluxTests.Flux
             Assert.IsTrue( isManual );
 
             parts.Toolbar.Delete();
-            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
         /// <summary>
@@ -201,7 +195,6 @@ namespace HomeZone.FluxTests.Flux
             Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
 
             parts.Toolbar.Delete();
-            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
         /// <summary>
@@ -231,7 +224,6 @@ namespace HomeZone.FluxTests.Flux
             Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
 
             parts.Toolbar.Delete();
-            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
         /// <summary>
@@ -274,7 +266,6 @@ namespace HomeZone.FluxTests.Flux
             Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
 
             parts.Toolbar.Delete();
-            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
         /// <summary>
@@ -300,7 +291,6 @@ namespace HomeZone.FluxTests.Flux
             flux.ChangeSolution();
             parts.WaitForDetailOverlayDisappear();
             parts.Toolbar.Delete();
-            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
         /// <summary>
@@ -371,8 +361,6 @@ namespace HomeZone.FluxTests.Flux
 
                 parts.Toolbar.Delete();
             }
-
-            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
     }
 }

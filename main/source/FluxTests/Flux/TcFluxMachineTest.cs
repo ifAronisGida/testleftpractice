@@ -1,6 +1,4 @@
-﻿using HomeZone.UiCommonFunctions;
-using HomeZone.UiCommonFunctions.Base;
-using HomeZone.UiObjectInterfaces.Machine;
+﻿using HomeZone.UiObjectInterfaces.Machine;
 using HomeZone.UiObjects.PageObjects.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -14,13 +12,8 @@ namespace HomeZone.FluxTests.Flux
     /// This test class contains Flux machine specific tests.
     /// </summary>
     [TestClass]
-    public sealed class TcFluxMachineTest : TcBaseTestClass
+    public sealed class TcFluxMachineTest : TcBaseTestClassFlux
     {
-        /// <summary>
-        /// machine helper
-        /// </summary>
-        private TcMachinePageObjectHelper mMachineHelper = new TcMachinePageObjectHelper();
-
         /// <summary>
         /// timeout to open the configure machine dialog. TODO: has to be refactored to a dynamic timout
         /// </summary>
@@ -62,8 +55,6 @@ namespace HomeZone.FluxTests.Flux
             bool visible = flux.MachineDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
             flux.CloseMachienDialog();
             Thread.Sleep( mConfigureMachineOverlay );
-
-            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
         }
 
         /// <summary>
@@ -77,7 +68,6 @@ namespace HomeZone.FluxTests.Flux
                 mMachineHelper.CreateAndSaveBendMachine( TestSettings, machines, machineName );
                 Assert.IsTrue( machines.Detail.IsPreviewImageAvailable(), "No preview image is available for this machine template" );
             }
-            mMachineHelper.DeleteCreatedMachines( machines );
         }
     }
 }
