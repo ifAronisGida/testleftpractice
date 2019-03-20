@@ -19,7 +19,7 @@ TODO: Describe and show how to build your code and run the tests.
 Each night the master branch is deployed. If an earlier deployement is need for example to test a specific checkin in the autotest environment, following steps are required:
 1. Select Build -> Pipelines -> Nightly -> Queue
 2. Wait until build has finished
-3. Select Build -> Pipelines -> Releases -> UiTests Beta -> Create a release
+3. Select Build -> Pipelines -> Releases -> UiTests Beta -> Wait until this build has finished (will be triggered by Nightly Build)
 -> The new build is now available inside the artifactory and a new QB can be triggered
 
 # Debug
