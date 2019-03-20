@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace HomeZone.SmokeTests.Logging
 {
     [TestClass]
-    class TcSmokeTestsLogging : TcBaseTestClass
+    public sealed class TcSmokeTestsLogging : TcBaseTestClass
     {
         /// <summary>
         /// Save Log File after finishing all tests in Assembly

@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace HomeZone.FluxTests.Logging
 {
     [TestClass]
-    class TcFluxTestsLogging : TcBaseTestClass
+    public sealed class TcFluxTestsLogging : TcBaseTestClass
     {
         /// <summary>
         /// Save Log File after finishing all tests in Assembly
