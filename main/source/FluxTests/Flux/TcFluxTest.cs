@@ -257,7 +257,7 @@ namespace HomeZone.FluxTests.Flux
             Assert.IsTrue( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
 
             // widerrufen
-            parts.SingleDetailBendSolutions.ToggleReleaseButton( solutionName );
+            parts.SingleDetailBendSolutions.ToggleUnreleaseButton( solutionName );
             parts.WaitForDetailOverlayAppear();
             parts.WaitForDetailOverlayDisappear();
 

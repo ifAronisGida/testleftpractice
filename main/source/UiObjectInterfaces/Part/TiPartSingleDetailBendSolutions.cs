@@ -43,6 +43,11 @@ namespace HomeZone.UiObjectInterfaces.Part
         bool ReleaseButtonVisible( string name );
 
         /// <summary>
+        /// Toggles the unrelease button.
+        /// </summary>
+        void ToggleUnreleaseButton( string name );
+
+        /// <summary>
         /// Toggles the release button.
         /// </summary>
         void ToggleReleaseButton( string name );

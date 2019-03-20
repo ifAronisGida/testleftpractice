@@ -108,7 +108,16 @@ namespace HomeZone.UiObjects.PageObjects.Part
         /// </summary>
         public void ToggleReleaseButton( string name )
         {
-            var button = BendSolutionList.Find<IButton>( Search.ByUid( "Part.Detail.BendSolutions.List." + name + ".Detail.ReleaseSolution" ), 5 );
+            var button = BendSolutionList.Find<IButton>( Search.ByUid( "Part.Detail.BendSolutions.List." + name + ".Detail.ReleaseSolution" ), 8 );
+            button.Click();
+        }
+
+        /// <summary>
+        /// Toggles the unrelease button.
+        /// </summary>
+        public void ToggleUnreleaseButton( string name )
+        {
+            var button = BendSolutionList.Find<IButton>( Search.ByUid( "Part.Detail.BendSolutions.List." + name + ".Detail.UnreleaseSolution" ), 8 );
             button.Click();
         }
 
