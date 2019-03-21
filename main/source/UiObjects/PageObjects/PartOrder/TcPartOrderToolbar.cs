@@ -2,6 +2,7 @@ using System;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.PartOrder;
+using HomeZone.UiObjects.PageObjects.Dialogs;
 
 namespace HomeZone.UiObjects.PageObjects.PartOrder
 {
@@ -10,7 +11,7 @@ namespace HomeZone.UiObjects.PageObjects.PartOrder
         protected override Search SearchPattern => Search.ByUid( "PartOrder.Toolbar" );
 
         private TiButton NewPartOrderButton => Find<TiButton>( "PartOrder.Toolbar.New" );
-        //private TiButton ImportButton => Find<TiButton>( "PartOrder.Toolbar.Import" );
+        private TiButton ImportButton => Find<TiButton>( "PartOrder.Toolbar.Import" );
         //private TiButton DuplicateButton => Find<TiButton>( "PartOrder.Toolbar.Duplicate" );
         //private TiButton BoostButton => Find<TiButton>("PartOrder.Toolbar.Calculate" );
         //private TiButton CreateCutJobButton => Find<TiButton>( "PartOrder.Toolbar.CreateCutJob" );
@@ -27,6 +28,13 @@ namespace HomeZone.UiObjects.PageObjects.PartOrder
         public void New()
         {
             NewPartOrderButton.Click();
+        }
+
+        public void Import( string fileName )
+        {
+            ImportButton.Click();
+
+            On<TcOpenFileDialog>().SetFilename( fileName );
         }
     }
 }

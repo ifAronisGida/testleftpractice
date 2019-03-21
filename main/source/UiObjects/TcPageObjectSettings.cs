@@ -25,7 +25,7 @@ namespace HomeZone.UiObjects
 
         public TimeSpan PartOverlayAppearTimeout { get; set; } = TimeSpan.FromSeconds( 10 );
 
-        public TimeSpan PartOverlayDisappearTimeout { get; set; } = TimeSpan.FromSeconds( 90 );
+        public TimeSpan PartOverlayDisappearTimeout { get; set; } = TimeSpan.FromSeconds( 120 );
 
         /// <summary>
         /// Get the timeout for selecting all parts until one can use the selection

@@ -1,9 +1,10 @@
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
-using HomeZone.UiObjectInterfaces.Dialogs;
 using HomeZone.UiObjectInterfaces.PartOrder;
 using HomeZone.UiObjects.PageObjects.Dialogs;
+using HomeZone.UiObjectInterfaces.Part;
+using HomeZone.UiObjects.PageObjects.Part;
 
 namespace HomeZone.UiObjects.PageObjects.PartOrder
 {
@@ -13,10 +14,12 @@ namespace HomeZone.UiObjects.PageObjects.PartOrder
 
         private TiButton SelectPartButton => Find<TiButton>( "PartOrder.Detail.OrderedPart.Select" );
 
+        public TiPartSingleDetailDesign Design => Find<TcPartSingleDetailDesign>();
+
         public void SelectPart( string partId )
         {
             SelectPartButton.Click();
-            On<TiEntitySelectionDialog, TcEntitySelectionDialog>().SelectClose( partId );
+            On<TcEntitySelectionDialog>().SelectClose( partId );
         }
     }
 }

@@ -1,6 +1,5 @@
 using System;
 using Trumpf.Coparoo.Desktop;
-using Trumpf.Coparoo.Desktop.Waiting;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Part;
 using HomeZone.UiObjects.ControlObjects;
@@ -44,7 +43,7 @@ namespace HomeZone.UiObjects.PageObjects.Part
         /// <value>
         /// The single detail design.
         /// </value>
-        public TiPartSingleDetailDesign SingleDetailDesign => On<TcPartSingleDetailDesign>( cache: true );
+        public TiPartSingleDetailDesign SingleDetailDesign => Find<TcPartSingleDetailDesign>();
 
         /// <summary>
         /// Gets the single detail bend solutions.
