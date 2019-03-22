@@ -1,9 +1,8 @@
-using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
-using HomeZone.UiObjectInterfaces.Dialogs;
 using HomeZone.UiObjectInterfaces.Part;
 using HomeZone.UiObjects.PageObjects.Dialogs;
+using HomeZone.UiObjects.Utilities;
 
 namespace HomeZone.UiObjects.PageObjects.Part
 {
@@ -12,12 +11,13 @@ namespace HomeZone.UiObjects.PageObjects.Part
     /// </summary>
     /// <seealso cref="PageObject" />
     /// <seealso cref="Trumpf.PageObjects.IChildOf{TcDetailContent}" />
-    public class TcPartSingleDetailDesign : TcPageObjectBase, IChildOf<TcPartSingleDetail>, TiPartSingleDetailDesign
+    public class TcPartSingleDetailDesign : ControlObject, TiPartSingleDetailDesign
     {
-        protected override Search SearchPattern => Search.ByUid( "Part.Detail.Design" );
+        protected override Search SearchPattern => Search.ByControlName( "DesignSolutionPanel" );
 
-        private TiButton ImportButton => Find<TiButton>( "Part.Detail.Design.Import" );
-        private TiButton OpenButton => Find<TiButton>( "Part.Detail.Design.Open" );
+        private TiButton ImportButton => this.FindMapped<TiButton>( "Part.Detail.Design.Import" );
+        private TiButton OpenButton => this.FindMapped<TiButton>( "Part.Detail.Design.Open" );
+        private TiButton BoostButton => this.FindMapped<TiButton>( "Part.Detail.Design.Calculate" );
 
         /// <summary>
         /// Imports the specified design from the given filename.
@@ -28,7 +28,7 @@ namespace HomeZone.UiObjects.PageObjects.Part
         {
             ImportButton.Click();
 
-            var openDlg = On<TiOpenFileDialog, TcOpenFileDialog>();
+            var openDlg = On<TcOpenFileDialog>();
             return openDlg.SetFilename( filename );
         }
 
@@ -38,6 +38,11 @@ namespace HomeZone.UiObjects.PageObjects.Part
         public void Open()
         {
             OpenButton.Click();
+        }
+
+        public void Boost()
+        {
+            BoostButton.Click();
         }
     }
 }

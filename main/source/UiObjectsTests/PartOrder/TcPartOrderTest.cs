@@ -60,5 +60,18 @@ namespace HomeZone.UiObjectsTests.PartOrder
 
             Assert.IsTrue( partOrders.Toolbar.CanSave );
         }
+
+        [TestMethod]
+        public void ImportPartOrderTest()
+        {
+            var partOrders = HomeZone.GotoPartOrders();
+            partOrders.Toolbar.Import( @"c:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+            partOrders.WaitForDetailOverlayAppear();
+            partOrders.WaitForDetailOverlayDisappear();
+
+            partOrders.PartInfo.Design.Boost();
+            partOrders.WaitForDetailOverlayAppear();
+            partOrders.WaitForDetailOverlayDisappear();
+        }
     }
 }

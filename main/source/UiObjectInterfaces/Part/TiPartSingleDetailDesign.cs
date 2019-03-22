@@ -13,5 +13,7 @@ namespace HomeZone.UiObjectInterfaces.Part
         /// <param name="filename">The filename.</param>
         /// <returns></returns>
         bool Import( string filename );
+
+        void Boost();
     }
 }
