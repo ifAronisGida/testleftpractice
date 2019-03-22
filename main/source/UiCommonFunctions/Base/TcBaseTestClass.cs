@@ -25,7 +25,7 @@ namespace HomeZone.UiCommonFunctions.Base
     [TestClass]
     public class TcBaseTestClass
     {
-        private  AutoFact mAutoFact;
+        private AutoFact mAutoFact;
 
         protected static IDriver Driver { get; } = new LocalDriver();
 
@@ -51,7 +51,9 @@ namespace HomeZone.UiCommonFunctions.Base
             {
                 if( !Directory.Exists( TestSettings.TestedAppPath ) )
                 {
-                    throw new Exception( "Path not found to start process!" );
+                    string message = "Path not found to start process! " + TestSettings.TestedAppPath;
+                    Driver.Log.Error( message );
+                    throw new Exception( message );
                 }
 
                 var filename = Path.Combine( TestSettings.TestedAppPath, TestSettings.TestedAppName + ".exe" );
