@@ -33,7 +33,8 @@
       <Parameter name="NamePrefix" value="UIT_" />
 
       <Parameter name="FluxProcessName" value="Flux" />
-
+      <Parameter name="DatamanagerProcessName" value="DataManager" />
+        
       <Parameter name="MachineFirstImportTimeout" value="120" />
 
       <Parameter name="DesignStartTimeout" value="80" />

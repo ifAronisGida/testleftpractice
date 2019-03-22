@@ -12,10 +12,17 @@ namespace HomeZone.FluxTests.DataMigration
         /// Opens and closes the DataManager Bend.
         /// </summary>
         [TestMethod, UniqueName( "CB70F6D8-44BA-4A45-A6D4-55F16347E2DA" )]
-        [Tag( "BendSettings" )]
+        [Tag( "DataMigration" )]
         public void OpenAndCloseDataManagerBendTest()
         {
             ExecuteUITest( DoOpenAndCloseDataManagerBendTest, "Open and Close Datamanager" );
+        }
+
+        [TestMethod, UniqueName( "F66E71B5-26D9-43FD-9CF1-EA4022D449DB" )]
+        [Tag( "DataMigration" )]
+        public void ExportDieDeductionValueTest()
+        {
+            ExecuteUITest( DoExportDieDeductionValueTest, "Export Die Deduction Values" );
         }
 
         /// <summary>
@@ -32,6 +39,14 @@ namespace HomeZone.FluxTests.DataMigration
             bendSettings.OpenDataManagerBend();
 
             settingsDialog.Cancel();
+
+            DatamanagerBend.MainWindowExists.WaitFor( TestSettings.FluxStartTimeout );
+            DatamanagerBend.Close();
+        }
+
+        private void DoExportDieDeductionValueTest()
+        {
+            //TODO
         }
     }
 }
