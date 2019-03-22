@@ -11,6 +11,7 @@
 
 #region USING
 
+using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Flux;
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop;
@@ -35,16 +36,16 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 
         public void Close()
         {
-            //TODO
+            CloseMachineConfigurationDialogButton.Click();
         }
 
         #endregion
 
         #region private methods
 
-        protected override Search SearchPattern => Search.By( new WPFPattern { ClrFullClassName = "TODO" } );
+        protected override Search SearchPattern => Search.By( new WPFPattern { ClrFullClassName = "Flux.App.MachineDBDlg" } );
 
-
+        private TiButton CloseMachineConfigurationDialogButton => FindByControlName<TiButton>( "cCloseBtn" );
         #endregion
 
         #region public static members
