@@ -11,29 +11,23 @@
 
 #region USING
 
-using Trumpf.Coparoo.Desktop.Waiting;
 
 #endregion
 
 namespace HomeZone.UiObjectInterfaces.DatamanagerBend
 {
-    public interface TiDatamanagerBendApp
+    public interface TiTBSExportDialog
     {
         #region public methods
 
-        /// <summary>
-        /// Close the Datamanager
-        /// </summary>
-        void Close();
+        void SelectAll();
+
+        void Export();
 
         #endregion
 
         #region properties
-
-        Wool MainWindowExists { get; }
-
-        TiDeductionValues DeductionValues { get; }
-
         #endregion
+
     }
 }

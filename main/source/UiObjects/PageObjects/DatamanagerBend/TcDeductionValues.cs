@@ -11,17 +11,18 @@
 
 #region USING
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.DatamanagerBend;
+using SmartBear.TestLeft.TestObjects;
+using SmartBear.TestLeft.TestObjects.WPF;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.WPF;
 
 #endregion
 
 namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
 {
-    public class TcDeductionValues
+    public class TcDeductionValues : TcPageObjectBase, IChildOf<TcDatamanagerBendApp>, TiDeductionValues
     {
         #region private constants
         #endregion
@@ -33,9 +34,31 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
         #endregion
 
         #region public methods
+
+        public override void Goto()
+        {
+            this.Node.Cast<IControl>().Click();
+        }
+
+        public void ExportTBSCSV()
+        {
+            ExportButton.Click();
+        }
+
+        public TiTBSExportDialog TBSExportDialog => On<TcTBSExportDialog>();
+
+
         #endregion
 
         #region private methods
+
+        protected override Search SearchPattern => Search.By( new WPFPattern { ClrFullClassName = "Trumpf.TruTops.DataMigrationTool.Views.TcBendFactorTabView" } );
+
+
+        TiButton ExportButton => Find<TiButton>( "DeductionValues.ExportTBSCSV" );
+
+
+
         #endregion
 
         #region public static members

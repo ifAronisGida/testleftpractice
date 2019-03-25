@@ -38,15 +38,30 @@ namespace HomeZone.FluxTests.DataMigration
 
             bendSettings.OpenDataManagerBend();
 
-            settingsDialog.Cancel();
-
             DatamanagerBend.MainWindowExists.WaitFor( TestSettings.FluxStartTimeout );
             DatamanagerBend.Close();
+
+            settingsDialog.Cancel();
         }
 
         private void DoExportDieDeductionValueTest()
         {
-            //TODO
+            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
+            var bendSettings = settingsDialog.BendSettings;
+            bendSettings.Goto();
+            bendSettings.OpenDataManagerBend();
+
+            DatamanagerBend.MainWindowExists.WaitFor( TestSettings.FluxStartTimeout );
+
+            DatamanagerBend.DeductionValues.Goto();
+            DatamanagerBend.DeductionValues.ExportTBSCSV();
+            DatamanagerBend.DeductionValues.TBSExportDialog.SelectAll();
+
+
+            DatamanagerBend.Close();
+
+
+            settingsDialog.Cancel();
         }
     }
 }

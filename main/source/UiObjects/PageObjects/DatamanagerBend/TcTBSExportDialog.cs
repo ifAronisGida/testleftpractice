@@ -11,57 +11,49 @@
 
 #region USING
 
+using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.DatamanagerBend;
-using SmartBear.TestLeft;
-using System;
+using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop;
-using Trumpf.Coparoo.Desktop.Waiting;
+using Trumpf.Coparoo.Desktop.WPF;
 
 #endregion
 
 namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
 {
-    public class TcDatamanagerBendApp : ProcessObject, TiDatamanagerBendApp
+    public class TcTBSExportDialog : TcPageObjectBase, IChildOf<TcDatamanagerBendApp>, TiTBSExportDialog
     {
         #region private constants
-
-        private readonly Lazy<TcMainWindowDatamanagerBend> mMainWindow;
-
         #endregion
 
         #region constructor
-
-        public TcDatamanagerBendApp( string processname, IDriver driver ) : base( processname )
-        {
-            Driver = driver;
-            mMainWindow = new Lazy<TcMainWindowDatamanagerBend>( On<TcMainWindowDatamanagerBend> );
-        }
-
-
-
         #endregion
 
         #region public static methods
         #endregion
 
         #region public methods
-
-        public Wool MainWindowExists => mMainWindow.Value.Exists;
-
-        /// <summary>
-        /// Close the Datamanager
-        /// </summary>
-        public void Close()
+        public void Export()
         {
-            mMainWindow.Value.Close();
+            ExportButton.Click();
+            //var dlg = Parent.Node.Find<IWindow>( new WindowPattern { WndClass = "#32770" }, 1 );
+            //dlg.
+            //dlg.Cast<IOpenFileDialog>().OpenFile( filename );
         }
 
-        public TiDeductionValues DeductionValues => On<TcDeductionValues>();
-
-
+        public void SelectAll()
+        {
+            SelectAllCheckbox.Click();
+        }
         #endregion
 
         #region private methods
+
+        protected override Search SearchPattern => Search.By( new WPFPattern { ClrFullClassName = "Trumpf.TruTops.DataMigrationTool.Views.Bend_Factor_Explorer.TcBendFactorTbsExportDialog" } );
+
+        private TiButton SelectAllCheckbox => Find<TiButton>( "DeductionValues.TBSExportDialog.SelectAll" );
+
+        private TiButton ExportButton => Find<TiButton>( "DeductionValues.TBSExportDialog.Export" );
 
         #endregion
 
