@@ -1,6 +1,5 @@
 using System;
 using System.Windows.Documents;
-using DevExpress.Xpf.Editors;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.CutJob;
@@ -48,19 +47,13 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             }
         }
 
-        public int Min => int.Parse( mRow.GetCell( 5 ).FindGeneric( Search.By<SpinEdit>(), depth: 1 ).Node.GetProperty<string>( "DisplayText" ) );
-        //int.Parse( mRow
-        //.Find<TcReadOnlyText>( Search.ByUid( "TargetQuantityMinDisplay" ) )
-        //.Text );
+        public int Min => int.Parse( mRow.GetCell( 5 ).FindGeneric( SearchEx.ByClass(DevExpress.SpinEdit ), depth: 1 ).Node.GetProperty<string>( "DisplayText" ) );
 
         public int Current => int.Parse( mRow
             .Find<TcReadOnlyText>( Search.ByUid( "ActualQuantity" ) )
             .Text );
 
-        public int Max => int.Parse( mRow.GetCell( 7 ).FindGeneric( Search.By<TextEdit>(), depth: 1 ).Node.GetProperty<string>( "DisplayText" ) );
-        //int.Parse( mRow
-        //    .Find<TcReadOnlyText>( Search.ByUid( "TargetQuantityMaxDisplay" ) )
-        //    .Text );
+        public int Max => int.Parse( mRow.GetCell( 7 ).FindGeneric( SearchEx.ByClass( DevExpress.TextEdit ), depth: 1 ).Node.GetProperty<string>( "DisplayText" ) );
 
         public TiButton OrderLink => mRow.FindMapped<TiButton>( "PartOrderLinkButton" );
 
@@ -103,7 +96,7 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
         {
             get
             {
-                var fakeTextEdit = mRow.GetCell( 16 ).Find<TcReadOnlyText>( Search.By<TextEdit>(), depth: 1 );
+                var fakeTextEdit = mRow.GetCell( 16 ).Find<TcReadOnlyText>( SearchEx.ByClass( DevExpress.TextEdit ), depth: 1 );
 
                 return int.Parse( fakeTextEdit.Text );
             }
@@ -113,7 +106,7 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
         {
             get
             {
-                var fakeTextEdit = mRow.GetCell( 17 ).Find<TcReadOnlyText>( Search.By<TextEdit>(), depth: 1 );
+                var fakeTextEdit = mRow.GetCell( 17 ).Find<TcReadOnlyText>( SearchEx.ByClass( DevExpress.TextEdit ), depth: 1 );
 
                 return int.Parse( fakeTextEdit.Text );
 

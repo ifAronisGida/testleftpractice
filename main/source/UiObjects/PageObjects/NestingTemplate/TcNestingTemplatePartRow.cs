@@ -1,5 +1,4 @@
 using System.Windows.Controls;
-using DevExpress.Xpf.Editors;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.NestingTemplate;
@@ -36,7 +35,7 @@ namespace HomeZone.UiObjects.PageObjects.NestingTemplate
         {
             get
             {
-                return mRow.GetCell( 3 ).Find<TcReadOnlyText>( Search.By<TextEdit>() ).Text;
+                return mRow.GetCell( 3 ).Find<TcReadOnlyText>( SearchEx.ByClass( DevExpress.TextEdit ) ).Text;
             }
         }
     }

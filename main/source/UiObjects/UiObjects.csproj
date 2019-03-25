@@ -40,14 +40,6 @@
     <Reference Include="Castle.Core">
       <HintPath>..\_external\3rdParty\Castle.Core\net45\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Core.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_external\3rdParty\DevExpress\DevExpress.Xpf.Core.v16.1.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Xpf.Grid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_external\3rdParty\DevExpress\DevExpress.Xpf.Grid.v16.1.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MimeTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\_external\packages\Factshub.Connector.4.5.9\lib\net451\MimeTypes.dll</HintPath>
@@ -81,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlObjects\Composite\TcResultColumn.cs" />
+    <Compile Include="ControlObjects\DevExpress.cs" />
     <Compile Include="ControlObjects\Grid\TcOptimizedTableView.cs" />
     <Compile Include="ControlObjects\Grid\TcRegularTableView.cs" />
     <Compile Include="ControlObjects\Composite\TcResultColumn{T}.cs" />
@@ -196,6 +189,7 @@
     <Compile Include="TcAppProcess.cs" />
     <Compile Include="TcHomeZoneApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\SearchEx.cs" />
     <Compile Include="Utilities\TcEnumerableProxy.cs" />
     <Compile Include="Utilities\TcExpandOnAccessInterceptor.cs" />
     <Compile Include="Utilities\TcGenericControlObject.cs" />
