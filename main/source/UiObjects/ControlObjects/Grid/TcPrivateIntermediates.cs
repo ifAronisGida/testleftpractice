@@ -1,16 +1,17 @@
-using DevExpress.Xpf.Grid;
+using HomeZone.UiObjects.Utilities;
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop.WPF;
 
-
 namespace HomeZone.UiObjects.ControlObjects.Grid
 {
-    internal class TcBandedViewContentSelector : ViewControlObject<BandedViewContentSelector>
+    internal class TcBandedViewContentSelector : ControlObject
     {
+        protected override Search SearchPattern => SearchEx.ByClass( DevExpress.BandedViewContentSelector );
     }
 
-    internal class TcGridCellContentPresenter : ViewControlObject<GridCellContentPresenter>
+    internal class TcGridCellContentPresenter : ControlObject
     {
+        protected override Search SearchPattern => SearchEx.ByClass( DevExpress.GridCellContentPresenter );
     }
 
     internal class TcHierarchyPanel : ControlObject

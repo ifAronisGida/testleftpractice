@@ -1,14 +1,13 @@
 using System;
-using DevExpress.Xpf.Grid;
+using HomeZone.UiObjects.Utilities;
 using Trumpf.Coparoo.Desktop.WPF;
-
 
 namespace HomeZone.UiObjects.ControlObjects.Grid
 {
     /// <summary>
     /// Represents a row in a grid table view.
     /// </summary>
-    public class TcTableRow : ViewControlObject<GridRow>
+    public class TcTableRow : ControlObject
     {
         private Lazy<TcBandedViewContentSelector> mViewContentSelector;
 
@@ -16,6 +15,8 @@ namespace HomeZone.UiObjects.ControlObjects.Grid
         {
             mViewContentSelector = new Lazy<TcBandedViewContentSelector>( () => Find<TcBandedViewContentSelector>( depth: 1 ) );
         }
+
+        protected override Search SearchPattern => SearchEx.ByClass( DevExpress.GridRow );
 
         /// <summary>
         /// Returns the cell as an IControlObject at the given column index.

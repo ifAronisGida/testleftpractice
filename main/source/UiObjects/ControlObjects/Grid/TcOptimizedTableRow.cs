@@ -1,6 +1,4 @@
 using System;
-using DevExpress.Xpf.Editors;
-using DevExpress.Xpf.Grid;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjects.Utilities;
 
@@ -10,14 +8,16 @@ namespace HomeZone.UiObjects.ControlObjects.Grid
     /// Represents a row in a grid table view running in optimized mode.
     /// This class assumes that the cell contents are always textual.
     /// </summary>
-    public class TcOptimizedTableRow : ViewControlObject<RowControl>
+    public class TcOptimizedTableRow : ControlObject
     {
         private Lazy<IControlObject> mCellsParent;
 
         public TcOptimizedTableRow()
         {
-            mCellsParent = new Lazy<IControlObject>( () => this.FindGeneric( Search.By<CellsControl>(), depth: 1 ) );
+            mCellsParent = new Lazy<IControlObject>( () => this.FindGeneric( SearchEx.ByClass(DevExpress.CellsControl), depth: 1 ) );
         }
+
+        protected override Search SearchPattern => SearchEx.ByClass( DevExpress.RowControl );
 
         /// <summary>
         /// Returns the content of a cell at the given index.
@@ -27,8 +27,8 @@ namespace HomeZone.UiObjects.ControlObjects.Grid
         public string GetContent( int columnIndex )
         {
             var content = mCellsParent.Value
-                .FindGeneric( Search.By<LightweightCellEditor>().AndByIndex( columnIndex ), depth: 1 )
-                .FindGeneric( Search.By<InplaceBaseEdit>(), depth: 1 );
+                .FindGeneric( SearchEx.ByClass( DevExpress.LightweightCellEditor ).AndByIndex( columnIndex ), depth: 1 )
+                .FindGeneric( SearchEx.ByClass( DevExpress.InplaceBaseEdit ), depth: 1 );
 
             return content.Node.GetProperty<string>( "DisplayText" );
         }

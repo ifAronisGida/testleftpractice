@@ -1,5 +1,4 @@
 using System;
-using DevExpress.Xpf.Grid;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjects.ControlObjects.Grid;
 using HomeZone.UiObjects.Utilities;
@@ -10,10 +9,9 @@ namespace HomeZone.UiObjects.ControlObjects
     /// The ControlObject for grid controls. The contents of the grid can be accessed via the GetTableView and GetOptimizedTableView methods,
     /// assuming that the grid uses a table view to display data.
     /// </summary>
-    /// <seealso cref="GridControl" />
-    public class TcGridControl : ViewControlObject<GridControl>
+    public class TcGridControl : ControlObject
     {
-        protected override Search SearchPattern => Search.Any;
+        protected override Search SearchPattern => SearchEx.ByClass(DevExpress.GridControl);
 
         public int RowCount => Node.GetProperty<int>( "ItemsSource.Count" );
         public int SelectedCount => Node.GetProperty<int>( "SelectedItems.Count" );
@@ -26,7 +24,7 @@ namespace HomeZone.UiObjects.ControlObjects
         /// <returns>A table view representing the contents of the grid.</returns>
         public TcRegularTableView<TRow> GetTableView<TRow>( Func<TcTableRow, TRow> rowWrapper )
         {
-            var tableView = this.FindGeneric( Search.By<TableView>(), depth: 1 );
+            var tableView = this.FindGeneric( SearchEx.ByClass( DevExpress.TableView ), depth: 1 );
             return new TcRegularTableView<TRow>( tableView, rowWrapper );
         }
 
@@ -38,7 +36,7 @@ namespace HomeZone.UiObjects.ControlObjects
         /// <returns>A table view representing the contents of the grid.</returns>
         public TcOptimizedTableView<TRow> GetOptimizedTableView<TRow>( Func<TcOptimizedTableRow, TRow> rowWrapper )
         {
-            var tableView = this.FindGeneric( Search.By<TableView>(), depth: 1 );
+            var tableView = this.FindGeneric( SearchEx.ByClass( DevExpress.TableView ), depth: 1 );
             return new TcOptimizedTableView<TRow>( tableView, rowWrapper );
         }
 
