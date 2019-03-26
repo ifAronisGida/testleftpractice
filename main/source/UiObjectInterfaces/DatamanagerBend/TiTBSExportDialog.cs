@@ -20,8 +20,14 @@ namespace HomeZone.UiObjectInterfaces.DatamanagerBend
     {
         #region public methods
 
+        /// <summary>
+        /// Select all materials
+        /// </summary>
         void SelectAll();
 
+        /// <summary>
+        /// Export deduction values
+        /// </summary>
         void Export();
 
         #endregion

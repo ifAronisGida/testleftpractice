@@ -18,11 +18,14 @@ namespace HomeZone.FluxTests.DataMigration
             ExecuteUITest( DoOpenAndCloseDataManagerBendTest, "Open and Close Datamanager" );
         }
 
+        /// <summary>
+        /// Export all die deduction value test
+        /// </summary>
         [TestMethod, UniqueName( "F66E71B5-26D9-43FD-9CF1-EA4022D449DB" )]
         [Tag( "DataMigration" )]
-        public void ExportDieDeductionValueTest()
+        public void ExportAllDieDeductionValueTest()
         {
-            ExecuteUITest( DoExportDieDeductionValueTest, "Export Die Deduction Values" );
+            ExecuteUITest( DoExportAllDieDeductionValueTest, "Export Die Deduction Values" );
         }
 
         /// <summary>
@@ -44,7 +47,10 @@ namespace HomeZone.FluxTests.DataMigration
             settingsDialog.Cancel();
         }
 
-        private void DoExportDieDeductionValueTest()
+        /// <summary>
+        /// Implementation of the export all deduction value test
+        /// </summary>
+        private void DoExportAllDieDeductionValueTest()
         {
             var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
             var bendSettings = settingsDialog.BendSettings;
@@ -56,7 +62,7 @@ namespace HomeZone.FluxTests.DataMigration
             DatamanagerBend.DeductionValues.Goto();
             DatamanagerBend.DeductionValues.ExportTBSCSV();
             DatamanagerBend.DeductionValues.TBSExportDialog.SelectAll();
-
+            DatamanagerBend.DeductionValues.TBSExportDialog.Export();
 
             DatamanagerBend.Close();
 

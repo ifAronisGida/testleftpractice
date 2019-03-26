@@ -35,18 +35,21 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
 
         #region public methods
 
+        /// <summary>
+        /// Goto the deduction value tab
+        /// </summary>
         public override void Goto()
         {
             this.Node.Cast<IControl>().Click();
         }
 
+        /// <summary>
+        /// Export TBS CSV file
+        /// </summary>
         public void ExportTBSCSV()
         {
             ExportButton.Click();
         }
-
-        public TiTBSExportDialog TBSExportDialog => On<TcTBSExportDialog>();
-
 
         #endregion
 
@@ -54,10 +57,7 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
 
         protected override Search SearchPattern => Search.By( new WPFPattern { ClrFullClassName = "Trumpf.TruTops.DataMigrationTool.Views.TcBendFactorTabView" } );
 
-
         TiButton ExportButton => Find<TiButton>( "DeductionValues.ExportTBSCSV" );
-
-
 
         #endregion
 
@@ -71,6 +71,12 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
         #endregion
 
         #region properties
+
+        /// <summary>
+        /// TBS export dialog
+        /// </summary>
+        public TiTBSExportDialog TBSExportDialog => On<TcTBSExportDialog>();
+
         #endregion
     }
 }

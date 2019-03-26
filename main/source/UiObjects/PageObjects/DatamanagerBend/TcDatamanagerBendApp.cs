@@ -46,8 +46,6 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
 
         #region public methods
 
-        public Wool MainWindowExists => mMainWindow.Value.Exists;
-
         /// <summary>
         /// Close the Datamanager
         /// </summary>
@@ -55,9 +53,6 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
         {
             mMainWindow.Value.Close();
         }
-
-        public TiDeductionValues DeductionValues => On<TcDeductionValues>();
-
 
         #endregion
 
@@ -75,6 +70,19 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
         #endregion
 
         #region properties
+
+        /// <summary>
+        /// Check if the datamanager main window exists
+        /// </summary>
+        public Wool MainWindowExists => mMainWindow.Value.Exists;
+
+
+
+        /// <summary>
+        /// Deduction value Tab
+        /// </summary>
+        public TiDeductionValues DeductionValues => On<TcDeductionValues>();
+
         #endregion
     }
 }

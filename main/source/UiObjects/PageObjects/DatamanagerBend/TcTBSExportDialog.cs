@@ -33,6 +33,18 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
         #endregion
 
         #region public methods
+
+        /// <summary>
+        /// Select all materials
+        /// </summary>
+        public void SelectAll()
+        {
+            SelectAllCheckbox.Click();
+        }
+
+        /// <summary>
+        /// Export deduction values
+        /// </summary>
         public void Export()
         {
             ExportButton.Click();
@@ -41,10 +53,6 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
             //dlg.Cast<IOpenFileDialog>().OpenFile( filename );
         }
 
-        public void SelectAll()
-        {
-            SelectAllCheckbox.Click();
-        }
         #endregion
 
         #region private methods

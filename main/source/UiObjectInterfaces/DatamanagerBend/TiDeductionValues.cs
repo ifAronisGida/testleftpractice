@@ -22,12 +22,18 @@ namespace HomeZone.UiObjectInterfaces.DatamanagerBend
     {
         #region public methods
 
+        /// <summary>
+        /// Export TBS CSV file
+        /// </summary>
         void ExportTBSCSV();
 
         #endregion
 
         #region properties
 
+        /// <summary>
+        /// TBS export dialog
+        /// </summary>
         TiTBSExportDialog TBSExportDialog { get; }
 
         #endregion

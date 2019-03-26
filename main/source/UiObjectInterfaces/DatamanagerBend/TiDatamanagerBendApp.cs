@@ -30,8 +30,14 @@ namespace HomeZone.UiObjectInterfaces.DatamanagerBend
 
         #region properties
 
+        /// <summary>
+        /// Check if the datamanager main window exists
+        /// </summary>
         Wool MainWindowExists { get; }
 
+        /// <summary>
+        /// Deduction value Tab
+        /// </summary>
         TiDeductionValues DeductionValues { get; }
 
         #endregion

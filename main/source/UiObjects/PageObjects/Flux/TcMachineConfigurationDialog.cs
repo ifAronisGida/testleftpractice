@@ -34,6 +34,9 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 
         #region public methods
 
+        /// <summary>
+        /// Close the machine configuration dialog
+        /// </summary>
         public void Close()
         {
             CloseMachineConfigurationDialogButton.Click();
