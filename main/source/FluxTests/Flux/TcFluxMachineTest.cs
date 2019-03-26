@@ -62,12 +62,18 @@ namespace HomeZone.FluxTests.Flux
         /// </summary>
         private void DoCreateWorkplacesForAllBendMachines()
         {
+            bool success = true;
             TiMachines machines = HomeZone.GotoMachines();
             foreach( var machineName in machines.Detail.GetAvailableBendMachineTemplates() )
             {
                 mMachineHelper.CreateAndSaveBendMachine( TestSettings, machines, machineName );
-                Assert.IsTrue( machines.Detail.IsPreviewImageAvailable(), "No preview image is available for this machine template" );
+                if( !machines.Detail.IsPreviewImageAvailable() )
+                {
+                    Driver.Log.Error( "No preview image is available for this machine template" );
+                    success = false;
+                }
             }
+            Assert.IsTrue( success, "Preview image is for one or more machine templates not available" );
         }
     }
 }
