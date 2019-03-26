@@ -36,5 +36,6 @@ namespace HomeZone.UiObjectInterfaces
         TiWelcomeScreen WelcomeScreen { get; }
 
         bool BendMachineTemplatesLoaded( TimeSpan? machineFirstImportTimeout = null );
+        void Maximize();
     }
 }

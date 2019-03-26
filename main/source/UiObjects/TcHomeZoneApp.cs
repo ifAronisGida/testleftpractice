@@ -1,7 +1,3 @@
-using System;
-using SmartBear.TestLeft;
-using Trumpf.Coparoo.Desktop;
-using Trumpf.Coparoo.Desktop.Waiting;
 using HomeZone.UiObjectInterfaces;
 using HomeZone.UiObjectInterfaces.Customer;
 using HomeZone.UiObjectInterfaces.CutJob;
@@ -19,6 +15,10 @@ using HomeZone.UiObjects.PageObjects.NestingTemplate;
 using HomeZone.UiObjects.PageObjects.Part;
 using HomeZone.UiObjects.PageObjects.PartOrder;
 using HomeZone.UiObjects.PageObjects.Shell;
+using SmartBear.TestLeft;
+using System;
+using Trumpf.Coparoo.Desktop;
+using Trumpf.Coparoo.Desktop.Waiting;
 
 namespace HomeZone.UiObjects
 {
@@ -68,6 +68,11 @@ namespace HomeZone.UiObjects
             Machines.Goto();
             return Machines.Toolbar.WaitNewBendMachineEnabled(
                 machineFirstImportTimeout ?? TcPageObjectSettings.Instance.MachineFirstImportTimeout );
+        }
+
+        public void Maximize()
+        {
+            mMainWindow.Value.Maximize();
         }
     }
 }

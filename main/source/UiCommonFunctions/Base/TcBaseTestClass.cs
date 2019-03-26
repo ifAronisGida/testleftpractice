@@ -80,6 +80,8 @@ namespace HomeZone.UiCommonFunctions.Base
                 HomeZone.MainTabControl.CloseCurrentTab();
             }
 
+            HomeZone.Maximize();
+
             // wait until machine templates are loaded
             Assert.IsTrue( HomeZone.BendMachineTemplatesLoaded() );
         }
