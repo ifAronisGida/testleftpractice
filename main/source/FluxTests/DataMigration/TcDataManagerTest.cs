@@ -95,6 +95,7 @@ namespace HomeZone.FluxTests.DataMigration
                 testfile[S_LINE_NUMBER_CONTAINING_DATE] = testfile[S_LINE_NUMBER_CONTAINING_DATE].Substring( S_LINE_NUMBER_CONTAINING_DATE, cutIndex );
 
                 Assert.IsTrue( testfile.SequenceEqual( originalFile ), "Following csv file differs from baseline: " + Path.GetFileName( item ) );
+                File.Delete( item );
             }
         }
     }
