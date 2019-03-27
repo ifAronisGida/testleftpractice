@@ -13,6 +13,7 @@
 
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.DatamanagerBend;
+using HomeZone.UiObjects.Utilities;
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
@@ -58,7 +59,7 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
 
         TiButton ExportButton => Find<TiButton>( "DeductionValues.ExportTBSCSV" );
 
-        IControlObject TabButton => FindBy( new WPFPattern { ClrFullClassName = "Trumpf.TruTops.DataMigrationTool.Views.TcBendFactorTabView" } );
+        IControlObject TabButton => Find<TcGenericControlObject>( new WPFPattern { ClrFullClassName = "Trumpf.TruTops.DataMigrationTool.Views.TcBendFactorTabView" } );
 
         #endregion
 
