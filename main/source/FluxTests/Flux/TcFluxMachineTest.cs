@@ -1,5 +1,4 @@
 ﻿using HomeZone.UiObjectInterfaces.Machine;
-using HomeZone.UiObjects.PageObjects.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading;
@@ -49,12 +48,10 @@ namespace HomeZone.FluxTests.Flux
             mMachineHelper.CreateAndSaveBendMachine( TestSettings, HomeZone.Machines, machineType );
 
             HomeZone.Machines.Detail.OpenMachineConfigurationBend();
+            Flux.MachineConfigurationDialogExists.WaitFor( TestSettings.FluxStartTimeout );
+            Flux.MachineConfigurationDialog.Close();
 
-            Thread.Sleep( mConfigureMachineOverlay ); //TODO: can be refactored so that Window is captured as soon as it appears -> no Sleep required
-            TcFluxConfigureMachine flux = new TcFluxConfigureMachine( Driver );
-            bool visible = flux.MachineDialogVisible( TestSettings.FluxStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            flux.CloseMachienDialog();
-            Thread.Sleep( mConfigureMachineOverlay );
+            Thread.Sleep( mConfigureMachineOverlay ); //TODO: can be refactored with a dynamic timeout
         }
 
         /// <summary>

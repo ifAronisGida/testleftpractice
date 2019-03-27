@@ -1,9 +1,11 @@
 using HomeZone.UiObjectInterfaces;
 using HomeZone.UiObjectInterfaces.Cut;
+using HomeZone.UiObjectInterfaces.DatamanagerBend;
 using HomeZone.UiObjectInterfaces.Design;
 using HomeZone.UiObjectInterfaces.Flux;
 using HomeZone.UiObjects;
 using HomeZone.UiObjects.PageObjects.Cut;
+using HomeZone.UiObjects.PageObjects.DatamanagerBend;
 using HomeZone.UiObjects.PageObjects.Design;
 using HomeZone.UiObjects.PageObjects.Flux;
 using HomeZone.UiObjects.TestSettings;
@@ -41,6 +43,7 @@ namespace HomeZone.UiCommonFunctions.Base
             CutApp = new TcCut( Driver );
             FluxApp = new TcFlux( TestSettings.FluxProcessName, Driver );
             Flux = new TcFluxApp( TestSettings.FluxProcessName, Driver );
+            DatamanagerBend = new TcDatamanagerBendApp( TestSettings.DatamanagerBendProcessName, Driver );
 
             TcAppLangDependentStrings.CurrentLanguage = TestSettings.ApplicationLanguage;
 
@@ -130,6 +133,11 @@ namespace HomeZone.UiCommonFunctions.Base
         /// Manages access to the Flux application
         /// </summary>
         public static TiFluxApp Flux { get; private set; }
+
+        /// <summary>
+        /// Manages acces to the Datamanager Bend application
+        /// </summary>
+        public static TiDatamanagerBendApp DatamanagerBend { get; private set; }
 
         /// <summary>
         /// Execute a UI  Test

@@ -76,6 +76,15 @@ namespace HomeZone.UiObjects.TestSettings
         public string FluxProcessName => GetString( "FluxProcessName", "Flux" );
 
         /// <summary>
+        /// Get the name of the Datamanager process.
+        /// </summary>
+        /// <value>
+        /// The name of the process.
+        /// </value>
+        public string DatamanagerBendProcessName => GetString( "DatamanagerProcessName", "DataManager" );
+
+
+        /// <summary>
         /// Gets timeout for starting Design.
         /// </summary>
         /// <value>

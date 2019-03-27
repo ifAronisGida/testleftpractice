@@ -30,8 +30,9 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 
         private readonly Lazy<TcToolManagementDialog> mToolManagementDialog;
         private readonly Lazy<TcFluxMessageBox> mMessageBox;
-        private readonly Lazy<TcAppSettingsDialog> mAppSettings;
-        private readonly Lazy<TcDeductionValueDialog> mDeductionValues;
+        private readonly Lazy<TcAppSettingsDialog> mAppSettingsDialog;
+        private readonly Lazy<TcDeductionValueDialog> mDeductionValuesDialog;
+        private readonly Lazy<TcMachineConfigurationDialog> mMachineConfigurationDialog;
 
         #endregion
 
@@ -47,8 +48,9 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             Driver = driver;
             mToolManagementDialog = new Lazy<TcToolManagementDialog>( On<TcToolManagementDialog> );
             mMessageBox = new Lazy<TcFluxMessageBox>( On<TcFluxMessageBox> );
-            mAppSettings = new Lazy<TcAppSettingsDialog>( On<TcAppSettingsDialog> );
-            mDeductionValues = new Lazy<TcDeductionValueDialog>( On<TcDeductionValueDialog> );
+            mAppSettingsDialog = new Lazy<TcAppSettingsDialog>( On<TcAppSettingsDialog> );
+            mDeductionValuesDialog = new Lazy<TcDeductionValueDialog>( On<TcDeductionValueDialog> );
+            mMachineConfigurationDialog = new Lazy<TcMachineConfigurationDialog>( On<TcMachineConfigurationDialog> );
         }
 
         #endregion
@@ -108,7 +110,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         /// <summary>
         /// Check if the AppSettings Dialog Exists
         /// </summary>
-        public Wool AppSettingsDialogExists => mAppSettings.Value.Exists;
+        public Wool AppSettingsDialogExists => mAppSettingsDialog.Value.Exists;
 
         /// <summary>
         /// AppSettings Dialog
@@ -118,12 +120,23 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         /// <summary>
         /// Check if the deduction value dialog exists
         /// </summary>
-        public Wool DeductionValueDialogExists => mDeductionValues.Value.Exists;
+        public Wool DeductionValueDialogExists => mDeductionValuesDialog.Value.Exists;
 
         /// <summary>
         /// Deduction value dialog
         /// </summary>
         public TiDeductionValueDialog DeductionValueDialog => On<TcDeductionValueDialog>();
+
+        /// <summary>
+        /// Check if the machine configuration dialog exists
+        /// </summary>
+        public Wool MachineConfigurationDialogExists => mMachineConfigurationDialog.Value.Exists;
+
+        /// <summary>
+        /// machine configuration dialog
+        /// </summary>
+        public TiMachineConfigurationDialog MachineConfigurationDialog => On<TcMachineConfigurationDialog>();
+
         #endregion
     }
 }

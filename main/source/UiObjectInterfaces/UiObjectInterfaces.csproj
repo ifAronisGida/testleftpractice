@@ -87,6 +87,10 @@
     <Compile Include="CutJob\TiRawSheetList.cs" />
     <Compile Include="Cut\TiCut.cs" />
     <Compile Include="Cut\TiTTSelectionDialog.cs" />
+    <Compile Include="DatamanagerBend\TiDatamanagerBendApp.cs" />
+    <Compile Include="DatamanagerBend\TiDeductionValues.cs" />
+    <Compile Include="DatamanagerBend\TiMainWindowDatamanagerBend.cs" />
+    <Compile Include="DatamanagerBend\TiTBSExportDialog.cs" />
     <Compile Include="Design\TiDesign.cs" />
     <Compile Include="Dialogs\ThirdPartyComponents\Ti3rdPartyComponentLicenseTextDialog.cs" />
     <Compile Include="Dialogs\ThirdPartyComponents\Ti3rdPartyComponentRow.cs" />
@@ -102,6 +106,7 @@
     <Compile Include="Flux\TiFlux.cs" />
     <Compile Include="Flux\TiFluxApp.cs" />
     <Compile Include="Flux\TiFluxMessageBox.cs" />
+    <Compile Include="Flux\TiMachineConfigurationDialog.cs" />
     <Compile Include="Flux\TiToolManagementDialog.cs" />
     <Compile Include="Flux\TiToolManagementDropdown.cs" />
     <Compile Include="Machine\TiMachineDetail.cs" />

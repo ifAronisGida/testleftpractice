@@ -67,6 +67,16 @@ namespace HomeZone.UiObjectInterfaces.Flux
         /// </summary>
         TiDeductionValueDialog DeductionValueDialog { get; }
 
+        /// <summary>
+        /// Check if the machine configuration dialog exists
+        /// </summary>
+        Wool MachineConfigurationDialogExists { get; }
+
+        /// <summary>
+        /// Machine configuration dialog
+        /// </summary>
+        TiMachineConfigurationDialog MachineConfigurationDialog { get; }
+
         #endregion
     }
 }

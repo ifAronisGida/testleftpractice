@@ -111,6 +111,10 @@
     <Compile Include="PageObjects\Cut\TcCut.cs" />
     <Compile Include="PageObjects\Cut\TcCutMessageBox.cs" />
     <Compile Include="PageObjects\Cut\TcTTSelectionDialog.cs" />
+    <Compile Include="PageObjects\DatamanagerBend\TcDatamanagerBendApp.cs" />
+    <Compile Include="PageObjects\DatamanagerBend\TcDeductionValues.cs" />
+    <Compile Include="PageObjects\DatamanagerBend\TcMainWindowDatamanagerBend.cs" />
+    <Compile Include="PageObjects\DatamanagerBend\TcTBSExportDialog.cs" />
     <Compile Include="PageObjects\Design\TcDesign.cs" />
     <Compile Include="PageObjects\Design\TcDesignMessageBox.cs" />
     <Compile Include="PageObjects\Dialogs\ThirdPartyComponents\Tc3rdPartyComponentLicenseTextDialog.cs" />
@@ -125,8 +129,8 @@
     <Compile Include="PageObjects\Flux\TcFlux.cs" />
     <Compile Include="PageObjects\Dialogs\TcHelpDialog.cs" />
     <Compile Include="PageObjects\Flux\TcFluxApp.cs" />
-    <Compile Include="PageObjects\Flux\TcFluxConfigureMachine.cs" />
     <Compile Include="PageObjects\Flux\TcFluxMessageBox.cs" />
+    <Compile Include="PageObjects\Flux\TcMachineConfigurationDialog.cs" />
     <Compile Include="PageObjects\Flux\TcToolManagementDialog.cs" />
     <Compile Include="PageObjects\Flux\TcToolManagementDropdown.cs" />
     <Compile Include="PageObjects\Machine\TcMachineDetail.cs" />
