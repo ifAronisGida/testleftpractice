@@ -13,7 +13,10 @@
 
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.DatamanagerBend;
+using HomeZone.UiObjects.ControlObjects;
+using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
+using System;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 
@@ -39,7 +42,7 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
         /// </summary>
         public void SelectAll()
         {
-            SelectAllCheckbox.Click();
+            SelectAllCheckbox.Value = true;
         }
 
         /// <summary>
@@ -48,10 +51,13 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
         public void Export()
         {
             ExportButton.Click();
-            //var dlg = Parent.Node.Find<IWindow>( new WindowPattern { WndClass = "#32770" }, 1 );
-            //dlg.
-            //dlg.Cast<IOpenFileDialog>().OpenFile( filename );
+            var dlg = Parent.Node.Find<IWindow>( new WindowPattern { WndClass = "#32770" }, 1 );
+            dlg.Find<IButton>( new WindowPattern() { WndClass = "Button", WndCaption = "OK" } ).Click();
+            WaitForExportOverlayAppear();
+            WaitForExportOverlayDisappear();
         }
+
+
 
         #endregion
 
@@ -59,9 +65,20 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
 
         protected override Search SearchPattern => Search.By( new WPFPattern { ClrFullClassName = "Trumpf.TruTops.DataMigrationTool.Views.Bend_Factor_Explorer.TcBendFactorTbsExportDialog" } );
 
-        private TiButton SelectAllCheckbox => Find<TiButton>( "DeductionValues.TBSExportDialog.SelectAll" );
+        private TiValueControl<bool> SelectAllCheckbox => Find<TiValueControl<bool>>( "DeductionValues.TBSExportDialog.SelectAll" );
 
         private TiButton ExportButton => Find<TiButton>( "DeductionValues.TBSExportDialog.Export" );
+
+        private TcOverlay ExportOverlay => Find<TcOverlay>( Search.ByControlName( "cpMessage" ) );
+
+        private bool WaitForExportOverlayAppear( TimeSpan? timeout = null )
+        {
+            return ExportOverlay.Visible.TryWaitFor( timeout ?? TcPageObjectSettings.Instance.ExportOverlayDisappearTimeout );
+        }
+        private bool WaitForExportOverlayDisappear( TimeSpan? timeout = null )
+        {
+            return ExportOverlay.Visible.TryWaitForFalse( timeout ?? TcPageObjectSettings.Instance.ExportOverlayDisappearTimeout );
+        }
 
         #endregion
 

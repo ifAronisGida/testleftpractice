@@ -1,6 +1,6 @@
-technology,airbending,source,DataManager@26.03.2019 15:36:13
+technology,airbending,source,DataManager@27.03.2019 13:31:39
 @data
-material,sheetThicknessMM,punchRadiusMM,dieWidthMM,dieAngleDEG,bendDeductionTanMM,bendDeductionEdgeMM,radiusMM
+material,sheetThicknessMM,punchRadiusMM,dieWidthMM,angleDEG,bendDeductionTanMM,bendDeductionEdgeMM,radiusMM
 AlMg3,0.5,0.2,4,30,-7.19,0,0.6
 AlMg3,0.5,0.2,4,31.2,-6.9,0,0.6
 AlMg3,0.5,0.2,4,34.2,-6.027,0,0.6

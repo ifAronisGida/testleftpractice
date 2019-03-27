@@ -66,9 +66,7 @@ namespace HomeZone.FluxTests.DataMigration
             var bendSettings = settingsDialog.BendSettings;
             bendSettings.Goto();
             bendSettings.OpenDataManagerBend();
-
             DatamanagerBend.MainWindowExists.WaitFor( TestSettings.FluxStartTimeout );
-
             DatamanagerBend.DeductionValues.Goto();
             DatamanagerBend.DeductionValues.ExportTBSCSV();
             DatamanagerBend.DeductionValues.TBSExportDialog.SelectAll();
@@ -79,6 +77,7 @@ namespace HomeZone.FluxTests.DataMigration
 
             string desktopPath = Environment.GetFolderPath( Environment.SpecialFolder.Desktop );
             List<string> generatedCSVFileList = Directory.GetFiles( desktopPath, S_CSV_FILE_ENDING_FILTER ).ToList();
+            Assert.AreNotEqual( 0, generatedCSVFileList.Count, "No csv files have been exported" );
 
             string testDataPath = Path.Combine( Path.GetDirectoryName( Assembly.GetExecutingAssembly().Location ), S_TESTDATA_SUB_PATH );
             Dictionary<string, string> baselineDictionary = Directory.GetFiles( testDataPath, S_CSV_FILE_ENDING_FILTER ).ToDictionary( item => Path.GetFileName( item ), item => item );

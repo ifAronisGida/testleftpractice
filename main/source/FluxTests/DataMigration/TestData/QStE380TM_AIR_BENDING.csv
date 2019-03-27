@@ -1,6 +1,6 @@
-technology,airbending,source,DataManager@26.03.2019 15:36:14
+technology,airbending,source,DataManager@27.03.2019 13:31:40
 @data
-material,sheetThicknessMM,punchRadiusMM,dieWidthMM,dieAngleDEG,bendDeductionTanMM,bendDeductionEdgeMM,radiusMM
+material,sheetThicknessMM,punchRadiusMM,dieWidthMM,angleDEG,bendDeductionTanMM,bendDeductionEdgeMM,radiusMM
 QStE380TM,4,1,24,85.4,-7.62,-3.18,4
 QStE380TM,4,1,24,89.3,-6.96,-6.71,3.4
 QStE380TM,4,1,24,90,-6.85,-6.85,3.4

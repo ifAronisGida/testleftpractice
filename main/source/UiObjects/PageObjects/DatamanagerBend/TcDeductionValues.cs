@@ -13,7 +13,6 @@
 
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.DatamanagerBend;
-using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
@@ -40,7 +39,7 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
         /// </summary>
         public override void Goto()
         {
-            this.Node.Cast<IControl>().Click();
+            TabButton.Click();
         }
 
         /// <summary>
@@ -55,9 +54,11 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
 
         #region private methods
 
-        protected override Search SearchPattern => Search.By( new WPFPattern { ClrFullClassName = "Trumpf.TruTops.DataMigrationTool.Views.TcBendFactorTabView" } );
+        protected override Search SearchPattern => Search.By( new WPFPattern { ClrFullClassName = "System.Windows.Controls.TabControl" } );
 
         TiButton ExportButton => Find<TiButton>( "DeductionValues.ExportTBSCSV" );
+
+        IControlObject TabButton => FindBy( new WPFPattern { ClrFullClassName = "Trumpf.TruTops.DataMigrationTool.Views.TcBendFactorTabView" } );
 
         #endregion
 
