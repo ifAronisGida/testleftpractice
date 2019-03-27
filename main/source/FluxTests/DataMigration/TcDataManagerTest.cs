@@ -39,7 +39,7 @@ namespace HomeZone.FluxTests.DataMigration
         }
 
         /// <summary>
-        /// Implemenation of the opean and close datamanager test
+        /// Implementation of the opean and close datamanager test
         /// </summary>
         private void DoOpenAndCloseDataManagerBendTest()
         {
