@@ -28,62 +28,23 @@ namespace HomeZone.UiCommonFunctions.Base
     public class TcBaseTestClass
     {
         private AutoFact mAutoFact;
+        private Process mTestedAppProcess;
 
         protected static IDriver Driver { get; } = new LocalDriver();
 
         [TestInitialize]
         public void Init()
         {
-            TestSettings = new TcTestSettings( TestContext );
-            TestSettings.Fill( TcPageObjectSettings.Instance );
+            DoInitialization();
+        }
 
-            mAutoFact = new AutoFact( new TcTestOptions( GetType(), TestContext, TestSettings ) );
-
-            DesignApp = new TcDesign( Driver );
-            CutApp = new TcCut( Driver );
-            FluxApp = new TcFlux( TestSettings.FluxProcessName, Driver );
-            Flux = new TcFluxApp( TestSettings.FluxProcessName, Driver );
-            DatamanagerBend = new TcDatamanagerBendApp( TestSettings.DatamanagerBendProcessName, Driver );
-
-            TcAppLangDependentStrings.CurrentLanguage = TestSettings.ApplicationLanguage;
-
-            // check if HomeZone is already running
-            var runningHomeZone = Process.GetProcessesByName( TestSettings.TestedAppName );
-
-            if( runningHomeZone.Length == 0 )               // not running => start HomeZone
-            {
-                if( !Directory.Exists( TestSettings.TestedAppPath ) )
-                {
-                    string message = "Path not found to start process! " + TestSettings.TestedAppPath;
-                    Driver.Log.Error( message );
-                    throw new Exception( message );
-                }
-
-                var filename = Path.Combine( TestSettings.TestedAppPath, TestSettings.TestedAppName + ".exe" );
-                var startInfo = new ProcessStartInfo
-                {
-                    FileName = filename,
-                    WorkingDirectory = TestSettings.TestedAppPath
-                };
-                var process = Process.Start( startInfo );
-            }
-
-            // connect to HomeZone process and wait until visible
-            HomeZone = new TcHomeZoneApp( TestSettings.TestedAppName, Driver );
-
-            HomeZone.MainWindowExists.WaitFor( TimeSpan.FromSeconds( 90 ) );
-
-            // close WelcomeScreen if visible
-            var welcomeScreen = HomeZone.WelcomeScreen;
-            if( welcomeScreen.IsVisible )
-            {
-                HomeZone.MainTabControl.CloseCurrentTab();
-            }
-
-            HomeZone.Maximize();
-
-            // wait until machine templates are loaded
-            Assert.IsTrue( HomeZone.BendMachineTemplatesLoaded() );
+        /// <summary>
+        /// Cleanup after testexecution
+        /// </summary>
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            DoTestCleanup();
         }
 
         /// <summary>
@@ -170,6 +131,74 @@ namespace HomeZone.UiCommonFunctions.Base
         protected static void AssemblyCleanup()
         {
             Driver.Log.Save( TestSettings.HtmlReportPath ?? TestSettings.ResultsDirectory, Log.Format.Html );
+        }
+
+        /// <summary>
+        /// Do test initialization
+        /// </summary>
+        protected virtual void DoInitialization()
+        {
+            TestSettings = new TcTestSettings( TestContext );
+            TestSettings.Fill( TcPageObjectSettings.Instance );
+
+            mAutoFact = new AutoFact( new TcTestOptions( GetType(), TestContext, TestSettings ) );
+
+            DesignApp = new TcDesign( Driver );
+            CutApp = new TcCut( Driver );
+            FluxApp = new TcFlux( TestSettings.FluxProcessName, Driver );
+            Flux = new TcFluxApp( TestSettings.FluxProcessName, Driver );
+            DatamanagerBend = new TcDatamanagerBendApp( TestSettings.DatamanagerBendProcessName, Driver );
+
+            TcAppLangDependentStrings.CurrentLanguage = TestSettings.ApplicationLanguage;
+
+            // check if HomeZone is already running
+            var runningHomeZone = Process.GetProcessesByName( TestSettings.TestedAppName );
+
+            if( runningHomeZone.Length == 0 )               // not running => start HomeZone
+            {
+                if( !Directory.Exists( TestSettings.TestedAppPath ) )
+                {
+                    string message = "Path not found to start process! " + TestSettings.TestedAppPath;
+                    Driver.Log.Error( message );
+                    throw new Exception( message );
+                }
+
+                var filename = Path.Combine( TestSettings.TestedAppPath, TestSettings.TestedAppName + ".exe" );
+                var startInfo = new ProcessStartInfo
+                {
+                    FileName = filename,
+                    WorkingDirectory = TestSettings.TestedAppPath
+                };
+                mTestedAppProcess = Process.Start( startInfo );
+            }
+
+            // connect to HomeZone process and wait until visible
+            HomeZone = new TcHomeZoneApp( TestSettings.TestedAppName, Driver );
+
+            HomeZone.MainWindowExists.WaitFor( TimeSpan.FromSeconds( 90 ) );
+
+            // close WelcomeScreen if visible
+            var welcomeScreen = HomeZone.WelcomeScreen;
+            if( welcomeScreen.IsVisible )
+            {
+                HomeZone.MainTabControl.CloseCurrentTab();
+            }
+
+            HomeZone.Maximize();
+
+            // wait until machine templates are loaded
+            Assert.IsTrue( HomeZone.BendMachineTemplatesLoaded() );
+        }
+
+        /// <summary>
+        /// Cleanup after testexecution
+        /// </summary>
+        protected virtual void DoTestCleanup()
+        {
+            if( TestContext.CurrentTestOutcome == UnitTestOutcome.Failed && mTestedAppProcess != null )
+            {
+                mTestedAppProcess.Kill();
+            }
         }
     }
 }
