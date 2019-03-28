@@ -1,4 +1,4 @@
-﻿using HomeZone.UiCommonFunctions.Base;
+﻿using HomeZone.FluxTests.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
@@ -6,7 +6,7 @@ using UiCommonFunctions.Utilities;
 namespace HomeZone.FluxTests.Settings
 {
     [TestClass]
-    public sealed class TcBendDeductionTest : TcBaseTestClass
+    public sealed class TcBendDeductionTest : TcBaseTestClassFlux
     {
         /// <summary>
         /// Tests the bend deduction configuration.

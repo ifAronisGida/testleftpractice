@@ -1,4 +1,4 @@
-﻿using HomeZone.UiCommonFunctions.Base;
+﻿using HomeZone.FluxTests.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using UiCommonFunctions.Utilities;
 namespace HomeZone.FluxTests.DataMigration
 {
     [TestClass]
-    public sealed class TcDataManagerTest : TcBaseTestClass
+    public sealed class TcDataManagerTest : TcBaseTestClassFlux
     {
         private static string S_TESTDATA_SUB_PATH = "DataMigration/TestData";
         private static string S_CSV_FILE_ENDING_FILTER = "*.csv";
