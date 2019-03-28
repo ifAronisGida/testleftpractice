@@ -70,7 +70,7 @@ namespace HomeZone.FluxTests.Settings
 
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
 
-            bendSettings.OpenToolListsConfiguration();
+            bendSettings.OpenToolsConfiguration();
 
             string toollistName = "superTools";
             Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
@@ -99,7 +99,7 @@ namespace HomeZone.FluxTests.Settings
             var bendSettings = settingsDialog.BendSettings;
             bendSettings.Goto();
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
-            bendSettings.OpenToolListsConfiguration();
+            bendSettings.OpenToolsConfiguration();
 
             string toollistName = "rubbishTools";
 
@@ -114,7 +114,7 @@ namespace HomeZone.FluxTests.Settings
             bendSettings = HomeZone.GotoMainMenu().OpenSettingsDialog().BendSettings;
             bendSettings.Goto();
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
-            bendSettings.OpenToolListsConfiguration();
+            bendSettings.OpenToolsConfiguration();
 
             Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
             Flux.ToolManagement.DeleteToolList( toollistName );
@@ -139,7 +139,7 @@ namespace HomeZone.FluxTests.Settings
             var bendSettings = settingsDialog.BendSettings;
             bendSettings.Goto();
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
-            bendSettings.OpenToolListsConfiguration();
+            bendSettings.OpenToolsConfiguration();
 
             string toollistName = "oldName";
             Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
@@ -154,7 +154,7 @@ namespace HomeZone.FluxTests.Settings
             bendSettings = HomeZone.GotoMainMenu().OpenSettingsDialog().BendSettings;
             bendSettings.Goto();
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
-            bendSettings.OpenToolListsConfiguration();
+            bendSettings.OpenToolsConfiguration();
             Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
             Flux.ToolManagement.RenameToolList( toollistName, newName );
             Flux.ToolManagement.Close();
