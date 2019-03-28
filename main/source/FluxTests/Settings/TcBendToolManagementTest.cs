@@ -1,5 +1,4 @@
 using HomeZone.FluxTests.Flux;
-using HomeZone.UiCommonFunctions.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
@@ -12,7 +11,7 @@ namespace HomeZone.FluxTests.Settings
     /// <summary>
     /// This test class contains bend settings specific tests.
     /// </summary>
-    /// <seealso cref="TcBaseTestClass" />
+    /// <seealso cref="TcBaseTestClassFlux" />
     [TestClass]
     public sealed class TcBendToolManagementTest : TcBaseTestClassFlux
     {
