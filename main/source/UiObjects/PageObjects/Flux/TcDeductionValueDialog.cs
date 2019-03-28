@@ -14,7 +14,6 @@
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Dialogs;
 using HomeZone.UiObjectInterfaces.Flux;
-using HomeZone.UiObjects.PageObjects.Dialogs;
 using SmartBear.TestLeft.TestObjects.WPF;
 using System;
 using System.Linq;
@@ -59,7 +58,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         public void Import( string csvFilePath )
         {
             ImportButton.Click();
-            var openDlg = On<TiOpenFileDialog, TcOpenFileDialog<TcFluxApp>>();
+            var openDlg = On<TiOpenFileDialog, TcOpenFileDialogFlux>();
             openDlg.SetFilename( csvFilePath );
             Thread.Sleep( 20000 ); //Flux UI Freezes during import ...
         }

@@ -22,7 +22,7 @@ namespace HomeZone.UiObjects.PageObjects.NestingTemplate
         public void Import( string file )
         {
             ImportButton.Click();
-            On<TcOpenFileDialog<TcHomeZoneApp>>().SetFilename( file );
+            On<TcOpenFileDialog>().SetFilename( file );
         }
     }
 }

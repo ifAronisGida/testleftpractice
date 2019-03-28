@@ -34,7 +34,7 @@ namespace HomeZone.UiObjects.PageObjects.PartOrder
         {
             ImportButton.Click();
 
-            On<TcOpenFileDialog<TcHomeZoneApp>>().SetFilename( fileName );
+            On<TcOpenFileDialog>().SetFilename( fileName );
         }
     }
 }

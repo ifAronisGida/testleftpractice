@@ -28,7 +28,7 @@ namespace HomeZone.UiObjects.PageObjects.Part
         {
             ImportButton.Click();
 
-            var openDlg = On<TcOpenFileDialog<TcHomeZoneApp>>();
+            var openDlg = On<TcOpenFileDialog>();
             return openDlg.SetFilename( filename );
         }
 
