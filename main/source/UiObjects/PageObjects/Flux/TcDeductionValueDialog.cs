@@ -12,8 +12,13 @@
 #region USING
 
 using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Dialogs;
 using HomeZone.UiObjectInterfaces.Flux;
+using HomeZone.UiObjects.PageObjects.Dialogs;
 using SmartBear.TestLeft.TestObjects.WPF;
+using System;
+using System.Linq;
+using System.Threading;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 
@@ -47,6 +52,27 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             CloseBendDeductionValueDailog.Click();
         }
 
+        /// <summary>
+        /// Import csv file
+        /// </summary>
+        /// <param name="csvFilePath">path to the csv file</param>
+        public void Import( string csvFilePath )
+        {
+            ImportButton.Click();
+            var openDlg = On<TiOpenFileDialog, TcOpenFileDialog>();
+            openDlg.SetFilename( csvFilePath );
+            Thread.Sleep( 20000 ); //Flux UI Freezes during import ...
+        }
+
+        /// <summary>
+        /// Get the amount of csv entries
+        /// </summary>
+        /// <returns>amount of csv entries as displayed by Flux</returns>
+        public int Entries()
+        {
+            string text = EntriesTextField.Value;
+            return Int32.Parse( string.Join( "", text.ToCharArray().Where( Char.IsDigit ) ) );
+        }
 
         #endregion
 
@@ -56,6 +82,9 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 
         private TiButton CloseBendDeductionValueDailog => FindByControlName<TiButton>( "cCloseBtn" );
 
+        private TiButton ImportButton => FindByControlName<TiButton>( "cImport" );
+
+        private TiValueControl<string> EntriesTextField => FindByControlName<TiValueControl<string>>( "cEntries" );
 
         #endregion
 

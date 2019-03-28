@@ -17,6 +17,7 @@ namespace HomeZone.FluxTests.DataMigration
         private static string S_CSV_FILE_ENDING_FILTER = "*.csv";
         private static string S_REMOVE_CONTENT_AFTER_CHARACHTER = "@";
         private static int S_LINE_NUMBER_CONTAINING_DATE = 0;
+        private static string S_NO_CSV_FILES_EXPORTED = "No csv files have been exported";
 
         /// <summary>
         /// Opens and closes the DataManager Bend.
@@ -36,6 +37,16 @@ namespace HomeZone.FluxTests.DataMigration
         public void ExportAllDieDeductionValueTest()
         {
             ExecuteUITest( DoExportAllDieDeductionValueTest, "Export Die Deduction Values" );
+        }
+
+        /// <summary>
+        /// Export and import all die deduction values
+        /// </summary>
+        [TestMethod, UniqueName( "A4206A59-605D-4F78-9F55-F8B6A51D459B" )]
+        [Tag( "DataMigration" )]
+        public void ExportAndImportAllDieDeductionValueTest()
+        {
+            ExecuteUITest( DoExportAndImportAllDieDeductionValueTest, "Export all die deduction values and import them in Flux" );
         }
 
         /// <summary>
@@ -62,22 +73,11 @@ namespace HomeZone.FluxTests.DataMigration
         /// </summary>
         private void DoExportAllDieDeductionValueTest()
         {
-            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
-            var bendSettings = settingsDialog.BendSettings;
-            bendSettings.Goto();
-            bendSettings.OpenDataManagerBend();
-            DatamanagerBend.MainWindowExists.WaitFor( TestSettings.FluxStartTimeout );
-            DatamanagerBend.DeductionValues.Goto();
-            DatamanagerBend.DeductionValues.ExportTBSCSV();
-            DatamanagerBend.DeductionValues.TBSExportDialog.SelectAll();
-            DatamanagerBend.DeductionValues.TBSExportDialog.Export();
-            DatamanagerBend.Close();
-
-            settingsDialog.Cancel();
+            ExportAllDieDeductionValues();
 
             string desktopPath = Environment.GetFolderPath( Environment.SpecialFolder.Desktop );
             List<string> generatedCSVFileList = Directory.GetFiles( desktopPath, S_CSV_FILE_ENDING_FILTER ).ToList();
-            Assert.AreNotEqual( 0, generatedCSVFileList.Count, "No csv files have been exported" );
+            Assert.AreNotEqual( 0, generatedCSVFileList.Count, S_NO_CSV_FILES_EXPORTED );
 
             string testDataPath = Path.Combine( Path.GetDirectoryName( Assembly.GetExecutingAssembly().Location ), S_TESTDATA_SUB_PATH );
             Dictionary<string, string> baselineDictionary = Directory.GetFiles( testDataPath, S_CSV_FILE_ENDING_FILTER ).ToDictionary( item => Path.GetFileName( item ), item => item );
@@ -96,6 +96,53 @@ namespace HomeZone.FluxTests.DataMigration
                 Assert.IsTrue( testfile.SequenceEqual( originalFile ), "Following csv file differs from baseline: " + Path.GetFileName( item ) );
                 File.Delete( item );
             }
+        }
+
+        /// <summary>
+        /// Execute the export and import all die deduction value test
+        /// </summary>
+        private void DoExportAndImportAllDieDeductionValueTest()
+        {
+            ExportAllDieDeductionValues();
+
+            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
+            var bendSettings = settingsDialog.BendSettings;
+            bendSettings.Goto();
+            bendSettings.OpenBendDeductionConfiguration();
+
+            string desktopPath = Environment.GetFolderPath( Environment.SpecialFolder.Desktop );
+            List<string> generatedCSVFileList = Directory.GetFiles( desktopPath, S_CSV_FILE_ENDING_FILTER ).ToList();
+            Assert.AreNotEqual( 0, generatedCSVFileList.Count, S_NO_CSV_FILES_EXPORTED );
+
+            Flux.DeductionValueDialogExists.WaitFor();
+            int entries = 0;
+            foreach( var file in generatedCSVFileList )
+            {
+                Flux.DeductionValueDialog.Import( file );
+                Assert.IsTrue( Flux.DeductionValueDialog.Entries() > entries, "csv Import has failed, since no entries were added to the list" );
+                entries = Flux.DeductionValueDialog.Entries();
+            }
+            Flux.DeductionValueDialog.Close();
+            settingsDialog.Cancel();
+        }
+
+        /// <summary>
+        /// export all die deduction values to the desktop
+        /// </summary>
+        private void ExportAllDieDeductionValues()
+        {
+            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
+            var bendSettings = settingsDialog.BendSettings;
+            bendSettings.Goto();
+            bendSettings.OpenDataManagerBend();
+            DatamanagerBend.MainWindowExists.WaitFor( TestSettings.FluxStartTimeout );
+            DatamanagerBend.DeductionValues.Goto();
+            DatamanagerBend.DeductionValues.ExportTBSCSV();
+            DatamanagerBend.DeductionValues.TBSExportDialog.SelectAll();
+            DatamanagerBend.DeductionValues.TBSExportDialog.Export();
+            DatamanagerBend.Close();
+
+            settingsDialog.Cancel();
         }
     }
 }
