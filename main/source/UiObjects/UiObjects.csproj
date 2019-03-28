@@ -117,6 +117,7 @@
     <Compile Include="PageObjects\DatamanagerBend\TcTBSExportDialog.cs" />
     <Compile Include="PageObjects\Design\TcDesign.cs" />
     <Compile Include="PageObjects\Design\TcDesignMessageBox.cs" />
+    <Compile Include="PageObjects\Dialogs\TcOpenFileDialogBase.cs" />
     <Compile Include="PageObjects\Dialogs\ThirdPartyComponents\Tc3rdPartyComponentLicenseTextDialog.cs" />
     <Compile Include="PageObjects\Dialogs\ThirdPartyComponents\Tc3rdPartyComponentRow.cs" />
     <Compile Include="PageObjects\Dialogs\ThirdPartyComponents\Tc3rdPartyComponentsDialog.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="PageObjects\Flux\TcFluxApp.cs" />
     <Compile Include="PageObjects\Flux\TcFluxMessageBox.cs" />
     <Compile Include="PageObjects\Flux\TcMachineConfigurationDialog.cs" />
+    <Compile Include="PageObjects\Flux\TcOpenFileDialogFlux.cs" />
     <Compile Include="PageObjects\Flux\TcToolManagementDialog.cs" />
     <Compile Include="PageObjects\Flux\TcToolManagementDropdown.cs" />
     <Compile Include="PageObjects\Machine\TcMachineDetail.cs" />

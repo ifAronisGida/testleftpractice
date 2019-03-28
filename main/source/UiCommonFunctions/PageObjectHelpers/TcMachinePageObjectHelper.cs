@@ -13,7 +13,6 @@
 
 using HomeZone.UiObjectInterfaces.Machine;
 using HomeZone.UiObjects.TestSettings;
-using System.Collections.Generic;
 
 #endregion
 
@@ -46,7 +45,6 @@ namespace HomeZone.UiCommonFunctions
                 machineName = machineType.Replace( "/", "_" ); //Replace not allowed characters
             }
             machineName = testSettings.NamePrefix + machineName;
-            mCreatedMachineList.Add( machineName );
             machines.NewBendMachine( machineType, machineName );
             machines.Toolbar.Save();
             machines.WaitForDetailOverlayAppear();
@@ -57,14 +55,15 @@ namespace HomeZone.UiCommonFunctions
         /// Delete all machines which were created with the function <see cref="CreateAndSaveBendMachine(TcTestSettings, TiMachines, string, string)"/>
         /// </summary>
         /// <param name="machines">machine page</param>
-        public void DeleteCreatedMachines( TiMachines machines )
+        public void DeleteCreatedMachines( TcTestSettings testSettings, TiMachines machines )
         {
             machines.Goto();
-            foreach( var machine in mCreatedMachineList )
+            machines.ResultColumn.SelectItems( testSettings.NamePrefix );
+            if( machines.ResultColumn.Count > 0 )
             {
-                machines.DeleteMachine( machine );
+                machines.Toolbar.Delete();
             }
-            mCreatedMachineList.Clear();
+            machines.ResultColumn.ClearSearch();
         }
 
         #endregion
@@ -79,12 +78,6 @@ namespace HomeZone.UiCommonFunctions
         #endregion
 
         #region private members
-
-        /// <summary>
-        /// list with the created machines
-        /// </summary>
-        List<string> mCreatedMachineList = new List<string>();
-
         #endregion
 
         #region properties

@@ -1,7 +1,7 @@
 ﻿using HomeZone.UiCommonFunctions;
 using HomeZone.UiCommonFunctions.Base;
+using HomeZone.UiCommonFunctions.PageObjectHelpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Trumpf.AutoTest.Facts;
 
 namespace HomeZone.FluxTests.Flux
 {
@@ -16,22 +16,16 @@ namespace HomeZone.FluxTests.Flux
         /// </summary>
         protected TcMachinePageObjectHelper mMachineHelper = new TcMachinePageObjectHelper();
 
-        /// <summary>
-        /// Cleanup after testexecution
-        /// </summary>
-        [TestCleanup, UniqueName( "5AD37799-3B74-494E-B38E-F4919C5C38E8" )]
-        [Tag( "Flux" )]
-        public void TestCleanup()
-        {
-            ExecuteUITest( DoTestCleanup, "Cleanup after testexecution" );
-        }
+        protected TcPartPageObjectHelper mPartHelper = new TcPartPageObjectHelper();
 
         /// <summary>
-        /// Cleanup after testexecution
+        /// Cleanup before testing
         /// </summary>
-        private void DoTestCleanup()
+        protected override void DoInitialization()
         {
-            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
+            base.DoInitialization();
+            mPartHelper.DeleteImportedParts( TestSettings, HomeZone.Parts );
+            mMachineHelper.DeleteCreatedMachines( TestSettings, HomeZone.Machines );
         }
     }
 }

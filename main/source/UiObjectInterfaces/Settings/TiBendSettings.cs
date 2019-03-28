@@ -16,11 +16,6 @@ namespace HomeZone.UiObjectInterfaces.Settings
         void OpenToolsConfiguration();
 
         /// <summary>
-        /// Opens the Flux tool lists configuration dialog.
-        /// </summary>
-        void OpenToolListsConfiguration();
-
-        /// <summary>
         /// Opens the Flux vebd deduction configuration dialog.
         /// </summary>
         void OpenBendDeductionConfiguration();

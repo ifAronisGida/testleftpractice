@@ -14,6 +14,7 @@
 
 #endregion
 
+
 namespace HomeZone.UiObjectInterfaces.Flux
 {
     /// <summary>
@@ -27,6 +28,18 @@ namespace HomeZone.UiObjectInterfaces.Flux
         /// Close the bend deduction value dialog
         /// </summary>
         void Close();
+
+        /// <summary>
+        /// Import csv file
+        /// </summary>
+        /// <param name="csvFilePath">path to the csv file</param>
+        void Import( string csvFilePath );
+
+        /// <summary>
+        /// Get the amount of csv entries
+        /// </summary>
+        /// <returns>amount of csv entries as displayed by Flux</returns>
+        int Entries();
 
         #endregion
 

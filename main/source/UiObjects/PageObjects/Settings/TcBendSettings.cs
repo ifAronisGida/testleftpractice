@@ -16,7 +16,6 @@ namespace HomeZone.UiObjects.PageObjects.Settings
         protected override Search SearchPattern => Search.ByUid( "Settings.Bend" );
 
         private TiButton ToolsOpenButton => Find<TiButton>( "Settings.Bend.Tools.Open" );
-        private TiButton ToolListsOpenButton => Find<TiButton>( "Settings.Bend.ToolLists.Open" );
         private TiButton BendDeductionOpenButton => Find<TiButton>( "Settings.Bend.BendDeduction.Open" );
         private TiButton AppSettingsOpenButton => Find<TiButton>( "Settings.Bend.AppSettings.Open" );
         private TiButton DataManagerBendOpenButton => Find<TiButton>( "Settings.Bend.DataManagerBend.Open" );
@@ -30,7 +29,7 @@ namespace HomeZone.UiObjects.PageObjects.Settings
             if( !IsVisibleOnScreen )
             {
                 Parent.Goto();
-                ( ( TcSettingsDialog ) Parent ).BendTab.Click();
+                ( ( TcSettingsDialog )Parent ).BendTab.Click();
             }
         }
 
@@ -40,14 +39,6 @@ namespace HomeZone.UiObjects.PageObjects.Settings
         public void OpenToolsConfiguration()
         {
             ToolsOpenButton.Click();
-        }
-
-        /// <summary>
-        /// Opens the Flux tool lists configuration dialog.
-        /// </summary>
-        public void OpenToolListsConfiguration()
-        {
-            ToolListsOpenButton.Click();
         }
 
         /// <summary>

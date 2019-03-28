@@ -1,4 +1,4 @@
-using HomeZone.UiCommonFunctions.Base;
+using HomeZone.FluxTests.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
@@ -11,9 +11,9 @@ namespace HomeZone.FluxTests.Settings
     /// <summary>
     /// This test class contains bend settings specific tests.
     /// </summary>
-    /// <seealso cref="TcBaseTestClass" />
+    /// <seealso cref="TcBaseTestClassFlux" />
     [TestClass]
-    public sealed class TcBendToolManagementTest : TcBaseTestClass
+    public sealed class TcBendToolManagementTest : TcBaseTestClassFlux
     {
         private static string S_BOOST_BEND_SETTINGS_NOT_VISIBLE = "Boost Bend Settings Dialog is not visible";
         private static string S_MISSING_FLUX_TOOL_LIST_IN_BOOST = "Flux tool list is not available in HomeZone UI";
@@ -70,7 +70,7 @@ namespace HomeZone.FluxTests.Settings
 
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
 
-            bendSettings.OpenToolListsConfiguration();
+            bendSettings.OpenToolsConfiguration();
 
             string toollistName = "superTools";
             Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
@@ -83,9 +83,7 @@ namespace HomeZone.FluxTests.Settings
 
             // import part and use toollist
             var parts = HomeZone.GotoParts();
-            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear();
+            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
             Assert.IsTrue( CheckToolListDropdown( toollistName, out var toolList ), S_MISSING_FLUX_TOOL_LIST_IN_BOOST );
 
             parts.Toolbar.Delete();
@@ -101,7 +99,7 @@ namespace HomeZone.FluxTests.Settings
             var bendSettings = settingsDialog.BendSettings;
             bendSettings.Goto();
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
-            bendSettings.OpenToolListsConfiguration();
+            bendSettings.OpenToolsConfiguration();
 
             string toollistName = "rubbishTools";
 
@@ -116,7 +114,7 @@ namespace HomeZone.FluxTests.Settings
             bendSettings = HomeZone.GotoMainMenu().OpenSettingsDialog().BendSettings;
             bendSettings.Goto();
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
-            bendSettings.OpenToolListsConfiguration();
+            bendSettings.OpenToolsConfiguration();
 
             Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
             Flux.ToolManagement.DeleteToolList( toollistName );
@@ -126,13 +124,9 @@ namespace HomeZone.FluxTests.Settings
 
             // import part and use toollist
             var parts = HomeZone.GotoParts();
-            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear();
+            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
 
             Assert.IsFalse( CheckToolListDropdown( toollistName, out var control ), S_MISSING_FLUX_TOOL_LIST_IN_BOOST );
-
-            parts.Toolbar.Delete();
         }
 
         /// <summary>
@@ -145,7 +139,7 @@ namespace HomeZone.FluxTests.Settings
             var bendSettings = settingsDialog.BendSettings;
             bendSettings.Goto();
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
-            bendSettings.OpenToolListsConfiguration();
+            bendSettings.OpenToolsConfiguration();
 
             string toollistName = "oldName";
             Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
@@ -160,7 +154,7 @@ namespace HomeZone.FluxTests.Settings
             bendSettings = HomeZone.GotoMainMenu().OpenSettingsDialog().BendSettings;
             bendSettings.Goto();
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
-            bendSettings.OpenToolListsConfiguration();
+            bendSettings.OpenToolsConfiguration();
             Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
             Flux.ToolManagement.RenameToolList( toollistName, newName );
             Flux.ToolManagement.Close();
@@ -170,13 +164,9 @@ namespace HomeZone.FluxTests.Settings
 
             // import part and use toollist
             var parts = HomeZone.GotoParts();
-            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear();
+            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
 
             Assert.IsTrue( CheckToolListDropdown( newName, out var control ), "Newly created tool list is not available in HomeZone UI" );
-
-            parts.Toolbar.Delete();
         }
 
         /// <summary>

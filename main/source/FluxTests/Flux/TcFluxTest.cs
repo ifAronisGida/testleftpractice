@@ -98,12 +98,7 @@ namespace HomeZone.FluxTests.Flux
             var parts = HomeZone.GotoParts();
 
             // first part
-            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear();
-
-            parts.SingleDetail.Name.Value = namePrefix + "1";
-
+            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
             parts.WaitForDetailOverlayAppear();
@@ -117,28 +112,16 @@ namespace HomeZone.FluxTests.Flux
             Assert.IsTrue( visible );
 
             //second part
-            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear();
-
-            parts.SingleDetail.Name.Value = namePrefix + "2";
-
+            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
             parts.WaitForDetailOverlayAppear();
-
-            flux = FluxApp;
 
             visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
             flux.CloseApp();
             parts.WaitForDetailOverlayDisappear();
 
             Assert.IsTrue( visible, "Flux window was not visible." );
-
-            // delete the 2 parts
-            parts.ResultColumn.SelectItems( namePrefix );
-            parts.Toolbar.Delete();
-            parts.ResultColumn.ClearSearch();
         }
 
         /// <summary>
@@ -151,9 +134,7 @@ namespace HomeZone.FluxTests.Flux
             var parts = HomeZone.GotoParts();
             string solutionName = "Bend1";
 
-            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear();
+            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
 
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailBendSolutions.OpenBendSolution( solutionName );
@@ -166,8 +147,6 @@ namespace HomeZone.FluxTests.Flux
 
             var isManual = parts.SingleDetailBendSolutions.IsManuallyChanged( solutionName );
             Assert.IsTrue( isManual );
-
-            parts.Toolbar.Delete();
         }
 
         /// <summary>
@@ -179,9 +158,7 @@ namespace HomeZone.FluxTests.Flux
             var parts = HomeZone.GotoParts();
             string solutionName = "Bend1";
 
-            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear();
+            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
 
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailBendSolutions.BoostSolution( solutionName );
@@ -193,8 +170,6 @@ namespace HomeZone.FluxTests.Flux
             Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ), "NC Button is disabled" );
             Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ), "Setup Plan Button is disabled" );
             Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ), "Release Button is disabled" );
-
-            parts.Toolbar.Delete();
         }
 
         /// <summary>
@@ -208,9 +183,7 @@ namespace HomeZone.FluxTests.Flux
             var parts = HomeZone.GotoParts();
             string solutionName = "Bend1";
 
-            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear();
+            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
 
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailBendSolutions.BoostSolution( solutionName );
@@ -222,8 +195,6 @@ namespace HomeZone.FluxTests.Flux
             Assert.IsFalse( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
             Assert.IsFalse( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
             Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
-
-            parts.Toolbar.Delete();
         }
 
         /// <summary>
@@ -236,9 +207,7 @@ namespace HomeZone.FluxTests.Flux
             var parts = HomeZone.GotoParts();
             string solutionName = "Bend1";
 
-            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear();
+            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
 
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailBendSolutions.BoostSolution( solutionName );
@@ -264,8 +233,6 @@ namespace HomeZone.FluxTests.Flux
             Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
             Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
             Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
-
-            parts.Toolbar.Delete();
         }
 
         /// <summary>
@@ -278,9 +245,7 @@ namespace HomeZone.FluxTests.Flux
             var parts = HomeZone.GotoParts();
             string solutionName = "Bend1";
 
-            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear();
+            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
 
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailBendSolutions.OpenBendSolution( solutionName );
@@ -290,7 +255,6 @@ namespace HomeZone.FluxTests.Flux
             bool visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
             flux.ChangeSolution();
             parts.WaitForDetailOverlayDisappear();
-            parts.Toolbar.Delete();
         }
 
         /// <summary>
@@ -334,9 +298,7 @@ namespace HomeZone.FluxTests.Flux
             TiParts parts = HomeZone.GotoParts();
             foreach( var item in showcasePartList )
             {
-                parts.Toolbar.Import( Path.Combine( samplesPath, item ) );
-                parts.WaitForDetailOverlayAppear();
-                parts.WaitForDetailOverlayDisappear();
+                mPartHelper.ImportPart( TestSettings, parts, Path.Combine( samplesPath, item ) );
             }
             parts.ResultColumn.SelectAll();
             parts.Toolbar.WaitForBoostButtonEnabled();
@@ -358,8 +320,6 @@ namespace HomeZone.FluxTests.Flux
                 parts.SingleDetailBendSolutions.OpenSolutionDetail( bendSolutionName );
                 Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( bendSolutionName ), "Setup plan is missing for boosted solution" );
                 Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( bendSolutionName ), "NC code is missing for boosted solution" );
-
-                parts.Toolbar.Delete();
             }
         }
     }
