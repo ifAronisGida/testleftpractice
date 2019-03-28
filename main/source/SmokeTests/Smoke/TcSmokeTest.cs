@@ -4,7 +4,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
-
 namespace HomeZone.SmokeTests.Smoke
 {
     /// <summary>
