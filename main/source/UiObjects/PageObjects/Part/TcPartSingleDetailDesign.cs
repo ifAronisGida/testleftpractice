@@ -1,8 +1,8 @@
-using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Part;
 using HomeZone.UiObjects.PageObjects.Dialogs;
 using HomeZone.UiObjects.Utilities;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace HomeZone.UiObjects.PageObjects.Part
 {
@@ -28,7 +28,7 @@ namespace HomeZone.UiObjects.PageObjects.Part
         {
             ImportButton.Click();
 
-            var openDlg = On<TcOpenFileDialog>();
+            var openDlg = On<TcOpenFileDialog<TcHomeZoneApp>>();
             return openDlg.SetFilename( filename );
         }
 

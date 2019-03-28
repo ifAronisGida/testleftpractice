@@ -59,7 +59,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         public void Import( string csvFilePath )
         {
             ImportButton.Click();
-            var openDlg = On<TiOpenFileDialog, TcOpenFileDialog>();
+            var openDlg = On<TiOpenFileDialog, TcOpenFileDialog<TcFluxApp>>();
             openDlg.SetFilename( csvFilePath );
             Thread.Sleep( 20000 ); //Flux UI Freezes during import ...
         }

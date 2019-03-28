@@ -52,7 +52,7 @@ namespace HomeZone.UiObjects.PageObjects.Part
         {
             ImportButton.Click();
 
-            var openDlg = On<TiOpenFileDialog, TcOpenFileDialog>();
+            var openDlg = On<TiOpenFileDialog, TcOpenFileDialog<TcHomeZoneApp>>();
             return openDlg.SetFilename( filename );
         }
 

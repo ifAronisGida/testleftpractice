@@ -1,8 +1,8 @@
-using System;
-using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.PartOrder;
 using HomeZone.UiObjects.PageObjects.Dialogs;
+using System;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace HomeZone.UiObjects.PageObjects.PartOrder
 {
@@ -34,7 +34,7 @@ namespace HomeZone.UiObjects.PageObjects.PartOrder
         {
             ImportButton.Click();
 
-            On<TcOpenFileDialog>().SetFilename( fileName );
+            On<TcOpenFileDialog<TcHomeZoneApp>>().SetFilename( fileName );
         }
     }
 }

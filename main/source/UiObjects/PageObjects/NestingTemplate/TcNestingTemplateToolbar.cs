@@ -1,8 +1,8 @@
-using System;
-using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.NestingTemplate;
 using HomeZone.UiObjects.PageObjects.Dialogs;
+using System;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace HomeZone.UiObjects.PageObjects.NestingTemplate
 {
@@ -22,7 +22,7 @@ namespace HomeZone.UiObjects.PageObjects.NestingTemplate
         public void Import( string file )
         {
             ImportButton.Click();
-            On<TcOpenFileDialog>().SetFilename( file );
+            On<TcOpenFileDialog<TcHomeZoneApp>>().SetFilename( file );
         }
     }
 }

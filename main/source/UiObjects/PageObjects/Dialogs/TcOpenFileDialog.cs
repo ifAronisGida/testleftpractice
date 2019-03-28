@@ -1,6 +1,6 @@
+using HomeZone.UiObjectInterfaces.Dialogs;
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
-using HomeZone.UiObjectInterfaces.Dialogs;
 
 
 namespace HomeZone.UiObjects.PageObjects.Dialogs
@@ -9,8 +9,7 @@ namespace HomeZone.UiObjects.PageObjects.Dialogs
     /// TcOpenFileDialog handles open file dialogs.
     /// </summary>
     /// <seealso cref="RepeaterObject" />
-    /// <seealso cref="Trumpf.PageObjects.IChildOf{TcHomeZoneApp}" />
-    public class TcOpenFileDialog : RepeaterObject, IChildOf<TcHomeZoneApp>, TiOpenFileDialog
+    public class TcOpenFileDialog<T> : RepeaterObject, IChildOf<T>, TiOpenFileDialog where T : IPageObject
     {
         /// <summary>
         /// Enters the given filename and clicks the open button.
