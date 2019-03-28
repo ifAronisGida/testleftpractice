@@ -22,9 +22,10 @@ namespace HomeZone.UiObjects.Utilities
             ["System.Windows.Controls.Image"] = controlObject => new TcButton( controlObject ),
             ["System.Windows.Controls.Border"] = controlObject => new TcButton( controlObject ),
             ["System.Windows.Controls.ComboBox"] = controlObject => new TcButton( controlObject ),
+            ["System.Windows.Controls.TextBlock"] = controlObject => new TcTextBlock( controlObject ),
             ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruComboBox"] = controlObject => new TcTruComboBox( controlObject ),
             ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruIconButton"] = controlObject => new TcButton( controlObject ),
-            ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruTextBlock"] = controlObject => new TcTextBlock(controlObject),
+            ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruTextBlock"] = controlObject => new TcTextBlock( controlObject ),
             ["Trumpf.TruTops.Control.Infrastructure.ModuleBase.Controls.TcLookUpEdit"] = controlObject => new TcTextEdit( controlObject ),
             ["Trumpf.TruTops.Control.Infrastructure.ModuleBase.Controls.TcNullableDateEdit"] = controlObject => new TcDateEdit( controlObject ),
             ["Trumpf.TruTops.Control.Infrastructure.ModuleBase.Controls.TcNullableTextEdit"] = controlObject => new TcTextEdit( controlObject ),
@@ -36,8 +37,8 @@ namespace HomeZone.UiObjects.Utilities
 
             try
             {
-                var factoryFunc = mappings[ fqClassName ];
-                return ( TInterface ) factoryFunc( controlObject );
+                var factoryFunc = mappings[fqClassName];
+                return ( TInterface )factoryFunc( controlObject );
             }
             catch( KeyNotFoundException e )
             {
