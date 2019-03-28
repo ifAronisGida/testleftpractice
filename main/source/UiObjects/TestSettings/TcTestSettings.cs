@@ -101,6 +101,14 @@ namespace HomeZone.UiObjects.TestSettings
         public TimeSpan CutStartTimeout => TimeSpan.FromSeconds( GetInt( "CutStartTimeout", 40 ) );
 
         /// <summary>
+        /// Gets timout for starting Datamanager Bend.
+        /// </summary>
+        /// <value>
+        /// The Datamanager Bend starting timout
+        /// </value>
+        public TimeSpan DatamanagerBendStartTimeout => TimeSpan.FromSeconds( GetInt( "DatamanagerBendStartTimeout", 60 ) );
+
+        /// <summary>
         /// Gets timeout for starting Flux.
         /// </summary>
         /// <value>

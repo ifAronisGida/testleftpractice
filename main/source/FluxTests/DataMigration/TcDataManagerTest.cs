@@ -114,7 +114,7 @@ namespace HomeZone.FluxTests.DataMigration
             List<string> generatedCSVFileList = Directory.GetFiles( desktopPath, S_CSV_FILE_ENDING_FILTER ).ToList();
             Assert.AreNotEqual( 0, generatedCSVFileList.Count, S_NO_CSV_FILES_EXPORTED );
 
-            Flux.DeductionValueDialogExists.WaitFor();
+            Flux.DeductionValueDialogExists.WaitFor( TestSettings.FluxStartTimeout );
             int entries = 0;
             foreach( var file in generatedCSVFileList )
             {
@@ -135,7 +135,7 @@ namespace HomeZone.FluxTests.DataMigration
             var bendSettings = settingsDialog.BendSettings;
             bendSettings.Goto();
             bendSettings.OpenDataManagerBend();
-            DatamanagerBend.MainWindowExists.WaitFor( TestSettings.FluxStartTimeout );
+            DatamanagerBend.MainWindowExists.WaitFor( TestSettings.DatamanagerBendStartTimeout );
             DatamanagerBend.DeductionValues.Goto();
             DatamanagerBend.DeductionValues.ExportTBSCSV();
             DatamanagerBend.DeductionValues.TBSExportDialog.SelectAll();
