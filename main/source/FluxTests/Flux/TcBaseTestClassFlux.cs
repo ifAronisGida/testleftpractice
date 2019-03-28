@@ -25,7 +25,7 @@ namespace HomeZone.FluxTests.Flux
         {
             base.DoInitialization();
             mPartHelper.DeleteImportedParts( TestSettings, HomeZone.Parts );
-            mMachineHelper.DeleteCreatedMachines( HomeZone.Machines );
+            mMachineHelper.DeleteCreatedMachines( TestSettings, HomeZone.Machines );
         }
     }
 }
