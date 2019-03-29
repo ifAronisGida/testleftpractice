@@ -140,9 +140,11 @@ namespace HomeZone.FluxTests.Flux
             parts.SingleDetailBendSolutions.OpenBendSolution( solutionName );
             parts.WaitForDetailOverlayAppear();
 
-            var flux = FluxApp;
-            bool visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            flux.SaveAndClosePartInFlux();
+            Flux.MainWindowFluxExists.WaitFor( TestSettings.FluxBoostAndStartTimeout );
+            Flux.MainWindowFlux.OpenMenu();
+            Flux.MainWindowFlux.SettingsMenu.Save();
+            Flux.MainWindowFlux.Close();
+
             parts.WaitForDetailOverlayDisappear();
 
             var isManual = parts.SingleDetailBendSolutions.IsManuallyChanged( solutionName );

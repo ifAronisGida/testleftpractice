@@ -33,6 +33,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         private readonly Lazy<TcAppSettingsDialog> mAppSettingsDialog;
         private readonly Lazy<TcDeductionValueDialog> mDeductionValuesDialog;
         private readonly Lazy<TcMachineConfigurationDialog> mMachineConfigurationDialog;
+        private readonly Lazy<TcMainWindowFlux> mMainWindowFlux;
 
         #endregion
 
@@ -51,6 +52,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             mAppSettingsDialog = new Lazy<TcAppSettingsDialog>( On<TcAppSettingsDialog> );
             mDeductionValuesDialog = new Lazy<TcDeductionValueDialog>( On<TcDeductionValueDialog> );
             mMachineConfigurationDialog = new Lazy<TcMachineConfigurationDialog>( On<TcMachineConfigurationDialog> );
+            mMainWindowFlux = new Lazy<TcMainWindowFlux>( On<TcMainWindowFlux> );
         }
 
         #endregion
@@ -136,6 +138,10 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         /// machine configuration dialog
         /// </summary>
         public TiMachineConfigurationDialog MachineConfigurationDialog => On<TcMachineConfigurationDialog>();
+
+        public Wool MainWindowFluxExists => mMainWindowFlux.Value.Exists;
+
+        public TiMainWindowFlux MainWindowFlux => On<TcMainWindowFlux>();
 
         #endregion
     }

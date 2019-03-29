@@ -87,42 +87,6 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         }
 
         /// <summary>
-        /// Saves the and close part in flux.
-        /// </summary>
-        public void SaveAndClosePartInFlux()
-        {
-            // Open the menu File
-            var fileButton = mMainWindow.Find<IWPFMenu>( new WPFPattern()
-            {
-                WPFControlName = "mMainMenu"
-            }, 3 ).Find<IControl>( new WPFPattern()
-            {
-                WPFControlName = "menuFile"
-            } );
-            fileButton.Click();
-
-            // Press save
-            IProcess flux = Driver.Find<IProcess>( new ProcessPattern()
-            {
-                ProcessName = mFluxProcessName
-            } );
-            flux.TryFind<IControl>( new WPFPattern { ClrFullClassName = "System.Windows.Controls.Primitives.PopupRoot" }, 2, out var popup );
-            var save = popup.Find<IControl>( new WPFPattern()
-            {
-                WPFControlName = "menuSave"
-            }, 3 );
-            save.Click();
-
-            // Close flux
-            var close = mMainWindow.Find<IControl>( new WPFPattern()
-            {
-                ClrFullClassName = "System.Windows.Controls.Image",
-                WPFControlOrdinalNo = 3
-            }, 5 );
-            close.Click();
-        }
-
-        /// <summary>
         /// Changes the solution.
         /// WARNING: This function is language dependent
         /// </summary>
