@@ -24,8 +24,10 @@ namespace HomeZone.FluxTests.Flux
         protected override void DoInitialization()
         {
             base.DoInitialization();
+            Driver.Log.OpenFolder( "Flux test initialization" );
             mPartHelper.DeleteImportedParts( TestSettings, HomeZone.Parts );
             mMachineHelper.DeleteCreatedMachines( TestSettings, HomeZone.Machines );
+            Driver.Log.CloseFolder();
         }
     }
 }
