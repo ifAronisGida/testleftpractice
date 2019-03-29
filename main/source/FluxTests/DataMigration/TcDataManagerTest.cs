@@ -62,7 +62,7 @@ namespace HomeZone.FluxTests.DataMigration
 
             bendSettings.OpenDataManagerBend();
 
-            DatamanagerBend.MainWindowExists.WaitFor( TestSettings.FluxStartTimeout );
+            DatamanagerBend.MainWindowExists.WaitFor( TestSettings.DatamanagerBendStartTimeout );
             DatamanagerBend.Close();
 
             settingsDialog.Cancel();
