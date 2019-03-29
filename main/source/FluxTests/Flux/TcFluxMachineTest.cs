@@ -28,15 +28,15 @@ namespace HomeZone.FluxTests.Flux
             ExecuteUITest( DoConfigureMachineTest, "Configure Machine" );
         }
 
-        ///// <summary>
-        ///// Create Flux bend workplaces for all available machine templates
-        ///// </summary>
-        //[TestMethod, UniqueName( "60D92E29-A475-4A80-8F06-F5158611223E" )]
-        //[Tag( "Flux" )]
-        //public void CreateWorkplacesForAllBendMachines()
-        //{
-        //    ExecuteUITest( DoCreateWorkplacesForAllBendMachines, "Create Bend Workplaces For All Bend Machines" );
-        //}
+        /// <summary>
+        /// Create Flux bend workplaces for all available machine templates
+        /// </summary>
+        [TestMethod, UniqueName( "60D92E29-A475-4A80-8F06-F5158611223E" )]
+        [Tag( "Flux" )]
+        public void CreateWorkplacesForAllBendMachines()
+        {
+            ExecuteUITest( DoCreateWorkplacesForAllBendMachines, "Create Bend Workplaces For All Bend Machines" );
+        }
 
         /// <summary>
         /// Implementation of the confugre machine test
