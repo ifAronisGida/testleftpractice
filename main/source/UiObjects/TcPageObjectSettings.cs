@@ -33,7 +33,7 @@ namespace HomeZone.UiObjects
         /// <value>
         /// The part select all timeout.
         /// </value>
-        public TimeSpan PartSelectAllTimeout => TimeSpan.FromSeconds( 5 );
+        public TimeSpan PartSelectAllTimeout => TimeSpan.FromSeconds( 10 );
 
         public TimeSpan ExportOverlayDisappearTimeout { get; set; } = TimeSpan.FromSeconds( 60 );
     }
