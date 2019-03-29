@@ -77,8 +77,14 @@ namespace HomeZone.UiObjectInterfaces.Flux
         /// </summary>
         TiMachineConfigurationDialog MachineConfigurationDialog { get; }
 
+        /// <summary>
+        /// Check if the Flux Main Window exists
+        /// </summary>
         Wool MainWindowFluxExists { get; }
 
+        /// <summary>
+        /// Flux Main Window
+        /// </summary>
         TiMainWindowFlux MainWindowFlux { get; }
 
         #endregion

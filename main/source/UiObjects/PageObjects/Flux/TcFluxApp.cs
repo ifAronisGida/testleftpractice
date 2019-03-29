@@ -139,8 +139,14 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         /// </summary>
         public TiMachineConfigurationDialog MachineConfigurationDialog => On<TcMachineConfigurationDialog>();
 
+        /// <summary>
+        /// Check if the Flux Main Window exists
+        /// </summary>
         public Wool MainWindowFluxExists => mMainWindowFlux.Value.Exists;
 
+        /// <summary>
+        /// Flux Main Window
+        /// </summary>
         public TiMainWindowFlux MainWindowFlux => On<TcMainWindowFlux>();
 
         #endregion
