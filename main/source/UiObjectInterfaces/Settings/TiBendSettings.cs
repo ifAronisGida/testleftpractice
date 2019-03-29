@@ -31,8 +31,13 @@ namespace HomeZone.UiObjectInterfaces.Settings
         void OpenDataManagerBend();
 
         /// <summary>
-        /// Add a default Bend Program (take first which appears in dropdown)
+        /// Add a default Bend Program (take first machine which appears in dropdown)
         /// </summary>
         void AddDefaultBendProgram();
+
+        /// <summary>
+        /// Delete the first default Bend Program
+        /// </summary>
+        void DeleteDefaultBendProgram();
     }
 }
