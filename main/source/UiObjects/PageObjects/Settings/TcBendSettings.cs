@@ -20,6 +20,7 @@ namespace HomeZone.UiObjects.PageObjects.Settings
         private TiButton AppSettingsOpenButton => Find<TiButton>( "Settings.Bend.AppSettings.Open" );
         private TiButton DataManagerBendOpenButton => Find<TiButton>( "Settings.Bend.DataManagerBend.Open" );
         private TiButton NewLocalDefaultBendProgram => Find<TiButton>( "Settings.Bend.User.BendSolutions.Solutions.AddSolution" );
+        private TiButton DeleteLocalDefaultBendProgram => Find<TiButton>( "Settings.Bend.User.BendSolutions.List.Bend1.DeleteSolution" );
 
         /// <summary>
         /// Goto the page object, i.e. perform necessary action to make the page object visible on screen, do nothing if the page is already visible on screen.
@@ -71,6 +72,14 @@ namespace HomeZone.UiObjects.PageObjects.Settings
         public void AddDefaultBendProgram()
         {
             NewLocalDefaultBendProgram.Click();
+        }
+
+        /// <summary>
+        /// Delete the first default Bend Program
+        /// </summary>
+        public void DeleteDefaultBendProgram()
+        {
+            DeleteLocalDefaultBendProgram.Click();
         }
     }
 }

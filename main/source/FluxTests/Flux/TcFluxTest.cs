@@ -314,6 +314,10 @@ namespace HomeZone.FluxTests.Flux
                 Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( bendSolutionName ), "Setup plan is missing for boosted solution" );
                 Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( bendSolutionName ), "NC code is missing for boosted solution" );
             }
+
+            bendSettings.Goto();
+            bendSettings.DeleteDefaultBendProgram();
+            settingsDialog.Save();
         }
     }
 }
