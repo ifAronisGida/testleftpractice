@@ -37,25 +37,6 @@ namespace HomeZone.SmokeTests.Smoke
             ExecuteUITest( DoThirdPartyLicenseTest, "Checking third party licenses" );
         }
 
-        /// <summary>
-        /// Repeating:
-        ///     Smoke test: creating test items, adding bend and cut solutions to parts, testing..., deleting the test items.
-        /// Endless
-        /// </summary>
-        //[TestMethod, UniqueName( "4E5079D6-6820-4C01-B623-E1BB86AD8825" )]
-        //[Tag( "Smoke" )]
-        public void EndlessMiniSmokeTest()
-        {
-            Act( () =>
-            {
-                while( true )
-                {
-                    HomeZone.MainTabControl.AddNewTab();
-                    DoSmokeTest();
-                }
-            } );
-        }
-
         private void DoSmokeTest()
         {
             mSmokeHelpers.DoCreateTestItems();
