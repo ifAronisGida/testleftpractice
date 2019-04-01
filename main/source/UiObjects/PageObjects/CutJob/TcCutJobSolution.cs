@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.Waiting;
 using Trumpf.Coparoo.Desktop.WPF;
@@ -112,14 +112,14 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             }
         }
 
-        public bool WaitForDetailOverlayAppear( TimeSpan timeout )
+        public bool WaitForDetailOverlayAppear( TimeSpan? timeout = null )
         {
-            return TryWait.For( () => DetailOverlay.VisibleOnScreen, timeout );
+            return DetailOverlay.Visible.TryWaitFor( timeout ?? TcPageObjectSettings.Instance.CutJobOverlayAppearTimeout );
         }
 
-        public bool WaitForDetailOverlayDisappear( TimeSpan timeout )
+        public bool WaitForDetailOverlayDisappear( TimeSpan? timeout = null )
         {
-            return TryWait.For( () => !DetailOverlay.VisibleOnScreen, timeout );
+            return DetailOverlay.Visible.TryWaitForFalse( timeout ?? TcPageObjectSettings.Instance.CutJobOverlayDisappearTimeout );
         }
     }
 }

@@ -19,6 +19,10 @@ namespace HomeZone.UiObjects
 
         public TimeSpan MaterialOverlayDisappearTimeout { get; set; } = TimeSpan.FromSeconds( 60 );
 
+        public TimeSpan CutJobOverlayAppearTimeout { get; set; } = TimeSpan.FromSeconds( 20 );
+
+        public TimeSpan CutJobOverlayDisappearTimeout { get; set; } = TimeSpan.FromSeconds( 60 );
+
         public TimeSpan MachineOverlayAppearTimeout { get; set; } = TimeSpan.FromSeconds( 20 );
 
         public TimeSpan MachineOverlayDisappearTimeout { get; set; } = TimeSpan.FromSeconds( 60 );

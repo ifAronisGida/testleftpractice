@@ -166,9 +166,12 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
 
             // Test step: Save
             cutJobs.Toolbar.Save();
+            cutJobs.SheetProgram.WaitForDetailOverlayAppear();
+            cutJobs.SheetProgram.WaitForDetailOverlayDisappear();
 
             // Job saved successfully.
             Assert.IsFalse( cutJobs.Toolbar.CanSave );
+            Assert.IsTrue( cutJobs.Toolbar.CanDelete );
 
             CleanUp();
         }
