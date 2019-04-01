@@ -1,36 +1,10 @@
-﻿#region HEADER
-//--------------------------------------------------------------------------------------------------
-// All rights reserved to TRUMPF GmbH + Co. KG, Germany
-// -------------------------------------------------------------------------------------------------
-//
-//$File: $
-//$Author: $
-//$Revision: $ - $Date: $ 
-// -------------------------------------------------------------------------------------------------
-#endregion
-
-#region USING
-
-using HomeZone.UiObjectInterfaces.Machine;
+﻿using HomeZone.UiObjectInterfaces.Machine;
 using HomeZone.UiObjects.TestSettings;
 
-#endregion
-
-namespace HomeZone.UiCommonFunctions
+namespace HomeZone.UiCommonFunctions.PageObjectHelpers
 {
-    public class TcMachinePageObjectHelper
+    public class TcMachineHelper
     {
-        #region private constants
-        #endregion
-
-        #region constructor
-        #endregion
-
-        #region public static methods
-        #endregion
-
-        #region public methods
-
         /// <summary>
         /// Create and save a bend machine
         /// </summary>
@@ -54,8 +28,9 @@ namespace HomeZone.UiCommonFunctions
         /// <summary>
         /// Delete all machines which were created with the function <see cref="CreateAndSaveBendMachine(TcTestSettings, TiMachines, string, string)"/>
         /// </summary>
+        /// <param name="testSettings">test settings</param>
         /// <param name="machines">machine page</param>
-        public void DeleteCreatedMachines( TcTestSettings testSettings, TiMachines machines )
+        public void DeleteTestMachines( TcTestSettings testSettings, TiMachines machines )
         {
             machines.Goto();
             machines.ResultColumn.SelectItems( testSettings.NamePrefix );
@@ -65,22 +40,5 @@ namespace HomeZone.UiCommonFunctions
             }
             machines.ResultColumn.ClearSearch();
         }
-
-        #endregion
-
-        #region private methods
-        #endregion
-
-        #region public static members
-        #endregion
-
-        #region private static members
-        #endregion
-
-        #region private members
-        #endregion
-
-        #region properties
-        #endregion
     }
 }

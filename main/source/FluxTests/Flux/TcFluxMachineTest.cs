@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading;
+using HomeZone.UiCommonFunctions.Base;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
@@ -11,7 +12,7 @@ namespace HomeZone.FluxTests.Flux
     /// This test class contains Flux machine specific tests.
     /// </summary>
     [TestClass]
-    public sealed class TcFluxMachineTest : TcBaseTestClassFlux
+    public sealed class TcFluxMachineTest : TcBaseTestClass
     {
         /// <summary>
         /// timeout to open the configure machine dialog. TODO: has to be refactored to a dynamic timout

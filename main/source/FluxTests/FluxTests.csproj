@@ -69,7 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataMigration\TcDataManagerTest.cs" />
-    <Compile Include="Flux\TcBaseTestClassFlux.cs" />
     <Compile Include="Flux\TcFluxMachineTest.cs" />
     <Compile Include="Flux\TcFluxTest.cs" />
     <Compile Include="Logging\TcFluxTestsLogging.cs" />

@@ -1,8 +1,8 @@
-using HomeZone.FluxTests.Flux;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using System;
+using HomeZone.UiCommonFunctions.Base;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
@@ -11,9 +11,9 @@ namespace HomeZone.FluxTests.Settings
     /// <summary>
     /// This test class contains bend settings specific tests.
     /// </summary>
-    /// <seealso cref="TcBaseTestClassFlux" />
+    /// <seealso cref="TcBaseTestClass" />
     [TestClass]
-    public sealed class TcBendToolManagementTest : TcBaseTestClassFlux
+    public sealed class TcBendToolManagementTest : TcBaseTestClass
     {
         private static string S_BOOST_BEND_SETTINGS_NOT_VISIBLE = "Boost Bend Settings Dialog is not visible";
         private static string S_MISSING_FLUX_TOOL_LIST_IN_BOOST = "Flux tool list is not available in HomeZone UI";

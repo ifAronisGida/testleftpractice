@@ -14,6 +14,7 @@ using SmartBear.TestLeft;
 using System;
 using System.Diagnostics;
 using System.IO;
+using HomeZone.UiCommonFunctions.PageObjectHelpers;
 using Trumpf.AutoTest.Facts;
 
 namespace HomeZone.UiCommonFunctions.Base
@@ -29,6 +30,17 @@ namespace HomeZone.UiCommonFunctions.Base
     {
         private AutoFact mAutoFact;
         private Process mTestedAppProcess;
+
+        /// <summary>
+        /// machine helper handling machine creation and deletion
+        /// </summary>
+        protected TcMachineHelper mMachineHelper = new TcMachineHelper();
+        protected TcMaterialHelper mMaterialHelper = new TcMaterialHelper();
+        protected TcPartHelper mPartHelper = new TcPartHelper();
+        protected TcPartOrderHelper mPartOrderHelper = new TcPartOrderHelper();
+        protected TcCutJobHelper mCutJobHelper = new TcCutJobHelper();
+        protected TcNestingTemplateHelper mNestingTemplateHelper = new TcNestingTemplateHelper();
+        protected TcCustomerHelper mCustomerHelper = new TcCustomerHelper();
 
         protected static IDriver Driver { get; } = new LocalDriver();
 
@@ -188,6 +200,15 @@ namespace HomeZone.UiCommonFunctions.Base
 
             // wait until machine templates are loaded
             Assert.IsTrue( HomeZone.BendMachineTemplatesLoaded() );
+
+            // delete existing test items
+            mNestingTemplateHelper.DeleteTestNestingTemplates( TestSettings, HomeZone.NestingTemplates );
+            mCutJobHelper.DeleteTestCutJobs( TestSettings, HomeZone.CutJobs );
+            mPartOrderHelper.DeleteTestPartOrders( TestSettings, HomeZone.PartOrders );
+            mPartHelper.DeleteTestParts( TestSettings, HomeZone.Parts );
+            mCustomerHelper.DeleteTestCustomers( TestSettings, HomeZone.Customers );
+            mMachineHelper.DeleteTestMachines( TestSettings, HomeZone.Machines );
+            mMaterialHelper.DeleteTestMaterials( TestSettings, HomeZone.Materials );
         }
 
         /// <summary>

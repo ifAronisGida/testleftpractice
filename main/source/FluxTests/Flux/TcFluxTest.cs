@@ -15,7 +15,7 @@ namespace HomeZone.FluxTests.Flux
     /// </summary>
     /// <seealso cref="TcBaseTestClass" />
     [TestClass]
-    public sealed class TcFluxTest : TcBaseTestClassFlux
+    public sealed class TcFluxTest : TcBaseTestClass
     {
         private const string S_FLUX_MACHINE_5320 = "TruBend 5320 (6-axes) B23";
 
