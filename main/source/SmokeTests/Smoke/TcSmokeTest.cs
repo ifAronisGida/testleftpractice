@@ -45,7 +45,7 @@ namespace HomeZone.SmokeTests.Smoke
             //testing...
             mSmokeTestsPart.ExecutePartSmokeTests();
 
-            mSmokeHelpers.DoDeleteTestItems();
+            //mSmokeHelpers.DoDeleteTestItems();
         }
 
         private void DoThirdPartyLicenseTest()
