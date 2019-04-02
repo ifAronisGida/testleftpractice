@@ -171,7 +171,6 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
 
             // Job saved successfully.
             Assert.IsFalse( cutJobs.Toolbar.CanSave );
-            Assert.IsTrue( cutJobs.Toolbar.CanDelete );
 
             CleanUp();
         }

@@ -43,7 +43,7 @@ namespace HomeZone.UiObjects.PageObjects
 
             var dialog = On<TcMessageBox>();
 
-            Wait.For( dialog.MessageBoxExists, TimeSpan.FromSeconds( 5 ) );
+            Wait.For( dialog.MessageBoxExists, TimeSpan.FromSeconds( 15 ) );
             dialog.Yes();
         }
     }
