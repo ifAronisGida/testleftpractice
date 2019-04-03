@@ -1,3 +1,4 @@
+﻿using System;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Common;
 using HomeZone.UiObjectInterfaces.Controls;
@@ -75,6 +76,7 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
         /// <returns>true if item found, else false</returns>
         public bool SelectItem( string id )
         {
+            SearchText.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
             SearchText.Value = id.StartsWith( "id:" ) ? id : $"id:{id}";
 
             DoSearch();
@@ -93,6 +95,7 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
         /// <returns>The amount of selected entries.</returns>
         public int SelectItems( string searchText )
         {
+            SearchText.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
             SearchText.Value = searchText;
             DoSearch();
             return ResultListView.SelectAll();
