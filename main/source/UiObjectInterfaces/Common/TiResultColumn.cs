@@ -43,7 +43,7 @@ namespace HomeZone.UiObjectInterfaces.Common
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>true if item found, else false</returns>
-        bool SelectItem( string id );
+        bool SelectItem( string id, bool useId = true );
 
         /// <summary>
         /// Selects all items suitable for the given search text.
