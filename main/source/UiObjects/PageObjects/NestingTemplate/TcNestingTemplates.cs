@@ -1,8 +1,6 @@
 using System;
 using Trumpf.Coparoo.Desktop;
-using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.NestingTemplate;
-using HomeZone.UiObjects.ControlObjects;
 using HomeZone.UiObjects.PageObjects.Shell;
 
 namespace HomeZone.UiObjects.PageObjects.NestingTemplate
@@ -13,9 +11,14 @@ namespace HomeZone.UiObjects.PageObjects.NestingTemplate
         public TiNestingTemplateBaseInfo BaseInfo => On<TcNestingTemplateBaseInfo>( cache: true );
         public TiNestingTemplatePartList PartList => On<TcNestingTemplatePartList>( cache: true );
 
-        public void WaitForOverlayDisappear( TimeSpan timeout )
+        public void WaitForOverlayAppear( TimeSpan? timeout = null )
         {
-            DetailOverlay.Visible.WaitForFalse( timeout );
+            DetailOverlay.Visible.WaitFor( timeout ?? TcPageObjectSettings.Instance.NestingTemplateOverlayAppearTimeout );
+        }
+
+        public void WaitForOverlayDisappear( TimeSpan? timeout = null )
+        {
+            DetailOverlay.Visible.WaitForFalse( timeout ?? TcPageObjectSettings.Instance.NestingTemplateOverlayDisappearTimeout );
         }
 
         /// <summary>

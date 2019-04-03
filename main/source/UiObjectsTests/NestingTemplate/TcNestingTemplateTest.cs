@@ -32,6 +32,7 @@ namespace HomeZone.UiObjectsTests.NestingTemplate
             var nestingTemplates = HomeZone.GotoNestingTemplates();
 
             nestingTemplates.ResultColumn.SelectItem( "JT1", useId: false );
+            nestingTemplates.BaseInfo.Name.Enabled.WaitFor();
             nestingTemplates.Toolbar.CreateJob();
         }
     }
