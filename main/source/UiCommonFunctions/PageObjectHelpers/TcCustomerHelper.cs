@@ -13,8 +13,12 @@ namespace HomeZone.UiCommonFunctions.PageObjectHelpers
         public void DeleteTestCustomers( TcTestSettings testSettings, TiCustomers customers )
         {
             customers.Goto();
-            customers.DeleteCustomersWithNameContaining( testSettings.NamePrefix );
-            customers.Apply();
+
+            if( customers.DeleteCustomersWithNameContaining( testSettings.NamePrefix ) > 0 )
+            {
+                customers.Apply();
+            }
+
             customers.Cancel();
         }
     }

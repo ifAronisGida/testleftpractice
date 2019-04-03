@@ -1,5 +1,6 @@
-using Trumpf.Coparoo.Desktop.WPF;
+﻿using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
 namespace HomeZone.UiObjects.ControlObjects
@@ -28,7 +29,9 @@ namespace HomeZone.UiObjects.ControlObjects
 
         public void Click()
         {
+            Assert.IsTrue(ControlObject.Enabled, $"Button {ControlObject.Node.GetProperty<string>( "Uid" )} is not enabled");
             ControlObject.Click();
+            
         }
     }
 }

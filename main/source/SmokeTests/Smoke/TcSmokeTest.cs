@@ -45,7 +45,7 @@ namespace HomeZone.SmokeTests.Smoke
             //testing...
             mSmokeTestsPart.ExecutePartSmokeTests();
 
-            //mSmokeHelpers.DoDeleteTestItems();
+            mSmokeHelpers.DoDeleteTestItems();
         }
 
         private void DoThirdPartyLicenseTest()
@@ -58,10 +58,6 @@ namespace HomeZone.SmokeTests.Smoke
 
             Assert.IsTrue( componentsDlg.IsVisible, "Components dialog is not visible" );
             Assert.AreNotEqual( 0, componentsDlg.HomeZoneLicenseCount, "HomeZone grid does not contain licenses" );
-
-            //var license = componentsDlg.GetHomeZoneLicenseRow( 0 );
-            //Assert.IsFalse(string.IsNullOrEmpty(license.Component));
-            //license.ShowLicenseText();
 
             var licenseTextDlg = componentsDlg.ShowLicenseText();
             Assert.IsTrue( licenseTextDlg.IsVisible, "License text dialog is not visible" );
