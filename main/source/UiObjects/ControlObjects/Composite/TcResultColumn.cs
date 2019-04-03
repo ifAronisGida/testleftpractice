@@ -76,12 +76,8 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
         /// <returns>true if item found, else false</returns>
         public bool SelectItem( string name, bool useId = true )
         {
-<<<<<<< HEAD
             SearchText.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
-            SearchText.Value = id.StartsWith( "id:" ) ? id : $"id:{id}";
-=======
             SearchText.Value = !useId || name.StartsWith( "id:" ) ? name : $"id:{name}";
->>>>>>> (Nesting template) create job from template
 
             DoSearch();
             if( ResultListView.Count == 0 )
