@@ -13,8 +13,6 @@ namespace HomeZone.UiObjects.PageObjects.NestingTemplate
         public TiNestingTemplateBaseInfo BaseInfo => On<TcNestingTemplateBaseInfo>( cache: true );
         public TiNestingTemplatePartList PartList => On<TcNestingTemplatePartList>( cache: true );
 
-        private TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
-
         public void WaitForOverlayDisappear( TimeSpan timeout )
         {
             DetailOverlay.Visible.WaitForFalse( timeout );

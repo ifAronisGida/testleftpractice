@@ -9,14 +9,6 @@ namespace HomeZone.UiObjects.PageObjects.PartOrder
 {
     public class TcPartOrders : TcDomain<TiPartOrderToolbar>, IChildOf<TcMainTabControl>, TiPartOrders
     {
-        /// <summary>
-        /// Gets the detail overlay.
-        /// </summary>
-        /// <value>
-        /// The detail overlay.
-        /// </value>
-        private TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
-
         public override TiPartOrderToolbar Toolbar => On<TcPartOrderToolbar>( cache: true );
         public TiPartOrderBaseInfo BaseInfo => On<TcPartOrderBaseInfo>( cache: true );
         public TiPartOrderPartInfo PartInfo => On<TcPartOrderPartInfo>( cache: true );
