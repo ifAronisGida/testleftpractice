@@ -54,8 +54,8 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
         public void ClearSearch()
         {
             SearchText.Value = String.Empty;
-
             DoSearch();
+            Overlay.Visible.WaitForFalse();
 
             //if( ClearSearchTextButton.Visible )
             //{
