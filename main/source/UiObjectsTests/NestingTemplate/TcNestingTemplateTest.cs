@@ -25,5 +25,15 @@ namespace HomeZone.UiObjectsTests.NestingTemplate
                 nestingTemplates.BaseInfo.ID.Value = "NestingTemplate2";
             } );
         }
+
+        [TestMethod]
+        public void CreateJobFromTemplate()
+        {
+            var nestingTemplates = HomeZone.GotoNestingTemplates();
+
+            nestingTemplates.ResultColumn.SelectItem( "JT1", useId: false );
+            nestingTemplates.BaseInfo.Name.Enabled.WaitFor();
+            nestingTemplates.Toolbar.CreateJob();
+        }
     }
 }

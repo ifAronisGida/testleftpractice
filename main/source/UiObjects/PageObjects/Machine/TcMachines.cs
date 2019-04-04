@@ -15,14 +15,6 @@ namespace HomeZone.UiObjects.PageObjects.Machine
     public class TcMachines : TcDomain<TiMachineToolbar>, IChildOf<TcMainTabControl>, TiMachines
     {
         /// <summary>
-        /// Gets the detail overlay.
-        /// </summary>
-        /// <value>
-        /// The detail overlay.
-        /// </value>
-        private TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
-
-        /// <summary>
         /// Gets the toolbar.
         /// </summary>
         /// <value>

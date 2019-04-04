@@ -71,14 +71,14 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
         }
 
         /// <summary>
-        /// Selects the item with the given id.
+        /// Selects the item with the given id or name.
         /// </summary>
-        /// <param name="id">The identifier.</param>
+        /// <param name="name">The identifier.</param>
         /// <returns>true if item found, else false</returns>
-        public bool SelectItem( string id )
+        public bool SelectItem( string name, bool useId = true )
         {
             SearchText.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
-            SearchText.Value = id.StartsWith( "id:" ) ? id : $"id:{id}";
+            SearchText.Value = !useId || name.StartsWith( "id:" ) ? name : $"id:{name}";
 
             DoSearch();
             if( ResultListView.Count == 0 )

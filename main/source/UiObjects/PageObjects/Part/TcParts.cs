@@ -14,14 +14,6 @@ namespace HomeZone.UiObjects.PageObjects.Part
     public class TcParts : TcDomain<TiPartToolbar>, IChildOf<TcMainTabControl>, TiParts
     {
         /// <summary>
-        /// Gets the detail overlay.
-        /// </summary>
-        /// <value>
-        /// The detail overlay.
-        /// </value>
-        private TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
-
-        /// <summary>
         /// Gets the toolbar.
         /// </summary>
         /// <value>

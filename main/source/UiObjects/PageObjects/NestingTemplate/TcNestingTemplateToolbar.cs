@@ -11,6 +11,7 @@ namespace HomeZone.UiObjects.PageObjects.NestingTemplate
         protected override Search SearchPattern => Search.ByUid( "CutJobTemplate.Toolbar" );
 
         private TiButton ImportButton => Find<TiButton>( "CutJobTemplate.Toolbar.Import" );
+        private TiButton CreateJobButton => Find<TiButton>( "CutJobTemplate.Toolbar.CreateCutJob" );
 
         public TcNestingTemplateToolbar()
         {
@@ -23,6 +24,11 @@ namespace HomeZone.UiObjects.PageObjects.NestingTemplate
         {
             ImportButton.Click();
             On<TcOpenFileDialog>().SetFilename( file );
+        }
+
+        public void CreateJob()
+        {
+            CreateJobButton.Click();
         }
     }
 }
