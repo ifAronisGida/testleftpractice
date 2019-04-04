@@ -53,12 +53,16 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
         /// </summary>
         public void ClearSearch()
         {
-            if( ClearSearchTextButton.Visible )
-            {
-                ClearSearchTextButton.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
-                ClearSearchTextButton.Click();
-                Overlay.Visible.WaitForFalse();
-            }
+            SearchText.Value = String.Empty;
+
+            DoSearch();
+
+            //if( ClearSearchTextButton.Visible )
+            //{
+            //    ClearSearchTextButton.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
+            //    ClearSearchTextButton.Click();
+            //    Overlay.Visible.WaitForFalse();
+            //}
         }
 
         /// <summary>
