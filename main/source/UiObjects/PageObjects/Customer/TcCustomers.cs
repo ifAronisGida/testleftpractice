@@ -112,7 +112,7 @@ namespace HomeZone.UiObjects.PageObjects.Customer
         /// </summary>
         public void Cancel()
         {
-            CancelButton.Enabled.WaitFor( TimeSpan.FromSeconds( 10 ) );
+            CancelButton.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
             CancelButton.Click();
             CleanUp();
         }

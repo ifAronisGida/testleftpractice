@@ -39,6 +39,7 @@ namespace HomeZone.UiObjects.PageObjects
         /// </summary>
         public void Delete()
         {
+            DeleteButton.Value.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
             DeleteButton.Value.Click();
 
             var dialog = On<TcMessageBox>();

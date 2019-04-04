@@ -55,6 +55,7 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
         {
             if( ClearSearchTextButton.Visible )
             {
+                ClearSearchTextButton.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
                 ClearSearchTextButton.Click();
                 Overlay.Visible.WaitForFalse();
             }
