@@ -53,16 +53,12 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
         /// </summary>
         public void ClearSearch()
         {
-            SearchText.Value = String.Empty;
-            DoSearch();
-            Overlay.Visible.WaitForFalse();
-
-            //if( ClearSearchTextButton.Visible )
-            //{
-            //    ClearSearchTextButton.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
-            //    ClearSearchTextButton.Click();
-            //    Overlay.Visible.WaitForFalse();
-            //}
+            if( ClearSearchTextButton.Visible )
+            {
+                ClearSearchTextButton.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
+                ClearSearchTextButton.Click();
+                Overlay.Visible.WaitForFalse();
+            }
         }
 
         /// <summary>
@@ -71,7 +67,6 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
         public void DoSearch()
         {
             ExecuteSearchButton.Click();
-            Overlay.Visible.WaitForFalse();
         }
 
         /// <summary>
