@@ -1,5 +1,3 @@
-using Trumpf.Coparoo.Desktop.Waiting;
-
 namespace HomeZone.UiObjectInterfaces.Shell
 {
     public interface TiMainTabControl
@@ -28,5 +26,7 @@ namespace HomeZone.UiObjectInterfaces.Shell
         /// Closes the current tab.
         /// </summary>
         void CloseCurrentTab();
+
+        void WaitForTabOverlayDisappear();
     }
 }

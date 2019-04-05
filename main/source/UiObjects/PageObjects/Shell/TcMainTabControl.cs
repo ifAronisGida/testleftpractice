@@ -3,6 +3,7 @@ using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Shell;
+using HomeZone.UiObjects.ControlObjects;
 
 namespace HomeZone.UiObjects.PageObjects.Shell
 {
@@ -15,6 +16,7 @@ namespace HomeZone.UiObjects.PageObjects.Shell
     {
         protected override Search SearchPattern => Search.ByUid( "MainTabControl" );
 
+        private TcOverlay TabOverlay => Find<TcOverlay>( Search.ByUid( "Tab.Overlay" ) );
         private TiButton AddControlObject => Find<TiButton>( "MainTabControl.Add" , null, 20 );
 
         /// <summary>
@@ -56,6 +58,11 @@ namespace HomeZone.UiObjects.PageObjects.Shell
         {
             var closeButton = Node.GetProperty<IObject>( "CloseButton" );
             closeButton.CallMethod( "OnClick" );
+        }
+
+        public void WaitForTabOverlayDisappear()
+        {
+            TabOverlay.Visible.WaitForFalse();
         }
     }
 }

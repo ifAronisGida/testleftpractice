@@ -64,6 +64,7 @@ namespace HomeZone.UiObjects.PageObjects.Material
             }
 
             Toolbar.Delete();
+            ( ( TcMainTabControl )Parent ).WaitForTabOverlayDisappear();
             ResultColumn.ClearSearch();
             return true;
         }
