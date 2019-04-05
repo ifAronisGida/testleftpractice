@@ -4,6 +4,7 @@ using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Shell;
 using HomeZone.UiObjects.ControlObjects;
+using Trumpf.Coparoo.Desktop.Waiting;
 
 namespace HomeZone.UiObjects.PageObjects.Shell
 {
@@ -62,7 +63,8 @@ namespace HomeZone.UiObjects.PageObjects.Shell
 
         public void WaitForTabOverlayDisappear()
         {
-            TabOverlay.Visible.WaitForFalse();
+            var overlay = TabOverlay;
+            Wait.For( () => !overlay.Exists || !overlay.Visible );
         }
     }
 }
