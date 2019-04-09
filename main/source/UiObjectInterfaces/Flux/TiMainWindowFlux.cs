@@ -20,14 +20,23 @@ namespace HomeZone.UiObjectInterfaces.Flux
     {
         #region public methods
 
+        /// <summary>
+        /// Close the Flux Window
+        /// </summary>
         void Close();
 
+        /// <summary>
+        /// Open the Flux Menu
+        /// </summary>
         void OpenMenu();
 
         #endregion
 
         #region properties
 
+        /// <summary>
+        /// Settings Menu
+        /// </summary>
         TiSettingsMenuFlux SettingsMenu { get; }
 
         #endregion

@@ -34,6 +34,9 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 
         #region public methods
 
+        /// <summary>
+        /// Save current work
+        /// </summary>
         public void Save()
         {
             SaveButton.Click();

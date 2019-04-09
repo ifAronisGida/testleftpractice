@@ -35,12 +35,17 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         #region public methods
 
 
-
+        /// <summary>
+        /// Close the Flux Window
+        /// </summary>
         public void Close()
         {
             this.Node.CallMethod( "Close" );
         }
 
+        /// <summary>
+        /// Open the Flux Menu
+        /// </summary>
         public void OpenMenu()
         {
             OpenMenuButton.Click();
@@ -68,6 +73,9 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 
         #region properties
 
+        /// <summary>
+        /// Settings Menu
+        /// </summary>
         public TiSettingsMenuFlux SettingsMenu => On<TcSettingsMenuFlux>();
 
 

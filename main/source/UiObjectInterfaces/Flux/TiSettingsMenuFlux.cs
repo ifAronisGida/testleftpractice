@@ -20,6 +20,9 @@ namespace HomeZone.UiObjectInterfaces.Flux
     {
         #region public methods
 
+        /// <summary>
+        /// Save current work
+        /// </summary>
         void Save();
 
         #endregion
