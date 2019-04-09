@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Controls;
@@ -112,7 +112,7 @@ namespace HomeZone.UiObjects.PageObjects.Customer
         /// </summary>
         public void Cancel()
         {
-            CancelButton.Enabled.WaitFor( TimeSpan.FromSeconds( 10 ) );
+            CancelButton.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
             CancelButton.Click();
             CleanUp();
         }
@@ -173,7 +173,8 @@ namespace HomeZone.UiObjects.PageObjects.Customer
         /// Selects customers whose names contain the given substring.
         /// </summary>
         /// <param name="substring">The substring to search for.</param>
-        public void SelectOnlyCustomersWithNameContaining( string substring )
+        /// <returns>amount of selected customers</returns>
+        public int SelectOnlyCustomersWithNameContaining( string substring )
         {
             var count = Count();
 
@@ -187,6 +188,8 @@ namespace HomeZone.UiObjects.PageObjects.Customer
                     CustomerGrid.SelectItem( rowIndex );
                 }
             }
+
+            return CustomerGrid.SelectedCount;
         }
 
         /// <summary>
@@ -210,11 +213,14 @@ namespace HomeZone.UiObjects.PageObjects.Customer
         /// Used to remove customers created for tests.
         /// </summary>
         /// <param name="substring">The substring to search for.</param>
-        public void DeleteCustomersWithNameContaining( string substring )
+        /// <returns>amount of deleted customers</returns>
+        public int DeleteCustomersWithNameContaining( string substring )
         {
-            SelectOnlyCustomersWithNameContaining( substring );
+            var amount=SelectOnlyCustomersWithNameContaining( substring );
 
             DeleteSelectedCustomers();
+
+            return amount;
         }
 
         /// <summary>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -91,6 +91,7 @@
     <Compile Include="Design\TcDesignTest.cs" />
     <Compile Include="Dialogs\Tc3rdPartyComponentsDialogTest.cs" />
     <Compile Include="FunctionalTests\DA07_Nesting\TcDa07.cs" />
+    <Compile Include="Logging\TcUiObjectsTestsLogging.cs" />
     <Compile Include="Machine\TcWorkplaceTest.cs" />
     <Compile Include="Material\TcMaterialTest.cs" />
     <Compile Include="NestingTemplate\TcNestingTemplateTest.cs" />
@@ -108,11 +109,11 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Test.runsettings">
+    <None Include="..\Test.runsettings">
+      <Link>Test.runsettings</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
     </None>
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UiCommonFunctions\UiCommonFunctions.csproj">

@@ -1,3 +1,4 @@
+using System;
 using HomeZone.UiObjectInterfaces.Common;
 
 namespace HomeZone.UiObjectInterfaces.CutJob
@@ -15,5 +16,8 @@ namespace HomeZone.UiObjectInterfaces.CutJob
         /// <param name="id">The identifier.</param>
         /// <returns>true if deleted</returns>
         bool DeleteCutJob( string id );
+
+        void WaitForDetailOverlayAppear( TimeSpan? timeout = null );
+        void WaitForDetailOverlayDisappear( TimeSpan? timeout = null );
     }
 }

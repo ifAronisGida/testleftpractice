@@ -1,4 +1,4 @@
-using HomeZone.FluxTests.Flux;
+using HomeZone.UiCommonFunctions.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
@@ -11,9 +11,9 @@ namespace HomeZone.FluxTests.Settings
     /// <summary>
     /// This test class contains bend settings specific tests.
     /// </summary>
-    /// <seealso cref="TcBaseTestClassFlux" />
+    /// <seealso cref="TcBaseTestClass" />
     [TestClass]
-    public sealed class TcBendToolManagementTest : TcBaseTestClassFlux
+    public sealed class TcBendToolManagementTest : TcBaseTestClass
     {
         private static string S_BOOST_BEND_SETTINGS_NOT_VISIBLE = "Boost Bend Settings Dialog is not visible";
         private static string S_MISSING_FLUX_TOOL_LIST_IN_BOOST = "Flux tool list is not available in HomeZone UI";
@@ -72,7 +72,8 @@ namespace HomeZone.FluxTests.Settings
 
             bendSettings.OpenToolsConfiguration();
 
-            string toollistName = "superTools";
+            Random random = new Random();
+            string toollistName = "superTools"+ random.Next(0,99); //randomize to reduce test interference
             Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
             Flux.ToolManagement.NewToolList( toollistName );
             Flux.ToolManagement.Close();
@@ -150,7 +151,8 @@ namespace HomeZone.FluxTests.Settings
             settingsDialog.Save();
 
             // rename toollist
-            string newName = "newName";
+            Random random = new Random();
+            string newName = "newName" + random.Next(0,99); //randomize to reduce test interference
             bendSettings = HomeZone.GotoMainMenu().OpenSettingsDialog().BendSettings;
             bendSettings.Goto();
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );

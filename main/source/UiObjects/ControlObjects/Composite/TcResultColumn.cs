@@ -1,3 +1,4 @@
+﻿using System;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Common;
 using HomeZone.UiObjectInterfaces.Controls;
@@ -54,6 +55,7 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
         {
             if( ClearSearchTextButton.Visible )
             {
+                ClearSearchTextButton.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
                 ClearSearchTextButton.Click();
                 Overlay.Visible.WaitForFalse();
             }
@@ -65,17 +67,17 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
         public void DoSearch()
         {
             ExecuteSearchButton.Click();
-            Overlay.Visible.WaitForFalse();
         }
 
         /// <summary>
-        /// Selects the item with the given id.
+        /// Selects the item with the given id or name.
         /// </summary>
-        /// <param name="id">The identifier.</param>
+        /// <param name="name">The identifier.</param>
         /// <returns>true if item found, else false</returns>
-        public bool SelectItem( string id )
+        public bool SelectItem( string name, bool useId = true )
         {
-            SearchText.Value = id.StartsWith( "id:" ) ? id : $"id:{id}";
+            SearchText.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
+            SearchText.Value = !useId || name.StartsWith( "id:" ) ? name : $"id:{name}";
 
             DoSearch();
             if( ResultListView.Count == 0 )
@@ -93,6 +95,7 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
         /// <returns>The amount of selected entries.</returns>
         public int SelectItems( string searchText )
         {
+            SearchText.Enabled.WaitFor( TimeSpan.FromSeconds( 15 ) );
             SearchText.Value = searchText;
             DoSearch();
             return ResultListView.SelectAll();

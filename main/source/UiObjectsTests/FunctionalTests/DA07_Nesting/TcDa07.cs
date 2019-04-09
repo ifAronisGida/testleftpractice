@@ -166,6 +166,8 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
 
             // Test step: Save
             cutJobs.Toolbar.Save();
+            cutJobs.SheetProgram.WaitForDetailOverlayAppear();
+            cutJobs.SheetProgram.WaitForDetailOverlayDisappear();
 
             // Job saved successfully.
             Assert.IsFalse( cutJobs.Toolbar.CanSave );
@@ -216,7 +218,7 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
 
             parts.WaitForDetailOverlayAppear();
             parts.WaitForDetailOverlayDisappear();
-            parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 10 ) );
+            parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 30 ) );
 
             parts.SingleDetail.Name.Value = Name2UIT_Name( mId );
             parts.SingleDetail.Id = Name2UIT_Name( mId );

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using HomeZone.UiObjectInterfaces.Controls;
 
 namespace HomeZone.UiObjectInterfaces.CutJob
@@ -33,7 +33,7 @@ namespace HomeZone.UiObjectInterfaces.CutJob
 
         TiValueControl<string> Note { get; }
 
-        bool WaitForDetailOverlayAppear( TimeSpan timeout );
-        bool WaitForDetailOverlayDisappear( TimeSpan timeout );
+        bool WaitForDetailOverlayAppear( TimeSpan? timeout = null);
+        bool WaitForDetailOverlayDisappear( TimeSpan? timeout = null );
     }
 }

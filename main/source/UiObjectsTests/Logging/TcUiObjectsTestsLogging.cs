@@ -1,10 +1,10 @@
 ﻿using HomeZone.UiCommonFunctions.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace HomeZone.SmokeTests.Logging
+namespace HomeZone.UiObjectsTests.Logging
 {
     [TestClass]
-    public sealed class TcSmokeTestsLogging : TcBaseTestClass
+    public sealed class TcUiObjectsTestsLogging : TcBaseTestClass
     {
         /// <summary>
         /// Save Log File after finishing all tests in Assembly

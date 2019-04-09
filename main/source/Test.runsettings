@@ -2,53 +2,62 @@
 
 <RunSettings>
 
-   <!-- Configurations that affect the Test Framework -->
-   <RunConfiguration>
+  <!-- Configurations that affect the Test Framework -->
+  <RunConfiguration>
 
-      <!-- Path relative to solution directory -->
-      <ResultsDirectory>.\TestResults</ResultsDirectory>
+    <!-- Path relative to solution directory -->
+    <ResultsDirectory>.\TestResults</ResultsDirectory>
 
-   </RunConfiguration>
+  </RunConfiguration>
 
-   <!-- Parameters used by tests at runtime -->
-   <TestRunParameters>
+  <!-- Parameters used by tests at runtime -->
+  <TestRunParameters>
 
-      <Parameter name="ApplicationLanguage" value="German" />     <!--English, German, Hungarian-->
+    <Parameter name="ApplicationLanguage" value="German" />   <!--English, German, Hungarian-->
 
-      <Parameter name="TestedAppName" value="Trumpf.TruTops.Control.Shell" />
-      <Parameter name="TestedAppPath" value="C:\\Program Files\\TRUMPF\\TruTops\\Client\\Control" />
+    <Parameter name="TestedAppName" value="Trumpf.TruTops.Control.Shell" />
+    <Parameter name="TestedAppPath" value="C:\\Program Files\\TRUMPF\\TruTops\\Client\\Control" />
 
-      <Parameter name="Product" value="HomeZone" />
-      <Parameter name="Version" value="9" />
-      <Parameter name="Context" value="LAPtest" />
-      <Parameter name="Process" value="Developer test" />
+    <Parameter name="Product" value="HomeZone" />
+    <Parameter name="Version" value="9" />
+    <Parameter name="Context" value="" />   <!--default: Environment.MachineName-->
+    <Parameter name="Process" value="" />   <!--default: "Developer test"-->
 
-      <Parameter name="Remarks" value="(with remarks)" />
+    <Parameter name="Remarks" value="" />   <!--default: "(none)"-->
 
-      <Parameter name="FactsHubEnabled" value="true" />
-      <Parameter name="FactsHubAddress" value="http://LAP013742:5000" />
+    <Parameter name="FactsHubEnabled" value="true" />
+    <Parameter name="FactsHubAddress" value="" />
 
-      <Parameter name="ScreenRecorderEnabled" value="true" />
+    <Parameter name="ScreenRecorderEnabled" value="true" />
 
-      <Parameter name="NamePrefix" value="UIT_" />
+    <Parameter name="ClearOldTestItemsAtStart" value="true" />
 
-      <Parameter name="FluxProcessName" value="Flux" />
+    <Parameter name="NamePrefix" value="UIT_" />
 
-      <Parameter name="DesignStartTimeout" value="80" />
-      <Parameter name="CutStartTimeout" value="40" />
-      <Parameter name="FluxStartTimeout" value="60" />
+    <Parameter name="FluxProcessName" value="Flux" />
+    <Parameter name="DatamanagerProcessName" value="DataManager" />
 
-      <Parameter name="SavingTimeout" value="60" />
+    <Parameter name="MachineFirstImportTimeout" value="120" />
 
-      <Parameter name="MaterialOverlayAppearTimeout" value="10" />
-      <Parameter name="MaterialOverlayDisappearTimeout" value="30" />
+    <Parameter name="DesignStartTimeout" value="80" />
+    <Parameter name="CutStartTimeout" value="40" />
+    <Parameter name="DatamanagerBendStartTimeout" value="60" />
+    <Parameter name="FluxStartTimeout" value="60" />
+    <Parameter name="FluxBoostAndStartTimeout" value="60" />
+    <Parameter name="FluxSyncTimeout" value="30" />
 
-      <Parameter name="MachineOverlayAppearTimeout" value="10" />
-      <Parameter name="MachineOverlayDisappearTimeout" value="30" />
+    <Parameter name="SavingTimeout" value="60" />
 
-      <Parameter name="PartOverlayAppearTimeout" value="5" />
-      <Parameter name="PartOverlayDisappearTimeout" value="90" />
+    <Parameter name="MaterialOverlayAppearTimeout" value="10" />
+    <Parameter name="MaterialOverlayDisappearTimeout" value="30" />
 
-   </TestRunParameters>
+    <Parameter name="MachineOverlayAppearTimeout" value="10" />
+    <Parameter name="MachineOverlayDisappearTimeout" value="30" />
+
+    <Parameter name="PartOverlayAppearTimeout" value="5" />
+    <Parameter name="PartOverlayDisappearTimeout" value="90" />
+    <Parameter name="PartSelectAllTimeout" value="5" />
+
+  </TestRunParameters>
 
 </RunSettings>

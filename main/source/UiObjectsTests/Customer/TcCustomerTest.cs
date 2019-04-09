@@ -66,9 +66,13 @@ namespace HomeZone.UiObjectsTests.Customer
                 customers.Goto();
                 Assert.AreEqual( customersCount + 2, customers.Count() );
 
-                customers.DeleteCustomersWithNameContaining( name1 );
-                customers.DeleteCustomersWithNameContaining( name2 );
-                customers.Apply();
+                var amount = customers.DeleteCustomersWithNameContaining( name1 );
+                amount += customers.DeleteCustomersWithNameContaining( name2 );
+                if( amount > 0 )
+                {
+                    customers.Apply();
+                }
+
                 Assert.AreEqual( customersCount, customers.Count() );
 
                 customers.Cancel();

@@ -1,4 +1,4 @@
-using HomeZone.UiObjectInterfaces.Controls;
+﻿using HomeZone.UiObjectInterfaces.Controls;
 
 namespace HomeZone.UiObjectInterfaces.Customer
 {
@@ -64,7 +64,8 @@ namespace HomeZone.UiObjectInterfaces.Customer
         /// Selects customers whose names contain the given substring.
         /// </summary>
         /// <param name="substring">The substring to search for.</param>
-        void SelectOnlyCustomersWithNameContaining( string substring );
+        /// <returns>amount of selected customers</returns>
+        int SelectOnlyCustomersWithNameContaining( string substring );
 
         /// <summary>
         /// Deletes customers with the given name.
@@ -78,7 +79,8 @@ namespace HomeZone.UiObjectInterfaces.Customer
         /// Used to remove customers created for tests.
         /// </summary>
         /// <param name="substring">The substring to search for.</param>
-        void DeleteCustomersWithNameContaining( string substring );
+        /// <returns>amount of deleted customers</returns>
+        int DeleteCustomersWithNameContaining( string substring );
 
         /// <summary>
         /// Deletes the selected customers.

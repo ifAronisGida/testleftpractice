@@ -2,6 +2,7 @@ using Trumpf.Coparoo.Desktop;
 using HomeZone.UiObjectInterfaces.CutJob;
 using HomeZone.UiObjects.PageObjects.Shell;
 using Trumpf.Coparoo.Desktop.WPF;
+using System;
 
 namespace HomeZone.UiObjects.PageObjects.CutJob
 {
@@ -28,6 +29,16 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             Toolbar.Delete();
             ResultColumn.ClearSearch();
             return true;
+        }
+
+        public void WaitForDetailOverlayAppear( TimeSpan? timeout = null )
+        {
+            DetailOverlay.Visible.WaitFor( timeout ?? TcPageObjectSettings.Instance.CutJobOverlayAppearTimeout );
+        }
+
+        public void WaitForDetailOverlayDisappear( TimeSpan? timeout = null )
+        {
+            DetailOverlay.Visible.WaitForFalse( timeout ?? TcPageObjectSettings.Instance.CutJobOverlayDisappearTimeout );
         }
 
         protected override void DoGoto()

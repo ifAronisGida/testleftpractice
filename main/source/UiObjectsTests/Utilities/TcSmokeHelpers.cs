@@ -102,8 +102,6 @@ namespace HomeZone.UiObjectsTests.Utilities
             {
                 if( materials.DeleteMaterial( Name2UIT_Name( material ) ) )
                 {
-                    materials.WaitForDetailOverlayAppear();
-                    materials.WaitForDetailOverlayDisappear();
                     deletedMaterialsCount++;
                 }
             }

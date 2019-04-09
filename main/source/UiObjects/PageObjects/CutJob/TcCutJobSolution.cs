@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.Waiting;
 using Trumpf.Coparoo.Desktop.WPF;
@@ -26,7 +26,7 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
         private TiButton OpenButton => Find<TiButton>( "CutJob.Detail.JobSolution.Open" );
         private TiButton DeleteButton => Find<TiButton>( "CutJob.Detail.JobSolution.Delete" );
 
-        private TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
+        private TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "CutJob.Detail.JobSolution.Overlay" ) );
 
         public TiValueControl<string> Machine => Find<TiValueControl<string>>( "CutJob.Detail.JobSolution.Machine" );
         public TiValueControl<string> TechnologyProfile => Find<TiValueControl<string>>( "CutJob.Detail.JobSolution.TechnologyProfile" );
@@ -112,14 +112,14 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             }
         }
 
-        public bool WaitForDetailOverlayAppear( TimeSpan timeout )
+        public bool WaitForDetailOverlayAppear( TimeSpan? timeout = null )
         {
-            return TryWait.For( () => DetailOverlay.VisibleOnScreen, timeout );
+            return DetailOverlay.Visible.TryWaitFor( timeout ?? TcPageObjectSettings.Instance.CutJobOverlayAppearTimeout );
         }
 
-        public bool WaitForDetailOverlayDisappear( TimeSpan timeout )
+        public bool WaitForDetailOverlayDisappear( TimeSpan? timeout = null )
         {
-            return TryWait.For( () => !DetailOverlay.VisibleOnScreen, timeout );
+            return DetailOverlay.Visible.TryWaitForFalse( timeout ?? TcPageObjectSettings.Instance.CutJobOverlayDisappearTimeout );
         }
     }
 }

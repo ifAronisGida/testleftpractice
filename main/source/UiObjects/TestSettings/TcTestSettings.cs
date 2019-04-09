@@ -33,6 +33,8 @@ namespace HomeZone.UiObjects.TestSettings
 
         public bool ScreenRecorderEnabled => GetBool( "ScreenRecorderEnabled", false );
 
+        public bool ClearOldTestItemsAtStart => GetBool( "ClearOldTestItemsAtStart", true );
+
         public string TestedAppName => GetString( "TestedAppName", "Trumpf.TruTops.Control.Shell" );
         public string TestedAppPath => GetString( "TestedAppPath", @"C:\Program Files\TRUMPF\TruTops\Client\Control" );
 

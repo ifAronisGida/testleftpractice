@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading;
+using HomeZone.UiCommonFunctions.Base;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
@@ -11,7 +12,7 @@ namespace HomeZone.FluxTests.Flux
     /// This test class contains Flux machine specific tests.
     /// </summary>
     [TestClass]
-    public sealed class TcFluxMachineTest : TcBaseTestClassFlux
+    public sealed class TcFluxMachineTest : TcBaseTestClass
     {
         /// <summary>
         /// timeout to open the configure machine dialog. TODO: has to be refactored to a dynamic timout
@@ -28,15 +29,15 @@ namespace HomeZone.FluxTests.Flux
             ExecuteUITest( DoConfigureMachineTest, "Configure Machine" );
         }
 
-        ///// <summary>
-        ///// Create Flux bend workplaces for all available machine templates
-        ///// </summary>
-        //[TestMethod, UniqueName( "60D92E29-A475-4A80-8F06-F5158611223E" )]
-        //[Tag( "Flux" )]
-        //public void CreateWorkplacesForAllBendMachines()
-        //{
-        //    ExecuteUITest( DoCreateWorkplacesForAllBendMachines, "Create Bend Workplaces For All Bend Machines" );
-        //}
+        /// <summary>
+        /// Create Flux bend workplaces for all available machine templates
+        /// </summary>
+        [TestMethod, UniqueName( "60D92E29-A475-4A80-8F06-F5158611223E" )]
+        [Tag( "Flux" )]
+        public void CreateWorkplacesForAllBendMachines()
+        {
+            ExecuteUITest( DoCreateWorkplacesForAllBendMachines, "Create Bend Workplaces For All Bend Machines" );
+        }
 
         /// <summary>
         /// Implementation of the confugre machine test

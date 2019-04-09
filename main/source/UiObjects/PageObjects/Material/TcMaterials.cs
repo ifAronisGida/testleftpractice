@@ -15,14 +15,6 @@ namespace HomeZone.UiObjects.PageObjects.Material
     public class TcMaterials : TcDomain<TiMaterialToolbar>, IChildOf<TcMainTabControl>, TiMaterials
     {
         /// <summary>
-        /// Gets the detail overlay.
-        /// </summary>
-        /// <value>
-        /// The detail overlay.
-        /// </value>
-        public TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
-
-        /// <summary>
         /// Gets the toolbar.
         /// </summary>
         /// <value>
@@ -72,6 +64,7 @@ namespace HomeZone.UiObjects.PageObjects.Material
             }
 
             Toolbar.Delete();
+            ( ( TcMainTabControl )Parent ).WaitForTabOverlayDisappear();
             ResultColumn.ClearSearch();
             return true;
         }

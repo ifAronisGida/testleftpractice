@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using Trumpf.Coparoo.Desktop;
 using HomeZone.UiObjectInterfaces.Common;
+using HomeZone.UiObjects.ControlObjects;
+using Trumpf.Coparoo.Desktop.WPF;
 
 namespace HomeZone.UiObjects.PageObjects
 {
@@ -16,6 +18,8 @@ namespace HomeZone.UiObjects.PageObjects
         public abstract TToolbar Toolbar { get; }
 
         public bool IsVisible => Toolbar.IsVisible;
+
+        protected TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
 
         public sealed override void Goto()
         {
