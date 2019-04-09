@@ -17,6 +17,7 @@ namespace HomeZone.FluxTests.Settings
     {
         private static string S_BOOST_BEND_SETTINGS_NOT_VISIBLE = "Boost Bend Settings Dialog is not visible";
         private static string S_MISSING_FLUX_TOOL_LIST_IN_BOOST = "Flux tool list is not available in HomeZone UI";
+        private static string S_TEST_GEOMETRY = @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo";
 
         /// <summary>
         /// Tests the tool lists configuration.
@@ -67,9 +68,7 @@ namespace HomeZone.FluxTests.Settings
             var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
             var bendSettings = settingsDialog.BendSettings;
             bendSettings.Goto();
-
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
-
             bendSettings.OpenToolsConfiguration();
 
             Random random = new Random();
@@ -84,7 +83,7 @@ namespace HomeZone.FluxTests.Settings
 
             // import part and use toollist
             var parts = HomeZone.GotoParts();
-            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+            mPartHelper.ImportPart( TestSettings, parts, S_TEST_GEOMETRY );
             Assert.IsTrue( CheckToolListDropdown( toollistName, out var toolList ), S_MISSING_FLUX_TOOL_LIST_IN_BOOST );
 
             parts.Toolbar.Delete();
@@ -125,7 +124,7 @@ namespace HomeZone.FluxTests.Settings
 
             // import part and use toollist
             var parts = HomeZone.GotoParts();
-            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+            mPartHelper.ImportPart( TestSettings, parts, S_TEST_GEOMETRY );
 
             Assert.IsFalse( CheckToolListDropdown( toollistName, out var control ), S_MISSING_FLUX_TOOL_LIST_IN_BOOST );
         }
@@ -166,7 +165,7 @@ namespace HomeZone.FluxTests.Settings
 
             // import part and use toollist
             var parts = HomeZone.GotoParts();
-            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+            mPartHelper.ImportPart( TestSettings, parts, S_TEST_GEOMETRY );
 
             Assert.IsTrue( CheckToolListDropdown( newName, out var control ), "Newly created tool list is not available in HomeZone UI" );
         }
@@ -195,9 +194,9 @@ namespace HomeZone.FluxTests.Settings
         /// <summary>
         /// Check for Toollist in Design dropdown
         /// </summary>
-        /// <param name="toolListName"></param>
-        /// <param name="control"></param>
-        /// <returns></returns>
+        /// <param name="toolListName">name of the toollist</param>
+        /// <param name="control">tool list control</param>
+        /// <returns>true if the tool list was found</returns>
         private bool CheckToolListDropdown( string toolListName, out IControl control )
         {
             control = null;
