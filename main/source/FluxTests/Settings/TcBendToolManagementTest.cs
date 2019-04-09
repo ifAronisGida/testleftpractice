@@ -1,8 +1,8 @@
+using HomeZone.UiCommonFunctions.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using System;
-using HomeZone.UiCommonFunctions.Base;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
@@ -72,7 +72,8 @@ namespace HomeZone.FluxTests.Settings
 
             bendSettings.OpenToolsConfiguration();
 
-            string toollistName = "superTools";
+            Random random = new Random();
+            string toollistName = "superTools"+ random.Next(0,99); //randomize to reduce test interference
             Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
             Flux.ToolManagement.NewToolList( toollistName );
             Flux.ToolManagement.Close();
@@ -150,7 +151,8 @@ namespace HomeZone.FluxTests.Settings
             settingsDialog.Save();
 
             // rename toollist
-            string newName = "newName";
+            Random random = new Random();
+            string newName = "newName" + random.Next(0,99); //randomize to reduce test interference
             bendSettings = HomeZone.GotoMainMenu().OpenSettingsDialog().BendSettings;
             bendSettings.Goto();
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );

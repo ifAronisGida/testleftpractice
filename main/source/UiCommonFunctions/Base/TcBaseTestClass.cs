@@ -1,3 +1,4 @@
+using HomeZone.UiCommonFunctions.PageObjectHelpers;
 using HomeZone.UiObjectInterfaces;
 using HomeZone.UiObjectInterfaces.Cut;
 using HomeZone.UiObjectInterfaces.DatamanagerBend;
@@ -15,7 +16,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
-using HomeZone.UiCommonFunctions.PageObjectHelpers;
 using Trumpf.AutoTest.Facts;
 
 namespace HomeZone.UiCommonFunctions.Base
@@ -184,6 +184,10 @@ namespace HomeZone.UiCommonFunctions.Base
                 };
                 mTestedAppProcess = Process.Start( startInfo );
             }
+            else
+            {
+                mTestedAppProcess = runningHomeZone[ 0 ];
+            }
 
             // connect to HomeZone process and wait until visible
             HomeZone = new TcHomeZoneApp( TestSettings.TestedAppName, Driver );
@@ -204,7 +208,7 @@ namespace HomeZone.UiCommonFunctions.Base
 
             if( TestSettings.ClearOldTestItemsAtStart )
             {
-                // delete existing test items
+                Driver.Log.OpenFolder( "Delete existing test items" );
                 mNestingTemplateHelper.DeleteTestNestingTemplates( TestSettings, HomeZone.NestingTemplates );
                 mCutJobHelper.DeleteTestCutJobs( TestSettings, HomeZone.CutJobs );
                 mPartOrderHelper.DeleteTestPartOrders( TestSettings, HomeZone.PartOrders );
@@ -212,6 +216,7 @@ namespace HomeZone.UiCommonFunctions.Base
                 mCustomerHelper.DeleteTestCustomers( TestSettings, HomeZone.Customers );
                 mMachineHelper.DeleteTestMachines( TestSettings, HomeZone.Machines );
                 mMaterialHelper.DeleteTestMaterials( TestSettings, HomeZone.Materials );
+                Driver.Log.CloseFolder();
             }
         }
 
@@ -220,9 +225,9 @@ namespace HomeZone.UiCommonFunctions.Base
         /// </summary>
         protected virtual void DoTestCleanup()
         {
-            if( TestContext.CurrentTestOutcome == UnitTestOutcome.Failed && mTestedAppProcess != null )
+            if( TestContext.CurrentTestOutcome == UnitTestOutcome.Failed )
             {
-                mTestedAppProcess.Kill();
+                mTestedAppProcess?.Kill();
             }
         }
     }
