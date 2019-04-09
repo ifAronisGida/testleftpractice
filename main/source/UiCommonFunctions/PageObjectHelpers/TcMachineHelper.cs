@@ -33,8 +33,7 @@ namespace HomeZone.UiCommonFunctions.PageObjectHelpers
         public void DeleteTestMachines( TcTestSettings testSettings, TiMachines machines )
         {
             machines.Goto();
-            machines.ResultColumn.SelectItems( testSettings.NamePrefix );
-            if( machines.ResultColumn.Count > 0 )
+            while( machines.ResultColumn.SelectItems( testSettings.NamePrefix ) > 0 )
             {
                 machines.Toolbar.Delete();
             }
