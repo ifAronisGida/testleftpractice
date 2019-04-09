@@ -14,6 +14,7 @@ using SmartBear.TestLeft;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.CompilerServices;
 using HomeZone.UiCommonFunctions.PageObjectHelpers;
 using Trumpf.AutoTest.Facts;
 
@@ -118,7 +119,7 @@ namespace HomeZone.UiCommonFunctions.Base
         /// </summary>
         /// <param name="action"></param>
         /// <param name="caption"></param>
-        protected void ExecuteUITest( Action action, string caption )
+        protected void ExecuteUITest( Action action, [CallerMemberName] string caption = "" )
         {
             try
             {
@@ -134,7 +135,7 @@ namespace HomeZone.UiCommonFunctions.Base
             }
         }
 
-        protected void Act( Action action, string caption = null )
+        protected void Act( Action action, [CallerMemberName] string caption = null )
             => mAutoFact.Act( action, caption );
 
         /// <summary>
@@ -201,7 +202,7 @@ namespace HomeZone.UiCommonFunctions.Base
             // wait until machine templates are loaded
             Assert.IsTrue( HomeZone.BendMachineTemplatesLoaded() );
 
-            if (TestSettings.ClearOldTestItemsAtStart)
+            if( TestSettings.ClearOldTestItemsAtStart )
             {
                 // delete existing test items
                 mNestingTemplateHelper.DeleteTestNestingTemplates( TestSettings, HomeZone.NestingTemplates );

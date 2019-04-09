@@ -30,6 +30,8 @@
 
       <Parameter name="ScreenRecorderEnabled" value="true" />
 
+      <Parameter name="ClearOldTestItemsAtStart" value="false" />
+
       <Parameter name="NamePrefix" value="UIT_" />
 
       <Parameter name="FluxProcessName" value="Flux" />

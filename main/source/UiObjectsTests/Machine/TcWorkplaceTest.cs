@@ -20,7 +20,7 @@ namespace HomeZone.UiObjectsTests.Machine
         [Tag( "Machine" )]
         public void NewCutMachineAndDeleteTest()
         {
-            Act( () =>
+            ExecuteUITest( () =>
             {
                 var testMachineName = TestSettings.NamePrefix + Guid.NewGuid();
                 var machines = HomeZone.GotoMachines();
@@ -56,7 +56,7 @@ namespace HomeZone.UiObjectsTests.Machine
         [Tag( "Machine" )]
         public void NewPunchMachineAndDeleteTest()
         {
-            Act( () =>
+            ExecuteUITest( () =>
             {
                 var testMachineName = TestSettings.NamePrefix + Guid.NewGuid();
                 var machines = HomeZone.GotoMachines();
@@ -89,7 +89,7 @@ namespace HomeZone.UiObjectsTests.Machine
         [Tag( "Machine" )]
         public void NewBendMachineAndDeleteTest()
         {
-            Act( () =>
+            ExecuteUITest( () =>
             {
                 var testMachineName = TestSettings.NamePrefix + Guid.NewGuid();
                 var machines = HomeZone.GotoMachines();

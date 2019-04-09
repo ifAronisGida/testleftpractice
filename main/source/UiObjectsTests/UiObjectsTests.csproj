@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -91,6 +91,7 @@
     <Compile Include="Design\TcDesignTest.cs" />
     <Compile Include="Dialogs\Tc3rdPartyComponentsDialogTest.cs" />
     <Compile Include="FunctionalTests\DA07_Nesting\TcDa07.cs" />
+    <Compile Include="Logging\TcUiObjectsTestsLogging.cs" />
     <Compile Include="Machine\TcWorkplaceTest.cs" />
     <Compile Include="Material\TcMaterialTest.cs" />
     <Compile Include="NestingTemplate\TcNestingTemplateTest.cs" />
