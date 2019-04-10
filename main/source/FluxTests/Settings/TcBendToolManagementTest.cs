@@ -234,6 +234,11 @@ namespace HomeZone.FluxTests.Settings
             return found;
         }
 
+        /// <summary>
+        /// Open the tools configuration dialog
+        /// </summary>
+        /// <param name="settingsDialog">settings dialog</param>
+        /// <param name="bendSettings">bend settings</param>
         private void OpenToolsConfiguration( out TiSettingsDialog settingsDialog, out TiBendSettings bendSettings )
         {
             settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
