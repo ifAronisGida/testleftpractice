@@ -1,4 +1,5 @@
 using HomeZone.UiCommonFunctions.Base;
+using HomeZone.UiObjectInterfaces.Settings;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
@@ -65,11 +66,7 @@ namespace HomeZone.FluxTests.Settings
         private void DoToolListsConfigurationTest()
         {
             // Create a toollist
-            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
-            var bendSettings = settingsDialog.BendSettings;
-            bendSettings.Goto();
-            Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
-            bendSettings.OpenToolsConfiguration();
+            OpenToolsConfiguration( out var settingsDialog, out var bendSettings );
 
             Random random = new Random();
             string toollistName = "superTools"+ random.Next(0,99); //randomize to reduce test interference
@@ -95,11 +92,7 @@ namespace HomeZone.FluxTests.Settings
         private void DoDeleteToolListsTest()
         {
             // Create a toollist
-            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
-            var bendSettings = settingsDialog.BendSettings;
-            bendSettings.Goto();
-            Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
-            bendSettings.OpenToolsConfiguration();
+            OpenToolsConfiguration( out var settingsDialog, out var bendSettings );
 
             string toollistName = "rubbishTools";
 
@@ -135,11 +128,7 @@ namespace HomeZone.FluxTests.Settings
         private void DoRenameToolList()
         {
             // Create a toollist
-            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
-            var bendSettings = settingsDialog.BendSettings;
-            bendSettings.Goto();
-            Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
-            bendSettings.OpenToolsConfiguration();
+            OpenToolsConfiguration( out var settingsDialog, out var bendSettings );
 
             string toollistName = "oldName";
             Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
@@ -243,6 +232,15 @@ namespace HomeZone.FluxTests.Settings
             Driver.Desktop.Keys( "[Enter]" ); //Close Dropdown. 
 
             return found;
+        }
+
+        private void OpenToolsConfiguration( out TiSettingsDialog settingsDialog, out TiBendSettings bendSettings )
+        {
+            settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
+            bendSettings = settingsDialog.BendSettings;
+            bendSettings.Goto();
+            Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
+            bendSettings.OpenToolsConfiguration();
         }
 
     }
