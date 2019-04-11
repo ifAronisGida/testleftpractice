@@ -124,7 +124,7 @@ namespace HomeZone.UiObjects.TestSettings
         /// <value>
         /// The Flux boost and starting timeout
         /// </value>
-        public TimeSpan FluxBoostAndStartTimeout => TimeSpan.FromSeconds( GetInt( "FluxBoostAndStartTimeout", 60 ) );
+        public TimeSpan FluxBoostAndStartTimeout => TimeSpan.FromSeconds( GetInt( "FluxBoostAndStartTimeout", 120 ) );
 
         /// <summary>
         /// Gets timeout for syncing data between Flux and Boost
