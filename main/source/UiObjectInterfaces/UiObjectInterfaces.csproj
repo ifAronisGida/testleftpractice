@@ -107,6 +107,8 @@
     <Compile Include="Flux\TiFluxApp.cs" />
     <Compile Include="Flux\TiFluxMessageBox.cs" />
     <Compile Include="Flux\TiMachineConfigurationDialog.cs" />
+    <Compile Include="Flux\TiMainWindowFlux.cs" />
+    <Compile Include="Flux\TiSettingsMenuFlux.cs" />
     <Compile Include="Flux\TiToolManagementDialog.cs" />
     <Compile Include="Flux\TiToolManagementDropdown.cs" />
     <Compile Include="Machine\TiMachineDetail.cs" />

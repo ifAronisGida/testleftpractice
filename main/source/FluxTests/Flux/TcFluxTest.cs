@@ -97,31 +97,22 @@ namespace HomeZone.FluxTests.Flux
             var namePrefix = TestSettings.NamePrefix + Guid.NewGuid();
             var parts = HomeZone.GotoParts();
 
-            // first part
-            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
-            parts.SingleDetailBendSolutions.New();
-            parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
-            parts.WaitForDetailOverlayAppear();
+            List<string> partList = new List<string>()
+            { @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc",
+                @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" };
 
-            var flux = FluxApp;
+            foreach( var part in partList )
+            {
+                mPartHelper.ImportPart( TestSettings, parts, part );
+                parts.SingleDetailBendSolutions.New();
+                parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
+                parts.WaitForDetailOverlayAppear();
 
-            var visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            flux.CloseApp();
-            parts.WaitForDetailOverlayDisappear();
+                Flux.MainWindowFluxExists.WaitFor( TestSettings.FluxBoostAndStartTimeout );
+                Flux.MainWindowFlux.Close();
 
-            Assert.IsTrue( visible );
-
-            //second part
-            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
-            parts.SingleDetailBendSolutions.New();
-            parts.SingleDetailBendSolutions.OpenBendSolution( "Bend1" );
-            parts.WaitForDetailOverlayAppear();
-
-            visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            flux.CloseApp();
-            parts.WaitForDetailOverlayDisappear();
-
-            Assert.IsTrue( visible, "Flux window was not visible." );
+                parts.WaitForDetailOverlayDisappear();
+            }
         }
 
         /// <summary>
@@ -140,9 +131,11 @@ namespace HomeZone.FluxTests.Flux
             parts.SingleDetailBendSolutions.OpenBendSolution( solutionName );
             parts.WaitForDetailOverlayAppear();
 
-            var flux = FluxApp;
-            bool visible = flux.IsMainWindowVisible( TestSettings.FluxBoostAndStartTimeout, TimeSpan.FromMilliseconds( 500 ) );
-            flux.SaveAndClosePartInFlux();
+            Flux.MainWindowFluxExists.WaitFor( TestSettings.FluxBoostAndStartTimeout );
+            Flux.MainWindowFlux.OpenMenu();
+            Flux.MainWindowFlux.SettingsMenu.Save();
+            Flux.MainWindowFlux.Close();
+
             parts.WaitForDetailOverlayDisappear();
 
             var isManual = parts.SingleDetailBendSolutions.IsManuallyChanged( solutionName );
