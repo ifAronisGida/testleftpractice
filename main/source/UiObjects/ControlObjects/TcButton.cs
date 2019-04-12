@@ -2,15 +2,24 @@
 using HomeZone.UiObjectInterfaces.Controls;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-
 namespace HomeZone.UiObjects.ControlObjects
 {
     internal class TcButton : TcControl, TiButton
     {
-        public TcButton( IControlObject controlObject ) : base(controlObject)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TcButton"/> class.
+        /// </summary>
+        /// <param name="controlObject">The control object.</param>
+        public TcButton( IControlObject controlObject ) : base( controlObject )
         {
         }
 
+        /// <summary>
+        /// Gets the label of the button.
+        /// </summary>
+        /// <value>
+        /// The label of the button.
+        /// </value>
         public string Label
         {
             get
@@ -27,11 +36,29 @@ namespace HomeZone.UiObjects.ControlObjects
             }
         }
 
+        /// <summary>
+        /// Checks if the button is enabled and clicks the button.
+        /// </summary>
         public void Click()
         {
-            Assert.IsTrue(ControlObject.Enabled, $"Button {ControlObject.Node.GetProperty<string>( "Uid" )} is not enabled");
+            ShouldBeEnabled();
             ControlObject.Click();
-            
+        }
+
+        /// <summary>
+        /// Asserts that the button is enabled.
+        /// </summary>
+        public void ShouldBeEnabled()
+        {
+            Assert.IsTrue( ControlObject.Enabled, $"Button {ControlObject.Node.GetProperty<string>( "Uid" )} is not enabled" );
+        }
+
+        /// <summary>
+        /// Asserts that the button is disabled.
+        /// </summary>
+        public void ShouldBeDisabled()
+        {
+            Assert.IsFalse( ControlObject.Enabled, $"Button {ControlObject.Node.GetProperty<string>( "Uid" )} is not disabled" );
         }
     }
 }

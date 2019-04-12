@@ -1,9 +1,6 @@
 using System;
 using Trumpf.Coparoo.Desktop;
-using Trumpf.Coparoo.Desktop.Waiting;
-using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Machine;
-using HomeZone.UiObjects.ControlObjects;
 using HomeZone.UiObjects.PageObjects.Shell;
 
 namespace HomeZone.UiObjects.PageObjects.Machine

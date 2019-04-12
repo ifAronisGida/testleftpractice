@@ -27,11 +27,43 @@ namespace HomeZone.UiObjects.PageObjects
         }
 
         /// <summary>
+        /// Save button should be enabled.
+        /// </summary>
+        public void SaveShouldBeEnabled()
+        {
+            SaveButton.Value.ShouldBeEnabled();
+        }
+
+        /// <summary>
+        /// Save button should be disabled.
+        /// </summary>
+        public void SaveShouldBeDisabled()
+        {
+            SaveButton.Value.ShouldBeDisabled();
+        }
+
+        /// <summary>
         /// Reverts the item.
         /// </summary>
         public void Revert()
         {
             RevertButton.Value.Click();
+        }
+
+        /// <summary>
+        /// Revert button should be enabled.
+        /// </summary>
+        public void RevertShouldBeEnabled()
+        {
+            RevertButton.Value.ShouldBeEnabled();
+        }
+
+        /// <summary>
+        /// Revert button should be disabled.
+        /// </summary>
+        public void RevertShouldBeDisabled()
+        {
+            RevertButton.Value.ShouldBeDisabled();
         }
 
         /// <summary>
@@ -46,6 +78,22 @@ namespace HomeZone.UiObjects.PageObjects
 
             Wait.For( dialog.MessageBoxExists, TimeSpan.FromSeconds( 15 ) );
             dialog.Yes();
+        }
+
+        /// <summary>
+        /// Delete button should be enabled.
+        /// </summary>
+        public void DeleteShouldBeEnabled()
+        {
+            DeleteButton.Value.ShouldBeEnabled();
+        }
+
+        /// <summary>
+        /// Delete button should be disabled.
+        /// </summary>
+        public void DeleteShouldBeDisabled()
+        {
+            DeleteButton.Value.ShouldBeDisabled();
         }
     }
 }
