@@ -67,7 +67,7 @@ namespace HomeZone.FluxTests.Flux
                 mMachineHelper.CreateAndSaveBendMachine( TestSettings, machines, machineName );
                 if( !machines.Detail.IsPreviewImageAvailable() )
                 {
-                    Driver.Log.Error( "No preview image is available for this machine template" );
+                    Log.Error( "No preview image is available for this machine template" );
                     success = false;
                 }
             }

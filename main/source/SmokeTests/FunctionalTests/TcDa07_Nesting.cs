@@ -21,7 +21,7 @@ namespace HomeZone.SmokeTests.FunctionalTests
         //[Tag( "Functional tests" )]
         public void Da07_Nesting()
         {
-            ExecuteUITest( mDa07.DA7_01, "Da07 Nesting" );
+            ExecuteUITest( mDa07.DA7_01, "Testing Da07 Nesting." );
         }
     }
 }

@@ -16,6 +16,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
+using HomeZone.UiCommonFunctions.Utilities;
 using Trumpf.AutoTest.Facts;
 
 namespace HomeZone.UiCommonFunctions.Base
@@ -52,7 +53,7 @@ namespace HomeZone.UiCommonFunctions.Base
         }
 
         /// <summary>
-        /// Cleanup after testexecution
+        /// Cleanup after test execution.
         /// </summary>
         [TestCleanup]
         public void TestCleanup()
@@ -64,6 +65,11 @@ namespace HomeZone.UiCommonFunctions.Base
         /// The test context.
         /// </summary>
         public TestContext TestContext { get; set; }
+
+        /// <summary>
+        /// Property used for logging.
+        /// </summary>
+        public static TcLogging Log { get; private set; }
 
         /// <summary>
         /// The test settings.
@@ -123,14 +129,14 @@ namespace HomeZone.UiCommonFunctions.Base
         {
             try
             {
-                Driver.Log.OpenFolder( caption );
+                Log.OpenFolder( caption );
                 Act( action, caption );
-                Driver.Log.CloseFolder();
+                Log.CloseFolder();
             }
             catch( Exception ex )
             {
-                Driver.Log.Error( ex.Message, ex.StackTrace ); //automatically creates a screenshot
-                Driver.Log.CloseFolder();
+                Log.Error( ex.Message, ex.StackTrace ); //automatically creates a screenshot
+                Log.CloseFolder();
                 throw;
             }
         }
@@ -143,7 +149,7 @@ namespace HomeZone.UiCommonFunctions.Base
         /// </summary>
         protected static void AssemblyCleanup()
         {
-            Driver.Log.Save( TestSettings.HtmlReportPath ?? TestSettings.ResultsDirectory, Log.Format.Html );
+            Log.Save();
         }
 
         /// <summary>
@@ -153,6 +159,8 @@ namespace HomeZone.UiCommonFunctions.Base
         {
             TestSettings = new TcTestSettings( TestContext );
             TestSettings.Fill( TcPageObjectSettings.Instance );
+
+            Log = new TcLogging( Driver, TestContext, TestSettings );
 
             mAutoFact = new AutoFact( new TcTestOptions( GetType(), TestContext, TestSettings ) );
 
@@ -172,7 +180,7 @@ namespace HomeZone.UiCommonFunctions.Base
                 if( !Directory.Exists( TestSettings.TestedAppPath ) )
                 {
                     string message = "Path not found to start process! " + TestSettings.TestedAppPath;
-                    Driver.Log.Error( message );
+                    Log.Error( message );
                     throw new Exception( message );
                 }
 
@@ -186,7 +194,7 @@ namespace HomeZone.UiCommonFunctions.Base
             }
             else
             {
-                mTestedAppProcess = runningHomeZone[ 0 ];
+                mTestedAppProcess = runningHomeZone[0];
             }
 
             // connect to HomeZone process and wait until visible
@@ -208,7 +216,7 @@ namespace HomeZone.UiCommonFunctions.Base
 
             if( TestSettings.ClearOldTestItemsAtStart )
             {
-                Driver.Log.OpenFolder( "Delete existing test items" );
+                Log.OpenFolder( "Delete existing test items" );
                 mNestingTemplateHelper.DeleteTestNestingTemplates( TestSettings, HomeZone.NestingTemplates );
                 mCutJobHelper.DeleteTestCutJobs( TestSettings, HomeZone.CutJobs );
                 mPartOrderHelper.DeleteTestPartOrders( TestSettings, HomeZone.PartOrders );
@@ -216,7 +224,7 @@ namespace HomeZone.UiCommonFunctions.Base
                 mCustomerHelper.DeleteTestCustomers( TestSettings, HomeZone.Customers );
                 mMachineHelper.DeleteTestMachines( TestSettings, HomeZone.Machines );
                 mMaterialHelper.DeleteTestMaterials( TestSettings, HomeZone.Materials );
-                Driver.Log.CloseFolder();
+                Log.CloseFolder();
             }
         }
 
