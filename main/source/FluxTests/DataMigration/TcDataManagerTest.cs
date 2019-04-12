@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using HomeZone.UiCommonFunctions.Base;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using HomeZone.UiCommonFunctions.Base;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
@@ -87,11 +87,11 @@ namespace HomeZone.FluxTests.DataMigration
                 string originalFilePath = baselineDictionary[Path.GetFileName( item )];
                 List<string> originalFile = File.ReadAllLines( originalFilePath ).ToList();
                 int cutIndex = originalFile[S_LINE_NUMBER_CONTAINING_DATE].IndexOf( S_REMOVE_CONTENT_AFTER_CHARACHTER );
-                originalFile[S_LINE_NUMBER_CONTAINING_DATE] = originalFile[S_LINE_NUMBER_CONTAINING_DATE].Substring( S_LINE_NUMBER_CONTAINING_DATE, cutIndex );
+                originalFile[ S_LINE_NUMBER_CONTAINING_DATE ] = originalFile[ S_LINE_NUMBER_CONTAINING_DATE ].Substring( S_LINE_NUMBER_CONTAINING_DATE, cutIndex );
 
                 List<string> testfile = File.ReadAllLines( item ).ToList();
-                cutIndex = testfile[S_LINE_NUMBER_CONTAINING_DATE].IndexOf( S_REMOVE_CONTENT_AFTER_CHARACHTER );
-                testfile[S_LINE_NUMBER_CONTAINING_DATE] = testfile[S_LINE_NUMBER_CONTAINING_DATE].Substring( S_LINE_NUMBER_CONTAINING_DATE, cutIndex );
+                cutIndex = testfile[ S_LINE_NUMBER_CONTAINING_DATE ].IndexOf( S_REMOVE_CONTENT_AFTER_CHARACHTER );
+                testfile[ S_LINE_NUMBER_CONTAINING_DATE ] = testfile[ S_LINE_NUMBER_CONTAINING_DATE ].Substring( S_LINE_NUMBER_CONTAINING_DATE, cutIndex );
 
                 Assert.IsTrue( testfile.SequenceEqual( originalFile ), "Following csv file differs from baseline: " + Path.GetFileName( item ) );
                 File.Delete( item );
@@ -115,6 +115,7 @@ namespace HomeZone.FluxTests.DataMigration
             Assert.AreNotEqual( 0, generatedCSVFileList.Count, S_NO_CSV_FILES_EXPORTED );
 
             Flux.DeductionValueDialogExists.WaitFor( TestSettings.FluxStartTimeout );
+            Flux.DeductionValueDialog.Reset();
             int entries = 0;
             foreach( var file in generatedCSVFileList )
             {

@@ -41,6 +41,11 @@ namespace HomeZone.UiObjectInterfaces.Flux
         /// <returns>amount of csv entries as displayed by Flux</returns>
         int Entries();
 
+        /// <summary>
+        /// Reset deduction values
+        /// </summary>
+        void Reset();
+
         #endregion
 
         #region properties

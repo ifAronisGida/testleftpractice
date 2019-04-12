@@ -33,9 +33,21 @@ namespace HomeZone.UiObjects.PageObjects.Flux
     public class TcDeductionValueDialog : TcPageObjectBase, IChildOf<TcFluxApp>, TiDeductionValueDialog
     {
         #region private constants
+
+        private readonly Lazy<TcFluxMessageBox> mMessageBox;
+
         #endregion
 
         #region constructor
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public TcDeductionValueDialog()
+        {
+            mMessageBox = new Lazy<TcFluxMessageBox>( On<TcFluxMessageBox> );
+        }
+
         #endregion
 
         #region public static methods
@@ -73,6 +85,16 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             return Int32.Parse( string.Join( "", text.ToCharArray().Where( Char.IsDigit ) ) );
         }
 
+        /// <summary>
+        /// Reset deduction values
+        /// </summary>
+        public void Reset()
+        {
+            ResetButton.Click();
+            mMessageBox.Value.Exists.WaitFor( TcPageObjectSettings.Instance.FluxUITimeouts );
+            mMessageBox.Value.Save();
+        }
+
         #endregion
 
         #region private methods
@@ -82,6 +104,8 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         private TiButton CloseBendDeductionValueDailog => FindByControlName<TiButton>( "cCloseBtn" );
 
         private TiButton ImportButton => FindByControlName<TiButton>( "cImport" );
+
+        private TiButton ResetButton => FindByControlName<TiButton>( "cReset" );
 
         private TiValueControl<string> EntriesTextField => FindByControlName<TiValueControl<string>>( "cEntries" );
 
