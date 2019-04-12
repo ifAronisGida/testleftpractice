@@ -288,36 +288,41 @@ namespace HomeZone.FluxTests.Flux
             bendSettings.AddDefaultBendProgram();
             settingsDialog.Save();
 
-            TiParts parts = HomeZone.GotoParts();
-            foreach( var item in showcasePartList )
+            try
             {
-                mPartHelper.ImportPart( TestSettings, parts, Path.Combine( samplesPath, item ) );
-            }
-            parts.ResultColumn.SelectAll();
-            parts.Toolbar.WaitForBoostButtonEnabled();
-            parts.Toolbar.Boost();
-
-            int timeoutCount = 0;
-            foreach( var item in showcasePartList )
-            {
-                parts.ResultColumn.SelectItems( Path.GetFileNameWithoutExtension( item ) );
-                bool waitSuccess = false;
-                do
+                TiParts parts = HomeZone.GotoParts();
+                foreach( var item in showcasePartList )
                 {
-                    waitSuccess = parts.WaitForDetailOverlayDisappear();
-                    timeoutCount++;
-                } while( !waitSuccess && timeoutCount < showcasePartList.Count ); //wait max: number of parts * timeout
+                    mPartHelper.ImportPart( TestSettings, parts, Path.Combine( samplesPath, item ) );
+                }
+                parts.ResultColumn.SelectAll();
+                parts.Toolbar.WaitForBoostButtonEnabled();
+                parts.Toolbar.Boost();
 
-                Assert.AreEqual( TcAppLangDependentStrings.ReleaseMissing, parts.SingleDetailBendSolutions.SingleBendSolutionStateToolTip( bendSolutionName ), "Bend solution has wrong state" );
-                Assert.IsFalse( parts.SingleDetailBendSolutions.IsManuallyChanged( bendSolutionName ), "Bend solution indicates manual change but there is none" );
-                parts.SingleDetailBendSolutions.OpenSolutionDetail( bendSolutionName );
-                Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( bendSolutionName ), "Setup plan is missing for boosted solution" );
-                Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( bendSolutionName ), "NC code is missing for boosted solution" );
+                int timeoutCount = 0;
+                foreach( var item in showcasePartList )
+                {
+                    parts.ResultColumn.SelectItems( Path.GetFileNameWithoutExtension( item ) );
+                    bool waitSuccess = false;
+                    do
+                    {
+                        waitSuccess = parts.WaitForDetailOverlayDisappear();
+                        timeoutCount++;
+                    } while( !waitSuccess && timeoutCount < showcasePartList.Count ); //wait max: number of parts * timeout
+
+                    Assert.AreEqual( TcAppLangDependentStrings.ReleaseMissing, parts.SingleDetailBendSolutions.SingleBendSolutionStateToolTip( bendSolutionName ), "Bend solution has wrong state" );
+                    Assert.IsFalse( parts.SingleDetailBendSolutions.IsManuallyChanged( bendSolutionName ), "Bend solution indicates manual change but there is none" );
+                    parts.SingleDetailBendSolutions.OpenSolutionDetail( bendSolutionName );
+                    Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( bendSolutionName ), "Setup plan is missing for boosted solution" );
+                    Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( bendSolutionName ), "NC code is missing for boosted solution" );
+                }
             }
-
-            bendSettings.Goto();
-            bendSettings.DeleteDefaultBendProgram();
-            settingsDialog.Save();
+            finally
+            {
+                bendSettings.Goto();
+                bendSettings.DeleteDefaultBendProgram();
+                settingsDialog.Save();
+            }
         }
     }
 }
