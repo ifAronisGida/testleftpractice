@@ -145,7 +145,7 @@ namespace HomeZone.FluxTests.Settings
             bendSettings.Goto();
             Assert.IsTrue( bendSettings.IsVisible, S_BOOST_BEND_SETTINGS_NOT_VISIBLE );
             bendSettings.OpenToolsConfiguration();
-            Flux.ToolManamgementDialogExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            Flux.ToolManamgementDialogExists.WaitFor( TestSettings.FluxStartTimeout );
             Flux.ToolManagement.RenameToolList( toollistName, newName );
             Flux.ToolManagement.Close();
             Flux.SaveChanges();

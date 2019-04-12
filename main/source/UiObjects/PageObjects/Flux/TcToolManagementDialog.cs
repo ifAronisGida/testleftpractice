@@ -85,7 +85,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             SelectToolList( toolListName );
             ActionsButton.Click();
             DeleteToolListButton();
-            mMessageBox.Value.Exists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            mMessageBox.Value.Exists.WaitFor( TcPageObjectSettings.Instance.FluxUITimeouts );
             mMessageBox.Value.Save();
         }
 
@@ -123,7 +123,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 
         private void AddNewToolList()
         {
-            DrowDownExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            DrowDownExists.WaitFor( TcPageObjectSettings.Instance.FluxUITimeouts );
             mDropDown.Value.NewToolList();
         }
 
@@ -131,7 +131,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
 
         private void DeleteToolListButton()
         {
-            DrowDownExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            DrowDownExists.WaitFor( TcPageObjectSettings.Instance.FluxUITimeouts );
             mDropDown.Value.DeleteToolList();
         }
 

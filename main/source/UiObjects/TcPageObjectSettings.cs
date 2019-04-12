@@ -44,5 +44,10 @@ namespace HomeZone.UiObjects
         public TimeSpan PartSelectAllTimeout => TimeSpan.FromSeconds( 10 );
 
         public TimeSpan ExportOverlayDisappearTimeout { get; set; } = TimeSpan.FromSeconds( 60 );
+
+        /// <summary>
+        /// Timeout for Dropwdowns, Message Boxes
+        /// </summary>
+        public TimeSpan FluxUITimeouts { get; set; } = TimeSpan.FromSeconds( 60 );
     }
 }

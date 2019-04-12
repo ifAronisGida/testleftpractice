@@ -76,7 +76,7 @@ namespace HomeZone.UiObjects.PageObjects.Flux
         /// </summary>
         public void SaveChanges()
         {
-            MessageBoxExists.WaitFor( TimeSpan.FromSeconds( 60 ) );
+            MessageBoxExists.WaitFor( TcPageObjectSettings.Instance.FluxUITimeouts );
             mMessageBox.Value.Save();
         }
 
