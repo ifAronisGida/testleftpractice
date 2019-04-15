@@ -18,6 +18,7 @@ namespace HomeZone.UiObjects.Utilities
             ["System.Windows.Controls.Button"] = controlObject => new TcButton( controlObject ),
             ["System.Windows.Controls.CheckBox"] = controlObject => new TcCheckBox( controlObject ),
             ["System.Windows.Controls.Menu"] = controlObject => new TcButton( controlObject ),
+            ["System.Windows.Controls.MenuItem"] = controlObject => new TcButton( controlObject ),
             ["System.Windows.Controls.TextBox"] = controlObject => new TcTextEdit( controlObject ),
             ["System.Windows.Controls.Image"] = controlObject => new TcButton( controlObject ),
             ["System.Windows.Controls.Border"] = controlObject => new TcButton( controlObject ),
@@ -38,7 +39,7 @@ namespace HomeZone.UiObjects.Utilities
             try
             {
                 var factoryFunc = mappings[fqClassName];
-                return ( TInterface )factoryFunc( controlObject );
+                return ( TInterface ) factoryFunc( controlObject );
             }
             catch( KeyNotFoundException e )
             {
