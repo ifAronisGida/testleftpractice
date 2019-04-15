@@ -129,7 +129,6 @@ namespace HomeZone.FluxTests.Flux
 
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailBendSolutions.OpenBendSolution( solutionName );
-            parts.WaitForDetailOverlayAppear();
 
             Flux.MainWindowFluxExists.WaitFor( TestSettings.FluxBoostAndStartTimeout );
             Flux.MainWindowFlux.OpenMenu();
