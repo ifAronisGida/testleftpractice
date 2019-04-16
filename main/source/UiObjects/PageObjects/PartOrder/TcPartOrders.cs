@@ -1,9 +1,9 @@
 using System;
+using System.Linq;
 using Trumpf.Coparoo.Desktop;
 using HomeZone.UiObjectInterfaces.PartOrder;
-using HomeZone.UiObjects.ControlObjects;
 using HomeZone.UiObjects.PageObjects.Shell;
-using Trumpf.Coparoo.Desktop.WPF;
+using System.Collections.Generic;
 
 namespace HomeZone.UiObjects.PageObjects.PartOrder
 {
@@ -49,6 +49,20 @@ namespace HomeZone.UiObjects.PageObjects.PartOrder
             Toolbar.Delete();
             ResultColumn.ClearSearch();
             return true;
+        }
+
+        public void Import(params string[] files)
+        {
+            Import( files.AsEnumerable() );
+        }
+
+        public void Import( IEnumerable<string> files )
+        {
+            foreach (var file in files)
+            {
+                Toolbar.Import( file );
+                On<TcMainTabControl>().WaitForTabOverlayDisappear();
+            }
         }
 
         protected override void DoGoto()

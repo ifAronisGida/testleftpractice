@@ -1,5 +1,6 @@
 using HomeZone.UiCommonFunctions.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
@@ -72,6 +73,15 @@ namespace HomeZone.UiObjectsTests.PartOrder
             partOrders.PartInfo.Design.Boost();
             partOrders.WaitForDetailOverlayAppear();
             partOrders.WaitForDetailOverlayDisappear();
+        }
+
+        [TestMethod]
+        public void BulkImportTest()
+        {
+            var partOrders = HomeZone.GotoPartOrders();
+            var files = Directory.EnumerateFiles( @"c:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase" );
+
+            partOrders.Import( files );
         }
     }
 }
