@@ -79,9 +79,7 @@ namespace HomeZone.UiObjectsTests.PartOrder
         public void BulkImportTest()
         {
             var partOrders = HomeZone.GotoPartOrders();
-            var files = Directory.EnumerateFiles( @"c:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase" );
-
-            partOrders.Import( files );
+            partOrders.ImportDirectory( @"c:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase" );
         }
     }
 }

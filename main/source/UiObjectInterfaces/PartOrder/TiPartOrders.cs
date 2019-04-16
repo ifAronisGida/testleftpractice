@@ -31,7 +31,6 @@ namespace HomeZone.UiObjectInterfaces.PartOrder
         /// <returns>true if deleted</returns>
         bool DeletePartOrder( string id );
 
-        void Import( IEnumerable<string> files );
-        void Import( params string[] files );
+        void ImportDirectory( string directory );
     }
 }

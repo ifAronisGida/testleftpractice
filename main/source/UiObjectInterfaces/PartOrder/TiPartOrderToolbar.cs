@@ -6,6 +6,7 @@ namespace HomeZone.UiObjectInterfaces.PartOrder
     {
         void New();
 
+        void Import();
         void Import( string fileName );
     }
 }

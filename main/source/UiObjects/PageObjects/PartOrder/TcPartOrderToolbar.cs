@@ -30,6 +30,11 @@ namespace HomeZone.UiObjects.PageObjects.PartOrder
             NewPartOrderButton.Click();
         }
 
+        public void Import()
+        {
+            ImportButton.Click();
+        }
+
         public void Import( string fileName )
         {
             ImportButton.Click();
