@@ -1,3 +1,4 @@
+using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop.Waiting;
 
 namespace HomeZone.UiObjectInterfaces.Controls
@@ -12,6 +13,6 @@ namespace HomeZone.UiObjectInterfaces.Controls
 
         bool IsFocused { get; }
 
-
+        IVisualObject VisualObject { get; }
     }
 }

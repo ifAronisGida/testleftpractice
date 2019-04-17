@@ -17,6 +17,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using HomeZone.UiCommonFunctions.Utilities;
+using SmartBear.TestLeft.TestObjects;
 using Trumpf.AutoTest.Facts;
 
 namespace HomeZone.UiCommonFunctions.Base
@@ -120,17 +121,22 @@ namespace HomeZone.UiCommonFunctions.Base
         public static TiDatamanagerBendApp DatamanagerBend { get; private set; }
 
         /// <summary>
-        /// Execute a UI  Test
-        /// Function encapsulates the UI test with logging
+        /// Execute a UI  Test.
+        /// Function encapsulates the UI test with logging.
+        /// A screenshot is taken to document the test start conditions.
         /// </summary>
-        /// <param name="action"></param>
-        /// <param name="caption"></param>
-        protected void ExecuteUITest( Action action, [CallerMemberName] string caption = "" )
+        /// <param name="action">The action.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="visual">The visual used for the screenshot. If null, HomeZone is used.</param>
+        protected void ExecuteUITest( Action action, [CallerMemberName] string caption = "", IVisualObject visual = null )
         {
             try
             {
-                Log.OpenFolder( caption );
+                Log.OpenFolder( caption, visual: visual ?? HomeZone.VisualObject );
+
                 Act( action, caption );
+
+                Log.Info( caption + " finished", visual: visual ?? HomeZone.VisualObject );
                 Log.CloseFolder();
             }
             catch( Exception ex )

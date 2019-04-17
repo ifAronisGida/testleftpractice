@@ -25,6 +25,16 @@ namespace HomeZone.UiObjectInterfaces.Part
         void Boost();
 
         /// <summary>
+        /// Boost button should be enabled.
+        /// </summary>
+        void BoostShouldBeEnabled();
+
+        /// <summary>
+        /// Boost button should be disabled.
+        /// </summary>
+        void BoostShouldBeDisabled();
+
+        /// <summary>
         /// Creates the part order.
         /// </summary>
         void CreatePartOrder();

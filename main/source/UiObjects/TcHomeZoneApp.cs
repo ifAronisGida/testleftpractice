@@ -17,6 +17,7 @@ using HomeZone.UiObjects.PageObjects.PartOrder;
 using HomeZone.UiObjects.PageObjects.Shell;
 using SmartBear.TestLeft;
 using System;
+using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.Waiting;
 
@@ -74,5 +75,7 @@ namespace HomeZone.UiObjects
         {
             mMainWindow.Value.Maximize();
         }
+
+        public IVisualObject VisualObject => ( ( Trumpf.Coparoo.Desktop.Core.UIObjectNode )mMainWindow.Value.Node ).Root;
     }
 }
