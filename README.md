@@ -1,8 +1,8 @@
-Commit Build: [![Build Status](https://dev.azure.com/Trumpf-HomeZone/UiTests/_apis/build/status/HomeZoneUiTests-CommitBuild)](https://dev.azure.com/Trumpf-HomeZone/UiTests/_build/latest?definitionId=6)
+Commit Build:       [![Build Status](https://dev.azure.com/Trumpf-HomeZone/UiTests/_apis/build/status/HomeZoneUiTests-CommitBuild)](https://dev.azure.com/Trumpf-HomeZone/UiTests/_build/latest?definitionId=6)
 
-Nightly: [![Build Status](https://dev.azure.com/Trumpf-HomeZone/UiTests/_apis/build/status/Nightly?branchName=master)](https://dev.azure.com/Trumpf-HomeZone/UiTests/_build/latest?definitionId=12&branchName=master)
+Nightly:            [![Build Status](https://dev.azure.com/Trumpf-HomeZone/UiTests/_apis/build/status/Nightly?branchName=master)](https://dev.azure.com/Trumpf-HomeZone/UiTests/_build/latest?definitionId=12&branchName=master)
 
-Release Build: [![Build Status](https://dev.azure.com/Trumpf-HomeZone/UiTests/_apis/build/status/HomeZoneUiTests-ReleaseBuild)](https://dev.azure.com/Trumpf-HomeZone/UiTests/_build/latest?definitionId=2)
+Release Build:      [![Build Status](https://dev.azure.com/Trumpf-HomeZone/UiTests/_apis/build/status/HomeZoneUiTests-ReleaseBuild)](https://dev.azure.com/Trumpf-HomeZone/UiTests/_build/latest?definitionId=2)
 
 # Introduction 
 This project contains the UI tests for the HomeZone.
