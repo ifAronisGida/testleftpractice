@@ -7,6 +7,7 @@ using HomeZone.UiObjectInterfaces.NestingTemplate;
 using HomeZone.UiObjectInterfaces.Part;
 using HomeZone.UiObjectInterfaces.PartOrder;
 using HomeZone.UiObjectInterfaces.Shell;
+using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop.Waiting;
 
 namespace HomeZone.UiObjectInterfaces
@@ -36,6 +37,9 @@ namespace HomeZone.UiObjectInterfaces
         TiWelcomeScreen WelcomeScreen { get; }
 
         bool BendMachineTemplatesLoaded( TimeSpan? machineFirstImportTimeout = null );
+
         void Maximize();
+
+        IVisualObject VisualObject { get; }
     }
 }

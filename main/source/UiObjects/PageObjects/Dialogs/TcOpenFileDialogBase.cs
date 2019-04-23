@@ -45,16 +45,43 @@ namespace HomeZone.UiObjects.PageObjects.Dialogs
         /// <returns></returns>
         public bool SetFilename( string filename )
         {
-            var dlg = Parent.Node.Find<IWindow>( new WindowPattern { WndClass = "#32770" }, 1 );
-
-            dlg.Cast<IOpenFileDialog>().OpenFile( filename );
+            FindDialog().Cast<IOpenFileDialog>().OpenFile( filename );
 
             return true;
+        }
+
+        public void OpenAll(string directory)
+        {
+            var breadcrumb = FindBreadcrumb();
+            breadcrumb.Click( breadcrumb.Width - 50, breadcrumb.Height / 2 );
+            breadcrumb.Keys( directory );
+            breadcrumb.Keys( "[Enter]" );
+
+            var fileList = FindFileList();
+            fileList.Click();
+            fileList.Keys( "[Home]^![End][Enter]" );
         }
 
         #endregion
 
         #region private methods
+        private IControl FindBreadcrumb()
+        {
+            return Node.Find<IControl>( new WindowPattern()
+            {
+                WndClass = "msctls_progress32"
+            } );
+        }
+
+        private IControl FindFileList()
+        {
+            var pattern = new ControlPattern();
+            pattern.Add( "AutomationId", "FolderLayoutContainer" );
+
+            return Node.Find<IControl>( pattern );
+        }
+
+        private IWindow FindDialog() => Parent.Node.Find<IWindow>( new WindowPattern { WndClass = "#32770" }, 1 );
         #endregion
 
         #region public static members

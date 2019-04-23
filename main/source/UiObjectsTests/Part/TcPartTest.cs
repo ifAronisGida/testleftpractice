@@ -20,7 +20,7 @@ namespace HomeZone.UiObjectsTests.Part
         [Tag( "Part" )]
         public void NewPartAndDeleteTest()
         {
-            Act( () =>
+            ExecuteUITest( () =>
             {
                 var partName = TestSettings.NamePrefix + "NewPartTest";
 
@@ -38,15 +38,15 @@ namespace HomeZone.UiObjectsTests.Part
                 parts.SingleDetail.Archivable = false;
                 parts.SingleDetail.Note.Value = "ImportPartTest_Note";
 
-                Assert.IsTrue( parts.Toolbar.CanSave );
+                parts.Toolbar.SaveShouldBeEnabled();
                 parts.Toolbar.Save();
                 parts.WaitForDetailOverlayDisappear( TestSettings.SavingTimeout );
-                Assert.IsFalse( parts.Toolbar.CanSave );
+                parts.Toolbar.SaveShouldBeDisabled();
 
-                Assert.IsTrue( parts.Toolbar.CanDelete );
+                parts.Toolbar.DeleteShouldBeEnabled();
                 parts.Toolbar.Delete();
                 parts.WaitForDetailOverlayDisappear( TestSettings.SavingTimeout );
-                Assert.IsFalse( parts.Toolbar.CanDelete );
+                parts.Toolbar.DeleteShouldBeDisabled();
             } );
         }
 
@@ -57,7 +57,7 @@ namespace HomeZone.UiObjectsTests.Part
         [Tag( "Part" )]
         public void ImportPartTest()
         {
-            Act( () =>
+            ExecuteUITest( () =>
                 {
                     var parts = HomeZone.GotoParts();
 
@@ -77,24 +77,24 @@ namespace HomeZone.UiObjectsTests.Part
                     parts.SingleDetailBendSolutions.New();
                     parts.SingleDetailCutSolutions.New();
 
-                    Assert.IsTrue( parts.Toolbar.CanSave );
+                    parts.Toolbar.SaveShouldBeEnabled();
                     parts.Toolbar.Save();
-                    Assert.IsFalse( parts.Toolbar.CanSave );
+                    parts.Toolbar.SaveShouldBeDisabled();
 
-                    Assert.IsTrue( parts.Toolbar.CanBoost );
+                    parts.Toolbar.BoostShouldBeEnabled();
                     parts.Toolbar.Boost();
                     parts.WaitForDetailOverlayAppear();
                     parts.WaitForDetailOverlayDisappear();
 
                     // boost again to check dialog box handling
-                    Assert.IsTrue( parts.Toolbar.CanBoost );
+                    parts.Toolbar.BoostShouldBeEnabled();
                     parts.Toolbar.Boost();
                     parts.WaitForDetailOverlayAppear();
                     parts.WaitForDetailOverlayDisappear();
 
-                    Assert.IsTrue( parts.Toolbar.CanDelete );
+                    parts.Toolbar.DeleteShouldBeEnabled();
                     parts.Toolbar.Delete();
-                    Assert.IsFalse( parts.Toolbar.CanDelete );
+                    parts.Toolbar.DeleteShouldBeDisabled();
                 } );
         }
 
@@ -105,7 +105,7 @@ namespace HomeZone.UiObjectsTests.Part
         [Tag( "Part" )]
         public void ImportDesignTest()
         {
-            Act( () =>
+            ExecuteUITest( () =>
             {
                 var parts = HomeZone.GotoParts();
 
@@ -119,7 +119,7 @@ namespace HomeZone.UiObjectsTests.Part
 
                 parts.SingleDetail.Name.Value = TestSettings.NamePrefix + "ImportDesignTest";
 
-                parts.SingleDetail.DrawingNumber.Value = "ImportDesignTestt_DrawNr";
+                parts.SingleDetail.DrawingNumber.Value = "ImportDesignTest_DrawNr";
                 parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
                 parts.SingleDetail.Id = "UIT_" + parts.SingleDetail.Id;
                 parts.SingleDetail.ExternalName.Value = "ImportDesignTest_ExtName";
@@ -128,18 +128,19 @@ namespace HomeZone.UiObjectsTests.Part
                 parts.SingleDetailBendSolutions.New();
                 parts.SingleDetailCutSolutions.New();
 
-                Assert.IsTrue( parts.Toolbar.CanSave );
+                parts.Toolbar.SaveShouldBeEnabled();
                 parts.Toolbar.Save();
-                Assert.IsFalse( parts.Toolbar.CanSave );
+                parts.WaitForDetailOverlayDisappear();
+                parts.Toolbar.SaveShouldBeDisabled();
 
-                Assert.IsTrue( parts.Toolbar.CanBoost );
+                parts.Toolbar.BoostShouldBeEnabled();
                 parts.Toolbar.Boost();
                 parts.WaitForDetailOverlayAppear();
                 parts.WaitForDetailOverlayDisappear();
 
-                Assert.IsTrue( parts.Toolbar.CanDelete );
+                parts.Toolbar.DeleteShouldBeEnabled();
                 parts.Toolbar.Delete();
-                Assert.IsFalse( parts.Toolbar.CanDelete );
+                parts.Toolbar.DeleteShouldBeDisabled();
             } );
         }
 

@@ -10,9 +10,9 @@ namespace HomeZone.UiCommonFunctions.Utilities
     /// </summary>
     public class TcLogging
     {
-        private IDriver mDriver;
+        private readonly IDriver mDriver;
+        private readonly TcTestSettings mTestSettings;
         private TestContext mTestContext;
-        private TcTestSettings mTestSettings;
 
         /// <summary>Initializes a new instance of the <see cref="TcLogging"/> class.</summary>
         /// <param name="driver">The driver.</param>
@@ -28,9 +28,17 @@ namespace HomeZone.UiCommonFunctions.Utilities
         /// <summary>Logs the specified information.</summary>
         /// <param name="info">The information.</param>
         /// <param name="additionalInfo">The additional information.</param>
-        public void Info( string info, string additionalInfo = "" )
+        /// <param name="visual">if visual != null, a screenshot is stored in the log.</param>
+        public void Info( string info, string additionalInfo = "", IVisualObject visual = null )
         {
-            mDriver.Log.Message( info, additionalInfo );
+            if( visual != null )
+            {
+                mDriver.Log.Screenshot( visual, info, additionalInfo );
+            }
+            else
+            {
+                mDriver.Log.Message( info, additionalInfo );
+            }
         }
 
         /// <summary>
@@ -80,9 +88,14 @@ namespace HomeZone.UiCommonFunctions.Utilities
         /// </summary>
         /// <param name="caption">The caption.</param>
         /// <param name="additionalInfo">The additional information.</param>
-        public void OpenFolder( string caption, string additionalInfo = "" )
+        /// <param name="visual">if visual != null, a screenshot is stored in the log.</param>
+        public void OpenFolder( string caption, string additionalInfo = "", IVisualObject visual = null )
         {
             mDriver.Log.OpenFolder( caption, additionalInfo );
+            if( visual != null )
+            {
+                mDriver.Log.Screenshot( visual, "Initial screenshot" );
+            }
         }
 
         /// <summary>

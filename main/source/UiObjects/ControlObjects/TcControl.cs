@@ -1,7 +1,7 @@
 using HomeZone.UiObjectInterfaces.Controls;
+using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop.Waiting;
 using Trumpf.Coparoo.Desktop.WPF;
-
 
 namespace HomeZone.UiObjects.ControlObjects
 {
@@ -9,7 +9,7 @@ namespace HomeZone.UiObjects.ControlObjects
     {
         public TcControl( IControlObject controlObject )
         {
-            this.ControlObject = controlObject;
+            ControlObject = controlObject;
         }
 
         public virtual Wool Enabled => ControlObject.Enabled;
@@ -20,6 +20,8 @@ namespace HomeZone.UiObjects.ControlObjects
 
 
         public virtual bool IsFocused => ControlObject.Node.GetProperty<bool>( "IsKeyboardFocusWithin" );
+
+        public IVisualObject VisualObject => ( ( Trumpf.Coparoo.Desktop.Core.UIObjectNode )ControlObject.Node ).Root;
 
         protected IControlObject ControlObject { get; }
     }

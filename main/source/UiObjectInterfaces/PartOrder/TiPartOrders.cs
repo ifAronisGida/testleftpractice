@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using HomeZone.UiObjectInterfaces.Common;
 
 namespace HomeZone.UiObjectInterfaces.PartOrder
@@ -29,5 +30,7 @@ namespace HomeZone.UiObjectInterfaces.PartOrder
         /// <param name="id">The identifier.</param>
         /// <returns>true if deleted</returns>
         bool DeletePartOrder( string id );
+
+        void ImportDirectory( string directory );
     }
 }
