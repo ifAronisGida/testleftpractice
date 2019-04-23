@@ -1,4 +1,4 @@
-﻿using HomeZone.UiObjects.TestSettings;
+﻿using HomeZone.UiCommonFunctions.TestSettings;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;

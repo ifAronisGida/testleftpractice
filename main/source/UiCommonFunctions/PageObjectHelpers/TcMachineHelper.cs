@@ -1,5 +1,5 @@
-﻿using HomeZone.UiObjectInterfaces.Machine;
-using HomeZone.UiObjects.TestSettings;
+﻿using HomeZone.UiCommonFunctions.TestSettings;
+using HomeZone.UiObjectInterfaces.Machine;
 
 namespace HomeZone.UiCommonFunctions.PageObjectHelpers
 {

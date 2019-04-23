@@ -191,8 +191,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TcAppLangDependentStrings.tt</DependentUpon>
     </Compile>
-    <Compile Include="TestSettings\TcTestSettings.cs" />
-    <Compile Include="TestSettings\TcSystemLanguageSpecific.cs" />
     <Compile Include="TcApp.cs" />
     <Compile Include="TcAppProcess.cs" />
     <Compile Include="TcHomeZoneApp.cs" />

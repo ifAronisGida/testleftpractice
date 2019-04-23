@@ -1,4 +1,4 @@
-﻿using HomeZone.UiObjects.TestSettings;
+﻿using HomeZone.UiCommonFunctions.TestSettings;
 using HomeZone.UiObjectInterfaces.NestingTemplate;
 
 namespace HomeZone.UiCommonFunctions.PageObjectHelpers
