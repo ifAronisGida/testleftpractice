@@ -1,4 +1,5 @@
 ﻿using HomeZone.UiCommonFunctions.Base;
+using HomeZone.UiObjectTests.Assertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Trumpf.AutoTest.Facts;

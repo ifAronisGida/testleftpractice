@@ -1,5 +1,6 @@
 using HomeZone.UiCommonFunctions.Base;
 using HomeZone.UiObjects.PageObjects.Part;
+using HomeZone.UiObjectTests.Assertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

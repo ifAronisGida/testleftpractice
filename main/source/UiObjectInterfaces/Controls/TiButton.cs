@@ -14,15 +14,5 @@
         /// Checks if the button is enabled and clicks the button.
         /// </summary>
         void Click();
-
-        /// <summary>
-        /// Asserts that the button is enabled.
-        /// </summary>
-        void ShouldBeEnabled();
-
-        /// <summary>
-        /// Asserts that the button is disabled.
-        /// </summary>
-        void ShouldBeDisabled();
     }
 }
