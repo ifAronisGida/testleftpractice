@@ -355,7 +355,7 @@ namespace HomeZone.UiObjectsTests.Utilities
                 parts.SingleDetail.Customer = Name2UIT_Name( mCustomerNames[i] );
                 parts.SingleDetail.DrawingNumber.Value = TestSettings.NamePrefix + "DrawNr";
                 parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
-                parts.SingleDetail.ExternalName.Value = TestSettings.NamePrefix + "ExtName";
+                parts.SingleDetail.ExternalName = TestSettings.NamePrefix + "ExtName";
                 parts.SingleDetail.Note.Value = TestSettings.NamePrefix + "Note";
                 parts.SingleDetailBendSolutions.New();
                 parts.SingleDetailCutSolutions.New();
