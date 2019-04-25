@@ -1,4 +1,5 @@
 ﻿using HomeZone.UiCommonFunctions.Base;
+using HomeZone.UiObjectTests.Assertions;
 using HomeZone.UiObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -65,7 +66,7 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
             Assert.AreEqual( null, cutJobs.BaseInfo.FinishDate );
 
             // Save button is enabled.
-            Assert.IsTrue( cutJobs.Toolbar.CanSave );
+            cutJobs.Toolbar.SaveShouldBeEnabled();
 
             // There are no contained orders.
             Assert.AreEqual( 0, cutJobs.ContainedOrders.PartOrdersCount );
@@ -106,7 +107,7 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
             Log.Info( "Check save button" );
 
             // Save button is enabled.
-            Assert.IsTrue( cutJobs.Toolbar.CanSave, "Save button is not enabled" );
+            cutJobs.Toolbar.SaveShouldBeEnabled();
 
 
             Log.Info( "Add an order that has a material and machine assigned." );
@@ -126,7 +127,7 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
 
             Log.Info( "Check save button is still enabled" );
             // Save button still is enabled.
-            Assert.IsTrue( cutJobs.Toolbar.CanSave );
+            cutJobs.Toolbar.SaveShouldBeEnabled();
 
             Log.Info( "Check open button is enabled" );
             // Open button is enabled.
@@ -187,7 +188,7 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
 
             // Job saved successfully.
             Log.Info( "Check save button is now disabled" );
-            Assert.IsFalse( cutJobs.Toolbar.CanSave );
+            cutJobs.Toolbar.SaveShouldBeDisabled();
 
             CleanUp();
 
