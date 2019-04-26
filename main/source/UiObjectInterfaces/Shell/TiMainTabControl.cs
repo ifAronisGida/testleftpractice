@@ -1,3 +1,5 @@
+using System;
+
 namespace HomeZone.UiObjectInterfaces.Shell
 {
     public interface TiMainTabControl
@@ -27,6 +29,10 @@ namespace HomeZone.UiObjectInterfaces.Shell
         /// </summary>
         void CloseCurrentTab();
 
-        void WaitForTabOverlayDisappear();
+        /// <summary>
+        /// Waits for tab overlay disappear.
+        /// </summary>
+        /// <param name="timeout">The timeout.</param>
+        void WaitForTabOverlayDisappear( TimeSpan? timeout = null );
     }
 }
