@@ -31,6 +31,8 @@ namespace HomeZone.UiObjects
 
         public TimeSpan PartOverlayDisappearTimeout { get; set; } = TimeSpan.FromSeconds( 120 );
 
+        public TimeSpan TabOverlayDisappearTimeout { get; set; } = TimeSpan.FromSeconds( 120 );
+
         public TimeSpan NestingTemplateOverlayAppearTimeout { get; set; } = TimeSpan.FromSeconds( 10 );
 
         public TimeSpan NestingTemplateOverlayDisappearTimeout { get; set; } = TimeSpan.FromSeconds( 60 );
