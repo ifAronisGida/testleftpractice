@@ -25,6 +25,9 @@ namespace HomeZone.UiObjectInterfaces.DatamanagerBend
         /// </summary>
         void SelectAll();
 
+
+        void SelectByName( string name );
+
         /// <summary>
         /// Export deduction values
         /// </summary>

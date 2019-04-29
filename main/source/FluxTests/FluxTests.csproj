@@ -97,6 +97,7 @@
     <None Include="DataMigration\TestData\1.0038_AIR_BENDING.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="DataMigration\TestData\1.234.arvx" />
     <None Include="DataMigration\TestData\1.4301_AIR_BENDING.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

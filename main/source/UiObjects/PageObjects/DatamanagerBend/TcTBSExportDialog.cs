@@ -45,6 +45,12 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
             SelectAllCheckbox.Value = true;
         }
 
+        public void SelectByName( string name )
+        {
+            TiValueControl<bool> NamedCheckBox = Find<TiValueControl<bool>>( Search.By( new WPFPattern { WPFControlText = name } ));
+            NamedCheckBox.Value = true;
+        }
+
         /// <summary>
         /// Export deduction values
         /// </summary>

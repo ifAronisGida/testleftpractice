@@ -1,4 +1,5 @@
 using HomeZone.UiObjects.Utilities;
+using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
 using System;
 using Trumpf.Coparoo.Desktop;
@@ -19,6 +20,11 @@ namespace HomeZone.UiObjects.PageObjects
         public TInterface Find<TInterface>( string uid, Predicate<IControl> predicate = null, int? depth = null ) where TInterface : class
         {
             return TcControlMapper.Map<TInterface>( this.FindGeneric( Search.ByUid( uid ), predicate, depth ) );
+        }
+
+        public TInterface Find<TInterface>( ISearchPattern pattern, Predicate<IControl> predicate = null, int? depth = null ) where TInterface : class
+        {
+            return TcControlMapper.Map<TInterface>( this.FindGeneric( Search.By( pattern ), predicate, depth ) );
         }
 
         public TInterface FindByControlName<TInterface>( string controlName ) where TInterface : class

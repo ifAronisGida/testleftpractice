@@ -18,6 +18,25 @@ namespace HomeZone.FluxTests.DataMigration
         private static string S_REMOVE_CONTENT_AFTER_CHARACHTER = "@";
         private static int S_LINE_NUMBER_CONTAINING_DATE = 0;
         private static string S_NO_CSV_FILES_EXPORTED = "No csv files have been exported";
+        private static string S_ARVX_FILE_ENDING_FILTER = "*.arvx";
+
+
+        [ClassInitialize]
+        public void ImportTestDeductionValues()
+        {
+            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
+            var bendSettings = settingsDialog.BendSettings;
+            bendSettings.Goto();
+            bendSettings.OpenDataManagerBend();
+
+            string testDataPath = Path.Combine( Path.GetDirectoryName( Assembly.GetExecutingAssembly().Location ), S_TESTDATA_SUB_PATH );
+            Dictionary<string, string> baselineDictionary = Directory.GetFiles( testDataPath, S_ARVX_FILE_ENDING_FILTER ).ToDictionary( item => Path.GetFileName( item ), item => item );
+            DatamanagerBend.MainWindowExists.WaitFor( TestSettings.DatamanagerBendStartTimeout );
+            DatamanagerBend.Tools.Import( baselineDictionary.First().Value );
+            DatamanagerBend.Close();
+
+            settingsDialog.Save();
+        }
 
         /// <summary>
         /// Opens and closes the DataManager Bend.
@@ -50,7 +69,27 @@ namespace HomeZone.FluxTests.DataMigration
         }
 
         /// <summary>
-        /// Implementation of the opean and close datamanager test
+        /// Migrate test coining deduction values
+        /// </summary>
+        [TestMethod, UniqueName( "7CC54046-D16A-4A0A-983A-18E217D0FBA8" )]
+        [Tag( "DataMigration" )]
+        public void MigrateTestCoiningDeductionValuesTest()
+        {
+            ExecuteUITest( DoMigrateTestCoiningDeductionValuesTest, "Export specified coining deduction values and import them in Flux" );
+        }
+
+        /// <summary>
+        /// Migrate test air bending deduction values
+        /// </summary>
+        [TestMethod, UniqueName( "5C204B1F-D2F7-4504-9BE8-7B4BD484B128" )]
+        [Tag( "DataMigration" )]
+        public void MigrateTestAirBendingDeductionValuesTest()
+        {
+            ExecuteUITest( DoMigrateTestAirBendingDeductionValuesTest, "Export specified air bending deduction values and import them in Flux" );
+        }
+
+        /// <summary>
+        /// Implementation of the open and close datamanager test
         /// </summary>
         private void DoOpenAndCloseDataManagerBendTest()
         {
@@ -144,6 +183,29 @@ namespace HomeZone.FluxTests.DataMigration
             DatamanagerBend.Close();
 
             settingsDialog.Cancel();
+        }
+
+        private void DoMigrateTestCoiningDeductionValuesTest()
+        {
+            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
+            var bendSettings = settingsDialog.BendSettings;
+            bendSettings.Goto();
+            bendSettings.OpenDataManagerBend();
+
+            DatamanagerBend.MainWindowExists.WaitFor( TestSettings.DatamanagerBendStartTimeout );
+            DatamanagerBend.DeductionValues.Goto();
+            DatamanagerBend.DeductionValues.ExportTBSCSV();
+            DatamanagerBend.DeductionValues.TBSExportDialog.SelectByName( "1.234" );
+            DatamanagerBend.DeductionValues.TBSExportDialog.Export();
+            DatamanagerBend.Close();
+
+
+            settingsDialog.Save();
+        }
+
+        private void DoMigrateTestAirBendingDeductionValuesTest()
+        {
+            throw new NotImplementedException();
         }
     }
 }

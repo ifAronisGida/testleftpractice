@@ -11,34 +11,23 @@
 
 #region USING
 
+using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.DatamanagerBend;
-using SmartBear.TestLeft;
-using System;
+using HomeZone.UiObjectInterfaces.Dialogs;
+using SmartBear.TestLeft.TestObjects.WPF;
 using Trumpf.Coparoo.Desktop;
-using Trumpf.Coparoo.Desktop.Waiting;
+using Trumpf.Coparoo.Desktop.WPF;
 
 #endregion
 
 namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
 {
-    public class TcDatamanagerBendApp : ProcessObject, TiDatamanagerBendApp
+    public class TcTools : TcPageObjectBase, IChildOf<TcDatamanagerBendApp>, TiTools
     {
         #region private constants
-
-        private readonly Lazy<TcMainWindowDatamanagerBend> mMainWindow;
-
         #endregion
 
         #region constructor
-
-        public TcDatamanagerBendApp( string processname, IDriver driver ) : base( processname )
-        {
-            Driver = driver;
-            mMainWindow = new Lazy<TcMainWindowDatamanagerBend>( On<TcMainWindowDatamanagerBend> );
-        }
-
-
-
         #endregion
 
         #region public static methods
@@ -46,17 +35,20 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
 
         #region public methods
 
-        /// <summary>
-        /// Close the Datamanager
-        /// </summary>
-        public void Close()
+        public void Import( string filename )
         {
-            mMainWindow.Value.Close();
+            ImportButton.Click();
+            var openDlg = On<TiOpenFileDialog, TcOpenFileDialogDatamanager>();
+            openDlg.SetFilename( filename );
         }
 
         #endregion
 
         #region private methods
+
+        protected override Search SearchPattern => Search.By( new WPFPattern { ClrFullClassName = "System.Windows.Controls.TabControl" } );
+
+        TiButton ImportButton => Find<TiButton>( "Tools.Import" );
 
         #endregion
 
@@ -70,24 +62,6 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
         #endregion
 
         #region properties
-
-        /// <summary>
-        /// Check if the datamanager main window exists
-        /// </summary>
-        public Wool MainWindowExists => mMainWindow.Value.Exists;
-
-
-
-        /// <summary>
-        /// Deduction value Tab
-        /// </summary>
-        public TiDeductionValues DeductionValues => On<TcDeductionValues>();
-
-        /// <summary>
-        /// Tools Tab
-        /// </summary>
-        public TiTools Tools => On<TcTools>();
-
         #endregion
     }
 }
