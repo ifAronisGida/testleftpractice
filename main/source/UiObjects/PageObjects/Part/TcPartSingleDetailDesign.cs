@@ -4,6 +4,7 @@ using HomeZone.UiObjects.ControlObjects;
 using HomeZone.UiObjects.PageObjects.Dialogs;
 using HomeZone.UiObjects.PageObjects.Shell;
 using HomeZone.UiObjects.Utilities;
+using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
 
@@ -16,7 +17,7 @@ namespace HomeZone.UiObjects.PageObjects.Part
     /// <seealso cref="IChildOf{TcDetailContent}" />
     public class TcPartSingleDetailDesign : TcPageObjectBase, IChildOf<TcDetailContent>, TiPartSingleDetailDesign
     {
-        protected override Search SearchPattern => Search.ByControlName( "DesignSolutionPanel" );
+        protected override Search SearchPattern => Search.ByUid( "Part.Detail.Design" );
 
         private TiButton ImportButton => this.FindMapped<TiButton>( "Part.Detail.Design.Import" );
         private TiButton BoostButton => this.FindMapped<TiButton>( "Part.Detail.Design.Calculate" );
@@ -27,7 +28,7 @@ namespace HomeZone.UiObjects.PageObjects.Part
         public TiValueControl<string> RawMaterial => Find<TiValueControl<string>>( "Part.Detail.Design.RawMaterial.Selection" );
         public TiValueControl<string> Unfolding => Find<TiValueControl<string>>( "Part.Detail.Design.Unfolding.Selection" );
         public TiValueControl<string> PermittedNestingOrientations => Find<TiValueControl<string>>( "Part.Detail.Design.PermittedNestingOrientations" );
-        private TcGroupPanel DetailGroupPanel => Find<TcGroupPanel>( Search.ByControlName( "DesignSolutionPanel" ) );
+        private TcGroupPanel SolutionPanel => Find<TcGroupPanel>( Search.ByUid( "Part.Detail.Design" ) );
         private TiValueControl<bool> RotateToGrainDirectionCheckBox => Find<TiValueControl<bool>>( "Part.Detail.Design.RotateToGrainDirection" );
 
         /// <summary>
@@ -69,9 +70,9 @@ namespace HomeZone.UiObjects.PageObjects.Part
         /// </value>
         public bool IsMoreExpanded
         {
-            set => DetailGroupPanel.IsMoreExpanded = value;
+            set => SolutionPanel.IsMoreExpanded = value;
 
-            get => DetailGroupPanel.IsMoreExpanded;
+            get => SolutionPanel.IsMoreExpanded;
         }
 
         public bool RotateToGrainDirection

@@ -45,6 +45,7 @@ namespace HomeZone.UiObjectsTests.Part
                 parts.SingleDetailDesign.RawMaterial.Value = "Cu0M0130---";
                 parts.SingleDetailDesign.Unfolding.Value = "<All Tools>";
                 parts.SingleDetailDesign.PermittedNestingOrientations.Value = "90°;270°";
+
                 parts.SingleDetailDesign.RotateToGrainDirection = true;
 
                 parts.Toolbar.SaveShouldBeEnabled();
