@@ -115,7 +115,7 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
             // Test step: Add an order that has a material and machine assigned.
             var orderCount = cutJobs.ContainedOrders.PartOrdersCount;
             cutJobs.ContainedOrders.AddPartOrder( Name2UIT_Name( mId ) );
-
+            cutJobs.WaitForDetailOverlayDisappear();
 
             Log.Info( "Check if the selected order appears in the 'Order List'" );
             // The selected order appears in the "Order List".
