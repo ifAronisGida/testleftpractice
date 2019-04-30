@@ -13,35 +13,14 @@ namespace HomeZone.FluxTests.DataMigration
     [TestClass]
     public sealed class TcDataManagerTest : TcBaseTestClass
     {
-        private static string S_TESTDATA_SUB_PATH = "DataMigration/TestData";
-        private static string S_CSV_FILE_ENDING_FILTER = "*.csv";
-        private static string S_REMOVE_CONTENT_AFTER_CHARACHTER = "@";
-        private static int S_LINE_NUMBER_CONTAINING_DATE = 0;
-        private static string S_NO_CSV_FILES_EXPORTED = "No csv files have been exported";
-        private static string S_ARVX_FILE_ENDING_FILTER = "*.arvx";
+        private const string S_TESTDATA_SUB_PATH = "DataMigration/TestData";
+        private const string S_CSV_FILE_ENDING_FILTER = "*.csv";
+        private const string S_REMOVE_CONTENT_AFTER_CHARACHTER = "@";
+        private const string S_NO_CSV_FILES_EXPORTED = "No csv files have been exported";
+        private const string S_ARVX_FILE_ENDING_FILTER = "*.arvx";
+        private const string S_CUSTOM_MATERIAL_NAME = "1.234";
 
-
-        //[ClassInitialize]
-        //public void ImportTestDeductionValues()
-        //{
-        //    var materials = HomeZone.Materials;
-        //    materials.Toolbar.Duplicate();
-        //    materials.Detail.Id.Value = "1.234"; //TODO: wiederholbar?
-        //    materials.Toolbar.Save();
-
-        //    var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
-        //    var bendSettings = settingsDialog.BendSettings;
-        //    bendSettings.Goto();
-        //    bendSettings.OpenDataManagerBend();
-
-        //    string testDataPath = Path.Combine( Path.GetDirectoryName( Assembly.GetExecutingAssembly().Location ), S_TESTDATA_SUB_PATH );
-        //    Dictionary<string, string> baselineDictionary = Directory.GetFiles( testDataPath, S_ARVX_FILE_ENDING_FILTER ).ToDictionary( item => Path.GetFileName( item ), item => item );
-        //    DatamanagerBend.MainWindowExists.WaitFor( TestSettings.DatamanagerBendStartTimeout );
-        //    DatamanagerBend.Tools.Import( baselineDictionary.First().Value );
-        //    DatamanagerBend.Close();
-
-        //    settingsDialog.Save();
-        //}
+        private const int S_LINE_NUMBER_CONTAINING_DATE = 0;
 
         /// <summary>
         /// Opens and closes the DataManager Bend.
@@ -97,20 +76,54 @@ namespace HomeZone.FluxTests.DataMigration
         /// </summary>
         private void DoMigrateAllDieDeductionValueTest()
         {
+            ImportTestDeductionValues();
+
             List<Action> actionList = new List<Action>
             {
-            ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectAll()
-        };
+                ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectAll()
+            };
             ExportAndImportSpecifiedDeductionValues( actionList );
         }
 
         private void DoMigrateTestCoiningDeductionValuesTest()
         {
+            ImportTestDeductionValues();
+
             List<Action> actionList = new List<Action>
             {
-            ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectByName( "1.234" )
-        };
+                ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectByName( S_CUSTOM_MATERIAL_NAME ),
+                ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectCoining()
+            };
             ExportAndImportSpecifiedDeductionValues( actionList );
+        }
+
+        private void ImportTestDeductionValues()
+        {
+            var materials = HomeZone.Materials;
+            materials.ResultColumn.SearchText.Value = S_CUSTOM_MATERIAL_NAME;
+            materials.ResultColumn.DoSearch();
+            int count = materials.ResultColumn.Count;
+            materials.ResultColumn.ClearSearch();
+            if( count == 0 )
+            {
+                materials.ResultColumn.SelectItem( "1.0038" );
+                materials.Toolbar.Duplicate();
+                materials.Detail.Id.Value = S_CUSTOM_MATERIAL_NAME;
+                materials.Toolbar.Save();
+
+                var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
+                var bendSettings = settingsDialog.BendSettings;
+                bendSettings.Goto();
+                bendSettings.OpenDataManagerBend();
+
+                string testDataPath = Path.Combine( Path.GetDirectoryName( Assembly.GetExecutingAssembly().Location ), S_TESTDATA_SUB_PATH );
+                Dictionary<string, string> baselineDictionary = Directory.GetFiles( testDataPath, S_ARVX_FILE_ENDING_FILTER ).ToDictionary( item => Path.GetFileName( item ), item => item );
+                DatamanagerBend.MainWindowExists.WaitFor( TestSettings.DatamanagerBendStartTimeout );
+                DatamanagerBend.Tools.Import( baselineDictionary.First().Value );
+                DatamanagerBend.Close();
+
+                settingsDialog.Save();
+            }
         }
 
         private void ExportAndImportSpecifiedDeductionValues( List<Action> deductionSelectionCommandList )
