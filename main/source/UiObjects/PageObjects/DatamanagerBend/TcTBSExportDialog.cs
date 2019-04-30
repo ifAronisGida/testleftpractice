@@ -46,15 +46,22 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
             SelectAllCheckbox.Value = true;
         }
 
-        public void SelectByName( string name )
+        /// <summary>
+        /// Select Deduction values by material name
+        /// </summary>
+        /// <param name="materialName">material name</param>
+        public void SelectByMaterialName( string name )
         {
             IControlObject NamedCheckBox = Find<TcGenericControlObject>( Search.By( new WPFPattern { WPFControlText = name } ));
             NamedCheckBox.Click();
         }
 
+        /// <summary>
+        /// Select coining values (default is air bending)
+        /// </summary>
         public void SelectCoining()
         {
-
+            //TODO
         }
 
         /// <summary>

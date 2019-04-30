@@ -85,18 +85,24 @@ namespace HomeZone.FluxTests.DataMigration
             ExportAndImportSpecifiedDeductionValues( actionList );
         }
 
+        /// <summary>
+        /// Execute the migrate coining deduction value test
+        /// </summary>
         private void DoMigrateTestCoiningDeductionValuesTest()
         {
             ImportTestDeductionValues();
 
             List<Action> actionList = new List<Action>
             {
-                ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectByName( S_CUSTOM_MATERIAL_NAME ),
+                ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectByMaterialName( S_CUSTOM_MATERIAL_NAME ),
                 ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectCoining()
             };
             ExportAndImportSpecifiedDeductionValues( actionList );
         }
 
+        /// <summary>
+        /// Import test deduction values from TestData
+        /// </summary>
         private void ImportTestDeductionValues()
         {
             var materials = HomeZone.Materials;
@@ -126,6 +132,10 @@ namespace HomeZone.FluxTests.DataMigration
             }
         }
 
+        /// <summary>
+        /// Export and import deduction values as specified via the input actions
+        /// </summary>
+        /// <param name="deductionSelectionCommandList">actions defining the deduction value selection</param>
         private void ExportAndImportSpecifiedDeductionValues( List<Action> deductionSelectionCommandList )
         {
             var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
@@ -152,6 +162,10 @@ namespace HomeZone.FluxTests.DataMigration
             settingsDialog.Save();
         }
 
+        /// <summary>
+        /// Get the generated csv files
+        /// </summary>
+        /// <returns>list with the generated csv file paths</returns>
         private List<string> GetGeneratedCSVFiles()
         {
             string desktopPath = Environment.GetFolderPath( Environment.SpecialFolder.Desktop );
@@ -159,6 +173,10 @@ namespace HomeZone.FluxTests.DataMigration
             return generatedCSVFileList;
         }
 
+        /// <summary>
+        /// Compare generated csv files against the baseline
+        /// </summary>
+        /// <param name="generatedCSVFileList">list of generated csv file paths</param>
         private void CompareCSVFilesAgainstBaseline( List<string> generatedCSVFileList )
         {
             Assert.AreNotEqual( 0, generatedCSVFileList.Count, S_NO_CSV_FILES_EXPORTED );
@@ -181,6 +199,10 @@ namespace HomeZone.FluxTests.DataMigration
             }
         }
 
+        /// <summary>
+        /// Import exported csv files
+        /// </summary>
+        /// <param name="exportedCSVList">file path list of exported csv files</param>
         private void ImportExportedCSVFiles( List<string> exportedCSVList )
         {
             Flux.DeductionValueDialogExists.WaitFor( TestSettings.FluxStartTimeout );

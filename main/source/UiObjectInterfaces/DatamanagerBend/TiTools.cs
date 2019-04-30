@@ -20,6 +20,10 @@ namespace HomeZone.UiObjectInterfaces.DatamanagerBend
     {
         #region public methods
 
+        /// <summary>
+        /// Import (tools, deduction values, ...)
+        /// </summary>
+        /// <param name="filename"></param>
         void Import( string filename );
 
         #endregion

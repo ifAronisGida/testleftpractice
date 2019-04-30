@@ -35,6 +35,10 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
 
         #region public methods
 
+        /// <summary>
+        /// Import (tools, deduction values, ...)
+        /// </summary>
+        /// <param name="filename"></param>
         public void Import( string filename )
         {
             ImportButton.Click();

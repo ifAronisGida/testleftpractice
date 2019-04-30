@@ -25,9 +25,15 @@ namespace HomeZone.UiObjectInterfaces.DatamanagerBend
         /// </summary>
         void SelectAll();
 
+        /// <summary>
+        /// Select Deduction values by material name
+        /// </summary>
+        /// <param name="materialName">material name</param>
+        void SelectByMaterialName( string materialName );
 
-        void SelectByName( string name );
-
+        /// <summary>
+        /// Select coining values (default is air bending)
+        /// </summary>
         void SelectCoining();
 
         /// <summary>
