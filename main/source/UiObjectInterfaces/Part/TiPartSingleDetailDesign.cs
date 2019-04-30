@@ -1,3 +1,5 @@
+using HomeZone.UiObjectInterfaces.Controls;
+
 namespace HomeZone.UiObjectInterfaces.Part
 {
     public interface TiPartSingleDetailDesign
@@ -15,5 +17,14 @@ namespace HomeZone.UiObjectInterfaces.Part
         bool Import( string filename );
 
         void Boost();
+
+        void Delete();
+
+        TiValueControl<string> Material { get; }
+        TiValueControl<string> RawMaterial { get; }
+        TiValueControl<string> Unfolding { get; }
+        TiValueControl<string> PermittedNestingOrientations { get; }
+
+        bool RotateToGrainDirection { get; set; }
     }
 }

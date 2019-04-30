@@ -14,7 +14,7 @@ namespace HomeZone.UiObjects.PageObjects.PartOrder
 
         private TiButton SelectPartButton => Find<TiButton>( "PartOrder.Detail.OrderedPart.Select" );
 
-        public TiPartSingleDetailDesign Design => Find<TcPartSingleDetailDesign>();
+        public TiPartSingleDetailDesign Design => On<TcPartSingleDetailDesign>();
 
         public void SelectPart( string partId )
         {

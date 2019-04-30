@@ -58,6 +58,8 @@
     <Parameter name="PartOverlayDisappearTimeout" value="90" />
     <Parameter name="PartSelectAllTimeout" value="5" />
 
+    <Parameter name="TabOverlayDisappearTimeout" value="90" />
+
   </TestRunParameters>
 
 </RunSettings>

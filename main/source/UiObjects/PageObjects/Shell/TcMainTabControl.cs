@@ -1,3 +1,4 @@
+using System;
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.WPF;
@@ -18,7 +19,7 @@ namespace HomeZone.UiObjects.PageObjects.Shell
         protected override Search SearchPattern => Search.ByUid( "MainTabControl" );
 
         private TcOverlay TabOverlay => Find<TcOverlay>( Search.ByUid( "Tab.Overlay" ) );
-        private TiButton AddControlObject => Find<TiButton>( "MainTabControl.Add" , null, 20 );
+        private TiButton AddControlObject => Find<TiButton>( "MainTabControl.Add", null, 20 );
 
         /// <summary>
         /// Gets or sets the index of the selected tab.
@@ -61,10 +62,14 @@ namespace HomeZone.UiObjects.PageObjects.Shell
             closeButton.CallMethod( "OnClick" );
         }
 
-        public void WaitForTabOverlayDisappear()
+        /// <summary>
+        /// Waits for tab overlay disappear.
+        /// </summary>
+        /// <param name="timeout">The timeout.</param>
+        public void WaitForTabOverlayDisappear( TimeSpan? timeout = null )
         {
             var overlay = TabOverlay;
-            Wait.For( () => !overlay.Exists || !overlay.Visible );
+            Wait.For( () => !overlay.Exists || !overlay.Visible, timeout ?? TcPageObjectSettings.Instance.TabOverlayDisappearTimeout );
         }
     }
 }

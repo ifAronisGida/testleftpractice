@@ -1,7 +1,9 @@
-﻿using HomeZone.UiCommonFunctions.Base;
+﻿using System;
+using HomeZone.UiCommonFunctions.Base;
 using HomeZone.UiObjectsTests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Trumpf.AutoTest.Facts;
+using Trumpf.Coparoo.Desktop.Waiting;
 using UiCommonFunctions.Utilities;
 
 namespace HomeZone.SmokeTests.Smoke
@@ -58,7 +60,7 @@ namespace HomeZone.SmokeTests.Smoke
 
             Log.Info( "Opening the 3rd party components dialog." );
             var componentsDlg = about.ShowThirdPartyComponents();
-
+            Wait.For( () => componentsDlg.IsVisible, TimeSpan.FromSeconds( 15 ) );
             Assert.IsTrue( componentsDlg.IsVisible, "Components dialog is not visible" );
             Log.Info( "3rd party components dialog successfully opened." );
             Assert.AreNotEqual( 0, componentsDlg.HomeZoneLicenseCount, "HomeZone grid does not contain licenses" );
@@ -66,6 +68,7 @@ namespace HomeZone.SmokeTests.Smoke
 
             Log.Info( "Opening the license text dialog." );
             var licenseTextDlg = componentsDlg.ShowLicenseText();
+            Wait.For( () => licenseTextDlg.IsVisible, TimeSpan.FromSeconds( 15 ) );
             Assert.IsTrue( licenseTextDlg.IsVisible, "License text dialog is not visible" );
             Log.Info( "License text dialog successfully opened." );
             licenseTextDlg.Close();
