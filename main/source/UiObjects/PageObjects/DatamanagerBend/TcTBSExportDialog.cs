@@ -14,6 +14,7 @@
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.DatamanagerBend;
 using HomeZone.UiObjects.ControlObjects;
+using HomeZone.UiObjects.Utilities;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using System;
@@ -47,8 +48,13 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
 
         public void SelectByName( string name )
         {
-            TiValueControl<bool> NamedCheckBox = Find<TiValueControl<bool>>( Search.By( new WPFPattern { WPFControlText = name } ));
-            NamedCheckBox.Value = true;
+            IControlObject NamedCheckBox = Find<TcGenericControlObject>( Search.By( new WPFPattern { WPFControlText = name } ));
+            NamedCheckBox.Click();
+        }
+
+        public void SelectCoining()
+        {
+
         }
 
         /// <summary>

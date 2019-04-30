@@ -28,6 +28,8 @@ namespace HomeZone.UiObjectInterfaces.DatamanagerBend
 
         void SelectByName( string name );
 
+        void SelectCoining();
+
         /// <summary>
         /// Export deduction values
         /// </summary>

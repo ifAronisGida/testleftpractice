@@ -1,0 +1,9 @@
+technology,airbending,source,DataManager@30.04.2019 13:25:58
+@data
+material,sheetThicknessMM,punchRadiusMM,dieWidthMM,angleDEG,bendDeductionTanMM,bendDeductionEdgeMM,radiusMM
+1.234,1,1,8,45,-6.274,-0.617,1
+1.234,1,1,8,90,-1.234,-1.234,1.5
+1.234,2,1,10,45,-12.486,-1.172,2
+1.234,2,1,10,90,-2.234,-2.345,2
+1.234,5,1,12,45,-31.123,-2.839,5
+1.234,5,1,12,90,-5.678,-5.678,5.5

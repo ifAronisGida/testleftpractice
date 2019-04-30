@@ -21,22 +21,27 @@ namespace HomeZone.FluxTests.DataMigration
         private static string S_ARVX_FILE_ENDING_FILTER = "*.arvx";
 
 
-        [ClassInitialize]
-        public void ImportTestDeductionValues()
-        {
-            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
-            var bendSettings = settingsDialog.BendSettings;
-            bendSettings.Goto();
-            bendSettings.OpenDataManagerBend();
+        //[ClassInitialize]
+        //public void ImportTestDeductionValues()
+        //{
+        //    var materials = HomeZone.Materials;
+        //    materials.Toolbar.Duplicate();
+        //    materials.Detail.Id.Value = "1.234"; //TODO: wiederholbar?
+        //    materials.Toolbar.Save();
 
-            string testDataPath = Path.Combine( Path.GetDirectoryName( Assembly.GetExecutingAssembly().Location ), S_TESTDATA_SUB_PATH );
-            Dictionary<string, string> baselineDictionary = Directory.GetFiles( testDataPath, S_ARVX_FILE_ENDING_FILTER ).ToDictionary( item => Path.GetFileName( item ), item => item );
-            DatamanagerBend.MainWindowExists.WaitFor( TestSettings.DatamanagerBendStartTimeout );
-            DatamanagerBend.Tools.Import( baselineDictionary.First().Value );
-            DatamanagerBend.Close();
+        //    var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
+        //    var bendSettings = settingsDialog.BendSettings;
+        //    bendSettings.Goto();
+        //    bendSettings.OpenDataManagerBend();
 
-            settingsDialog.Save();
-        }
+        //    string testDataPath = Path.Combine( Path.GetDirectoryName( Assembly.GetExecutingAssembly().Location ), S_TESTDATA_SUB_PATH );
+        //    Dictionary<string, string> baselineDictionary = Directory.GetFiles( testDataPath, S_ARVX_FILE_ENDING_FILTER ).ToDictionary( item => Path.GetFileName( item ), item => item );
+        //    DatamanagerBend.MainWindowExists.WaitFor( TestSettings.DatamanagerBendStartTimeout );
+        //    DatamanagerBend.Tools.Import( baselineDictionary.First().Value );
+        //    DatamanagerBend.Close();
+
+        //    settingsDialog.Save();
+        //}
 
         /// <summary>
         /// Opens and closes the DataManager Bend.
@@ -49,23 +54,13 @@ namespace HomeZone.FluxTests.DataMigration
         }
 
         /// <summary>
-        /// Export all die deduction value test
-        /// </summary>
-        [TestMethod, UniqueName( "F66E71B5-26D9-43FD-9CF1-EA4022D449DB" )]
-        [Tag( "DataMigration" )]
-        public void ExportAllDieDeductionValueTest()
-        {
-            ExecuteUITest( DoExportAllDieDeductionValueTest, "Export Die Deduction Values" );
-        }
-
-        /// <summary>
         /// Export and import all die deduction values
         /// </summary>
         [TestMethod, UniqueName( "A4206A59-605D-4F78-9F55-F8B6A51D459B" )]
         [Tag( "DataMigration" )]
-        public void ExportAndImportAllDieDeductionValueTest()
+        public void MigrateAllDieDeductionValueTest()
         {
-            ExecuteUITest( DoExportAndImportAllDieDeductionValueTest, "Export all die deduction values and import them in Flux" );
+            ExecuteUITest( DoMigrateAllDieDeductionValueTest, "Export all die deduction values and import them in Flux" );
         }
 
         /// <summary>
@@ -76,16 +71,6 @@ namespace HomeZone.FluxTests.DataMigration
         public void MigrateTestCoiningDeductionValuesTest()
         {
             ExecuteUITest( DoMigrateTestCoiningDeductionValuesTest, "Export specified coining deduction values and import them in Flux" );
-        }
-
-        /// <summary>
-        /// Migrate test air bending deduction values
-        /// </summary>
-        [TestMethod, UniqueName( "5C204B1F-D2F7-4504-9BE8-7B4BD484B128" )]
-        [Tag( "DataMigration" )]
-        public void MigrateTestAirBendingDeductionValuesTest()
-        {
-            ExecuteUITest( DoMigrateTestAirBendingDeductionValuesTest, "Export specified air bending deduction values and import them in Flux" );
         }
 
         /// <summary>
@@ -108,14 +93,61 @@ namespace HomeZone.FluxTests.DataMigration
         }
 
         /// <summary>
-        /// Implementation of the export all deduction value test
+        /// Execute the export and import all die deduction value test
         /// </summary>
-        private void DoExportAllDieDeductionValueTest()
+        private void DoMigrateAllDieDeductionValueTest()
         {
-            ExportAllDieDeductionValues();
+            List<Action> actionList = new List<Action>
+            {
+            ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectAll()
+        };
+            ExportAndImportSpecifiedDeductionValues( actionList );
+        }
 
+        private void DoMigrateTestCoiningDeductionValuesTest()
+        {
+            List<Action> actionList = new List<Action>
+            {
+            ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectByName( "1.234" )
+        };
+            ExportAndImportSpecifiedDeductionValues( actionList );
+        }
+
+        private void ExportAndImportSpecifiedDeductionValues( List<Action> deductionSelectionCommandList )
+        {
+            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
+            var bendSettings = settingsDialog.BendSettings;
+            bendSettings.Goto();
+            bendSettings.OpenDataManagerBend();
+
+            DatamanagerBend.MainWindowExists.WaitFor( TestSettings.DatamanagerBendStartTimeout );
+            DatamanagerBend.DeductionValues.Goto();
+            DatamanagerBend.DeductionValues.ExportTBSCSV();
+            foreach( var cmd in deductionSelectionCommandList )
+            {
+                cmd.Invoke();
+            }
+            DatamanagerBend.DeductionValues.TBSExportDialog.Export();
+            DatamanagerBend.Close();
+
+            List<string> generatedCSVFileList = GetGeneratedCSVFiles();
+            CompareCSVFilesAgainstBaseline( generatedCSVFileList );
+            bendSettings.OpenBendDeductionConfiguration();
+
+            ImportExportedCSVFiles( generatedCSVFileList );
+
+            settingsDialog.Save();
+        }
+
+        private List<string> GetGeneratedCSVFiles()
+        {
             string desktopPath = Environment.GetFolderPath( Environment.SpecialFolder.Desktop );
             List<string> generatedCSVFileList = Directory.GetFiles( desktopPath, S_CSV_FILE_ENDING_FILTER ).ToList();
+            return generatedCSVFileList;
+        }
+
+        private void CompareCSVFilesAgainstBaseline( List<string> generatedCSVFileList )
+        {
             Assert.AreNotEqual( 0, generatedCSVFileList.Count, S_NO_CSV_FILES_EXPORTED );
 
             string testDataPath = Path.Combine( Path.GetDirectoryName( Assembly.GetExecutingAssembly().Location ), S_TESTDATA_SUB_PATH );
@@ -133,79 +165,21 @@ namespace HomeZone.FluxTests.DataMigration
                 testfile[ S_LINE_NUMBER_CONTAINING_DATE ] = testfile[ S_LINE_NUMBER_CONTAINING_DATE ].Substring( S_LINE_NUMBER_CONTAINING_DATE, cutIndex );
 
                 Assert.IsTrue( testfile.SequenceEqual( originalFile ), "Following csv file differs from baseline: " + Path.GetFileName( item ) );
-                File.Delete( item );
             }
         }
 
-        /// <summary>
-        /// Execute the export and import all die deduction value test
-        /// </summary>
-        private void DoExportAndImportAllDieDeductionValueTest()
+        private void ImportExportedCSVFiles( List<string> exportedCSVList )
         {
-            ExportAllDieDeductionValues();
-
-            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
-            var bendSettings = settingsDialog.BendSettings;
-            bendSettings.Goto();
-            bendSettings.OpenBendDeductionConfiguration();
-
-            string desktopPath = Environment.GetFolderPath( Environment.SpecialFolder.Desktop );
-            List<string> generatedCSVFileList = Directory.GetFiles( desktopPath, S_CSV_FILE_ENDING_FILTER ).ToList();
-            Assert.AreNotEqual( 0, generatedCSVFileList.Count, S_NO_CSV_FILES_EXPORTED );
-
             Flux.DeductionValueDialogExists.WaitFor( TestSettings.FluxStartTimeout );
             Flux.DeductionValueDialog.Reset();
             int entries = 0;
-            foreach( var file in generatedCSVFileList )
+            foreach( var file in exportedCSVList )
             {
                 Flux.DeductionValueDialog.Import( file );
                 Assert.IsTrue( Flux.DeductionValueDialog.Entries() > entries, "csv Import has failed, since no entries were added to the list" );
                 entries = Flux.DeductionValueDialog.Entries();
             }
             Flux.DeductionValueDialog.Close();
-            settingsDialog.Cancel();
-        }
-
-        /// <summary>
-        /// export all die deduction values to the desktop
-        /// </summary>
-        private void ExportAllDieDeductionValues()
-        {
-            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
-            var bendSettings = settingsDialog.BendSettings;
-            bendSettings.Goto();
-            bendSettings.OpenDataManagerBend();
-            DatamanagerBend.MainWindowExists.WaitFor( TestSettings.DatamanagerBendStartTimeout );
-            DatamanagerBend.DeductionValues.Goto();
-            DatamanagerBend.DeductionValues.ExportTBSCSV();
-            DatamanagerBend.DeductionValues.TBSExportDialog.SelectAll();
-            DatamanagerBend.DeductionValues.TBSExportDialog.Export();
-            DatamanagerBend.Close();
-
-            settingsDialog.Cancel();
-        }
-
-        private void DoMigrateTestCoiningDeductionValuesTest()
-        {
-            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
-            var bendSettings = settingsDialog.BendSettings;
-            bendSettings.Goto();
-            bendSettings.OpenDataManagerBend();
-
-            DatamanagerBend.MainWindowExists.WaitFor( TestSettings.DatamanagerBendStartTimeout );
-            DatamanagerBend.DeductionValues.Goto();
-            DatamanagerBend.DeductionValues.ExportTBSCSV();
-            DatamanagerBend.DeductionValues.TBSExportDialog.SelectByName( "1.234" );
-            DatamanagerBend.DeductionValues.TBSExportDialog.Export();
-            DatamanagerBend.Close();
-
-
-            settingsDialog.Save();
-        }
-
-        private void DoMigrateTestAirBendingDeductionValuesTest()
-        {
-            throw new NotImplementedException();
         }
     }
 }
