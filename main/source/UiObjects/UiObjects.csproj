@@ -149,7 +149,10 @@
     <Compile Include="PageObjects\NestingTemplate\TcNestingTemplates.cs" />
     <Compile Include="PageObjects\NestingTemplate\TcNestingTemplateToolbar.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrderBaseInfo.cs" />
+    <Compile Include="PageObjects\PartOrder\TcPartOrderBaseInfoBulk.cs" />
     <Compile Include="PageObjects\PartOrder\TcPartOrderPartInfo.cs" />
+    <Compile Include="PageObjects\PartOrder\TcPartOrderPartInfoBulk.cs" />
+    <Compile Include="PageObjects\Part\TcPartBulkDetailDesign.cs" />
     <Compile Include="PageObjects\TcDomain{T}.cs" />
     <Compile Include="PageObjects\TcDomainBase.cs" />
     <Compile Include="PageObjects\TcDomain.cs" />

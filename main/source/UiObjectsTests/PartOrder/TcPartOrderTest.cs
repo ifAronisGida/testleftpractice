@@ -81,5 +81,32 @@ namespace HomeZone.UiObjectsTests.PartOrder
             var partOrders = HomeZone.GotoPartOrders();
             partOrders.ImportDirectory( @"c:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase" );
         }
+
+        [TestMethod]
+        public void BulkChangeTest()
+        {
+            var parts = HomeZone.GotoParts();
+
+            Log.Info( "Import 2 parts." );
+            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Eckwinkel.scdoc" );
+            parts.WaitForDetailOverlayAppear();
+            parts.WaitForDetailOverlayDisappear();
+            parts.SingleDetail.Id = TestSettings.NamePrefix + "Bulk1";
+            parts.Toolbar.Save();
+            parts.Toolbar.Import( @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Zugwinkel.scdoc" );
+            parts.WaitForDetailOverlayAppear();
+            parts.WaitForDetailOverlayDisappear();
+            parts.SingleDetail.Id = TestSettings.NamePrefix + "Bulk2";
+            parts.Toolbar.Save();
+
+            Log.Info( "Select the imported parts and create part orders." );
+            parts.ResultColumn.SelectItems( TestSettings.NamePrefix + "Bulk" );
+            parts.ResultColumn.SelectAll();
+            parts.Toolbar.CreatePartOrder();
+
+            var partOrders = HomeZone.GotoPartOrders();
+            partOrders.BaseInfoBulk.ID.Value = "BulkID";
+
+        }
     }
 }
