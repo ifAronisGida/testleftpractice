@@ -1,6 +1,5 @@
-using System;
+﻿using System;
 using HomeZone.UiObjectInterfaces.Controls;
-
 
 namespace HomeZone.UiObjectInterfaces.PartOrder
 {
