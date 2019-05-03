@@ -40,7 +40,6 @@
     <Reference Include="Castle.Core">
       <HintPath>..\_external\3rdParty\Castle.Core\net45\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MimeTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\_external\packages\Factshub.Connector.4.5.9\lib\net451\MimeTypes.dll</HintPath>
     </Reference>
@@ -191,8 +190,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TcAppLangDependentStrings.tt</DependentUpon>
     </Compile>
-    <Compile Include="TestSettings\TcTestSettings.cs" />
-    <Compile Include="TestSettings\TcSystemLanguageSpecific.cs" />
     <Compile Include="TcApp.cs" />
     <Compile Include="TcAppProcess.cs" />
     <Compile Include="TcHomeZoneApp.cs" />

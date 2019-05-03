@@ -35,7 +35,7 @@ namespace HomeZone.UiObjects.PageObjects.Part
         /// <value>
         /// The single detail design.
         /// </value>
-        public TiPartSingleDetailDesign SingleDetailDesign => Find<TcPartSingleDetailDesign>();
+        public TiPartSingleDetailDesign SingleDetailDesign => On<TcPartSingleDetailDesign>(true);
 
         /// <summary>
         /// Gets the single detail bend solutions.

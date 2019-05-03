@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.Customer;
 
@@ -9,7 +9,6 @@ namespace HomeZone.UiObjectInterfaces.Part
         TiValueControl<string> Name { get; }
         TiValueControl<string> DrawingNumber { get; }
         TiValueControl<string> DrawingVersion { get; }
-        TiValueControl<string> ExternalName { get; }
         TiValueControl<string> Note { get; }
 
         /// <summary>
@@ -42,6 +41,8 @@ namespace HomeZone.UiObjectInterfaces.Part
         /// The identifier.
         /// </value>
         string Id { get; set; }
+
+        string ExternalName { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this part is archivable.

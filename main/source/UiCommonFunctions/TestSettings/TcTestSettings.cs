@@ -1,10 +1,11 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using HomeZone.UiObjects;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace HomeZone.UiObjects.TestSettings
+namespace HomeZone.UiCommonFunctions.TestSettings
 {
     /// <summary>
     /// This class contains the settings used by the UI tests.

@@ -1,4 +1,6 @@
 using HomeZone.UiCommonFunctions.PageObjectHelpers;
+using HomeZone.UiCommonFunctions.TestSettings;
+using HomeZone.UiCommonFunctions.Utilities;
 using HomeZone.UiObjectInterfaces;
 using HomeZone.UiObjectInterfaces.Cut;
 using HomeZone.UiObjectInterfaces.DatamanagerBend;
@@ -9,15 +11,13 @@ using HomeZone.UiObjects.PageObjects.Cut;
 using HomeZone.UiObjects.PageObjects.DatamanagerBend;
 using HomeZone.UiObjects.PageObjects.Design;
 using HomeZone.UiObjects.PageObjects.Flux;
-using HomeZone.UiObjects.TestSettings;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft;
+using SmartBear.TestLeft.TestObjects;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
-using HomeZone.UiCommonFunctions.Utilities;
-using SmartBear.TestLeft.TestObjects;
 using Trumpf.AutoTest.Facts;
 
 namespace HomeZone.UiCommonFunctions.Base
@@ -50,7 +50,11 @@ namespace HomeZone.UiCommonFunctions.Base
         [TestInitialize]
         public void Init()
         {
-            DoInitialization();
+            TestSettings = new TcTestSettings( TestContext );
+            TestSettings.Fill( TcPageObjectSettings.Instance );
+            Log = new TcLogging( Driver, TestContext, TestSettings );
+
+            ExecuteUITestPreparation( DoInitialization, "Test Initialization" );
         }
 
         /// <summary>
@@ -121,6 +125,27 @@ namespace HomeZone.UiCommonFunctions.Base
         public static TiDatamanagerBendApp DatamanagerBend { get; private set; }
 
         /// <summary>
+        /// Execute UI Test Preparation
+        /// </summary>
+        /// <param name="action">preparation function</param>
+        /// <param name="caption">preparation description</param>
+        protected void ExecuteUITestPreparation( Action action, [CallerMemberName] string caption = "" )
+        {
+            try
+            {
+                Log.OpenFolder( caption );
+                action.Invoke();
+                Log.CloseFolder();
+            }
+            catch( Exception ex )
+            {
+                Log.Error( ex.Message, ex.StackTrace ); //automatically creates a screenshot
+                Log.CloseFolder();
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Execute a UI  Test.
         /// Function encapsulates the UI test with logging.
         /// A screenshot is taken to document the test start conditions.
@@ -163,11 +188,6 @@ namespace HomeZone.UiCommonFunctions.Base
         /// </summary>
         protected virtual void DoInitialization()
         {
-            TestSettings = new TcTestSettings( TestContext );
-            TestSettings.Fill( TcPageObjectSettings.Instance );
-
-            Log = new TcLogging( Driver, TestContext, TestSettings );
-
             mAutoFact = new AutoFact( new TcTestOptions( GetType(), TestContext, TestSettings ) );
 
             DesignApp = new TcDesign( Driver );
@@ -200,7 +220,7 @@ namespace HomeZone.UiCommonFunctions.Base
             }
             else
             {
-                mTestedAppProcess = runningHomeZone[0];
+                mTestedAppProcess = runningHomeZone[ 0 ];
             }
 
             // connect to HomeZone process and wait until visible

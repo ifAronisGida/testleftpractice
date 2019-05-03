@@ -1,5 +1,5 @@
-﻿using HomeZone.UiObjectInterfaces.CutJob;
-using HomeZone.UiObjects.TestSettings;
+﻿using HomeZone.UiCommonFunctions.TestSettings;
+using HomeZone.UiObjectInterfaces.CutJob;
 
 namespace HomeZone.UiCommonFunctions.PageObjectHelpers
 {

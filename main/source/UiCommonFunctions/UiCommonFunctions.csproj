@@ -83,6 +83,8 @@
     <Compile Include="PageObjectHelpers\TcPartOrderHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PageObjectHelpers\TcMachineHelper.cs" />
+    <Compile Include="TestSettings\TcSystemLanguageSpecific.cs" />
+    <Compile Include="TestSettings\TcTestSettings.cs" />
     <Compile Include="Utilities\TcHomeZoneExtensions.cs" />
     <Compile Include="Utilities\TcLogging.cs" />
   </ItemGroup>

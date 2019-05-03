@@ -71,22 +71,6 @@ namespace HomeZone.UiObjects.PageObjects.Part
         }
 
         /// <summary>
-        /// Boost button should be enabled.
-        /// </summary>
-        public void BoostShouldBeEnabled()
-        {
-            BoostButton.ShouldBeEnabled();
-        }
-
-        /// <summary>
-        /// Boost button should be disabled.
-        /// </summary>
-        public void BoostShouldBeDisabled()
-        {
-            BoostButton.ShouldBeDisabled();
-        }
-
-        /// <summary>
         /// Creates the part order.
         /// </summary>
         public void CreatePartOrder()

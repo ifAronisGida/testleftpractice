@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.Waiting;
 using Trumpf.Coparoo.Desktop.WPF;
@@ -23,12 +23,12 @@ namespace HomeZone.UiObjects.PageObjects.Part
         public TiValueControl<string> Name => Find<TiValueControl<string>>( "Part.Detail.Base.Description" );
         public TiValueControl<string> DrawingNumber => Find<TiValueControl<string>>( "Part.Detail.Base.DrawingNumber" );
         public TiValueControl<string> DrawingVersion => Find<TiValueControl<string>>( "Part.Detail.Base.DrawingVersion" );
-        public TiValueControl<string> IdTextEdit => Find<TiValueControl<string>>( "Part.Detail.Base.Name" );
-        public TiValueControl<string> ExternalName => Find<TiValueControl<string>>( "Part.Detail.Base.More.ExternalName" );
         public TiValueControl<string> Note => Find<TiValueControl<string>>( "Part.Detail.Base.More.Note" );
         private TiValueControl<string> CustomerLookUpEdit => Find<TiValueControl<string>>( "EditCustomerProperty.EditValue" );
         private TiButton CustomerOpenAdministrationButton => Find<TiButton>( "EditCustomerProperty.OpenAdministration" );
         private TcGroupPanel DetailGroupPanel => Find<TcGroupPanel>( Search.ByUid( "Part.Detail.Base" ) );
+        private TiValueControl<string> IdTextEdit => Find<TiValueControl<string>>( "Part.Detail.Base.Name" );
+        private TiValueControl<string> ExternalNameTextEdit => Find<TiValueControl<string>>( "Part.Detail.Base.More.ExternalName" );
         private TiValueControl<bool> ArchivableCheckBox => Find<TiValueControl<bool>>( "Part.Detail.Archivable" );
 
         /// <summary>
@@ -85,6 +85,21 @@ namespace HomeZone.UiObjects.PageObjects.Part
             {
                 IsMoreExpanded = true;
                 return IdTextEdit.Value;
+            }
+        }
+
+        public string ExternalName
+        {
+            set
+            {
+                IsMoreExpanded = true;
+                ExternalNameTextEdit.Value = value;
+            }
+
+            get
+            {
+                IsMoreExpanded = true;
+                return ExternalNameTextEdit.Value;
             }
         }
 

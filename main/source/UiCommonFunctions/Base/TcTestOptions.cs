@@ -1,10 +1,10 @@
 using FactsHub.Model;
-using HomeZone.UiObjects.TestSettings;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using HomeZone.UiCommonFunctions.TestSettings;
 using Trumpf.AutoTest.Facts;
 using Trumpf.AutoTest.Utilities;
 

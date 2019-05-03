@@ -1,4 +1,5 @@
 ﻿using HomeZone.UiCommonFunctions.Base;
+using HomeZone.UiObjectTests.Assertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Trumpf.AutoTest.Facts;
@@ -34,9 +35,18 @@ namespace HomeZone.UiObjectsTests.Part
 
                 parts.SingleDetail.DrawingNumber.Value = "NewPartTest_DrawNr";
                 parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
-                parts.SingleDetail.ExternalName.Value = "NewPartTest_ExtName";
+
+                parts.SingleDetail.Id = "08_15 _ 2";
+                parts.SingleDetail.ExternalName = "NewPartTest_ExtName";
                 parts.SingleDetail.Archivable = false;
                 parts.SingleDetail.Note.Value = "ImportPartTest_Note";
+
+                parts.SingleDetailDesign.Material.Value = "Cu";
+                parts.SingleDetailDesign.RawMaterial.Value = "Cu0M0130---";
+                parts.SingleDetailDesign.Unfolding.Value = "<All Tools>";
+                parts.SingleDetailDesign.PermittedNestingOrientations.Value = "90°;270°";
+
+                parts.SingleDetailDesign.RotateToGrainDirection = true;
 
                 parts.Toolbar.SaveShouldBeEnabled();
                 parts.Toolbar.Save();
@@ -71,7 +81,7 @@ namespace HomeZone.UiObjectsTests.Part
 
                     parts.SingleDetail.DrawingNumber.Value = "ImportPartTest_DrawNr";
                     parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
-                    parts.SingleDetail.ExternalName.Value = "ImportPartTest_ExtName";
+                    parts.SingleDetail.ExternalName = "ImportPartTest_ExtName";
                     parts.SingleDetail.Archivable = false;
                     parts.SingleDetail.Note.Value = "ImportPartTest_Note";
                     parts.SingleDetailBendSolutions.New();
@@ -122,7 +132,7 @@ namespace HomeZone.UiObjectsTests.Part
                 parts.SingleDetail.DrawingNumber.Value = "ImportDesignTest_DrawNr";
                 parts.SingleDetail.DrawingVersion.Value = "V08.15-007";
                 parts.SingleDetail.Id = "UIT_" + parts.SingleDetail.Id;
-                parts.SingleDetail.ExternalName.Value = "ImportDesignTest_ExtName";
+                parts.SingleDetail.ExternalName = "ImportDesignTest_ExtName";
                 parts.SingleDetail.Archivable = false;
                 parts.SingleDetail.Note.Value = "ImportDesignTest_Note";
                 parts.SingleDetailBendSolutions.New();
