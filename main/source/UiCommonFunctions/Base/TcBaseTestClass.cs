@@ -17,6 +17,8 @@ using SmartBear.TestLeft.TestObjects;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Management;
 using System.Runtime.CompilerServices;
 using Trumpf.AutoTest.Facts;
 
@@ -31,6 +33,7 @@ namespace HomeZone.UiCommonFunctions.Base
     [TestClass]
     public class TcBaseTestClass
     {
+        private static bool mMachineDetailsReported;
         private AutoFact mAutoFact;
         private Process mTestedAppProcess;
 
@@ -131,6 +134,12 @@ namespace HomeZone.UiCommonFunctions.Base
         /// <param name="caption">preparation description</param>
         protected void ExecuteUITestPreparation( Action action, [CallerMemberName] string caption = "" )
         {
+            if (!mMachineDetailsReported)
+            {
+                mMachineDetailsReported = true;
+                Log.Info( $"OS: {Environment.OSVersion.VersionString}, Memory: {GetTotalMemory()}" );
+            }
+
             try
             {
                 Log.OpenFolder( caption );
@@ -142,6 +151,15 @@ namespace HomeZone.UiCommonFunctions.Base
                 Log.Error( ex.Message, ex.StackTrace ); //automatically creates a screenshot
                 Log.CloseFolder();
                 throw;
+            }
+
+            string GetTotalMemory()
+            {
+                var query = new ObjectQuery( "SELECT TotalPhysicalMemory FROM Win32_ComputerSystem" );
+                var searcher = new ManagementObjectSearcher( query );
+                var item = searcher.Get().Cast<ManagementObject>().First();
+
+                return $"{( ulong )item["TotalPhysicalMemory"] / 1024 / 1024} MB";
             }
         }
 
