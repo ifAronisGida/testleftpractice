@@ -1,4 +1,6 @@
 using System;
+using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using HomeZone.UiObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -21,7 +23,7 @@ namespace HomeZone.UiCommonFunctions.TestSettings
 
         public string Product => GetString( "Product", "HomeZone" );
 
-        public string Version => GetString( "Version", "x.x.x.x" );
+        public string Version => GetString( "Version", GetTestedAppVersion() );
 
         public string Context => GetString( "Context", Environment.MachineName );
 
@@ -204,6 +206,14 @@ namespace HomeZone.UiCommonFunctions.TestSettings
             var value = ( string )mTestContext.Properties[key];
 
             return string.IsNullOrEmpty( value ) ? defaultValue : Convert.ToBoolean( value );
+        }
+
+        private string GetTestedAppVersion()
+        {
+            var fileName = Path.Combine( TestedAppPath, TestedAppName + ".exe" );
+            var versionInfo = FileVersionInfo.GetVersionInfo( fileName );
+
+            return versionInfo.FileVersion ?? "unknown";
         }
     }
 }

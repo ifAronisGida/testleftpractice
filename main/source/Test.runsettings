@@ -5,7 +5,7 @@
   <!-- Configurations that affect the Test Framework -->
   <RunConfiguration>
 
-    <!-- Path relative to solution directory -->
+    <!-- Path relative to this file -->
     <ResultsDirectory>.\TestResults</ResultsDirectory>
 
   </RunConfiguration>

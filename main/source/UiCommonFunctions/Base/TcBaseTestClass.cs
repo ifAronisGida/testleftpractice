@@ -17,8 +17,12 @@ using SmartBear.TestLeft.TestObjects;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Management;
 using System.Runtime.CompilerServices;
+using System.Text;
 using Trumpf.AutoTest.Facts;
+using UiCommonFunctions.Utilities;
 
 namespace HomeZone.UiCommonFunctions.Base
 {
@@ -31,6 +35,7 @@ namespace HomeZone.UiCommonFunctions.Base
     [TestClass]
     public class TcBaseTestClass
     {
+        private static bool mMachineDetailsReported;
         private AutoFact mAutoFact;
         private Process mTestedAppProcess;
 
@@ -131,6 +136,12 @@ namespace HomeZone.UiCommonFunctions.Base
         /// <param name="caption">preparation description</param>
         protected void ExecuteUITestPreparation( Action action, [CallerMemberName] string caption = "" )
         {
+            if (!mMachineDetailsReported)
+            {
+                mMachineDetailsReported = true;
+                Log.Info( $"OS: {Environment.OSVersion.VersionString}, Memory: {GetTotalMemory()}" );
+            }
+
             try
             {
                 Log.OpenFolder( caption );
@@ -142,6 +153,15 @@ namespace HomeZone.UiCommonFunctions.Base
                 Log.Error( ex.Message, ex.StackTrace ); //automatically creates a screenshot
                 Log.CloseFolder();
                 throw;
+            }
+
+            string GetTotalMemory()
+            {
+                var query = new ObjectQuery( "SELECT TotalPhysicalMemory FROM Win32_ComputerSystem" );
+                var searcher = new ManagementObjectSearcher( query );
+                var item = searcher.Get().Cast<ManagementObject>().First();
+
+                return $"{( ulong )item["TotalPhysicalMemory"] / 1024 / 1024} MB";
             }
         }
 
@@ -228,6 +248,12 @@ namespace HomeZone.UiCommonFunctions.Base
 
             HomeZone.MainWindowExists.WaitFor( TimeSpan.FromSeconds( 90 ) );
 
+            var about = HomeZone.GotoMainMenu().OpenAboutDialog();
+            about.CopyToClipboard();
+            about.Close();
+
+            PostHomeZoneInfoToLog(System.Windows.Forms.Clipboard.GetText());
+
             // close WelcomeScreen if visible
             var welcomeScreen = HomeZone.WelcomeScreen;
             if( welcomeScreen.IsVisible )
@@ -262,6 +288,32 @@ namespace HomeZone.UiCommonFunctions.Base
             if( TestContext.CurrentTestOutcome == UnitTestOutcome.Failed )
             {
                 mTestedAppProcess?.Kill();
+            }
+        }
+
+        // TestLeft throws an exception when the additional text is long enough.
+        // This method posts the big homezone info text in chunks, clamping each string at 12000 chars.
+        private void PostHomeZoneInfoToLog(string homezoneInfo)
+        {
+            var sb = new StringBuilder();
+            var count = 1;
+
+            foreach( var line in homezoneInfo.Split( '\n' ) )
+            {
+                if (sb.Length + line.Length < 12000)
+                {
+                    sb.Append( line );
+                }
+                else
+                {
+                    Log.Info( $"HomeZone info pt. {count++}", sb.ToString() );
+                    sb.Clear();
+                }
+            }
+
+            if (sb.Length > 0)
+            {
+                Log.Info( $"HomeZone info pt. {count}", sb.ToString() );
             }
         }
     }
