@@ -124,6 +124,7 @@
     <Compile Include="NestingTemplate\TiNestingTemplateToolbar.cs" />
     <Compile Include="PartOrder\TiPartOrderBaseInfo.cs" />
     <Compile Include="PartOrder\TiPartOrderBaseInfoBulk.cs" />
+    <Compile Include="PartOrder\TiPartOrderBulkPartBend.cs" />
     <Compile Include="PartOrder\TiPartOrderPartInfo.cs" />
     <Compile Include="PartOrder\TiPartOrderPartInfoBulk.cs" />
     <Compile Include="PartOrder\TiPartOrders.cs" />

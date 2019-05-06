@@ -1,4 +1,5 @@
-﻿using HomeZone.UiObjectInterfaces.Part;
+﻿using HomeZone.UiObjectInterfaces.Controls;
+using HomeZone.UiObjectInterfaces.Part;
 using HomeZone.UiObjectInterfaces.PartOrder;
 using HomeZone.UiObjects.PageObjects.Part;
 using Trumpf.Coparoo.Desktop;
@@ -9,7 +10,8 @@ namespace HomeZone.UiObjects.PageObjects.PartOrder
     public class TcPartOrderPartInfoBulk : TcPageObjectBase, IChildOf<TcPartOrders>, TiPartOrderPartInfoBulk
     {
         protected override Search SearchPattern => Search.ByUid( "PartOrder.Detail.OrderedPart.Info" );
-        public TiPartBulkDetailDesign Design => On<TcPartBulkDetailDesign>();
 
+        public TiPartBulkDetailDesign Design => On<TcPartBulkDetailDesign>();
+        public TiPartOrderBulkPartBend Bend => On<TcPartOrderBulkPartBend>();
     }
 }

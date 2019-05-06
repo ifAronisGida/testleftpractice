@@ -14,6 +14,7 @@ namespace HomeZone.UiObjects.Utilities
             ["DevExpress.Xpf.Editors.ComboBoxEdit"] = controlObject => new TcTextEdit( controlObject ),
             ["DevExpress.Xpf.Editors.SpinEdit"] = controlObject => new TcSpinEdit( controlObject ),
             ["DevExpress.Xpf.Editors.TextEdit"] = controlObject => new TcTextEdit( controlObject ),
+            ["DevExpress.Xpf.Editors.DateEdit"] = controlObject => new TcDateEdit( controlObject ),
             ["DevExpress.Xpf.Grid.LookUp.LookUpEdit"] = controlObject => new TcTextEdit( controlObject ),
             ["System.Windows.Controls.Button"] = controlObject => new TcButton( controlObject ),
             ["System.Windows.Controls.CheckBox"] = controlObject => new TcCheckBox( controlObject ),

@@ -99,6 +99,40 @@ namespace HomeZone.UiObjects
                 }
             }
         }
+
+        public static string NoBending
+        {
+            get {
+                switch (CurrentLanguage)
+                {
+                    case TeAppLanguage.English:
+                        return "(No bending)";
+                    case TeAppLanguage.German:
+                        return "(Nicht Biegen)";
+                    case TeAppLanguage.Hungarian:
+                        return "";
+                    default:
+                        throw new System.Exception("Unsupported language");
+                }
+            }
+        }
+
+        public static string Favorite
+        {
+            get {
+                switch (CurrentLanguage)
+                {
+                    case TeAppLanguage.English:
+                        return "Favorite";
+                    case TeAppLanguage.German:
+                        return "Favorit";
+                    case TeAppLanguage.Hungarian:
+                        return "";
+                    default:
+                        throw new System.Exception("Unsupported language");
+                }
+            }
+        }
    
     }
 }

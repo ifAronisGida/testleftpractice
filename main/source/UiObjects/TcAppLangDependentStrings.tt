@@ -13,7 +13,9 @@
         new Label( "Incomplete", "Incomplete", "Unvollständig", "" ),
         new Label( "CuttingProgram", "Cutting Program", "Schneidprogramm", "" ),
         new Label( "TechnologyTableSelection", "Technology table selection", "Technologietabellen Auswahl", "Technológiatáblázatok kiválasztása" ),
-		new Label( "ReleaseMissing", "Release missing", "Freigabe fehlt", "" ),
+        new Label( "ReleaseMissing", "Release missing", "Freigabe fehlt", "" ),
+        new Label( "NoBending", "(No bending)", "(Nicht Biegen)", "" ),
+        new Label( "Favorite", "Favorite", "Favorit", "" ),
     };
 #>
 //--------------------------------------------------------------------------------------------------------------
