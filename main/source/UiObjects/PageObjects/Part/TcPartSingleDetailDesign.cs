@@ -89,6 +89,5 @@ namespace HomeZone.UiObjects.PageObjects.Part
                 return RotateToGrainDirectionCheckBox.Value;
             }
         }
-
     }
 }

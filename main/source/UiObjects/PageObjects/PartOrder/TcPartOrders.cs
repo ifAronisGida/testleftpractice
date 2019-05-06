@@ -13,6 +13,8 @@ namespace HomeZone.UiObjects.PageObjects.PartOrder
         public override TiPartOrderToolbar Toolbar => On<TcPartOrderToolbar>( cache: true );
         public TiPartOrderBaseInfo BaseInfo => On<TcPartOrderBaseInfo>( cache: true );
         public TiPartOrderPartInfo PartInfo => On<TcPartOrderPartInfo>( cache: true );
+        public TiPartOrderBaseInfoBulk BaseInfoBulk => On<TcPartOrderBaseInfoBulk>( cache: true );
+        public TiPartOrderPartInfoBulk PartInfoBulk => On<TcPartOrderPartInfoBulk>( cache: true );
 
         /// <summary>
         /// Waits for detail overlay appear.
