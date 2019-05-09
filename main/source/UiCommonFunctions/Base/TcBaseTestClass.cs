@@ -243,13 +243,13 @@ namespace HomeZone.UiCommonFunctions.Base
             if( TestSettings.ClearOldTestItemsAtStart )
             {
                 Log.OpenFolder( "Delete existing test items" );
-                mNestingTemplateHelper.DeleteTestNestingTemplates( TestSettings, HomeZone.NestingTemplates );
-                mCutJobHelper.DeleteTestCutJobs( TestSettings, HomeZone.CutJobs );
-                mPartOrderHelper.DeleteTestPartOrders( TestSettings, HomeZone.PartOrders );
-                mPartHelper.DeleteTestParts( TestSettings, HomeZone.Parts );
-                mCustomerHelper.DeleteTestCustomers( TestSettings, HomeZone.Customers );
-                mMachineHelper.DeleteTestMachines( TestSettings, HomeZone.Machines );
-                mMaterialHelper.DeleteTestMaterials( TestSettings, HomeZone.Materials );
+                //mNestingTemplateHelper.DeleteTestNestingTemplates( TestSettings, HomeZone.NestingTemplates );
+                //mCutJobHelper.DeleteTestCutJobs( TestSettings, HomeZone.CutJobs );
+                //mPartOrderHelper.DeleteTestPartOrders( TestSettings, HomeZone.PartOrders );
+                //mPartHelper.DeleteTestParts( TestSettings, HomeZone.Parts );
+                //mCustomerHelper.DeleteTestCustomers( TestSettings, HomeZone.Customers );
+                //mMachineHelper.DeleteTestMachines( TestSettings, HomeZone.Machines );
+                //mMaterialHelper.DeleteTestMaterials( TestSettings, HomeZone.Materials );
                 Log.CloseFolder();
             }
         }
