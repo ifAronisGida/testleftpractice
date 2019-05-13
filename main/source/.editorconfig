@@ -8,3 +8,19 @@ csharp_space_after_keywords_in_control_flow_statements = false
 csharp_space_between_method_declaration_parameter_list_parentheses = true
 csharp_space_between_method_call_parameter_list_parentheses = true
 csharp_space_between_parentheses = control_flow_statements, expressions, type_casts
+
+dotnet_naming_symbols.all_interfaces.applicable_kinds = interface
+dotnet_naming_symbols.all_interfaces.applicable_accessibilities = *
+dotnet_naming_style.ti_style.required_prefix = Ti
+dotnet_naming_style.ti_style.capitalization = pascal_case
+dotnet_naming_rule.interfaces_must_begin_with_ti.symbols = all_interfaces
+dotnet_naming_rule.interfaces_must_begin_with_ti.style = ti_style
+dotnet_naming_rule.interfaces_must_begin_with_ti.severity = suggestion
+
+dotnet_naming_symbols.all_classes.applicable_kinds = class
+dotnet_naming_symbols.all_classes.applicable_accessibilities = *
+dotnet_naming_style.tc_prefix_style.required_prefix = Tc
+dotnet_naming_style.tc_prefix_style.capitalization = pascal_case
+dotnet_naming_rule.classes_must_begin_with_tc.symbols = all_classes
+dotnet_naming_rule.classes_must_begin_with_tc.style = tc_prefix_style
+dotnet_naming_rule.classes_must_begin_with_tc.severity = suggestion
