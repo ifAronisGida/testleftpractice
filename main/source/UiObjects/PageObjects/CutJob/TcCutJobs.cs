@@ -13,6 +13,10 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
         public TiCutJobContainedOrders ContainedOrders => On<TcCutJobContainedOrders>( cache: true );
         public TiCutJobSolution SheetProgram => On<TcCutJobSolution>( cache: true );
 
+        protected override TimeSpan DefaultOverlayAppearTimeout => TcPageObjectSettings.Instance.CutJobOverlayAppearTimeout;
+
+        protected override TimeSpan DefaultOverlayDisappearTimeout => TcPageObjectSettings.Instance.CutJobOverlayDisappearTimeout;
+
         /// <summary>
         /// Deletes the given cut job.
         /// </summary>
@@ -29,16 +33,6 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
             Toolbar.Delete();
             ResultColumn.ClearSearch();
             return true;
-        }
-
-        public void WaitForDetailOverlayAppear( TimeSpan? timeout = null )
-        {
-            DetailOverlay.Visible.WaitFor( timeout ?? TcPageObjectSettings.Instance.CutJobOverlayAppearTimeout );
-        }
-
-        public void WaitForDetailOverlayDisappear( TimeSpan? timeout = null )
-        {
-            DetailOverlay.Visible.WaitForFalse( timeout ?? TcPageObjectSettings.Instance.CutJobOverlayDisappearTimeout );
         }
 
         protected override void DoGoto()

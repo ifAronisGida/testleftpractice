@@ -8,8 +8,5 @@ namespace HomeZone.UiObjectInterfaces.NestingTemplate
         TiNestingTemplateToolbar Toolbar { get; }
         TiNestingTemplateBaseInfo BaseInfo { get; }
         TiNestingTemplatePartList PartList { get; }
-
-        void WaitForOverlayAppear( TimeSpan? timeout = null );
-        void WaitForOverlayDisappear( TimeSpan? timeout = null );
     }
 }

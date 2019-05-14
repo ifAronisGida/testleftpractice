@@ -30,25 +30,8 @@ namespace HomeZone.UiObjects.PageObjects.Material
         /// </value>
         public TiMaterialDetail Detail => On<TcMaterialDetail>( cache: true );
 
-        /// <summary>
-        /// Waits for detail overlay appear.
-        /// </summary>
-        /// <param name="timeout">The timeout.</param>
-        /// <returns></returns>
-        public bool WaitForDetailOverlayAppear( TimeSpan? timeout = null )
-        {
-            return DetailOverlay.Visible.TryWaitFor( timeout ?? TcPageObjectSettings.Instance.MaterialOverlayAppearTimeout );
-        }
-
-        /// <summary>
-        /// Waits for detail overlay disappear.
-        /// </summary>
-        /// <param name="timeout">The timeout.</param>
-        /// <returns></returns>
-        public bool WaitForDetailOverlayDisappear( TimeSpan? timeout = null )
-        {
-            return DetailOverlay.Visible.TryWaitForFalse( timeout ?? TcPageObjectSettings.Instance.MaterialOverlayDisappearTimeout );
-        }
+        protected override TimeSpan DefaultOverlayAppearTimeout => TcPageObjectSettings.Instance.MaterialOverlayAppearTimeout;
+        protected override TimeSpan DefaultOverlayDisappearTimeout => TcPageObjectSettings.Instance.MaterialOverlayDisappearTimeout;
 
         /// <summary>
         /// Deletes the given material.

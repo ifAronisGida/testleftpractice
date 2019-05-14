@@ -1,6 +1,6 @@
 namespace HomeZone.UiObjectInterfaces.Common
 {
-    public interface TiDomain : TiVisibility, TiGoto
+    public interface TiDomain : TiVisibility, TiGoto, TiHasDetailOverlay
     {
         /// <summary>
         /// Gets the result column.

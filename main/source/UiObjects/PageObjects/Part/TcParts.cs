@@ -53,25 +53,8 @@ namespace HomeZone.UiObjects.PageObjects.Part
         /// </value>
         public TiPartSingleDetailCutSolutions SingleDetailCutSolutions => On<TcPartSingleDetailCutSolutions>( cache: true );
 
-        /// <summary>
-        /// Waits for detail overlay appear.
-        /// </summary>
-        /// <param name="timeout">The timeout.</param>
-        /// <returns></returns>
-        public bool WaitForDetailOverlayAppear( TimeSpan? timeout = null )
-        {
-            return DetailOverlay.Visible.TryWaitFor( timeout ?? TcPageObjectSettings.Instance.PartOverlayAppearTimeout );
-        }
-
-        /// <summary>
-        /// Waits for detail overlay disappear.
-        /// </summary>
-        /// <param name="timeout">The timeout.</param>
-        /// <returns></returns>
-        public bool WaitForDetailOverlayDisappear( TimeSpan? timeout = null )
-        {
-            return DetailOverlay.Visible.TryWaitForFalse( timeout ?? TcPageObjectSettings.Instance.PartOverlayDisappearTimeout );
-        }
+        protected override TimeSpan DefaultOverlayAppearTimeout => TcPageObjectSettings.Instance.PartOverlayAppearTimeout;
+        protected override TimeSpan DefaultOverlayDisappearTimeout => TcPageObjectSettings.Instance.PartOverlayDisappearTimeout;
 
         /// <summary>
         /// Deletes the given part. The part should not be used in part orders or nestings.
