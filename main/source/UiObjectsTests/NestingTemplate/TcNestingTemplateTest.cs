@@ -18,7 +18,7 @@ namespace HomeZone.UiObjectsTests.NestingTemplate
                 var nestingTemplates = HomeZone.GotoNestingTemplates();
 
                 nestingTemplates.Toolbar.Import( @"C:\junk\N2_1.tmt" );
-                nestingTemplates.WaitForOverlayDisappear( TimeSpan.FromMinutes( 1 ) );
+                nestingTemplates.WaitForDetailOverlayDisappear( TimeSpan.FromMinutes( 1 ) );
 
                 nestingTemplates.BaseInfo.Name.Value = "NestingTemplate2";
                 nestingTemplates.BaseInfo.RawMaterial.Value = "NestingTemplate2";
