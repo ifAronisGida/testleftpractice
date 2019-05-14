@@ -285,7 +285,7 @@ namespace HomeZone.UiCommonFunctions.Base
         /// </summary>
         protected virtual void DoTestCleanup()
         {
-            if( TestContext.CurrentTestOutcome == UnitTestOutcome.Failed )
+            if( TestContext.CurrentTestOutcome == UnitTestOutcome.Failed && TestSettings.KillTestedAppAfterFailedTest )
             {
                 mTestedAppProcess?.Kill();
             }
