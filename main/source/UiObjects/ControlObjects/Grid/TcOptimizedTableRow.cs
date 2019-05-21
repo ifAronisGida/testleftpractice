@@ -1,6 +1,8 @@
 using System;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjects.Utilities;
+using System.Windows.Controls;
+using SmartBear.TestLeft.TestObjects;
 
 namespace HomeZone.UiObjects.ControlObjects.Grid
 {
@@ -28,9 +30,18 @@ namespace HomeZone.UiObjects.ControlObjects.Grid
         {
             var content = mCellsParent.Value
                 .FindGeneric( SearchEx.ByClass( DevExpress.LightweightCellEditor ).AndByIndex( columnIndex ), depth: 1 )
-                .FindGeneric( SearchEx.ByClass( DevExpress.InplaceBaseEdit ), depth: 1 );
+                .FindGeneric( SearchEx.ByClass(
+                    $"regexp:({DevExpress.InplaceBaseEdit.Replace(".", "\\.")})|" + 
+                    $"({typeof(TextBlock).FullName.Replace(".", "\\.")})" ), depth: 2 );
 
-            return content.Node.GetProperty<string>( "DisplayText" );
+            try
+            {
+                return content.Node.GetProperty<string>( "DisplayText" );
+            }
+            catch ( InvocationException )
+            {
+                return content.Node.GetProperty<string>( "Text" );
+            }
         }
     }
 }
