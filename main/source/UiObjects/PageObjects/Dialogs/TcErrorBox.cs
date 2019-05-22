@@ -9,7 +9,7 @@ namespace HomeZone.UiObjects.PageObjects.Dialogs
     public class TcErrorBox : TcPageObjectBase, IChildOf<TcHomeZoneApp>, TiErrorBox
     {
         protected override Search SearchPattern =>
-            SearchEx.ByClass( "Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcErrorBox" )
+            SearchEx.ByClass( "Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcMessageBox" )
             .AndByIndex( 0 );
 
         private TiButton OkButton => FindByControlName<TiButton>( "btnOK" );
