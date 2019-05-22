@@ -1,6 +1,7 @@
 using System;
 using HomeZone.UiObjectInterfaces.Customer;
 using HomeZone.UiObjectInterfaces.CutJob;
+using HomeZone.UiObjectInterfaces.Dialogs;
 using HomeZone.UiObjectInterfaces.Machine;
 using HomeZone.UiObjectInterfaces.Material;
 using HomeZone.UiObjectInterfaces.NestingTemplate;
@@ -15,6 +16,8 @@ namespace HomeZone.UiObjectInterfaces
     public interface TiHomeZoneApp
     {
         Wool MainWindowExists { get; }
+
+        TiErrorBox ErrorBox { get; }
 
         TiMainTabControl MainTabControl { get; }
 

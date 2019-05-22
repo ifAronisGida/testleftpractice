@@ -97,6 +97,7 @@
     <Compile Include="Dialogs\ThirdPartyComponents\Ti3rdPartyComponentsDialog.cs" />
     <Compile Include="Dialogs\TiAboutDialog.cs" />
     <Compile Include="Dialogs\TiEntitySelectionDialog.cs" />
+    <Compile Include="Dialogs\TiErrorBox.cs" />
     <Compile Include="Dialogs\TiHelpDialog.cs" />
     <Compile Include="Dialogs\TiMessageBox.cs" />
     <Compile Include="Dialogs\TiOpenFileDialog.cs" />

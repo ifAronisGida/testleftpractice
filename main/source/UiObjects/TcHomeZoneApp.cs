@@ -20,6 +20,8 @@ using System;
 using SmartBear.TestLeft.TestObjects;
 using Trumpf.Coparoo.Desktop;
 using Trumpf.Coparoo.Desktop.Waiting;
+using HomeZone.UiObjectInterfaces.Dialogs;
+using HomeZone.UiObjects.PageObjects.Dialogs;
 
 namespace HomeZone.UiObjects
 {
@@ -43,6 +45,8 @@ namespace HomeZone.UiObjects
         }
 
         public Wool MainWindowExists => mMainWindow.Value.Exists;
+
+        public TiErrorBox ErrorBox => On<TcErrorBox>();
 
         public TiMainTabControl MainTabControl => On<TcMainTabControl>();
 

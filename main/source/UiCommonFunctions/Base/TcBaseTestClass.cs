@@ -248,11 +248,15 @@ namespace HomeZone.UiCommonFunctions.Base
 
             HomeZone.MainWindowExists.WaitFor( TimeSpan.FromSeconds( 90 ) );
 
-            var about = HomeZone.GotoMainMenu().OpenAboutDialog();
-            about.CopyToClipboard();
-            about.Close();
-
-            PostHomeZoneInfoToLog(System.Windows.Forms.Clipboard.GetText());
+            var info = GetHomeZoneInfo();
+            if (info != null)
+            {
+                PostHomeZoneInfoToLog(info);
+            }
+            else
+            {
+                Log.Warning( "Could not extract HomeZone info." );
+            }
 
             // close WelcomeScreen if visible
             var welcomeScreen = HomeZone.WelcomeScreen;
@@ -289,6 +293,36 @@ namespace HomeZone.UiCommonFunctions.Base
             {
                 mTestedAppProcess?.Kill();
             }
+        }
+
+        private string GetHomeZoneInfo()
+        {
+            var retryCount = 0;
+            var about = HomeZone.GotoMainMenu().OpenAboutDialog();
+
+            try
+            {
+                while (retryCount < 2)
+                {
+                    about.CopyToClipboard();
+
+                    if (HomeZone.ErrorBox.Exists.TryWaitFor(TimeSpan.FromSeconds(5)))
+                    {
+                        HomeZone.ErrorBox.Ok();
+                        retryCount++;
+
+                        continue;
+                    }
+
+                    return System.Windows.Forms.Clipboard.GetText();
+                }
+            }
+            finally
+            {
+                about.Close();
+            }
+
+            return null;
         }
 
         // TestLeft throws an exception when the additional text is long enough.
