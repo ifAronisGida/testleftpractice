@@ -14,6 +14,8 @@
         new Label( "CuttingProgram", "Cutting Program", "Schneidprogramm", "" ),
         new Label( "TechnologyTableSelection", "Technology table selection", "Technologietabellen Auswahl", "Technológiatáblázatok kiválasztása" ),
 		new Label( "ReleaseMissing", "Release missing", "Freigabe fehlt", "" ),
+		new Label( "Die", "Air Bending", "Freibiegen", "Szabandhajlítás" ),
+		new Label( "Coining", "Embossing", "Prägen", "Préselés" ),
     };
 #>
 //--------------------------------------------------------------------------------------------------------------

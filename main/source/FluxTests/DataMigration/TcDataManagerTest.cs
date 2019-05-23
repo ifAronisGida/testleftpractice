@@ -1,5 +1,8 @@
-﻿using HomeZone.UiCommonFunctions.Base;
+﻿using HomeZone.FluxTests.Utilities;
+using HomeZone.UiCommonFunctions.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SmartBear.TestLeft.TestObjects;
+using SmartBear.TestLeft.TestObjects.WPF;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,37 +22,40 @@ namespace HomeZone.FluxTests.DataMigration
         private const string S_NO_CSV_FILES_EXPORTED = "No csv files have been exported";
         private const string S_ARVX_FILE_ENDING_FILTER = "*.arvx";
         private const string S_CUSTOM_MATERIAL_NAME = "1.234";
+        private const string S_MATERIAL_NAME_TO_DUPLICATE = "1.0038";
 
         private const int S_LINE_NUMBER_CONTAINING_DATE = 0;
-
-        /// <summary>
-        /// Opens and closes the DataManager Bend.
-        /// </summary>
+        
         [TestMethod, UniqueName( "CB70F6D8-44BA-4A45-A6D4-55F16347E2DA" )]
         [Tag( "DataMigration" )]
+        [Description( "Open and Close Datamanager." )]
         public void OpenAndCloseDataManagerBendTest()
         {
-            ExecuteUITest( DoOpenAndCloseDataManagerBendTest, "Open and Close Datamanager" );
+            ExecuteUITest( DoOpenAndCloseDataManagerBendTest, TcTestHelper.GetTestMethodDescription() );
         }
-
-        /// <summary>
-        /// Export and import all die deduction values
-        /// </summary>
+        
         [TestMethod, UniqueName( "A4206A59-605D-4F78-9F55-F8B6A51D459B" )]
         [Tag( "DataMigration" )]
-        public void MigrateAllDieDeductionValueTest()
+        [Description( "Export all die deduction values and tests if there is a deduction-values file for each material." )]
+        public void ExportAllDieDeductionValueTest()
         {
-            ExecuteUITest( DoMigrateAllDieDeductionValueTest, "Export all die deduction values and import them in Flux" );
+            ExecuteUITest( DoExportAllDieDeductionValueTest, TcTestHelper.GetTestMethodDescription() );
         }
 
-        /// <summary>
-        /// Migrate test coining deduction values
-        /// </summary>
+        [TestMethod, UniqueName( "98328DC6-B1F3-437F-963E-D2672D3AEF99" )]
+        [Tag( "DataMigration" )]
+        [Description( "Export 'die' deduction values from two specific material, import them in Flux and check the import was successful." )]
+        public void MigrateDieDeductionValueFromTwoMaterialsTest()
+        {
+            ExecuteUITest( DoMigrateTestDieDeductionValuesTest, TcTestHelper.GetTestMethodDescription() );
+        }
+
         [TestMethod, UniqueName( "7CC54046-D16A-4A0A-983A-18E217D0FBA8" )]
         [Tag( "DataMigration" )]
-        public void MigrateTestCoiningDeductionValuesTest()
+        [Description( "Export 'coining' deduction values from a specific material, import them in Flux and check the import was successful." )]
+        public void MigrateTestCoiningDeductionValuesFromOneMaterialTest()
         {
-            ExecuteUITest( DoMigrateTestCoiningDeductionValuesTest, "Export specified coining deduction values and import them in Flux" );
+            ExecuteUITest( DoMigrateTestCoiningDeductionValuesTest, TcTestHelper.GetTestMethodDescription() );
         }
 
         /// <summary>
@@ -71,33 +77,56 @@ namespace HomeZone.FluxTests.DataMigration
             settingsDialog.Cancel();
         }
 
-        /// <summary>
-        /// Execute the export and import all die deduction value test
-        /// </summary>
-        private void DoMigrateAllDieDeductionValueTest()
+        private void DoExportAllDieDeductionValueTest()
         {
-            ImportTestDeductionValues();
-
             List<Action> actionList = new List<Action>
             {
-                ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectAll()
+                ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectAll(),
+                ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectDie()
             };
-            ExportAndImportSpecifiedDeductionValues( actionList );
+
+            DateTime timeBeforeExport = DateTime.Now;
+            var availableMaterialCount = ExportSpecifiedDeductionValuesAndGetAvailableMaterialCount( actionList );
+            var exportedFiles = MoveExportedFilesFromDesktopToActualTestOutputFolderAndReturnTheTargetFolder(timeBeforeExport);
+
+            Assert.AreEqual( availableMaterialCount, exportedFiles.Count, $"A1: The exported files count is unexpected." );
         }
 
-        /// <summary>
-        /// Execute the migrate coining deduction value test
-        /// </summary>
         private void DoMigrateTestCoiningDeductionValuesTest()
         {
-            ImportTestDeductionValues();
-
             List<Action> actionList = new List<Action>
             {
                 ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectByMaterialName( S_CUSTOM_MATERIAL_NAME ),
                 ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectCoining()
             };
-            ExportAndImportSpecifiedDeductionValues( actionList );
+
+            MigrateCoiningDeductionValues( actionList );
+        }
+
+        private void DoMigrateTestDieDeductionValuesTest()
+        {
+            List<Action> actionList = new List<Action>
+            {
+                ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectByMaterialName( S_CUSTOM_MATERIAL_NAME ),
+                ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectByMaterialName( S_MATERIAL_NAME_TO_DUPLICATE ),
+                ()=>DatamanagerBend.DeductionValues.TBSExportDialog.SelectDie()
+            };
+
+            MigrateCoiningDeductionValues( actionList );
+        }
+
+        private void MigrateCoiningDeductionValues( List<Action> actionList )
+        {
+            ImportTestDeductionValues();
+
+            var timeBeforeExport = DateTime.Now;
+            ExportSpecifiedDeductionValuesAndGetAvailableMaterialCount( actionList );
+
+            var generatedCSVFiles = MoveExportedFilesFromDesktopToActualTestOutputFolderAndReturnTheTargetFolder( timeBeforeExport );
+
+            CompareCSVFilesAgainstBaseline( generatedCSVFiles );
+
+            ImportSpecifiedDeductionValues( generatedCSVFiles );
         }
 
         /// <summary>
@@ -112,7 +141,7 @@ namespace HomeZone.FluxTests.DataMigration
             materials.ResultColumn.ClearSearch();
             if( count == 0 )
             {
-                materials.ResultColumn.SelectItem( "1.0038" );
+                materials.ResultColumn.SelectItem( S_MATERIAL_NAME_TO_DUPLICATE );
                 materials.Toolbar.Duplicate();
                 materials.Detail.Id.Value = S_CUSTOM_MATERIAL_NAME;
                 materials.Toolbar.Save();
@@ -131,12 +160,8 @@ namespace HomeZone.FluxTests.DataMigration
                 settingsDialog.Save();
             }
         }
-
-        /// <summary>
-        /// Export and import deduction values as specified via the input actions
-        /// </summary>
-        /// <param name="deductionSelectionCommandList">actions defining the deduction value selection</param>
-        private void ExportAndImportSpecifiedDeductionValues( List<Action> deductionSelectionCommandList )
+        
+        private int ExportSpecifiedDeductionValuesAndGetAvailableMaterialCount( List<Action> deductionSelectionCommandList )
         {
             var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
             var bendSettings = settingsDialog.BendSettings;
@@ -150,27 +175,69 @@ namespace HomeZone.FluxTests.DataMigration
             {
                 cmd.Invoke();
             }
+
+            IListBox listBox = Driver.Find<IProcess>( new ProcessPattern()
+            {
+                ProcessName = "DataManager"
+            } ).Find<IControl>( new WPFPattern()
+            {
+                ClrFullClassName = "Trumpf.TruTops.DataMigrationTool.Views.Bend_Factor_Explorer.TcBendFactorTbsExportDialog"
+            }, 2 ).Find<IListBox>( new WPFPattern()
+            {
+                ClrFullClassName = "System.Windows.Controls.ListBox"
+            }, 2 );
+            var selectedItemsCount = listBox.wSelected.Count();
+
             DatamanagerBend.DeductionValues.TBSExportDialog.Export();
             DatamanagerBend.Close();
 
-            List<string> generatedCSVFileList = GetGeneratedCSVFiles();
-            CompareCSVFilesAgainstBaseline( generatedCSVFileList );
+            settingsDialog.Save();
+
+            return selectedItemsCount;
+        }
+
+        private void ImportSpecifiedDeductionValues( List<string> csvFileList )
+        {
+            var settingsDialog = HomeZone.GotoMainMenu().OpenSettingsDialog();
+            var bendSettings = settingsDialog.BendSettings;
+            bendSettings.Goto();
+            bendSettings.OpenDataManagerBend();
             bendSettings.OpenBendDeductionConfiguration();
 
-            ImportExportedCSVFiles( generatedCSVFileList );
+            ImportExportedCSVFilesAndAssertNewDeductionValuesAdded( csvFileList );
 
             settingsDialog.Save();
         }
 
-        /// <summary>
-        /// Get the generated csv files
-        /// </summary>
-        /// <returns>list with the generated csv file paths</returns>
-        private List<string> GetGeneratedCSVFiles()
+        private List<string> MoveExportedFilesFromDesktopToActualTestOutputFolderAndReturnTheTargetFolder( DateTime timeBeforeExport )
         {
-            string desktopPath = Environment.GetFolderPath( Environment.SpecialFolder.Desktop );
-            List<string> generatedCSVFileList = Directory.GetFiles( desktopPath, S_CSV_FILE_ENDING_FILTER ).ToList();
-            return generatedCSVFileList;
+            string desktopFolder = Environment.GetFolderPath( Environment.SpecialFolder.Desktop );
+            List<string> generatedCSVFileList = GetCSVFiles( desktopFolder );
+
+            var targetFolder = Path.Combine( TestContext.TestDeploymentDir, TestContext.TestName );
+
+            foreach(string sourceFile in generatedCSVFileList)
+            {
+                if( !Directory.Exists( targetFolder ) )
+                {
+                    Directory.CreateDirectory( targetFolder );
+                }
+
+                var destFile = Path.Combine( targetFolder, Path.GetFileName( sourceFile ) );
+
+                if( File.GetLastWriteTime( sourceFile ) > timeBeforeExport)
+                {
+                    File.Copy( sourceFile, destFile );
+                    File.Delete( sourceFile );
+                }
+            }
+
+            return GetCSVFiles(targetFolder);
+        }
+
+        private List<string> GetCSVFiles(string filesFolder)
+        {
+            return Directory.GetFiles( filesFolder, S_CSV_FILE_ENDING_FILTER ).ToList();
         }
 
         /// <summary>
@@ -203,7 +270,7 @@ namespace HomeZone.FluxTests.DataMigration
         /// Import exported csv files
         /// </summary>
         /// <param name="exportedCSVList">file path list of exported csv files</param>
-        private void ImportExportedCSVFiles( List<string> exportedCSVList )
+        private void ImportExportedCSVFilesAndAssertNewDeductionValuesAdded( List<string> exportedCSVList )
         {
             Flux.DeductionValueDialogExists.WaitFor( TestSettings.FluxStartTimeout );
             Flux.DeductionValueDialog.Reset();
@@ -211,7 +278,14 @@ namespace HomeZone.FluxTests.DataMigration
             foreach( var file in exportedCSVList )
             {
                 Flux.DeductionValueDialog.Import( file );
-                Assert.IsTrue( Flux.DeductionValueDialog.Entries() > entries, "csv Import has failed, since no entries were added to the list" );
+
+                bool importResult = TcTestHelper.WaitUntilConditionFulfilledOrTimeout( 
+                    delegate()
+                    {
+                        return Flux.DeductionValueDialog.Entries() > entries;
+                    });
+                Assert.IsTrue( importResult, "csv Import has failed, since no entries were added to the list" );
+
                 entries = Flux.DeductionValueDialog.Entries();
             }
             Flux.DeductionValueDialog.Close();

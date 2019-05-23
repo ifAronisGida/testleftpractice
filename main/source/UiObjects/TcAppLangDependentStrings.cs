@@ -99,6 +99,40 @@ namespace HomeZone.UiObjects
                 }
             }
         }
+
+        public static string Die
+        {
+            get {
+                switch (CurrentLanguage)
+                {
+                    case TeAppLanguage.English:
+                        return "Air Bending";
+                    case TeAppLanguage.German:
+                        return "Freibiegen";
+                    case TeAppLanguage.Hungarian:
+                        return "Szabandhajlítás";
+                    default:
+                        throw new System.Exception("Unsupported language");
+                }
+            }
+        }
+
+        public static string Coining
+        {
+            get {
+                switch (CurrentLanguage)
+                {
+                    case TeAppLanguage.English:
+                        return "Embossing";
+                    case TeAppLanguage.German:
+                        return "Prägen";
+                    case TeAppLanguage.Hungarian:
+                        return "Préselés";
+                    default:
+                        throw new System.Exception("Unsupported language");
+                }
+            }
+        }
    
     }
 }

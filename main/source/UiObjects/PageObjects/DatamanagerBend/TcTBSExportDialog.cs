@@ -15,6 +15,7 @@ using HomeZone.UiObjectInterfaces.Controls;
 using HomeZone.UiObjectInterfaces.DatamanagerBend;
 using HomeZone.UiObjects.ControlObjects;
 using HomeZone.UiObjects.Utilities;
+using SmartBear.TestLeft;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;
 using System;
@@ -38,35 +39,32 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
 
         #region public methods
 
-        /// <summary>
-        /// Select all materials
-        /// </summary>
+        /// <inheritdoc />
         public void SelectAll()
         {
             SelectAllCheckbox.Value = true;
         }
 
-        /// <summary>
-        /// Select Deduction values by material name
-        /// </summary>
-        /// <param name="materialName">material name</param>
+        /// <inheritdoc />
         public void SelectByMaterialName( string name )
         {
             IControlObject NamedCheckBox = Find<TcGenericControlObject>( Search.By( new WPFPattern { WPFControlText = name } ));
             NamedCheckBox.Click();
         }
 
-        /// <summary>
-        /// Select coining values (default is air bending)
-        /// </summary>
-        public void SelectCoining()
+        /// <inheritdoc />
+        public void SelectDie()
         {
-            //TODO
+            TechnologyDropDownBox.Value = TcAppLangDependentStrings.Die;
         }
 
-        /// <summary>
-        /// Export deduction values
-        /// </summary>
+        /// <inheritdoc />
+        public void SelectCoining()
+        {
+            TechnologyDropDownBox.Value = TcAppLangDependentStrings.Coining;
+        }
+
+        /// <inheritdoc />
         public void Export()
         {
             ExportButton.Click();
@@ -85,6 +83,8 @@ namespace HomeZone.UiObjects.PageObjects.DatamanagerBend
         protected override Search SearchPattern => Search.By( new WPFPattern { ClrFullClassName = "Trumpf.TruTops.DataMigrationTool.Views.Bend_Factor_Explorer.TcBendFactorTbsExportDialog" } );
 
         private TiValueControl<bool> SelectAllCheckbox => Find<TiValueControl<bool>>( "DeductionValues.TBSExportDialog.SelectAll" );
+
+        private TiValueControl<string> TechnologyDropDownBox => Find<TiValueControl<string>>( "DeductionValues.TBSExportDialog.Technologies" );
 
         private TiButton ExportButton => Find<TiButton>( "DeductionValues.TBSExportDialog.Export" );
 

@@ -10,9 +10,9 @@
 #endregion
 
 #region USING
-
-
+using SmartBear.TestLeft;
 #endregion
+
 
 namespace HomeZone.UiObjectInterfaces.DatamanagerBend
 {
@@ -32,7 +32,12 @@ namespace HomeZone.UiObjectInterfaces.DatamanagerBend
         void SelectByMaterialName( string materialName );
 
         /// <summary>
-        /// Select coining values (default is air bending)
+        /// Select die (air bending) values.
+        /// </summary>
+        void SelectDie();
+
+        /// <summary>
+        /// Select coining values.
         /// </summary>
         void SelectCoining();
 
