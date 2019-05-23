@@ -72,7 +72,6 @@ namespace HomeZone.UiObjects.PageObjects.Flux
             ImportButton.Click();
             var openDlg = On<TiOpenFileDialog, TcOpenFileDialogFlux>();
             openDlg.SetFilename( csvFilePath );
-            Thread.Sleep( 20000 ); //Flux UI Freezes during import ...
         }
 
         /// <summary>

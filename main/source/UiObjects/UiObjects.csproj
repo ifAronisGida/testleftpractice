@@ -113,7 +113,9 @@
     <Compile Include="PageObjects\DatamanagerBend\TcDatamanagerBendApp.cs" />
     <Compile Include="PageObjects\DatamanagerBend\TcDeductionValues.cs" />
     <Compile Include="PageObjects\DatamanagerBend\TcMainWindowDatamanagerBend.cs" />
+    <Compile Include="PageObjects\DatamanagerBend\TcOpenFileDialogDatamanager.cs" />
     <Compile Include="PageObjects\DatamanagerBend\TcTBSExportDialog.cs" />
+    <Compile Include="PageObjects\DatamanagerBend\TcTools.cs" />
     <Compile Include="PageObjects\Design\TcDesign.cs" />
     <Compile Include="PageObjects\Design\TcDesignMessageBox.cs" />
     <Compile Include="PageObjects\Dialogs\TcOpenFileDialogBase.cs" />
