@@ -67,6 +67,7 @@ namespace HomeZone.UiObjects.ControlObjects.Composite
         public void DoSearch()
         {
             ExecuteSearchButton.Click();
+            Overlay.Visible.TryWaitForFalse();
         }
 
         /// <summary>
