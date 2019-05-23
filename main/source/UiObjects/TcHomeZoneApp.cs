@@ -46,7 +46,7 @@ namespace HomeZone.UiObjects
 
         public Wool MainWindowExists => mMainWindow.Value.Exists;
 
-        public TiErrorBox ErrorBox => On<TcErrorBox>();
+        public TiMessageBox MessageBox => On<TcMessageBox>();
 
         public TiMainTabControl MainTabControl => On<TcMainTabControl>();
 

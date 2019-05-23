@@ -17,7 +17,7 @@ namespace HomeZone.UiObjectInterfaces
     {
         Wool MainWindowExists { get; }
 
-        TiErrorBox ErrorBox { get; }
+        TiMessageBox MessageBox { get; }
 
         TiMainTabControl MainTabControl { get; }
 

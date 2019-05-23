@@ -297,32 +297,25 @@ namespace HomeZone.UiCommonFunctions.Base
 
         private string GetHomeZoneInfo()
         {
-            var retryCount = 0;
             var about = HomeZone.GotoMainMenu().OpenAboutDialog();
 
             try
             {
-                while (retryCount < 2)
+                about.CopyToClipboard();
+
+                if (HomeZone.MessageBox.MessageBoxExists())
                 {
-                    about.CopyToClipboard();
+                    HomeZone.MessageBox.Ok();
 
-                    if (HomeZone.ErrorBox.Exists.TryWaitFor(TimeSpan.FromSeconds(5)))
-                    {
-                        HomeZone.ErrorBox.Ok();
-                        retryCount++;
-
-                        continue;
-                    }
-
-                    return System.Windows.Forms.Clipboard.GetText();
+                    return null;
                 }
+
+                return System.Windows.Forms.Clipboard.GetText();
             }
             finally
             {
                 about.Close();
             }
-
-            return null;
         }
 
         // TestLeft throws an exception when the additional text is long enough.

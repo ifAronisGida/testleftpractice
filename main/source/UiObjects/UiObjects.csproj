@@ -116,7 +116,6 @@
     <Compile Include="PageObjects\DatamanagerBend\TcTBSExportDialog.cs" />
     <Compile Include="PageObjects\Design\TcDesign.cs" />
     <Compile Include="PageObjects\Design\TcDesignMessageBox.cs" />
-    <Compile Include="PageObjects\Dialogs\TcErrorBox.cs" />
     <Compile Include="PageObjects\Dialogs\TcOpenFileDialogBase.cs" />
     <Compile Include="PageObjects\Dialogs\ThirdPartyComponents\Tc3rdPartyComponentLicenseTextDialog.cs" />
     <Compile Include="PageObjects\Dialogs\ThirdPartyComponents\Tc3rdPartyComponentRow.cs" />
