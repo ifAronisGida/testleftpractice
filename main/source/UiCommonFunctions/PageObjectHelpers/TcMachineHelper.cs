@@ -39,5 +39,34 @@ namespace HomeZone.UiCommonFunctions.PageObjectHelpers
             }
             machines.ResultColumn.ClearSearch();
         }
+
+		public string GetReleasePathOfMachine(string machineName, TiMachines machines)
+		{
+			string actualPath = string.Empty;
+
+			machines.Goto();
+			if( machines.ResultColumn.SelectItems( machineName ) == 1 )
+			{
+				actualPath = machines.Detail.TransferDirectory.Value;
+			}
+
+			return actualPath;
+		}
+        
+        public bool ChangeReleasePathOfMachine(string machineName, string releasePath, TiMachines machines )
+        {
+            var machineFoundAndPathSet = false;
+
+            machines.Goto();
+            if(machines.ResultColumn.SelectItems( machineName ) == 1)
+            {
+                machines.Detail.TransferDirectory.Value = releasePath;
+                machines.Toolbar.Save();
+
+                machineFoundAndPathSet = true;
+            }
+
+            return machineFoundAndPathSet;
+        }
     }
 }

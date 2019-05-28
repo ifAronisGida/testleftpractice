@@ -36,11 +36,16 @@ namespace HomeZone.UiObjectInterfaces.Part
         bool SetupPlanButtonVisible( string name );
 
         /// <summary>
-        /// is release button visible?
+        /// Open release button visible.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>bool</returns>
-        bool ReleaseButtonVisible( string name );
+        bool OpenReleaseButtonVisible( string name );
+
+        /// <summary>
+        /// Toggles the OpenRelease button.
+        /// </summary>
+        void ToggleOpenReleaseButton( string name );
 
         /// <summary>
         /// Toggles the unrelease button.
