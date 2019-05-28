@@ -272,17 +272,13 @@ namespace HomeZone.FluxTests.Flux
 
             // Release the solution.
             parts.SingleDetailBendSolutions.ToggleReleaseButton( SOLUTION_NAME_1 );
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear();
-            parts.SingleDetailBendSolutions.OpenSolutionDetail( SOLUTION_NAME_1 );
+			parts.SingleDetailBendSolutions.OpenSolutionDetail( SOLUTION_NAME_1 );
             Assert.IsTrue( parts.SingleDetailBendSolutions.OpenReleaseButtonVisible( SOLUTION_NAME_1 ) );
             AssertFileCountInReleaseFolder( 2, releasePathFirstBoost, "After first release" );
 
             // Un-release the solution.
             parts.SingleDetailBendSolutions.ToggleUnreleaseButton( SOLUTION_NAME_1 );
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear();
-            Assert.IsFalse( parts.SingleDetailBendSolutions.OpenReleaseButtonVisible( SOLUTION_NAME_1 ) );
+			Assert.IsFalse( parts.SingleDetailBendSolutions.OpenReleaseButtonVisible( SOLUTION_NAME_1 ) );
             AssertFileCountInReleaseFolder( 0, releasePathFirstBoost, "After first un-release" );
 
 
@@ -303,17 +299,13 @@ namespace HomeZone.FluxTests.Flux
 
             // Release the solution.
             parts.SingleDetailBendSolutions.ToggleReleaseButton( SOLUTION_NAME_2 );
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear();
-            parts.SingleDetailBendSolutions.OpenSolutionDetail( SOLUTION_NAME_2 );
+			parts.SingleDetailBendSolutions.OpenSolutionDetail( SOLUTION_NAME_2 );
             Assert.IsTrue( parts.SingleDetailBendSolutions.OpenReleaseButtonVisible( SOLUTION_NAME_2 ) );
             AssertFileCountInReleaseFolder( 2, releasePathSecondBoost, "After second release" );
 
             // Un-release the solution.
             parts.SingleDetailBendSolutions.ToggleUnreleaseButton( SOLUTION_NAME_2 );
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear();
-            Assert.IsFalse( parts.SingleDetailBendSolutions.OpenReleaseButtonVisible( SOLUTION_NAME_2 ) );
+			Assert.IsFalse( parts.SingleDetailBendSolutions.OpenReleaseButtonVisible( SOLUTION_NAME_2 ) );
             AssertFileCountInReleaseFolder( 0, releasePathSecondBoost, "After second un-release" );
         }
 
