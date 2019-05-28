@@ -12,5 +12,7 @@ namespace HomeZone.UiObjectInterfaces.Dialogs
         /// Clicks the yes button.
         /// </summary>
         void Yes();
+
+        void Ok();
     }
 }

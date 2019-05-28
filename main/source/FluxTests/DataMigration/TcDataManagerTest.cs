@@ -1,5 +1,5 @@
-﻿using HomeZone.FluxTests.Utilities;
-using HomeZone.UiCommonFunctions.Base;
+﻿using HomeZone.UiCommonFunctions.Base;
+using HomeZone.UiCommonFunctions.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartBear.TestLeft.TestObjects;
 using SmartBear.TestLeft.TestObjects.WPF;

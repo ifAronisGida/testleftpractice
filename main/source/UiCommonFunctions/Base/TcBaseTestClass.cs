@@ -248,11 +248,15 @@ namespace HomeZone.UiCommonFunctions.Base
 
             HomeZone.MainWindowExists.WaitFor( TimeSpan.FromSeconds( 90 ) );
 
-            var about = HomeZone.GotoMainMenu().OpenAboutDialog();
-            about.CopyToClipboard();
-            about.Close();
-
-            PostHomeZoneInfoToLog(System.Windows.Forms.Clipboard.GetText());
+            var info = GetHomeZoneInfo();
+            if (info != null)
+            {
+                PostHomeZoneInfoToLog(info);
+            }
+            else
+            {
+                Log.Warning( "Could not extract HomeZone info." );
+            }
 
             // close WelcomeScreen if visible
             var welcomeScreen = HomeZone.WelcomeScreen;
@@ -288,6 +292,29 @@ namespace HomeZone.UiCommonFunctions.Base
             if( TestContext.CurrentTestOutcome == UnitTestOutcome.Failed )
             {
                 mTestedAppProcess?.Kill();
+            }
+        }
+
+        private string GetHomeZoneInfo()
+        {
+            var about = HomeZone.GotoMainMenu().OpenAboutDialog();
+
+            try
+            {
+                about.CopyToClipboard();
+
+                if (HomeZone.MessageBox.MessageBoxExists())
+                {
+                    HomeZone.MessageBox.Ok();
+
+                    return null;
+                }
+
+                return System.Windows.Forms.Clipboard.GetText();
+            }
+            finally
+            {
+                about.Close();
             }
         }
 
