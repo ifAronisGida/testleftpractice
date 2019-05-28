@@ -89,6 +89,7 @@
     <Compile Include="TestSettings\TcTestSettings.cs" />
     <Compile Include="Utilities\TcHomeZoneExtensions.cs" />
     <Compile Include="Utilities\TcLogging.cs" />
+    <Compile Include="Utilities\TcTestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UiObjectInterfaces\UiObjectInterfaces.csproj">

@@ -16,6 +16,9 @@
         new Label( "ReleaseMissing", "Release missing", "Freigabe fehlt", "" ),
         new Label( "NoBending", "(No bending)", "(Nicht Biegen)", "" ),
         new Label( "Favorite", "Favorite", "Favorit", "" ),
+		new Label( "ReleaseMissing", "Release missing", "Freigabe fehlt", "" ),
+		new Label( "Die", "Air Bending", "Freibiegen", "Szabandhajlítás" ),
+		new Label( "Coining", "Embossing", "Prägen", "Préselés" ),
     };
 #>
 //--------------------------------------------------------------------------------------------------------------
