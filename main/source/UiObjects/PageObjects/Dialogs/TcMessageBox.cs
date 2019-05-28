@@ -54,5 +54,10 @@ namespace HomeZone.UiObjects.PageObjects.Dialogs
         {
             YesButton.Click();
         }
+
+        public void Ok()
+        {
+            OkButton.Click();
+        }
     }
 }
