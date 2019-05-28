@@ -77,7 +77,6 @@
     <Compile Include="Settings\TcBendDeductionTest.cs" />
     <Compile Include="Settings\TcBendToolManagementTest.cs" />
     <Compile Include="Settings\TcSettingsDialogTest.cs" />
-    <Compile Include="Utilities\TcTestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UiCommonFunctions\UiCommonFunctions.csproj">

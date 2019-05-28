@@ -3,12 +3,12 @@ using System;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace HomeZone.FluxTests.Utilities
+namespace HomeZone.UiCommonFunctions.Utilities
 {
     /// <summary>
     /// This class provides convenient functionalities that shall be used in tests.
     /// </summary>
-    internal class TcTestHelper
+    public class TcTestHelper
     {
         /// <summary>
         /// Waits until a condition is fulfilled, but not longer than the default timeout.
