@@ -1,12 +1,14 @@
 using HomeZone.UiCommonFunctions.Base;
 using HomeZone.UiObjectInterfaces.Part;
 using HomeZone.UiObjects;
+using HomeZone.UiCommonFunctions.PageObjectHelpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
+using System.Linq;
 
 namespace HomeZone.FluxTests.Flux
 {
@@ -67,6 +69,14 @@ namespace HomeZone.FluxTests.Flux
         public void ReleaseBoostedPart()
         {
             ExecuteUITest( DoReleaseBoostedPart, "Release Boosted Part" );
+        }
+
+        [TestMethod, UniqueName( "56F5D1CE-36AB-4B44-89F3-13E2228CD3DA" )]
+        [Tag( "Flux" )]
+        [Description( "Test for changing the 'release path'. The files when releasing the bend solution needs to be in the correct path after changing it in the machine-tab." )]
+        public void ReleasePathChangeTest()
+        {
+            ExecuteUITest( DoReleasePathChange, "Flux Boost Part Test" );
         }
 
         /// <summary>
@@ -161,7 +171,7 @@ namespace HomeZone.FluxTests.Flux
 
             Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ), "NC Button is disabled" );
             Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ), "Setup Plan Button is disabled" );
-            Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ), "Release Button is disabled" );
+            Assert.IsFalse( parts.SingleDetailBendSolutions.OpenReleaseButtonVisible( solutionName ), "Release Button is disabled" );
         }
 
         /// <summary>
@@ -186,7 +196,7 @@ namespace HomeZone.FluxTests.Flux
 
             Assert.IsFalse( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
             Assert.IsFalse( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
-            Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
+            Assert.IsFalse( parts.SingleDetailBendSolutions.OpenReleaseButtonVisible( solutionName ) );
         }
 
         /// <summary>
@@ -215,7 +225,7 @@ namespace HomeZone.FluxTests.Flux
 
             Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
             Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
-            Assert.IsTrue( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
+            Assert.IsTrue( parts.SingleDetailBendSolutions.OpenReleaseButtonVisible( solutionName ) );
 
             // widerrufen
             parts.SingleDetailBendSolutions.ToggleUnreleaseButton( solutionName );
@@ -224,7 +234,85 @@ namespace HomeZone.FluxTests.Flux
 
             Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
             Assert.IsTrue( parts.SingleDetailBendSolutions.SetupPlanButtonVisible( solutionName ) );
-            Assert.IsFalse( parts.SingleDetailBendSolutions.ReleaseButtonVisible( solutionName ) );
+            Assert.IsFalse( parts.SingleDetailBendSolutions.OpenReleaseButtonVisible( solutionName ) );
+        }
+
+        private void DoReleasePathChange()
+        {
+            TcMachineHelper machineHelper = new TcMachineHelper();
+
+            string machineName = $"{S_FLUX_MACHINE_5320} - ReleasePathTest";
+			mMachineHelper.CreateAndSaveBendMachine( TestSettings, HomeZone.Machines, S_FLUX_MACHINE_5320, machineName );
+
+			string releasePathDefault = machineHelper.GetReleasePathOfMachine( machineName, HomeZone.Machines );
+			string uniqueTestFolderName = TestContext.TestDir.Split( '\\' ).Last();
+			string releasePathFirstBoost = Path.Combine( releasePathDefault, uniqueTestFolderName, "myFirstBoostPath" );
+			string releasePathSecondBoost = Path.Combine( releasePathDefault, uniqueTestFolderName, "mySeconBoostPath" );
+			//string releasePathFirstBoost = Path.Combine( TestContext.TestDeploymentDir, TestContext.TestName, "myFirstBoostPath" );
+			//string releasePathSecondBoost = Path.Combine( TestContext.TestDeploymentDir, TestContext.TestName, "mySeconBoostPath" );
+
+
+            // Change Release-path in the machine-settings.
+            Assert.IsTrue(machineHelper.ChangeReleasePathOfMachine( machineName, releasePathFirstBoost, HomeZone.Machines ),
+                "First release-path: Unable to find machine or set the release-path.");
+
+            // Import a part from file.
+            var parts = HomeZone.GotoParts();
+            mPartHelper.ImportPart( TestSettings, parts, @"C:\Users\Public\Documents\TRUMPF\TruTops\Samples\Showcase\Demoteil.geo" );
+
+            // -------------------------------------------------
+            // First boost attempt.
+            // -------------------------------------------------
+            // Crate and boost the solution.
+            parts.SingleDetailBendSolutions.New();
+            const string SOLUTION_NAME_1 = "Bend1";
+            parts.SingleDetailBendSolutions.BoostSolution( SOLUTION_NAME_1 );
+            parts.WaitForDetailOverlayAppear();
+            parts.WaitForDetailOverlayDisappear();
+
+            // Release the solution.
+            parts.SingleDetailBendSolutions.ToggleReleaseButton( SOLUTION_NAME_1 );
+			parts.SingleDetailBendSolutions.OpenSolutionDetail( SOLUTION_NAME_1 );
+            Assert.IsTrue( parts.SingleDetailBendSolutions.OpenReleaseButtonVisible( SOLUTION_NAME_1 ) );
+            AssertFileCountInReleaseFolder( 2, releasePathFirstBoost, "After first release" );
+
+            // Un-release the solution.
+            parts.SingleDetailBendSolutions.ToggleUnreleaseButton( SOLUTION_NAME_1 );
+			Assert.IsFalse( parts.SingleDetailBendSolutions.OpenReleaseButtonVisible( SOLUTION_NAME_1 ) );
+            AssertFileCountInReleaseFolder( 0, releasePathFirstBoost, "After first un-release" );
+
+
+            // -------------------------------------------------
+            // Second boost attempt.
+            // -------------------------------------------------
+            // Change Release-path in the machine-settings.
+            Assert.IsTrue( machineHelper.ChangeReleasePathOfMachine( machineName, releasePathSecondBoost, HomeZone.Machines ),
+                "First release-path: Unable to find machine or set the release-path." );
+
+			// Boost the solution again.
+			parts = HomeZone.GotoParts();
+			parts.SingleDetailBendSolutions.New();
+            const string SOLUTION_NAME_2 = "Bend2";
+			parts.SingleDetailBendSolutions.BoostSolution( SOLUTION_NAME_2 );
+            parts.WaitForDetailOverlayAppear();
+            parts.WaitForDetailOverlayDisappear();
+
+            // Release the solution.
+            parts.SingleDetailBendSolutions.ToggleReleaseButton( SOLUTION_NAME_2 );
+			parts.SingleDetailBendSolutions.OpenSolutionDetail( SOLUTION_NAME_2 );
+            Assert.IsTrue( parts.SingleDetailBendSolutions.OpenReleaseButtonVisible( SOLUTION_NAME_2 ) );
+            AssertFileCountInReleaseFolder( 2, releasePathSecondBoost, "After second release" );
+
+            // Un-release the solution.
+            parts.SingleDetailBendSolutions.ToggleUnreleaseButton( SOLUTION_NAME_2 );
+			Assert.IsFalse( parts.SingleDetailBendSolutions.OpenReleaseButtonVisible( SOLUTION_NAME_2 ) );
+            AssertFileCountInReleaseFolder( 0, releasePathSecondBoost, "After second un-release" );
+        }
+
+        private void AssertFileCountInReleaseFolder(int expectedFileCount, string path, string assertId)
+        {
+            Assert.AreEqual( expectedFileCount, Directory.EnumerateFiles( path ).Count(),
+                $"{assertId}: The expected file count in the release folder '{path}' is not as expected." );
         }
 
         /// <summary>

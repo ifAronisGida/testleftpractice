@@ -93,14 +93,23 @@ namespace HomeZone.UiObjects.PageObjects.Part
         }
 
         /// <summary>
-        /// is release button visible?
+        /// Open release button visible.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>bool</returns>
-        public bool ReleaseButtonVisible( string name )
+        public bool OpenReleaseButtonVisible( string name )
         {
             var button = BendSolutionList.Find<IControl>( Search.ByUid( "Part.Detail.BendSolutions.List." + name + ".Detail.OpenReleaseFolder" ), 6 );
             return button.VisibleOnScreen && button.Enabled;
+        }
+
+        /// <summary>
+        /// Toggles the OpenRelease button.
+        /// </summary>
+        public void ToggleOpenReleaseButton( string name )
+        {
+            var button = BendSolutionList.Find<IControl>( Search.ByUid( "Part.Detail.BendSolutions.List." + name + ".Detail.OpenReleaseFolder" ), 6 );
+            button.Click();
         }
 
         /// <summary>
