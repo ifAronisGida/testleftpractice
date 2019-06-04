@@ -16,7 +16,7 @@ namespace HomeZone.FluxTests.DataMigration
     [TestClass]
     public sealed class TcDataManagerTest : TcBaseTestClass
     {
-        private const string S_TESTDATA_SUB_PATH = "DataMigration/TestData";
+        private const string S_TESTDATA_SUB_PATH = "DataMigration\\TestData";
         private const string S_CSV_FILE_ENDING_FILTER = "*.csv";
         private const string S_REMOVE_CONTENT_AFTER_CHARACHTER = "@";
         private const string S_NO_CSV_FILES_EXPORTED = "No csv files have been exported";
