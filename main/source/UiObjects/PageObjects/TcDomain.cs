@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Trumpf.Coparoo.Desktop.WPF;
 using HomeZone.UiObjectInterfaces.Common;
 using HomeZone.UiObjects.ControlObjects.Composite;
@@ -11,7 +10,6 @@ namespace HomeZone.UiObjects.PageObjects
         where TToolbar : TiVisibility
     {
         private readonly Lazy<TcResultColumn> mResultColumn;
-        private readonly Dictionary<Type, object> mCache = new Dictionary<Type, object>();
 
         protected TcDomain()
         {

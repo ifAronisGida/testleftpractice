@@ -16,25 +16,8 @@ namespace HomeZone.UiObjects.PageObjects.PartOrder
         public TiPartOrderBaseInfoBulk BaseInfoBulk => On<TcPartOrderBaseInfoBulk>( cache: true );
         public TiPartOrderPartInfoBulk PartInfoBulk => On<TcPartOrderPartInfoBulk>( cache: true );
 
-        /// <summary>
-        /// Waits for detail overlay appear.
-        /// </summary>
-        /// <param name="timeout">The timeout.</param>
-        /// <returns></returns>
-        public bool WaitForDetailOverlayAppear( TimeSpan? timeout = null )
-        {
-            return DetailOverlay.Visible.TryWaitFor( timeout ?? TcPageObjectSettings.Instance.PartOverlayAppearTimeout );
-        }
-
-        /// <summary>
-        /// Waits for detail overlay disappear.
-        /// </summary>
-        /// <param name="timeout">The timeout.</param>
-        /// <returns></returns>
-        public bool WaitForDetailOverlayDisappear( TimeSpan? timeout = null )
-        {
-            return DetailOverlay.Visible.TryWaitForFalse( timeout ?? TcPageObjectSettings.Instance.PartOverlayDisappearTimeout );
-        }
+        protected override TimeSpan DefaultOverlayAppearTimeout => TcPageObjectSettings.Instance.PartOverlayAppearTimeout;
+        protected override TimeSpan DefaultOverlayDisappearTimeout => TcPageObjectSettings.Instance.PartOverlayDisappearTimeout;
 
         /// <summary>
         /// Deletes the given part order. The part order should not be used in nestings.

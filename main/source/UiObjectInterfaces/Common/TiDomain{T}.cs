@@ -1,6 +1,6 @@
 namespace HomeZone.UiObjectInterfaces.Common
 {
-    public interface TiDomain<TResultColumnItem> : TiVisibility, TiGoto where TResultColumnItem : class
+    public interface TiDomain<TResultColumnItem> : TiDomain where TResultColumnItem : class
     {
         /// <summary>
         /// Gets the result column.
@@ -8,6 +8,6 @@ namespace HomeZone.UiObjectInterfaces.Common
         /// <value>
         /// The result column.
         /// </value>
-        TiResultColumn<TResultColumnItem> ResultColumn { get; }
+        new TiResultColumn<TResultColumnItem> ResultColumn { get; }
     }
 }

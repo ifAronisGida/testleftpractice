@@ -38,6 +38,8 @@ namespace HomeZone.UiCommonFunctions.TestSettings
 
         public bool ClearOldTestItemsAtStart => GetBool( "ClearOldTestItemsAtStart", true );
 
+        public bool KillTestedAppAfterFailedTest => GetBool( "KillTestedAppAfterFailedTest", true );
+
         public string TestedAppName => GetString( "TestedAppName", "Trumpf.TruTops.Control.Shell" );
         public string TestedAppPath => GetString( "TestedAppPath", @"C:\Program Files\TRUMPF\TruTops\Client\Control" );
 

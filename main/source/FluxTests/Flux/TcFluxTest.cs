@@ -391,7 +391,7 @@ namespace HomeZone.FluxTests.Flux
                     bool waitSuccess = false;
                     do
                     {
-                        waitSuccess = parts.WaitForDetailOverlayDisappear();
+                        waitSuccess = parts.TryWaitForDetailOverlayDisappear();
                         timeoutCount++;
                     } while( !waitSuccess && timeoutCount < showcasePartList.Count ); //wait max: number of parts * timeout
 

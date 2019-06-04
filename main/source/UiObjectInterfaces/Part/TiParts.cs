@@ -46,20 +46,6 @@ namespace HomeZone.UiObjectInterfaces.Part
         TiPartSingleDetailCutSolutions SingleDetailCutSolutions { get; }
 
         /// <summary>
-        /// Waits for detail overlay appear.
-        /// </summary>
-        /// <param name="timeout">The timeout.</param>
-        /// <returns></returns>
-        bool WaitForDetailOverlayAppear( TimeSpan? timeout = null );
-
-        /// <summary>
-        /// Waits for detail overlay disappear.
-        /// </summary>
-        /// <param name="timeout">The timeout.</param>
-        /// <returns></returns>
-        bool WaitForDetailOverlayDisappear( TimeSpan? timeout = null );
-
-        /// <summary>
         /// Deletes the given part.
         /// </summary>
         /// <param name="id">The identifier.</param>

@@ -35,25 +35,8 @@ namespace HomeZone.UiObjects.PageObjects.Machine
         /// </value>
         public TiMachineDetail Detail => On<TcMachineDetail>( cache: true );
 
-        /// <summary>
-        /// Waits for detail overlay appear.
-        /// </summary>
-        /// <param name="timeout">The timeout.</param>
-        /// <returns></returns>
-        public bool WaitForDetailOverlayAppear( TimeSpan? timeout = null )
-        {
-            return DetailOverlay.Visible.TryWaitFor( timeout ?? TcPageObjectSettings.Instance.MachineOverlayAppearTimeout );
-        }
-
-        /// <summary>
-        /// Waits for detail overlay disappear.
-        /// </summary>
-        /// <param name="timeout">The timeout.</param>
-        /// <returns></returns>
-        public bool WaitForDetailOverlayDisappear( TimeSpan? timeout = null )
-        {
-            return DetailOverlay.Visible.TryWaitForFalse( timeout ?? TcPageObjectSettings.Instance.MachineOverlayDisappearTimeout );
-        }
+        protected override TimeSpan DefaultOverlayAppearTimeout => TcPageObjectSettings.Instance.MachineOverlayAppearTimeout;
+        protected override TimeSpan DefaultOverlayDisappearTimeout => TcPageObjectSettings.Instance.MachineOverlayDisappearTimeout;
 
         /// <summary>
         /// Creates a new cut machine with the given properties.

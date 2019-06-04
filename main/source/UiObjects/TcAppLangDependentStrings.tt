@@ -1,11 +1,9 @@
 ﻿<#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(TargetDir)\Newtonsoft.Json.dll" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="Newtonsoft.Json" #>
 <#@ output extension=".cs" #>
 <#
     var labels = new List<Label> {

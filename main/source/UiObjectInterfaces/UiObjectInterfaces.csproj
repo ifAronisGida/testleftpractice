@@ -67,6 +67,7 @@
     <Compile Include="Common\TiDomain.cs" />
     <Compile Include="Common\TiDomain{T}.cs" />
     <Compile Include="Common\TiGoto.cs" />
+    <Compile Include="Common\TiHasDetailOverlay.cs" />
     <Compile Include="Common\TiResultColumn.cs" />
     <Compile Include="Common\TiResultColumn{T}.cs" />
     <Compile Include="Common\TiHasStateStack.cs" />

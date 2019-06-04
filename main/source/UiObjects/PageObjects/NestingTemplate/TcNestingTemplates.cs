@@ -11,15 +11,8 @@ namespace HomeZone.UiObjects.PageObjects.NestingTemplate
         public TiNestingTemplateBaseInfo BaseInfo => On<TcNestingTemplateBaseInfo>( cache: true );
         public TiNestingTemplatePartList PartList => On<TcNestingTemplatePartList>( cache: true );
 
-        public void WaitForOverlayAppear( TimeSpan? timeout = null )
-        {
-            DetailOverlay.Visible.WaitFor( timeout ?? TcPageObjectSettings.Instance.NestingTemplateOverlayAppearTimeout );
-        }
-
-        public void WaitForOverlayDisappear( TimeSpan? timeout = null )
-        {
-            DetailOverlay.Visible.WaitForFalse( timeout ?? TcPageObjectSettings.Instance.NestingTemplateOverlayDisappearTimeout );
-        }
+        protected override TimeSpan DefaultOverlayAppearTimeout => TcPageObjectSettings.Instance.NestingTemplateOverlayAppearTimeout;
+        protected override TimeSpan DefaultOverlayDisappearTimeout => TcPageObjectSettings.Instance.NestingTemplateOverlayDisappearTimeout;
 
         /// <summary>
         /// Deletes the given nesting template.
