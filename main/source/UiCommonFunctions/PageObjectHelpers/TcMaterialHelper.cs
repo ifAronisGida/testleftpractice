@@ -1,5 +1,7 @@
 ﻿using HomeZone.UiCommonFunctions.TestSettings;
+using HomeZone.UiObjectInterfaces.Shell;
 using HomeZone.UiObjectInterfaces.Material;
+using System;
 
 namespace HomeZone.UiCommonFunctions.PageObjectHelpers
 {
@@ -10,13 +12,14 @@ namespace HomeZone.UiCommonFunctions.PageObjectHelpers
         /// </summary>
         /// <param name="testSettings">test settings</param>
         /// <param name="materials">materials page</param>
-        public void DeleteTestMaterials( TcTestSettings testSettings, TiMaterials materials )
+        public void DeleteTestMaterials( TcTestSettings testSettings, TiMaterials materials, TiMainTabControl mainTab )
         {
             materials.Goto();
             materials.ResultColumn.SelectItems( testSettings.NamePrefix );
             if( materials.ResultColumn.Count > 0 )
             {
                 materials.Toolbar.Delete();
+                mainTab.WaitForTabOverlayDisappear( TimeSpan.FromMinutes( 1 ) );
             }
             materials.ResultColumn.ClearSearch();
         }

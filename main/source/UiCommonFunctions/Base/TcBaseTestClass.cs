@@ -279,7 +279,7 @@ namespace HomeZone.UiCommonFunctions.Base
                 mPartHelper.DeleteTestParts( TestSettings, HomeZone.Parts );
                 mCustomerHelper.DeleteTestCustomers( TestSettings, HomeZone.Customers );
                 mMachineHelper.DeleteTestMachines( TestSettings, HomeZone.Machines );
-                mMaterialHelper.DeleteTestMaterials( TestSettings, HomeZone.Materials );
+                mMaterialHelper.DeleteTestMaterials( TestSettings, HomeZone.Materials, HomeZone.MainTabControl );
                 Log.CloseFolder();
             }
         }
