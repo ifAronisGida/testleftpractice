@@ -248,8 +248,6 @@ namespace HomeZone.FluxTests.Flux
 			string uniqueTestFolderName = TestContext.TestDir.Split( '\\' ).Last();
 			string releasePathFirstBoost = Path.Combine( releasePathDefault, uniqueTestFolderName, "myFirstBoostPath" );
 			string releasePathSecondBoost = Path.Combine( releasePathDefault, uniqueTestFolderName, "mySeconBoostPath" );
-			//string releasePathFirstBoost = Path.Combine( TestContext.TestDeploymentDir, TestContext.TestName, "myFirstBoostPath" );
-			//string releasePathSecondBoost = Path.Combine( TestContext.TestDeploymentDir, TestContext.TestName, "mySeconBoostPath" );
 
 
             // Change Release-path in the machine-settings.
@@ -263,7 +261,7 @@ namespace HomeZone.FluxTests.Flux
             // -------------------------------------------------
             // First boost attempt.
             // -------------------------------------------------
-            // Crate and boost the solution.
+            // Create and boost the solution.
             parts.SingleDetailBendSolutions.New();
             const string SOLUTION_NAME_1 = "Bend1";
             parts.SingleDetailBendSolutions.BoostSolution( SOLUTION_NAME_1 );

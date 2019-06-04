@@ -40,6 +40,12 @@ namespace HomeZone.UiCommonFunctions.PageObjectHelpers
             machines.ResultColumn.ClearSearch();
         }
 
+		/// <summary>
+		/// Gets the actual release path of a specific machine.
+		/// </summary>
+		/// <param name="machineName">Name of the Machine.</param>
+		/// <param name="machines">The machine tab.</param>
+		/// <returns>The actual release path or <code>string.Empty</code> if the machine was not found.</returns>
 		public string GetReleasePathOfMachine(string machineName, TiMachines machines)
 		{
 			string actualPath = string.Empty;
@@ -52,8 +58,15 @@ namespace HomeZone.UiCommonFunctions.PageObjectHelpers
 
 			return actualPath;
 		}
-        
-        public bool ChangeReleasePathOfMachine(string machineName, string releasePath, TiMachines machines )
+
+		/// <summary>
+		/// Changes the release path of a specific machine.
+		/// </summary>
+		/// <param name="machineName">Name of the Machine.</param>
+		/// <param name="releasePath">The new release path to set.</param>
+		/// <param name="machines">The machine tab.</param>
+		/// <returns><code>true</code> if path was set, <code>false</code> if the machine was not found.</returns>
+		public bool ChangeReleasePathOfMachine(string machineName, string releasePath, TiMachines machines )
         {
             var machineFoundAndPathSet = false;
 
