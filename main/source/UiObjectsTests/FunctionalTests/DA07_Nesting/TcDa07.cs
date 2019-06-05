@@ -243,7 +243,7 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
 
             parts.Toolbar.Import( PART );
 
-            parts.WaitForDetailOverlayAppear();
+            parts.TryWaitForDetailOverlayAppear();
             parts.WaitForDetailOverlayDisappear();
             parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 30 ) );
 
@@ -254,13 +254,13 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
             Log.Info( "Create part order" );
 
             parts.Toolbar.CreatePartOrder();
-            parts.WaitForDetailOverlayAppear();
+            parts.TryWaitForDetailOverlayAppear();
             parts.WaitForDetailOverlayDisappear();
 
             var partOrders = HomeZone.PartOrders;
             partOrders.BaseInfo.ID.Value = Name2UIT_Name( mId );
             partOrders.Toolbar.Save();
-            partOrders.WaitForDetailOverlayAppear();
+            partOrders.TryWaitForDetailOverlayAppear();
             partOrders.WaitForDetailOverlayDisappear();
 
             Log.CloseFolder();
