@@ -213,12 +213,12 @@ namespace HomeZone.FluxTests.Flux
 
             parts.SingleDetailBendSolutions.New();
             parts.SingleDetailBendSolutions.BoostSolution( solutionName );
-            parts.WaitForDetailOverlayAppear();
+            parts.TryWaitForDetailOverlayAppear();
             parts.WaitForDetailOverlayDisappear();
 
             // freigeben
             parts.SingleDetailBendSolutions.ToggleReleaseButton( solutionName );
-            parts.WaitForDetailOverlayAppear();
+            parts.TryWaitForDetailOverlayAppear();
             parts.WaitForDetailOverlayDisappear();
 
             parts.SingleDetailBendSolutions.OpenSolutionDetail( solutionName );
@@ -229,7 +229,7 @@ namespace HomeZone.FluxTests.Flux
 
             // widerrufen
             parts.SingleDetailBendSolutions.ToggleUnreleaseButton( solutionName );
-            parts.WaitForDetailOverlayAppear();
+            parts.TryWaitForDetailOverlayAppear();
             parts.WaitForDetailOverlayDisappear();
 
             Assert.IsTrue( parts.SingleDetailBendSolutions.NcButtonVisible( solutionName ) );
