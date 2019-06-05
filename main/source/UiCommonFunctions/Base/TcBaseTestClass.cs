@@ -136,7 +136,7 @@ namespace HomeZone.UiCommonFunctions.Base
         /// <param name="caption">preparation description</param>
         protected void ExecuteUITestPreparation( Action action, [CallerMemberName] string caption = "" )
         {
-            if (!mMachineDetailsReported)
+            if( !mMachineDetailsReported )
             {
                 mMachineDetailsReported = true;
                 Log.Info( $"OS: {Environment.OSVersion.VersionString}, Memory: {GetTotalMemory()}" );
@@ -186,9 +186,18 @@ namespace HomeZone.UiCommonFunctions.Base
             }
             catch( Exception ex )
             {
-                Log.Error( ex.Message, ex.StackTrace ); //automatically creates a screenshot
+                PostException( ex );
                 Log.CloseFolder();
                 throw;
+            }
+
+            void PostException( Exception ex, bool innerException = false )
+            {
+                Log.Error( $"{(innerException ? "Inner exception: " : "")}{ex.Message}", ex.StackTrace ); //automatically creates a screenshot
+                if( ex.InnerException != null )
+                {
+                    PostException( ex.InnerException, true );
+                }
             }
         }
 
@@ -240,7 +249,7 @@ namespace HomeZone.UiCommonFunctions.Base
             }
             else
             {
-                mTestedAppProcess = runningHomeZone[ 0 ];
+                mTestedAppProcess = runningHomeZone[0];
             }
 
             // connect to HomeZone process and wait until visible
@@ -249,9 +258,9 @@ namespace HomeZone.UiCommonFunctions.Base
             HomeZone.MainWindowExists.WaitFor( TimeSpan.FromSeconds( 90 ) );
 
             var info = GetHomeZoneInfo();
-            if (info != null)
+            if( info != null )
             {
-                PostHomeZoneInfoToLog(info);
+                PostHomeZoneInfoToLog( info );
             }
             else
             {
@@ -303,7 +312,7 @@ namespace HomeZone.UiCommonFunctions.Base
             {
                 about.CopyToClipboard();
 
-                if (HomeZone.MessageBox.MessageBoxExists())
+                if( HomeZone.MessageBox.MessageBoxExists() )
                 {
                     HomeZone.MessageBox.Ok();
 
@@ -320,14 +329,14 @@ namespace HomeZone.UiCommonFunctions.Base
 
         // TestLeft throws an exception when the additional text is long enough.
         // This method posts the big homezone info text in chunks, clamping each string at 12000 chars.
-        private void PostHomeZoneInfoToLog(string homezoneInfo)
+        private void PostHomeZoneInfoToLog( string homezoneInfo )
         {
             var sb = new StringBuilder();
             var count = 1;
 
             foreach( var line in homezoneInfo.Split( '\n' ) )
             {
-                if (sb.Length + line.Length < 12000)
+                if( sb.Length + line.Length < 12000 )
                 {
                     sb.Append( line );
                 }
@@ -338,7 +347,7 @@ namespace HomeZone.UiCommonFunctions.Base
                 }
             }
 
-            if (sb.Length > 0)
+            if( sb.Length > 0 )
             {
                 Log.Info( $"HomeZone info pt. {count}", sb.ToString() );
             }
