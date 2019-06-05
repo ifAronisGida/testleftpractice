@@ -21,7 +21,7 @@ namespace HomeZone.UiCommonFunctions.PageObjectHelpers
             machineName = testSettings.NamePrefix + machineName;
             machines.NewBendMachine( machineType, machineName );
             machines.Toolbar.Save();
-            machines.WaitForDetailOverlayAppear();
+            machines.TryWaitForDetailOverlayAppear();
             machines.WaitForDetailOverlayDisappear();
         }
 

@@ -8,7 +8,7 @@ namespace HomeZone.UiCommonFunctions.PageObjectHelpers
         public void ImportPart( TcTestSettings testSettings, TiParts parts, string filePath )
         {
             parts.Toolbar.Import( filePath );
-            parts.WaitForDetailOverlayAppear();
+            parts.TryWaitForDetailOverlayAppear();
             parts.WaitForDetailOverlayDisappear();
             parts.SingleDetail.Name.Value = testSettings.NamePrefix + parts.SingleDetail.Name.Value;
         }
