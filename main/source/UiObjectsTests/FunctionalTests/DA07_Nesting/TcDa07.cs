@@ -231,7 +231,7 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
 
             machines.NewCutMachine( CUT_JOB1_TYPE, Name2UIT_Name( CUT_JOB1_TYPE ), @"6000" );
             machines.Toolbar.Save();
-            machines.WaitForDetailOverlayAppear( TestSettings.SavingTimeout );
+            machines.TryWaitForDetailOverlayAppear( TestSettings.SavingTimeout );
             machines.WaitForDetailOverlayDisappear( TestSettings.SavingTimeout );
             machines.NewCutMachine( CUT_JOB2_TYPE, Name2UIT_Name( CUT_JOB2_TYPE ), @"6000" );
             machines.Toolbar.Save();
