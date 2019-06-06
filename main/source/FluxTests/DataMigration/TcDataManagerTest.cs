@@ -213,10 +213,10 @@ namespace HomeZone.FluxTests.DataMigration
         {
             string desktopFolder = Environment.GetFolderPath( Environment.SpecialFolder.Desktop );
             List<string> generatedCSVFileList = GetCSVFiles( desktopFolder );
+			
+            var targetFolder = Path.Combine( TestSettings.HtmlReportPath ?? TestSettings.ResultsDirectory, TestContext.TestName );
 
-            var targetFolder = Path.Combine( TestContext.TestDeploymentDir, TestContext.TestName );
-
-            foreach(string sourceFile in generatedCSVFileList)
+			foreach(string sourceFile in generatedCSVFileList)
             {
                 if( !Directory.Exists( targetFolder ) )
                 {
