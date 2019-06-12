@@ -161,7 +161,7 @@ namespace HomeZone.UiCommonFunctions.Base
                 var searcher = new ManagementObjectSearcher( query );
                 var item = searcher.Get().Cast<ManagementObject>().First();
 
-                return $"{( ulong )item["TotalPhysicalMemory"] / 1024 / 1024} MB";
+                return $"{( ulong ) item[ "TotalPhysicalMemory" ] / 1024 / 1024} MB";
             }
         }
 
@@ -193,7 +193,7 @@ namespace HomeZone.UiCommonFunctions.Base
 
             void PostException( Exception ex, bool innerException = false )
             {
-                Log.Error( $"{(innerException ? "Inner exception: " : "")}{ex.Message}", ex.StackTrace ); //automatically creates a screenshot
+                Log.Error( $"{( innerException ? "Inner exception: " : "" )}{ex.Message}", ex.StackTrace ); //automatically creates a screenshot
                 if( ex.InnerException != null )
                 {
                     PostException( ex.InnerException, true );
@@ -249,7 +249,7 @@ namespace HomeZone.UiCommonFunctions.Base
             }
             else
             {
-                mTestedAppProcess = runningHomeZone[0];
+                mTestedAppProcess = runningHomeZone[ 0 ];
             }
 
             // connect to HomeZone process and wait until visible
@@ -301,6 +301,8 @@ namespace HomeZone.UiCommonFunctions.Base
             if( TestContext.CurrentTestOutcome == UnitTestOutcome.Failed && TestSettings.KillTestedAppAfterFailedTest )
             {
                 mTestedAppProcess?.Kill();
+                //Wait after killing the HomeZone so that other processes like FluxAdapter, SpaceClaim, ... can terminate theirselve
+                System.Threading.Thread.Sleep( 15000 );
             }
         }
 
