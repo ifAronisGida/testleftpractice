@@ -21,6 +21,8 @@ using System.Linq;
 using System.Management;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
@@ -227,6 +229,8 @@ namespace HomeZone.UiCommonFunctions.Base
 
             TcAppLangDependentStrings.CurrentLanguage = TestSettings.ApplicationLanguage;
 
+            WaitForCellPmServer();
+
             // check if HomeZone is already running
             var runningHomeZone = Process.GetProcessesByName( TestSettings.TestedAppName );
 
@@ -353,6 +357,27 @@ namespace HomeZone.UiCommonFunctions.Base
             {
                 Log.Info( $"HomeZone info pt. {count}", sb.ToString() );
             }
+        }
+
+        private void WaitForCellPmServer()
+        {
+            if (IsServerRunning())
+            {
+                return;
+            }
+
+            var startTime = DateTime.Now;
+            do
+            {
+                if( ( DateTime.Now - startTime ).TotalMinutes > 5 )
+                {
+                    throw new Exception( "No CellPMServer process seen in 5 minutes." );
+                }
+
+                Thread.Sleep( 5000 );
+            } while( !IsServerRunning() );
+
+            bool IsServerRunning() => Process.GetProcessesByName( "cellpmserver" ).Any();
         }
     }
 }
