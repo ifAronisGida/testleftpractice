@@ -12,6 +12,8 @@ namespace HomeZone.UiObjects.ControlObjects
             ControlObject = controlObject;
         }
 
+        public virtual Wool Exists => ControlObject.Exists;
+
         public virtual Wool Enabled => ControlObject.Enabled;
 
         public virtual Wool Visible => ControlObject.Visible;
