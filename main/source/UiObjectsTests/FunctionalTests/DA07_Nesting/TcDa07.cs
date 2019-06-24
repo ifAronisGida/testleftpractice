@@ -176,10 +176,10 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
 
             Log.Info( "State in result list is 'Order List: Incomplete'." );
             var resultListItemStates = selectedItem.GetRawStates();
-            Assert.AreEqual( IncompleteState, resultListItemStates[ OrderListComponent ] );
+            Assert.AreEqual( IncompleteState, resultListItemStates[OrderListComponent] );
 
             Log.Info( "Second state in stack is 'Sheet Program: Incomplete'." );
-            Assert.AreEqual( IncompleteState, resultListItemStates[ SheetProgramComponent ] );
+            Assert.AreEqual( IncompleteState, resultListItemStates[SheetProgramComponent] );
 
 
             Log.Info( "Saving the nesting." );
@@ -243,7 +243,7 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
 
             parts.Toolbar.Import( PART );
 
-            parts.TryWaitForDetailOverlayAppear();
+            parts.WaitForDetailOverlayAppear();
             parts.WaitForDetailOverlayDisappear( TimeSpan.FromSeconds( 120 ) );
 
             parts.SingleDetail.Name.Value = Name2UIT_Name( mId );
