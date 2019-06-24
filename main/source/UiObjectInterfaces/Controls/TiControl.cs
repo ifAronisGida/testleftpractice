@@ -5,6 +5,7 @@ namespace HomeZone.UiObjectInterfaces.Controls
 {
     public interface TiControl
     {
+        Wool Exists { get; }
         Wool Enabled { get; }
 
         Wool Visible { get; }

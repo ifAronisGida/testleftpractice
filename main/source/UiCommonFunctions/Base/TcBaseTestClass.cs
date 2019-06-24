@@ -21,6 +21,8 @@ using System.Linq;
 using System.Management;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using Trumpf.AutoTest.Facts;
 using UiCommonFunctions.Utilities;
 
@@ -161,7 +163,7 @@ namespace HomeZone.UiCommonFunctions.Base
                 var searcher = new ManagementObjectSearcher( query );
                 var item = searcher.Get().Cast<ManagementObject>().First();
 
-                return $"{( ulong )item["TotalPhysicalMemory"] / 1024 / 1024} MB";
+                return $"{( ulong ) item[ "TotalPhysicalMemory" ] / 1024 / 1024} MB";
             }
         }
 
@@ -193,7 +195,7 @@ namespace HomeZone.UiCommonFunctions.Base
 
             void PostException( Exception ex, bool innerException = false )
             {
-                Log.Error( $"{(innerException ? "Inner exception: " : "")}{ex.Message}", ex.StackTrace ); //automatically creates a screenshot
+                Log.Error( $"{( innerException ? "Inner exception: " : "" )}{ex.Message}", ex.StackTrace ); //automatically creates a screenshot
                 if( ex.InnerException != null )
                 {
                     PostException( ex.InnerException, true );
@@ -227,6 +229,8 @@ namespace HomeZone.UiCommonFunctions.Base
 
             TcAppLangDependentStrings.CurrentLanguage = TestSettings.ApplicationLanguage;
 
+            WaitForCellPmServer();
+
             // check if HomeZone is already running
             var runningHomeZone = Process.GetProcessesByName( TestSettings.TestedAppName );
 
@@ -249,7 +253,7 @@ namespace HomeZone.UiCommonFunctions.Base
             }
             else
             {
-                mTestedAppProcess = runningHomeZone[0];
+                mTestedAppProcess = runningHomeZone[ 0 ];
             }
 
             // connect to HomeZone process and wait until visible
@@ -301,6 +305,8 @@ namespace HomeZone.UiCommonFunctions.Base
             if( TestContext.CurrentTestOutcome == UnitTestOutcome.Failed && TestSettings.KillTestedAppAfterFailedTest )
             {
                 mTestedAppProcess?.Kill();
+                //Wait after killing the HomeZone so that other processes like FluxAdapter, SpaceClaim, ... can terminate theirselve
+                System.Threading.Thread.Sleep( 15000 );
             }
         }
 
@@ -351,6 +357,27 @@ namespace HomeZone.UiCommonFunctions.Base
             {
                 Log.Info( $"HomeZone info pt. {count}", sb.ToString() );
             }
+        }
+
+        private void WaitForCellPmServer()
+        {
+            if (IsServerRunning())
+            {
+                return;
+            }
+
+            var startTime = DateTime.Now;
+            do
+            {
+                if( ( DateTime.Now - startTime ).TotalMinutes > 5 )
+                {
+                    throw new Exception( "No CellPMServer process seen in 5 minutes." );
+                }
+
+                Thread.Sleep( 5000 );
+            } while( !IsServerRunning() );
+
+            bool IsServerRunning() => Process.GetProcessesByName( "cellpmserver" ).Any();
         }
     }
 }
