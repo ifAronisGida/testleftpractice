@@ -243,9 +243,7 @@ namespace HomeZone.UiObjectsTests.FunctionalTests.DA07_Nesting
 
             parts.Toolbar.Import( PART );
 
-            parts.WaitForDetailOverlayAppear();
-            parts.WaitForDetailOverlayDisappear( TimeSpan.FromSeconds( 120 ) );
-
+            parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 20 ) );
             parts.SingleDetail.Name.Value = Name2UIT_Name( mId );
             parts.SingleDetail.Id = Name2UIT_Name( mId );
             parts.SingleDetailCutSolutions.New();
