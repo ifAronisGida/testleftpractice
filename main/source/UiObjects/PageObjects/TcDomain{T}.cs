@@ -6,28 +6,23 @@ using HomeZone.UiObjects.Utilities;
 
 namespace HomeZone.UiObjects.PageObjects
 {
-    public abstract class TcDomain<TToolbar, TResultListItem> : TcDomainBase<TToolbar>, TiDomain<TResultListItem>
-        where TToolbar : TiVisibility
-        where TResultListItem : class
+    public abstract class TcDomain<TToolbar> : TcDomainBase<TToolbar, TiResultColumn>, TiDomain<TToolbar>
+        where TToolbar : TiToolbar
     {
-        private readonly Lazy<TcResultColumn<TResultListItem>> mResultColumn;
+        private readonly Lazy<TcResultColumn> mResultColumn;
 
         protected TcDomain()
         {
-            mResultColumn = new Lazy<TcResultColumn<TResultListItem>>( InitResultColumn );
+            mResultColumn = new Lazy<TcResultColumn>( InitResultColumn );
         }
 
-        public TiResultColumn<TResultListItem> ResultColumn => mResultColumn.Value;
+        public override TiResultColumn ResultColumn => mResultColumn.Value;
 
-        protected abstract TResultListItem MakeResultListItem( IControlObject listViewItem );
-
-        private TcResultColumn<TResultListItem> InitResultColumn()
+        private TcResultColumn InitResultColumn()
         {
             var resultColumnRoot = this.FindGeneric( Search.ByUid( ResultColumnUid ) );
 
-            return new TcResultColumn<TResultListItem>( resultColumnRoot, MakeResultListItem );
+            return new TcResultColumn( resultColumnRoot );
         }
-
-        TiResultColumn TiDomain.ResultColumn => mResultColumn.Value;
     }
 }

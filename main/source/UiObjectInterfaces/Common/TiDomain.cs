@@ -9,5 +9,7 @@ namespace HomeZone.UiObjectInterfaces.Common
         /// The result column.
         /// </value>
         TiResultColumn ResultColumn { get; }
+
+        TiToolbar Toolbar { get; }
     }
 }

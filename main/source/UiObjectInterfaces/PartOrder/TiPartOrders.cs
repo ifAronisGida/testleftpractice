@@ -3,9 +3,8 @@ using HomeZone.UiObjectInterfaces.Common;
 
 namespace HomeZone.UiObjectInterfaces.PartOrder
 {
-    public interface TiPartOrders : TiDomain
+    public interface TiPartOrders : TiDomain<TiPartOrderToolbar>
     {
-        TiPartOrderToolbar Toolbar { get; }
         TiPartOrderBaseInfo BaseInfo { get; }
         TiPartOrderPartInfo PartInfo { get; }
         TiPartOrderBaseInfoBulk BaseInfoBulk { get; }
