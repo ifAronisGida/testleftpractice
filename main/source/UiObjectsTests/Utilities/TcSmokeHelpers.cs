@@ -348,7 +348,7 @@ namespace HomeZone.UiObjectsTests.Utilities
 
                 parts.Toolbar.Import( mPartNames[i].FullName );
                 parts.WaitForDetailOverlayDisappear();
-                parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 30 ) );
+                parts.SingleDetail.WaitForNameEnabled( TimeSpan.FromSeconds( 60 ) );
                 parts.SingleDetail.Name.Value = TestSettings.NamePrefix + parts.SingleDetail.Name.Value;
                 parts.SingleDetail.Id = parts.SingleDetail.Name.Value;
                 parts.SingleDetail.Customer = Name2UIT_Name( mCustomerNames[i] );
