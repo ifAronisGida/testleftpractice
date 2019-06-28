@@ -1,13 +1,7 @@
-namespace HomeZone.UiObjectInterfaces.Common
+﻿namespace HomeZone.UiObjectInterfaces.Common
 {
-    public interface TiDomain<TResultColumnItem> : TiDomain where TResultColumnItem : class
+    public interface TiDomain<TToolbar> : TiDomain where TToolbar : TiToolbar
     {
-        /// <summary>
-        /// Gets the result column.
-        /// </summary>
-        /// <value>
-        /// The result column.
-        /// </value>
-        new TiResultColumn<TResultColumnItem> ResultColumn { get; }
+        new TToolbar Toolbar { get; }
     }
 }

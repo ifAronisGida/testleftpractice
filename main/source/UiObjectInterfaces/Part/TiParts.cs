@@ -3,16 +3,8 @@ using HomeZone.UiObjectInterfaces.Common;
 
 namespace HomeZone.UiObjectInterfaces.Part
 {
-    public interface TiParts : TiDomain
+    public interface TiParts : TiDomain<TiPartToolbar>
     {
-        /// <summary>
-        /// Gets the toolbar.
-        /// </summary>
-        /// <value>
-        /// The toolbar.
-        /// </value>
-        TiPartToolbar Toolbar { get; }
-
         /// <summary>
         /// Gets the single detail.
         /// </summary>

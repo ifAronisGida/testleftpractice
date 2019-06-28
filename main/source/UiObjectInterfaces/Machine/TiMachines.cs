@@ -3,16 +3,9 @@ using HomeZone.UiObjectInterfaces.Common;
 
 namespace HomeZone.UiObjectInterfaces.Machine
 {
-    public interface TiMachines : TiDomain
+    public interface TiMachines : TiDomain<TiMachineToolbar>
     {
-        /// <summary>
-        /// Gets the toolbar.
-        /// </summary>
-        /// <value>
-        /// The toolbar.
-        /// </value>
-        TiMachineToolbar Toolbar { get; } 
-        
+       
         /// <summary>
         /// Gets the detail area.
         /// </summary>

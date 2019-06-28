@@ -3,16 +3,8 @@ using HomeZone.UiObjectInterfaces.Common;
 
 namespace HomeZone.UiObjectInterfaces.Material
 {
-    public interface TiMaterials : TiDomain
+    public interface TiMaterials : TiDomain<TiMaterialToolbar>
     {
-        /// <summary>
-        /// Gets the toolbar.
-        /// </summary>
-        /// <value>
-        /// The toolbar.
-        /// </value>
-        TiMaterialToolbar Toolbar { get; }
-
         /// <summary>
         /// Gets the detail area.
         /// </summary>

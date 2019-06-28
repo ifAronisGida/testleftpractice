@@ -9,7 +9,9 @@ namespace HomeZone.UiObjects.PageObjects
 {
     // it would be nice to mark this as a child of the main tab control,
     // but abstract classes are ignored when examining parent-child relationships
-    public abstract class TcDomainBase<TToolbar> : RepeaterObject, TiHasDetailOverlay where TToolbar : TiVisibility
+    public abstract class TcDomainBase<TToolbar, TResultColumn> : RepeaterObject, TiHasDetailOverlay, TiDomain
+        where TToolbar : TiToolbar
+        where TResultColumn : TiResultColumn
     {
         protected const string ResultColumnUid = "List.SearchAndResult";
 
@@ -22,6 +24,11 @@ namespace HomeZone.UiObjects.PageObjects
         protected TcOverlay DetailOverlay => Find<TcOverlay>( Search.ByUid( "DetailContent.Overlay" ) );
         protected abstract TimeSpan DefaultOverlayAppearTimeout { get; }
         protected abstract TimeSpan DefaultOverlayDisappearTimeout { get; }
+        public abstract TResultColumn ResultColumn { get; }
+
+        TiToolbar TiDomain.Toolbar => this.Toolbar;
+
+        TiResultColumn TiDomain.ResultColumn => this.ResultColumn;
 
         public sealed override void Goto()
         {

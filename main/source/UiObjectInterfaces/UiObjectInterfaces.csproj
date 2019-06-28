@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\TiDomain.cs" />
+    <Compile Include="Common\TiDomain{T,T}.cs" />
     <Compile Include="Common\TiDomain{T}.cs" />
     <Compile Include="Common\TiGoto.cs" />
     <Compile Include="Common\TiHasDetailOverlay.cs" />
