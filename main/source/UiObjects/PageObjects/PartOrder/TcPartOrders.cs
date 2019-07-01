@@ -47,7 +47,7 @@ namespace HomeZone.UiObjects.PageObjects.PartOrder
 
         protected override void DoGoto()
         {
-            On<TcDomains>().PartOrder.Click();
+            On<TcDomainsAndFilters>().GotoDomain( TeDomain.PartOrder );
         }
     }
 }

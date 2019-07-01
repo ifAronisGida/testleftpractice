@@ -82,6 +82,7 @@
     <Compile Include="ControlObjects\Grid\TcTableView.cs" />
     <Compile Include="ControlObjects\TcButton.cs" />
     <Compile Include="ControlObjects\TcCheckBox.cs" />
+    <Compile Include="ControlObjects\TcComboBox.cs" />
     <Compile Include="ControlObjects\TcControl.cs" />
     <Compile Include="ControlObjects\TcDateEdit.cs" />
     <Compile Include="ControlObjects\TcGridControl.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="ControlObjects\TcTextEdit.cs" />
     <Compile Include="ControlObjects\TcTooltipAccessor.cs" />
     <Compile Include="ControlObjects\TcTruComboBox.cs" />
+    <Compile Include="ControlObjects\TcUnmappedControl.cs" />
     <Compile Include="PageObjects\Customer\TcCustomerRow.cs" />
     <Compile Include="PageObjects\Customer\TcCustomers.cs" />
     <Compile Include="PageObjects\CutJob\TcCutJobResultListItem.cs" />
@@ -171,9 +173,7 @@
     <Compile Include="PageObjects\Settings\TcBendSettings.cs" />
     <Compile Include="PageObjects\Settings\TcSettingsDialog.cs" />
     <Compile Include="PageObjects\Shell\TcDetailContent.cs" />
-    <Compile Include="PageObjects\Shell\TcDomains.cs" />
     <Compile Include="PageObjects\Shell\TcDomainsAndFilters.cs" />
-    <Compile Include="PageObjects\Shell\TcDomainsMore.cs" />
     <Compile Include="PageObjects\Shell\TcMainMenu.cs" />
     <Compile Include="PageObjects\Shell\TcMainMenuPopupMenu.cs" />
     <Compile Include="PageObjects\Shell\TcMainTabControl.cs" />

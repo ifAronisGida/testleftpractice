@@ -37,7 +37,7 @@ namespace HomeZone.UiObjects.PageObjects.CutJob
 
         protected override void DoGoto()
         {
-            On<TcDomains>().CutJob.Click();
+            On<TcDomainsAndFilters>().GotoDomain( TeDomain.CutJob );
         }
 
         protected override TiCutJobResultListItem MakeResultListItem( IControlObject listViewItem ) => new TcCutJobResultListItem( listViewItem );

@@ -23,7 +23,7 @@ namespace HomeZone.UiObjects.Utilities
             ["System.Windows.Controls.TextBox"] = controlObject => new TcTextEdit( controlObject ),
             ["System.Windows.Controls.Image"] = controlObject => new TcButton( controlObject ),
             ["System.Windows.Controls.Border"] = controlObject => new TcButton( controlObject ),
-            ["System.Windows.Controls.ComboBox"] = controlObject => new TcButton( controlObject ),
+            ["System.Windows.Controls.ComboBox"] = controlObject => new TcComboBox( controlObject ),
             ["System.Windows.Controls.TextBlock"] = controlObject => new TcTextBlock( controlObject ),
             ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruComboBox"] = controlObject => new TcTruComboBox( controlObject ),
             ["Trumpf.TruTops.Common.Infrastructure.TruCustomControls.TcTruIconButton"] = controlObject => new TcButton( controlObject ),
@@ -37,16 +37,13 @@ namespace HomeZone.UiObjects.Utilities
         {
             var fqClassName = controlObject.Node.GetClrFullClassName();
 
-            try
+            if( mappings.TryGetValue( fqClassName, out var factoryFunc ) )
             {
-                var factoryFunc = mappings[fqClassName];
-                return ( TInterface ) factoryFunc( controlObject );
+                return ( TInterface )factoryFunc( controlObject );
             }
-            catch( KeyNotFoundException e )
+            else
             {
-                Console.WriteLine( e );
-                Console.WriteLine( fqClassName + " not found" );
-                throw;
+                return ( TInterface )( object )new TcUnmappedControl( controlObject );
             }
         }
     }

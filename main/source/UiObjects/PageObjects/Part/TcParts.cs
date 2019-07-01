@@ -75,7 +75,7 @@ namespace HomeZone.UiObjects.PageObjects.Part
 
         protected override void DoGoto()
         {
-            Goto<TcDomains>().Part.Click();
+            Goto<TcDomainsAndFilters>().GotoDomain( TeDomain.Part );
         }
     }
 }

@@ -34,7 +34,7 @@ namespace HomeZone.UiObjects.PageObjects.NestingTemplate
 
         protected override void DoGoto()
         {
-            Goto<TcDomainsMore>().GotoCutJobTemplate();
+            Goto<TcDomainsAndFilters>().GotoDomain( TeDomain.JobTemplate );
         }
     }
 }
