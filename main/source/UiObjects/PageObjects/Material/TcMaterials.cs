@@ -54,7 +54,7 @@ namespace HomeZone.UiObjects.PageObjects.Material
 
         protected override void DoGoto()
         {
-            Goto<TcDomainsMore>().GotoMaterial();
+            Goto<TcDomainsAndFilters>().GotoDomain( TeDomain.Material );
         }
     }
 }

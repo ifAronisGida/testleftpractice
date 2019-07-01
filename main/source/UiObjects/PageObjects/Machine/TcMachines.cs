@@ -94,7 +94,7 @@ namespace HomeZone.UiObjects.PageObjects.Machine
 
         protected override void DoGoto()
         {
-            On<TcDomainsMore>().GotoWorkplace();
+            On<TcDomainsAndFilters>().GotoDomain( TeDomain.Workplace );
         }
     }
 }
